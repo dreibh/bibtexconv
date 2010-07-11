@@ -1,6 +1,6 @@
 /* $Id$
  *
- * BibTex Convertor
+ * BibTeX Convertor
  * Copyright (C) 2010 by Thomas Dreibholz
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,13 +31,25 @@
 %token T_Comma
 %token T_Equals
 %token T_Quote
+
 %token T_Article
-%token T_Proceedings
 %token T_Book
+%token T_InProceedings
+%token T_InCollection
+%token T_Misc
 %token T_TechReport
-%token T_String
-%token T_Keyword
-%token T_String
+
+%token <iText> T_Keyword
+%token <iText> T_String
+
+%type <nodePtr> publication
+%type <nodePtr> publicationInfo
+%type <nodePtr> publicationInfoItem
+
+%union {
+   char*        iText;
+   struct Node* nodePtr;
+}
 
 %%
 
@@ -52,28 +64,28 @@ publicationCollection
     ;
 
 publication
-    : T_AT publicationType T_OpeningBrace citationKey T_Comma publicationInfo T_ClosingBrace
+    : T_AT publicationType T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace {
+       $$ = makePublication("myType", $4, $6); dumpNode($$);
+    }
     ;
 
 publicationType
     : T_Article
-    | T_Proceedings
     | T_Book
+    | T_InCollection
+    | T_InProceedings
+    | T_Misc
     | T_TechReport
     ;
 
-citationKey
-    : T_Keyword { printf("key=%d\n", $0); }
-    ;
-
 publicationInfo
-    : publicationInfo T_Comma publicationInfoItem
-    | publicationInfoItem
+    : publicationInfo T_Comma publicationInfoItem { $$ = makePublicationInfo($1, $3);   }
+    | publicationInfoItem                         { $$ = makePublicationInfo($1, NULL); }
     ;
 
 publicationInfoItem
-    : T_Keyword T_Equals T_Keyword { printf("Item1: %d = %d\n", $1, $2); }
-    | T_Keyword T_Equals T_String { printf("Item2: %d = %d\n", $1, $2); }
-    | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { printf("Item2: %d = %d\n", $1, $2); }
-    | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace { printf("Item3: %d = %d\n", $1, $2); }
+    : T_Keyword T_Equals T_Keyword { makePublicationInfoItem($1, $3); }
+    | T_Keyword T_Equals T_String  { makePublicationInfoItem($1, $3); }
+    | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { makePublicationInfoItem($1, $4); }
+    | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace  { makePublicationInfoItem($1, $4); }
     ;
