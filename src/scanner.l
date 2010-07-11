@@ -2,24 +2,42 @@
 #include "y.tab.h"
 #include <stdlib.h>
 
-#define returntoken(token) return(token);
-
-
+char   stringBuffer[1024];
+size_t stringBufferPos = 0;
 %}
+
+%x STRING
 
 %%
 
-"@"                { returntoken(T_AT); }
-"{"                { puts("open"); returntoken(T_OpeningBrace); }
-"}"                { returntoken(T_ClosingBrace); }
-","                { puts("comma"); returntoken(T_Comma); }
-"\""               { returntoken(T_Quote); }
-"article"          { returntoken(T_Article); }
-"inproceedings"    { returntoken(T_Proceedings); }
-"book"             { returntoken(T_Book); }
-"techreport"       { returntoken(T_TechReport); }
+"@"                { return(T_AT); }
+"{"                { return(T_OpeningBrace); }
+"}"                { return(T_ClosingBrace); }
+","                { return(T_Comma); }
+"="                { return(T_Equals); }
+"article"          { return(T_Article); }
+"inproceedings"    { return(T_Proceedings); }
+"book"             { return(T_Book); }
+"techreport"       { return(T_TechReport); }
 
-[a-zA-Z0-9\-\.]+        { printf("KEY=<%s>\n",yytext); returntoken(T_Keyword); }
+[a-zA-Z0-9\-\.]+   { return(T_Keyword); }
+
+\"                 { BEGIN STRING;
+                     stringBufferPos = 0; }
+<STRING>\\n        { stringBuffer[stringBufferPos++] = '\n'; }
+<STRING>\\t        { stringBuffer[stringBufferPos++] = '\t'; }
+<STRING>\\\"       { stringBuffer[stringBufferPos++] = '\"'; }
+<STRING>\"         { stringBuffer[stringBufferPos++] = 0x00;
+                     BEGIN 0;
+                     yylval = strdup(stringBuffer);
+                     printf("INFO: <%s>\n", stringBuffer);
+                     return(T_String); }
+<STRING>\n         { }
+<STRING>.          { stringBuffer[stringBufferPos++] = *yytext; };
+
+" "                { }
+"\t"               { }
+"\n"               { ++yylineno; }
 
 %%
 

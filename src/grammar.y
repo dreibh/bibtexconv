@@ -23,12 +23,16 @@
 #include "y.tab.h"
 #include <stdlib.h>
 #include <stdio.h>
+
+unsigned int needsInfoString = 0;
+
 %}
 
 %token T_AT
 %token T_OpeningBrace
 %token T_ClosingBrace
 %token T_Comma
+%token T_Equals
 %token T_Quote
 %token T_Article
 %token T_Proceedings
@@ -36,13 +40,13 @@
 %token T_TechReport
 %token T_String
 %token T_Keyword
-%token T_Info
+%token T_String
 
 %%
 
 bibTeXFile
-    : publicationCollection { puts("A0"); }
-    |  { puts("A1"); }
+    : publicationCollection
+    |
     ;
 
 publicationCollection
@@ -55,22 +59,24 @@ publication
     ;
 
 publicationType
-    : T_Article { puts("Art"); }
+    : T_Article
     | T_Proceedings
     | T_Book
     | T_TechReport
     ;
 
 citationKey
-    : T_Keyword { puts("KEY"); }
+    : T_Keyword { printf("key=%d\n", $0); }
     ;
 
 publicationInfo
-    : publicationInfo ',' publicationInfoItem
+    : publicationInfo T_Comma publicationInfoItem
     | publicationInfoItem
     ;
 
 publicationInfoItem
-    : T_Keyword '=' T_OpeningBrace T_Info T_ClosingBrace { printf("AAA %d\n", $2); }
-    | T_Keyword '=' T_OpeningBrace T_Quote T_Info T_Quote T_ClosingBrace { printf("BBB %d\n", $2); }
+    : T_Keyword T_Equals T_Keyword { printf("Item1: %d = %d\n", $1, $2); }
+    | T_Keyword T_Equals T_String { printf("Item2: %d = %d\n", $1, $2); }
+    | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { printf("Item2: %d = %d\n", $1, $2); }
+    | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace { printf("Item3: %d = %d\n", $1, $2); }
     ;
