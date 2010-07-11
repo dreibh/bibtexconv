@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "node.h"
 
@@ -58,7 +59,7 @@ void dumpNode(struct Node* node)
 
    puts("---- DUMP ----");
    do {
-      printf("%s [%s]\n", node->string, node->value);
+      printf("[%s] %s:\n", node->value, node->string);
       child = node->child;
       while(child != NULL) {
          printf("\t%s\t= %s\n", child->keyword, child->value);
@@ -91,9 +92,15 @@ struct Node* makePublicationInfo(struct Node* node1, struct Node* node2)
 
 struct Node* makePublicationInfoItem(char* keyword, char* value)
 {
-   struct Node* node = createNode("PublicationInfoItem");
+   struct Node* node          = createNode("PublicationInfoItem");
+   const size_t keywordLength = strlen(keyword);
+   size_t       i;
+
    node->keyword = strdup(keyword);
    node->value   = strdup(value);
+   for(i = 0;i < keywordLength;i++) {
+      node->keyword[i] = tolower(node->keyword[i]);
+   }
 //    printf("\t%p:\tKEY=%s\tVALUE=%s\n", node, node->keyword, node->value);
    return(node);
 }

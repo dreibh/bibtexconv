@@ -67,19 +67,18 @@ publicationCollection
 
 publication
     : T_AT T_Article T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("Article", $4, $6); dumpNode($$); }
+         { $$ = makePublication("Article", $4, $6); }
+    | T_AT T_Book T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Book", $4, $6); }
+    | T_AT T_InCollection T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("InCollection", $4, $6); }
     | T_AT T_InProceedings T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("InProceedings", $4, $6); dumpNode($$); }
+         { $$ = makePublication("InProceedings", $4, $6); }
+    | T_AT T_Misc T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Misc", $4, $6); }
+    | T_AT T_TechReport T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("TechReport", $4, $6); }
     ;
-/*
-publicationType
-    : T_Article
-    | T_Book
-    | T_InCollection
-    | T_InProceedings
-    | T_Misc
-    | T_TechReport
-    ;*/
 
 publicationInfo
     : publicationInfo T_Comma publicationInfoItem { $$ = makePublicationInfo($3, $1);   }

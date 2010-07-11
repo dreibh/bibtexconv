@@ -28,14 +28,32 @@ size_t stringBufferPos = 0;
 %}
 
 %x STRING
+%x COMMENT
 
 %%
 
-"@"                { return(T_AT); }
-"{"                { return(T_OpeningBrace); }
-"}"                { return(T_ClosingBrace); }
-","                { return(T_Comma); }
-"="                { return(T_Equals); }
+"@"                                                  { return(T_AT); }
+"{"                                                  { return(T_OpeningBrace); }
+"}"                                                  { return(T_ClosingBrace); }
+","                                                  { return(T_Comma); }
+"="                                                  { return(T_Equals); }
+
+\"                                                   { BEGIN STRING;
+                                                       stringBufferPos = 0; }
+<STRING>\\n                                          { stringBuffer[stringBufferPos++] = '\n'; }
+<STRING>\\t                                          { stringBuffer[stringBufferPos++] = '\t'; }
+<STRING>\\\"                                         { stringBuffer[stringBufferPos++] = '\"'; }
+<STRING>\"                                           { stringBuffer[stringBufferPos++] = 0x00;
+                                                       BEGIN 0;
+                                                       yylval.iText = strdup(stringBuffer);
+                                                       return(T_String); }
+<STRING>\n                                           { }
+<STRING>.                                            { stringBuffer[stringBufferPos++] = *yytext; };
+
+
+"%"                                                  { BEGIN COMMENT; }
+<COMMENT>\n                                          { BEGIN 0; }
+<COMMENT>.                                           { }
 
 [aA][rR][tT][iI][cC][lL][eE]                         { return(T_Article); }
 [bB][oO][oO][kK]                                     { return(T_Book); }
@@ -44,24 +62,12 @@ size_t stringBufferPos = 0;
 [mM][iI][sS][cC]                                     { return(T_Misc); }
 [tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return(T_TechReport); }
 
-[a-zA-Z0-9\-\.]+   { yylval.iText = strdup(yytext);
-                     return(T_Keyword); }
+[a-zA-Z0-9\-\.]+                                     { yylval.iText = strdup(yytext);
+                                                       return(T_Keyword); }
 
-\"                 { BEGIN STRING;
-                     stringBufferPos = 0; }
-<STRING>\\n        { stringBuffer[stringBufferPos++] = '\n'; }
-<STRING>\\t        { stringBuffer[stringBufferPos++] = '\t'; }
-<STRING>\\\"       { stringBuffer[stringBufferPos++] = '\"'; }
-<STRING>\"         { stringBuffer[stringBufferPos++] = 0x00;
-                     BEGIN 0;
-                     yylval.iText = strdup(stringBuffer);
-                     return(T_String); }
-<STRING>\n         { }
-<STRING>.          { stringBuffer[stringBufferPos++] = *yytext; };
-
-" "                { }
-"\t"               { }
-"\n"               { ++yylineno; }
+" "                                                  { }
+"\t"                                                 { }
+"\n"                                                 { ++yylineno; }
 
 %%
 
