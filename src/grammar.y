@@ -23,9 +23,6 @@
 #include "y.tab.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-unsigned int needsInfoString = 0;
-
 %}
 
 %token T_AT
