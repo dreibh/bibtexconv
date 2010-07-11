@@ -56,7 +56,7 @@
 %%
 
 bibTeXFile
-    : publicationCollection { dumpNode($$); }
+    : publicationCollection { dumpNode($$); freeNode($$); }
     |
     ;
 

@@ -47,10 +47,35 @@ struct Node* createNode(const char* label)
 
 void freeNode(struct Node* node)
 {
-   free(node->string);
-   node->string = NULL;
-   puts("-------- FREE !!!!!!! ");
-   free(node);
+   struct Node* next;
+   struct Node* child;
+   struct Node* nextChild;
+
+   while(node != NULL) {
+      next = node->next;
+      child = node->child;
+      while(child != NULL) {
+         nextChild = child->next;
+         free(child->string);
+         if(child->keyword) {
+            free(child->keyword);
+         }
+         if(child->value) {
+            free(child->value);
+         }
+         free(child);
+         child = nextChild;
+      }
+      free(node->string);
+      if(node->keyword) {
+         free(node->keyword);
+      }
+      if(node->value) {
+         free(node->value);
+      }
+      free(node);
+      node = next;
+   }
 }
 
 void dumpNode(struct Node* node)
@@ -62,7 +87,7 @@ void dumpNode(struct Node* node)
       printf("[%s] %s:\n", node->value, node->string);
       child = node->child;
       while(child != NULL) {
-         printf("\t%s\t= %s\n", child->keyword, child->value);
+         printf("\t%s = %s\n", child->keyword, child->value);
          child = child->next;
       }
       node = node->next;
