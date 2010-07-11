@@ -1,0 +1,4 @@
+#!/bin/sh
+yacc -d grammar.y && \
+lex scanner.l && \
+gcc lex.yy.c y.tab.c -o t0
