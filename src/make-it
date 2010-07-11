@@ -1,4 +1,4 @@
 #!/bin/sh
 yacc -d grammar.y && \
 lex scanner.l && \
-gcc -g -O2 -Wall lex.yy.c y.tab.c -o t0
+gcc -g -O2 -Wall lex.yy.c y.tab.c node.c -o t0

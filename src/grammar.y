@@ -21,6 +21,7 @@
 
 %{
 #include "y.tab.h"
+#include "node.h"
 #include <stdlib.h>
 #include <stdio.h>
 %}
@@ -39,9 +40,10 @@
 %token T_Misc
 %token T_TechReport
 
-%token <iText> T_Keyword
-%token <iText> T_String
-
+%token <iText>  T_Keyword
+%token <iText>  T_String
+%type <nodePtr> bibTeXFile
+%type <nodePtr> publicationCollection
 %type <nodePtr> publication
 %type <nodePtr> publicationInfo
 %type <nodePtr> publicationInfoItem
@@ -54,21 +56,22 @@
 %%
 
 bibTeXFile
-    : publicationCollection
+    : publicationCollection { dumpNode($$); }
     |
     ;
 
 publicationCollection
-    : publicationCollection publication
-    | publication
+    : publicationCollection publication { $$ = makePublicationCollection($2, $1);   }
+    | publication                       { $$ = makePublicationCollection($1, NULL); }
     ;
 
 publication
-    : T_AT publicationType T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace {
-       $$ = makePublication("myType", $4, $6); dumpNode($$);
-    }
+    : T_AT T_Article T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Article", $4, $6); dumpNode($$); }
+    | T_AT T_InProceedings T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("InProceedings", $4, $6); dumpNode($$); }
     ;
-
+/*
 publicationType
     : T_Article
     | T_Book
@@ -76,16 +79,16 @@ publicationType
     | T_InProceedings
     | T_Misc
     | T_TechReport
-    ;
+    ;*/
 
 publicationInfo
-    : publicationInfo T_Comma publicationInfoItem { $$ = makePublicationInfo($1, $3);   }
+    : publicationInfo T_Comma publicationInfoItem { $$ = makePublicationInfo($3, $1);   }
     | publicationInfoItem                         { $$ = makePublicationInfo($1, NULL); }
     ;
 
 publicationInfoItem
-    : T_Keyword T_Equals T_Keyword { makePublicationInfoItem($1, $3); }
-    | T_Keyword T_Equals T_String  { makePublicationInfoItem($1, $3); }
-    | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { makePublicationInfoItem($1, $4); }
-    | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace  { makePublicationInfoItem($1, $4); }
+    : T_Keyword T_Equals T_Keyword { $$ = makePublicationInfoItem($1, $3); }
+    | T_Keyword T_Equals T_String  { $$ = makePublicationInfoItem($1, $3); }
+    | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { $$ = makePublicationInfoItem($1, $4); }
+    | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace  { $$ = makePublicationInfoItem($1, $4); }
     ;

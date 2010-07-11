@@ -25,16 +25,6 @@
 
 char   stringBuffer[1024];
 size_t stringBufferPos = 0;
-
-
-struct Node {
-   struct Node* next;
-   struct Node* child;
-   char*        string;
-   char*        keyword;
-   char*        value;
-};
-
 %}
 
 %x STRING
@@ -46,12 +36,13 @@ struct Node {
 "}"                { return(T_ClosingBrace); }
 ","                { return(T_Comma); }
 "="                { return(T_Equals); }
-"article"          { return(T_Article); }
-"book"             { return(T_Book); }
-"incollection"     { return(T_InCollection); }
-"inproceedings"    { return(T_InProceedings); }
-"misc"             { return(T_Misc); }
-"techreport"       { return(T_TechReport); }
+
+[aA][rR][tT][iI][cC][lL][eE]                         { return(T_Article); }
+[bB][oO][oO][kK]                                     { return(T_Book); }
+[iI][nN][cC][oO][lL][lL][eE][cC][tT][iI][oO][nN]     { return(T_InCollection); }
+[iI][nN][pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS] { return(T_InProceedings); }
+[mM][iI][sS][cC]                                     { return(T_Misc); }
+[tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return(T_TechReport); }
 
 [a-zA-Z0-9\-\.]+   { yylval.iText = strdup(yytext);
                      return(T_Keyword); }
@@ -84,77 +75,6 @@ void yyerror(char* errorText)
    printf("ERROR in line %d: %s\n", yylineno, errorText);
    exit(1);
 }
-
-
-struct Node* createNode(const char* label)
-{
-   struct Node* node = (struct Node*)malloc(sizeof(struct Node));
-   if(node == NULL) {
-      yyerror("out of memory");
-   }
-   node->string  = strdup(label);
-   node->next    = NULL;
-   node->child   = NULL;
-   node->keyword = NULL;
-   node->value   = NULL;
-
-   return(node);
-}
-
-void freeNode(struct Node* node)
-{
-   free(node->string);
-   node->string = NULL;
-   puts("-------- FREE !!!!!!! ");
-   free(node);
-}
-
-void dumpNode(struct Node* node)
-{
-   struct Node* child;
-
-   puts("---- DUMP ----");
-   do {
-      printf("NODE: s=%s\n", node->string);
-      child = node->child;
-      while(child != NULL) {
-         printf("C=%p\n", child);
-      /*   printf("\tKEY=%s\tVALUE=%s\n", child->keyword, child->value); */
-         child = child->next;
-      }
-      node = node->next;
-   } while(node != NULL);
-   puts("---- DUMP ----   ende!");
-}
-
-
-struct Node* makePublication(char* type, char* label, struct Node* publicationInfo)
-{
-   printf("MAKE=%s\n",label);
-   struct Node* node = createNode(label);
-   node->child = publicationInfo;
-   node->value = strdup(type);
-   return(node);
-}
-
-struct Node* makePublicationInfo(struct Node* node1, struct Node* node2)
-{
-   node1->next = node2;
-   printf("MKINFO=%p\n", node1);
-   return(node1);
-}
-
-struct Node* makePublicationInfoItem(char* keyword, char* value)
-{
-   struct Node* node = createNode("PublicationInfoItem");
-   node->keyword = strdup(keyword);
-   node->value   = strdup(value);
-   printf("\t%p:\tKEY=%s\tVALUE=%s\n", node, node->keyword, node->value);
-   printf("MKINFOITEM=%p\n", node);
-   return(node);
-}
-
-
 
 int main(int argc, char** argv)
 {
