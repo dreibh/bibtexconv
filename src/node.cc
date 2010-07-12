@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <set>
 
 #include "node.h"
 
@@ -390,6 +391,7 @@ static void unifyDate(Node* node, Node* year, Node* month, Node* day)
    }
 }
 
+
 // ###### Unify "url" section ###############################################
 static void unifyURL(Node* node, Node* url)
 {
@@ -400,6 +402,49 @@ static void unifyURL(Node* node, Node* url)
 }
 
 
+// ###### Unify "pages" section #############################################
+static void unifyPages(Node* node, Node* pages)
+{
+   // ====== Get pure numbers ===============================================
+   std::string numbers = "";
+   for(size_t i = 0; i < pages->value.size(); i++) {
+      if( (pages->value[i] >= '0') &&
+          (pages->value[i] <= '9') ) {
+         numbers += pages->value[i];
+      }
+      else if(pages->value[i] == '-') {
+         numbers += ' ';
+      }
+      else {
+         fprintf(stderr, "WARNING: Entry %s has invalid characters in \"pages\" section (pages=%s)!\n" ,
+                 node->label.c_str(), pages->value.c_str());
+         return;
+      }
+   }
+
+   unsigned int a;
+   unsigned int b;
+   if(sscanf(numbers.c_str(), "%u %u", &a, &b) != 2) {
+      if(sscanf(numbers.c_str(), "%u", &a) != 1) {
+         fprintf(stderr, "WARNING: Entry %s has possibly invalid page numbers in \"pages\" section (pages=%s)!\n" ,
+                 node->label.c_str(), pages->value.c_str());
+         a = b = 0;
+      }
+      else {
+         b = a;
+      }
+   }
+   if(a != 0) {
+      char pagesString[64];
+      if(a != b) {
+         snprintf((char*)&pagesString, sizeof(pagesString), "%u--%u", a, b);
+      }
+      else {
+         snprintf((char*)&pagesString, sizeof(pagesString), "%u", a);
+      }
+      pages->value = pagesString;
+   }
+}
 
 
 // ###### Allocate node #####################################################
@@ -409,11 +454,12 @@ static Node* createNode(const char* label)
    if(node == NULL) {
       yyerror("out of memory");
    }
-   node->label  = label;
-   node->number = 0;
-   node->prev   = NULL;
-   node->next   = NULL;
-   node->child  = NULL;
+   node->label    = label;
+   node->number   = 0;
+   node->prev     = NULL;
+   node->next     = NULL;
+   node->child    = NULL;
+   node->priority = 0;
    return(node);
 }
 
@@ -446,7 +492,7 @@ void dumpNode(Node* node)
 
    puts("---- DUMP ----");
 
-   puts("STOP!"); exit(1);
+//    puts("STOP!"); exit(1);
 
 
    do {
@@ -488,12 +534,75 @@ Node* makePublicationCollection(Node* node1, Node* node2)
 }
 
 
+// ###### Node comparison function ##########################################
+int nodeComparisonFunction(const void* node1ptr, const void* node2ptr)
+{
+   const Node* node1 = *((Node**)node1ptr);
+   const Node* node2 = *((Node**)node2ptr);
+   if(node1->priority > node2->priority) {
+      return(-1);
+   }
+   else if(node1->priority < node2->priority) {
+      return(1);
+   }
+   if(node1->keyword < node2->keyword) {
+      return(-1);
+   }
+   else if(node1->keyword > node2->keyword) {
+      return(1);
+   }
+   return(0);
+}
+
+
+// ###### Sort children of node #############################################
+static void sortChildren(Node* node)
+{
+   Node* child = node->child;
+   if(node->child) {
+      size_t children = 0;
+      while(child != NULL) {
+         children++;
+         child = child->next;
+      }
+
+      Node* sortedChildrenSet[children];
+      size_t i = 0;
+      child    = node->child;
+      while(child != NULL) {
+         sortedChildrenSet[i++] = child;
+         child = child->next;
+      }
+
+      qsort((void*)&sortedChildrenSet[0], children, sizeof(sortedChildrenSet[0]), nodeComparisonFunction);
+
+      for(i = 0; i < children; i++) {
+         if(i < children - 1) {
+            sortedChildrenSet[i]->next = sortedChildrenSet[i + 1];
+         }
+         else {
+            sortedChildrenSet[i]->next = NULL;
+         }
+         if(i > 0) {
+            sortedChildrenSet[i]->prev = sortedChildrenSet[i - 1];
+         }
+         else {
+            sortedChildrenSet[i]->prev = NULL;
+         }
+      }
+      node->child = sortedChildrenSet[0];
+   }
+}
+
+
 // ###### Make publication ##################################################
 Node* makePublication(const char* type, const char* label, Node* publicationInfo)
 {
    Node* node = createNode(label);
    node->child = publicationInfo;
    node->value = type;
+
+   sortChildren(node);
 
    if(node->value != "Comment") {
       Node* author = findChildNode(node, "author");
@@ -508,6 +617,11 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       if(booktitle != NULL) {
          unifyBookTitle(node, booktitle);
       }
+      Node* pages = findChildNode(node, "pages");
+      if(pages != NULL) {
+         unifyPages(node, pages);
+      }
+
       Node* isbn = findChildNode(node, "isbn");
       if(isbn != NULL) {
          unifyISBN(node, isbn);
@@ -551,6 +665,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    char         keywordString[keywordLength + 1];
    size_t       i;
 
+   // ====== Create new entry ===============================================
    for(i = 0;i < keywordLength;i++) {
       keywordString[i] = tolower(keyword[i]);
    }
@@ -560,5 +675,58 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    node->value   = value;
    removeBrackets(node->value);
    trim(node->value);
+
+   // ====== Set priorities for well-known keyword fields ===================
+   if(node->keyword == "author") {
+      node->priority = 255;
+   }
+   else if(node->keyword == "title") {
+      node->priority = 254;
+   }
+   else if(node->keyword == "booktitle") {
+      node->priority = 253;
+   }
+   else if(node->keyword == "journal") {
+      node->priority = 253;
+   }
+   else if(node->keyword == "volume") {
+      node->priority = 250;
+   }
+   else if(node->keyword == "number") {
+      node->priority = 249;
+   }
+   else if(node->keyword == "pages") {
+      node->priority = 248;
+   }
+   else if(node->keyword == "institution") {
+      node->priority = 242;
+   }
+   else if(node->keyword == "publisher") {
+      node->priority = 241;
+   }
+   else if(node->keyword == "address") {
+      node->priority = 240;
+   }
+   else if(node->keyword == "day") {
+      node->priority = 232;
+   }
+   else if(node->keyword == "month") {
+      node->priority = 231;
+   }
+   else if(node->keyword == "year") {
+      node->priority = 230;
+   }
+   else if(node->keyword == "isbn") {
+      node->priority = 222;
+   }
+   else if(node->keyword == "issn") {
+      node->priority = 221;
+   }
+   else if(node->keyword == "note") {
+      node->priority = 220;
+   }
+   else if(node->keyword == "url") {
+      node->priority = 200;
+   }
    return(node);
 }

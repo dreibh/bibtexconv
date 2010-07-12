@@ -36,6 +36,7 @@ struct Node {
    std::string  label;
    std::string  keyword;
    std::string  value;
+   unsigned int priority;
    int          number;
 };
 
