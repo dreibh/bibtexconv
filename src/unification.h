@@ -30,12 +30,12 @@
 void removeBrackets(std::string& str);
 void trim(std::string& str);
 
-void unifyAuthor(Node* node, Node* author);
-void unifyBookTitle(Node* node, Node* booktitle);
-void unifyISBN(Node* node, Node* isbn);
-void unifyISSN(Node* node, Node* issn);
-void unifyDate(Node* node, Node* year, Node* month, Node* day);
-void unifyURL(Node* node, Node* url);
-void unifyPages(Node* node, Node* pages);
+void unifyAuthor(Node* publication, Node* author);
+void unifyBookTitle(Node* publication, Node* booktitle);
+void unifyISBN(Node* publication, Node* isbn);
+void unifyISSN(Node* publication, Node* issn);
+void unifyDate(Node* publication, Node* year, Node* month, Node* day);
+void unifyURL(Node* publication, Node* url);
+void unifyPages(Node* publication, Node* pages);
 
 #endif

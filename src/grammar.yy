@@ -23,6 +23,8 @@
 #include <stdio.h>
 #include "node.h"
 #include "grammar.tab.hh"
+
+Node* bibTeXFile = NULL;
 %}
 
 %token T_AT
@@ -59,7 +61,7 @@
 %%
 
 bibTeXFile
-    : publicationCollection { dumpNode($$); freeNode($$); }
+    : publicationCollection { bibTeXFile = $$; }
     ;
 
 publicationCollection

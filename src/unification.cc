@@ -148,7 +148,7 @@ static void splitAuthor(std::string& author,
 
 
 // ###### Unify "author" section ############################################
-void unifyAuthor(Node* node, Node* author)
+void unifyAuthor(Node* publication, Node* author)
 {
    std::string currentAuthor;
    std::string givenNameFull;
@@ -178,7 +178,7 @@ void unifyAuthor(Node* node, Node* author)
 
 
 // ###### Unify "booktitle" section #########################################
-void unifyBookTitle(Node* node, Node* booktitle)
+void unifyBookTitle(Node* publication, Node* booktitle)
 {
    size_t pos;
    while( (pos = booktitle->value.find(" (")) != std::string::npos ) {
@@ -188,7 +188,7 @@ void unifyBookTitle(Node* node, Node* booktitle)
 
 
 // ###### Unify "isbn" section ##############################################
-void unifyISBN(Node* node, Node* isbn)
+void unifyISBN(Node* publication, Node* isbn)
 {
    // ====== Get pure number ================================================
    std::string number = "";
@@ -203,7 +203,7 @@ void unifyISBN(Node* node, Node* isbn)
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has invalid characters in \"isbn\" section (isbn=%s)!\n" ,
-                 node->label.c_str(), isbn->value.c_str());
+                 publication->label.c_str(), isbn->value.c_str());
          return;
       }
    }
@@ -223,7 +223,7 @@ void unifyISBN(Node* node, Node* isbn)
 
       if(value != number[9]) {
          fprintf(stderr, "WARNING: Entry %s has invalid ISBN-10 in \"isbn\" section (isbn=%s; checksum=%c)\n" ,
-                 node->label.c_str(), isbn->value.c_str(), value);
+                 publication->label.c_str(), isbn->value.c_str(), value);
       }
    }
    else if(number.size() == 13) {
@@ -247,19 +247,19 @@ void unifyISBN(Node* node, Node* isbn)
 
       if(value != number[12]) {
          fprintf(stderr, "WARNING: Entry %s has invalid ISBN-13 in \"isbn\" section (isbn=%s; checksum=%c)\n" ,
-                 node->label.c_str(), isbn->value.c_str(), value);
+                 publication->label.c_str(), isbn->value.c_str(), value);
       }
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no ISBN-10 or ISBN-13 in \"isbn\" section (isbn=%s -> %s)\n" ,
-              node->label.c_str(), isbn->value.c_str(), number.c_str());
+              publication->label.c_str(), isbn->value.c_str(), number.c_str());
       return;
    }
 }
 
 
 // ###### Unify "issn" section ##############################################
-void unifyISSN(Node* node, Node* issn)
+void unifyISSN(Node* publication, Node* issn)
 {
    // ====== Get pure number ================================================
    std::string number = "";
@@ -274,7 +274,7 @@ void unifyISSN(Node* node, Node* issn)
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has invalid characters in \"issn\" section (issn=%s)!\n" ,
-                 node->label.c_str(), issn->value.c_str());
+                 publication->label.c_str(), issn->value.c_str());
          return;
       }
    }
@@ -294,32 +294,32 @@ void unifyISSN(Node* node, Node* issn)
 
       if(value != number[7]) {
          fprintf(stderr, "WARNING: Entry %s has invalid ISSN-10 in \"issn\" section (issn=%s; checksum=%c)\n" ,
-                 node->label.c_str(), issn->value.c_str(), value);
+                 publication->label.c_str(), issn->value.c_str(), value);
       }
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no ISSN in \"issn\" section (issn=%s -> %s)\n" ,
-              node->label.c_str(), issn->value.c_str(), number.c_str());
+              publication->label.c_str(), issn->value.c_str(), number.c_str());
       return;
    }
 }
 
 
 // ###### Unify "year"/"month"/"day" sections ###############################
-void unifyDate(Node* node, Node* year, Node* month, Node* day)
+void unifyDate(Node* publication, Node* year, Node* month, Node* day)
 {
    int yearNumber = 1;
    if(year != NULL) {
       yearNumber = atol(year->value.c_str());
       if((yearNumber < 1700) || (yearNumber > 2012)) {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"year\" section (year=%d?)!\n" ,
-                 node->label.c_str(), yearNumber);
+                 publication->label.c_str(), yearNumber);
       }
       year->number = yearNumber;
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no \"year\" section, but \"month\" or \"day\"!\n" ,
-              node->label.c_str());
+              publication->label.c_str());
    }
 
    int monthNumber = 0;
@@ -371,7 +371,7 @@ void unifyDate(Node* node, Node* year, Node* month, Node* day)
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"month\" section (month=%s?)!\n" ,
-                 node->label.c_str(), month->value.c_str());
+                 publication->label.c_str(), month->value.c_str());
       }
       month->number = monthNumber;
    }
@@ -380,12 +380,12 @@ void unifyDate(Node* node, Node* year, Node* month, Node* day)
       day->number = atol(day->value.c_str());
       if(month == NULL) {
          fprintf(stderr, "WARNING: Entry %s has no \"month\" section, but \"day\"!\n" ,
-               node->label.c_str());
+                 publication->label.c_str());
       }
       else {
          if((day->number < 1) || (day->number > maxDays)) {
             fprintf(stderr, "WARNING: Entry %s has invalid \"day\" or \"month\" section (year=%d month=%d day=%d)!\n" ,
-                  node->label.c_str(), yearNumber, monthNumber, day->number);
+                    publication->label.c_str(), yearNumber, monthNumber, day->number);
          }
       }
    }
@@ -393,7 +393,7 @@ void unifyDate(Node* node, Node* year, Node* month, Node* day)
 
 
 // ###### Unify "url" section ###############################################
-void unifyURL(Node* node, Node* url)
+void unifyURL(Node* publication, Node* url)
 {
    if( (url->value.substr(0, 5) == "\\url{") &&
        (url->value.substr(url->value.size() - 1) == "}") ) {
@@ -403,7 +403,7 @@ void unifyURL(Node* node, Node* url)
 
 
 // ###### Unify "pages" section #############################################
-void unifyPages(Node* node, Node* pages)
+void unifyPages(Node* publication, Node* pages)
 {
    // ====== Get pure numbers ===============================================
    std::string numbers = "";
@@ -417,7 +417,7 @@ void unifyPages(Node* node, Node* pages)
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has invalid characters in \"pages\" section (pages=%s)!\n" ,
-                 node->label.c_str(), pages->value.c_str());
+                 publication->label.c_str(), pages->value.c_str());
          return;
       }
    }
@@ -427,7 +427,7 @@ void unifyPages(Node* node, Node* pages)
    if(sscanf(numbers.c_str(), "%u %u", &a, &b) != 2) {
       if(sscanf(numbers.c_str(), "%u", &a) != 1) {
          fprintf(stderr, "WARNING: Entry %s has possibly invalid page numbers in \"pages\" section (pages=%s)!\n" ,
-                 node->label.c_str(), pages->value.c_str());
+                 publication->label.c_str(), pages->value.c_str());
          a = b = 0;
       }
       else {

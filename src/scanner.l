@@ -63,7 +63,7 @@ std::string comment;
 
 
  /* ====== Comment ======================================================= */
-"%"|"\\%"|"% "|"\\% "                                { BEGIN COMMENT; comment = ""; }
+"%"|"\\%"                                            { BEGIN COMMENT; comment = ""; }
 <COMMENT>\n                                          { BEGIN 0;
                                                        ++yylineno;
                                                        yylval.iText = strdup(comment.c_str());

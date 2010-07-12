@@ -491,10 +491,6 @@ void dumpNode(Node* node)
    Node* child;
 
    puts("---- DUMP ----");
-
-//    puts("STOP!"); exit(1);
-
-
    do {
       printf("[%s] %s:\n", node->value.c_str(), node->label.c_str());
       child = node->child;
