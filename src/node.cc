@@ -176,7 +176,7 @@ static void unifyAuthor(Node* node, Node* author)
 }
 
 
-// ###### Unify "author" section ############################################
+// ###### Unify "booktitle" section #########################################
 static void unifyBookTitle(Node* node, Node* booktitle)
 {
    size_t pos;
@@ -186,15 +186,74 @@ static void unifyBookTitle(Node* node, Node* booktitle)
 }
 
 
+// ###### Unify "isbn" section ##############################################
+static void unifyISBN(Node* node, Node* isbn)
+{
+   // ====== Get pure number ================================================
+   std::string number = "";
+   for(size_t i = 0; i < isbn->value.size(); i++) {
+      if( ((isbn->value[i] >= '0') &&
+           (isbn->value[i] <= '9')) ||
+           ((isbn->value[i] == 'X') && (i == isbn->value.size() - 1)) ) {
+         number += isbn->value[i];
+      }
+      else if(isbn->value[i] == '-') {
+
+      }
+      else {
+         fprintf(stderr, "WARNING: Entry %s has invalid characters in \"isbn\" section (isbn=%s)!\n" ,
+                 node->label.c_str(), isbn->value.c_str());
+         return;
+      }
+   }
+
+   // ====== Validate =======================================================
+   if(number.size() == 10) {
+      unsigned int checksum = 0;
+      for(size_t i = 0; i < 9; i++) {
+         checksum += (10 - i) * ((number[i] == 'X') ? 10 : (number[i] - '0'));
+
+      }
+      checksum = 11 - checksum % 11;
+      if(checksum == 11) {
+         checksum = 0;
+      }
+      char value = ((checksum < 10) ? ((char)checksum + '0') : 'X');
+
+      if(value != number[9]) {
+         fprintf(stderr, "WARNING: Entry %s has invalid ISBN-10 in \"isbn\" section (isbn=%s; checksum=%c)\n" ,
+                 node->label.c_str(), isbn->value.c_str(), value);
+      }
+   }
+   else if(number.size() == 13) {
+      printf("I13=%s\n",number.c_str());
+
+   }
+   else {
+      fprintf(stderr, "WARNING: Entry %s has no ISBN-10 or ISBN-13 in \"isbn\" section (isbn=%s -> %s)\n" ,
+              node->label.c_str(), isbn->value.c_str(), number.c_str());
+      return;
+   }
+}
+
+
+// ###### Unify "issn" section ##############################################
+static void unifyISSN(Node* node, Node* issn)
+{
+}
+
+
 // ###### Unify "year"/"month"/"day" sections ###############################
 static void unifyDate(Node* node, Node* year, Node* month, Node* day)
 {
+   int yearNumber = 1;
    if(year != NULL) {
-      year->number = atol(year->value.c_str());
-      if((year->number < 1700) || (year->number > 2012)) {
+      yearNumber = atol(year->value.c_str());
+      if((yearNumber < 1700) || (yearNumber > 2012)) {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"year\" section (year=%d?)!\n" ,
-               node->label.c_str(), year->number);
+                 node->label.c_str(), yearNumber);
       }
+      year->number = yearNumber;
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no \"year\" section, but \"month\" or \"day\"!\n" ,
@@ -202,48 +261,71 @@ static void unifyDate(Node* node, Node* year, Node* month, Node* day)
    }
 
    int monthNumber = 0;
-   if(monthNumber) {
+   int maxDays     = 0;
+   if(month != NULL) {
       if(month->value == "jan") {
-         monthNumber = 1;
+         monthNumber = 1;   maxDays = 31;
       }
       else if(month->value == "feb") {
          monthNumber = 2;
+         if( ((yearNumber % 4) == 0) &&
+             ( ((yearNumber % 100) != 0) ||
+               ((yearNumber % 400) == 0) ) ) {
+            maxDays = 29;
+         }
+         else {
+            maxDays = 28;
+         }
       }
       else if(month->value == "mar") {
-         monthNumber = 3;
+         monthNumber = 3;   maxDays = 31;
       }
       else if(month->value == "apr") {
-         monthNumber = 4;
+         monthNumber = 4;   maxDays = 30;
       }
       else if(month->value == "may") {
-         monthNumber = 5;
+         monthNumber = 5;   maxDays = 31;
       }
       else if(month->value == "jun") {
-         monthNumber = 6;
+         monthNumber = 6;   maxDays = 30;
       }
       else if(month->value == "jul") {
-         monthNumber = 7;
+         monthNumber = 7;   maxDays = 30;
       }
       else if(month->value == "aug") {
-         monthNumber = 8;
+         monthNumber = 8;   maxDays = 31;
       }
       else if(month->value == "sep") {
-         monthNumber = 9;
+         monthNumber = 9;   maxDays = 30;
       }
       else if(month->value == "oct") {
-         monthNumber = 10;
+         monthNumber = 10;   maxDays = 31;
       }
       else if(month->value == "nov") {
-         monthNumber = 11;
+         monthNumber = 11;   maxDays = 30;
       }
       else if(month->value == "dec") {
-         monthNumber = 12;
+         monthNumber = 12;   maxDays = 31;
       }
       else {
-         fprintf(stderr, "WARNING: Entry %s has probably invalid \"monthNumber\" section (monthNumber=%s?)!\n" ,
+         fprintf(stderr, "WARNING: Entry %s has probably invalid \"month\" section (month=%s?)!\n" ,
                  node->label.c_str(), month->value.c_str());
       }
       month->number = monthNumber;
+   }
+
+   if(day != NULL) {
+      day->number = atol(day->value.c_str());
+      if(month == NULL) {
+         fprintf(stderr, "WARNING: Entry %s has no \"month\" section, but \"day\"!\n" ,
+               node->label.c_str());
+      }
+      else {
+         if((day->number < 1) || (day->number > maxDays)) {
+            fprintf(stderr, "WARNING: Entry %s has invalid \"day\" or \"month\" section (year=%d month=%d day=%d)!\n" ,
+                  node->label.c_str(), yearNumber, monthNumber, day->number);
+         }
+      }
    }
 }
 
@@ -302,11 +384,15 @@ void dumpNode(Node* node)
    Node* child;
 
    puts("---- DUMP ----");
+
+   puts("STOP!"); exit(1);
+
+
    do {
       printf("[%s] %s:\n", node->value.c_str(), node->label.c_str());
       child = node->child;
       while(child != NULL) {
-         printf("\t%s = %s\n", child->keyword.c_str(), child->value.c_str());
+//          printf("\t%s = %s\n", child->keyword.c_str(), child->value.c_str());
          child = child->next;
       }
       node = node->next;
@@ -360,6 +446,14 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       Node* booktitle = findChildNode(node, "booktitle");
       if(booktitle != NULL) {
          unifyBookTitle(node, booktitle);
+      }
+      Node* isbn = findChildNode(node, "isbn");
+      if(isbn != NULL) {
+         unifyISBN(node, isbn);
+      }
+      Node* issn = findChildNode(node, "issn");
+      if(issn != NULL) {
+         unifyISSN(node, issn);
       }
 
       Node* year =  findChildNode(node, "year");
