@@ -226,8 +226,28 @@ static void unifyISBN(Node* node, Node* isbn)
       }
    }
    else if(number.size() == 13) {
-      printf("I13=%s\n",number.c_str());
+      unsigned int checksum = 10 - (
+         (number[0] - '0') +
+         3 * (number[1] - '0') +
+         (number[2] - '0') +
+         3 * (number[3] - '0') +
+         (number[4] - '0') +
+         3 * (number[5] - '0') +
+         (number[6] - '0') +
+         3 * (number[7] - '0') +
+         (number[8] - '0') +
+         3 * (number[9] - '0') +
+         (number[10] - '0') +
+         3 * (number[11] - '0')) % 10;
+      if(checksum == 10) {
+         checksum = 0;
+      }
+      char value = (char)checksum + '0';
 
+      if(value != number[12]) {
+         fprintf(stderr, "WARNING: Entry %s has invalid ISBN-13 in \"isbn\" section (isbn=%s; checksum=%c)\n" ,
+                 node->label.c_str(), isbn->value.c_str(), value);
+      }
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no ISBN-10 or ISBN-13 in \"isbn\" section (isbn=%s -> %s)\n" ,
