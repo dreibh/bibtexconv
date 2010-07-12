@@ -260,6 +260,47 @@ static void unifyISBN(Node* node, Node* isbn)
 // ###### Unify "issn" section ##############################################
 static void unifyISSN(Node* node, Node* issn)
 {
+   // ====== Get pure number ================================================
+   std::string number = "";
+   for(size_t i = 0; i < issn->value.size(); i++) {
+      if( ((issn->value[i] >= '0') &&
+           (issn->value[i] <= '9')) ||
+           ((issn->value[i] == 'X') && (i == issn->value.size() - 1)) ) {
+         number += issn->value[i];
+      }
+      else if(issn->value[i] == '-') {
+
+      }
+      else {
+         fprintf(stderr, "WARNING: Entry %s has invalid characters in \"issn\" section (issn=%s)!\n" ,
+                 node->label.c_str(), issn->value.c_str());
+         return;
+      }
+   }
+
+   // ====== Validate =======================================================
+   if(number.size() == 8) {
+      unsigned int checksum = 0;
+      for(size_t i = 0; i < 7; i++) {
+         checksum += (8 - i) * ((number[i] == 'X') ? 10 : (number[i] - '0'));
+
+      }
+      checksum = 11 - checksum % 11;
+      if(checksum == 11) {
+         checksum = 0;
+      }
+      char value = ((checksum < 10) ? ((char)checksum + '0') : 'X');
+
+      if(value != number[7]) {
+         fprintf(stderr, "WARNING: Entry %s has invalid ISSN-10 in \"issn\" section (issn=%s; checksum=%c)\n" ,
+                 node->label.c_str(), issn->value.c_str(), value);
+      }
+   }
+   else {
+      fprintf(stderr, "WARNING: Entry %s has no ISSN in \"issn\" section (issn=%s -> %s)\n" ,
+              node->label.c_str(), issn->value.c_str(), number.c_str());
+      return;
+   }
 }
 
 
@@ -412,7 +453,7 @@ void dumpNode(Node* node)
       printf("[%s] %s:\n", node->value.c_str(), node->label.c_str());
       child = node->child;
       while(child != NULL) {
-//          printf("\t%s = %s\n", child->keyword.c_str(), child->value.c_str());
+         printf("\t%s = %s\n", child->keyword.c_str(), child->value.c_str());
          child = child->next;
       }
       node = node->next;
