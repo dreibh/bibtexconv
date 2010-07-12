@@ -20,11 +20,12 @@
  */
 
 %{
-#include "y.tab.h"
 #include <stdlib.h>
+#include <string>
+#include "grammar.tab.hh"
 
-char   stringBuffer[1024];
-size_t stringBufferPos = 0;
+std::string string;
+std::string comment;
 %}
 
 %x STRING
@@ -38,22 +39,25 @@ size_t stringBufferPos = 0;
 ","                                                  { return(T_Comma); }
 "="                                                  { return(T_Equals); }
 
-\"                                                   { BEGIN STRING;
-                                                       stringBufferPos = 0; }
-<STRING>\\n                                          { stringBuffer[stringBufferPos++] = '\n'; }
-<STRING>\\t                                          { stringBuffer[stringBufferPos++] = '\t'; }
-<STRING>\\\"                                         { stringBuffer[stringBufferPos++] = '\"'; }
-<STRING>\"                                           { stringBuffer[stringBufferPos++] = 0x00;
-                                                       BEGIN 0;
-                                                       yylval.iText = strdup(stringBuffer);
-                                                       return(T_String); }
+\"                                                   { BEGIN STRING; string = ""; }
+<STRING>\\n                                          { string += '\n'; }
+<STRING>\\t                                          { string += '\t'; }
+<STRING>\\\"                                         { string += '\"'; }
 <STRING>\n                                           { }
-<STRING>.                                            { stringBuffer[stringBufferPos++] = *yytext; };
+<STRING>\"                                           { BEGIN 0;
+                                                       yylval.iText = strdup(string.c_str());
+                                                       // printf("S=<%s>\n",yylval.iText);
+                                                       return(T_String); }
+<STRING>.                                            { string += *yytext; };
 
 
-"%"                                                  { BEGIN COMMENT; }
-<COMMENT>\n                                          { BEGIN 0; }
-<COMMENT>.                                           { }
+"%"|"\\%"|"% "|"\\% "                                { BEGIN COMMENT; comment = ""; }
+<COMMENT>\n                                          { BEGIN 0;
+                                                       yylval.iText = strdup(comment.c_str());
+                                                       // printf("C=<%s>\n",yylval.iText);
+                                                       return(T_Comment); }
+<COMMENT>.                                           { comment += *yytext; }
+
 
 [aA][rR][tT][iI][cC][lL][eE]                         { return(T_Article); }
 [bB][oO][oO][kK]                                     { return(T_Book); }
@@ -62,8 +66,10 @@ size_t stringBufferPos = 0;
 [mM][iI][sS][cC]                                     { return(T_Misc); }
 [tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return(T_TechReport); }
 
+
 [a-zA-Z0-9\-\.]+                                     { yylval.iText = strdup(yytext);
                                                        return(T_Keyword); }
+
 
 " "                                                  { }
 "\t"                                                 { }
@@ -76,14 +82,8 @@ int yywrap()
    return(1);
 }
 
-void yyerror(char* errorText)
+void yyerror(const char* errorText)
 {
    printf("ERROR in line %d: %s\n", yylineno, errorText);
    exit(1);
-}
-
-int main(int argc, char** argv)
-{
-   yyparse();
-   return 0;
 }

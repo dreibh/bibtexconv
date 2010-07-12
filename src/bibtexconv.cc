@@ -19,33 +19,11 @@
  * Contact: dreibh@iem.uni-due.de
  */
 
-#ifndef NODE_H
-#define NODE_H
-
-#include <string>
+extern int yyparse();
 
 
-extern void yyerror(const char* errorText);
-extern int  yylex();
-
-
-struct Node {
-   struct Node* prev;
-   struct Node* next;
-   struct Node* child;
-   std::string  label;
-   std::string  keyword;
-   std::string  value;
-   unsigned int number;
-};
-
-void freeNode(struct Node* node);
-void dumpNode(struct Node* node);
-
-struct Node* makePublicationCollection(struct Node* node1, struct Node* node2);
-struct Node* makePublication(const char* type, const char* label,
-                             struct Node* publicationInfo);
-struct Node* makePublicationInfo(struct Node* node1, struct Node* node2);
-struct Node* makePublicationInfoItem(const char* keyword, const char* value);
-
-#endif
+int main(int argc, char** argv)
+{
+   yyparse();
+   return 0;
+}

@@ -22,29 +22,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 #include "node.h"
 
 
-extern void yyerror(char* errorText);
-
-
+// ###### Allocate node #####################################################
 struct Node* createNode(const char* label)
 {
-   struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+   struct Node* node = new Node;
    if(node == NULL) {
       yyerror("out of memory");
    }
-   node->string  = strdup(label);
-   node->next    = NULL;
-   node->child   = NULL;
-   node->keyword = NULL;
-   node->value   = NULL;
-
+   node->label  = label;
+   node->number = 0;
+   node->prev   = NULL;
+   node->next   = NULL;
+   node->child  = NULL;
    return(node);
 }
 
+
+// ###### Free nodes ########################################################
 void freeNode(struct Node* node)
 {
    struct Node* next;
@@ -56,38 +54,26 @@ void freeNode(struct Node* node)
       child = node->child;
       while(child != NULL) {
          nextChild = child->next;
-         free(child->string);
-         if(child->keyword) {
-            free(child->keyword);
-         }
-         if(child->value) {
-            free(child->value);
-         }
-         free(child);
+         delete child;
          child = nextChild;
       }
-      free(node->string);
-      if(node->keyword) {
-         free(node->keyword);
-      }
-      if(node->value) {
-         free(node->value);
-      }
-      free(node);
+      delete node;
       node = next;
    }
 }
 
+
+// ###### Dump nodes ########################################################
 void dumpNode(struct Node* node)
 {
    struct Node* child;
 
    puts("---- DUMP ----");
    do {
-      printf("[%s] %s:\n", node->value, node->string);
+      printf("[%s] %s:\n", node->value.c_str(), node->label.c_str());
       child = node->child;
       while(child != NULL) {
-         printf("\t%s = %s\n", child->keyword, child->value);
+         printf("\t%s = %s\n", child->keyword.c_str(), child->value.c_str());
          child = child->next;
       }
       node = node->next;
@@ -95,37 +81,49 @@ void dumpNode(struct Node* node)
    puts("--------------");
 }
 
+
+// ###### Make publication collection #######################################
 struct Node* makePublicationCollection(struct Node* node1, struct Node* node2)
 {
+   node2->prev = node1;
    node1->next = node2;
    return(node1);
 }
 
-struct Node* makePublication(char* type, char* label, struct Node* publicationInfo)
+
+// ###### Make publication ##################################################
+struct Node* makePublication(const char* type, const char* label, struct Node* publicationInfo)
 {
    struct Node* node = createNode(label);
    node->child = publicationInfo;
-   node->value = strdup(type);
+   node->value = type;
    return(node);
 }
 
+
+// ###### Make publication info #############################################
 struct Node* makePublicationInfo(struct Node* node1, struct Node* node2)
 {
+   node2->prev = node1;
    node1->next = node2;
    return(node1);
 }
 
-struct Node* makePublicationInfoItem(char* keyword, char* value)
+
+// ###### Make publication info item ########################################
+struct Node* makePublicationInfoItem(const char* keyword, const char* value)
 {
    struct Node* node          = createNode("PublicationInfoItem");
    const size_t keywordLength = strlen(keyword);
+   char         keywordString[keywordLength + 1];
    size_t       i;
 
-   node->keyword = strdup(keyword);
-   node->value   = strdup(value);
    for(i = 0;i < keywordLength;i++) {
-      node->keyword[i] = tolower(node->keyword[i]);
+      keywordString[i] = tolower(keyword[i]);
    }
-//    printf("\t%p:\tKEY=%s\tVALUE=%s\n", node, node->keyword, node->value);
+   keywordString[keywordLength] = 0x00;
+
+   node->keyword = keywordString;
+   node->value   = value;
    return(node);
 }

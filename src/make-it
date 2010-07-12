@@ -1,4 +1,4 @@
 #!/bin/sh
-yacc -d grammar.y && \
-lex scanner.l && \
-gcc -g -O2 -Wall lex.yy.c y.tab.c node.c -o t0
+bison -d grammar.yy && \
+flex -o scanner.cc scanner.l && \
+g++ -g -O2 -Wall scanner.cc grammar.tab.cc node.cc bibtexconv.cc -o bibtexconv

@@ -20,10 +20,9 @@
  */
 
 %{
-#include "y.tab.h"
-#include "node.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include "node.h"
+#include "grammar.tab.hh"
 %}
 
 %token T_AT
@@ -31,7 +30,6 @@
 %token T_ClosingBrace
 %token T_Comma
 %token T_Equals
-%token T_Quote
 
 %token T_Article
 %token T_Book
@@ -42,6 +40,8 @@
 
 %token <iText>  T_Keyword
 %token <iText>  T_String
+%token <iText>  T_Comment
+
 %type <nodePtr> bibTeXFile
 %type <nodePtr> publicationCollection
 %type <nodePtr> publication
@@ -57,16 +57,17 @@
 
 bibTeXFile
     : publicationCollection { dumpNode($$); freeNode($$); }
-    |
     ;
 
 publicationCollection
-    : publicationCollection publication { $$ = makePublicationCollection($2, $1);   }
-    | publication                       { $$ = makePublicationCollection($1, NULL); }
+    : publication publicationCollection  { $$ = makePublicationCollection($1, $2);   }
+    | publication                        { $$ = $1; }
     ;
 
 publication
-    : T_AT T_Article T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+    : T_Comment
+         { $$ = makePublication("Comment", $1, NULL); }
+    | T_AT T_Article T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Article", $4, $6); }
     | T_AT T_Book T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Book", $4, $6); }
@@ -81,8 +82,8 @@ publication
     ;
 
 publicationInfo
-    : publicationInfo T_Comma publicationInfoItem { $$ = makePublicationInfo($3, $1);   }
-    | publicationInfoItem                         { $$ = makePublicationInfo($1, NULL); }
+    : publicationInfoItem T_Comma publicationInfo { $$ = makePublicationInfo($1, $3); }
+    | publicationInfoItem                         { $$ = $1; }
     ;
 
 publicationInfoItem
