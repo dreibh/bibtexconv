@@ -26,10 +26,216 @@
 #include "node.h"
 
 
-// ###### Allocate node #####################################################
-struct Node* createNode(const char* label)
+// ###### Remove brackets { ... } ###########################################
+static void removeBrackets(std::string& str)
 {
-   struct Node* node = new Node;
+   while( (str.substr(0, 1) == "{") &&
+       (str.substr(str.size() - 1) == "}") ) {
+      str = str.substr(1, str.size() - 2);
+   }
+}
+
+
+// ###### Remove whitespaces at front and back of a string ##################
+static void trim(std::string& str)
+{
+   const ssize_t length = str.size();
+   ssize_t s, e;
+   for(s = 0; s < length; s++) {
+      if(str[s] != ' ') {
+         break;
+      }
+   }
+   for(e = length - 1; e >= 0; e--) {
+      if(str[e] != ' ') {
+         break;
+      }
+   }
+   str = str.substr(s, length - s - (length - 1 - e) );
+}
+
+
+// ###### Extract initials from given name(s) ###############################
+static void extractAuthorInitials(const std::string& givenNameFull,
+                                  std::string&       givenNameInitials)
+{
+   const size_t length  = givenNameFull.size();
+   bool         extract = true;
+   bool         empty   = true;
+
+   givenNameInitials = "";
+   for(size_t i = 0;i < length;i++) {
+      if( (givenNameFull[i] == ' ') ||
+          (givenNameFull[i] == '~') ) {
+         extract = true;
+      }
+      else {
+         if(extract == true) {
+            if(!empty) {
+               givenNameInitials += '~';
+            }
+            givenNameInitials += (const char)givenNameFull[i];
+            givenNameInitials += '.';
+            extract = false;
+            empty   = false;
+         }
+      }
+   }
+
+}
+
+
+// ###### Split author name into its parts ##################################
+static void splitAuthor(std::string& author,
+                        std::string& givenNameFull,
+                        std::string& givenNameInitials,
+                        std::string& familyName)
+{
+   trim(author);
+
+   size_t pos;
+   if( (pos = author.find(",")) != std::string::npos ) {   // Name, Given Name(s)
+      givenNameFull = author.substr(pos + 1, author.size() - pos - 1);
+      familyName    = author.substr(0, pos);
+      extractAuthorInitials(givenNameFull, givenNameInitials);
+   }
+   else {   // Given Name(s) + Family Name
+      pos = author.rfind(" ");
+      if(pos == std::string::npos) {
+         pos = author.rfind("~");
+      }
+      if(pos == std::string::npos) {   // Family Name only
+         familyName     = author;
+         givenNameFull = givenNameInitials = "";
+      }
+      else {   // Given Name(s) + Family Name
+         familyName    = author.substr(pos + 1, author.size() - pos - 1);
+         givenNameFull = author.substr(0, pos);
+         extractAuthorInitials(givenNameFull, givenNameInitials);
+      }
+   }
+   trim(givenNameFull);
+   trim(familyName);
+/*
+   printf("   -> %s:\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
+          givenNameInitials.c_str(), givenNameFull.c_str(), familyName.c_str());
+*/
+   if(givenNameFull != "") {
+      author = givenNameFull + ((givenNameFull.rfind(".") == givenNameFull.size() - 1) ? "~" : " ") + familyName;
+   }
+   else {
+      author = familyName;
+   }
+}
+
+
+// ###### Unify "author" section ############################################
+static void unifyAuthor(Node* node, Node* author)
+{
+   std::string currentAuthor;
+   std::string givenNameFull;
+   std::string givenNameInitials;
+   std::string familyName;
+
+   // ====== Extract authors ================================================
+   std::string allAuthors = author->value;
+   size_t      pos;
+   bool        empty = true;
+   author->value = "";
+   while( (pos = allAuthors.find(" and ")) != std::string::npos ) {
+      currentAuthor = allAuthors.substr(0, pos);
+
+      splitAuthor(currentAuthor, givenNameFull, givenNameInitials, familyName);
+      author->value += ((!empty) ? " and " : "") + currentAuthor;
+      empty = false;
+
+      pos += 5;
+      allAuthors = allAuthors.substr(pos, allAuthors.size() - pos);
+   }
+
+   // ====== Extract last author ============================================
+   splitAuthor(allAuthors, givenNameFull, givenNameInitials, familyName);
+   author->value += ((!empty) ? " and " : "") + allAuthors;
+}
+
+
+// ###### Unify "year"/"month"/"day" sections ###############################
+static void unifyDate(Node* node, Node* year, Node* month, Node* day)
+{
+   if(year != NULL) {
+      year->number = atol(year->value.c_str());
+      if((year->number < 1700) || (year->number > 2012)) {
+         fprintf(stderr, "WARNING: Entry %s has probably invalid \"year\" section (year=%d?)!\n" ,
+               node->label.c_str(), year->number);
+      }
+   }
+   else {
+      fprintf(stderr, "WARNING: Entry %s has no \"year\" section, but \"month\" or \"day\"!\n" ,
+              node->label.c_str());
+   }
+
+   int monthNumber = 0;
+   if(monthNumber) {
+      if(month->value == "jan") {
+         monthNumber = 1;
+      }
+      else if(month->value == "feb") {
+         monthNumber = 2;
+      }
+      else if(month->value == "mar") {
+         monthNumber = 3;
+      }
+      else if(month->value == "apr") {
+         monthNumber = 4;
+      }
+      else if(month->value == "may") {
+         monthNumber = 5;
+      }
+      else if(month->value == "jun") {
+         monthNumber = 6;
+      }
+      else if(month->value == "jul") {
+         monthNumber = 7;
+      }
+      else if(month->value == "aug") {
+         monthNumber = 8;
+      }
+      else if(month->value == "sep") {
+         monthNumber = 9;
+      }
+      else if(month->value == "oct") {
+         monthNumber = 10;
+      }
+      else if(month->value == "nov") {
+         monthNumber = 11;
+      }
+      else if(month->value == "dec") {
+         monthNumber = 12;
+      }
+      else {
+         fprintf(stderr, "WARNING: Entry %s has probably invalid \"monthNumber\" section (monthNumber=%s?)!\n" ,
+                 node->label.c_str(), month->value.c_str());
+      }
+      month->number = monthNumber;
+   }
+}
+
+// ###### Unify "url" section ###############################################
+static void unifyURL(Node* node, Node* url)
+{
+   if( (url->value.substr(0, 5) == "\\url{") &&
+       (url->value.substr(url->value.size() - 1) == "}") ) {
+      url->value = url->value.substr(5, url->value.size() - 6);
+   }
+}
+
+
+
+
+// ###### Allocate node #####################################################
+static Node* createNode(const char* label)
+{
+   Node* node = new Node;
    if(node == NULL) {
       yyerror("out of memory");
    }
@@ -43,11 +249,11 @@ struct Node* createNode(const char* label)
 
 
 // ###### Free nodes ########################################################
-void freeNode(struct Node* node)
+void freeNode(Node* node)
 {
-   struct Node* next;
-   struct Node* child;
-   struct Node* nextChild;
+   Node* next;
+   Node* child;
+   Node* nextChild;
 
    while(node != NULL) {
       next = node->next;
@@ -64,9 +270,9 @@ void freeNode(struct Node* node)
 
 
 // ###### Dump nodes ########################################################
-void dumpNode(struct Node* node)
+void dumpNode(Node* node)
 {
-   struct Node* child;
+   Node* child;
 
    puts("---- DUMP ----");
    do {
@@ -82,8 +288,25 @@ void dumpNode(struct Node* node)
 }
 
 
+// ###### Find child node ###################################################
+Node* findChildNode(Node* node, const char* childKeyword)
+{
+   Node*             child;
+   const std::string keywordToFind(childKeyword);
+
+   child = node->child;
+   while(child != NULL) {
+      if(child->keyword == keywordToFind) {
+         return(child);
+      }
+      child = child->next;
+   }
+   return(NULL);
+}
+
+
 // ###### Make publication collection #######################################
-struct Node* makePublicationCollection(struct Node* node1, struct Node* node2)
+Node* makePublicationCollection(Node* node1, Node* node2)
 {
    node2->prev = node1;
    node1->next = node2;
@@ -92,17 +315,40 @@ struct Node* makePublicationCollection(struct Node* node1, struct Node* node2)
 
 
 // ###### Make publication ##################################################
-struct Node* makePublication(const char* type, const char* label, struct Node* publicationInfo)
+Node* makePublication(const char* type, const char* label, Node* publicationInfo)
 {
-   struct Node* node = createNode(label);
+   Node* node = createNode(label);
    node->child = publicationInfo;
    node->value = type;
+
+   if(node->value != "Comment") {
+      Node* author = findChildNode(node, "author");
+      if(author != NULL) {
+         unifyAuthor(node, author);
+      }
+      else {
+         fprintf(stderr, "WARNING: Entry %s has no \"author\" section!\n" , label);
+      }
+
+      Node* year =  findChildNode(node, "year");
+      Node* month = findChildNode(node, "month");
+      Node* day   = findChildNode(node, "day");
+      if( (year != NULL) || (month != NULL) || (day != NULL) ) {
+         unifyDate(node, year, month, day);
+      }
+
+      Node* url = findChildNode(node, "url");
+      if(url != NULL) {
+         unifyURL(node, url);
+      }
+   }
+
    return(node);
 }
 
 
 // ###### Make publication info #############################################
-struct Node* makePublicationInfo(struct Node* node1, struct Node* node2)
+Node* makePublicationInfo(Node* node1, Node* node2)
 {
    node2->prev = node1;
    node1->next = node2;
@@ -111,9 +357,9 @@ struct Node* makePublicationInfo(struct Node* node1, struct Node* node2)
 
 
 // ###### Make publication info item ########################################
-struct Node* makePublicationInfoItem(const char* keyword, const char* value)
+Node* makePublicationInfoItem(const char* keyword, const char* value)
 {
-   struct Node* node          = createNode("PublicationInfoItem");
+   Node*        node          = createNode("PublicationInfoItem");
    const size_t keywordLength = strlen(keyword);
    char         keywordString[keywordLength + 1];
    size_t       i;
@@ -125,5 +371,6 @@ struct Node* makePublicationInfoItem(const char* keyword, const char* value)
 
    node->keyword = keywordString;
    node->value   = value;
+   removeBrackets(node->value);
    return(node);
 }

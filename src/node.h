@@ -36,7 +36,7 @@ struct Node {
    std::string  label;
    std::string  keyword;
    std::string  value;
-   unsigned int number;
+   int          number;
 };
 
 void freeNode(struct Node* node);
