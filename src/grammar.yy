@@ -35,7 +35,10 @@
 %token T_Book
 %token T_InProceedings
 %token T_InCollection
+%token T_Manual
+%token T_MastersThesis
 %token T_Misc
+%token T_PhDThesis
 %token T_TechReport
 
 %token <iText>  T_Keyword
@@ -75,8 +78,14 @@ publication
          { $$ = makePublication("InCollection", $4, $6); }
     | T_AT T_InProceedings T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("InProceedings", $4, $6); }
+    | T_AT T_Manual T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Manual", $4, $6); }
+    | T_AT T_MastersThesis T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("MastersThesis", $4, $6); }
     | T_AT T_Misc T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Misc", $4, $6); }
+    | T_AT T_PhDThesis T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("PhDThesis", $4, $6); }
     | T_AT T_TechReport T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("TechReport", $4, $6); }
     ;

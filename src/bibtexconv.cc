@@ -19,11 +19,28 @@
  * Contact: dreibh@iem.uni-due.de
  */
 
-extern int yyparse();
+#include <stdio.h>
+#include <stdlib.h>
+
+
+extern int   yyparse();
+extern FILE* yyin;
 
 
 int main(int argc, char** argv)
 {
-   yyparse();
-   return 0;
+   if(argc < 2) {
+      fprintf(stderr, "Usage: %s [BiBTeX file]!\n", argv[0]);
+      exit(1);
+   }
+
+   yyin = fopen(argv[1], "r");
+   if(yyin == NULL) {
+      fprintf(stderr, "ERROR: Unable to open BibTeX input file %s!\n", argv[1]);
+      exit(1);
+   }
+   int result = yyparse();
+   fclose(yyin);
+
+   return result;
 }
