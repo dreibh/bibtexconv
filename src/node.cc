@@ -36,9 +36,10 @@ static void removeBrackets(std::string& str)
 }
 
 
-// ###### Remove whitespaces at front and back of a string ##################
+// ###### Remove superflous whitespaces from a string #######################
 static void trim(std::string& str)
 {
+   // ====== Remove whitespaces from beginning and end ======================
    const ssize_t length = str.size();
    ssize_t s, e;
    for(s = 0; s < length; s++) {
@@ -52,6 +53,22 @@ static void trim(std::string& str)
       }
    }
    str = str.substr(s, length - s - (length - 1 - e) );
+
+   // ====== Remove double whitespaces ======================================
+   bool gotSpace = false;
+   for(e = str.size() - 1; e >= 0; e--) {
+      if(str[e] == ' ') {
+         if(!gotSpace) {
+            gotSpace = true;
+         }
+         else {
+            str.erase(e, 1);
+         }
+      }
+      else {
+         gotSpace = false;
+      }
+   }
 }
 
 
@@ -156,6 +173,16 @@ static void unifyAuthor(Node* node, Node* author)
    // ====== Extract last author ============================================
    splitAuthor(allAuthors, givenNameFull, givenNameInitials, familyName);
    author->value += ((!empty) ? " and " : "") + allAuthors;
+}
+
+
+// ###### Unify "author" section ############################################
+static void unifyBookTitle(Node* node, Node* booktitle)
+{
+   size_t pos;
+   while( (pos = booktitle->value.find(" (")) != std::string::npos ) {
+      booktitle->value.replace(pos, 1, "~");
+   }
 }
 
 
@@ -330,6 +357,11 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
          fprintf(stderr, "WARNING: Entry %s has no \"author\" section!\n" , label);
       }
 
+      Node* booktitle = findChildNode(node, "booktitle");
+      if(booktitle != NULL) {
+         unifyBookTitle(node, booktitle);
+      }
+
       Node* year =  findChildNode(node, "year");
       Node* month = findChildNode(node, "month");
       Node* day   = findChildNode(node, "day");
@@ -372,5 +404,6 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    node->keyword = keywordString;
    node->value   = value;
    removeBrackets(node->value);
+   trim(node->value);
    return(node);
 }
