@@ -1,0 +1,63 @@
+.\" $Id: bibtexconv.8 573 2010-06-19 09:03:29Z dreibh $
+.\"
+.\" BibTeX Convertor
+.\" Copyright (C) 2010 by Thomas Dreibholz
+.\"
+.\" This program is free software: you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation, either version 3 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program.  If not, see <http://www.gnu.org/licenses/>.
+.\"
+.\" Contact: dreibh@iem.uni-due.de
+.\"
+.\" ###### Setup ############################################################
+.Dd July 10, 2010
+.Dt bibtexconv 8
+.Os bibtexconv
+.\" ###### Name #############################################################
+.Sh NAME
+.Nm bibtexconv
+.Nd BibTeX Convertor
+.\" ###### Synopsis #########################################################
+.Sh SYNOPSIS
+.Nm bibtexconv
+.Op BibTeX file
+.Op ...
+.Op Fl export-to-bibtex=file
+.Op Fl export-to-xml=file
+.\" ###### Description ######################################################
+.Sh DESCRIPTION
+.Nm bibtexconv
+is a BibTeX file convertor.
+.Pp
+.\" ###### Arguments ########################################################
+.Sh ARGUMENTS
+The following arguments have to be provided:
+.Bl -tag -width indent
+.It BibTeX file
+The BibTeX input file.
+.It Fl export-to-bibtex=file
+TBD.
+.El
+.\" ###### Arguments ########################################################
+.Sh EXAMPLES
+.Bl -tag -width indent
+.It bibtexconv References.bib -export-to-xml=References.xml
+.It ...
+.El
+.\" ###### Authors ##########################################################
+.Sh AUTHORS
+Thomas Dreibholz
+.br
+http://www.iem.uni-due.de/~dreibh/bibtexconv
+.br
+mailto://dreibh@iem.uni-due.de
+.br

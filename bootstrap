@@ -1,0 +1,53 @@
+#! /bin/sh
+# $Id: bootstrap 546 2010-05-24 18:43:15Z dreibh $
+
+set -x
+
+rm -rf admin
+mkdir admin
+
+if [ -e /usr/bin/glibtoolize ] ; then
+    glibtoolize --force
+elif [ -e /usr/bin/libtoolize ] ; then
+    libtoolize --force
+elif [ -e /usr/local/bin/libtoolize ] ; then
+    libtoolize --force
+else
+   echo "ERROR: I cannot find libtoolize or glibtoolize!"
+   exit 1
+fi
+
+ACLOCALDIR=
+if [ -e /usr/local/share/aclocal ] ; then
+   ACLOCALDIR=/usr/local/share/aclocal
+elif [ -e /usr/share/aclocal ] ; then
+   ACLOCALDIR=/usr/share/aclocal
+else
+   echo >&2 "ERROR: No aclocal directory found!"
+   exit 1
+fi
+
+if [ -e /usr/bin/aclocal ] ; then
+   /usr/bin/aclocal -I $ACLOCALDIR
+elif [ -e /usr/local/bin/aclocal ] ; then
+   /usr/local/bin/aclocal -I $ACLOCALDIR
+elif [ -e /usr/bin/aclocal-1.10 ] ; then
+   /usr/bin/aclocal-1.10 -I $ACLOCALDIR
+else
+   echo >&2 "ERROR: No aclocal installation found!"
+   exit 1
+fi
+
+autoheader
+if [ -e /usr/bin/automake ] ; then
+   /usr/bin/automake --gnu --add-missing --copy
+elif [ -e /usr/local/bin/automake ] ; then
+   /usr/local/bin/automake --gnu --add-missing --copy
+elif [ -e /usr/bin/automake-1.10 ] ; then
+   /usr/bin/automake-1.10 --gnu --add-missing --copy
+else
+   echo >&2 "ERROR: No automake installation found!"
+   exit 1
+fi
+autoconf
+

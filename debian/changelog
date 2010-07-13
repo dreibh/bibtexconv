@@ -1,0 +1,6 @@
+bibtexconv (0.0.1-1ubuntu1) maverick; urgency=low
+
+  * Initial Debian release (Closes: #xxxxxx).
+  * Initial Ubuntu release (LP: #xxxxxx).
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Tue, 13 Jul 2010 11:59:32 +0200

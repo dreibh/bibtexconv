@@ -1,0 +1,14 @@
+Source: bibtexconv
+Section: tex
+Priority: optional
+Maintainer: Thomas Dreibholz <dreibh@iem.uni-due.de>
+Homepage: http://www.iem.uni-due.de/~dreibh/bibtexconv/
+Build-Depends: debhelper (>= 5), autotools-dev, bison, flex
+Standards-Version: 3.8.4
+
+Package: bibtexconv
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends:
+Description:  BibTeX Convertor
+ BibTeXConv is a BibTeX convertor. ...
