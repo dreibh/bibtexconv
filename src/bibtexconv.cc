@@ -86,7 +86,7 @@ void freePublicationSet(PublicationSet* publicationSet)
 
 
 // ###### Export to BibTeX ##################################################
-void exportPublicationSetToBibTeX(PublicationSet* publicationSet)
+bool exportPublicationSetToBibTeX(PublicationSet* publicationSet)
 {
    for(size_t index = 0; index < publicationSet->entries; index++) {
       Node* publication = publicationSet->publicationArray[index];
@@ -123,12 +123,13 @@ void exportPublicationSetToBibTeX(PublicationSet* publicationSet)
 
          puts("\n}\n");
       }
-   };
+   }
+   return(true);
 }
 
 
 // ###### Export to XML #####################################################
-void exportPublicationSetToXML(PublicationSet* publicationSet)
+bool exportPublicationSetToXML(PublicationSet* publicationSet)
 {
    fputs("<?xml version='1.0' encoding='UTF-8'?>\n", stdout);
 
@@ -211,13 +212,123 @@ void exportPublicationSetToXML(PublicationSet* publicationSet)
          fputs("</reference>\n\n", stdout);
       }
    }
+   return(true);
 }
 
 
 // ###### Export to custom ##################################################
-void exportPublicationSetToCustom(Node* publication)
+bool exportPublicationSetToCustom(PublicationSet* publicationSet,
+                                  const char*     printingTemplate)
 {
+   const size_t printingTemplateSize = strlen(printingTemplate);
 
+   for(size_t index = 0; index < publicationSet->entries; index++) {
+      Node* publication = publicationSet->publicationArray[index];
+      if(publication->value == "Comment") {
+         continue;
+      }
+
+//       fprintf(stdout, "<reference anchor=\"%s\">\n", publication->keyword.c_str());
+
+      Node* child;
+
+      for(size_t i = 0; i < printingTemplateSize; i++) {
+         if( (printingTemplate[i] == '%') && (i + 1 < printingTemplateSize) ) {
+            switch(printingTemplate[i + 1]) {
+               case 'L':   // Original BibTeX label
+                  fputs(string2utf8(publication->keyword).c_str(), stdout);
+                  break;
+               case 'A':   // Author
+                  child = findChildNode(publication, "author");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case 'T':   // Title
+                  child = findChildNode(publication, "title");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case 'B':   // Booktitle
+                  child = findChildNode(publication, "booktitle");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case 'J':   // Journal
+                  child = findChildNode(publication, "journal");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case 'V':   // Volume
+                  child = findChildNode(publication, "volume");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case 'N':   // Number
+                  child = findChildNode(publication, "number");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case 'P':   // Pages
+                  child = findChildNode(publication, "pages");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case 'D':   // Address
+                  child = findChildNode(publication, "address");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case 'U':   // URL
+                  child = findChildNode(publication, "url");
+                  if(child) {
+                     fputs(string2utf8(child->value).c_str(), stdout);
+                  }
+                  break;
+               case '%':
+                  fputc('%', stdout);
+                  break;
+               default:
+                  fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in custom printing template!",
+                           printingTemplate[i + 1]);
+                  return(false);
+                  break;
+            }
+            i++;
+         }
+         else if( (printingTemplate[i] == '\\') && (i + 1 < printingTemplateSize) ) {
+            switch(printingTemplate[i + 1]) {
+               case 'n':
+                  fputs("\n", stdout);
+                  break;
+               case 't':
+                  fputc('\t', stdout);
+                  break;
+               default:
+                  fputc(printingTemplate[i + 1], stdout);
+                  break;
+            }
+            i++;
+         }
+         else if(printingTemplate[i] == '[') {
+
+         }
+         else if(printingTemplate[i] == ']') {
+
+         }
+         else {
+            fputc(printingTemplate[i], stdout);
+         }
+      }
+   }
+   return(true);
 }
 
 
@@ -225,11 +336,13 @@ void exportPublicationSetToCustom(Node* publication)
 // ###### Main program ######################################################
 int main(int argc, char** argv)
 {
-   const char* exportToBibTeX = NULL;
-   const char* exportToXML    = NULL;
+   const char* exportToBibTeX         = NULL;
+   const char* exportToXML            = NULL;
+   const char* exportToCustom         = NULL;
+   const char* customPrintingTemplate = "\\[%L\\] %A, \"%T\", %B%J[, Volume %V][, Number %N][, pp. %P][, %D].\\nURL: %U.\\n\\n";
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file}\n", argv[0]);
+      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -238,6 +351,9 @@ int main(int argc, char** argv)
       }
       else if( strncmp(argv[i], "-export-to-xml=", 15) == 0 ) {
          exportToXML = (const char*)&argv[i][15];
+      }
+      else if( strncmp(argv[i], "-export-to-custom=", 18) == 0 ) {
+         exportToCustom = (const char*)&argv[i][18];
       }
       else {
          fputs("ERROR: Bad arguments!\n", stderr);
@@ -259,10 +375,19 @@ int main(int argc, char** argv)
          sortPublicationSet(publicationSet);
 
          if(exportToBibTeX) {
-            exportPublicationSetToBibTeX(publicationSet);
+            if(exportPublicationSetToBibTeX(publicationSet) == false) {
+               exit(1);
+            }
          }
          if(exportToXML) {
-            exportPublicationSetToXML(publicationSet);
+            if(exportPublicationSetToXML(publicationSet) == false) {
+               exit(1);
+            }
+         }
+         if(exportToCustom) {
+            if(exportPublicationSetToCustom(publicationSet, customPrintingTemplate) == false) {
+               exit(1);
+            }
          }
 
          freePublicationSet(publicationSet);
