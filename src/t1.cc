@@ -18,26 +18,82 @@ static const ReplaceTableEntry replaceTable[] = {
    { "{\\\"A}",    "Ä",        "Ä"       },   // &Auml;
    { "{\\\"O}",    "Ö",        "Ö"       },   // &Ouml;
    { "{\\\"U}",    "Ü",        "Ü"       },   // &Uuml;
+   { "{\\\"i}",    "ï",        "ï"       },
+   { "{\\\"y}",    "ÿ",        "ÿ"       },
+
+   { "{´e}",       "é",        "é"       },
+   { "{´u}",       "ú",        "ú"       },
+   { "{´i}",       "í",        "í"       },
+   { "{´a}",       "á",        "á"       },
+   { "{´y}",       "ý",        "ý"       },
+
+   { "{'e}",       "é",        "é"       },
+   { "{'u}",       "ú",        "ú"       },
+   { "{'i}",       "í",        "í"       },
+   { "{'a}",       "á",        "á"       },
+   { "{'y}",       "ý",        "ý"       },
+
+   { "{`e}",       "è",        "è"       },
+   { "{`u}",       "ù",        "ù"       },
+   { "{`i}",       "ì",        "ì"       },
+   { "{`o}",       "ò",        "ò"       },
+   { "{`a}",       "à",        "à"       },
+
+   { "{^e}",       "ê",        "ê"       },
+   { "{^u}",       "û",        "û"       },
+   { "{^i}",       "î",        "î"       },
+   { "{^o}",       "ô",        "ô"       },
+   { "{^a}",       "â",        "â"       },
+
+   { "{~o}",       "õ",        "õ"       },
+   { "{~a}",       "ã",        "ã"       },
+   { "{~n}",       "ñ",        "ñ"       },
+   { "{~o}",       "õ",        "õ"       },
+
    { "<"  ,        "<",        "&lt;"    },
    { ">"  ,        ">",        "&gt;"    },
    { "\\\"" ,      "\"",       "&quot;"  },
    { "&"  ,        "&",        "&amp;"   },
    { "'"  ,        "'",        "&apos;"  },
-   { "~",          " ",        "&#160;"  }   // &nbsp;
+   { "~",          " ",        "&#160;"  }    // &nbsp;
 };
 
 
+// ###### Convert ASCII string to UTF-8 #####################################
+std::string string2utf8(const std::string& string)
+{
+   std::string result(string);
+   size_t      pos = 0;
+   while(pos < result.size()) {
+      for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
+         if(result.substr(pos, strlen(replaceTable[i].input)) == replaceTable[i].input) {
+            result.replace(pos, strlen(replaceTable[i].input),
+                                replaceTable[i].utf8Output);
+            pos += strlen(replaceTable[i].utf8Output) - 1;
+            break;
+         }
+      }
+      pos++;
+   }
+   return(result);
+}
+
+
+// ###### Convert ASCII string to XML-compliant UTF-8 #######################
 std::string string2xml(const std::string& string)
 {
    std::string result(string);
-
-   for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
-      size_t pos;
-      while( (pos = result.find(replaceTable[i].input)) != std::string::npos ) {
-         printf("pos=%d  out=%s\n",pos,replaceTable[i].xmlOutput);
-         result.replace(pos, strlen(replaceTable[i].xmlOutput),
-                             replaceTable[i].xmlOutput);
+   size_t      pos = 0;
+   while(pos < result.size()) {
+      for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
+         if(result.substr(pos, strlen(replaceTable[i].input)) == replaceTable[i].input) {
+            result.replace(pos, strlen(replaceTable[i].input),
+                                replaceTable[i].xmlOutput);
+            pos += strlen(replaceTable[i].xmlOutput) - 1;
+            break;
+         }
       }
+      pos++;
    }
    return(result);
 }
@@ -46,7 +102,7 @@ std::string string2xml(const std::string& string)
 
 int main(int argc, char** argv)
 {
-   std::string s = "T.~Dreibholz and A.~Jungmaier and M.~T{\\\"u}xen and {\\\"a}{\\\"o}{\\\"u}{\\\"A}{\\\"O}{\\\"U}ß";
+   std::string s = "T.~Dreibholz and A.~Jungmaier and M.~T{\\\"u}xen and T{´e}st Caf{\'e} and {\\\"a}{\\\"o}{\\\"u}{\\\"A}{\\\"O}{\\\"U}ß";
 
 //    for(size_t i =
 //
@@ -61,9 +117,8 @@ int main(int argc, char** argv)
 
    printf("S=<%s>\n", s.c_str());
 
-   std::string r = string2xml(s);
-
-   printf("R=<%s>\n", r.c_str());
+   printf("XML=<%s>\n", string2xml(s).c_str());
+   printf("UTF=<%s>\n", string2utf8(s).c_str());
 
    return 0;
 }
