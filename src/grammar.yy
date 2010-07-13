@@ -22,7 +22,7 @@
 %{
 #include <stdio.h>
 #include "node.h"
-#include "grammar.tab.hh"
+#include "grammar.h"
 
 Node* bibTeXFile = NULL;
 %}

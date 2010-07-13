@@ -22,7 +22,8 @@
 %{
 #include <stdlib.h>
 #include <string>
-#include "grammar.tab.hh"
+
+#include "grammar.h"
 
 std::string string;
 std::string comment;
