@@ -99,24 +99,61 @@ std::string string2xml(const std::string& string)
 }
 
 
+// ###### Remove brackets { ... } ###########################################
+std::string& removeBrackets(std::string& string)
+{
+   while( (string.substr(0, 1) == "{") &&
+       (string.substr(string.size() - 1) == "}") ) {
+      string = string.substr(1, string.size() - 2);
+   }
+   return(string);
+}
+
+
+// ###### Remove superflous whitespaces from a string #######################
+std::string& trim(std::string& string)
+{
+   // ====== Remove whitespaces from beginning and end ======================
+   const ssize_t length = string.size();
+   ssize_t s, e;
+   for(s = 0; s < length; s++) {
+      if(string[s] != ' ') {
+         break;
+      }
+   }
+   for(e = length - 1; e >= 0; e--) {
+      if(string[e] != ' ') {
+         break;
+      }
+   }
+   string = string.substr(s, length - s - (length - 1 - e) );
+
+   // ====== Remove double whitespaces ======================================
+   bool gotSpace = false;
+   for(e = string.size() - 1; e >= 0; e--) {
+      if(string[e] == ' ') {
+         if(!gotSpace) {
+            gotSpace = true;
+         }
+         else {
+            string.erase(e, 1);
+         }
+      }
+      else {
+         gotSpace = false;
+      }
+   }
+   return(string);
+}
+
+
+
 
 int main(int argc, char** argv)
 {
    std::string s = "T.~Dreibholz and A.~Jungmaier and M.~T{\\\"u}xen and T{´e}st Caf{\'e} and {\\\"a}{\\\"o}{\\\"u}{\\\"A}{\\\"O}{\\\"U}ß";
 
-//    for(size_t i =
-//
-//    size_t pos;
-//    pos = s.find("{\"u}");
-//    if(pos != std::string::npos) {
-//       puts("R!");
-//
-//       s.replace(pos, 4, "ü");
-//
-//    }
-
-   printf("S=<%s>\n", s.c_str());
-
+   printf("STR=<%s>\n", s.c_str());
    printf("XML=<%s>\n", string2xml(s).c_str());
    printf("UTF=<%s>\n", string2utf8(s).c_str());
 
