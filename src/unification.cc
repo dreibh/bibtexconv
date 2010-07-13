@@ -155,7 +155,10 @@ void unifyAuthor(Node* publication, Node* author)
    std::string givenNameInitials;
    std::string familyName;
 
-   // ====== Extract authors ================================================
+   size_t argumentsIndex = 0;
+   author->arguments.clear();
+
+   // ====== Iterator from author 1 to author n-1 (for n authors) ===========
    std::string allAuthors = author->value;
    size_t      pos;
    bool        empty = true;
@@ -163,9 +166,16 @@ void unifyAuthor(Node* publication, Node* author)
    while( (pos = allAuthors.find(" and ")) != std::string::npos ) {
       currentAuthor = allAuthors.substr(0, pos);
 
+      // ====== Extract current author ======================================
       splitAuthor(currentAuthor, givenNameFull, givenNameInitials, familyName);
       author->value += ((!empty) ? " and " : "") + currentAuthor;
       empty = false;
+
+      // ====== Store extracted name strings into Node's arguments vector ===
+      author->arguments.resize(argumentsIndex + 3);
+      author->arguments[argumentsIndex++] = familyName;
+      author->arguments[argumentsIndex++] = givenNameFull;
+      author->arguments[argumentsIndex++] = givenNameInitials;
 
       pos += 5;
       allAuthors = allAuthors.substr(pos, allAuthors.size() - pos);
@@ -174,6 +184,12 @@ void unifyAuthor(Node* publication, Node* author)
    // ====== Extract last author ============================================
    splitAuthor(allAuthors, givenNameFull, givenNameInitials, familyName);
    author->value += ((!empty) ? " and " : "") + allAuthors;
+
+   // ====== Store extracted name strings into Node's arguments vector ======
+   author->arguments.resize(argumentsIndex + 3);
+   author->arguments[argumentsIndex++] = familyName;
+   author->arguments[argumentsIndex++] = givenNameFull;
+   author->arguments[argumentsIndex++] = givenNameInitials;
 }
 
 
@@ -203,7 +219,7 @@ void unifyISBN(Node* publication, Node* isbn)
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has invalid characters in \"isbn\" section (isbn=%s)!\n" ,
-                 publication->label.c_str(), isbn->value.c_str());
+                 publication->keyword.c_str(), isbn->value.c_str());
          return;
       }
    }
@@ -223,7 +239,7 @@ void unifyISBN(Node* publication, Node* isbn)
 
       if(value != number[9]) {
          fprintf(stderr, "WARNING: Entry %s has invalid ISBN-10 in \"isbn\" section (isbn=%s; checksum=%c)\n" ,
-                 publication->label.c_str(), isbn->value.c_str(), value);
+                 publication->keyword.c_str(), isbn->value.c_str(), value);
       }
    }
    else if(number.size() == 13) {
@@ -247,12 +263,12 @@ void unifyISBN(Node* publication, Node* isbn)
 
       if(value != number[12]) {
          fprintf(stderr, "WARNING: Entry %s has invalid ISBN-13 in \"isbn\" section (isbn=%s; checksum=%c)\n" ,
-                 publication->label.c_str(), isbn->value.c_str(), value);
+                 publication->keyword.c_str(), isbn->value.c_str(), value);
       }
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no ISBN-10 or ISBN-13 in \"isbn\" section (isbn=%s -> %s)\n" ,
-              publication->label.c_str(), isbn->value.c_str(), number.c_str());
+              publication->keyword.c_str(), isbn->value.c_str(), number.c_str());
       return;
    }
 }
@@ -274,7 +290,7 @@ void unifyISSN(Node* publication, Node* issn)
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has invalid characters in \"issn\" section (issn=%s)!\n" ,
-                 publication->label.c_str(), issn->value.c_str());
+                 publication->keyword.c_str(), issn->value.c_str());
          return;
       }
    }
@@ -294,12 +310,12 @@ void unifyISSN(Node* publication, Node* issn)
 
       if(value != number[7]) {
          fprintf(stderr, "WARNING: Entry %s has invalid ISSN-10 in \"issn\" section (issn=%s; checksum=%c)\n" ,
-                 publication->label.c_str(), issn->value.c_str(), value);
+                 publication->keyword.c_str(), issn->value.c_str(), value);
       }
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no ISSN in \"issn\" section (issn=%s -> %s)\n" ,
-              publication->label.c_str(), issn->value.c_str(), number.c_str());
+              publication->keyword.c_str(), issn->value.c_str(), number.c_str());
       return;
    }
 }
@@ -313,13 +329,13 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
       yearNumber = atol(year->value.c_str());
       if((yearNumber < 1700) || (yearNumber > 2012)) {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"year\" section (year=%d?)!\n" ,
-                 publication->label.c_str(), yearNumber);
+                 publication->keyword.c_str(), yearNumber);
       }
       year->number = yearNumber;
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no \"year\" section, but \"month\" or \"day\"!\n" ,
-              publication->label.c_str());
+              publication->keyword.c_str());
    }
 
    int monthNumber = 0;
@@ -371,7 +387,7 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"month\" section (month=%s?)!\n" ,
-                 publication->label.c_str(), month->value.c_str());
+                 publication->keyword.c_str(), month->value.c_str());
       }
       month->number = monthNumber;
    }
@@ -380,12 +396,12 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
       day->number = atol(day->value.c_str());
       if(month == NULL) {
          fprintf(stderr, "WARNING: Entry %s has no \"month\" section, but \"day\"!\n" ,
-                 publication->label.c_str());
+                 publication->keyword.c_str());
       }
       else {
          if((day->number < 1) || (day->number > maxDays)) {
             fprintf(stderr, "WARNING: Entry %s has invalid \"day\" or \"month\" section (year=%d month=%d day=%d)!\n" ,
-                    publication->label.c_str(), yearNumber, monthNumber, day->number);
+                    publication->keyword.c_str(), yearNumber, monthNumber, day->number);
          }
       }
    }
@@ -417,7 +433,7 @@ void unifyPages(Node* publication, Node* pages)
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has invalid characters in \"pages\" section (pages=%s)!\n" ,
-                 publication->label.c_str(), pages->value.c_str());
+                 publication->keyword.c_str(), pages->value.c_str());
          return;
       }
    }
@@ -427,7 +443,7 @@ void unifyPages(Node* publication, Node* pages)
    if(sscanf(numbers.c_str(), "%u %u", &a, &b) != 2) {
       if(sscanf(numbers.c_str(), "%u", &a) != 1) {
          fprintf(stderr, "WARNING: Entry %s has possibly invalid page numbers in \"pages\" section (pages=%s)!\n" ,
-                 publication->label.c_str(), pages->value.c_str());
+                 publication->keyword.c_str(), pages->value.c_str());
          a = b = 0;
       }
       else {

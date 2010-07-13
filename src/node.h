@@ -23,6 +23,7 @@
 #define NODE_H
 
 #include <string>
+#include <vector>
 
 
 extern void yyerror(const char* errorText);
@@ -30,18 +31,21 @@ extern int  yylex();
 
 
 struct Node {
-   struct Node* prev;
-   struct Node* next;
-   struct Node* child;
-   std::string  label;
-   std::string  keyword;
-   std::string  value;
-   unsigned int priority;
-   int          number;
+   struct Node*             prev;
+   struct Node*             next;
+   struct Node*             child;
+   std::string              keyword;
+   std::string              value;
+   std::vector<std::string> arguments;
+   unsigned int             priority;
+   int                      number;
 };
 
 void freeNode(struct Node* node);
 void dumpNode(struct Node* node);
+
+size_t countNodes(Node* node);
+Node* findChildNode(Node* node, const char* childKeyword);
 
 struct Node* makePublicationCollection(struct Node* node1, struct Node* node2);
 struct Node* makePublication(const char* type, const char* label,
