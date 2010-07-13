@@ -26,6 +26,7 @@
 
 #include "node.h"
 #include "unification.h"
+#include "stringhandling.h"
 
 
 // ###### Allocate node #####################################################

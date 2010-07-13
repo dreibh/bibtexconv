@@ -19,20 +19,16 @@
  * Contact: dreibh@iem.uni-due.de
  */
 
-#ifndef UNIFICATION_H
-#define UNIFICATION_H
-
-#include "node.h"
+#ifndef STRINGHANDLING_H
+#define STRINGHANDLING_H
 
 #include <string>
 
 
-void unifyAuthor(Node* publication, Node* author);
-void unifyBookTitle(Node* publication, Node* booktitle);
-void unifyISBN(Node* publication, Node* isbn);
-void unifyISSN(Node* publication, Node* issn);
-void unifyDate(Node* publication, Node* year, Node* month, Node* day);
-void unifyURL(Node* publication, Node* url);
-void unifyPages(Node* publication, Node* pages);
+std::string string2utf8(const std::string& string);
+std::string string2xml(const std::string& string);
+
+std::string& removeBrackets(std::string& string);
+std::string& trim(std::string& string);
 
 #endif

@@ -1,4 +1,4 @@
 #!/bin/sh
 bison -d grammar.yy && \
 flex -o scanner.cc scanner.l && \
-g++ -g -O2 -Wall scanner.cc grammar.tab.cc node.cc unification.cc bibtexconv.cc -o bibtexconv
+g++ -g -O2 -Wall scanner.cc grammar.tab.cc node.cc unification.cc stringhandling.cc bibtexconv.cc -o bibtexconv

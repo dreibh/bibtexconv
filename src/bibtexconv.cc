@@ -25,20 +25,12 @@
 #include <assert.h>
 
 #include "node.h"
+#include "stringhandling.h"
 
 
 extern int    yyparse();
 extern FILE*  yyin;
 extern Node*  bibTeXFile;
-
-
-
-std::string string2xml(const std::string& string)
-{
-   // FIXME!!!
-   return(string);
-}
-
 
 
 struct PublicationSet
@@ -170,7 +162,7 @@ void exportPublicationSetToXML(PublicationSet* publicationSet)
                   string2xml(author->arguments[authorIndex + 2]).c_str(),
                   string2xml(author->arguments[authorIndex + 0]).c_str(),
                   string2xml(author->arguments[authorIndex + 1] +
-                              ((author->arguments[authorIndex + 1] != "") ? " " : "") +
+                              ((author->arguments[authorIndex + 1] != "") ? "~" : "") +
                               author->arguments[authorIndex + 0]).c_str());
             }
          }
@@ -220,16 +212,6 @@ void exportPublicationSetToXML(PublicationSet* publicationSet)
       }
    }
 }
-// <title>On the Use of Concurrent Multipath Transfer over Asymmetric Paths</title>
-// <author initials="T." surname="Dreibholz" fullname="Thomas Dreibholz" />
-// <author initials="M." surname="Becke" fullname="Martin Becke" />
-// <author initials="E. P." surname="Rathgeb" fullname="Erwin P. Rathgeb" />
-// <author initials="M." surname="Tuexen" fullname="Michael Tuexen" />
-// <date month="December" year="2010" />
-// </front>
-// <seriesInfo name="Proceedings" value="of the IEEE Global Communications Conference (GLOBECOM)"/>
-// <format type="PDF" target="http://www.tdr.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/Globecom2010.pdf"/>
-// </reference>*/
 
 
 // ###### Export to custom ##################################################
@@ -238,6 +220,9 @@ void exportPublicationSetToCustom(Node* publication)
 
 }
 
+
+
+// ###### Main program ######################################################
 int main(int argc, char** argv)
 {
    const char* exportToBibTeX = NULL;

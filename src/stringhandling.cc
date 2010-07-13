@@ -1,7 +1,28 @@
+/* $Id$
+ *
+ * BibTeX Convertor
+ * Copyright (C) 2010 by Thomas Dreibholz
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contact: dreibh@iem.uni-due.de
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
-#include <string.h>
+
+#include "stringhandling.h"
 
 
 struct ReplaceTableEntry
@@ -12,14 +33,14 @@ struct ReplaceTableEntry
 };
 
 static const ReplaceTableEntry replaceTable[] = {
-   { "{\\\"a}",    "ä",        "ä"       },   // &auml;
-   { "{\\\"o}",    "ö",        "ö"       },   // &ouml;
-   { "{\\\"u}",    "ü",        "ü"       },   // &uuml;
-   { "{\\\"A}",    "Ä",        "Ä"       },   // &Auml;
-   { "{\\\"O}",    "Ö",        "Ö"       },   // &Ouml;
-   { "{\\\"U}",    "Ü",        "Ü"       },   // &Uuml;
-   { "{\\\"i}",    "ï",        "ï"       },
-   { "{\\\"y}",    "ÿ",        "ÿ"       },
+   { "{\"a}",      "ä",        "ä"       },   // &auml;
+   { "{\"o}",      "ö",        "ö"       },   // &ouml;
+   { "{\"u}",      "ü",        "ü"       },   // &uuml;
+   { "{\"A}",      "Ä",        "Ä"       },   // &Auml;
+   { "{\"O}",      "Ö",        "Ö"       },   // &Ouml;
+   { "{\"U}",      "Ü",        "Ü"       },   // &Uuml;
+   { "{\"i}",      "ï",        "ï"       },
+   { "{\"y}",      "ÿ",        "ÿ"       },
 
    { "{´e}",       "é",        "é"       },
    { "{´u}",       "ú",        "ú"       },
@@ -144,18 +165,4 @@ std::string& trim(std::string& string)
       }
    }
    return(string);
-}
-
-
-
-
-int main(int argc, char** argv)
-{
-   std::string s = "T.~Dreibholz and A.~Jungmaier and M.~T{\\\"u}xen and T{´e}st Caf{\'e} and {\\\"a}{\\\"o}{\\\"u}{\\\"A}{\\\"O}{\\\"U}ß";
-
-   printf("STR=<%s>\n", s.c_str());
-   printf("XML=<%s>\n", string2xml(s).c_str());
-   printf("UTF=<%s>\n", string2utf8(s).c_str());
-
-   return 0;
 }
