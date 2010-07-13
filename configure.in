@@ -1,4 +1,4 @@
-AC_INIT([SubNetCalc], [0.0.1], [dreib@iem.uni-due.de])
+AC_INIT([BibTeXConv], [0.0.1], [dreib@iem.uni-due.de])
 
 AM_INIT_AUTOMAKE
 AC_PREREQ(2.60)
@@ -8,7 +8,7 @@ AC_CONFIG_HEADERS([config.h:config.in])
 AC_CONFIG_SRCDIR([src/bibtexconv.cc])
 
 LT_INIT
-AC_PROG_LIBTOOL
+# AC_PROG_LIBTOOL
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_LEX

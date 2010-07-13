@@ -49,7 +49,7 @@ std::string comment;
 \"                                                   { BEGIN STRING; string = ""; }
 <STRING>\\n                                          { string += '\n'; }
 <STRING>\\t                                          { string += '\t'; }
-<STRING>\\\"                                         { string += '\\\"'; }
+<STRING>\\\"                                         { string += "\\\""; }
 <STRING>\n                                           { ++yylineno; }
 <STRING>\"                                           { BEGIN 0;
                                                        yylval.iText = strdup(string.c_str());
