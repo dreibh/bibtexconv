@@ -351,18 +351,11 @@ bool exportPublicationSetToCustom(PublicationSet* publicationSet,
             }
             struct StackEntry entry = { result.size(), skip };
             stack.push_back(entry);
-//             skipStack.push_back(result.size());
-//             skipStack.push_back((size_t)skip);
-//             printf("PUSH: %d skip=%d\n", result.size(), skip);
          }
          else if(printingTemplate[i] == ']') {
             if(!stack.empty()) {
                StackEntry entry = stack.back();
                stack.pop_back();
-/*               const bool oldSkip = (bool)skipStack.back();
-               skipStack.pop_back();
-               const size_t pos = skipStack.back();
-               skipStack.pop_back();*/
                if(skip == true) {
                   result.erase(entry.pos);
                   skip = entry.skip;
@@ -377,20 +370,11 @@ bool exportPublicationSetToCustom(PublicationSet* publicationSet,
             if(!stack.empty()) {
                StackEntry entry = stack.back();
                stack.pop_back();
-/*               const bool oldSkip = (bool)skipStack.back();
-               skipStack.pop_back();
-               const size_t pos = skipStack.back();
-               skipStack.pop_back();*/
                // ====== Failed => try alternative ==========================
                if(skip == true) {
                   result.erase(entry.pos);
                   skip = entry.skip;
-/*                  result.erase(pos);
-                  skip = oldSkip;*/
                   stack.push_back(entry);
-
-/*                  skipStack.push_back(result.size());
-                  skipStack.push_back((size_t)skip);            */
                }
                // ====== Successful => skip alternative(s) ==================
                else {
