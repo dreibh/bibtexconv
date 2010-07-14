@@ -75,13 +75,12 @@ static const ReplaceTableEntry replaceTable[] = {
    { ">"  ,        ">",        "&gt;"    },
    { "\\\"" ,      "\"",       "&quot;"  },
    { "&"  ,        "&",        "&amp;"   },
-   { "'"  ,        "'",        "&apos;"  },
-   { "~",          " ",        "&#160;"  }    // &nbsp;
+   { "'"  ,        "'",        "&apos;"  }
 };
 
 
 // ###### Convert ASCII string to UTF-8 #####################################
-std::string string2utf8(const std::string& string)
+std::string string2utf8(const std::string& string, const char* nbsp)
 {
    std::string result(string);
    size_t      pos = 0;
@@ -94,6 +93,11 @@ std::string string2utf8(const std::string& string)
             break;
          }
       }
+
+      if(result.substr(pos, 1) == "~") {
+         result.replace(pos, 1, nbsp);
+      }
+
       pos++;
    }
    return(result);

@@ -25,7 +25,7 @@
 #include <string>
 
 
-std::string string2utf8(const std::string& string);
+std::string string2utf8(const std::string& string, const char* nbsp = " ");
 std::string string2xml(const std::string& string);
 
 std::string& removeBrackets(std::string& string);

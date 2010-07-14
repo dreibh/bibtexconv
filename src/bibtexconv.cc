@@ -24,6 +24,8 @@
 #include <string.h>
 #include <assert.h>
 
+#include <iostream>
+
 #include "node.h"
 #include "stringhandling.h"
 
@@ -94,7 +96,8 @@ bool exportPublicationSetToBibTeX(PublicationSet* publicationSet)
          printf("%%%s\n\n", publication->keyword.c_str());
       }
       else {
-         printf("@%s { %s, \n", publication->value.c_str(), publication->keyword.c_str());
+         printf("@%s { %s, \n", publication->value.c_str(),
+                                publication->keyword.c_str());
 
          bool empty  = true;
          Node* child = publication->child;
@@ -216,11 +219,18 @@ bool exportPublicationSetToXML(PublicationSet* publicationSet)
 }
 
 
+struct StackEntry {
+   size_t pos;
+   bool   skip;
+};
+
+
 // ###### Export to custom ##################################################
 bool exportPublicationSetToCustom(PublicationSet* publicationSet,
-                                  const char*     printingTemplate)
+                                  const char*     printingTemplate,
+                                  const char*     nbsp = "~")
 {
-   const size_t printingTemplateSize = strlen(printingTemplate);
+   const size_t  printingTemplateSize = strlen(printingTemplate);
 
    for(size_t index = 0; index < publicationSet->entries; index++) {
       Node* publication = publicationSet->publicationArray[index];
@@ -228,106 +238,194 @@ bool exportPublicationSetToCustom(PublicationSet* publicationSet,
          continue;
       }
 
-//       fprintf(stdout, "<reference anchor=\"%s\">\n", publication->keyword.c_str());
-
-      Node* child;
-
+      std::vector<StackEntry> stack;
+      Node*                   child;
+      std::string             result;
+      bool                    skip = false;
       for(size_t i = 0; i < printingTemplateSize; i++) {
          if( (printingTemplate[i] == '%') && (i + 1 < printingTemplateSize) ) {
             switch(printingTemplate[i + 1]) {
                case 'L':   // Original BibTeX label
-                  fputs(string2utf8(publication->keyword).c_str(), stdout);
-                  break;
+                  result += string2utf8(publication->keyword, nbsp);
+                break;
                case 'A':   // Author
                   child = findChildNode(publication, "author");
-                  if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+               break;
                case 'T':   // Title
                   child = findChildNode(publication, "title");
-                  if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
                case 'B':   // Booktitle
                   child = findChildNode(publication, "booktitle");
-                  if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
                case 'J':   // Journal
                   child = findChildNode(publication, "journal");
-                  if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
                case 'V':   // Volume
                   child = findChildNode(publication, "volume");
-                  if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
                case 'N':   // Number
                   child = findChildNode(publication, "number");
-                  if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
                case 'P':   // Pages
                   child = findChildNode(publication, "pages");
-                  if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
-               case 'D':   // Address
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
+               case '@':   // Address
                   child = findChildNode(publication, "address");
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
+               case 'Y':   // Year
+                  child = findChildNode(publication, "year");
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
+               case 'M':   // Month as name
+                  child = findChildNode(publication, "month");
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
+               case 'm':   // Month as number
+                  child = findChildNode(publication, "month");
                   if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
+                     char month[16];
+                     snprintf((char*)&month, sizeof(month), "%d", child->number);
+                     result += string2utf8(month, nbsp);
+                  } else { skip = true; }
+                break;
+               case 'D':   // Day
+                  child = findChildNode(publication, "day");
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
+               case '$':   // Publisher
+                  child = findChildNode(publication, "publisher");
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
+               case '?':   // Institution
+                  child = findChildNode(publication, "institution");
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
+               case 'I':   // ISBN
+                  child = findChildNode(publication, "isbn");
+                  if(child) { result += string2utf8("ISBN" + (std::string)nbsp + child->value, nbsp); } else { skip = true; }
+                break;
+               case 'i':   // ISSN
+                  child = findChildNode(publication, "issn");
+                  if(child) { result += string2utf8("ISSN"+ (std::string)nbsp + child->value, nbsp); } else { skip = true; }
+                break;
                case 'U':   // URL
                   child = findChildNode(publication, "url");
-                  if(child) {
-                     fputs(string2utf8(child->value).c_str(), stdout);
-                  }
-                  break;
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
                case '%':
-                  fputc('%', stdout);
-                  break;
+                  result += '%';
+                break;
                default:
                   fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in custom printing template!",
-                           printingTemplate[i + 1]);
+                          printingTemplate[i + 1]);
                   return(false);
-                  break;
+                break;
             }
             i++;
          }
          else if( (printingTemplate[i] == '\\') && (i + 1 < printingTemplateSize) ) {
             switch(printingTemplate[i + 1]) {
                case 'n':
-                  fputs("\n", stdout);
-                  break;
+                  result += '\n';
+                break;
                case 't':
-                  fputc('\t', stdout);
-                  break;
+                  result += '\t';
+                break;
                default:
-                  fputc(printingTemplate[i + 1], stdout);
-                  break;
+                  result += printingTemplate[i + 1];
+                break;
             }
             i++;
          }
          else if(printingTemplate[i] == '[') {
-
+            if(stack.empty()) {
+               skip = false;   // Up to now, everything will be accepted
+            }
+            struct StackEntry entry = { result.size(), skip };
+            stack.push_back(entry);
+//             skipStack.push_back(result.size());
+//             skipStack.push_back((size_t)skip);
+//             printf("PUSH: %d skip=%d\n", result.size(), skip);
          }
          else if(printingTemplate[i] == ']') {
+            if(!stack.empty()) {
+               StackEntry entry = stack.back();
+               stack.pop_back();
+/*               const bool oldSkip = (bool)skipStack.back();
+               skipStack.pop_back();
+               const size_t pos = skipStack.back();
+               skipStack.pop_back();*/
+               if(skip == true) {
+                  result.erase(entry.pos);
+                  skip = entry.skip;
+               }
+            }
+            else {
+               fputs("ERROR: Unexpected ']' in custom printing template!\n", stderr);
+               return(false);
+            }
+         }
+         else if(printingTemplate[i] == '|') {
+            if(!stack.empty()) {
+               StackEntry entry = stack.back();
+               stack.pop_back();
+/*               const bool oldSkip = (bool)skipStack.back();
+               skipStack.pop_back();
+               const size_t pos = skipStack.back();
+               skipStack.pop_back();*/
+               // ====== Failed => try alternative ==========================
+               if(skip == true) {
+                  result.erase(entry.pos);
+                  skip = entry.skip;
+/*                  result.erase(pos);
+                  skip = oldSkip;*/
+                  stack.push_back(entry);
 
+/*                  skipStack.push_back(result.size());
+                  skipStack.push_back((size_t)skip);            */
+               }
+               // ====== Successful => skip alternative(s) ==================
+               else {
+                  skip = entry.skip;
+                  int levels = 1;
+                  for(   ; i < printingTemplateSize; i++) {
+                     if(printingTemplate[i] == '\\') {
+                        i++;
+                     }
+                     else {
+                        if(printingTemplate[i] == '[') {
+                           levels++;
+                        }
+                        if(printingTemplate[i] == ']') {
+                           levels--;
+                           if(levels == 0) {
+                              break;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+            else {
+               fputs("ERROR: Unexpected '|' in custom printing template!\n", stderr);
+               return(false);
+            }
          }
          else {
-            fputc(printingTemplate[i], stdout);
+            result += printingTemplate[i];
          }
       }
+      fputs(result.c_str(), stdout);
    }
+
    return(true);
 }
 
@@ -339,7 +437,9 @@ int main(int argc, char** argv)
    const char* exportToBibTeX         = NULL;
    const char* exportToXML            = NULL;
    const char* exportToCustom         = NULL;
-   const char* customPrintingTemplate = "\\[%L\\] %A, \"%T\", %B%J[, Volume %V][, Number %N][, pp. %P][, %D].\\nURL: %U.\\n\\n";
+   const char* customPrintingTemplate =
+      "\\[%L\\] %A, \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%m, %D, |%m~]%Y].\\nURL: %U.\\n\\n";
+   const char* nbsp                   = "~";
 
    if(argc < 2) {
       fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file}\n", argv[0]);
@@ -354,6 +454,9 @@ int main(int argc, char** argv)
       }
       else if( strncmp(argv[i], "-export-to-custom=", 18) == 0 ) {
          exportToCustom = (const char*)&argv[i][18];
+      }
+      else if( strncmp(argv[i], "-nbsp=", 5) == 0 ) {
+         nbsp = (const char*)&argv[i][5];
       }
       else {
          fputs("ERROR: Bad arguments!\n", stderr);
@@ -385,7 +488,8 @@ int main(int argc, char** argv)
             }
          }
          if(exportToCustom) {
-            if(exportPublicationSetToCustom(publicationSet, customPrintingTemplate) == false) {
+            if(exportPublicationSetToCustom(
+                  publicationSet, customPrintingTemplate, nbsp) == false) {
                exit(1);
             }
          }

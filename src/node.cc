@@ -201,6 +201,10 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       if(booktitle != NULL) {
          unifyBookTitle(publication, booktitle);
       }
+      Node* journal = findChildNode(publication, "journal");
+      if(journal != NULL) {
+         unifyBookTitle(publication, journal);   // Same as for booktitle!
+      }
       Node* pages = findChildNode(publication, "pages");
       if(pages != NULL) {
          unifyPages(publication, pages);
