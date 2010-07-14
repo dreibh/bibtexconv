@@ -1,1 +1,1 @@
-debian/tmp/usr/bin/bibtexconv
+src/bibtexconv   /usr/bin

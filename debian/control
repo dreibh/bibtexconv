@@ -3,7 +3,7 @@ Section: tex
 Priority: optional
 Maintainer: Thomas Dreibholz <dreibh@iem.uni-due.de>
 Homepage: http://www.iem.uni-due.de/~dreibh/bibtexconv/
-Build-Depends: debhelper (>= 5), autotools-dev, bison, flex
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev, bison, flex
 Standards-Version: 3.8.4
 
 Package: bibtexconv
