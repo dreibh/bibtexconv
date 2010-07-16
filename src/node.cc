@@ -98,6 +98,21 @@ void dumpNode(Node* node)
 }
 
 
+// ###### Find node #########################################################
+Node* findNode(Node* node, const char* keyword)
+{
+   const std::string keywordToFind(keyword);
+
+   while(node != NULL) {
+      if(node->keyword == keywordToFind) {
+         return(node);
+      }
+      node = node->next;
+   }
+   return(NULL);
+}
+
+
 // ###### Find child node ###################################################
 Node* findChildNode(Node* node, const char* childKeyword)
 {

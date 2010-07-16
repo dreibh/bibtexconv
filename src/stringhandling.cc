@@ -170,3 +170,34 @@ std::string& trim(std::string& string)
    }
    return(string);
 }
+
+
+// ###### Process backslash comments (newline, tab, etc.) ###################
+std::string processBackslash(const std::string& string)
+{
+   const size_t size   = string.size();
+   std::string  result = "";
+
+   for(size_t i = 0; i < size; i++) {
+      switch(string[i]) {
+         if( (string[i] == '\\') && (i + 1 < size) ) {
+            switch(string[i + 1]) {
+               case 'n':
+                  result += '\n';
+                break;
+               case 't':
+                  result += '\t';
+                break;
+               default:
+                  result += string[i + 1];
+                break;
+            }
+            i++;
+         }
+         else {
+            result += string[i];
+         }
+      }
+   }
+   return(result);
+}

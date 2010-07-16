@@ -30,5 +30,6 @@ std::string string2xml(const std::string& string);
 
 std::string& removeBrackets(std::string& string);
 std::string& trim(std::string& string);
+std::string processBackslash(const std::string& string);
 
 #endif

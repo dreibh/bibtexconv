@@ -36,6 +36,7 @@ struct Node {
    struct Node*             child;
    std::string              keyword;
    std::string              value;
+   std::string              anchor;
    std::vector<std::string> arguments;
    unsigned int             priority;
    int                      number;
@@ -45,6 +46,7 @@ void freeNode(struct Node* node);
 void dumpNode(struct Node* node);
 
 size_t countNodes(Node* node);
+Node* findNode(Node* node, const char* keyword);
 Node* findChildNode(Node* node, const char* childKeyword);
 
 struct Node* makePublicationCollection(struct Node* node1, struct Node* node2);

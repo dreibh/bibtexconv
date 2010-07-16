@@ -1,0 +1,28 @@
+# This is the printing template:
+
+#template \[%C\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n
+
+template \[%C\]: %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%M, %D, |%m/]%Y].\nURL: %U.\n\n
+
+
+# Before any citation is printed, print a list title:
+echo ===== My Publications =====
+
+# Set header and trailer of each publication entry:
+header <begin of entry>\n
+trailer <end of entry>\n
+
+
+# Select publications to print.
+# The first argument is the original BibTeX reference,
+# The second argument is a new anchor for printing.
+cite LCN2005 TD01
+cite LCA2003 TD02
+cite IJHIT2008 TD03
+
+# Finally, print all selected publications
+export
+
+
+# Print after all publications:
+echo ===== End of List =====
