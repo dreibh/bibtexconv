@@ -38,8 +38,7 @@ static void extractAuthorInitials(const std::string& givenNameFull,
 
    givenNameInitials = "";
    for(size_t i = 0;i < length;i++) {
-      if( (givenNameFull[i] == ' ') ||
-          (givenNameFull[i] == '~') ) {
+      if( (givenNameFull[i] == ' ') || (givenNameFull[i] == '~') ) {
          extract = true;
       }
       else {
@@ -47,14 +46,41 @@ static void extractAuthorInitials(const std::string& givenNameFull,
             if(!empty) {
                givenNameInitials += '~';
             }
-            givenNameInitials += (const char)givenNameFull[i];
+#ifdef USE_UTF8
+           if( ( (((unsigned char)givenNameFull[i]) & 0xE0) == 0xC0 ) && (i + 1 < length) ) {
+              // Two-byte UTF-8 character
+              givenNameInitials += givenNameFull[i];
+              givenNameInitials += givenNameFull[++i];
+           }
+           else if( ( (((unsigned char)givenNameFull[i]) & 0xF0) == 0xE0 ) && (i + 1 < length) ) {
+              // Three-byte UTF-8 character
+              givenNameInitials += givenNameFull[i];
+              givenNameInitials += givenNameFull[++i];
+              givenNameInitials += givenNameFull[++i];
+           }
+           else if( ( (((unsigned char)givenNameFull[i]) & 0xF8) == 0xF0 ) && (i + 1 < length) ) {
+              // Four-byte UTF-8 character
+              givenNameInitials += givenNameFull[i];
+              givenNameInitials += givenNameFull[++i];
+              givenNameInitials += givenNameFull[++i];
+              givenNameInitials += givenNameFull[++i];
+           }
+           else if( (((unsigned char)givenNameFull[i]) & 0x80) == 0 ) {
+              // Regular 1-byte character
+#endif
+              givenNameInitials += givenNameFull[i];
+#ifdef USE_UTF8
+           }
+           else {
+              // Invalid!
+           }
+#endif
             givenNameInitials += '.';
             extract = false;
             empty   = false;
          }
       }
    }
-
 }
 
 
@@ -163,10 +189,17 @@ void unifyISBN(Node* publication, Node* isbn)
 {
    // ====== Get pure number ================================================
    std::string number = "";
-   for(size_t i = 0; i < isbn->value.size(); i++) {
+   size_t      length = isbn->value.size();
+   for(size_t i = 0; i < length; i++) {
+#ifdef USE_UTF8
+      if((isbn->value[i] < 0) && (i + 1 < length)) {
+         i++;
+      }
+      else
+#endif
       if( ((isbn->value[i] >= '0') &&
            (isbn->value[i] <= '9')) ||
-           ((isbn->value[i] == 'X') && (i == isbn->value.size() - 1)) ) {
+           ((isbn->value[i] == 'X') && (i == length - 1)) ) {
          number += isbn->value[i];
       }
       else if(isbn->value[i] == '-') {
@@ -184,7 +217,6 @@ void unifyISBN(Node* publication, Node* isbn)
       unsigned int checksum = 0;
       for(size_t i = 0; i < 9; i++) {
          checksum += (10 - i) * ((number[i] == 'X') ? 10 : (number[i] - '0'));
-
       }
       checksum = 11 - checksum % 11;
       if(checksum == 11) {
@@ -234,7 +266,14 @@ void unifyISSN(Node* publication, Node* issn)
 {
    // ====== Get pure number ================================================
    std::string number = "";
-   for(size_t i = 0; i < issn->value.size(); i++) {
+   size_t      length = issn->value.size();
+   for(size_t i = 0; i < length; i++) {
+#ifdef USE_UTF8
+      if((issn->value[i] < 0) && (i + 1 < length)) {
+         i++;
+      }
+      else
+#endif
       if( ((issn->value[i] >= '0') &&
            (issn->value[i] <= '9')) ||
            ((issn->value[i] == 'X') && (i == issn->value.size() - 1)) ) {
@@ -378,7 +417,14 @@ void unifyPages(Node* publication, Node* pages)
 {
    // ====== Get pure numbers ===============================================
    std::string numbers = "";
-   for(size_t i = 0; i < pages->value.size(); i++) {
+   size_t      length  = pages->value.size();
+   for(size_t i = 0; i < length; i++) {
+#ifdef USE_UTF8
+      if((pages->value[i] < 0) && (i + 1 < length)) {
+         i++;
+      }
+      else
+#endif
       if( (pages->value[i] >= '0') &&
           (pages->value[i] <= '9') ) {
          numbers += pages->value[i];
