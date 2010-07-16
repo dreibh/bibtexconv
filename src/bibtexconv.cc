@@ -35,41 +35,79 @@ extern FILE*  yyin;
 extern Node*  bibTeXFile;
 
 
-struct PublicationSet
+class PublicationSet
 {
+   public:
+   PublicationSet(const size_t maxSize);
+   ~PublicationSet();
+
+   inline size_t size() const {
+      return(entries);
+   }
+   Node* get(const size_t index) const {
+      assert(index < entries);
+      return(publicationArray[index]);
+   }
+
+   void add(Node* publication);
+   void addAll(Node* publication);
+   void sort();
+   void clearAll();
+
+   private:
+   size_t maxEntries;
    size_t entries;
    Node** publicationArray;
 };
 
 
-// ###### Select specific publications from collection ######################
-PublicationSet* filterPublicationSet(Node* publication)
+PublicationSet::PublicationSet(const size_t maxSize)
 {
-   const size_t    publications   = countNodes(publication);
-   PublicationSet* publicationSet = new PublicationSet;
-   if(publicationSet) {
-      publicationSet->entries          = 0;
-      publicationSet->publicationArray = new Node*[publications];
-      if(publicationSet->publicationArray) {
-         while(publication != NULL) {
+   maxEntries = maxSize;
+   publicationArray = new Node*[maxEntries];
+   assert(publicationArray != NULL);
+   clearAll();
+}
 
-            // FIXME: Hier sollte gefiltert werden ...
 
-            publicationSet->publicationArray[publicationSet->entries++] = publication;
-            publication = publication->next;
-         }
-      }
-      else {
-         delete publicationSet;
-         publicationSet = NULL;
-      }
+PublicationSet::~PublicationSet()
+{
+   delete publicationArray;
+   maxEntries = 0;
+   entries    = 0;
+}
+
+
+void PublicationSet::clearAll()
+{
+   entries = 0;
+   for(size_t i = 0;i < maxEntries; i++) {
+      publicationArray[i] = NULL;
    }
-   return(publicationSet);
+}
+
+
+// ###### Add a single node #################################################
+void PublicationSet::add(Node* publication)
+{
+   assert(entries + 1 <= maxEntries);
+   publicationArray[entries] = publication;
+   entries++;
+}
+
+
+// ###### Add all nodes from collection #####################################
+void PublicationSet::addAll(Node* publication)
+{
+   while(publication != NULL) {
+      add(publication);
+      publication = publication->next;
+   }
 }
 
 
 // ###### Sort publications #################################################
-void sortPublicationSet(PublicationSet* publicationSet)
+void PublicationSet::sort()
 {
 
    // FIXME ...
@@ -77,21 +115,11 @@ void sortPublicationSet(PublicationSet* publicationSet)
 }
 
 
-// ###### Free publication set ##############################################
-void freePublicationSet(PublicationSet* publicationSet)
-{
-   delete publicationSet->publicationArray;
-   publicationSet->publicationArray = NULL;
-   publicationSet->entries          = 0;
-   delete publicationSet;
-}
-
-
 // ###### Export to BibTeX ##################################################
 bool exportPublicationSetToBibTeX(PublicationSet* publicationSet)
 {
-   for(size_t index = 0; index < publicationSet->entries; index++) {
-      Node* publication = publicationSet->publicationArray[index];
+   for(size_t index = 0; index < publicationSet->size(); index++) {
+      const Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
          printf("%%%s\n\n", publication->keyword.c_str());
       }
@@ -136,8 +164,8 @@ bool exportPublicationSetToXML(PublicationSet* publicationSet)
 {
    fputs("<?xml version='1.0' encoding='UTF-8'?>\n", stdout);
 
-   for(size_t index = 0; index < publicationSet->entries; index++) {
-      Node* publication = publicationSet->publicationArray[index];
+   for(size_t index = 0; index < publicationSet->size(); index++) {
+      Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
          printf("<!-- %s -->\n\n", publication->keyword.c_str());
       }
@@ -230,16 +258,19 @@ bool exportPublicationSetToCustom(PublicationSet* publicationSet,
                                   const char*     printingTemplate,
                                   const char*     nbsp = "~")
 {
-   const size_t  printingTemplateSize = strlen(printingTemplate);
+   const size_t printingTemplateSize = strlen(printingTemplate);
 
-   for(size_t index = 0; index < publicationSet->entries; index++) {
-      Node* publication = publicationSet->publicationArray[index];
+   for(size_t index = 0; index < publicationSet->size(); index++) {
+      Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
          continue;
       }
 
       std::vector<StackEntry> stack;
       Node*                   child;
+      Node*                   author      = NULL;
+      size_t                  authorIndex = 0;
+      size_t                  authorBegin = std::string::npos;
       std::string             result;
       bool                    skip = false;
       for(size_t i = 0; i < printingTemplateSize; i++) {
@@ -248,10 +279,54 @@ bool exportPublicationSetToCustom(PublicationSet* publicationSet,
                case 'L':   // Original BibTeX label
                   result += string2utf8(publication->keyword, nbsp);
                 break;
-               case 'A':   // Author
-                  child = findChildNode(publication, "author");
-                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
-               break;
+               case 'a':   // Author LOOP BEGIN
+                  if(authorBegin != std::string::npos) {
+                     fputs("ERROR: Unexpected author loop begin %a -> an author loop is still open!\n", stderr);
+                     return(false);
+                  }
+                  author      = findChildNode(publication, "author");
+                  authorIndex = 0;
+                  authorBegin = i;
+                break;
+               case 'g':   // Current author given name initials
+                  if(author) {
+                     result += string2utf8(author->arguments[authorIndex + 2], nbsp);
+                  }
+                break;
+               case 'G':   // Current author given name
+                  if(author) {
+                     result += string2utf8(author->arguments[authorIndex + 1], nbsp);
+                  }
+                break;
+               case 'F':   // Current author family name
+                  if(author) {
+                     result += string2utf8(author->arguments[authorIndex + 0], nbsp);
+                  }
+                break;
+               case 'f':   // IS first author
+                  skip = ! (authorIndex == 0);
+                break;
+               case 'n':   // IS not first author
+                  skip = ! ((author != NULL) &&
+                            (authorIndex > 0));
+                break;
+               case 'l':   // IS last author
+                  skip = ! ((author != NULL) && (authorIndex + 3 >= author->arguments.size()));
+                break;
+               case 'A':   // Author LOOP END
+                  if(authorBegin == std::string::npos) {
+                     fputs("ERROR: Unexpected author loop end %A -> %a author loop begin needed first!\n", stderr);
+                     return(false);
+                  }
+                  authorIndex += 3;
+                  if(authorIndex < author->arguments.size()) {
+                     i = authorBegin;
+                  }
+                  else {
+                     author      = NULL;
+                     authorIndex = 0;
+                  }
+                break;
                case 'T':   // Title
                   child = findChildNode(publication, "title");
                   if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
@@ -266,6 +341,10 @@ bool exportPublicationSetToCustom(PublicationSet* publicationSet,
                 break;
                case 'V':   // Volume
                   child = findChildNode(publication, "volume");
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
+               case 't':   // Type
+                  child = findChildNode(publication, "type");
                   if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
                 break;
                case 'N':   // Number
@@ -405,6 +484,11 @@ bool exportPublicationSetToCustom(PublicationSet* publicationSet,
          }
          else {
             result += printingTemplate[i];
+#ifdef USE_UTF8
+            if((printingTemplate[i] < 0) && (i + 1 < printingTemplateSize)) {
+               result += printingTemplate[++i];
+            }
+#endif
          }
       }
       fputs(result.c_str(), stdout);
@@ -422,7 +506,7 @@ int main(int argc, char** argv)
    const char* exportToXML            = NULL;
    const char* exportToCustom         = NULL;
    const char* customPrintingTemplate =
-      "\\[%L\\] %A, \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%m, %D, |%m~]%Y].\\nURL: %U.\\n\\n";
+      "\\[%L\\]\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n";  // ", \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%m, %D, |%m~]%Y].\\nURL: %U.\\n\\n";
    const char* nbsp                   = "~";
 
    if(argc < 2) {
@@ -457,28 +541,27 @@ int main(int argc, char** argv)
    fclose(yyin);
 
    if(result == 0) {
-      PublicationSet* publicationSet = filterPublicationSet(bibTeXFile);
-      if(publicationSet) {
-         sortPublicationSet(publicationSet);
+      PublicationSet publicationSet(countNodes(bibTeXFile));
+      publicationSet.addAll(bibTeXFile);
 
-         if(exportToBibTeX) {
-            if(exportPublicationSetToBibTeX(publicationSet) == false) {
-               exit(1);
-            }
-         }
-         if(exportToXML) {
-            if(exportPublicationSetToXML(publicationSet) == false) {
-               exit(1);
-            }
-         }
-         if(exportToCustom) {
-            if(exportPublicationSetToCustom(
-                  publicationSet, customPrintingTemplate, nbsp) == false) {
-               exit(1);
-            }
-         }
+      publicationSet.sort();
 
-         freePublicationSet(publicationSet);
+      if(exportToBibTeX) {
+         if(exportPublicationSetToBibTeX(&publicationSet) == false) {
+            exit(1);
+         }
+      }
+      if(exportToXML) {
+         if(exportPublicationSetToXML(&publicationSet) == false) {
+            exit(1);
+         }
+      }
+      if(exportToCustom) {
+         if(exportPublicationSetToCustom(
+               &publicationSet,
+               customPrintingTemplate, nbsp) == false) {
+            exit(1);
+         }
       }
    }
    if(bibTeXFile) {
