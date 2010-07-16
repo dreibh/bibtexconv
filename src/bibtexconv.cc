@@ -64,6 +64,7 @@ class PublicationSet
 };
 
 
+// ###### Constructor #######################################################
 PublicationSet::PublicationSet(const size_t maxSize)
 {
    maxEntries = maxSize;
@@ -73,6 +74,7 @@ PublicationSet::PublicationSet(const size_t maxSize)
 }
 
 
+// ###### Destructor ########################################################
 PublicationSet::~PublicationSet()
 {
    delete [] publicationArray;
@@ -81,6 +83,7 @@ PublicationSet::~PublicationSet()
 }
 
 
+// ###### Clear complete set ################################################
 void PublicationSet::clearAll()
 {
    entries = 0;
@@ -567,6 +570,25 @@ int main(int argc, char** argv)
       PublicationSet publicationSet(countNodes(bibTeXFile));
       if(!interactive) {
          publicationSet.addAll(bibTeXFile);
+         // publicationSet.sort();
+         if(exportToBibTeX) {
+            if(exportPublicationSetToBibTeX(&publicationSet) == false) {
+               exit(1);
+            }
+         }
+         if(exportToXML) {
+            if(exportPublicationSetToXML(&publicationSet) == false) {
+               exit(1);
+            }
+         }
+         if(exportToCustom) {
+            if(exportPublicationSetToCustom(
+                  &publicationSet,
+                  customPrintingHeader, customPrintingTrailer,
+                  customPrintingTemplate, nbsp) == false) {
+               exit(1);
+            }
+         }
       }
       else {
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
@@ -651,27 +673,6 @@ int main(int argc, char** argv)
          }
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
       }
-
-      publicationSet.sort();
-
-/*      if(exportToBibTeX) {
-         if(exportPublicationSetToBibTeX(&publicationSet) == false) {
-            exit(1);
-         }
-      }
-      if(exportToXML) {
-         if(exportPublicationSetToXML(&publicationSet) == false) {
-            exit(1);
-         }
-      }
-      if(exportToCustom) {
-         if(exportPublicationSetToCustom(
-               &publicationSet,
-               customPrintingHeader, customPrintingTrailer,
-               customPrintingTemplate, nbsp) == false) {
-            exit(1);
-         }
-      }*/
    }
    if(bibTeXFile) {
       freeNode(bibTeXFile);
