@@ -20,6 +20,7 @@ cite LCN2005   TD01
 cite LCA2003   TD02
 cite IJHIT2008 TD03
 cite Dre2006   TD04
+cite horling.05b Test1
 
 # Finally, print all selected publications
 export

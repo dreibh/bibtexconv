@@ -5,6 +5,8 @@
 #cite LCA2003   TD02
 #cite IJHIT2008 TD03
 #cite Dre2006   TD04
+#cite AB05   AB05
+
 citeAll
 
 
@@ -32,12 +34,13 @@ echo \n
 
 
 # Set header and trailer of each publication entry:
+xmlStyle
 nbsp \xc2\xa0
 header \n
 trailer <text:p text:style-name="P1"/>\n
 
 # This is the printing template:
-template <text:p text:style-name="P1"><text:bookmark-start text:name="%C"/>\[%C\]<text:bookmark-end text:name="%C"/> %a[%f|%n; | and ]%F, %G%A: “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[, %B][, %J][, %?][, %$][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M, %D, |%m/]%Y].</text:p>[<text:p text:style-name="Standard"><text:span text:style-name="T1">URL:</text:span> <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a></text:span></text:p>].\n
+template <text:p text:style-name="P1"><text:bookmark-start text:name="%L"/>\[%C\]<text:bookmark-end text:name="%L"/> %a[%f|%n; | and ]%F, %G%A: “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[, %B][, %J][, %?][, %$][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M, %D, |%m/]%Y].</text:p>[<text:p text:style-name="Standard"><text:span text:style-name="T1">URL:</text:span> <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a></text:span></text:p>].\n
 
 
 # Finally, print all selected publications

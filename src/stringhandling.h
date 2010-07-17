@@ -25,8 +25,13 @@
 #include <string>
 
 
-std::string string2utf8(const std::string& string, const std::string& nbsp = " ");
-std::string string2xml(const std::string& string);
+std::string string2utf8(const std::string& string,
+                        const std::string& nbsp = " ",
+                        const bool         xmlStyle = false);
+
+inline std::string string2xml(const std::string& string) {
+   return(string2utf8(string, "&#160;", true));
+}
 
 std::string& removeBrackets(std::string& string);
 std::string& trim(std::string& string);

@@ -80,7 +80,9 @@ static const ReplaceTableEntry replaceTable[] = {
 
 
 // ###### Convert ASCII string to UTF-8 #####################################
-std::string string2utf8(const std::string& string, const std::string& nbsp)
+std::string string2utf8(const std::string& string,
+                        const std::string& nbsp,
+                        const bool         xmlStyle)
 {
    std::string result(string);
    size_t      pos = 0;
@@ -88,8 +90,8 @@ std::string string2utf8(const std::string& string, const std::string& nbsp)
       for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
          if(result.substr(pos, replaceTable[i].input.size()) == replaceTable[i].input) {
             result.replace(pos, replaceTable[i].input.size(),
-                                replaceTable[i].utf8Output);
-            pos += replaceTable[i].utf8Output.size() - 1;
+                                ((xmlStyle == true) ? replaceTable[i].xmlOutput : replaceTable[i].utf8Output));
+            pos += ((xmlStyle == true) ? replaceTable[i].xmlOutput.size() : replaceTable[i].utf8Output.size()) - 1;
             break;
          }
       }
@@ -104,31 +106,15 @@ std::string string2utf8(const std::string& string, const std::string& nbsp)
 }
 
 
-// ###### Convert ASCII string to XML-compliant UTF-8 #######################
-std::string string2xml(const std::string& string)
-{
-   std::string result(string);
-   size_t      pos = 0;
-   while(pos < result.size()) {
-      for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
-         if(result.substr(pos, replaceTable[i].input.size()) == replaceTable[i].input) {
-            result.replace(pos, replaceTable[i].input.size(),
-                                replaceTable[i].xmlOutput);
-            pos += replaceTable[i].xmlOutput.size() - 1;
-            break;
-         }
-      }
-      pos++;
-   }
-   return(result);
-}
-
-
-// ###### Remove brackets { ... } ###########################################
+// ###### Remove brackets { ... } and quotation " ... " #####################
 std::string& removeBrackets(std::string& string)
 {
    while( (string.substr(0, 1) == "{") &&
           (string.substr(string.size() - 1) == "}") ) {
+      string = string.substr(1, string.size() - 2);
+   }
+   while( (string.substr(0, 1) == "\"") &&
+          (string.substr(string.size() - 1) == "\"") ) {
       string = string.substr(1, string.size() - 2);
    }
    return(string);
