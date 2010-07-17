@@ -100,7 +100,7 @@ std::string string2utf8(const std::string& string, const std::string& nbsp)
 
       pos++;
    }
-   return(result);
+   return(processBackslash(result));
 }
 
 
@@ -183,13 +183,25 @@ std::string processBackslash(const std::string& string)
          switch(string[i + 1]) {
             case 'n':
                result += '\n';
-               break;
+             break;
             case 't':
                result += '\t';
-               break;
+             break;
+            case 'x':
+               if(i + 3 < size) {
+                  std::string hex = "";
+                  int         value;
+                  hex += string[i + 2];
+                  hex += string[i + 3];
+                  if(sscanf(hex.c_str(), "%02x", &value) == 1) {
+                     result += (char)value;
+                     i += 2;
+                  }
+               }
+             break;
             default:
                result += string[i + 1];
-               break;
+             break;
          }
          i++;
       }

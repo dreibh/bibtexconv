@@ -112,7 +112,9 @@ bool PublicationSet::add(Node* publication)
 void PublicationSet::addAll(Node* publication)
 {
    while(publication != NULL) {
-      add(publication);
+      if(add(publication)) {
+         publication->anchor = publication->keyword;
+      }
       publication = publication->next;
    }
 }
@@ -628,7 +630,7 @@ int main(int argc, char** argv)
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
                  (unsigned int)publicationSet.maxSize());
          while(!feof(stdin)) {
-            char input[1024];
+            char input[65536];
             if(fgets((char*)&input, sizeof(input), stdin)) {
                // ====== Remove newline =====================================
                const size_t length = strlen(input);
@@ -642,6 +644,9 @@ int main(int argc, char** argv)
                }
                else if(input[0] == '#') {
                   // Comment
+               }
+               else if(strncmp(input, "citeAll", 7) == 0) {
+                  publicationSet.addAll(bibTeXFile);
                }
                else if(strncmp(input, "cite ", 5) == 0) {
                   char* anchor = index((char*)&input[5], ' ');
