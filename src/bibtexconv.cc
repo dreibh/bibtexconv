@@ -268,12 +268,13 @@ struct StackEntry {
 
 
 // ###### Export to custom ##################################################
-bool exportPublicationSetToCustom(PublicationSet*    publicationSet,
-                                  const std::string& customPrintingHeader,
-                                  const std::string& customPrintingTrailer,
-                                  const std::string& printingTemplate,
-                                  const std::string& nbsp,
-                                  const bool         xmlStyle)
+bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
+                                  const std::vector<std::string>& monthNames,
+                                  const std::string&              customPrintingHeader,
+                                  const std::string&              customPrintingTrailer,
+                                  const std::string&              printingTemplate,
+                                  const std::string&              nbsp,
+                                  const bool                      xmlStyle)
 {
    const size_t printingTemplateSize = printingTemplate.size();
 
@@ -385,7 +386,11 @@ bool exportPublicationSetToCustom(PublicationSet*    publicationSet,
                 break;
                case 'M':   // Month as name
                   child = findChildNode(publication, "month");
-                  if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+                  if(child) {
+                     if( (child->number >= 1) && (child->number <= 12) ) {
+                        result += string2utf8(monthNames[child->number - 1], nbsp, xmlStyle);
+                     } else { skip = true; }
+                  } else { skip = true; }
                 break;
                case 'm':   // Month as number
                   child = findChildNode(publication, "month");
@@ -561,16 +566,30 @@ bool exportPublicationSetToCustom(PublicationSet*    publicationSet,
 // ###### Main program ######################################################
 int main(int argc, char** argv)
 {
-   bool        interactive            = true;
-   bool        useXMLStyle            = false;
-   const char* exportToBibTeX         = NULL;
-   const char* exportToXML            = NULL;
-   const char* exportToCustom         = NULL;
-   std::string customPrintingHeader   = "";
-   std::string customPrintingTrailer  = "";
-   std::string customPrintingTemplate =
+   bool                     interactive            = true;
+   bool                     useXMLStyle            = false;
+   const char*              exportToBibTeX         = NULL;
+   const char*              exportToXML            = NULL;
+   const char*              exportToCustom         = NULL;
+   std::string              nbsp                   = " ";
+   std::string              customPrintingHeader   = "";
+   std::string              customPrintingTrailer  = "";
+   std::string              customPrintingTemplate =
       "\\[%C\\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n";  // ", \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%m, %D, |%m~]%Y].\\nURL: %U.\\n\\n";
-   std::string nbsp                   = " ";
+   std::vector<std::string> monthNames;
+
+   monthNames.push_back("January");
+   monthNames.push_back("February");
+   monthNames.push_back("March");
+   monthNames.push_back("April");
+   monthNames.push_back("May");
+   monthNames.push_back("June");
+   monthNames.push_back("July");
+   monthNames.push_back("August");
+   monthNames.push_back("September");
+   monthNames.push_back("October");
+   monthNames.push_back("November");
+   monthNames.push_back("December");
 
    if(argc < 2) {
       fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file}\n", argv[0]);
@@ -623,7 +642,7 @@ int main(int argc, char** argv)
          }
          if(exportToCustom) {
             if(exportPublicationSetToCustom(
-                  &publicationSet,
+                  &publicationSet, monthNames,
                   customPrintingHeader, customPrintingTrailer,
                   customPrintingTemplate, nbsp, useXMLStyle) == false) {
                exit(1);
@@ -689,7 +708,7 @@ int main(int argc, char** argv)
                }
                else if((strncmp(input, "export", 5)) == 0) {
                   if(exportPublicationSetToCustom(
-                        &publicationSet,
+                        &publicationSet, monthNames,
                         customPrintingHeader, customPrintingTrailer,
                         customPrintingTemplate, nbsp, useXMLStyle) == false) {
                      result++;

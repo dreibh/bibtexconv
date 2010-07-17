@@ -2,7 +2,7 @@
 
 #template \[%C\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n
 
-template \[%C\] %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %J][, %?][, %$][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M, %D, |%m/]%Y].\nURL: %U.\n
+template \[%C\] %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %J][, %?][, %$][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].\nURL: %U.\n
 
 
 # Before any citation is printed, print a list title:

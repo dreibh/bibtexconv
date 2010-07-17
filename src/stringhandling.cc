@@ -76,7 +76,8 @@ static const ReplaceTableEntry replaceTable[] = {
    { ">"  ,        ">",        "&gt;"    },
    { "\\\"" ,      "\"",       "&quot;"  },
    { "&"  ,        "&",        "&amp;"   },
-   { "'"  ,        "'",        "&apos;"  }
+   { "'"  ,        "'",        "&apos;"  },
+   { "--"  ,       "–",        "–"       }
 };
 
 

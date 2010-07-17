@@ -51,7 +51,7 @@ header \n
 trailer <text:p text:style-name="P1"/>\n
 
 # ====== This is the printing template ======================================
-template <text:p text:style-name="P1"><text:span text:style-name="T1"><text:bookmark-start text:name="%L"/>\[%C\]<text:bookmark-end text:name="%L"/></text:span> %a[%f|%n; | and ]%F, %G%A: “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[, %B][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M, %D, |%m/]%Y].</text:p>[<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a></text:span></text:p>].\n
+template <text:p text:style-name="P1"><text:span text:style-name="T1"><text:bookmark-start text:name="%L"/>\[%C\]<text:bookmark-end text:name="%L"/></text:span> %a[%f|%n; | and ]%F, %G%A: “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[, %B][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].</text:p>[<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a></text:span></text:p>].\n
 
 
 # ====== Finally, print all selected publications ===========================
