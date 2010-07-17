@@ -266,11 +266,11 @@ struct StackEntry {
 
 
 // ###### Export to custom ##################################################
-bool exportPublicationSetToCustom(PublicationSet*   publicationSet,
-                                  const std::string customPrintingHeader,
-                                  const std::string customPrintingTrailer,
-                                  const std::string printingTemplate,
-                                  const char*       nbsp = "~")
+bool exportPublicationSetToCustom(PublicationSet*    publicationSet,
+                                  const std::string& customPrintingHeader,
+                                  const std::string& customPrintingTrailer,
+                                  const std::string& printingTemplate,
+                                  const std::string& nbsp = "~")
 {
    const size_t printingTemplateSize = printingTemplate.size();
 
@@ -400,6 +400,10 @@ bool exportPublicationSetToCustom(PublicationSet*   publicationSet,
                   child = findChildNode(publication, "publisher");
                   if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
                 break;
+               case 'S':   // School
+                  child = findChildNode(publication, "school");
+                  if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
+                break;
                case '?':   // Institution
                   child = findChildNode(publication, "institution");
                   if(child) { result += string2utf8(child->value, nbsp); } else { skip = true; }
@@ -500,18 +504,48 @@ bool exportPublicationSetToCustom(PublicationSet*   publicationSet,
             }
          }
          else {
-            result += printingTemplate[i];
+            std::string character = "";
+
 #ifdef USE_UTF8
-            if((printingTemplate[i] < 0) && (i + 1 < printingTemplateSize)) {
-               result += printingTemplate[++i];
+            if( ( (((unsigned char)printingTemplate[i]) & 0xE0) == 0xC0 ) &&
+                  (i + 1 < printingTemplateSize) ) {
+               // Two-byte UTF-8 character
+               character += printingTemplate[i];
+               character += printingTemplate[++i];
+            }
+            else if( ( (((unsigned char)printingTemplate[i]) & 0xF0) == 0xE0 ) &&
+                     (i + 2 < printingTemplateSize) ) {
+               // Three-byte UTF-8 character
+               character += printingTemplate[i];
+               character += printingTemplate[++i];
+               character += printingTemplate[++i];
+            }
+            else if( ( (((unsigned char)printingTemplate[i]) & 0xF8) == 0xF0 ) &&
+                     (i + 3 < printingTemplateSize) ) {
+               // Four-byte UTF-8 character
+               character += printingTemplate[i];
+               character += printingTemplate[++i];
+               character += printingTemplate[++i];
+               character += printingTemplate[++i];
+            }
+            else if( (((unsigned char)printingTemplate[i]) & 0x80) == 0 ) {
+               // Regular 1-byte character
+#endif
+               character += printingTemplate[i];
+#ifdef USE_UTF8
+            }
+            else {
+               // Invalid!
             }
 #endif
+
+            result += string2utf8(character, nbsp);
          }
       }
 
-      fputs(processBackslash(customPrintingHeader).c_str(), stdout);
+      fputs(string2utf8(processBackslash(customPrintingHeader), nbsp).c_str(), stdout);
       fputs(result.c_str(), stdout);
-      fputs(processBackslash(customPrintingHeader).c_str(), stdout);
+      fputs(string2utf8(processBackslash(customPrintingTrailer), nbsp).c_str(), stdout);
    }
 
    return(true);
@@ -530,7 +564,7 @@ int main(int argc, char** argv)
    std::string customPrintingTrailer  = "";
    std::string customPrintingTemplate =
       "\\[%C\\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n";  // ", \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%m, %D, |%m~]%Y].\\nURL: %U.\\n\\n";
-   const char* nbsp                   = "~";
+   std::string nbsp                   = " ";
 
    if(argc < 2) {
       fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file}\n", argv[0]);
@@ -618,11 +652,13 @@ int main(int argc, char** argv)
                      anchor[0] = 0x00;
                      anchor = (char*)&anchor[1];
                   }
-
-                  Node* publication = findNode(bibTeXFile, (const char*)&input[5]);
+                  std::string keyword = (const char*)&input[5];
+                  trim(keyword);
+                  Node* publication = findNode(bibTeXFile, keyword.c_str());
                   if(publication) {
                      if(anchor) {
                         publication->anchor = anchor;
+                        trim(publication->anchor);
                      }
                      else {
                         char number[16];
@@ -661,6 +697,9 @@ int main(int argc, char** argv)
                }
                else if((strncmp(input, "trailer ", 8)) == 0) {
                   customPrintingTrailer = (const char*)&input[8];
+               }
+               else if((strncmp(input, "nbsp ", 5)) == 0) {
+                  nbsp = (const char*)&input[5];
                }
                else if((strncmp(input, "template ", 9)) == 0) {
                   customPrintingTemplate = (const char*)&input[9];

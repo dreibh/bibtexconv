@@ -80,7 +80,7 @@ static const ReplaceTableEntry replaceTable[] = {
 
 
 // ###### Convert ASCII string to UTF-8 #####################################
-std::string string2utf8(const std::string& string, const char* nbsp)
+std::string string2utf8(const std::string& string, const std::string& nbsp)
 {
    std::string result(string);
    size_t      pos = 0;
@@ -128,7 +128,7 @@ std::string string2xml(const std::string& string)
 std::string& removeBrackets(std::string& string)
 {
    while( (string.substr(0, 1) == "{") &&
-       (string.substr(string.size() - 1) == "}") ) {
+          (string.substr(string.size() - 1) == "}") ) {
       string = string.substr(1, string.size() - 2);
    }
    return(string);
@@ -179,24 +179,22 @@ std::string processBackslash(const std::string& string)
    std::string  result = "";
 
    for(size_t i = 0; i < size; i++) {
-      switch(string[i]) {
-         if( (string[i] == '\\') && (i + 1 < size) ) {
-            switch(string[i + 1]) {
-               case 'n':
-                  result += '\n';
-                break;
-               case 't':
-                  result += '\t';
-                break;
-               default:
-                  result += string[i + 1];
-                break;
-            }
-            i++;
+      if( (string[i] == '\\') && (i + 1 < size) ) {
+         switch(string[i + 1]) {
+            case 'n':
+               result += '\n';
+               break;
+            case 't':
+               result += '\t';
+               break;
+            default:
+               result += string[i + 1];
+               break;
          }
-         else {
-            result += string[i];
-         }
+         i++;
+      }
+      else {
+         result += string[i];
       }
    }
    return(result);

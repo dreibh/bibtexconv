@@ -52,13 +52,13 @@ static void extractAuthorInitials(const std::string& givenNameFull,
               givenNameInitials += givenNameFull[i];
               givenNameInitials += givenNameFull[++i];
            }
-           else if( ( (((unsigned char)givenNameFull[i]) & 0xF0) == 0xE0 ) && (i + 1 < length) ) {
+           else if( ( (((unsigned char)givenNameFull[i]) & 0xF0) == 0xE0 ) && (i + 2 < length) ) {
               // Three-byte UTF-8 character
               givenNameInitials += givenNameFull[i];
               givenNameInitials += givenNameFull[++i];
               givenNameInitials += givenNameFull[++i];
            }
-           else if( ( (((unsigned char)givenNameFull[i]) & 0xF8) == 0xF0 ) && (i + 1 < length) ) {
+           else if( ( (((unsigned char)givenNameFull[i]) & 0xF8) == 0xF0 ) && (i + 3 < length) ) {
               // Four-byte UTF-8 character
               givenNameInitials += givenNameFull[i];
               givenNameInitials += givenNameFull[++i];

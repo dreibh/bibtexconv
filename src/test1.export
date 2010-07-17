@@ -2,27 +2,28 @@
 
 #template \[%C\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n
 
-template \[%C\]: %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%M, %D, |%m/]%Y].\nURL: %U.\n\n
+template \[%C\] %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %J][, %?][, %$][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M, %D, |%m/]%Y].\nURL: %U.\n
 
 
 # Before any citation is printed, print a list title:
-echo ===== My Publications =====
+echo ===== My Publications =====\n
 
 # Set header and trailer of each publication entry:
-header <begin of entry>\n
-trailer <end of entry>\n
+header *~
+trailer \n
 
 
 # Select publications to print.
 # The first argument is the original BibTeX reference,
 # The second argument is a new anchor for printing.
-cite LCN2005 TD01
-cite LCA2003 TD02
+cite LCN2005   TD01
+cite LCA2003   TD02
 cite IJHIT2008 TD03
+cite Dre2006   TD04
 
 # Finally, print all selected publications
 export
 
 
 # Print after all publications:
-echo ===== End of List =====
+echo ===== End of List =====\n
