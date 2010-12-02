@@ -135,12 +135,12 @@ std::string& trim(std::string& string)
    const ssize_t length = string.size();
    ssize_t s, e;
    for(s = 0; s < length; s++) {
-      if(string[s] != ' ') {
+      if( (string[s] != ' ') && (string[s] != '\t')) {
          break;
       }
    }
    for(e = length - 1; e >= 0; e--) {
-      if(string[e] != ' ') {
+      if( (string[e] != ' ') && (string[e] != '\t')) {
          break;
       }
    }
@@ -149,7 +149,7 @@ std::string& trim(std::string& string)
    // ====== Remove double whitespaces ======================================
    bool gotSpace = false;
    for(e = string.size() - 1; e >= 0; e--) {
-      if(string[e] == ' ') {
+      if( (string[e] == ' ') || (string[e] == '\t')) {
          if(!gotSpace) {
             gotSpace = true;
          }

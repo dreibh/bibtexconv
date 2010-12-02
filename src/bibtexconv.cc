@@ -70,21 +70,20 @@ static int handleInput(FILE*           fh,
             publicationSet.addAll(bibTeXFile);
          }
          else if(strncmp(input, "cite ", 5) == 0) {
-            char* anchor = index((char*)&input[5], ' ');
-            if(anchor == NULL) {
-               anchor = index((char*)&input[5], '\t');
+            size_t pos;
+            std::string keyword = (char*)&input[5];
+            std::string anchor;
+            if( ((pos = keyword.find(" ")) != std::string::npos) ||
+                ((pos = keyword.find("\t")) != std::string::npos) ) {
+               anchor  = keyword.substr(pos + 1, keyword.size() - pos - 1);
+               keyword = keyword.substr(0, pos);
+               trim(anchor);
             }
-            if(anchor != NULL) {
-               anchor[0] = 0x00;
-               anchor = (char*)&anchor[1];
-            }
-            std::string keyword = (const char*)&input[5];
             trim(keyword);
             Node* publication = findNode(bibTeXFile, keyword.c_str());
             if(publication) {
-               if(anchor) {
+               if(anchor.size() > 0) {
                   publication->anchor = anchor;
-                  trim(publication->anchor);
                }
                else {
                   char number[16];
@@ -158,6 +157,7 @@ static int handleInput(FILE*           fh,
    }
    return(result);
 }
+
 
 
 // ###### Main program ######################################################
