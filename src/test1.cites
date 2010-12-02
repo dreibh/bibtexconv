@@ -1,0 +1,12 @@
+# Select publications to print.
+# The first argument is the original BibTeX reference,
+# The second argument is a new anchor for printing.
+cite IJIIDS2010   TD20
+cite IJHIT2008    TD21
+cite Globecom2010-Demo TD43
+cite Globecom2010-Demo   TD32
+cite PFLDNeT2010         TD99
+cite PAMS2011 PAMS
+
+# Finally, print all selected publications
+export

@@ -6,6 +6,7 @@ bibtexconv_SOURCES = \
    bibtexconv.cc \
    unification.cc unification.h stringhandling.cc stringhandling.h \
    node.cc node.h \
+   publicationset.h publicationset.cc \
    grammar.yy scanner.ll
 bibtexconv_LDADD   =
 

@@ -1,0 +1,70 @@
+/* $Id$
+ *
+ * BibTeX Convertor
+ * Copyright (C) 2010 by Thomas Dreibholz
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contact: dreibh@iem.uni-due.de
+ */
+
+#ifndef PUBLICATIONSET_H
+#define PUBLICATIONSET_H
+
+#include <assert.h>
+#include <string>
+
+#include "node.h"
+#include "stringhandling.h"
+
+
+class PublicationSet
+{
+   public:
+   PublicationSet(const size_t maxSize);
+   ~PublicationSet();
+
+   inline size_t size() const {
+      return(entries);
+   }
+   inline size_t maxSize() const {
+      return(maxEntries);
+   }
+   Node* get(const size_t index) const {
+      assert(index < entries);
+      return(publicationArray[index]);
+   }
+
+   bool add(Node* publication);
+   void addAll(Node* publication);
+   void sort();
+   void clearAll();
+
+   static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet);
+   static bool exportPublicationSetToXML(PublicationSet* publicationSet);
+   static bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
+                                            const std::vector<std::string>& monthNames,
+                                            const std::string&              customPrintingHeader,
+                                            const std::string&              customPrintingTrailer,
+                                            const std::string&              printingTemplate,
+                                            const std::string&              nbsp,
+                                            const bool                      xmlStyle);
+
+   private:
+   size_t maxEntries;
+   size_t entries;
+   Node** publicationArray;
+};
+
+#endif
