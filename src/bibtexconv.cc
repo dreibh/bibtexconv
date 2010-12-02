@@ -130,7 +130,7 @@ void PublicationSet::sort()
 
 
 // ###### Export to BibTeX ##################################################
-bool exportPublicationSetToBibTeX(PublicationSet* publicationSet)
+static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet)
 {
    for(size_t index = 0; index < publicationSet->size(); index++) {
       const Node* publication = publicationSet->get(index);
@@ -174,7 +174,7 @@ bool exportPublicationSetToBibTeX(PublicationSet* publicationSet)
 
 
 // ###### Export to XML #####################################################
-bool exportPublicationSetToXML(PublicationSet* publicationSet)
+static bool exportPublicationSetToXML(PublicationSet* publicationSet)
 {
    fputs("<?xml version='1.0' encoding='UTF-8'?>\n", stdout);
 
@@ -268,13 +268,13 @@ struct StackEntry {
 
 
 // ###### Export to custom ##################################################
-bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
-                                  const std::vector<std::string>& monthNames,
-                                  const std::string&              customPrintingHeader,
-                                  const std::string&              customPrintingTrailer,
-                                  const std::string&              printingTemplate,
-                                  const std::string&              nbsp,
-                                  const bool                      xmlStyle)
+static bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
+                                         const std::vector<std::string>& monthNames,
+                                         const std::string&              customPrintingHeader,
+                                         const std::string&              customPrintingTrailer,
+                                         const std::string&              printingTemplate,
+                                         const std::string&              nbsp,
+                                         const bool                      xmlStyle)
 {
    const size_t printingTemplateSize = printingTemplate.size();
 
@@ -358,6 +358,10 @@ bool exportPublicationSetToCustom(PublicationSet*                 publicationSet
                 break;
                case 'J':   // Journal
                   child = findChildNode(publication, "journal");
+                  if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+                break;
+               case 'E':   // Edition
+                  child = findChildNode(publication, "edition");
                   if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                 break;
                case 'V':   // Volume
@@ -563,20 +567,137 @@ bool exportPublicationSetToCustom(PublicationSet*                 publicationSet
 
 
 
+static bool                     useXMLStyle            = false;
+static std::string              nbsp                   = " ";
+static std::string              customPrintingHeader   = "";
+static std::string              customPrintingTrailer  = "";
+static std::string              customPrintingTemplate =
+   "\\[%C\\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n";  // ", \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%m, %D, |%m~]%Y].\\nURL: %U.\\n\\n";
+static std::vector<std::string> monthNames;
+
+
+static int handleInput(FILE*           fh,
+                       PublicationSet& publicationSet,
+                       unsigned int    recursionLevel = 0)
+{
+   int result = 0;
+   while(!feof(fh)) {
+      char input[65536];
+      if(fgets((char*)&input, sizeof(input), fh)) {
+         // ====== Remove newline =====================================
+         const size_t length = strlen(input);
+         if(length > 0) {
+            input[length - 1] = 0x00;
+         }
+
+         // ====== Handle commands ====================================
+         if(input[0] == 0x00) {
+            // Empty line
+         }
+         else if(input[0] == '#') {
+            // Comment
+         }
+         else if(strncmp(input, "citeAll", 7) == 0) {
+            publicationSet.addAll(bibTeXFile);
+         }
+         else if(strncmp(input, "cite ", 5) == 0) {
+            char* anchor = index((char*)&input[5], ' ');
+            if(anchor == NULL) {
+               anchor = index((char*)&input[5], '\t');
+            }
+            if(anchor != NULL) {
+               anchor[0] = 0x00;
+               anchor = (char*)&anchor[1];
+            }
+            std::string keyword = (const char*)&input[5];
+            trim(keyword);
+            Node* publication = findNode(bibTeXFile, keyword.c_str());
+            if(publication) {
+               if(anchor) {
+                  publication->anchor = anchor;
+                  trim(publication->anchor);
+               }
+               else {
+                  char number[16];
+                  snprintf((char*)&number, sizeof(number), "%u",
+                           (unsigned int)publicationSet.size());
+                  publication->anchor = number;
+               }
+               if(!publicationSet.add(publication)) {
+                  fprintf(stderr, "ERROR: Publication '%s' has already been added!\n",
+                           (const char*)&input[5]);
+                  result++;
+               }
+            }
+            else {
+               fprintf(stderr, "ERROR: Publication '%s' not found!\n",
+                       (const char*)&input[5]);
+               result++;
+            }
+         }
+         else if((strncmp(input, "export", 5)) == 0) {
+            if(exportPublicationSetToCustom(
+                  &publicationSet, monthNames,
+                  customPrintingHeader, customPrintingTrailer,
+                  customPrintingTemplate, nbsp, useXMLStyle) == false) {
+               result++;
+            }
+         }
+         else if((strncmp(input, "clear", 5)) == 0) {
+            publicationSet.clearAll();
+         }
+         else if((strncmp(input, "echo ", 5)) == 0) {
+            fputs(processBackslash(std::string((const char*)&input[5])).c_str(), stdout);
+         }
+         else if((strncmp(input, "header ", 7)) == 0) {
+            customPrintingHeader = (const char*)&input[7];
+         }
+         else if((strncmp(input, "trailer ", 8)) == 0) {
+            customPrintingTrailer = (const char*)&input[8];
+         }
+         else if((strncmp(input, "nbsp ", 5)) == 0) {
+            nbsp = (const char*)&input[5];
+         }
+         else if((strncmp(input, "utf8Style", 8)) == 0) {
+            useXMLStyle = false;
+         }
+         else if((strncmp(input, "xmlStyle", 8)) == 0) {
+            useXMLStyle = true;
+         }
+         else if((strncmp(input, "template ", 9)) == 0) {
+            customPrintingTemplate = (const char*)&input[9];
+         }
+         else if((strncmp(input, "include ", 8)) == 0) {
+            const char* includeFileName = (const char*)&input[8];
+            FILE* includeFH = fopen(includeFileName, "r");
+            if(includeFH != NULL) {
+               result += handleInput(includeFH, publicationSet, recursionLevel + 1);
+               fclose(includeFH);
+            }
+            else {
+               fprintf(stderr, "ERROR: Unable to open include file '%s'!\n", includeFileName);
+               result++;
+               break;
+            }
+         }
+         else {
+            fprintf(stderr, "ERROR: Bad command '%s'!\n", input);
+            result++;
+            break;
+         }
+      }
+   }
+   return(result);
+}
+
+
 // ###### Main program ######################################################
 int main(int argc, char** argv)
 {
    bool                     interactive            = true;
-   bool                     useXMLStyle            = false;
    const char*              exportToBibTeX         = NULL;
    const char*              exportToXML            = NULL;
    const char*              exportToCustom         = NULL;
-   std::string              nbsp                   = " ";
-   std::string              customPrintingHeader   = "";
-   std::string              customPrintingTrailer  = "";
-   std::string              customPrintingTemplate =
-      "\\[%C\\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n";  // ", \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%m, %D, |%m~]%Y].\\nURL: %U.\\n\\n";
-   std::vector<std::string> monthNames;
 
    monthNames.push_back("January");
    monthNames.push_back("February");
@@ -652,98 +773,7 @@ int main(int argc, char** argv)
       else {
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
                  (unsigned int)publicationSet.maxSize());
-         while(!feof(stdin)) {
-            char input[65536];
-            if(fgets((char*)&input, sizeof(input), stdin)) {
-               // ====== Remove newline =====================================
-               const size_t length = strlen(input);
-               if(length > 0) {
-                  input[length - 1] = 0x00;
-               }
-
-               // ====== Handle commands ====================================
-               if(input[0] == 0x00) {
-                  // Empty line
-               }
-               else if(input[0] == '#') {
-                  // Comment
-               }
-               else if(strncmp(input, "citeAll", 7) == 0) {
-                  publicationSet.addAll(bibTeXFile);
-               }
-               else if(strncmp(input, "cite ", 5) == 0) {
-                  char* anchor = index((char*)&input[5], ' ');
-                  if(anchor == NULL) {
-                     anchor = index((char*)&input[5], '\t');
-                  }
-                  if(anchor != NULL) {
-                     anchor[0] = 0x00;
-                     anchor = (char*)&anchor[1];
-                  }
-                  std::string keyword = (const char*)&input[5];
-                  trim(keyword);
-                  Node* publication = findNode(bibTeXFile, keyword.c_str());
-                  if(publication) {
-                     if(anchor) {
-                        publication->anchor = anchor;
-                        trim(publication->anchor);
-                     }
-                     else {
-                        char number[16];
-                        snprintf((char*)&number, sizeof(number), "%u",
-                                 (unsigned int)publicationSet.size());
-                        publication->anchor = number;
-                     }
-                     if(!publicationSet.add(publication)) {
-                        fprintf(stderr, "ERROR: Publication '%s' has already been added!\n",
-                                (const char*)&input[5]);
-                        result++;
-                     }
-                  }
-                  else {
-                     fprintf(stderr, "ERROR: Publication '%s' not found!\n",
-                             (const char*)&input[5]);
-                     result++;
-                  }
-               }
-               else if((strncmp(input, "export", 5)) == 0) {
-                  if(exportPublicationSetToCustom(
-                        &publicationSet, monthNames,
-                        customPrintingHeader, customPrintingTrailer,
-                        customPrintingTemplate, nbsp, useXMLStyle) == false) {
-                     result++;
-                  }
-               }
-               else if((strncmp(input, "clear", 5)) == 0) {
-                  publicationSet.clearAll();
-               }
-               else if((strncmp(input, "echo ", 5)) == 0) {
-                  fputs(processBackslash(std::string((const char*)&input[5])).c_str(), stdout);
-               }
-               else if((strncmp(input, "header ", 7)) == 0) {
-                  customPrintingHeader = (const char*)&input[7];
-               }
-               else if((strncmp(input, "trailer ", 8)) == 0) {
-                  customPrintingTrailer = (const char*)&input[8];
-               }
-               else if((strncmp(input, "nbsp ", 5)) == 0) {
-                  nbsp = (const char*)&input[5];
-               }
-               else if((strncmp(input, "utf8Style", 8)) == 0) {
-                  useXMLStyle = false;
-               }
-               else if((strncmp(input, "xmlStyle", 8)) == 0) {
-                  useXMLStyle = true;
-               }
-               else if((strncmp(input, "template ", 9)) == 0) {
-                  customPrintingTemplate = (const char*)&input[9];
-               }
-               else {
-                  fprintf(stderr, "ERROR: Bad command '%s'!\n", input);
-                  result++;
-               }
-            }
-         }
+         result = handleInput(stdin, publicationSet);
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
       }
    }
