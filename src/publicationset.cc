@@ -242,7 +242,7 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
 {
    const size_t printingTemplateSize = printingTemplate.size();
 
-   Node* publication;
+   Node* publication = NULL;
    for(size_t index = 0; index < publicationSet->size(); index++) {
       // ====== Get prev, current and next publications =====================
       if(publicationSet->get(index)->value == "Comment") {
