@@ -4,11 +4,11 @@ Priority: optional
 Maintainer: Thomas Dreibholz <dreibh@iem.uni-due.de>
 Homepage: http://www.iem.uni-due.de/~dreibh/bibtexconv/
 Build-Depends: debhelper (>= 7.0.50~), autotools-dev, bison, flex
-Standards-Version: 3.8.4
+Standards-Version: 3.9.1
 
 Package: bibtexconv
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, zip
 Recommends:
 Description:  BibTeX Convertor
  BibTeXConv is a BibTeX convertor. ...

@@ -13,7 +13,10 @@ bibtexconv_LDADD   =
 bibtexconvdir        = $(datadir)/bibtexconv
 dist_bibtexconv_DATA =  odt-template.odt
 
-dist_man_MANS = bibtexconv.8
+dist_bin_SCRIPTS = bibtexconv-odt
+
+dist_man_MANS = bibtexconv.8 bibtexconv-odt.8
+
 
 CLEANFILES = grammar.cc grammar.h scanner.cc
 

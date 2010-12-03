@@ -1,1 +1,3 @@
-src/bibtexconv   /usr/bin
+src/bibtexconv       /usr/bin
+src/bibtexconv-odt   /usr/bin
+src/odt-template.odt /usr/share/bibtexconv

@@ -1,0 +1,67 @@
+.\" $Id$
+.\"
+.\" BibTeX Convertor
+.\" Copyright (C) 2010 by Thomas Dreibholz
+.\"
+.\" This program is free software: you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation, either version 3 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program.  If not, see <http://www.gnu.org/licenses/>.
+.\"
+.\" Contact: dreibh@iem.uni-due.de
+.\"
+.\" ###### Setup ############################################################
+.Dd December 10, 2010
+.Dt bibtexconv-odt 8
+.Os bibtexconv-odt
+.\" ###### Name #############################################################
+.Sh NAME
+.Nm bibtexconv-odt
+.Nd ODT Helper Script for BibTeX Convertor
+.\" ###### Synopsis #########################################################
+.Sh SYNOPSIS
+.Nm bibtexconv-odt
+.Op Template ODT
+.Op Output ODT
+.Op BibTeX file
+.Op Export script
+.\" ###### Description ######################################################
+.Sh DESCRIPTION
+.Nm bibtexconv-odt
+runs BibTeXConv to generate an Open Document Text (ODT) contents file, which
+is then joined with an existing template ODT file into an output ODT file.
+.Pp
+.\" ###### Arguments ########################################################
+.Sh ARGUMENTS
+The following arguments have to be provided:
+.Bl -tag -width indent
+.It Template ODT
+The template ODT file.
+.It Output ODT
+The output ODT file.
+.It BibTeX file
+The input BibTeX file for BibTeXConv.
+.It Export script
+The input export script for BibTeXConv.
+.El
+.\" ###### Arguments ########################################################
+.Sh EXAMPLES
+.Bl -tag -width indent
+.It bibtexconv-odt odt-template.odt output.odt references.bib my-exports.export
+.El
+.\" ###### Authors ##########################################################
+.Sh AUTHORS
+Thomas Dreibholz
+.br
+http://www.iem.uni-due.de/~dreibh/bibtexconv
+.br
+mailto://dreibh@iem.uni-due.de
+.br
