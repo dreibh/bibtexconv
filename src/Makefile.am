@@ -10,12 +10,13 @@ bibtexconv_SOURCES = \
    grammar.yy scanner.ll
 bibtexconv_LDADD   =
 
-
-# t1_SOURCES = t1.cc stringhandling.cc stringhandling.h
-# t1_LDADD   =
-
+bibtexconvdir        = $(datadir)/bibtexconv
+dist_bibtexconv_DATA =  odt-template.odt
 
 dist_man_MANS = bibtexconv.8
 
-
 CLEANFILES = grammar.cc grammar.h scanner.cc
+
+
+# t1_SOURCES = t1.cc stringhandling.cc stringhandling.h
+# t1_LDADD   =

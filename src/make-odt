@@ -19,30 +19,35 @@
 # Contact: dreibh@iem.uni-due.de
 
 if [ $# -ne 4 ] ; then
-   echo >&2 "Usage: make-odt [BibTeX file] [ODT template directory] [Export script] [ODT file]"
+   echo >&2 "Usage: make-odt [Template ODT] [Output ODT] [BibTeX file] [Export script]"
    exit 1
 fi
 
-TEMPDIR=`mktemp -d`
-WORKDIR=$PWD
+TEMPLATE_ODT="$1"
+OUTPUT_ODT="$2"
+BIBTEX_FILE="$3"
+EXPORT_SCRIPT="$4"
 
-./bibtexconv $1 <$3 >$TEMPDIR/content.xml  && \
-cp $2/meta.xml     $TEMPDIR && \
-cp $2/mimetype     $TEMPDIR && \
-cp $2/settings.xml $TEMPDIR && \
-cp $2/manifest.rdf $TEMPDIR && \
-cp $2/styles.xml   $TEMPDIR && \
-mkdir $TEMPDIR/Configurations2 && \
-mkdir $TEMPDIR/Configurations2/accelerator && \
-cp $2/Configurations2/accelerator/current.xml $TEMPDIR/Configurations2/accelerator && \
-mkdir $TEMPDIR/META-INF && \
-cp $2/META-INF/manifest.xml $TEMPDIR/META-INF && \
-mkdir $TEMPDIR/Thumbnails && \
-cp $2/Thumbnails/thumbnail.png $TEMPDIR/Thumbnails && \
-cd $TEMPDIR && \
-zip odt-file.odt mimetype content.xml manifest.rdf styles.xml meta.xml Thumbnails/thumbnail.png Configurations2/accelerator/current.xml settings.xml META-INF/manifest.xml && \
-mv odt-file.odt $WORKDIR/$4 && \
-ls -l $WORKDIR/$4 && \
-rm -rf $TEMPDIR && exit 0
+CONTENTSFILE="content.xml"
 
-exit 1
+
+# TEMPDIR=`mktemp -d`
+# WORKDIR=$PWD
+#
+# if [ ! -e "$TEMPDIR" ] ; then
+#    echo >&2 "ERROR: Unable to create temporary directory!"
+#    exit 1
+# fi
+#
+# unzip q-d $TEMPDIR $2 && \
+# ./bibtexconv $1 <$3 >$TEMPDIR/content.xml && \
+# cd $TEMPDIR && \
+# ls -lR
+
+
+./bibtexconv $BIBTEX_FILE <$EXPORT_SCRIPT >$CONTENTSFILE && \
+cp "$TEMPLATE_ODT" "$OUTPUT_ODT" && \
+zip -r "$OUTPUT_ODT" content.xml
+
+
+rm -f $CONTENTSFILE

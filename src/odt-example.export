@@ -6,6 +6,7 @@
 # The first argument is the original BibTeX reference,
 # The second argument is a new anchor for printing.
 #cite LCN2005   TD01
+#cite Tencon2005   TD01a
 #cite LCA2003   TD02
 #cite IJHIT2008 TD03
 #cite Dre2006   TD04
@@ -40,18 +41,30 @@ echo \n
 echo <text:h text:style-name="Heading_20_1" text:outline-level="1">References</text:h>\n
 echo \n
 
-
 # ====== Set header and trailer of each publication entry ===================
 # ----- Encode strings in XML style, e.g. <, >, &, etc.--------------
 xmlStyle
 # ----- Non-breakable space character (2 bytes!) used by ODT --------
 nbsp \xc2\xa0
-# ----- Entry header and trailer ------------------------------------
-header \n
-trailer <text:p text:style-name="P1"/>\n
 
 # ====== This is the printing template ======================================
-template <text:p text:style-name="P1"><text:span text:style-name="T1"><text:bookmark-start text:name="%L"/>\[%C\]<text:bookmark-end text:name="%L"/></text:span> %a[%f|%n; | and ]%F, %G%A: “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[, %B][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].</text:p>[<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a></text:span></text:p>].\n
+templatenew
+# ***** Subsection: year
+template+ [%bY<text:h text:style-name="Heading_20_2" text:outline-level="2">Year %Y</text:h>]
+# ***** Subsubsection: month
+template+ [%bM<text:h text:style-name="Heading_20_3" text:outline-level="3">%M</text:h>]
+
+template+ <text:p text:style-name="P1"><text:span text:style-name="T1">
+# ***** Label including text mark
+template+ <text:bookmark-start text:name="%L"/>\[%C\]
+template+ <text:bookmark-end text:name="%L"/></text:span> %a[%f|%n; | and ]%F, %G%A:
+# ***** Title
+template+  “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”
+# ***** Bibliographic data of publication
+template+ [, %B][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].</text:p>
+# ***** URL including hyperlink
+template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a>
+template+ </text:span></text:p>].\n<text:p text:style-name="P1"/>
 
 
 # ====== Finally, print all selected publications ===========================
