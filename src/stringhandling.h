@@ -22,6 +22,7 @@
 #ifndef STRINGHANDLING_H
 #define STRINGHANDLING_H
 
+#include <stdarg.h>
 #include <string>
 
 
@@ -36,5 +37,6 @@ inline std::string string2xml(const std::string& string) {
 std::string& removeBrackets(std::string& string);
 std::string& trim(std::string& string);
 std::string processBackslash(const std::string& string);
+std::string format(const char* fmt, ...);
 
 #endif

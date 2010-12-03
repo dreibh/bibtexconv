@@ -242,10 +242,19 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
 {
    const size_t printingTemplateSize = printingTemplate.size();
 
+   Node* publication;
    for(size_t index = 0; index < publicationSet->size(); index++) {
-      Node* publication = publicationSet->get(index);
-      if(publication->value == "Comment") {
+      // ====== Get prev, current and next publications =====================
+      if(publicationSet->get(index)->value == "Comment") {
          continue;
+      }
+      Node* prevPublication = publication;
+      publication = publicationSet->get(index);
+      size_t nextPublicationIndex = 1;
+      Node* nextPublication = (index + nextPublicationIndex< publicationSet->size()) ? publicationSet->get(index + nextPublicationIndex) : NULL;
+      while( (nextPublication != NULL) && (nextPublication->value == "Comment")) {
+         nextPublicationIndex++;
+         nextPublication = (index + nextPublicationIndex< publicationSet->size()) ? publicationSet->get(index + nextPublicationIndex) : NULL;
       }
 
       std::string             result = "";
@@ -398,6 +407,52 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
                 break;
                case '%':
                   result += '%';
+                break;
+               case 'b':
+               case 'w':
+               case 'e':   // Begin/Within/End of subdivision
+                  if(i + 2 < printingTemplateSize) {
+                     const char* type = NULL;
+                     switch(printingTemplate[i + 2]) {
+                        case 'D':
+                           type = "day";
+                         break;
+                        case 'm':
+                        case 'M':
+                           type = "month";
+                         break;
+                        case 'Y':
+                           type = "year";
+                         break;
+                        default:
+                           fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in subdivision part of custom printing template!",
+                           printingTemplate[i + 2]);
+                           return(false);
+                         break;
+                     }
+                     if(type != NULL) {
+                        const Node* prevChild = (prevPublication != NULL) ? findChildNode(prevPublication, type) : NULL;
+                        child                 = findChildNode(publication, type);
+                        const Node* nextChild = (nextPublication != NULL) ? findChildNode(nextPublication, type) : NULL;
+
+                        bool begin = (prevChild == NULL) ||
+                                    ( (prevChild != NULL) && (child != NULL) && (prevChild->value != child->value) );
+                        bool end = (nextChild == NULL) ||
+                                    ( (child != NULL) && (nextChild != NULL) && (child->value != nextChild->value) );
+                        switch(printingTemplate[i + 1]) {
+                           case 'b':
+                              skip = ! begin;
+                            break;
+                           case 'w':
+                              skip = ! (begin || end);
+                            break;
+                           case 'e':
+                              skip = ! end;
+                            break;
+                        }
+                     }
+                     i++;
+                  }
                 break;
                default:
                   fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in custom printing template!",

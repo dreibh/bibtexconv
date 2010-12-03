@@ -132,8 +132,14 @@ static int handleInput(FILE*           fh,
          else if((strncmp(input, "xmlStyle", 8)) == 0) {
             useXMLStyle = true;
          }
+         else if((strncmp(input, "templatenew", 11)) == 0) {
+            customPrintingTemplate = "";
+         }
          else if((strncmp(input, "template ", 9)) == 0) {
             customPrintingTemplate = (const char*)&input[9];
+         }
+         else if((strncmp(input, "template+ ", 10)) == 0) {
+            customPrintingTemplate += (const char*)&input[10];
          }
          else if((strncmp(input, "include ", 8)) == 0) {
             const char* includeFileName = (const char*)&input[8];

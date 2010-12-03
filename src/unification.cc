@@ -326,6 +326,7 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
                  publication->keyword.c_str(), yearNumber);
       }
       year->number = yearNumber;
+      year->value  = format("%04d", yearNumber);
    }
    else {
       fprintf(stderr, "WARNING: Entry %s has no \"year\" section, but \"month\" or \"day\"!\n" ,
@@ -384,6 +385,7 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
                  publication->keyword.c_str(), month->value.c_str());
       }
       month->number = monthNumber;
+      month->value  = format("%02d", monthNumber);
    }
 
    if(day != NULL) {
@@ -398,6 +400,7 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
                     publication->keyword.c_str(), yearNumber, monthNumber, day->number);
          }
       }
+      day->value = format("%04d", day->number);
    }
 }
 

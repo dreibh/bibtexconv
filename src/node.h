@@ -30,6 +30,8 @@ extern void yyerror(const char* errorText);
 extern int  yylex();
 
 
+#define NODE_CUSTOM_ENTRIES 3
+
 struct Node {
    struct Node*             prev;
    struct Node*             next;
@@ -37,6 +39,7 @@ struct Node {
    std::string              keyword;
    std::string              value;
    std::string              anchor;
+   std::string              custom[NODE_CUSTOM_ENTRIES];
    std::vector<std::string> arguments;
    unsigned int             priority;
    int                      number;
