@@ -1,6 +1,0 @@
-#!/bin/sh
-
-if [ -e testfile.odt ] ; then
-   rm testfile.odt
-fi
-zip testfile.odt mimetype content.xml manifest.rdf styles.xml meta.xml Thumbnails/thumbnail.png Configurations2/accelerator/current.xml settings.xml META-INF/manifest.xml && openoffice.org testfile.odt
