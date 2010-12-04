@@ -165,6 +165,24 @@ std::string& trim(std::string& string)
 }
 
 
+// ###### Extract token from string #########################################
+std::string extractToken(std::string& string, const std::string& delimiters)
+{
+   for(size_t i = 0; i < string.size(); i++) {
+      for(size_t j = 0; j < delimiters.size(); j++) {
+         if(string[i] == delimiters[j]) {
+            const std::string result = string.substr(0, i);
+            string = string.substr(i + 1, string.size() - i - 1);
+            return(result);
+         }
+      }
+   }
+   const std::string result = string;
+   string = "";
+   return(result);
+}
+
+
 // ###### Process backslash comments (newline, tab, etc.) ###################
 std::string processBackslash(const std::string& string)
 {

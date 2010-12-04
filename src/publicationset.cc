@@ -85,12 +85,21 @@ void PublicationSet::addAll(Node* publication)
 }
 
 
-// ###### Sort publications #################################################
-void PublicationSet::sort()
+static int publicationNodeComparisonFunction(const void* ptr1, const void* ptr2)
 {
+   const Node* node1 = (const Node*)ptr1;
+   const Node* node2 = (const Node*)ptr2;
 
-   // FIXME ...
+   printf("%s <> %s\n", node1->value.c_str(), node2->value.c_str());
+   return(0);
+}
 
+// ###### Sort publications #################################################
+void PublicationSet::sort(const std::string* sortKey,
+                          const bool*        sortAscending,
+                          const size_t       maxSortLevels)
+{
+//    qsort(publicationArray, entries, sizeof(Node*), publicationNodeComparisonFunction);
 }
 
 

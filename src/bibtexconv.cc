@@ -70,16 +70,9 @@ static int handleInput(FILE*           fh,
             publicationSet.addAll(bibTeXFile);
          }
          else if(strncmp(input, "cite ", 5) == 0) {
-            size_t pos;
-            std::string keyword = (char*)&input[5];
-            std::string anchor;
-            if( ((pos = keyword.find(" ")) != std::string::npos) ||
-                ((pos = keyword.find("\t")) != std::string::npos) ) {
-               anchor  = keyword.substr(pos + 1, keyword.size() - pos - 1);
-               keyword = keyword.substr(0, pos);
-               trim(anchor);
-            }
-            trim(keyword);
+            std::string arguments = (const char*)&input[5];
+            const std::string keyword = extractToken(trim(arguments), " \t");
+            const std::string anchor  = extractToken(trim(arguments), " \t");
             Node* publication = findNode(bibTeXFile, keyword.c_str());
             if(publication) {
                if(anchor.size() > 0) {
@@ -96,12 +89,47 @@ static int handleInput(FILE*           fh,
                            (const char*)&input[5]);
                   result++;
                }
+               for(size_t i = 0; i < NODE_CUSTOM_ENTRIES; i++) {
+                  publication->custom[i] = extractToken(trim(arguments), " \t");
+               }
             }
             else {
                fprintf(stderr, "ERROR: Publication '%s' not found!\n",
                        (const char*)&input[5]);
                result++;
             }
+         }
+         else if((strncmp(input, "sort ", 5)) == 0) {
+            const size_t maxSortLevels = 8;
+            std::string sortKey[maxSortLevels];
+            bool        sortAscending[maxSortLevels];
+            std::string arguments = (const char*)&input[5];
+            for(size_t i = 0; i < maxSortLevels; i++) {
+               bool isAscending = true;
+                std::string token = extractToken(trim(arguments), " \t");
+                const size_t slash = token.find('/');
+                if(slash != std::string::npos) {
+                   const std::string order = token.substr(slash + 1, token.size() - slash - 1);
+                   token = token.substr(0, slash);
+                   if( (order == "ascending") || (order == "A") ) {
+                     isAscending = true;
+                   }
+                   else if( (order == "descending") || (order == "D") ) {
+                     isAscending = false;
+                   }
+                   else {
+                      fprintf(stderr, "ERROR: Bad sorting order '%s' for key '%s'!\n",
+                              order.c_str(), token.c_str());
+                      result++;
+                      break;
+                   }
+                }
+                sortKey[i]       = token;
+                sortAscending[i] = isAscending;
+            }
+            publicationSet.sort((const std::string*)&sortKey,
+                                (const bool*)&sortAscending,
+                                maxSortLevels);
          }
          else if((strncmp(input, "export", 5)) == 0) {
             if(PublicationSet::exportPublicationSetToCustom(

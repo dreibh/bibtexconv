@@ -1,4 +1,4 @@
-bin_PROGRAMS = bibtexconv   # t1
+bin_PROGRAMS = bibtexconv  t1
 
 AM_YFLAGS = -d   # Tell bison to create grammar table!
 
@@ -21,5 +21,5 @@ dist_man_MANS = bibtexconv.8 bibtexconv-odt.8
 CLEANFILES = grammar.cc grammar.h scanner.cc
 
 
-# t1_SOURCES = t1.cc stringhandling.cc stringhandling.h
-# t1_LDADD   =
+t1_SOURCES = t1.cc stringhandling.cc stringhandling.h
+t1_LDADD   =

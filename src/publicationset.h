@@ -48,7 +48,9 @@ class PublicationSet
 
    bool add(Node* publication);
    void addAll(Node* publication);
-   void sort();
+   void sort(const std::string* sortKey,
+             const bool*         sortAscending,
+             const size_t        maxSortLevels);
    void clearAll();
 
    static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet);
