@@ -104,6 +104,7 @@ static int handleInput(FILE*           fh,
             std::string sortKey[maxSortLevels];
             bool        sortAscending[maxSortLevels];
             std::string arguments = (const char*)&input[5];
+            size_t sortLevels = 0;
             for(size_t i = 0; i < maxSortLevels; i++) {
                bool isAscending = true;
                 std::string token = extractToken(trim(arguments), " \t");
@@ -124,12 +125,15 @@ static int handleInput(FILE*           fh,
                       break;
                    }
                 }
-                sortKey[i]       = token;
-                sortAscending[i] = isAscending;
+                if(token != "") {
+                   sortKey[sortLevels]       = token;
+                   sortAscending[sortLevels] = isAscending;
+                   sortLevels++;
+                }
             }
             publicationSet.sort((const std::string*)&sortKey,
                                 (const bool*)&sortAscending,
-                                maxSortLevels);
+                                sortLevels);
          }
          else if((strncmp(input, "export", 5)) == 0) {
             if(PublicationSet::exportPublicationSetToCustom(
@@ -170,14 +174,21 @@ static int handleInput(FILE*           fh,
             customPrintingTemplate += (const char*)&input[10];
          }
          else if((strncmp(input, "include ", 8)) == 0) {
-            const char* includeFileName = (const char*)&input[8];
-            FILE* includeFH = fopen(includeFileName, "r");
-            if(includeFH != NULL) {
-               result += handleInput(includeFH, publicationSet, recursionLevel + 1);
-               fclose(includeFH);
+            if(recursionLevel <= 9) {
+               const char* includeFileName = (const char*)&input[8];
+               FILE* includeFH = fopen(includeFileName, "r");
+               if(includeFH != NULL) {
+                  result += handleInput(includeFH, publicationSet, recursionLevel + 1);
+                  fclose(includeFH);
+               }
+               else {
+                  fprintf(stderr, "ERROR: Unable to open include file '%s'!\n", includeFileName);
+                  result++;
+                  break;
+               }
             }
             else {
-               fprintf(stderr, "ERROR: Unable to open include file '%s'!\n", includeFileName);
+               fprintf(stderr, "ERROR: Include file nesting level limit reached!\n");
                result++;
                break;
             }

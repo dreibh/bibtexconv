@@ -12,9 +12,11 @@
 #cite Dre2006   TD04
 #cite AB05   AB05
 
-cite Globecom2010
-cite Globecom2010-Demo
+#cite Globecom2010
+#cite Globecom2010-Demo
 
+citeAll
+sort year/D month/D day/D
 
 
 # ###########################################################################

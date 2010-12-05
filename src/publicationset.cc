@@ -85,12 +85,43 @@ void PublicationSet::addAll(Node* publication)
 }
 
 
+// NOTE: PublicationSet::sort() will *NOT* be thread-safe!
+static const std::string* gSortKey       = NULL;
+static const bool*        gSortAscending = NULL;
+static size_t             gMaxSortLevels = 0;
+
 static int publicationNodeComparisonFunction(const void* ptr1, const void* ptr2)
 {
-   const Node* node1 = (const Node*)ptr1;
-   const Node* node2 = (const Node*)ptr2;
+   const Node* node1 = *((const Node**)ptr1);
+   const Node* node2 = *((const Node**)ptr2);
 
-   printf("%s <> %s\n", node1->value.c_str(), node2->value.c_str());
+   for(size_t i = 0; i < gMaxSortLevels; i++) {
+      const Node* child1 = findChildNode((Node*)node1, gSortKey[i].c_str());
+      const Node* child2 = findChildNode((Node*)node2, gSortKey[i].c_str());
+      int result = 0;
+      if( (child1 == NULL) && (child2 != NULL) ) {
+         result = -1;
+      }
+      if( (child1 != NULL) && (child2 == NULL) ) {
+         result = 1;
+      }
+      else if( (child1 != NULL) && (child2 != NULL) ) {
+         if(child1->value < child2->value) {
+            result = -1;
+         }
+         else if(child1->value > child2->value) {
+            result = 1;
+         }
+      }
+
+      if(!gSortAscending[i]) {
+         result *= -1;
+      }
+
+      if(result != 0) {
+         return(result);
+      }
+   }
    return(0);
 }
 
@@ -99,7 +130,14 @@ void PublicationSet::sort(const std::string* sortKey,
                           const bool*        sortAscending,
                           const size_t       maxSortLevels)
 {
-//    qsort(publicationArray, entries, sizeof(Node*), publicationNodeComparisonFunction);
+   gMaxSortLevels = maxSortLevels;
+   gSortKey       = sortKey;
+   gSortAscending = sortAscending;
+
+   qsort(publicationArray, entries, sizeof(Node*), publicationNodeComparisonFunction);
+
+   gSortKey       = NULL;
+   gSortAscending = NULL;
 }
 
 
