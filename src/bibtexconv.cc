@@ -137,9 +137,9 @@ static int handleInput(FILE*           fh,
          }
          else if((strncmp(input, "export", 5)) == 0) {
             if(PublicationSet::exportPublicationSetToCustom(
-                  &publicationSet, monthNames,
+                  &publicationSet,
                   customPrintingHeader, customPrintingTrailer,
-                  customPrintingTemplate, nbsp, useXMLStyle) == false) {
+                  customPrintingTemplate, monthNames, nbsp, useXMLStyle) == false) {
                result++;
             }
          }
@@ -277,9 +277,10 @@ int main(int argc, char** argv)
          }
          if(exportToCustom) {
             if(PublicationSet::exportPublicationSetToCustom(
-                  &publicationSet, monthNames,
+                  &publicationSet,
                   customPrintingHeader, customPrintingTrailer,
-                  customPrintingTemplate, nbsp, useXMLStyle) == false) {
+                  customPrintingTemplate, monthNames,
+                  nbsp, useXMLStyle) == false) {
                exit(1);
             }
          }

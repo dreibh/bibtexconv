@@ -56,14 +56,22 @@ class PublicationSet
    static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet);
    static bool exportPublicationSetToXML(PublicationSet* publicationSet);
    static bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
-                                            const std::vector<std::string>& monthNames,
                                             const std::string&              customPrintingHeader,
                                             const std::string&              customPrintingTrailer,
                                             const std::string&              printingTemplate,
+                                            const std::vector<std::string>& monthNames,
                                             const std::string&              nbsp,
                                             const bool                      xmlStyle);
 
    private:
+   static std::string applyTemplate(Node*                           publication,
+                                    Node*                           prevPublication,
+                                    Node*                           nextPublication,
+                                    const std::string&              printingTemplate,
+                                    const std::vector<std::string>& monthNames,
+                                    const std::string&              nbsp,
+                                    const bool                      xmlStyle);
+
    size_t maxEntries;
    size_t entries;
    Node** publicationArray;
