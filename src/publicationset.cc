@@ -411,7 +411,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
                break;
             case 'D':   // Day
                child = findChildNode(publication, "day");
-               if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+               if(child) {
+                  char day[16];
+                  snprintf((char*)&day, sizeof(day), "%d", child->number);
+                  result += string2utf8(day, nbsp, xmlStyle);
+               } else { skip = true; }
                break;
             case '$':   // Publisher
                child = findChildNode(publication, "publisher");
@@ -435,6 +439,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
                break;
             case 'U':   // URL
                child = findChildNode(publication, "url");
+               if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+               break;
+            case 'X':   // Note
+               child = findChildNode(publication, "note");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
             case '%':
