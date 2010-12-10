@@ -1,0 +1,101 @@
+# $Id$
+
+nbsp ~
+
+templatenew
+template+ [%bY\\entry*\[%Y\]\n]
+template+ %a[%f%g~%F|%n, %g~%F|%l and %g~%F]%A
+template+ : \"\\href{%U}{%T}\"
+template+ [, %B][, %J][, %?][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %@][, %I][, %i][, [[%M %D, |%M~]%Y].
+template+ \n\n
+
+
+echo % ===========================================================================\n
+echo \\subrubric{\pdfbookmark[0]{Thesises}{PublicationsThesises}Thesises}\n
+echo % ===========================================================================\n\n
+
+clear
+include dreibholz-thesises.export
+sort year/D month/D day/D
+export
+echo \n
+
+
+echo % ===========================================================================\n
+echo \\subrubric{\pdfbookmark[0]{Refereed Journal Publications}{PublicationsRefereedJournalPublications}Refereed Journal Publications}\n
+echo % ===========================================================================\n\n
+
+clear
+include dreibholz-journals.export
+sort year/D month/D day/D
+export
+echo \n
+
+
+echo % ===========================================================================\n
+echo \\subrubric{\pdfbookmark[0]{Refereed Conference Publications}{PublicationsRefereedConferencePublications}Refereed Conference Publications}\n
+echo % ===========================================================================\n\n
+
+clear
+include dreibholz-papers.export
+sort year/D month/D day/D
+export
+echo \n
+
+
+echo % ===========================================================================\n
+echo \\subrubric{\pdfbookmark[0]{Other Publications}{PublicationsOther}Other Publications}\n
+echo % ===========================================================================\n\n
+
+clear
+include dreibholz-others.export
+sort year/D month/D day/D
+export
+echo \n
+
+
+echo % ===========================================================================\n
+echo \\subrubric{\pdfbookmark[0]{Talks}{PublicationsTalks}Talks}\n
+echo % ===========================================================================\n\n
+
+clear
+include dreibholz-posters-and-demos.export
+sort year/D month/D day/D
+export
+echo \n
+
+
+echo % ===========================================================================\n
+echo \\subrubric{\pdfbookmark[0]{IETF RFCs}{PublicationsIETFRFC}IETF RFCs}\n
+echo % ===========================================================================\n\n
+
+clear
+include dreibholz-rfcs.export
+sort year/D month/D day/D
+export
+echo \n
+
+
+echo % ===========================================================================\n
+echo \\subrubric{\pdfbookmark[0]{IETF Internet Drafts}{PublicationsIETFID}IETF Internet Drafts}\n
+echo % ===========================================================================\n\n
+
+templatenew
+template+ %a[%f%g~%F|%n, %g~%F|%l and %g~%F]%A
+template+ : \"\\href{%U}{%T}\"
+template+ [, %?][, Internet-Draft %N][, %X][, [[%M %D, |%M~]%Y].
+template+ \n\n
+
+clear
+echo \\entry*\[Individual Submission\]
+include dreibholz-id-individual.export
+sort year/D month/D day/D
+export
+
+clear
+echo \\entry*\[Working Group Draft\]
+include dreibholz-id-workinggroup.export
+sort year/D month/D day/D
+export
+
+echo \n
