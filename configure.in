@@ -1,4 +1,4 @@
-AC_INIT([BibTeXConv], [0.5.0~test2], [dreib@iem.uni-due.de])
+AC_INIT([BibTeXConv], [0.6.0~test1], [dreib@iem.uni-due.de])
 
 AM_INIT_AUTOMAKE
 AC_PREREQ(2.60)
@@ -26,6 +26,20 @@ else
    CFLAGS="$CFLAGS -Wall"
    CXXFLAGS="$CXXFLAGS -Wall"
 fi
+
+
+# ###### libcurl ############################################################
+AC_CHECK_LIB(curl, curl_easy_perform,
+               [ CURL_LIBS=-lcurl ],
+               [ AC_ERROR([libcurl not found!]) ],)
+AC_SUBST(CURL_LIBS)
+
+
+# ###### libssl (MD5 computation) ###########################################
+AC_CHECK_LIB(ssl, MD5_Init,
+               [ SSL_LIBS=-lssl ],
+               [ AC_ERROR([libssl not found!]) ],)
+AC_SUBST(SSL_LIBS)
 
 
 # ###### Compiler flags #####################################################

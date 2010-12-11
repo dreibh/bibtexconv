@@ -23,8 +23,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-
 #include <iostream>
+#include <curl/curl.h>
+#include <curl/types.h>
+#include <curl/easy.h>
+#include <openssl/md5.h>
 
 #include "node.h"
 #include "publicationset.h"
@@ -36,6 +39,84 @@ extern FILE*  yyin;
 extern Node*  bibTeXFile;
 
 
+// ###### Check URLs ########################################################
+unsigned int checkAllURLs(PublicationSet* publicationSet)
+{
+   unsigned int errors = 0;
+   for(size_t index = 0; index < publicationSet->size(); index++) {
+      // ====== Get prev, current and next publications =====================
+      if(publicationSet->get(index)->value == "Comment") {
+         continue;
+      }
+      Node* publication = publicationSet->get(index);
+      Node* url         = findChildNode(publication, "url");
+      if(url != NULL) {
+         printf("Checking URL of %s ... ", publication->keyword.c_str());
+         fflush(stdout);
+
+         CURL* curl = curl_easy_init();
+         if(curl) {
+            FILE* downloadFH = fopen("/tmp/x0", "w+b");
+            if(downloadFH != NULL) {
+               curl_easy_setopt(curl, CURLOPT_URL, url->value.c_str());
+               curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+               curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+               curl_easy_setopt(curl, CURLOPT_WRITEDATA, downloadFH);
+               const CURLcode result = curl_easy_perform(curl);
+               if(result == 0) {
+                  unsigned long long totalSize = 0;
+                  rewind(downloadFH);
+
+                  unsigned char md5[MD5_DIGEST_LENGTH];
+                  MD5_CTX md5_ctx;
+                  MD5_Init(&md5_ctx);
+
+                  while(!feof(downloadFH)) {
+                     char input[16384];
+                     const size_t bytesRead = fread(&input, 1, sizeof(input), downloadFH);
+                     if(bytesRead > 0) {
+                        totalSize += (unsigned long long)bytesRead;
+                        MD5_Update(&md5_ctx, &input, bytesRead);
+                     }
+                  }
+
+                  if(totalSize > 0) {
+                     MD5_Final((unsigned char*)&md5, &md5_ctx);
+                     printf("OK: size=%lluB; MD5=", totalSize);
+                     for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
+                        printf("%02x", (unsigned int)md5[i]);
+                     }
+                     puts("");
+                  }
+                  else {
+                     printf("FAILED %s - Size is zero!\n", url->value.c_str());
+                     errors++;
+                  }
+               }
+               else {
+                  printf("FAILED %s - Failed to download!\n", url->value.c_str());
+                  errors++;
+               }
+               fclose(downloadFH);
+            }
+            else {
+               fputs("ERROR: Failed to store temporary download file!\n", stderr);
+               errors++;
+            }
+            curl_easy_cleanup(curl);
+         }
+         else {
+            fputs("ERROR: Failed to initialize libcurl!\n", stderr);
+            errors++;
+         }
+
+      }
+   }
+   return(errors);
+}
+
+
+// ###### Handle interactive input ##########################################
 static bool                     useXMLStyle            = false;
 static std::string              nbsp                   = " ";
 static std::string              customPrintingHeader   = "";
@@ -47,6 +128,7 @@ static std::vector<std::string> monthNames;
 
 static int handleInput(FILE*           fh,
                        PublicationSet& publicationSet,
+                       const bool      checkURLs,
                        unsigned int    recursionLevel = 0)
 {
    int result = 0;
@@ -136,6 +218,9 @@ static int handleInput(FILE*           fh,
                                 sortLevels);
          }
          else if((strncmp(input, "export", 5)) == 0) {
+            if(checkURLs) {
+               result += checkAllURLs(&publicationSet);
+            }
             if(PublicationSet::exportPublicationSetToCustom(
                   &publicationSet,
                   customPrintingHeader, customPrintingTrailer,
@@ -178,7 +263,7 @@ static int handleInput(FILE*           fh,
                const char* includeFileName = (const char*)&input[8];
                FILE* includeFH = fopen(includeFileName, "r");
                if(includeFH != NULL) {
-                  result += handleInput(includeFH, publicationSet, recursionLevel + 1);
+                  result += handleInput(includeFH, publicationSet, checkURLs, recursionLevel + 1);
                   fclose(includeFH);
                }
                else {
@@ -208,10 +293,11 @@ static int handleInput(FILE*           fh,
 // ###### Main program ######################################################
 int main(int argc, char** argv)
 {
-   bool                     interactive            = true;
-   const char*              exportToBibTeX         = NULL;
-   const char*              exportToXML            = NULL;
-   const char*              exportToCustom         = NULL;
+   bool        interactive    = true;
+   bool        checkURLs      = false;
+   const char* exportToBibTeX = NULL;
+   const char* exportToXML    = NULL;
+   const char* exportToCustom = NULL;
 
    monthNames.push_back("January");
    monthNames.push_back("February");
@@ -246,6 +332,9 @@ int main(int argc, char** argv)
       else if( strcmp(argv[i], "-non-interactive") == 0 ) {
          interactive = false;
       }
+      else if( strcmp(argv[i], "-check-urls") == 0 ) {
+         checkURLs = true;
+      }
       else {
          fputs("ERROR: Bad arguments!\n", stderr);
          exit(1);
@@ -264,7 +353,9 @@ int main(int argc, char** argv)
       PublicationSet publicationSet(countNodes(bibTeXFile));
       if(!interactive) {
          publicationSet.addAll(bibTeXFile);
-         // publicationSet.sort();
+         if(checkURLs) {
+            result += checkAllURLs(&publicationSet);
+         }
          if(exportToBibTeX) {
             if(PublicationSet::exportPublicationSetToBibTeX(&publicationSet) == false) {
                exit(1);
@@ -288,7 +379,7 @@ int main(int argc, char** argv)
       else {
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
                  (unsigned int)publicationSet.maxSize());
-         result = handleInput(stdin, publicationSet);
+         result = handleInput(stdin, publicationSet, checkURLs);
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
       }
    }
