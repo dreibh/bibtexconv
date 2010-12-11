@@ -51,12 +51,12 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
       Node* publication = publicationSet->get(index);
       Node* url         = findChildNode(publication, "url");
       if(url != NULL) {
-         printf("Checking URL of %s ... ", publication->keyword.c_str());
-         fflush(stdout);
+         fprintf(stderr, "Checking URL of %s ... ", publication->keyword.c_str());
+         fflush(stderr);
 
          CURL* curl = curl_easy_init();
          if(curl) {
-            FILE* downloadFH = fopen("/tmp/x0", "w+b");
+            FILE* downloadFH = tmpfile();
             if(downloadFH != NULL) {
                curl_easy_setopt(curl, CURLOPT_URL, url->value.c_str());
                curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
@@ -82,19 +82,19 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
 
                   if(totalSize > 0) {
                      MD5_Final((unsigned char*)&md5, &md5_ctx);
-                     printf("OK: size=%lluB; MD5=", totalSize);
+                     fprintf(stderr, "OK: size=%lluB; MD5=", totalSize);
                      for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
-                        printf("%02x", (unsigned int)md5[i]);
+                        fprintf(stderr, "%02x", (unsigned int)md5[i]);
                      }
-                     puts("");
+                     fputs("\n", stderr);
                   }
                   else {
-                     printf("FAILED %s - Size is zero!\n", url->value.c_str());
+                     fprintf(stderr, "FAILED %s - Size is zero!\n", url->value.c_str());
                      errors++;
                   }
                }
                else {
-                  printf("FAILED %s - Failed to download!\n", url->value.c_str());
+                  fprintf(stderr, "FAILED %s - Failed to download!\n", url->value.c_str());
                   errors++;
                }
                fclose(downloadFH);
