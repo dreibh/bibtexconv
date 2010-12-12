@@ -37,6 +37,7 @@
 extern int    yyparse();
 extern FILE*  yyin;
 extern Node*  bibTeXFile;
+static CURL*  curl = NULL;
 
 
 // ###### Check URLs ########################################################
@@ -54,90 +55,82 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
          fprintf(stderr, "Checking URL of %s ... ", publication->keyword.c_str());
          fflush(stderr);
 
-         CURL* curl = curl_easy_init();
-         if(curl) {
-            FILE* downloadFH = tmpfile();
-            if(downloadFH != NULL) {
-               FILE* headerFH = tmpfile();
-               if(headerFH != NULL) {
-                  curl_easy_setopt(curl, CURLOPT_URL,            url->value.c_str());
-                  curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-                  curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
-                  curl_easy_setopt(curl, CURLOPT_WRITEDATA,      downloadFH);
-                  curl_easy_setopt(curl, CURLOPT_WRITEHEADER,    headerFH);
+         FILE* downloadFH = tmpfile();
+         if(downloadFH != NULL) {
+            FILE* headerFH = tmpfile();
+            if(headerFH != NULL) {
+               curl_easy_setopt(curl, CURLOPT_URL,            url->value.c_str());
+               curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+               curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+               curl_easy_setopt(curl, CURLOPT_WRITEDATA,      downloadFH);
+               curl_easy_setopt(curl, CURLOPT_WRITEHEADER,    headerFH);
 
-                  const CURLcode result = curl_easy_perform(curl);
-                  if(result == CURLE_OK) {
-                     unsigned long long totalSize = 0;
-                     rewind(headerFH);
-                     rewind(downloadFH);
+               const CURLcode result = curl_easy_perform(curl);
+               if(result == CURLE_OK) {
+                  unsigned long long totalSize = 0;
+                  rewind(headerFH);
+                  rewind(downloadFH);
 
-                     bool resultIsGood = true;
-                     if( (strncmp(url->value.c_str(), "http", 4)) == 0) {
-                        unsigned int v1, v2, httpErrorCode;
-                        unsigned int r = fscanf(headerFH, "HTTP/%u.%u %u ", &v1, &v2, &httpErrorCode);
-                        if(r == 3) {
-                           if(httpErrorCode != 200) {
-                              resultIsGood = false;
-                              fprintf(stderr, "FAILED %s - HTTP returns code %u!\n", url->value.c_str(), httpErrorCode);
-                              errors++;
-                           }
-                        }
-                        else {
+                  bool resultIsGood = true;
+                  if( (strncmp(url->value.c_str(), "http", 4)) == 0) {
+                     unsigned int v1, v2, httpErrorCode;
+                     unsigned int r = fscanf(headerFH, "HTTP/%u.%u %u ", &v1, &v2, &httpErrorCode);
+                     if(r == 3) {
+                        if(httpErrorCode != 200) {
                            resultIsGood = false;
-                           fprintf(stderr, "FAILED %s - Bad HTTP response!\n", url->value.c_str());
+                           fprintf(stderr, "FAILED %s - HTTP returns code %u!\n", url->value.c_str(), httpErrorCode);
                            errors++;
                         }
                      }
-
-                     if(resultIsGood) {
-                        unsigned char md5[MD5_DIGEST_LENGTH];
-                        MD5_CTX md5_ctx;
-                        MD5_Init(&md5_ctx);
-
-                        while(!feof(downloadFH)) {
-                           char input[16384];
-                           const size_t bytesRead = fread(&input, 1, sizeof(input), downloadFH);
-                           if(bytesRead > 0) {
-                              totalSize += (unsigned long long)bytesRead;
-                              MD5_Update(&md5_ctx, &input, bytesRead);
-                           }
-                        }
-
-                        if(totalSize > 0) {
-                           MD5_Final((unsigned char*)&md5, &md5_ctx);
-                           fprintf(stderr, "OK: size=%lluB; MD5=", totalSize);
-                           for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
-                              fprintf(stderr, "%02x", (unsigned int)md5[i]);
-                           }
-                           fputs("\n", stderr);
-                        }
-                        else {
-                           fprintf(stderr, "FAILED %s - Size is zero!\n", url->value.c_str());
-                           errors++;
-                        }
+                     else {
+                        resultIsGood = false;
+                        fprintf(stderr, "FAILED %s - Bad HTTP response!\n", url->value.c_str());
+                        errors++;
                      }
                   }
-                  else {
-                     fprintf(stderr, "FAILED %s - %s!\n", url->value.c_str(), curl_easy_strerror(result));
-                     errors++;
+
+                  if(resultIsGood) {
+                     unsigned char md5[MD5_DIGEST_LENGTH];
+                     MD5_CTX md5_ctx;
+                     MD5_Init(&md5_ctx);
+
+                     while(!feof(downloadFH)) {
+                        char input[16384];
+                        const size_t bytesRead = fread(&input, 1, sizeof(input), downloadFH);
+                        if(bytesRead > 0) {
+                           totalSize += (unsigned long long)bytesRead;
+                           MD5_Update(&md5_ctx, &input, bytesRead);
+                        }
+                     }
+
+                     if(totalSize > 0) {
+                        MD5_Final((unsigned char*)&md5, &md5_ctx);
+                        fprintf(stderr, "OK: size=%lluB; MD5=", totalSize);
+                        for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
+                           fprintf(stderr, "%02x", (unsigned int)md5[i]);
+                        }
+                        fputs("\n", stderr);
+                     }
+                     else {
+                        fprintf(stderr, "FAILED %s - Size is zero!\n", url->value.c_str());
+                        errors++;
+                     }
                   }
-                  fclose(headerFH);
                }
                else {
-                  fputs("ERROR: Failed to store temporary header file!\n", stderr);
+                  fprintf(stderr, "FAILED %s - %s!\n", url->value.c_str(), curl_easy_strerror(result));
                   errors++;
                }
-               fclose(downloadFH);
+               fclose(headerFH);
             }
             else {
-               fputs("ERROR: Failed to store temporary download file!\n", stderr);
+               fputs("ERROR: Failed to store temporary header file!\n", stderr);
                errors++;
             }
-            curl_easy_cleanup(curl);
+            fclose(downloadFH);
          }
          else {
-            fputs("ERROR: Failed to initialize libcurl!\n", stderr);
+            fputs("ERROR: Failed to store temporary download file!\n", stderr);
             errors++;
          }
 
@@ -343,6 +336,12 @@ int main(int argc, char** argv)
    monthNames.push_back("November");
    monthNames.push_back("December");
 
+   curl = curl_easy_init();
+   if(curl == NULL) {
+      fputs("ERROR: Failed to initialize libcurl!\n", stderr);
+      exit(1);
+   }
+
    if(argc < 2) {
       fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file}\n", argv[0]);
       exit(1);
@@ -418,6 +417,7 @@ int main(int argc, char** argv)
       freeNode(bibTeXFile);
       bibTeXFile = NULL;
    }
+   curl_easy_cleanup(curl);
 
    return result;
 }
