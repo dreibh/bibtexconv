@@ -8,7 +8,7 @@ bibtexconv_SOURCES = \
    node.cc node.h \
    publicationset.h publicationset.cc \
    grammar.yy scanner.ll
-bibtexconv_LDADD   = $(CURL_LIBS) $(SSL_LIBS)
+bibtexconv_LDADD   = $(CURL_LIBS) $(CRYPTO_LIBS)
 
 bibtexconvdir        = $(datadir)/bibtexconv
 dist_bibtexconv_DATA = odt-template.odt
