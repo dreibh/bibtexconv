@@ -163,7 +163,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                            }
                            const Node* urlMimeNode = findChildNode(publication, "url.mime");
                            if((urlMimeNode != NULL) && (urlMimeNode->value != mimeString)) {
-                              fprintf(stderr, "FAILED %s: old mime has been %s, new mime is %s\n",
+                              fprintf(stderr, "FAILED %s: old mime type has been %s, new type mime is %s\n",
                                       url->value.c_str(),
                                       urlMimeNode->value.c_str(), mimeString.c_str());
                               errors++;
@@ -189,7 +189,8 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                            strftime((char*)&checkTime, sizeof(checkTime), "%Y-%m-%d %H:%M:%S %Z", timeptr);
                            addOrUpdateChildNode(publication, "url.checked", checkTime);
 
-                           fprintf(stderr, "OK: size=%sB; MD5=%s\n", sizeString.c_str(), md5String.c_str());
+                           fprintf(stderr, "OK: size=%sB; type=%s; MD5=%s\n",
+                                   sizeString.c_str(), mimeString.c_str(), md5String.c_str());
                         }
                         else {
                            fprintf(stderr, "FAILED %s: size is zero!\n", url->value.c_str());

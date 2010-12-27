@@ -151,8 +151,8 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
          fprintf(fh, "%%%s\n\n", publication->keyword.c_str());
       }
       else {
-         fprintf(fh, "@%s { %s, \n", publication->value.c_str(),
-                                     publication->keyword.c_str());
+         fprintf(fh, "@%s{ %s, \n", publication->value.c_str(),
+                                    publication->keyword.c_str());
 
          bool empty  = true;
          Node* child = publication->child;
@@ -163,14 +163,14 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
             empty = false;
 
             if( (child->keyword == "title") ||
-               (child->keyword == "booktitle") ||
-               (child->keyword == "journal") ) {
+                (child->keyword == "booktitle") ||
+                (child->keyword == "journal") ) {
                fprintf(fh, "\t%s = \"{%s}\"", child->keyword.c_str(), child->value.c_str());
             }
             else if( (child->keyword == "month") ) {
                static const char* bibtexMonthNames[12] = {"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"};
                if((child->number >= 1) && (child->number <= 12)) {
-                  fprintf(fh, "\t%s = %s", child->keyword.c_str(), bibtexMonthNames[child->number]);
+                  fprintf(fh, "\t%s = %s", child->keyword.c_str(), bibtexMonthNames[child->number - 1]);
                }
             }
             else if( (child->keyword == "url") ) {
@@ -201,17 +201,18 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          printf("<!-- %s -->\n\n", publication->keyword.c_str());
       }
       else {
-         Node* title     = findChildNode(publication, "title");
-         Node* author    = findChildNode(publication, "author");
-         Node* year      = findChildNode(publication, "year");
-         Node* month     = findChildNode(publication, "month");
-         Node* day       = findChildNode(publication, "day");
-         Node* url       = findChildNode(publication, "url");
-         Node* booktitle = findChildNode(publication, "booktitle");
-         Node* journal   = findChildNode(publication, "journal");
-         Node* volume    = findChildNode(publication, "volume");
-         Node* number    = findChildNode(publication, "number");
-         Node* pages     = findChildNode(publication, "pages");
+         Node* title        = findChildNode(publication, "title");
+         Node* author       = findChildNode(publication, "author");
+         Node* year         = findChildNode(publication, "year");
+         Node* month        = findChildNode(publication, "month");
+         Node* day          = findChildNode(publication, "day");
+         Node* url          = findChildNode(publication, "url");
+         Node* howpublished = findChildNode(publication, "howpublished");
+         Node* booktitle    = findChildNode(publication, "booktitle");
+         Node* journal      = findChildNode(publication, "journal");
+         Node* volume       = findChildNode(publication, "volume");
+         Node* number       = findChildNode(publication, "number");
+         Node* pages        = findChildNode(publication, "pages");
 
          fprintf(stdout, "<reference anchor=\"%s\">\n", publication->keyword.c_str());
          fputs("\t<front>\n", stdout);
@@ -246,11 +247,14 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
 
          std::string seriesName  = "";
          std::string seriesValue = "";
+         if(howpublished) {
+            seriesName = howpublished->value;
+         }
          if(booktitle) {
-            seriesName =  booktitle->value;
+            seriesName = booktitle->value;
          }
          if(journal) {
-            seriesName =  journal->value;
+            seriesName = journal->value;
          }
          if(volume) {
             seriesValue += "Volume " + volume->value;
