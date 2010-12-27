@@ -356,8 +356,11 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "url.size") {
       node->priority = 198;
    }
-   else if(node->keyword == "url.md5") {
+   else if(node->keyword == "url.mime") {
       node->priority = 197;
+   }
+   else if(node->keyword == "url.md5") {
+      node->priority = 196;
    }
    return(node);
 }

@@ -182,7 +182,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
             child = child->next;
          }
 
-         fputs("\n}\n", fh);
+         fputs("\n}\n\n", fh);
       }
    }
    return(true);
