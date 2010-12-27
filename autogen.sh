@@ -1,3 +1,3 @@
 #!/bin/sh
 
-./bootstrap && ./configure --enable-maintainer-mode && make
+./bootstrap && ./configure --prefix=/usr --enable-maintainer-mode && make

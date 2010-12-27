@@ -363,6 +363,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
                child = findChildNode(publication, "title");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
+            case 'H':   // HowPublished
+               child = findChildNode(publication, "howpublished");
+               if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+               break;
             case 'B':   // Booktitle
                child = findChildNode(publication, "booktitle");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
@@ -490,7 +494,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                            skip = ! begin;
                            break;
                         case 'w':
-                           skip = ! (begin || end);
+                           skip = (begin || end);
                            break;
                         case 'e':
                            skip = ! end;
