@@ -8,7 +8,7 @@
 
 int main(int argc, char** argv)
 {
-   std::string s = "category   year/descending   month/descending";
+   std::string s = "category   \"test 2008\" \"äöü 2008\"";
 
    while(s != "") {
       std::string token = extractToken(trim(s), " ");

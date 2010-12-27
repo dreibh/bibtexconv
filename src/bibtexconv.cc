@@ -34,10 +34,20 @@
 #include "stringhandling.h"
 
 
-extern int    yyparse();
-extern FILE*  yyin;
-extern Node*  bibTeXFile;
-static CURL*  curl = NULL;
+extern int   yyparse();
+extern FILE* yyin;
+extern Node* bibTeXFile;
+static CURL* curl = NULL;
+
+
+// ###### Get current timer #################################################
+unsigned long long getMicroTime()
+{
+  struct timeval tv;
+  gettimeofday(&tv,NULL);
+  return(((unsigned long long)tv.tv_sec * (unsigned long long)1000000) +
+         (unsigned long long)tv.tv_usec);
+}
 
 
 // ###### Check URLs ########################################################
@@ -104,34 +114,61 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                      }
 
                      if(totalSize > 0) {
+                        std::string sizeString = format("%llu", totalSize);
+                        std::string md5String;
                         MD5_Final((unsigned char*)&md5, &md5_ctx);
-                        fprintf(stderr, "OK: size=%lluB; MD5=", totalSize);
                         for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
-                           fprintf(stderr, "%02x", (unsigned int)md5[i]);
+                           md5String += format("%02x", (unsigned int)md5[i]);
                         }
-                        fputs("\n", stderr);
+
+                        const Node* urlSizeNode = findChildNode(publication, "url.size");
+                        if((urlSizeNode != NULL) && (urlSizeNode->value != sizeString)) {
+                           fprintf(stderr, "FAILED %s: old size has been %s, new size is %s\n",
+                                   url->value.c_str(),
+                                   urlSizeNode->value.c_str(), sizeString.c_str());
+                           errors++;
+                        }
+                        const Node* urlMD5Node = findChildNode(publication, "url.md5");
+                        if((urlMD5Node != NULL) && (urlMD5Node->value != md5String)) {
+                           fprintf(stderr, "FAILED %s: old MD5 has been %s, new MD5 is %s\n",
+                                   url->value.c_str(),
+                                   urlMD5Node->value.c_str(), md5String.c_str());
+                           errors++;
+                        }
+
+                        addOrUpdateChildNode(publication, "url.size", sizeString.c_str());
+                        addOrUpdateChildNode(publication, "url.md5",  md5String.c_str());
+
+                        const unsigned long long microTime = getMicroTime();
+                        const time_t             timeStamp = microTime / 1000000;
+                        const tm*                timeptr   = localtime(&timeStamp);
+                        char  checkTime[128];
+                        strftime((char*)&checkTime, sizeof(checkTime), "%Y-%m-%d %H:%M:%S %Z", timeptr);
+                        addOrUpdateChildNode(publication, "url.checked", checkTime);
+
+                        fprintf(stderr, "OK: size=%sB; MD5=%s\n", sizeString.c_str(), md5String.c_str());
                      }
                      else {
-                        fprintf(stderr, "FAILED %s - Size is zero!\n", url->value.c_str());
+                        fprintf(stderr, "FAILED %s: size is zero!\n", url->value.c_str());
                         errors++;
                      }
                   }
                }
                else {
-                  fprintf(stderr, "FAILED %s - %s!\n", url->value.c_str(), curl_easy_strerror(result));
+                  fprintf(stderr, "FAILED %s: %s!\n", url->value.c_str(), curl_easy_strerror(result));
                   errors++;
                }
                fclose(headerFH);
             }
             else {
                fputs("ERROR: Failed to store temporary header file!\n", stderr);
-               errors++;
+               exit(1);
             }
             fclose(downloadFH);
          }
          else {
             fputs("ERROR: Failed to store temporary download file!\n", stderr);
-            errors++;
+            exit(1);
          }
 
       }
@@ -248,7 +285,7 @@ static int handleInput(FILE*           fh,
             if(PublicationSet::exportPublicationSetToCustom(
                   &publicationSet,
                   customPrintingHeader, customPrintingTrailer,
-                  customPrintingTemplate, monthNames, nbsp, useXMLStyle) == false) {
+                  customPrintingTemplate, monthNames, nbsp, useXMLStyle, stdout) == false) {
                result++;
             }
          }
@@ -292,19 +329,33 @@ static int handleInput(FILE*           fh,
                }
                else {
                   fprintf(stderr, "ERROR: Unable to open include file '%s'!\n", includeFileName);
-                  result++;
+                  exit(1);
                   break;
                }
             }
             else {
                fprintf(stderr, "ERROR: Include file nesting level limit reached!\n");
-               result++;
+               exit(1);
                break;
+            }
+         }
+         else if((strncmp(input, "monthNames ", 11)) == 0) {
+            std::string  s = (const char*)&input[11];
+            unsigned int i = 0;
+            while(s != "") {
+               const std::string token = extractToken(trim(s), " ");
+               monthNames[i] = token;
+               if(i > 11) {
+                  fputs("ERROR: There are only 12 month names possible in monthNames!\n", stderr);
+                  exit(1);
+                  break;
+               }
+               i++;
             }
          }
          else {
             fprintf(stderr, "ERROR: Bad command '%s'!\n", input);
-            result++;
+            exit(1);
             break;
          }
       }
@@ -343,7 +394,7 @@ int main(int argc, char** argv)
    }
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file}\n", argv[0]);
+      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -386,22 +437,44 @@ int main(int argc, char** argv)
          if(checkURLs) {
             result += checkAllURLs(&publicationSet);
          }
+
+         // ====== Export all to BibTeX =====================================
          if(exportToBibTeX) {
-            if(PublicationSet::exportPublicationSetToBibTeX(&publicationSet) == false) {
+            FILE* fh = fopen(exportToBibTeX, "w");
+            if(fh != NULL) {
+               if(PublicationSet::exportPublicationSetToBibTeX(&publicationSet, fh) == false) {
+                  exit(1);
+               }
+               fclose(fh);
+            }
+            else {
+               fprintf(stderr, "ERROR: Unable to create BibTeX file %s!\n", exportToBibTeX);
                exit(1);
             }
          }
+
+         // ====== Export all to XML ========================================
          if(exportToXML) {
-            if(PublicationSet::exportPublicationSetToXML(&publicationSet) == false) {
+            FILE* fh = fopen(exportToXML, "w");
+            if(fh != NULL) {
+               if(PublicationSet::exportPublicationSetToXML(&publicationSet, fh) == false) {
+                  exit(1);
+               }
+               fclose(fh);
+            }
+            else {
+               fprintf(stderr, "ERROR: Unable to create XML file %s!\n", exportToBibTeX);
                exit(1);
             }
          }
+
+         // ====== Export all to custom format ==============================
          if(exportToCustom) {
             if(PublicationSet::exportPublicationSetToCustom(
                   &publicationSet,
                   customPrintingHeader, customPrintingTrailer,
                   customPrintingTemplate, monthNames,
-                  nbsp, useXMLStyle) == false) {
+                  nbsp, useXMLStyle, stdout) == false) {
                exit(1);
             }
          }

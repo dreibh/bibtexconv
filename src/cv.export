@@ -1,13 +1,24 @@
 # $Id$
 
+echo %% ###########################################################################\n
+echo %% #### Curriculum Vitae of Thomas Dreibholz                              ####\n
+echo %% ###########################################################################\n
+echo %%\n
+echo %% $Id$\n
+echo %%\n
+echo \n
+
 nbsp ~
+# monthNames Januar Februar März April Mai Juni Juli August September Oktober November Dezember
+
 
 templatenew
 template+ [%bY\\entry*\[%Y\]\n]
 template+ %a[%f%g~%F|%n, %g~%F|%l and %g~%F]%A
 template+ : \"\\href{%U}{%T}\"
-template+ [, %B][, %J][, %?][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %@][, %I][, %i][, [[%M %D, |%M~]%Y].
-template+ \n\n
+template+ [, %B][, %J][, %?][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %@][, %I][, %i][, [[%M %D, |%M~]%Y].\n
+template+ [\\textbf{%1.}\n]
+template+ \n
 
 
 echo % ===========================================================================\n

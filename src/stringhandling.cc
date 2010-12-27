@@ -168,7 +168,15 @@ std::string& trim(std::string& string)
 // ###### Extract token from string #########################################
 std::string extractToken(std::string& string, const std::string& delimiters)
 {
+   if(string[0] == '\"') {
+      string = string.substr(1, string.size() - 1);
+      return(extractToken(string, "\""));
+   }
    for(size_t i = 0; i < string.size(); i++) {
+      if(string[i] == '\\') {
+         i++;
+         continue;
+      }
       for(size_t j = 0; j < delimiters.size(); j++) {
          if(string[i] == delimiters[j]) {
             const std::string result = string.substr(0, i);

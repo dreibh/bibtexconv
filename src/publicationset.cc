@@ -142,43 +142,47 @@ void PublicationSet::sort(const std::string* sortKey,
 
 
 // ###### Export to BibTeX ##################################################
-bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet)
+bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet,
+                                                  FILE*           fh)
 {
    for(size_t index = 0; index < publicationSet->size(); index++) {
       const Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
-         printf("%%%s\n\n", publication->keyword.c_str());
+         fprintf(fh, "%%%s\n\n", publication->keyword.c_str());
       }
       else {
-         printf("@%s { %s, \n", publication->value.c_str(),
-                                publication->keyword.c_str());
+         fprintf(fh, "@%s { %s, \n", publication->value.c_str(),
+                                     publication->keyword.c_str());
 
          bool empty  = true;
          Node* child = publication->child;
          while(child != NULL) {
             if(!empty) {
-               printf(",\n");
+               fputs(",\n", fh);
             }
             empty = false;
 
             if( (child->keyword == "title") ||
-                (child->keyword == "booktitle") ||
-                (child->keyword == "journal") ) {
-               printf("\t%s = \"{%s}\"", child->keyword.c_str(), child->value.c_str());
+               (child->keyword == "booktitle") ||
+               (child->keyword == "journal") ) {
+               fprintf(fh, "\t%s = \"{%s}\"", child->keyword.c_str(), child->value.c_str());
             }
             else if( (child->keyword == "month") ) {
-               printf("\t%s = %s", child->keyword.c_str(), child->value.c_str());
+               static const char* bibtexMonthNames[12] = {"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"};
+               if((child->number >= 1) && (child->number <= 12)) {
+                  fprintf(fh, "\t%s = %s", child->keyword.c_str(), bibtexMonthNames[child->number]);
+               }
             }
             else if( (child->keyword == "url") ) {
-               printf("\t%s = \"\\url{%s}\"", child->keyword.c_str(), child->value.c_str());
+               fprintf(fh, "\t%s = \"\\url{%s}\"", child->keyword.c_str(), child->value.c_str());
             }
             else {
-               printf("\t%s = \"%s\"", child->keyword.c_str(), child->value.c_str());
+               fprintf(fh, "\t%s = \"%s\"", child->keyword.c_str(), child->value.c_str());
             }
             child = child->next;
          }
 
-         puts("\n}\n");
+         fputs("\n}\n", fh);
       }
    }
    return(true);
@@ -186,7 +190,8 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
 
 
 // ###### Export to XML #####################################################
-bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet)
+bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
+                                               FILE*           fh)
 {
    fputs("<?xml version='1.0' encoding='UTF-8'?>\n", stdout);
 
@@ -286,7 +291,8 @@ std::string PublicationSet::applyTemplate(Node*                           public
                                           const std::string&              printingTemplate,
                                           const std::vector<std::string>& monthNames,
                                           const std::string&              nbsp,
-                                          const bool                      xmlStyle)
+                                          const bool                      xmlStyle,
+                                          FILE*                           fh)
 {
    std::string             result;
    std::vector<StackEntry> stack;
@@ -494,6 +500,14 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   i++;
                }
                break;
+            case '1':   // Custom #1
+               if(publication->custom[0] != "") {
+                  result += string2utf8(publication->custom[0], nbsp, xmlStyle);
+               }
+               else {
+                  skip = true;
+               }
+               break;
             default:
                fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in custom printing template!",
                         printingTemplate[i + 1]);
@@ -626,7 +640,8 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
                                                   const std::string&              printingTemplate,
                                                   const std::vector<std::string>& monthNames,
                                                   const std::string&              nbsp,
-                                                  const bool                      xmlStyle)
+                                                  const bool                      xmlStyle,
+                                                  FILE*                           fh)
 {
    Node* publication = NULL;
    for(size_t index = 0; index < publicationSet->size(); index++) {
@@ -644,7 +659,7 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
       }
       const std::string result = applyTemplate(publication, prevPublication, nextPublication,
                                                printingTemplate,
-                                               monthNames, nbsp, xmlStyle);
+                                               monthNames, nbsp, xmlStyle, fh);
 
       fputs(string2utf8(processBackslash(customPrintingHeader), nbsp).c_str(), stdout);
       fputs(result.c_str(), stdout);

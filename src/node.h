@@ -51,6 +51,7 @@ void dumpNode(struct Node* node);
 size_t countNodes(Node* node);
 Node* findNode(Node* node, const char* keyword);
 Node* findChildNode(Node* node, const char* childKeyword);
+Node* addOrUpdateChildNode(Node* node, const char* childKeyword, const char* value);
 
 struct Node* makePublicationCollection(struct Node* node1, struct Node* node2);
 struct Node* makePublication(const char* type, const char* label,

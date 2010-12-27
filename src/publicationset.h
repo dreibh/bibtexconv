@@ -53,15 +53,16 @@ class PublicationSet
              const size_t        maxSortLevels);
    void clearAll();
 
-   static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet);
-   static bool exportPublicationSetToXML(PublicationSet* publicationSet);
+   static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet, FILE* fh);
+   static bool exportPublicationSetToXML(PublicationSet* publicationSet, FILE* fh);
    static bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
                                             const std::string&              customPrintingHeader,
                                             const std::string&              customPrintingTrailer,
                                             const std::string&              printingTemplate,
                                             const std::vector<std::string>& monthNames,
                                             const std::string&              nbsp,
-                                            const bool                      xmlStyle);
+                                            const bool                      xmlStyle,
+                                            FILE*                           fh);
 
    private:
    static std::string applyTemplate(Node*                           publication,
@@ -70,7 +71,8 @@ class PublicationSet
                                     const std::string&              printingTemplate,
                                     const std::vector<std::string>& monthNames,
                                     const std::string&              nbsp,
-                                    const bool                      xmlStyle);
+                                    const bool                      xmlStyle,
+                                    FILE*                           fh);
 
    size_t maxEntries;
    size_t entries;

@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 #include <set>
 
 #include "node.h"
@@ -194,6 +195,24 @@ static void sortChildren(Node* node)
 }
 
 
+// ###### Find existing or create new child node ############################
+Node* addOrUpdateChildNode(Node* node, const char* childKeyword, const char* value)
+{
+   Node* child = findChildNode(node, childKeyword);
+   if(child == NULL) {
+      child = makePublicationInfoItem(childKeyword, value);
+      assert(child != NULL);
+      child->next = node->child;
+      node->child = child;
+      sortChildren(node);
+   }
+   else {
+      child->value = value;
+   }
+   return(child);
+}
+
+
 // ###### Make publication ##################################################
 Node* makePublication(const char* type, const char* label, Node* publicationInfo)
 {
@@ -320,16 +339,25 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       node->priority = 230;
    }
    else if(node->keyword == "isbn") {
-      node->priority = 222;
+      node->priority = 223;
    }
    else if(node->keyword == "issn") {
+      node->priority = 222;
+   }
+   else if(node->keyword == "doi") {
       node->priority = 221;
    }
    else if(node->keyword == "note") {
       node->priority = 220;
    }
    else if(node->keyword == "url") {
-      node->priority = 200;
+      node->priority = 199;
+   }
+   else if(node->keyword == "url.size") {
+      node->priority = 198;
+   }
+   else if(node->keyword == "url.md5") {
+      node->priority = 197;
    }
    return(node);
 }

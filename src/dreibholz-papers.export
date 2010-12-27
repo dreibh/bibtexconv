@@ -9,7 +9,7 @@ cite ICN2005			TD-P06
 cite Contel2005			TD-P07
 cite LinuxTag2005		TD-P08
 cite Euromicro2005		TD-P09
-cite LCN2005		TD-P10
+cite LCN2005			TD-P10
 cite LCN2005-EdgeDevice		TD-P11
 cite Tencon2005			TD-P12
 cite KiVS2007			TD-P13
@@ -19,10 +19,10 @@ cite FGCN2007-HsMgt		TD-P16
 cite FGCN2007-LoadBalancing	TD-P17
 cite ADCOM2007			TD-P18
 cite ICDS2008-LUD		TD-P19
-cite ICDS2008-Failover		TD-P20
+cite ICDS2008-Failover		TD-P20		"Best Paper Award"	"Best Paper Award"
 cite OMNeT++Workshop2008	TD-P21
 cite Networking2008		TD-P22
-cite LCN2008-EdgeDevice         TD-P23
+cite LCN2008-EdgeDevice		TD-P23
 cite LCN2008-RSerPool		TD-P24
 cite FutureInternet2008		TD-P25
 cite FGCN2008			TD-P26
