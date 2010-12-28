@@ -62,7 +62,6 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
       Node* url         = findChildNode(publication, "url");
       if(url != NULL) {
          fprintf(stderr, "Checking URL of %s ... ", publication->keyword.c_str());
-         fflush(stderr);
 
          char downloadFileName[256];
          char mimeFileName[256];
@@ -106,7 +105,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                            if(httpErrorCode != 200) {
                               resultIsGood = false;
                               fprintf(stderr, "FAILED %s - HTTP returns code %u!\n",
-                                    url->value.c_str(), httpErrorCode);
+                                      url->value.c_str(), httpErrorCode);
 /*
                               rewind(headerFH);
                               size_t r = fread((char*)&header, 1, sizeof(header) - 1, headerFH);
@@ -154,7 +153,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                               }
                               else {
                                  fprintf(stderr, "FAILED %s: failed to obtain mime type of download file!\n",
-                                       url->value.c_str());
+                                         url->value.c_str());
                               }
 
                               // ====== Compare size, mime type and MD5 ========
@@ -168,22 +167,22 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                               const Node* urlSizeNode = findChildNode(publication, "url.size");
                               if((urlSizeNode != NULL) && (urlSizeNode->value != sizeString)) {
                                  fprintf(stderr, "FAILED %s: old size has been %s, new size is %s\n",
-                                       url->value.c_str(),
-                                       urlSizeNode->value.c_str(), sizeString.c_str());
+                                         url->value.c_str(),
+                                         urlSizeNode->value.c_str(), sizeString.c_str());
                                  errors++;
                               }
                               const Node* urlMimeNode = findChildNode(publication, "url.mime");
                               if((urlMimeNode != NULL) && (urlMimeNode->value != mimeString)) {
                                  fprintf(stderr, "FAILED %s: old mime type has been %s, new type mime is %s\n",
-                                       url->value.c_str(),
-                                       urlMimeNode->value.c_str(), mimeString.c_str());
+                                         url->value.c_str(),
+                                         urlMimeNode->value.c_str(), mimeString.c_str());
                                  errors++;
                               }
                               const Node* urlMD5Node = findChildNode(publication, "url.md5");
                               if((urlMD5Node != NULL) && (urlMD5Node->value != md5String)) {
                                  fprintf(stderr, "FAILED %s: old MD5 has been %s, new MD5 is %s\n",
-                                       url->value.c_str(),
-                                       urlMD5Node->value.c_str(), md5String.c_str());
+                                         url->value.c_str(),
+                                         urlMD5Node->value.c_str(), md5String.c_str());
                                  errors++;
                               }
 

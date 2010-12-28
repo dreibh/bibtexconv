@@ -1,15 +1,15 @@
 # Example for export to OpenDocument Text (ODT)
 # $Id$
 
-#include dreibholz-others.export
-#include dreibholz-papers.export
-#include dreibholz-rfcs.export
-#include dreibholz-thesises.export
+include dreibholz-others.export
+include dreibholz-papers.export
+include dreibholz-rfcs.export
+include dreibholz-thesises.export
 include dreibholz-id-workinggroup.export
-#include dreibholz-id-individual.export
-#include dreibholz-journals.export
-#include dreibholz-posters-and-demos.export
-#include dreibholz-talks.export
+include dreibholz-id-individual.export
+include dreibholz-journals.export
+include dreibholz-posters-and-demos.export
+include dreibholz-talks.export
 
 sort year/D month/D day/D title/A
 

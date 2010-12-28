@@ -1,4 +1,4 @@
-bibtexconv (0.7.0~test1-1ubuntu1) maverick; urgency=low
+bibtexconv (0.7.0~test2-1ubuntu1) maverick; urgency=low
 
   * Initial Debian release (Closes: #xxxxxx).
   * Initial Ubuntu release (LP: #xxxxxx).
