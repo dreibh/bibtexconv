@@ -107,14 +107,14 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                               resultIsGood = false;
                               fprintf(stderr, "FAILED %s - HTTP returns code %u!\n",
                                     url->value.c_str(), httpErrorCode);
-
+/*
                               rewind(headerFH);
                               size_t r = fread((char*)&header, 1, sizeof(header) - 1, headerFH);
                               if(r > 0) {
                                  header[r] = 0x00;
                                  fputs(header, stderr);
                               }
-
+*/
                               errors++;
                            }
                         }
@@ -145,7 +145,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                                     if(fgets((char*)&input, sizeof(input) - 1, mimeFH) != NULL) {
                                        mimeString = std::string(input);
                                        if( (mimeString.size() > 0) &&
-                                          (mimeString[mimeString.size() - 1] == '\n') ) {
+                                           (mimeString[mimeString.size() - 1] == '\n') ) {
                                           mimeString = mimeString.substr(0, mimeString.size() - 1);
                                        }
                                     }
@@ -201,7 +201,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                               addOrUpdateChildNode(publication, "url.checked", checkTime);
 
                               fprintf(stderr, "OK: size=%sB; type=%s; MD5=%s\n",
-                                    sizeString.c_str(), mimeString.c_str(), md5String.c_str());
+                                      sizeString.c_str(), mimeString.c_str(), md5String.c_str());
                            }
                            else {
                               fprintf(stderr, "FAILED %s: size is zero!\n", url->value.c_str());
