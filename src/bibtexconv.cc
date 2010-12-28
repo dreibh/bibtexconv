@@ -92,7 +92,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                         unsigned int v1, v2, httpErrorCode;
                         unsigned int r = fscanf(headerFH, "HTTP/%u.%u %u ",
                                                 &v1, &v2, &httpErrorCode);
-                        if(r == 3) {
+                        if(r != 3) {
                            if(httpErrorCode != 200) {
                               resultIsGood = false;
                               fprintf(stderr, "FAILED %s - HTTP returns code %u!\n",
@@ -104,6 +104,13 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
                            resultIsGood = false;
                            fprintf(stderr, "FAILED %s - Bad HTTP response!\n",
                                    url->value.c_str());
+                           rewind(headerFH);
+                           char buffer[4096];
+                           size_t r = fread((char*)&buffer, 1, sizeof(buffer) - 1, headerFH);
+                           if(r > 0) {
+                              buffer[r] = 0x00;
+                              fputs(buffer, stderr);
+                           }
                            errors++;
                         }
                      }
