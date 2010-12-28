@@ -14,5 +14,3 @@ cite draft-tuexen-tsvwg-sctp-multipath		TD-ID09
 cite draft-dreibholz-tsvwg-sctpsocket-multipath	TD-ID10
 cite draft-dreibholz-tsvwg-sctpsocket-sqinfo	TD-ID11
 cite draft-hohendorf-secure-sctp		TD-ID12
-
-cite draft-dreibholz-ipv4-flowlabel		TD-ID13

@@ -445,11 +445,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
                break;
             case 'I':   // ISBN
                child = findChildNode(publication, "isbn");
-               if(child) { result += string2utf8("ISBN" + (std::string)nbsp + child->value, nbsp, xmlStyle); } else { skip = true; }
+               if(child) { result += string2utf8("ISBN~" + child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
             case 'i':   // ISSN
                child = findChildNode(publication, "issn");
-               if(child) { result += string2utf8("ISSN"+ (std::string)nbsp + child->value, nbsp, xmlStyle); } else { skip = true; }
+               if(child) { result += string2utf8("ISSN~" + child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
             case 'U':   // URL
                child = findChildNode(publication, "url");

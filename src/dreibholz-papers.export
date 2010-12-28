@@ -19,7 +19,7 @@ cite FGCN2007-HsMgt		TD-P16
 cite FGCN2007-LoadBalancing	TD-P17
 cite ADCOM2007			TD-P18
 cite ICDS2008-LUD		TD-P19
-cite ICDS2008-Failover		TD-P20		"Best Paper Award"	"Best Paper Award"
+cite ICDS2008-Failover		TD-P20		"Awarded with the Best Paper Award" "Ausgezeichnet mit dem Best Paper Award"
 cite OMNeT++Workshop2008	TD-P21
 cite Networking2008		TD-P22
 cite LCN2008-EdgeDevice		TD-P23
@@ -36,3 +36,4 @@ cite AINA2010			TD-P33
 cite SERA2010			TD-P34
 cite FutureInternet2010		TD-P35
 cite Globecom2010		TD-P36
+cite ICN2011			TD-P37
