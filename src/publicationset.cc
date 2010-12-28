@@ -455,6 +455,40 @@ std::string PublicationSet::applyTemplate(Node*                           public
                child = findChildNode(publication, "url");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
+            case 'y':   // URL mime type
+               child = findChildNode(publication, "url.mime");
+               if(child) {
+                  if(child->value == "application/pdf") {
+                     result += "PDF";
+                  }
+                  else if(child->value == "application/xml") {
+                     result += "XML";
+                  }
+                  else if(child->value == "text/html") {
+                     result += "HTML";
+                  }
+                  else if(child->value == "text/plain") {
+                     result += "TXT";
+                  }
+                  else {
+                     result += child->value;
+                  }
+               } else { skip = true; }
+               break;
+            case 's':   // URL size
+               child = findChildNode(publication, "url.size");
+               if(i + 2 < printingTemplateSize) {
+                  switch(printingTemplate[i + 2]) {
+                     case 'B':   // B
+                        if(child) { result += string2utf8(format("%llu", atoll(child->value.c_str())), nbsp, xmlStyle); } else { skip = true; }
+                      break;
+                     case 'K':   // KiB
+                        if(child) { result += string2utf8(format("%llu", atoll(child->value.c_str()) / 1024), nbsp, xmlStyle); } else { skip = true; }
+                      break;
+                  }
+                  i++;
+               }
+               break;
             case 'X':   // Note
                child = findChildNode(publication, "note");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
@@ -509,11 +543,18 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
                break;
             case '1':   // Custom #1
-               if(publication->custom[0] != "") {
-                  result += string2utf8(publication->custom[0], nbsp, xmlStyle);
-               }
-               else {
-                  skip = true;
+            case '2':   // Custom #2
+            case '3':   // Custom #3
+            case '4':   // Custom #4
+            case '5':   // Custom #5
+               {
+                  const unsigned int id = printingTemplate[i + 1] - '1';
+                  if(publication->custom[id] != "") {
+                     result += string2utf8(publication->custom[id], nbsp, xmlStyle);
+                  }
+                  else {
+                     skip = true;
+                  }
                }
                break;
             default:
