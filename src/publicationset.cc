@@ -379,8 +379,16 @@ std::string PublicationSet::applyTemplate(Node*                           public
                child = findChildNode(publication, "booktitle");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
+            case 'r':   // Series
+               child = findChildNode(publication, "series");
+               if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+               break;
             case 'J':   // Journal
                child = findChildNode(publication, "journal");
+               if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+               break;
+            case 'u':   // Series
+               child = findChildNode(publication, "institution");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
             case 'E':   // Edition
@@ -458,6 +466,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
             case 'U':   // URL
                child = findChildNode(publication, "url");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+               break;
+            case 'd':   // DOI
+               child = findChildNode(publication, "doi");
+               if(child) { result += string2utf8("DOI~" + child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
             case 'y':   // URL mime type
                child = findChildNode(publication, "url.mime");
