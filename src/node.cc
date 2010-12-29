@@ -316,42 +316,45 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "booktitle") {
       node->priority = 251;
    }
-   else if(node->keyword == "journal") {
+   else if(node->keyword == "series") {
       node->priority = 250;
    }
-   else if(node->keyword == "type") {
+   else if(node->keyword == "journal") {
       node->priority = 249;
    }
-   else if(node->keyword == "volume") {
+   else if(node->keyword == "type") {
       node->priority = 248;
    }
-   else if(node->keyword == "number") {
+   else if(node->keyword == "volume") {
       node->priority = 247;
    }
-   else if(node->keyword == "pages") {
+   else if(node->keyword == "number") {
       node->priority = 246;
    }
-
-   else if(node->keyword == "school") {
-      node->priority = 243;
-   }
-   else if(node->keyword == "institution") {
-      node->priority = 242;
-   }
-   else if(node->keyword == "publisher") {
-      node->priority = 241;
-   }
-   else if(node->keyword == "address") {
-      node->priority = 240;
+   else if(node->keyword == "pages") {
+      node->priority = 245;
    }
 
    else if(node->keyword == "day") {
-      node->priority = 232;
+      node->priority = 242;
    }
    else if(node->keyword == "month") {
-      node->priority = 231;
+      node->priority = 241;
    }
    else if(node->keyword == "year") {
+      node->priority = 240;
+   }
+
+   else if(node->keyword == "school") {
+      node->priority = 233;
+   }
+   else if(node->keyword == "institution") {
+      node->priority = 232;
+   }
+   else if(node->keyword == "publisher") {
+      node->priority = 231;
+   }
+   else if(node->keyword == "address") {
       node->priority = 230;
    }
 

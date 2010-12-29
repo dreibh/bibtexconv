@@ -493,7 +493,7 @@ int main(int argc, char** argv)
          checkNewURLsOnly = true;
       }
       else {
-         fputs("ERROR: Bad arguments!\n", stderr);
+         fprintf(stderr, "ERROR: Bad argument %s!\n", argv[i]);
          exit(1);
       }
    }

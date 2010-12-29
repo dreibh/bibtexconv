@@ -164,6 +164,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
 
             if( (child->keyword == "title") ||
                 (child->keyword == "booktitle") ||
+                (child->keyword == "series") ||
                 (child->keyword == "journal") ) {
                fprintf(fh, "\t%s = \"{%s}\"", child->keyword.c_str(), child->value.c_str());
             }
@@ -322,7 +323,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             case 'a':   // Author LOOP BEGIN
                if(authorBegin != std::string::npos) {
                   fputs("ERROR: Unexpected author loop begin %a -> an author loop is still open!\n", stderr);
-                  return(false);
+                  return("");
                }
                author      = findChildNode(publication, "author");
                authorIndex = 0;
@@ -356,7 +357,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             case 'A':   // Author LOOP END
                if(authorBegin == std::string::npos) {
                   fputs("ERROR: Unexpected author loop end %A -> %a author loop begin needed first!\n", stderr);
-                  return(false);
+                  return("");
                }
                authorIndex += 3;
                if(authorIndex < author->arguments.size()) {
@@ -387,7 +388,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                child = findChildNode(publication, "journal");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
-            case 'u':   // Series
+            case 'u':   // Institution
                child = findChildNode(publication, "institution");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
@@ -531,7 +532,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                      default:
                         fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in subdivision part of custom printing template!",
                         printingTemplate[i + 2]);
-                        return(false);
+                        return("");
                         break;
                   }
                   if(type != NULL) {
@@ -576,7 +577,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             default:
                fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in custom printing template!",
                         printingTemplate[i + 1]);
-               return(false);
+               return("");
                break;
          }
          i++;
@@ -613,7 +614,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          else {
             fputs("ERROR: Unexpected ']' in custom printing template!\n", stderr);
-            return(false);
+            return("");
          }
       }
       else if(printingTemplate[i] == '|') {
@@ -650,7 +651,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          else {
             fputs("ERROR: Unexpected '|' in custom printing template!\n", stderr);
-            return(false);
+            return("");
          }
       }
       else {

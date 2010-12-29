@@ -22,13 +22,13 @@ echo <?xml version="1.0" encoding="utf-8" ?>\n
 echo <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">\n
 echo <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">\n
 echo <head>\n
-echo <title>Research and Publications</title>\n
+echo <title>Publications</title>\n
 echo </head>\n
 
 echo <body>\n\n
 
-echo <!-- ###### Research ################################################# -->\n
-echo <h2>Research and Publications</h2>\n\n
+echo <!-- ###### Publications ############################################# -->\n
+echo <h2>Publications</h2>\n\n
 
 
 # ====== Set header and trailer of each publication entry ===================
@@ -52,7 +52,7 @@ template+ %a[%f|%n; | and ]%F, %G%A:
 # ***** Title
 template+  [``<a href="%U">%T</a>''|``%T''] [([%y, ]%sK~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %H][, in <em>%B</em>][, in <em>%J</em>][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].
+template+ [, %H][, in <em>%B</em>][, in <em>%J</em>][, %r][, %?][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %$][, %S][, %u][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].
 # ****** Awards
 template+ [ <strong>%1.</strong>]
 
