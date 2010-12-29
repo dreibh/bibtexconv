@@ -65,7 +65,7 @@ template+ <text:bookmark-end text:name="%L"/></text:span> %a[%f|%n; | and ]%F, %
 # ***** Title
 template+  “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[ ([%y, ]%sK~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %B][, %r][, %J][, %u][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %$][, %S][, %I][, %i][, %d][, %@][, [[%M %D, |%M~]%Y].</text:p>
+template+ [, %B][, %r][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %I][, %i][, %d][, %@][, [[%M %D, |%M~]%Y].</text:p>
 # ***** URL including hyperlink
 template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a>
 template+ </text:span></text:p>].\n<text:p text:style-name="P1"/>
