@@ -50,7 +50,8 @@ unsigned long long getMicroTime()
 
 
 // ###### Check URLs ########################################################
-unsigned int checkAllURLs(PublicationSet* publicationSet)
+unsigned int checkAllURLs(PublicationSet* publicationSet,
+                          const bool      checkNewURLsOnly)
 {
    unsigned int errors = 0;
    for(size_t index = 0; index < publicationSet->size(); index++) {
@@ -61,6 +62,14 @@ unsigned int checkAllURLs(PublicationSet* publicationSet)
       Node* publication = publicationSet->get(index);
       Node* url         = findChildNode(publication, "url");
       if(url != NULL) {
+         if( (checkNewURLsOnly == true) &&
+             ( (findChildNode(publication, "url.size") != NULL) &&
+               (findChildNode(publication, "url.mime") != NULL) &&
+               (findChildNode(publication, "url.checked") != NULL) ) ) {
+            fprintf(stderr, "Skipping URL of %s.\n", publication->keyword.c_str());
+            continue;
+         }
+
          fprintf(stderr, "Checking URL of %s ... ", publication->keyword.c_str());
 
          char downloadFileName[256];
@@ -256,6 +265,7 @@ static std::vector<std::string> monthNames;
 static int handleInput(FILE*           fh,
                        PublicationSet& publicationSet,
                        const bool      checkURLs,
+                       const bool      checkNewURLsOnly,
                        unsigned int    recursionLevel = 0)
 {
    int result = 0;
@@ -346,7 +356,7 @@ static int handleInput(FILE*           fh,
          }
          else if((strncmp(input, "export", 5)) == 0) {
             if(checkURLs) {
-               result += checkAllURLs(&publicationSet);
+               result += checkAllURLs(&publicationSet, checkNewURLsOnly);
             }
             if(PublicationSet::exportPublicationSetToCustom(
                   &publicationSet,
@@ -390,7 +400,9 @@ static int handleInput(FILE*           fh,
                const char* includeFileName = (const char*)&input[8];
                FILE* includeFH = fopen(includeFileName, "r");
                if(includeFH != NULL) {
-                  result += handleInput(includeFH, publicationSet, checkURLs, recursionLevel + 1);
+                  result += handleInput(includeFH, publicationSet,
+                                        checkURLs, checkNewURLsOnly,
+                                        recursionLevel + 1);
                   fclose(includeFH);
                }
                else {
@@ -434,11 +446,12 @@ static int handleInput(FILE*           fh,
 // ###### Main program ######################################################
 int main(int argc, char** argv)
 {
-   bool        interactive    = true;
-   bool        checkURLs      = false;
-   const char* exportToBibTeX = NULL;
-   const char* exportToXML    = NULL;
-   const char* exportToCustom = NULL;
+   bool        interactive      = true;
+   bool        checkURLs        = false;
+   bool        checkNewURLsOnly = false;
+   const char* exportToBibTeX   = NULL;
+   const char* exportToXML      = NULL;
+   const char* exportToCustom   = NULL;
 
    monthNames.push_back("January");
    monthNames.push_back("February");
@@ -454,7 +467,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls}\n", argv[0]);
+      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -476,6 +489,9 @@ int main(int argc, char** argv)
       else if( strcmp(argv[i], "-check-urls") == 0 ) {
          checkURLs = true;
       }
+      else if( strcmp(argv[i], "-only-check-new-urls") == 0 ) {
+         checkNewURLsOnly = true;
+      }
       else {
          fputs("ERROR: Bad arguments!\n", stderr);
          exit(1);
@@ -495,7 +511,7 @@ int main(int argc, char** argv)
       if(!interactive) {
          publicationSet.addAll(bibTeXFile);
          if(checkURLs) {
-            result += checkAllURLs(&publicationSet);
+            result += checkAllURLs(&publicationSet, checkNewURLsOnly);
          }
 
          // ====== Export all to BibTeX =====================================
@@ -542,7 +558,7 @@ int main(int argc, char** argv)
       else {
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
                  (unsigned int)publicationSet.maxSize());
-         result = handleInput(stdin, publicationSet, checkURLs);
+         result = handleInput(stdin, publicationSet, checkURLs, checkNewURLsOnly);
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
       }
    }

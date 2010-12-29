@@ -342,14 +342,14 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "year") {
       node->priority = 230;
    }
+   else if(node->keyword == "doi") {
+      node->priority = 224;
+   }
    else if(node->keyword == "isbn") {
       node->priority = 223;
    }
    else if(node->keyword == "issn") {
       node->priority = 222;
-   }
-   else if(node->keyword == "doi") {
-      node->priority = 221;
    }
    else if(node->keyword == "note") {
       node->priority = 220;
