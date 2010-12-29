@@ -309,20 +309,31 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "title") {
       node->priority = 254;
    }
+
+   else if(node->keyword == "howpublished") {
+      node->priority = 252;
+   }
    else if(node->keyword == "booktitle") {
-      node->priority = 253;
+      node->priority = 251;
    }
    else if(node->keyword == "journal") {
-      node->priority = 253;
-   }
-   else if(node->keyword == "volume") {
       node->priority = 250;
    }
-   else if(node->keyword == "number") {
+   else if(node->keyword == "type") {
       node->priority = 249;
    }
-   else if(node->keyword == "pages") {
+   else if(node->keyword == "volume") {
       node->priority = 248;
+   }
+   else if(node->keyword == "number") {
+      node->priority = 247;
+   }
+   else if(node->keyword == "pages") {
+      node->priority = 246;
+   }
+
+   else if(node->keyword == "school") {
+      node->priority = 243;
    }
    else if(node->keyword == "institution") {
       node->priority = 242;
@@ -333,6 +344,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "address") {
       node->priority = 240;
    }
+
    else if(node->keyword == "day") {
       node->priority = 232;
    }
@@ -342,18 +354,23 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "year") {
       node->priority = 230;
    }
-   else if(node->keyword == "doi") {
+
+   else if(node->keyword == "isbn") {
       node->priority = 224;
    }
-   else if(node->keyword == "isbn") {
+   else if(node->keyword == "issn") {
       node->priority = 223;
    }
-   else if(node->keyword == "issn") {
+   else if(node->keyword == "urn") {
       node->priority = 222;
+   }
+   else if(node->keyword == "doi") {
+      node->priority = 221;
    }
    else if(node->keyword == "note") {
       node->priority = 220;
    }
+
    else if(node->keyword == "url") {
       node->priority = 199;
    }
@@ -366,5 +383,6 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "url.md5") {
       node->priority = 196;
    }
+
    return(node);
 }

@@ -167,6 +167,10 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                 (child->keyword == "journal") ) {
                fprintf(fh, "\t%s = \"{%s}\"", child->keyword.c_str(), child->value.c_str());
             }
+            else if( (child->keyword == "day") ||
+                     (child->keyword == "year") ) {
+               fprintf(fh, "\t%s = \"%u\"", child->keyword.c_str(), child->number);
+            }
             else if( (child->keyword == "month") ) {
                static const char* bibtexMonthNames[12] = {"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"};
                if((child->number >= 1) && (child->number <= 12)) {
