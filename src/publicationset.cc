@@ -388,10 +388,6 @@ std::string PublicationSet::applyTemplate(Node*                           public
                child = findChildNode(publication, "journal");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
                break;
-            case 'u':   // Institution
-               child = findChildNode(publication, "institution");
-               if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
-               break;
             case 'E':   // Edition
                child = findChildNode(publication, "edition");
                if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
@@ -508,7 +504,17 @@ std::string PublicationSet::applyTemplate(Node*                           public
                break;
             case 'X':   // Note
                child = findChildNode(publication, "note");
-               if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+               if(child) {
+                  if( (strncmp(child->value.c_str(), "ISBN", 4) == 0) ||
+                      (strncmp(child->value.c_str(), "ISSN", 4) == 0) ||
+                      (strncmp(child->value.c_str(), "{ISBN}", 6) == 0) ||
+                      (strncmp(child->value.c_str(), "{ISSN}", 6) == 0) ) {
+                     skip = true;
+                  }
+                  else {
+                     result += string2utf8(child->value, nbsp, xmlStyle);
+                  }
+               } else { skip = true; }
                break;
             case '%':
                result += '%';
