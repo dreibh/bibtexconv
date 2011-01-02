@@ -1,0 +1,18 @@
+Begin4
+Title:          bibtexconv
+Version:        0.7.1
+Entered-date:   2011-01-02
+Description:    BibTeXConv is a BibTeX file convertor which allows to export
+                BibTeX entries to other formats, including customly defined
+                text output. Furthermore, it provides the possibility to
+                check URLs (including MD5, size and MIME type computations)
+                and to verify ISBN and ISSN numbers.
+Keywords:       BibTeX, Publication Lists, Export
+Author:         dreibh@iem.uni-due.de (Thomas Dreibholz)
+Maintained-by:  dreibh@iem.uni-due.de (Thomas Dreibholz)
+Primary-site:   http://www.iem.uni-due.de/~dreibh/bibtexconv
+                388 kB download/bibtexconv-0.7.1.tar.gz
+Original-site:  http://www.iem.uni-due.de/~dreibh/bibtexconv
+Platforms:      Linux, FreeBSD, MacOS, Solaris
+Copying-policy: GPL
+End
