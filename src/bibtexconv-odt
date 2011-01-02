@@ -1,7 +1,7 @@
 #!/bin/bash
 # $Id$
 #
-# Copyright (C) 2002-2010 by Thomas Dreibholz
+# Copyright (C) 2010-2011 by Thomas Dreibholz
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,14 +27,16 @@ TEMPLATE_ODT="$1"
 OUTPUT_ODT="$2"
 BIBTEX_FILE="$3"
 EXPORT_SCRIPT="$4"
+TEMP_ZIP=`mktemp`
 
 RESULT=1
 
 bibtexconv $BIBTEX_FILE <$EXPORT_SCRIPT >content.xml && \
-zip "$TEMPLATE_ODT" --out "$OUTPUT_ODT" -x content.xml && \
+cp "$TEMPLATE_ODT" "$TEMP_ZIP"
+zip "$TEMP_ZIP" --out "$OUTPUT_ODT" -x content.xml && \
 zip "$OUTPUT_ODT" content.xml && \
 RESULT=0
 
-rm -f content.xml
+rm -f content.xml "$TEMP_ZIP"
 
 exit $RESULT

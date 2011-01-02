@@ -19,7 +19,7 @@
 .\" Contact: dreibh@iem.uni-due.de
 .\"
 .\" ###### Setup ############################################################
-.Dd December 10, 2010
+.Dd January 2, 2011
 .Dt bibtexconv-odt 8
 .Os bibtexconv-odt
 .\" ###### Name #############################################################
@@ -36,7 +36,7 @@
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
 .Nm bibtexconv-odt
-runs BibTeXConv to generate an Open Document Text (ODT) contents file, which
+runs bibtexconv to generate an Open Document Text (ODT) content.xml file, which
 is then joined with an existing template ODT file into an output ODT file.
 .Pp
 .\" ###### Arguments ########################################################
@@ -55,7 +55,8 @@ The input export script for BibTeXConv.
 .\" ###### Arguments ########################################################
 .Sh EXAMPLES
 .Bl -tag -width indent
-.It bibtexconv-odt odt-template.odt output.odt references.bib my-exports.export
+.It bibtexconv-odt /usr/share/bibtexconv/ODT-Template.odt MyPublications.odt /usr/share/bibtexconv/ExampleReferences.bib /usr/share/bibtexconv/odt-example.export
+Uses export script /usr/share/bibtexconv/odt-example.export to export references from /usr/share/bibtexconv/ExampleReferences.bib to MyPublications.odt as OpenDocument Text (ODT), according to the template ODT file /usr/share/bibtexconv/ODT-Template.odt.
 .El
 .\" ###### Authors ##########################################################
 .Sh AUTHORS
