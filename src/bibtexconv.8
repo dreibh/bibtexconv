@@ -44,8 +44,9 @@ formats, including customly defined text output. Furthermore, it provides the
 possibility to check URLs (including MD5, size and MIME type computations) and
 to verify ISBN and ISSN numbers.
 .br
-bibtexconv provides an interactive mode which allows for fine-granular
-selection of entries, sorting and export template specification.
+bibtexconv provides an interactive mode (usually used in form of export
+scripts) which allows for fine-granular selection of entries, sorting and
+export template specification.
 .Pp
 .\" ###### Arguments ########################################################
 .Sh ARGUMENTS
@@ -68,10 +69,46 @@ MD5, size and/or MIME type are still unknown.
 Turns on non-interactive mode. Useful for just performing URL checks and
 ISBN/ISSN verification.
 .El
+.\" ###### Commands #########################################################
+.Sh COMMANDS
+After startup, bibtexconv accepts the following commands from standard input
+(*not* as command-line arguments!):
+.Bl -tag -width ident
+.It cite key custom1 custom2 custom3 custom4 custom5
+Select specific entry in the input BibTeX file, given by key. Optionally, up
+to five custom strings may be attached to the selected entry.
+.It citeAll
+Select all entries in the input BibTeX file.
+.It clear
+Clear all selections.
+.It echo string
+Write given string to standard output.
+.It export
+Export selected entries to standard output, according to configured printing
+template.
+.It header
+.It include file
+Include another export script, given by file name.
+.It monthNames jan feb mar apr may jun jul aug sep oct nov dec
+Changes textual representation of month names. This is necessary when
+non-English names are required for export.
+.It nbsp
+Changes textual representation of the "non-breakable space", for example
+&nbsp; in HTML or ~ in BibTeX.
+.It sort
+.It template
+.It template+
+.It templatenew
+.It trailer
+.It utf8Style
+.It xmlStyle
+.El
+.Pp
 .\" ###### Arguments ########################################################
 .Sh EXAMPLES
 Have a look into /usr/share/bibtexconv/ (or corresponding path of your
-system) for example export scripts.
+system) for example export scripts. The export scripts contain the commands
+which are read by bibtexconv from standard input.
 .Bl -tag -width indent
 .It bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
 Checks URLs of all entries in /usr/share/bibtexconv/ExampleReferences.bib, adds MD5, size and MIME type
