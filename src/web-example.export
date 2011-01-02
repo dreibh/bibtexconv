@@ -1,15 +1,20 @@
-# Example for export to OpenDocument Text (ODT)
+# Example for export to XHTML 1.1
 # $Id$
 
-include dreibholz-others.export
-include dreibholz-papers.export
-include dreibholz-rfcs.export
-include dreibholz-thesises.export
-include dreibholz-id-workinggroup.export
-include dreibholz-id-individual.export
-include dreibholz-journals.export
-include dreibholz-posters-and-demos.export
-include dreibholz-talks.export
+# Select all entries.
+citeAll
+
+# Usually, there should be a more fine-granular selection.
+# For convenience, it is useful to make them in included files.
+#include dreibholz-others.export
+#include dreibholz-papers.export
+#include dreibholz-rfcs.export
+#include dreibholz-thesises.export
+#include dreibholz-id-workinggroup.export
+#include dreibholz-id-individual.export
+#include dreibholz-journals.export
+#include dreibholz-posters-and-demos.export
+#include dreibholz-talks.export
 
 sort year/D month/D day/D title/A
 

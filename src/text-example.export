@@ -1,0 +1,36 @@
+# Example for export to plain text
+# $Id$
+
+
+templatenew
+template+ [%bY===== YEAR %Y =====\n][%bM---- %M %Y ----\n]
+# ***** Label
+template+ \[%C\]~
+# ***** Authors
+template+ %a[%f|%n; | and ]%F, %G%A:
+# ***** Title
+template+  ["%T"] [([%y, ]%sK~KiB)]
+# ***** Bibliographic data of publication
+template+ [, %H][, in %B][, in %J][, %r][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %?][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].\n
+template+ [URL: %U.\n]
+template+ \n
+
+#template [%bY===== YEAR %Y =====\n][%bM---- %M %Y ----\n]*~\[%C\] %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %H][, %J][, %?][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %@][, [[%M %D, |%M~]%Y][, %I][, %i].\nURL: %U.\n\n
+
+
+# Before any citation is printed, print a list title:
+echo ===== Begin of My Publications List =====\n
+
+# Set header and trailer of each publication entry:
+#header *~
+#trailer \n
+
+
+# Select and export all entries.
+citeAll
+sort year/A month/D day/D
+export
+
+
+# Print after all publications:
+echo ===== End of My Publications List =====\n

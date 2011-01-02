@@ -30,7 +30,7 @@ EXPORT_SCRIPT="$4"
 
 RESULT=1
 
-./bibtexconv $BIBTEX_FILE <$EXPORT_SCRIPT >content.xml && \
+bibtexconv $BIBTEX_FILE <$EXPORT_SCRIPT >content.xml && \
 zip "$TEMPLATE_ODT" --out "$OUTPUT_ODT" -x content.xml && \
 zip "$OUTPUT_ODT" content.xml && \
 RESULT=0
