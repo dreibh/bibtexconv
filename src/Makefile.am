@@ -8,10 +8,10 @@ bibtexconv_SOURCES = \
    node.cc node.h \
    publicationset.h publicationset.cc \
    grammar.yy scanner.ll
-bibtexconv_LDADD   = $(CURL_LIBS) $(CRYPTO_LIBS)
+bibtexconv_LDADD = $(CURL_LIBS) $(CRYPTO_LIBS)
 
 bibtexconvdir        = $(datadir)/bibtexconv
-dist_bibtexconv_DATA = ODT-Template.odt odt-example.export web-example.export text-example.export
+dist_bibtexconv_DATA = ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export text-example.export
 
 dist_bin_SCRIPTS = bibtexconv-odt
 

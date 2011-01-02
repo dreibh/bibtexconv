@@ -70,11 +70,16 @@ ISBN/ISSN verification.
 .El
 .\" ###### Arguments ########################################################
 .Sh EXAMPLES
+Have a look into /usr/share/bibtexconv/ (or corresponding path of your
+system) for example export scripts.
 .Bl -tag -width indent
-.It bibtexconv References.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
-Checks URLs of all entries in References.bib, adds MD5, size and MIME type
+.It bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
+Checks URLs of all entries in /usr/share/bibtexconv/ExampleReferences.bib, adds MD5, size and MIME type
 items and writes the results to UpdatedReferences.bib.
-.It ...
+.It bibtexconv /usr/share/bibtexconv/ExampleReferences.bib </usr/share/bibtexconv/web-example.export >MyPublications.html
+Uses export script /usr/share/bibtexconv/web-example.export to export references from /usr/share/bibtexconv/ExampleReferences.bib to MyPublications.html as XHTML 1.1.
+.It bibtexconv /usr/share/bibtexconv/ExampleReferences.bib </usr/share/bibtexconv/text-example.export >MyPublications.txt
+Uses export script /usr/share/bibtexconv/web-example.export to export references from /usr/share/bibtexconv/ExampleReferences.bib to MyPublications.txt as plain text.
 .El
 .\" ###### Authors ##########################################################
 .Sh AUTHORS
