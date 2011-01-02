@@ -1,6 +1,6 @@
 /* $Id$
  *
- * BibTeX Convertor
+ * BibTeX Converter
  * Copyright (C) 2010-2011 by Thomas Dreibholz
  *
  * This program is free software: you can redistribute it and/or modify

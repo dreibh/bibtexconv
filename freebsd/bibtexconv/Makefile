@@ -12,7 +12,7 @@ MASTER_SITES=	http://www.iem.uni-due.de/~dreibh/bibtexconv/download/ \
 		http://www.exp-math.uni-essen.de/~dreibh/bibtexconv/download/
 
 MAINTAINER=	dreibh@iem.uni-due.de
-COMMENT=	BibTeX Convertor
+COMMENT=	BibTeX Converter
 
 # LIB_DEPENDS+=
 
