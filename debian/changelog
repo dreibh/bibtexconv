@@ -1,6 +1,6 @@
-bibtexconv (0.7.0~test2-1ubuntu1) maverick; urgency=low
+bibtexconv (0.7.0~test4-1ubuntu1) natty; urgency=low
 
   * Initial Debian release (Closes: #xxxxxx).
   * Initial Ubuntu release (LP: #xxxxxx).
 
- -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Mon, 27 Dec 2010 14:14:14 +0200
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Sun, 02 Jan 2011 11:11:11 +0200

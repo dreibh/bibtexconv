@@ -1,3 +1,6 @@
-src/bibtexconv       /usr/bin
-src/bibtexconv-odt   /usr/bin
-src/odt-template.odt /usr/share/bibtexconv
+src/bibtexconv          /usr/bin
+src/bibtexconv-odt      /usr/bin
+src/ODT-Template.odt    /usr/share/bibtexconv
+src/web-example.export  /usr/share/bibtexconv
+src/odt-example.export  /usr/share/bibtexconv
+src/text-example.export /usr/share/bibtexconv
