@@ -55,9 +55,11 @@ template+ <li><p class=\"description\">
 # ***** Authors
 template+ %a[%f|%n; | and ]%F, %G%A:
 # ***** Title
-template+  [``<a href="%U">%T</a>''|``%T''] [([%y, ]%sK~KiB)]
+template+  [``<a href="%U">%T</a>´´|``%T´´] [([%y, ]%sK~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %H][, in <em>%B</em>][, in <em>%J</em>][, %r][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %?][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].
+template+ [, %H][, in <em>%J</em>][, in <em>%B</em>]
+template+ [, %t[, %N][, %r][, vol.~%V][, pp.~%P]|[, %r][, vol.~%V][, no.~%N][, pp.~%P]]
+template+ [, %$][, %S][, %?][, %I][, %i][, %@][, %X][, [[%M %D, |%M~]%Y].
 # ****** Awards
 template+ [ <strong>%1.</strong>]
 
