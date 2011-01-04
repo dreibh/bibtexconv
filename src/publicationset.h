@@ -53,7 +53,10 @@ class PublicationSet
              const size_t        maxSortLevels);
    void clearAll();
 
-   static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet, FILE* fh);
+   static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet,
+                                            FILE*           fh,
+                                            const bool      skipNotesWithISBNandISSN,
+                                            const bool      addNotesWithISBNandISSN);
    static bool exportPublicationSetToXML(PublicationSet* publicationSet, FILE* fh);
    static bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
                                             const std::string&              customPrintingHeader,

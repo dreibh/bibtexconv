@@ -143,8 +143,12 @@ void PublicationSet::sort(const std::string* sortKey,
 
 // ###### Export to BibTeX ##################################################
 bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet,
-                                                  FILE*           fh)
+                                                  FILE*           fh,
+                                                  const bool      skipNotesWithISBNandISSN,
+                                                  const bool      addNotesWithISBNandISSN)
 {
+   const Node* issn = NULL;
+   const Node* isbn = NULL;
    for(size_t index = 0; index < publicationSet->size(); index++) {
       const Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
@@ -154,11 +158,12 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
          fprintf(fh, "@%s{ %s, \n", publication->value.c_str(),
                                     publication->keyword.c_str());
 
-         bool empty  = true;
-         Node* child = publication->child;
+         bool empty            = true;
+         Node* child           = publication->child;
+         const char* separator = "";
          while(child != NULL) {
             if(!empty) {
-               fputs(",\n", fh);
+               separator = ",\n";
             }
             empty = false;
 
@@ -166,25 +171,51 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                 (child->keyword == "booktitle") ||
                 (child->keyword == "series") ||
                 (child->keyword == "journal") ) {
-               fprintf(fh, "\t%s = \"{%s}\"", child->keyword.c_str(), child->value.c_str());
+               fprintf(fh, "%s\t%s = \"{%s}\"", separator, child->keyword.c_str(), child->value.c_str());
             }
             else if( (child->keyword == "day") ||
                      (child->keyword == "year") ) {
-               fprintf(fh, "\t%s = \"%u\"", child->keyword.c_str(), child->number);
+               fprintf(fh, "%s\t%s = \"%u\"", separator, child->keyword.c_str(), child->number);
             }
             else if( (child->keyword == "month") ) {
                static const char* bibtexMonthNames[12] = {"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"};
                if((child->number >= 1) && (child->number <= 12)) {
-                  fprintf(fh, "\t%s = %s", child->keyword.c_str(), bibtexMonthNames[child->number - 1]);
+                  fprintf(fh, "%s\t%s = %s", separator, child->keyword.c_str(), bibtexMonthNames[child->number - 1]);
                }
             }
             else if( (child->keyword == "url") ) {
-               fprintf(fh, "\t%s = \"\\url{%s}\"", child->keyword.c_str(), child->value.c_str());
+               fprintf(fh, "%s\t%s = \"\\url{%s}\"", separator, child->keyword.c_str(), child->value.c_str());
+            }
+            else if( (child->keyword == "note") ) {
+               if( (skipNotesWithISBNandISSN == false) ||
+                   ((strncmp(child->value.c_str(), "ISBN", 4) != 0) &&
+                    (strncmp(child->value.c_str(), "ISSN", 4) != 0) &&
+                    (strncmp(child->value.c_str(), "{ISBN}", 6) != 0) &&
+                    (strncmp(child->value.c_str(), "{ISSN}", 6) != 0)) ) {
+                  fprintf(fh, "%s\t%s = \"%s\"", separator, child->keyword.c_str(), child->value.c_str());
+               }
             }
             else {
-               fprintf(fh, "\t%s = \"%s\"", child->keyword.c_str(), child->value.c_str());
+               if(child->keyword == "isbn") {
+                  isbn = child;
+               }
+               else if(child->keyword == "issn") {
+                  issn = child;
+               }
+               fprintf(fh, "%s\t%s = \"%s\"", separator, child->keyword.c_str(), child->value.c_str());
             }
             child = child->next;
+         }
+
+         if( (addNotesWithISBNandISSN) &&
+             ((isbn != NULL) || (issn != NULL)) ) {
+            if(isbn) {
+               fprintf(fh, "%s\tnote = \"{ISBN} %s\"", separator, isbn->value.c_str());
+               separator = ",\n";
+            }
+            if(issn) {
+               fprintf(fh, "%s\tnote = \"{ISSN} %s\"", separator, issn->value.c_str());
+            }
          }
 
          fputs("\n}\n\n", fh);

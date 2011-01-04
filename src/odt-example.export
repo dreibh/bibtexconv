@@ -58,17 +58,21 @@ template+ [%bY<text:h text:style-name="Heading_20_2" text:outline-level="2">Year
 # ***** Subsubsection: month
 template+ [%bM<text:h text:style-name="Heading_20_3" text:outline-level="3">%M</text:h>]
 
-template+ <text:p text:style-name="P1"><text:span text:style-name="T1">
+# ***** Begin of Entry
+template+ <text:p text:style-name="P1">
 # ***** Label including text mark
-template+ <text:bookmark-start text:name="%L"/>\[%C\]
-template+ <text:bookmark-end text:name="%L"/></text:span> %a[%f|%n; | and ]%F, %G%A:
+template+ <text:span text:style-name="T1">
+template+ <text:bookmark-start text:name="%L"/>\[%C\] <text:bookmark-end text:name="%L"/>
+template+ %a[%f|%n; | and ]%F, %G%A:
+template+ </text:span>
 # ***** Title
 template+  “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[ ([%y, ]%sK~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %B][, %r][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %I][, %i][, %d][, %@][, [[%M %D, |%M~]%Y].</text:p>
+template+ [, %H][, %B][, %r][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %I][, %i][, %d][, %@][, [[%M~%D, |%M~]%Y].</text:p>
 # ***** URL including hyperlink
-template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a>
-template+ </text:span></text:p>].\n<text:p text:style-name="P1"/>
+template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a>.</text:span></text:p>]
+# ***** End of Entry
+template+ <text:p text:style-name="P1"/>
 
 
 # ====== Finally, print all selected publications ===========================

@@ -36,6 +36,8 @@
 .Op Fl non-interactive
 .Op Fl check-urls
 .Op Fl only-check-new-urls
+.Op Fl skip-notes-with-isbn-and-issn
+.Op Fl add-notes-with-isbn-and-issn
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
 .Nm bibtexconv
@@ -65,6 +67,10 @@ entries.
 .It Fl only-check-new-urls
 Combined with -check-urls, checks are only performed for new entries where
 MD5, size and/or MIME type are still unknown.
+.It Fl skip-notes-with-isbn-and-issn
+When reading the BibTeX file, ignore "note" items with ISBN and ISSN.
+.It Fl add-notes-with-isbn-and-issn
+When writing a BibTeX file, create "note" items with ISBN and ISSN.
 .It non-interactive
 Turns on non-interactive mode. Useful for just performing URL checks and
 ISBN/ISSN verification.

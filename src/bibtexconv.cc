@@ -446,12 +446,14 @@ static int handleInput(FILE*           fh,
 // ###### Main program ######################################################
 int main(int argc, char** argv)
 {
-   bool        interactive      = true;
-   bool        checkURLs        = false;
-   bool        checkNewURLsOnly = false;
-   const char* exportToBibTeX   = NULL;
-   const char* exportToXML      = NULL;
-   const char* exportToCustom   = NULL;
+   bool        interactive              = true;
+   bool        checkURLs                = false;
+   bool        checkNewURLsOnly         = false;
+   bool        skipNotesWithISBNandISSN = true;
+   bool        addNotesWithISBNandISSN  = false;
+   const char* exportToBibTeX           = NULL;
+   const char* exportToXML              = NULL;
+   const char* exportToCustom           = NULL;
 
    monthNames.push_back("January");
    monthNames.push_back("February");
@@ -467,7 +469,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls}\n", argv[0]);
+      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -491,6 +493,13 @@ int main(int argc, char** argv)
       }
       else if( strcmp(argv[i], "-only-check-new-urls") == 0 ) {
          checkNewURLsOnly = true;
+      }
+      else if( strcmp(argv[i], "-skip-notes-with-isbn-and-issn") == 0 ) {
+         skipNotesWithISBNandISSN = true;
+      }
+      else if( strcmp(argv[i], "-add-notes-with-isbn-and-issn") == 0 ) {
+         skipNotesWithISBNandISSN = true;   // Drop old ones, if there are any
+         addNotesWithISBNandISSN  = true;   // Compute new ones
       }
       else {
          fprintf(stderr, "ERROR: Bad argument %s!\n", argv[i]);
@@ -518,7 +527,9 @@ int main(int argc, char** argv)
          if(exportToBibTeX) {
             FILE* fh = fopen(exportToBibTeX, "w");
             if(fh != NULL) {
-               if(PublicationSet::exportPublicationSetToBibTeX(&publicationSet, fh) == false) {
+               if(PublicationSet::exportPublicationSetToBibTeX(&publicationSet, fh,
+                                                               skipNotesWithISBNandISSN,
+                                                               addNotesWithISBNandISSN) == false) {
                   exit(1);
                }
                fclose(fh);
