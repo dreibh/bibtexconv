@@ -98,7 +98,7 @@ std::string string2utf8(const std::string& string,
          }
       }
 
-      if(result.substr(pos, 1) == "~") {
+      if( (nbsp.size() > 0) && (result.substr(pos, 1) == "~") ) {
          result.replace(pos, 1, nbsp);
       }
 

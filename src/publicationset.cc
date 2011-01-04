@@ -493,11 +493,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
                break;
             case 'U':   // URL
                child = findChildNode(publication, "url");
-               if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+               if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
                break;
             case 'd':   // DOI
                child = findChildNode(publication, "doi");
-               if(child) { result += string2utf8("DOI~" + child->value, nbsp, xmlStyle); } else { skip = true; }
+               if(child) { result += string2utf8("DOI~" + child->value, "", xmlStyle); } else { skip = true; }
                break;
             case 'y':   // URL mime type
                child = findChildNode(publication, "url.mime");
