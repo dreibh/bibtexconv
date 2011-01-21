@@ -147,8 +147,6 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                                                   const bool      skipNotesWithISBNandISSN,
                                                   const bool      addNotesWithISBNandISSN)
 {
-   const Node* issn = NULL;
-   const Node* isbn = NULL;
    for(size_t index = 0; index < publicationSet->size(); index++) {
       const Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
@@ -158,8 +156,10 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
          fprintf(fh, "@%s{ %s, \n", publication->value.c_str(),
                                     publication->keyword.c_str());
 
-         bool empty            = true;
+         bool  empty           = true;
          Node* child           = publication->child;
+         const Node* issn      = NULL;
+         const Node* isbn      = NULL;
          const char* separator = "";
          while(child != NULL) {
             if(!empty) {
@@ -194,6 +194,9 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                     (strncmp(child->value.c_str(), "{ISSN}", 6) != 0)) ) {
                   fprintf(fh, "%s\t%s = \"%s\"", separator, child->keyword.c_str(), child->value.c_str());
                }
+            }
+            else if( (child->keyword == "removeme") ) {
+               // Skip this entry. Useful for combining BibTeXConv with "sed" filtering.
             }
             else {
                if(child->keyword == "isbn") {
