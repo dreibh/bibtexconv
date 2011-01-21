@@ -1,168 +1,165 @@
 ------------------------------------------------------------------------
+r890 | dreibh | 2011-01-21 10:56:21 +0100 (Fri, 21 Jan 2011) | 2 lines
+
+Important bugfix: ISBN/ISSN notes for entries without ISBN/ISSN has been generated mistakenly when isbn/issn pointers had been set by a previous entry.
+
+------------------------------------------------------------------------
+r880 | dreibh | 2011-01-12 11:28:39 +0100 (Wed, 12 Jan 2011) | 1 line
+
+
+------------------------------------------------------------------------
+r878 | dreibh | 2011-01-04 20:44:39 +0100 (Tue, 04 Jan 2011) | 2 lines
+
+URL string handling fix (URL and DOI entries).
+
+------------------------------------------------------------------------
+r877 | dreibh | 2011-01-04 20:01:57 +0100 (Tue, 04 Jan 2011) | 2 lines
+
+Updated HTML export example.
+
+------------------------------------------------------------------------
+r876 | dreibh | 2011-01-04 11:55:34 +0100 (Tue, 04 Jan 2011) | 2 lines
+
+Updated bibtexconv's make-ppa script.
+
+------------------------------------------------------------------------
+r875 | dreibh | 2011-01-04 09:57:16 +0100 (Tue, 04 Jan 2011) | 2 lines
+
+Added option to add/remote ISBN/ISSN notes.
+
+------------------------------------------------------------------------
+r872 | dreibh | 2011-01-02 16:20:21 +0100 (Sun, 02 Jan 2011) | 2 lines
+
+Language fix (convertor -> converter).
+
+------------------------------------------------------------------------
+r871 | dreibh | 2011-01-02 15:26:16 +0100 (Sun, 02 Jan 2011) | 3 lines
+
+- Version update.
+- Write LSM entry.
+
+------------------------------------------------------------------------
+r870 | dreibh | 2011-01-02 15:04:57 +0100 (Sun, 02 Jan 2011) | 2 lines
+
+Added test script.
+
+------------------------------------------------------------------------
+r869 | dreibh | 2011-01-02 15:02:36 +0100 (Sun, 02 Jan 2011) | 2 lines
+
+Documentation update.
+
+------------------------------------------------------------------------
+r868 | dreibh | 2011-01-02 14:47:32 +0100 (Sun, 02 Jan 2011) | 2 lines
+
+ODT export improvements.
+
+------------------------------------------------------------------------
+r867 | dreibh | 2011-01-02 14:34:35 +0100 (Sun, 02 Jan 2011) | 2 lines
+
+Examples and documentation updates.
+
+------------------------------------------------------------------------
+r866 | dreibh | 2011-01-02 14:27:39 +0100 (Sun, 02 Jan 2011) | 2 lines
+
+Version update.
+
+------------------------------------------------------------------------
+r865 | dreibh | 2011-01-02 14:19:22 +0100 (Sun, 02 Jan 2011) | 2 lines
+
+Added more examples, directory clean-up.
+
+------------------------------------------------------------------------
 r864 | dreibh | 2010-12-29 23:27:28 +0100 (Wed, 29 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/dreibholz-talks.export
-   M /trunk/bibtexconv/src/odt-example.export
 
 ODT export improvement.
 
 ------------------------------------------------------------------------
 r863 | dreibh | 2010-12-29 22:09:57 +0100 (Wed, 29 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/publicationset.cc
-   M /trunk/bibtexconv/src/web.export
 
 Output fixes.
 
 ------------------------------------------------------------------------
 r862 | dreibh | 2010-12-29 21:23:33 +0100 (Wed, 29 Dec 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/publicationset.cc
-   M /trunk/bibtexconv/src/web.export
 
 - Error handling bugfix.
 - Output improvements.
 
 ------------------------------------------------------------------------
 r860 | dreibh | 2010-12-29 16:17:47 +0100 (Wed, 29 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/odt-example.export
-   M /trunk/bibtexconv/src/publicationset.cc
 
 Output improvements (DOI, series, institution).
 
 ------------------------------------------------------------------------
 r859 | dreibh | 2010-12-29 15:46:44 +0100 (Wed, 29 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/publicationset.cc
 
 Small output improvements for BibTeX export.
 
 ------------------------------------------------------------------------
 r858 | dreibh | 2010-12-29 01:40:55 +0100 (Wed, 29 Dec 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/dreibholz-papers.export
-   M /trunk/bibtexconv/src/node.cc
 
 - Added option to skip already-known URLs during URL check.
 - Improved DOI handling.
 
 ------------------------------------------------------------------------
 r854 | dreibh | 2010-12-28 22:11:41 +0100 (Tue, 28 Dec 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/configure.in
-   M /trunk/bibtexconv/debian/changelog
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/web.export
 
 - Code clean-ups.
 - Version update.
 
 ------------------------------------------------------------------------
 r853 | dreibh | 2010-12-28 21:34:17 +0100 (Tue, 28 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Code clean-ups.
 
 ------------------------------------------------------------------------
 r852 | dreibh | 2010-12-28 21:12:57 +0100 (Tue, 28 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 curl download now supports following redirections.
 
 ------------------------------------------------------------------------
 r851 | dreibh | 2010-12-28 20:13:55 +0100 (Tue, 28 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 More verbose HTTP download errors.
 
 ------------------------------------------------------------------------
 r850 | dreibh | 2010-12-28 20:13:43 +0100 (Tue, 28 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/web.export
 
 Updated web export script.
 
 ------------------------------------------------------------------------
 r849 | dreibh | 2010-12-28 20:10:53 +0100 (Tue, 28 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/publicationset.cc
 
 Added support to print file type.
 
 ------------------------------------------------------------------------
 r848 | dreibh | 2010-12-28 18:45:43 +0100 (Tue, 28 Dec 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/src/dreibholz-id-individual.export
-   M /trunk/bibtexconv/src/dreibholz-papers.export
-   M /trunk/bibtexconv/src/dreibholz-thesises.export
-   M /trunk/bibtexconv/src/publicationset.cc
-   A /trunk/bibtexconv/src/web.export (from /trunk/bibtexconv/src/odt-example.export:847)
 
 - Export fixes for nbsp in ISBN/ISSN.
 - Wrote export script for HTML output.
 
 ------------------------------------------------------------------------
 r847 | dreibh | 2010-12-27 23:27:04 +0100 (Mon, 27 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/publicationset.cc
 
 Some improvements for export and URL checking output.
 
 ------------------------------------------------------------------------
 r846 | dreibh | 2010-12-27 22:28:40 +0100 (Mon, 27 Dec 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/autogen.sh
-   M /trunk/bibtexconv/src/cv.export
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/publicationset.cc
-   M /trunk/bibtexconv/src/scanner.ll
 
 - Some bug fixed.
 - Added support for "howpublished" entry.
 
 ------------------------------------------------------------------------
 r845 | dreibh | 2010-12-27 20:54:03 +0100 (Mon, 27 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/configure.in
-   M /trunk/bibtexconv/src/Makefile.am
 
 Fixed library dependency.
 
 ------------------------------------------------------------------------
 r844 | dreibh | 2010-12-27 20:06:07 +0100 (Mon, 27 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/configure.in
-   M /trunk/bibtexconv/debian/changelog
-   M /trunk/bibtexconv/debian/control
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/publicationset.cc
 
 BibTeXConv now identifies MIME type of URLs (using "file" tool).
 
 ------------------------------------------------------------------------
 r843 | dreibh | 2010-12-27 19:21:49 +0100 (Mon, 27 Dec 2010) | 6 lines
-Changed paths:
-   M /trunk/bibtexconv/src/Makefile.am
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/cv.export
-   M /trunk/bibtexconv/src/dreibholz-papers.export
-   M /trunk/bibtexconv/src/dreibholz-thesises.export
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/node.h
-   M /trunk/bibtexconv/src/publicationset.cc
-   M /trunk/bibtexconv/src/publicationset.h
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/t1.cc
 
 A set of improvements to BibTeXConv:
 - Support of writing size and MD5 of URL into BibTeX file. Will be compared when checking URLs again.
@@ -172,134 +169,66 @@ A set of improvements to BibTeXConv:
 
 ------------------------------------------------------------------------
 r842 | dreibh | 2010-12-12 02:30:47 +0100 (Sun, 12 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Fixed libcurl initialization/clean-up calls.
 
 ------------------------------------------------------------------------
 r841 | dreibh | 2010-12-12 01:04:32 +0100 (Sun, 12 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Improved detection of bad HTTP URLs in BibTeX entries.
 
 ------------------------------------------------------------------------
 r840 | dreibh | 2010-12-11 02:21:22 +0100 (Sat, 11 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 URL checking improvements.
 
 ------------------------------------------------------------------------
 r839 | dreibh | 2010-12-11 01:38:06 +0100 (Sat, 11 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/configure.in
-   M /trunk/bibtexconv/debian/changelog
-   M /trunk/bibtexconv/debian/control
-   M /trunk/bibtexconv/src/Makefile.am
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Added support to verify URLs in BibTeX entries (using libcurl).
 
 ------------------------------------------------------------------------
 r838 | dreibh | 2010-12-10 03:56:02 +0100 (Fri, 10 Dec 2010) | 2 lines
-Changed paths:
-   A /trunk/bibtexconv/src/cv.export
-   A /trunk/bibtexconv/src/dreibholz-id-individual.export
-   A /trunk/bibtexconv/src/dreibholz-id-workinggroup.export
-   M /trunk/bibtexconv/src/dreibholz-journals-2010.export
-   A /trunk/bibtexconv/src/dreibholz-journals.export
-   M /trunk/bibtexconv/src/dreibholz-others.export
-   M /trunk/bibtexconv/src/dreibholz-papers-2010.export
-   M /trunk/bibtexconv/src/dreibholz-papers.export
-   M /trunk/bibtexconv/src/dreibholz-posters-and-demos.export
-   A /trunk/bibtexconv/src/dreibholz-rfcs.export
-   M /trunk/bibtexconv/src/dreibholz-talks.export
-   M /trunk/bibtexconv/src/dreibholz-thesises.export
 
 Updated export scripts.
 
 ------------------------------------------------------------------------
 r837 | dreibh | 2010-12-10 03:55:04 +0100 (Fri, 10 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/publicationset.cc
 
 Added template entry for "Note".
 
 ------------------------------------------------------------------------
 r836 | dreibh | 2010-12-10 02:58:48 +0100 (Fri, 10 Dec 2010) | 2 lines
-Changed paths:
-   A /trunk/bibtexconv/src/dreibholz-others.export
-   A /trunk/bibtexconv/src/dreibholz-papers.export
-   A /trunk/bibtexconv/src/dreibholz-posters-and-demos.export
-   A /trunk/bibtexconv/src/dreibholz-talks.export
-   A /trunk/bibtexconv/src/dreibholz-thesises.export
 
 Added export tests.
 
 ------------------------------------------------------------------------
 r835 | dreibh | 2010-12-10 02:56:41 +0100 (Fri, 10 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/publicationset.cc
-   M /trunk/bibtexconv/src/publicationset.h
 
 Template code improvements.
 
 ------------------------------------------------------------------------
 r834 | dreibh | 2010-12-06 00:26:39 +0100 (Mon, 06 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/Makefile.am
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   D /trunk/bibtexconv/src/dreibholz-journal-2010.export
-   A /trunk/bibtexconv/src/dreibholz-journals-2010.export (from /trunk/bibtexconv/src/dreibholz-journal-2010.export:833)
-   D /trunk/bibtexconv/src/dreibholz-paper-2010.export
-   A /trunk/bibtexconv/src/dreibholz-papers-2010.export (from /trunk/bibtexconv/src/dreibholz-paper-2010.export:833)
-   M /trunk/bibtexconv/src/odt-example.export
-   M /trunk/bibtexconv/src/publicationset.cc
 
 Sorting of publications is now working.
 
 ------------------------------------------------------------------------
 r833 | dreibh | 2010-12-04 13:19:17 +0100 (Sat, 04 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/Makefile.am
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/publicationset.cc
-   M /trunk/bibtexconv/src/publicationset.h
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/stringhandling.h
-   M /trunk/bibtexconv/src/t1.cc
 
 Started to write sorting code. Does not actually sort entries yet.
 
 ------------------------------------------------------------------------
 r831 | dreibh | 2010-12-03 12:13:51 +0100 (Fri, 03 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/debian/source/format
 
 Reverted Debian format change.
 
 ------------------------------------------------------------------------
 r830 | dreibh | 2010-12-03 12:11:32 +0100 (Fri, 03 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/debian/source/format
 
 bibtexconv's Debian packaging format is "3.0 (quilt)"-compliant.
 
 ------------------------------------------------------------------------
 r829 | dreibh | 2010-12-03 12:09:46 +0100 (Fri, 03 Dec 2010) | 4 lines
-Changed paths:
-   M /trunk/bibtexconv/configure.in
-   M /trunk/bibtexconv/debian/bibtexconv.install
-   A /trunk/bibtexconv/debian/bibtexconv.manpages
-   M /trunk/bibtexconv/debian/changelog
-   M /trunk/bibtexconv/debian/control
-   M /trunk/bibtexconv/src/Makefile.am
-   A /trunk/bibtexconv/src/bibtexconv-odt (from /trunk/bibtexconv/src/make-odt:828)
-   A /trunk/bibtexconv/src/bibtexconv-odt.8 (from /trunk/bibtexconv/src/bibtexconv.8:826)
-   D /trunk/bibtexconv/src/make-odt
 
 - Renamed make-odt to bibtexconv-odt.
 - Added manpage for bibtexconv-odt.
@@ -307,525 +236,264 @@ Changed paths:
 
 ------------------------------------------------------------------------
 r828 | dreibh | 2010-12-03 11:46:56 +0100 (Fri, 03 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/make-odt
-   M /trunk/bibtexconv/src/odt-example.export
 
 Improved ODT output.
 
 ------------------------------------------------------------------------
 r827 | dreibh | 2010-12-03 11:45:57 +0100 (Fri, 03 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/publicationset.cc
 
 Fixed null pointer problem.
 
 ------------------------------------------------------------------------
 r826 | dreibh | 2010-12-03 11:19:22 +0100 (Fri, 03 Dec 2010) | 2 lines
-Changed paths:
-   D /trunk/bibtexconv/src/odt
 
 Removed odt template directory. Now, it is possible to just specify a template ODT file directly!
 
 ------------------------------------------------------------------------
 r825 | dreibh | 2010-12-03 11:18:25 +0100 (Fri, 03 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/Makefile.am
-   M /trunk/bibtexconv/src/make-odt
-   M /trunk/bibtexconv/src/odt-example.export
-   A /trunk/bibtexconv/src/odt-template.odt (from /trunk/bibtexconv/src/odt/testfile.odt:823)
 
 Improved ODT export.
 
 ------------------------------------------------------------------------
 r824 | dreibh | 2010-12-03 10:52:20 +0100 (Fri, 03 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/node.h
-   M /trunk/bibtexconv/src/publicationset.cc
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/stringhandling.h
-   M /trunk/bibtexconv/src/unification.cc
 
 A set of improvement for the template processing.
 
 ------------------------------------------------------------------------
 r823 | dreibh | 2010-12-02 22:06:47 +0100 (Thu, 02 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   A /trunk/bibtexconv/src/dreibholz-journal-2010.export
-   A /trunk/bibtexconv/src/dreibholz-paper-2010.export
-   M /trunk/bibtexconv/src/stringhandling.cc
 
 Improved export of publication data.
 
 ------------------------------------------------------------------------
 r822 | dreibh | 2010-12-02 14:32:12 +0100 (Thu, 02 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/configure.in
-   M /trunk/bibtexconv/debian/changelog
-   M /trunk/bibtexconv/debian/source/format
-   M /trunk/bibtexconv/make-ppa
-   M /trunk/bibtexconv/src/Makefile.am
 
 Version update.
 
 ------------------------------------------------------------------------
 r821 | dreibh | 2010-12-02 14:25:06 +0100 (Thu, 02 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/Makefile.am
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   A /trunk/bibtexconv/src/publicationset.cc
-   A /trunk/bibtexconv/src/publicationset.h
-   A /trunk/bibtexconv/src/test1.cites
-   M /trunk/bibtexconv/src/test1.export
-   A /trunk/bibtexconv/src/test2.export (from /trunk/bibtexconv/src/test1.export:770)
 
 Code clean-ups.
 
 ------------------------------------------------------------------------
 r820 | dreibh | 2010-12-02 14:23:51 +0100 (Thu, 02 Dec 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Added possibility to include export files (recursive).
 
 ------------------------------------------------------------------------
 r703 | dreibh | 2010-08-10 09:44:18 +0200 (Tue, 10 Aug 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/configure.in
-   A /trunk/bibtexconv/freebsd (from /trunk/subnetcalc/freebsd:701)
-   A /trunk/bibtexconv/freebsd/bibtexconv (from /trunk/subnetcalc/freebsd/subnetcalc:701)
-   M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
-   M /trunk/bibtexconv/freebsd/bibtexconv/make-shar
-   M /trunk/bibtexconv/freebsd/bibtexconv/pkg-descr
-   M /trunk/bibtexconv/freebsd/bibtexconv/pkg-plist
-   M /trunk/bibtexconv/freebsd/bibtexconv/test-packaging
-   D /trunk/bibtexconv/freebsd/subnetcalc
-   A /trunk/bibtexconv/make-ppa (from /trunk/netperfmeter/make-ppa:670)
 
 Added FreeBSD packaging files.
 
 ------------------------------------------------------------------------
 r671 | dreibh | 2010-07-30 10:08:37 +0200 (Fri, 30 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/Makefile.am
-   A /trunk/bibtexconv/autogen.sh
-   M /trunk/bibtexconv/configure.in
 
 Updated configure scripts.
 
 ------------------------------------------------------------------------
 r644 | dreibh | 2010-07-17 17:30:13 +0200 (Sat, 17 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/odt-example.export
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/test1.export
 
 Added month name handling.
 
 ------------------------------------------------------------------------
 r643 | dreibh | 2010-07-17 17:04:46 +0200 (Sat, 17 Jul 2010) | 2 lines
-Changed paths:
-   A /trunk/bibtexconv/src/make-odt
 
 Added script make-odt to simplify ODT generation.
 
 ------------------------------------------------------------------------
 r642 | dreibh | 2010-07-17 16:47:08 +0200 (Sat, 17 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/odt-example.export
-   M /trunk/bibtexconv/src/test1.export
 
 
 ------------------------------------------------------------------------
 r641 | dreibh | 2010-07-17 16:46:18 +0200 (Sat, 17 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/odt-example.export
 
 Improved ODT export style.
 
 ------------------------------------------------------------------------
 r640 | dreibh | 2010-07-17 16:37:57 +0200 (Sat, 17 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/odt-example.export
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/test1.export
 
 Encoding fixes.
 
 ------------------------------------------------------------------------
 r639 | dreibh | 2010-07-17 15:59:55 +0200 (Sat, 17 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/odt-example.export
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/stringhandling.h
-   M /trunk/bibtexconv/src/test1.export
 
 Some fixes for the ODT contents.xml export.
 
 ------------------------------------------------------------------------
 r638 | dreibh | 2010-07-17 14:59:07 +0200 (Sat, 17 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/odt-example.export
-   M /trunk/bibtexconv/src/stringhandling.cc
 
 Working ODT contents.xml export.
 
 ------------------------------------------------------------------------
 r637 | dreibh | 2010-07-17 13:56:22 +0200 (Sat, 17 Jul 2010) | 2 lines
-Changed paths:
-   A /trunk/bibtexconv/src/odt
-   A /trunk/bibtexconv/src/odt/Configurations2
-   A /trunk/bibtexconv/src/odt/Configurations2/accelerator
-   A /trunk/bibtexconv/src/odt/Configurations2/accelerator/current.xml
-   A /trunk/bibtexconv/src/odt/META-INF
-   A /trunk/bibtexconv/src/odt/META-INF/manifest.xml
-   A /trunk/bibtexconv/src/odt/Thumbnails
-   A /trunk/bibtexconv/src/odt/Thumbnails/thumbnail.png
-   A /trunk/bibtexconv/src/odt/content.xml
-   A /trunk/bibtexconv/src/odt/make-testfile
-   A /trunk/bibtexconv/src/odt/manifest.rdf
-   A /trunk/bibtexconv/src/odt/meta.xml
-   A /trunk/bibtexconv/src/odt/mimetype
-   A /trunk/bibtexconv/src/odt/settings.xml
-   A /trunk/bibtexconv/src/odt/styles.xml
-   A /trunk/bibtexconv/src/odt/testfile.odt
-   A /trunk/bibtexconv/src/odt-example.export (from /trunk/bibtexconv/src/test1.export:636)
 
 Added ODT files.
 
 ------------------------------------------------------------------------
 r636 | dreibh | 2010-07-17 12:35:41 +0200 (Sat, 17 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/stringhandling.h
-   M /trunk/bibtexconv/src/test1.export
-   M /trunk/bibtexconv/src/unification.cc
 
 
 ------------------------------------------------------------------------
 r635 | dreibh | 2010-07-16 22:41:19 +0200 (Fri, 16 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Code clean-ups.
 
 ------------------------------------------------------------------------
 r634 | dreibh | 2010-07-16 22:33:45 +0200 (Fri, 16 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/node.h
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/stringhandling.h
-   A /trunk/bibtexconv/src/test1.export
 
 Export to custom format now working interactively.
 
 ------------------------------------------------------------------------
 r633 | dreibh | 2010-07-16 21:08:26 +0200 (Fri, 16 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Added author export to custom file.
 
 ------------------------------------------------------------------------
 r632 | dreibh | 2010-07-16 21:08:11 +0200 (Fri, 16 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/unification.cc
 
 Improved unification code to (hopefully) handle UTF-8 correctly.
 
 ------------------------------------------------------------------------
 r630 | dreibh | 2010-07-14 09:53:26 +0200 (Wed, 14 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/Makefile.am
-   M /trunk/bibtexconv/debian/bibtexconv.install
-   M /trunk/bibtexconv/debian/control
-   M /trunk/bibtexconv/debian/rules
 
 Improved Debian files.
 
 ------------------------------------------------------------------------
 r629 | dreibh | 2010-07-14 09:53:09 +0200 (Wed, 14 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Code clean-ups.
 
 ------------------------------------------------------------------------
 r628 | dreibh | 2010-07-14 09:52:36 +0200 (Wed, 14 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/stringhandling.cc
-   M /trunk/bibtexconv/src/stringhandling.h
 
 Implemented export to custom file.
 
 ------------------------------------------------------------------------
 r627 | dreibh | 2010-07-13 13:30:30 +0200 (Tue, 13 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
 
 Started adding export to custom file.
 
 ------------------------------------------------------------------------
 r626 | dreibh | 2010-07-13 12:31:14 +0200 (Tue, 13 Jul 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/configure.in
-   M /trunk/bibtexconv/debian.conf
-   M /trunk/bibtexconv/src/scanner.ll
 
 - Fixed problem in scanner.
 - Debian packaging now working.
 
 ------------------------------------------------------------------------
 r625 | dreibh | 2010-07-13 12:20:30 +0200 (Tue, 13 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/scanner.ll
-   M /trunk/bibtexconv/src/stringhandling.cc
 
 Fixed quoted string handling problem.
 
 ------------------------------------------------------------------------
 r624 | dreibh | 2010-07-13 12:15:33 +0200 (Tue, 13 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/Makefile.am
-   M /trunk/bibtexconv/src/bibtexconv.8
-   M /trunk/bibtexconv/src/grammar.yy
-   D /trunk/bibtexconv/src/scanner.l
-   A /trunk/bibtexconv/src/scanner.ll (from /trunk/bibtexconv/src/scanner.l:623)
 
 autoconf/automake are now working.
 
 ------------------------------------------------------------------------
 r623 | dreibh | 2010-07-13 12:01:12 +0200 (Tue, 13 Jul 2010) | 2 lines
-Changed paths:
-   A /trunk/bibtexconv/AUTHORS
-   A /trunk/bibtexconv/BUGS
-   A /trunk/bibtexconv/COPYING
-   A /trunk/bibtexconv/ChangeLog
-   A /trunk/bibtexconv/INSTALL
-   A /trunk/bibtexconv/Makefile.am
-   A /trunk/bibtexconv/NEWS
-   A /trunk/bibtexconv/README
-   A /trunk/bibtexconv/bibtexconv.lsm
-   A /trunk/bibtexconv/bootstrap
-   A /trunk/bibtexconv/clean-deb
-   A /trunk/bibtexconv/configure.in
-   A /trunk/bibtexconv/debian
-   A /trunk/bibtexconv/debian/bibtexconv.install
-   A /trunk/bibtexconv/debian/changelog
-   A /trunk/bibtexconv/debian/compat
-   A /trunk/bibtexconv/debian/control
-   A /trunk/bibtexconv/debian/rules
-   A /trunk/bibtexconv/debian/source
-   A /trunk/bibtexconv/debian/source/format
-   A /trunk/bibtexconv/debian/watch
-   A /trunk/bibtexconv/debian.conf
-   A /trunk/bibtexconv/make-deb
-   A /trunk/bibtexconv/src/Makefile.am
-   A /trunk/bibtexconv/src/bibtexconv.8
-   M /trunk/bibtexconv/src/t1.cc
 
 Added autoconf/automake and Debian packaging files.
 
 ------------------------------------------------------------------------
 r622 | dreibh | 2010-07-13 11:28:46 +0200 (Tue, 13 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/make-it
-   M /trunk/bibtexconv/src/node.cc
-   A /trunk/bibtexconv/src/stringhandling.cc (from /trunk/bibtexconv/src/t1.cc:621)
-   A /trunk/bibtexconv/src/stringhandling.h (from /trunk/bibtexconv/src/t1.cc:621)
-   M /trunk/bibtexconv/src/t1.cc
-   M /trunk/bibtexconv/src/unification.cc
-   M /trunk/bibtexconv/src/unification.h
 
 XML export now working with special characters.
 
 ------------------------------------------------------------------------
 r621 | dreibh | 2010-07-13 11:15:59 +0200 (Tue, 13 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/t1.cc
 
 
 ------------------------------------------------------------------------
 r620 | dreibh | 2010-07-13 11:12:49 +0200 (Tue, 13 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/t1.cc
 
 
 ------------------------------------------------------------------------
 r619 | dreibh | 2010-07-13 10:01:25 +0200 (Tue, 13 Jul 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/node.h
-   M /trunk/bibtexconv/src/t1.cc
-   M /trunk/bibtexconv/src/unification.cc
 
 - Various internal improvements.
 - Added XML output.
 
 ------------------------------------------------------------------------
 r618 | dreibh | 2010-07-12 19:24:04 +0200 (Mon, 12 Jul 2010) | 1 line
-Changed paths:
-   A /trunk/bibtexconv/src/t1.cc
 
 
 ------------------------------------------------------------------------
 r617 | dreibh | 2010-07-12 19:09:41 +0200 (Mon, 12 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/grammar.yy
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/scanner.l
-   M /trunk/bibtexconv/src/unification.cc
-   M /trunk/bibtexconv/src/unification.h
 
 Added BiBTeX export.
 
 ------------------------------------------------------------------------
 r616 | dreibh | 2010-07-12 18:47:36 +0200 (Mon, 12 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/make-it
-   A /trunk/bibtexconv/src/unification.cc (from /trunk/bibtexconv/src/node.cc:615)
-   A /trunk/bibtexconv/src/unification.h (from /trunk/bibtexconv/src/node.h:615)
 
 Moved unification code into separate file.
 
 ------------------------------------------------------------------------
 r615 | dreibh | 2010-07-12 18:42:27 +0200 (Mon, 12 Jul 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/node.h
 
 - Added sorting of publication items by priority.
 - Added unification of pages section.
 
 ------------------------------------------------------------------------
 r614 | dreibh | 2010-07-12 16:16:05 +0200 (Mon, 12 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/node.cc
 
 Added ISSN validation.
 
 ------------------------------------------------------------------------
 r613 | dreibh | 2010-07-12 15:54:47 +0200 (Mon, 12 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/node.cc
 
 Added ISBN-13 validation.
 
 ------------------------------------------------------------------------
 r612 | dreibh | 2010-07-12 15:44:21 +0200 (Mon, 12 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/node.cc
 
 Added ISBN-10 validation.
 
 ------------------------------------------------------------------------
 r611 | dreibh | 2010-07-12 14:54:52 +0200 (Mon, 12 Jul 2010) | 3 lines
-Changed paths:
-   M /trunk/bibtexconv/src/node.cc
 
 - Improved string trimming.
 - Added unification of booktitle section.
 
 ------------------------------------------------------------------------
 r610 | dreibh | 2010-07-12 14:33:25 +0200 (Mon, 12 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/node.cc
-   M /trunk/bibtexconv/src/node.h
 
 Added unification of author, date and url sections.
 
 ------------------------------------------------------------------------
 r609 | dreibh | 2010-07-12 12:11:39 +0200 (Mon, 12 Jul 2010) | 2 lines
-Changed paths:
-   M /trunk/bibtexconv/src/bibtexconv.cc
-   M /trunk/bibtexconv/src/grammar.yy
-   M /trunk/bibtexconv/src/scanner.l
 
 Extended grammar and scanner to successfully scan Referenzarchiv.bib.
 
 ------------------------------------------------------------------------
 r608 | dreibh | 2010-07-12 09:21:01 +0200 (Mon, 12 Jul 2010) | 2 lines
-Changed paths:
-   A /trunk/bibtexconv/src/bibtexconv.cc
-   D /trunk/bibtexconv/src/grammar.y
-   A /trunk/bibtexconv/src/grammar.yy (from /trunk/bibtexconv/src/grammar.y:607)
-   M /trunk/bibtexconv/src/make-it
-   D /trunk/bibtexconv/src/node.c
-   A /trunk/bibtexconv/src/node.cc (from /trunk/bibtexconv/src/node.c:607)
-   M /trunk/bibtexconv/src/node.h
-   M /trunk/bibtexconv/src/scanner.l
 
 Converted to C++.
 
 ------------------------------------------------------------------------
 r607 | dreibh | 2010-07-11 22:08:00 +0200 (Sun, 11 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/grammar.y
-   M /trunk/bibtexconv/src/node.c
 
 
 ------------------------------------------------------------------------
 r606 | dreibh | 2010-07-11 21:50:14 +0200 (Sun, 11 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/grammar.y
-   M /trunk/bibtexconv/src/node.c
-   M /trunk/bibtexconv/src/scanner.l
 
 
 ------------------------------------------------------------------------
 r605 | dreibh | 2010-07-11 21:23:36 +0200 (Sun, 11 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/grammar.y
-   M /trunk/bibtexconv/src/make-it
-   A /trunk/bibtexconv/src/node.c
-   A /trunk/bibtexconv/src/node.h
-   M /trunk/bibtexconv/src/scanner.l
 
 
 ------------------------------------------------------------------------
 r604 | dreibh | 2010-07-11 20:44:29 +0200 (Sun, 11 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/grammar.y
-   M /trunk/bibtexconv/src/make-it
-   M /trunk/bibtexconv/src/scanner.l
 
 
 ------------------------------------------------------------------------
 r603 | dreibh | 2010-07-11 19:18:36 +0200 (Sun, 11 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/grammar.y
 
 
 ------------------------------------------------------------------------
 r602 | dreibh | 2010-07-11 18:32:30 +0200 (Sun, 11 Jul 2010) | 1 line
-Changed paths:
-   M /trunk/bibtexconv/src/grammar.y
-   M /trunk/bibtexconv/src/scanner.l
 
 
 ------------------------------------------------------------------------
 r601 | dreibh | 2010-07-11 17:29:48 +0200 (Sun, 11 Jul 2010) | 1 line
-Changed paths:
-   A /trunk/bibtexconv
-   A /trunk/bibtexconv/src
-   A /trunk/bibtexconv/src/grammar.y
-   A /trunk/bibtexconv/src/make-it
-   A /trunk/bibtexconv/src/scanner.l
-   M /trunk/slideshow/debian/changelog
-   M /trunk/wireshark-experimental/make-ppa
 
 
 ------------------------------------------------------------------------
