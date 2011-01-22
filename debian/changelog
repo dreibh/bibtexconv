@@ -1,4 +1,4 @@
-bibtexconv (0.7.3-2ubuntu1) natty; urgency=low
+bibtexconv (0.7.3-4ubuntu1) natty; urgency=low
 
   * Initial Debian release (Closes: #xxxxxx).
   * Initial Ubuntu release (LP: #xxxxxx).
