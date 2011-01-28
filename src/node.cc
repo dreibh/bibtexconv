@@ -277,9 +277,14 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
 // ###### Make publication info #############################################
 Node* makePublicationInfo(Node* node1, Node* node2)
 {
-   node2->prev = node1;
-   node1->next = node2;
-   return(node1);
+   if(node1 != NULL) {
+      node2->prev = node1;
+      node1->next = node2;
+      return(node1);
+   }
+   else {
+      return(node2);
+   }
 }
 
 

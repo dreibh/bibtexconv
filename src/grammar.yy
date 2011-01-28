@@ -52,6 +52,8 @@ Node* bibTeXFile = NULL;
 %type <nodePtr> publication
 %type <nodePtr> publicationInfo
 %type <nodePtr> publicationInfoItem
+%type <nodePtr> publicationInfoJustComment
+%type <nodePtr> publicationInfoItemJustComment
 
 %union {
    char*        iText;
@@ -93,8 +95,10 @@ publication
     ;
 
 publicationInfo
-    : publicationInfoItem T_Comma publicationInfo { $$ = makePublicationInfo($1, $3); }
-    | publicationInfoItem                         { $$ = $1; }
+    : publicationInfoItem T_Comma publicationInfo              { $$ = makePublicationInfo($1, $3); }
+    | publicationInfoItem T_Comma T_Comment publicationInfo    { $$ = makePublicationInfo($1, $4); }
+    | publicationInfoItem T_Comment publicationInfoJustComment { $$ = $1; }   /* Comments at end of entry */
+    | publicationInfoItem                                      { $$ = $1; }
     ;
 
 publicationInfoItem
@@ -102,4 +106,15 @@ publicationInfoItem
     | T_Keyword T_Equals T_String  { $$ = makePublicationInfoItem($1, $3); }
     | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { $$ = makePublicationInfoItem($1, $4); }
     | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace  { $$ = makePublicationInfoItem($1, $4); }
+    ;
+
+/* Just comments at end of entry */
+publicationInfoJustComment
+   : publicationInfoItemJustComment T_Comment publicationInfoJustComment { $$ = NULL; }
+   | T_Comment { $$ = NULL; }
+   ;
+
+/* Just comments at end of entry */
+publicationInfoItemJustComment
+    : T_Comment { $$ = NULL; }
     ;
