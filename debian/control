@@ -3,14 +3,22 @@ Section: tex
 Priority: optional
 Maintainer: Thomas Dreibholz <dreibh@iem.uni-due.de>
 Homepage: http://www.iem.uni-due.de/~dreibh/bibtexconv/
-Build-Depends: debhelper (>= 7.0.50~), autotools-dev, bison, flex, libcurl4-openssl-dev, libssl-dev
+Build-Depends: autotools-dev,
+               bison,
+               debhelper (>= 7.0.50~),
+               flex,
+               libcurl4-openssl-dev,
+               libssl-dev
 Standards-Version: 3.9.1
 
 Package: bibtexconv
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, zip, file
+Depends: file,
+         zip,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Recommends:
-Description:  BibTeX Converter
+Description: BibTeX Converter
  BibTeXConv is a BibTeX file converter which allows to export
  BibTeX entries to other formats, including customly defined
  text output. Furthermore, it provides the possibility to
