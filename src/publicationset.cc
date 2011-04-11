@@ -141,20 +141,6 @@ void PublicationSet::sort(const std::string* sortKey,
 }
 
 
-// ###### Prefix percent sign ("%") by "\" in BibTeX URLs ###################
-static std::string prefixPercent(const std::string& str)
-{
-   std::string result;
-   for(size_t i = 0; i < str.size(); i++) {
-      if(str[i] == '%') {
-         result += "\\";
-      }
-      result += str[i];
-   }
-   return(result);
-}
-
-
 // ###### Export to BibTeX ##################################################
 bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet,
                                                   FILE*           fh,
@@ -198,10 +184,10 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                }
             }
             else if( (child->keyword == "url") ) {
-               fprintf(fh, "%s\t%s = \"\\url{%s}\"", separator, child->keyword.c_str(), prefixPercent(child->value).c_str());
+               fprintf(fh, "%s\t%s = \"\\url{%s}\"", separator, child->keyword.c_str(), urlToLaTeX(child->value).c_str());
             }
             else if( (child->keyword == "doi") ) {
-               fprintf(fh, "%s\t%s = \"%s\"", separator, child->keyword.c_str(), prefixPercent(child->value).c_str());
+               fprintf(fh, "%s\t%s = \"%s\"", separator, child->keyword.c_str(), urlToLaTeX(child->value).c_str());
             }
             else if( (child->keyword == "note") ) {
                if( (skipNotesWithISBNandISSN == false) ||

@@ -2,18 +2,18 @@
 #include <stdlib.h>
 #include <string>
 #include <string.h>
+#include <iostream>
 
 #include "stringhandling.h"
 
 
 int main(int argc, char** argv)
 {
-   std::string s = "category   \"test 2008\" \"äöü 2008\"";
+   std::string s1 = laTeXtoURL("http://bla.de/bla bla_bla MS.htm");
+   std::string s2 = urlToLaTeX(s1);
 
-   while(s != "") {
-      std::string token = extractToken(trim(s), " ");
-      printf("TOKEN=<%s>\n",token.c_str());
-   }
-
+   std::cout << s1 << std::endl;
+   std::cout << s2 << std::endl;
+   
    return 0;
 }

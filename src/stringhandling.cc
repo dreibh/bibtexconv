@@ -232,6 +232,44 @@ std::string processBackslash(const std::string& string)
 }
 
 
+// ###### Convert LaTeX-compliant URL to URL ################################
+std::string laTeXtoURL(const std::string& str)
+{
+   std::string result;
+   bool        isPrefixed = false;
+   for(size_t i = 0; i < str.size(); i++) {
+      if(isPrefixed == false) {
+         if(str[i] == '\\') {
+            isPrefixed = true;
+            continue;
+         }
+      }
+      if(str[i] == ' ') {
+         result += "%20";
+      }
+      else {
+         result += str[i];
+      }
+      isPrefixed = false;
+   }
+   return(result);
+}
+
+
+// ###### Convert URL to LaTeX-compliant URL ################################
+std::string urlToLaTeX(const std::string& str)
+{
+   std::string result;
+   for(size_t i = 0; i < str.size(); i++) {
+      if(str[i] == '%') {
+         result += "\\";
+      }
+      result += str[i];
+   }
+   return(result);
+}
+
+
 // ###### Create formatted string (printf-like) #############################
 std::string format(const char* fmt, ...)
 {

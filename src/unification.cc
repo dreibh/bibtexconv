@@ -412,6 +412,7 @@ void unifyURL(Node* publication, Node* url)
        (url->value.substr(url->value.size() - 1) == "}") ) {
       url->value = url->value.substr(5, url->value.size() - 6);
    }
+   url->value = laTeXtoURL(url->value);
 }
 
 
