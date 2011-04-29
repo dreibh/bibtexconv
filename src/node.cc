@@ -330,14 +330,17 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "type") {
       node->priority = 248;
    }
-   else if(node->keyword == "volume") {
+   else if(node->keyword == "edition") {
       node->priority = 247;
    }
-   else if(node->keyword == "number") {
+   else if(node->keyword == "volume") {
       node->priority = 246;
    }
-   else if(node->keyword == "pages") {
+   else if(node->keyword == "number") {
       node->priority = 245;
+   }
+   else if(node->keyword == "pages") {
+      node->priority = 244;
    }
 
    else if(node->keyword == "day") {
