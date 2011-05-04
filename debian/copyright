@@ -4,21 +4,7 @@ on Tue, 02 Feb 2010 08:08:08 +0200.
 The original source can be found at:
 http://www.iem.uni-due.de/~dreibh/subnetcalc/
 
-BibTeXConv is
-
-  Copyright (C) 2010-2011 Thomas Dreibholz
-
-License:
-
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
-
-  On Debian systems, the complete text of the GNU General
-  Public License can be found in `/usr/share/common-licenses/GPL-3'.
-
-The Debian/Ubuntu packaging is
+BibTeXConv and Debian/Ubuntu packaging is
 
   Copyright (C) 2010-2011 Thomas Dreibholz
 
