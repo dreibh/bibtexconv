@@ -330,7 +330,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "type") {
       node->priority = 248;
    }
-   else if(node->keyword == "edition") {
+   else if(node->keyword == "issue") {
       node->priority = 247;
    }
    else if(node->keyword == "volume") {
@@ -339,24 +339,36 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "number") {
       node->priority = 245;
    }
-   else if(node->keyword == "pages") {
+   else if(node->keyword == "edition") {
       node->priority = 244;
+   }
+   else if(node->keyword == "pages") {
+      node->priority = 243;
+   }
+   else if(node->keyword == "editor") {
+      node->priority = 242;
    }
 
    else if(node->keyword == "day") {
-      node->priority = 242;
+      node->priority = 239;
    }
    else if(node->keyword == "month") {
-      node->priority = 241;
+      node->priority = 238;
    }
    else if(node->keyword == "year") {
-      node->priority = 240;
+      node->priority = 237;
    }
 
+   else if(node->keyword == "organization") {
+      node->priority = 235;
+   }
    else if(node->keyword == "school") {
-      node->priority = 233;
+      node->priority = 234;
    }
    else if(node->keyword == "institution") {
+      node->priority = 233;
+   }
+   else if(node->keyword == "location") {
       node->priority = 232;
    }
    else if(node->keyword == "publisher") {
@@ -393,6 +405,13 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    }
    else if(node->keyword == "url.md5") {
       node->priority = 196;
+   }
+   else if(node->keyword == "url.checked") {
+      node->priority = 195;
+   }
+
+   else {
+      // printf("UNKNOWN=<%s>\n", node->keyword.c_str());
    }
 
    return(node);

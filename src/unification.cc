@@ -141,8 +141,8 @@ void unifyAuthor(Node* publication, Node* author)
 
    // ====== Iterator from author 1 to author n-1 (for n authors) ===========
    std::string allAuthors = author->value;
+   bool        empty      = true;
    size_t      pos;
-   bool        empty = true;
    author->value = "";
    while( (pos = allAuthors.find(" and ")) != std::string::npos ) {
       currentAuthor = allAuthors.substr(0, pos);
