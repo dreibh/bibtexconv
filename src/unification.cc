@@ -93,7 +93,11 @@ static void splitAuthor(std::string& author,
    trim(author);
 
    size_t pos;
-   if( (pos = author.find(",")) != std::string::npos ) {   // Name, Given Name(s)
+   if( author[0] == '{') {   // Special name in brackets, e.g. "{R Development Core Team}".
+      familyName    = author;
+      givenNameFull = givenNameInitials = "";      
+   }
+   else if( (pos = author.find(",")) != std::string::npos ) {   // Name, Given Name(s)
       givenNameFull = author.substr(pos + 1, author.size() - pos - 1);
       familyName    = author.substr(0, pos);
       extractAuthorInitials(givenNameFull, givenNameInitials);
@@ -115,10 +119,11 @@ static void splitAuthor(std::string& author,
    }
    trim(givenNameFull);
    trim(familyName);
-/*
-   printf("   -> %s:\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
+
+   printf("   -> %s:\tA=<%s>\t->\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
+          author.c_str(),
           givenNameInitials.c_str(), givenNameFull.c_str(), familyName.c_str());
-*/
+
    if(givenNameFull != "") {
       author = givenNameFull + ((givenNameFull.rfind(".") == givenNameFull.size() - 1) ? "~" : " ") + familyName;
    }

@@ -243,18 +243,18 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          printf("<!-- %s -->\n\n", publication->keyword.c_str());
       }
       else {
-         Node* title        = findChildNode(publication, "title");
-         Node* author       = findChildNode(publication, "author");
-         Node* year         = findChildNode(publication, "year");
-         Node* month        = findChildNode(publication, "month");
-         Node* day          = findChildNode(publication, "day");
-         Node* url          = findChildNode(publication, "url");
-         Node* howpublished = findChildNode(publication, "howpublished");
-         Node* booktitle    = findChildNode(publication, "booktitle");
-         Node* journal      = findChildNode(publication, "journal");
-         Node* volume       = findChildNode(publication, "volume");
-         Node* number       = findChildNode(publication, "number");
-         Node* pages        = findChildNode(publication, "pages");
+         const Node* title        = findChildNode(publication, "title");
+         const Node* author       = findChildNode(publication, "author");
+         const Node* year         = findChildNode(publication, "year");
+         const Node* month        = findChildNode(publication, "month");
+         const Node* day          = findChildNode(publication, "day");
+         const Node* url          = findChildNode(publication, "url");
+         const Node* howpublished = findChildNode(publication, "howpublished");
+         const Node* booktitle    = findChildNode(publication, "booktitle");
+         const Node* journal      = findChildNode(publication, "journal");
+         const Node* volume       = findChildNode(publication, "volume");
+         const Node* number       = findChildNode(publication, "number");
+         const Node* pages        = findChildNode(publication, "pages");
 
          fprintf(stdout, "<reference anchor=\"%s\">\n", publication->keyword.c_str());
          fputs("\t<front>\n", stdout);
@@ -263,13 +263,18 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          }
          if(author) {
             for(size_t authorIndex = 0; authorIndex < author->arguments.size(); authorIndex += 3) {
+               std::string familyName = author->arguments[authorIndex + 0];
+               std::string givenName  = author->arguments[authorIndex + 1];
+               std::string initials   = author->arguments[authorIndex + 2];
+               removeBrackets(familyName);
+               removeBrackets(givenName);
+               removeBrackets(initials);
                fprintf(stdout,
                   "\t\t<author initials=\"%s\" surname=\"%s\" fullname=\"%s\" />\n",
-                  string2xml(author->arguments[authorIndex + 2]).c_str(),
-                  string2xml(author->arguments[authorIndex + 0]).c_str(),
-                  string2xml(author->arguments[authorIndex + 1] +
-                              ((author->arguments[authorIndex + 1] != "") ? "~" : "") +
-                              author->arguments[authorIndex + 0]).c_str());
+                  string2xml(initials).c_str(), string2xml(familyName).c_str(),
+                  string2xml(givenName +
+                             ((givenName != "") ? "~" : "") +
+                             familyName).c_str());
             }
          }
          if(year || month || day) {
@@ -368,17 +373,33 @@ std::string PublicationSet::applyTemplate(Node*                           public
                break;
             case 'g':   // Current author given name initials
                if(author) {
-                  result += string2utf8(author->arguments[authorIndex + 2], nbsp, xmlStyle);
+                  std::string initials   = author->arguments[authorIndex + 2];
+                  removeBrackets(initials);                  
+                  if(initials != "") {
+                     result += string2utf8(initials, nbsp, xmlStyle);
+                  }
+                  else {
+                     skip = true;
+                  }
                }
                break;
             case 'G':   // Current author given name
                if(author) {
-                  result += string2utf8(author->arguments[authorIndex + 1], nbsp, xmlStyle);
+                  std::string givenName  = author->arguments[authorIndex + 1];
+                  removeBrackets(givenName);
+                  if(givenName != "") {
+                     result += string2utf8(givenName, nbsp, xmlStyle);
+                  }
+                  else {
+                     skip = true;
+                  }
                }
                break;
             case 'F':   // Current author family name
                if(author) {
-                  result += string2utf8(author->arguments[authorIndex + 0], nbsp, xmlStyle);
+                  std::string familyName = author->arguments[authorIndex + 0];
+                  removeBrackets(familyName);
+                  result += string2utf8(familyName, nbsp, xmlStyle);
                }
                break;
             case 'f':   // IS first author

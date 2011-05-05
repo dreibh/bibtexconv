@@ -304,8 +304,10 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
 
    node->keyword = keywordString;
    node->value   = value;
-   removeBrackets(node->value);
-   trim(node->value);
+   if( (node->keyword != "author") ) {   // Brackets must remain for author string!
+      removeBrackets(node->value);
+      trim(node->value);
+   }
 
    // ====== Set priorities for well-known keyword fields ===================
    if(node->keyword == "author") {

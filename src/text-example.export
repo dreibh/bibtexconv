@@ -7,7 +7,7 @@ template+ [%bY===== YEAR %Y =====\n][%bM---- %M %Y ----\n]
 # ***** Label
 template+ \[%C\]~
 # ***** Authors
-template+ %a[%f|%n; | and ]%F, %G%A:
+template+ %a[%f|%n; | and ]%F[, %G]%A:
 # ***** Title
 template+  ["%T"] [([%y, ]%sK~KiB)]
 # ***** Bibliographic data of publication
