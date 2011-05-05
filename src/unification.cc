@@ -119,10 +119,12 @@ static void splitAuthor(std::string& author,
    }
    trim(givenNameFull);
    trim(familyName);
-
+   
+/*
    printf("   -> %s:\tA=<%s>\t->\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
           author.c_str(),
           givenNameInitials.c_str(), givenNameFull.c_str(), familyName.c_str());
+*/
 
    if(givenNameFull != "") {
       author = givenNameFull + ((givenNameFull.rfind(".") == givenNameFull.size() - 1) ? "~" : " ") + familyName;
