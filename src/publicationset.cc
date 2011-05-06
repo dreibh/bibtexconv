@@ -23,6 +23,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <algorithm>
+#include <string>
 #include <set>
 #include <vector>
 
@@ -249,6 +251,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          const Node* month        = findChildNode(publication, "month");
          const Node* day          = findChildNode(publication, "day");
          const Node* url          = findChildNode(publication, "url");
+         const Node* urlMime      = findChildNode(publication, "url.mime");
          const Node* howpublished = findChildNode(publication, "howpublished");
          const Node* booktitle    = findChildNode(publication, "booktitle");
          const Node* journal      = findChildNode(publication, "journal");
@@ -319,8 +322,20 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          }
 
          if(url) {
-            fprintf(stdout, "\t<format target=\"%s\" />\n",
-                    url->value.c_str());
+            std::string type = "";
+            if(urlMime) {
+               const size_t slash = urlMime->value.find("/");
+               if(slash != std::string::npos) {
+                  type = urlMime->value.substr(slash + 1, urlMime->value.size() - slash);
+                  std::transform(type.begin(), type.end(), type.begin(),
+                                 (int(*)(int))std::toupper);
+                  if(type == "PLAIN") {
+                     type = "TXT";
+                  }
+               }
+            }
+            fprintf(stdout, "\t<format type=\"%s\" target=\"%s\" />\n",
+                    type.c_str(), url->value.c_str());
          }
          fputs("</reference>\n\n", stdout);
       }
