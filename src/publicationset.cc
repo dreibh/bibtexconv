@@ -252,6 +252,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          const Node* day          = findChildNode(publication, "day");
          const Node* url          = findChildNode(publication, "url");
          const Node* urlMime      = findChildNode(publication, "url.mime");
+         const Node* urlSize      = findChildNode(publication, "url.size");
          const Node* howpublished = findChildNode(publication, "howpublished");
          const Node* booktitle    = findChildNode(publication, "booktitle");
          const Node* journal      = findChildNode(publication, "journal");
@@ -334,8 +335,16 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                   }
                }
             }
-            fprintf(stdout, "\t<format type=\"%s\" target=\"%s\" />\n",
-                    type.c_str(), url->value.c_str());
+            type = " type=\"" + type + "\"";
+            
+            std::string octets = "";
+            if(urlSize) {
+               octets = format(" octets=\"%u\"", atol(urlSize->value.c_str()));
+            }
+
+            fprintf(stdout, "\t<format%s%s target=\"%s\" />\n",
+                    type.c_str(), octets.c_str(),
+                    url->value.c_str());
          }
          fputs("</reference>\n\n", stdout);
       }
