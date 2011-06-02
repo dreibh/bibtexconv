@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <errno.h>
 #include <iostream>
 #include <curl/curl.h>
 #include <curl/types.h>
@@ -51,6 +52,7 @@ unsigned long long getMicroTime()
 
 // ###### Check URLs ########################################################
 unsigned int checkAllURLs(PublicationSet* publicationSet,
+                          const char*     downloadDirectory,
                           const bool      checkNewURLsOnly)
 {
    unsigned int errors = 0;
@@ -74,8 +76,14 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
 
          char downloadFileName[256];
          char mimeFileName[256];
-         snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s", "/tmp/bibtexconv-dXXXXXX");
-         snprintf((char*)&mimeFileName,     sizeof(mimeFileName), "%s",     "/tmp/bibtexconv-mXXXXXX");
+         if(downloadDirectory != NULL) {
+            snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s/%s", downloadDirectory, "/bibtexconv-dXXXXXX");
+         }
+         else {
+            snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s", "/tmp/bibtexconv-dXXXXXX");            
+         }
+         snprintf((char*)&mimeFileName, sizeof(mimeFileName), "%s",     "/tmp/bibtexconv-mXXXXXX");
+
          if( (mkstemp((char*)&downloadFileName) > 0) &&
              (mkstemp((char*)&mimeFileName) > 0) ) {
             FILE* downloadFH = fopen(downloadFileName, "w+b");
@@ -210,6 +218,33 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
 
                               fprintf(stderr, "OK: size=%sB; type=%s; MD5=%s\n",
                                       sizeString.c_str(), mimeString.c_str(), md5String.c_str());
+
+                              if(downloadDirectory != NULL) {
+                                 fclose(downloadFH);
+                                 downloadFH = NULL;
+
+                                 std::string extension = "data";
+                                 if(mimeString == "application/pdf") {
+                                    extension = ".pdf";
+                                 }
+                                 else if(mimeString == "application/xml") {
+                                    extension = ".xml";
+                                 }
+                                 else if(mimeString == "text/html") {
+                                    extension = ".html";
+                                 }
+                                 else if(mimeString == "text/plain") {
+                                    extension = ".txt";
+                                 }
+
+                                 const std::string newFileName = (std::string)downloadDirectory + "/" + publication->keyword + extension;
+                                 if(rename(downloadFileName, newFileName.c_str()) < 0) {
+                                    unlink(downloadFileName);
+                                    fprintf(stderr, "FAILED to store download file %s: %s!\n",
+                                            newFileName.c_str(), strerror(errno));
+                                    exit(1);
+                                 }
+                              }
                            }
                            else {
                               fprintf(stderr, "FAILED %s: size is zero!\n", url->value.c_str());
@@ -233,9 +268,11 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                   fputs("ERROR: Failed to create temporary header file!\n", stderr);
                   exit(1);
                }
-               fclose(downloadFH);
+               if(downloadFH != NULL) {
+                  fclose(downloadFH);
+                  unlink(downloadFileName);
+               }
                unlink(mimeFileName);
-               unlink(downloadFileName);
             }
             else {
                fputs("ERROR: Failed to create temporary download file!\n", stderr);
@@ -264,6 +301,7 @@ static std::vector<std::string> monthNames;
 
 static int handleInput(FILE*           fh,
                        PublicationSet& publicationSet,
+                       const char*     downloadDirectory,
                        const bool      checkURLs,
                        const bool      checkNewURLsOnly,
                        unsigned int    recursionLevel = 0)
@@ -356,7 +394,7 @@ static int handleInput(FILE*           fh,
          }
          else if((strncmp(input, "export", 5)) == 0) {
             if(checkURLs) {
-               result += checkAllURLs(&publicationSet, checkNewURLsOnly);
+               result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly);
             }
             if(PublicationSet::exportPublicationSetToCustom(
                   &publicationSet,
@@ -401,7 +439,7 @@ static int handleInput(FILE*           fh,
                FILE* includeFH = fopen(includeFileName, "r");
                if(includeFH != NULL) {
                   result += handleInput(includeFH, publicationSet,
-                                        checkURLs, checkNewURLsOnly,
+                                        downloadDirectory, checkURLs, checkNewURLsOnly,
                                         recursionLevel + 1);
                   fclose(includeFH);
                }
@@ -454,6 +492,7 @@ int main(int argc, char** argv)
    const char* exportToBibTeX           = NULL;
    const char* exportToXML              = NULL;
    const char* exportToCustom           = NULL;
+   const char* downloadDirectory        = NULL;
 
    monthNames.push_back("January");
    monthNames.push_back("February");
@@ -469,7 +508,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn}\n", argv[0]);
+      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -481,6 +520,9 @@ int main(int argc, char** argv)
       }
       else if( strncmp(argv[i], "-export-to-custom=", 18) == 0 ) {
          exportToCustom = (const char*)&argv[i][18];
+      }
+      else if( strncmp(argv[i], "-store-downloads=", 17) == 0 ) {
+         downloadDirectory = (const char*)&argv[i][17];
       }
       else if( strncmp(argv[i], "-nbsp=", 5) == 0 ) {
          nbsp = (const char*)&argv[i][5];
@@ -520,7 +562,7 @@ int main(int argc, char** argv)
       if(!interactive) {
          publicationSet.addAll(bibTeXFile);
          if(checkURLs) {
-            result += checkAllURLs(&publicationSet, checkNewURLsOnly);
+            result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly);
          }
 
          // ====== Export all to BibTeX =====================================
@@ -569,7 +611,8 @@ int main(int argc, char** argv)
       else {
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
                  (unsigned int)publicationSet.maxSize());
-         result = handleInput(stdin, publicationSet, checkURLs, checkNewURLsOnly);
+         result = handleInput(stdin, publicationSet,
+                              downloadDirectory, checkURLs, checkNewURLsOnly);
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
       }
    }
