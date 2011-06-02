@@ -90,9 +90,14 @@ static void splitAuthor(std::string& author,
                         std::string& givenNameInitials,
                         std::string& familyName)
 {
-   trim(author);
-
    size_t pos;
+
+   // Clean up author string first.
+   trim(author);
+   while( (pos = author.find("~")) != std::string::npos ) {
+      author.replace(pos, 1, " ");
+   }
+
    if( author[0] == '{') {   // Special name in brackets, e.g. "{R Development Core Team}".
       familyName    = author;
       givenNameFull = givenNameInitials = "";      
@@ -116,18 +121,30 @@ static void splitAuthor(std::string& author,
          givenNameFull = author.substr(0, pos);
          extractAuthorInitials(givenNameFull, givenNameInitials);
       }
+      if(givenNameFull.rfind(".") != std::string::npos) {   // Given first name + initial
+         // Replace spaces by non-breakable spaces.
+         while( (pos = givenNameFull.find(" ")) != std::string::npos ) {
+            givenNameFull.replace(pos, 1, "~");
+         }
+      }
    }
    trim(givenNameFull);
    trim(familyName);
    
 /*
-   printf("   -> %s:\tA=<%s>\t->\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
+   printf("\t-> %s:\tA=<%s>\t->\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
           author.c_str(),
           givenNameInitials.c_str(), givenNameFull.c_str(), familyName.c_str());
 */
 
    if(givenNameFull != "") {
-      author = givenNameFull + ((givenNameFull.rfind(".") == givenNameFull.size() - 1) ? "~" : " ") + familyName;
+      if(givenNameFull == givenNameInitials) {   // Given name == initials
+         author = givenNameInitials + "~" + familyName;
+      }
+      else {
+         author = givenNameFull + " " + familyName;
+      }
+      // printf("\t\t=> A=<%s>\n", author.c_str());
    }
    else {
       author = familyName;

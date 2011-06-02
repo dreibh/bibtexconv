@@ -430,8 +430,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                skip = ! (authorIndex == 0);
                break;
             case 'n':   // IS not first author
-               skip = ! ((author != NULL) &&
-                           (authorIndex > 0));
+               skip = ! ((author != NULL) && (authorIndex > 0));
                break;
             case 'l':   // IS last author
                skip = ! ((author != NULL) && (authorIndex + 3 >= author->arguments.size()));
