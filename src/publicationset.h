@@ -56,7 +56,8 @@ class PublicationSet
    static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet,
                                             FILE*           fh,
                                             const bool      skipNotesWithISBNandISSN,
-                                            const bool      addNotesWithISBNandISSN);
+                                            const bool      addNotesWithISBNandISSN,
+                                            const bool      addUrlCommand);
    static bool exportPublicationSetToXML(PublicationSet* publicationSet, FILE* fh);
    static bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
                                             const std::string&              customPrintingHeader,

@@ -37,6 +37,7 @@
 .Op Fl check-urls
 .Op Fl only-check-new-urls
 .Op Fl store-downloads=directory
+.Op Fl add-url-command
 .Op Fl skip-notes-with-isbn-and-issn
 .Op Fl add-notes-with-isbn-and-issn
 .\" ###### Description ######################################################
@@ -70,6 +71,8 @@ Combined with \-check-urls, checks are only performed for new entries where
 MD5, size and/or MIME type are still unknown.
 .It Fl store-downloads=directory
 Combined with \-check-urls, all checked references are downloaded and stored in the given directory. Existing files will be overwritten.
+.It Fl add-url-command
+Add \url{} commands to url tags in BibTeX export.
 .It Fl skip-notes-with-isbn-and-issn
 When reading the BibTeX file, ignore "note" items with ISBN and ISSN.
 .It Fl add-notes-with-isbn-and-issn

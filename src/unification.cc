@@ -100,7 +100,7 @@ static void splitAuthor(std::string& author,
 
    if( author[0] == '{') {   // Special name in brackets, e.g. "{R Development Core Team}".
       familyName    = author;
-      givenNameFull = givenNameInitials = "";      
+      givenNameFull = givenNameInitials = "";
    }
    else if( (pos = author.find(",")) != std::string::npos ) {   // Name, Given Name(s)
       givenNameFull = author.substr(pos + 1, author.size() - pos - 1);
@@ -130,7 +130,7 @@ static void splitAuthor(std::string& author,
    }
    trim(givenNameFull);
    trim(familyName);
-   
+
 /*
    printf("\t-> %s:\tA=<%s>\t->\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
           author.c_str(),

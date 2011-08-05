@@ -147,7 +147,8 @@ void PublicationSet::sort(const std::string* sortKey,
 bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet,
                                                   FILE*           fh,
                                                   const bool      skipNotesWithISBNandISSN,
-                                                  const bool      addNotesWithISBNandISSN)
+                                                  const bool      addNotesWithISBNandISSN,
+                                                  const bool      addUrlCommand)
 {
    for(size_t index = 0; index < publicationSet->size(); index++) {
       const Node* publication = publicationSet->get(index);
@@ -186,7 +187,12 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                }
             }
             else if( (child->keyword == "url") ) {
-               fprintf(fh, "%s\t%s = \"\\url{%s}\"", separator, child->keyword.c_str(), urlToLaTeX(child->value).c_str());
+               if(addUrlCommand) {
+                  fprintf(fh, "%s\t%s = \"\\url{%s}\"", separator, child->keyword.c_str(), urlToLaTeX(child->value).c_str());
+               }
+               else {
+                  fprintf(fh, "%s\t%s = \"%s\"", separator, child->keyword.c_str(), urlToLaTeX(child->value).c_str());
+               }
             }
             else if( (child->keyword == "doi") ) {
                fprintf(fh, "%s\t%s = \"%s\"", separator, child->keyword.c_str(), urlToLaTeX(child->value).c_str());
@@ -336,7 +342,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                }
             }
             type = " type=\"" + type + "\"";
-            
+
             std::string octets = "";
             if(urlSize) {
                octets = format(" octets=\"%u\"", atol(urlSize->value.c_str()));
@@ -398,7 +404,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             case 'g':   // Current author given name initials
                if(author) {
                   std::string initials   = author->arguments[authorIndex + 2];
-                  removeBrackets(initials);                  
+                  removeBrackets(initials);
                   if(initials != "") {
                      result += string2utf8(initials, nbsp, xmlStyle);
                   }

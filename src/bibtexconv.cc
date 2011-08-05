@@ -80,7 +80,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
             snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s/%s", downloadDirectory, "/bibtexconv-dXXXXXX");
          }
          else {
-            snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s", "/tmp/bibtexconv-dXXXXXX");            
+            snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s", "/tmp/bibtexconv-dXXXXXX");
          }
          snprintf((char*)&mimeFileName, sizeof(mimeFileName), "%s",     "/tmp/bibtexconv-mXXXXXX");
 
@@ -489,6 +489,7 @@ int main(int argc, char** argv)
    bool        checkNewURLsOnly         = false;
    bool        skipNotesWithISBNandISSN = true;
    bool        addNotesWithISBNandISSN  = false;
+   bool        addUrlCommand            = false;
    const char* exportToBibTeX           = NULL;
    const char* exportToXML              = NULL;
    const char* exportToCustom           = NULL;
@@ -508,7 +509,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
+      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -535,6 +536,9 @@ int main(int argc, char** argv)
       }
       else if( strcmp(argv[i], "-only-check-new-urls") == 0 ) {
          checkNewURLsOnly = true;
+      }
+      else if( strcmp(argv[i], "-add-url-command") == 0 ) {
+         addUrlCommand = true;
       }
       else if( strcmp(argv[i], "-skip-notes-with-isbn-and-issn") == 0 ) {
          skipNotesWithISBNandISSN = true;
@@ -571,7 +575,8 @@ int main(int argc, char** argv)
             if(fh != NULL) {
                if(PublicationSet::exportPublicationSetToBibTeX(&publicationSet, fh,
                                                                skipNotesWithISBNandISSN,
-                                                               addNotesWithISBNandISSN) == false) {
+                                                               addNotesWithISBNandISSN,
+                                                               addUrlCommand) == false) {
                   exit(1);
                }
                fclose(fh);
