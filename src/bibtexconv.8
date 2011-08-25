@@ -19,7 +19,7 @@
 .\" Contact: dreibh@iem.uni-due.de
 .\"
 .\" ###### Setup ############################################################
-.Dd June 2, 2011
+.Dd August 25, 2011
 .Dt bibtexconv 8
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -31,7 +31,9 @@
 .Nm bibtexconv
 .Op BibTeX file
 .Op Fl export-to-bibtex=file
+.Op Fl export-to-separate-bibtexs=prefix
 .Op Fl export-to-xml=file
+.Op Fl export-to-separate-xmls=prefix
 .Op Fl nbsp=string
 .Op Fl non-interactive
 .Op Fl check-urls
@@ -60,9 +62,13 @@ The following arguments have to be provided:
 The BibTeX input file.
 .It Fl export-to-bibtex=file
 Write the results as BibTeX into the given file.
+.It Fl export-to-separate-bibtexs=prefix
+Write the results as BibTeX; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex-"), the entry key and ".bib".
 .It Fl export-to-xml=file
 Write the results as XML (as used by IETF Internet Draft processing tools)
 into the given file.
+.It Fl export-to-separate-xmls=prefix
+Write the results as XML; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex-"), the entry key and ".xml".
 .It Fl check-urls
 Check URLs by downloading the content file and adding MD5, size and MIME type
 entries.

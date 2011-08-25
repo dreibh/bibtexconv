@@ -491,7 +491,9 @@ int main(int argc, char** argv)
    bool        addNotesWithISBNandISSN  = false;
    bool        addUrlCommand            = false;
    const char* exportToBibTeX           = NULL;
+   const char* exportToSeparateBibTeXs  = NULL;
    const char* exportToXML              = NULL;
+   const char* exportToSeparateXMLs     = NULL;
    const char* exportToCustom           = NULL;
    const char* downloadDirectory        = NULL;
 
@@ -509,15 +511,21 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-xml=file} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
+      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
       if( strncmp(argv[i], "-export-to-bibtex=", 18) == 0 ) {
          exportToBibTeX = (const char*)&argv[i][18];
       }
+      if( strncmp(argv[i], "-export-to-separate-bibtexs=", 28) == 0 ) {
+         exportToSeparateBibTeXs = (const char*)&argv[i][28];
+      }
       else if( strncmp(argv[i], "-export-to-xml=", 15) == 0 ) {
          exportToXML = (const char*)&argv[i][15];
+      }
+      else if( strncmp(argv[i], "-export-to-separate-xmls=", 25) == 0 ) {
+         exportToSeparateXMLs = (const char*)&argv[i][25];
       }
       else if( strncmp(argv[i], "-export-to-custom=", 18) == 0 ) {
          exportToCustom = (const char*)&argv[i][18];
@@ -571,33 +579,30 @@ int main(int argc, char** argv)
 
          // ====== Export all to BibTeX =====================================
          if(exportToBibTeX) {
-            FILE* fh = fopen(exportToBibTeX, "w");
-            if(fh != NULL) {
-               if(PublicationSet::exportPublicationSetToBibTeX(&publicationSet, fh,
-                                                               skipNotesWithISBNandISSN,
-                                                               addNotesWithISBNandISSN,
-                                                               addUrlCommand) == false) {
-                  exit(1);
-               }
-               fclose(fh);
+            if(PublicationSet::exportPublicationSetToBibTeX(
+               &publicationSet, exportToBibTeX, false,
+               skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
+               exit(1);
             }
-            else {
-               fprintf(stderr, "ERROR: Unable to create BibTeX file %s!\n", exportToBibTeX);
+         }
+         if(exportToSeparateBibTeXs) {
+            if(PublicationSet::exportPublicationSetToBibTeX(
+               &publicationSet, exportToSeparateBibTeXs, true,
+               skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
                exit(1);
             }
          }
 
          // ====== Export all to XML ========================================
          if(exportToXML) {
-            FILE* fh = fopen(exportToXML, "w");
-            if(fh != NULL) {
-               if(PublicationSet::exportPublicationSetToXML(&publicationSet, fh) == false) {
-                  exit(1);
-               }
-               fclose(fh);
+            if(PublicationSet::exportPublicationSetToXML(
+               &publicationSet, exportToXML, false) == false) {
+               exit(1);
             }
-            else {
-               fprintf(stderr, "ERROR: Unable to create XML file %s!\n", exportToBibTeX);
+         }
+         if(exportToSeparateXMLs) {
+            if(PublicationSet::exportPublicationSetToXML(
+               &publicationSet, exportToSeparateXMLs, true) == false) {
                exit(1);
             }
          }

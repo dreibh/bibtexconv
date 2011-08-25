@@ -54,11 +54,14 @@ class PublicationSet
    void clearAll();
 
    static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet,
-                                            FILE*           fh,
+                                            const char*     fileNamePrefix,
+                                            const bool      separateFiles,
                                             const bool      skipNotesWithISBNandISSN,
                                             const bool      addNotesWithISBNandISSN,
                                             const bool      addUrlCommand);
-   static bool exportPublicationSetToXML(PublicationSet* publicationSet, FILE* fh);
+   static bool exportPublicationSetToXML(PublicationSet* publicationSet,
+                                         const char*     fileNamePrefix,
+                                         const bool      separateFiles);
    static bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
                                             const std::string&              customPrintingHeader,
                                             const std::string&              customPrintingTrailer,

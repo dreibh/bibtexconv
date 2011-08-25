@@ -145,17 +145,41 @@ void PublicationSet::sort(const std::string* sortKey,
 
 // ###### Export to BibTeX ##################################################
 bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet,
-                                                  FILE*           fh,
+                                                  const char*     fileNamePrefix,
+                                                  const bool      separateFiles,
                                                   const bool      skipNotesWithISBNandISSN,
                                                   const bool      addNotesWithISBNandISSN,
                                                   const bool      addUrlCommand)
 {
+   FILE* fh = NULL;
+   if(!separateFiles) {
+      fh = fopen(fileNamePrefix, "w");
+      if(fh == NULL) {
+         fprintf(stderr, "ERROR: Unable to create BibTeX file %s!\n", fileNamePrefix);
+         return(false);
+      }
+      fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
+   }
+
    for(size_t index = 0; index < publicationSet->size(); index++) {
       const Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
-         fprintf(fh, "%%%s\n\n", publication->keyword.c_str());
+         if(fh != NULL) {
+            fprintf(fh, "%%%s\n\n", publication->keyword.c_str());
+         }
       }
       else {
+         if(separateFiles) {
+            char fileName[1024];
+            snprintf((char*)&fileName, sizeof(fileName), "%s%s.bib", fileNamePrefix, publication->keyword.c_str());
+            fh = fopen(fileName, "w");
+            if(fh == NULL) {
+               fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileName);
+               return(false);
+            }
+            fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
+         }
+
          fprintf(fh, "@%s{ %s, \n", publication->value.c_str(),
                                     publication->keyword.c_str());
 
@@ -234,6 +258,15 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
 
          fputs("\n}\n\n", fh);
       }
+
+      if( (separateFiles) && (fh != NULL)) {
+         fclose(fh);
+         fh = NULL;
+      }
+   }
+
+   if(!separateFiles) {
+      fclose(fh);
    }
    return(true);
 }
@@ -241,16 +274,39 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
 
 // ###### Export to XML #####################################################
 bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
-                                               FILE*           fh)
+                                               const char*     fileNamePrefix,
+                                               const bool      separateFiles)
 {
-   fputs("<?xml version='1.0' encoding='UTF-8'?>\n", stdout);
+   FILE* fh = NULL;
+   if(!separateFiles) {
+      fh = fopen(fileNamePrefix, "w");
+      if(fh == NULL) {
+         fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileNamePrefix);
+         return(false);
+      }
+      fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
+   }
 
    for(size_t index = 0; index < publicationSet->size(); index++) {
       Node* publication = publicationSet->get(index);
+
       if(publication->value == "Comment") {
-         printf("<!-- %s -->\n\n", publication->keyword.c_str());
+         if(fh != NULL) {
+            fprintf(fh, "<!-- %s -->\n\n", publication->keyword.c_str());
+         }
       }
       else {
+         if(separateFiles) {
+            char fileName[1024];
+            snprintf((char*)&fileName, sizeof(fileName), "%s%s.xml", fileNamePrefix, publication->keyword.c_str());
+            fh = fopen(fileName, "w");
+            if(fh == NULL) {
+               fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileName);
+               return(false);
+            }
+            fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
+         }
+
          const Node* title        = findChildNode(publication, "title");
          const Node* author       = findChildNode(publication, "author");
          const Node* year         = findChildNode(publication, "year");
@@ -266,10 +322,10 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          const Node* number       = findChildNode(publication, "number");
          const Node* pages        = findChildNode(publication, "pages");
 
-         fprintf(stdout, "<reference anchor=\"%s\">\n", publication->keyword.c_str());
-         fputs("\t<front>\n", stdout);
+         fprintf(fh, "<reference anchor=\"%s\">\n", publication->keyword.c_str());
+         fputs("\t<front>\n", fh);
          if(title) {
-            fprintf(stdout, "\t\t<title>%s</title>\n", string2xml(title->value).c_str());
+            fprintf(fh, "\t\t<title>%s</title>\n", string2xml(title->value).c_str());
          }
          if(author) {
             for(size_t authorIndex = 0; authorIndex < author->arguments.size(); authorIndex += 3) {
@@ -279,7 +335,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                removeBrackets(familyName);
                removeBrackets(givenName);
                removeBrackets(initials);
-               fprintf(stdout,
+               fprintf(fh,
                   "\t\t<author initials=\"%s\" surname=\"%s\" fullname=\"%s\" />\n",
                   string2xml(initials).c_str(), string2xml(familyName).c_str(),
                   string2xml(givenName +
@@ -288,19 +344,19 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
             }
          }
          if(year || month || day) {
-            fputs("\t\t<date ", stdout);
+            fputs("\t\t<date ", fh);
             if(day) {
-               fprintf(stdout, "day=\"%u\" ", day->number);
+               fprintf(fh, "day=\"%u\" ", day->number);
             }
             if(month) {
-               fprintf(stdout, "month=\"%u\" ", month->number);
+               fprintf(fh, "month=\"%u\" ", month->number);
             }
             if(year) {
-               fprintf(stdout, "year=\"%u\" ", year->number);
+               fprintf(fh, "year=\"%u\" ", year->number);
             }
-            fputs("/>\n", stdout);
+            fputs("/>\n", fh);
          }
-         fputs("\t</front>\n", stdout);
+         fputs("\t</front>\n", fh);
 
          std::string seriesName  = "";
          std::string seriesValue = "";
@@ -323,7 +379,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
             seriesValue += "Pages " + pages->value;
          }
          if((seriesName != "") || (seriesValue != "")) {
-            fprintf(stdout, "\t<seriesInfo name=\"%s\" value=\"%s\" />\n",
+            fprintf(fh, "\t<seriesInfo name=\"%s\" value=\"%s\" />\n",
                     string2xml(seriesName).c_str(),
                     string2xml(seriesValue).c_str());
          }
@@ -348,12 +404,21 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                octets = format(" octets=\"%u\"", atol(urlSize->value.c_str()));
             }
 
-            fprintf(stdout, "\t<format%s%s target=\"%s\" />\n",
+            fprintf(fh, "\t<format%s%s target=\"%s\" />\n",
                     type.c_str(), octets.c_str(),
                     url->value.c_str());
          }
-         fputs("</reference>\n\n", stdout);
+         fputs("</reference>\n\n", fh);
       }
+
+      if( (separateFiles) && (fh != NULL)) {
+         fclose(fh);
+         fh = NULL;
+      }
+   }
+
+   if(!separateFiles) {
+      fclose(fh);
    }
    return(true);
 }
