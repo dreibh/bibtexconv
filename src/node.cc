@@ -37,7 +37,7 @@ static Node* createNode(const char* label)
    if(node == NULL) {
       yyerror("out of memory");
    }
-   node->keyword    = label;
+   node->keyword  = label;
    node->number   = 0;
    node->prev     = NULL;
    node->next     = NULL;
@@ -69,7 +69,7 @@ void freeNode(Node* node)
 
 
 // ###### Count nodes in chain ##############################################
-size_t countNodes(Node* node)
+size_t countNodes(const Node* node)
 {
    size_t count = 0;
    while(node != NULL) {
@@ -128,6 +128,24 @@ Node* findChildNode(Node* node, const char* childKeyword)
       child = child->next;
    }
    return(NULL);
+}
+
+
+// ###### Count child nodes #################################################
+size_t countChildNodes(const Node* node, const char* childKeyword)
+{
+   const Node*       child;
+   const std::string keywordToFind(childKeyword);
+   size_t            count = 0;
+
+   child = node->child;
+   while(child != NULL) {
+      if(child->keyword == keywordToFind) {
+         count++;
+      }
+      child = child->next;
+   }
+   return(count);
 }
 
 
@@ -213,6 +231,29 @@ Node* addOrUpdateChildNode(Node* node, const char* childKeyword, const char* val
 }
 
 
+// ###### Check number of occurrences for a field ###########################
+static bool requiresField(const Node* publication,
+                          const char* field,
+                          const size_t minimum,
+                          const size_t maximum)
+{
+   const size_t count = countChildNodes(publication, field);
+   if(count < minimum) {
+      fprintf(stderr, "WARNING: Entry %s has no \"%s\" section!\n",
+              publication->keyword.c_str(),
+              field);
+      return(false);
+   }
+   else if(count > maximum) {
+      fprintf(stderr, "WARNING: Entry %s has %u \"%s\" sections!\n",
+              publication->keyword.c_str(),
+              (unsigned int)count, field);
+      return(false);
+   }
+   return(true);
+}
+
+
 // ###### Make publication ##################################################
 Node* makePublication(const char* type, const char* label, Node* publicationInfo)
 {
@@ -223,6 +264,44 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
    sortChildren(publication);
 
    if(publication->value != "Comment") {
+      requiresField(publication, "title",        1, 1);
+      requiresField(publication, "author",       1, 1);
+      requiresField(publication, "year",         1, 1);
+      requiresField(publication, "isbn",         0, 1);
+      requiresField(publication, "issn",         0, 1);
+      requiresField(publication, "doi",          0, 1);
+      requiresField(publication, "url",          0, 1);
+      requiresField(publication, "url.size",     0, 1);
+      requiresField(publication, "url.mime",     0, 1);
+      requiresField(publication, "url.md5",      0, 1);
+      requiresField(publication, "url.checked",  0, 1);
+      requiresField(publication, "pages",        0, 1);
+      requiresField(publication, "day",          0, 1);
+      requiresField(publication, "month",        0, 1);
+      requiresField(publication, "address",      0, 1);
+      requiresField(publication, "location",     0, 1);
+      requiresField(publication, "note",         0, 1);
+      requiresField(publication, "howpublished", 0, 1);
+      requiresField(publication, "publisher",    0, 1);
+      requiresField(publication, "school",       0, 1);
+      requiresField(publication, "institution",  0, 1);
+      requiresField(publication, "type",         0, 1);
+      requiresField(publication, "number",       0, 1);
+      requiresField(publication, "issue",        0, 1);
+      requiresField(publication, "volume",       0, 1);
+      if(publication->value == "Article") {
+         requiresField(publication, "journal", 1, 1);
+      }
+      else if(publication->value == "Book") {
+         requiresField(publication, "publisher", 1, 1);
+      }
+      else if(publication->value == "InProceedings") {
+         requiresField(publication, "booktitle", 1, 1);
+      }
+      else if(publication->value == "TechReport") {
+         requiresField(publication, "institution", 1, 1);
+      }
+
       Node* author = findChildNode(publication, "author");
       if(author != NULL) {
          unifyAuthor(publication, author);

@@ -48,7 +48,8 @@ struct Node {
 void freeNode(struct Node* node);
 void dumpNode(struct Node* node);
 
-size_t countNodes(Node* node);
+size_t countNodes(const Node* node);
+size_t countChildNodes(const Node* node, const char* childKeyword);
 Node* findNode(Node* node, const char* keyword);
 Node* findChildNode(Node* node, const char* childKeyword);
 Node* addOrUpdateChildNode(Node* node, const char* childKeyword, const char* value);
