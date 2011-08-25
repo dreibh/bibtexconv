@@ -158,7 +158,6 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
          fprintf(stderr, "ERROR: Unable to create BibTeX file %s!\n", fileNamePrefix);
          return(false);
       }
-      fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
    }
 
    for(size_t index = 0; index < publicationSet->size(); index++) {
@@ -177,7 +176,6 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileName);
                return(false);
             }
-            fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
          }
 
          fprintf(fh, "@%s{ %s, \n", publication->value.c_str(),
@@ -251,7 +249,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                fprintf(fh, "%s\tnote = \"{ISBN} %s\"", separator, isbn->value.c_str());
                separator = ",\n";
             }
-            if(issn) {
+            else if(issn) {
                fprintf(fh, "%s\tnote = \"{ISSN} %s\"", separator, issn->value.c_str());
             }
          }

@@ -518,7 +518,7 @@ int main(int argc, char** argv)
       if( strncmp(argv[i], "-export-to-bibtex=", 18) == 0 ) {
          exportToBibTeX = (const char*)&argv[i][18];
       }
-      if( strncmp(argv[i], "-export-to-separate-bibtexs=", 28) == 0 ) {
+      else if( strncmp(argv[i], "-export-to-separate-bibtexs=", 28) == 0 ) {
          exportToSeparateBibTeXs = (const char*)&argv[i][28];
       }
       else if( strncmp(argv[i], "-export-to-xml=", 15) == 0 ) {
