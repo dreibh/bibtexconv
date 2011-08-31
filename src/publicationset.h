@@ -53,6 +53,10 @@ class PublicationSet
              const size_t        maxSortLevels);
    void clearAll();
 
+   static std::string makeDownloadFileName(const char*        downloadDirectory,
+                                           const std::string& anchor,
+                                           const std::string& mimeString);
+
    static bool exportPublicationSetToBibTeX(PublicationSet* publicationSet,
                                             const char*     fileNamePrefix,
                                             const bool      separateFiles,
@@ -69,6 +73,7 @@ class PublicationSet
                                             const std::vector<std::string>& monthNames,
                                             const std::string&              nbsp,
                                             const bool                      xmlStyle,
+                                            const char*                     downloadDirectory,
                                             FILE*                           fh);
 
    private:
@@ -79,6 +84,7 @@ class PublicationSet
                                     const std::vector<std::string>& monthNames,
                                     const std::string&              nbsp,
                                     const bool                      xmlStyle,
+                                    const char*                     downloadDirectory,
                                     FILE*                           fh);
 
    size_t maxEntries;

@@ -222,22 +222,8 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                               if(downloadDirectory != NULL) {
                                  fclose(downloadFH);
                                  downloadFH = NULL;
-
-                                 std::string extension = "data";
-                                 if(mimeString == "application/pdf") {
-                                    extension = ".pdf";
-                                 }
-                                 else if(mimeString == "application/xml") {
-                                    extension = ".xml";
-                                 }
-                                 else if(mimeString == "text/html") {
-                                    extension = ".html";
-                                 }
-                                 else if(mimeString == "text/plain") {
-                                    extension = ".txt";
-                                 }
-
-                                 const std::string newFileName = (std::string)downloadDirectory + "/" + publication->keyword + extension;
+                                 const std::string newFileName =
+                                    PublicationSet::makeDownloadFileName(downloadDirectory, publication->keyword, mimeString);
                                  if(rename(downloadFileName, newFileName.c_str()) < 0) {
                                     unlink(downloadFileName);
                                     fprintf(stderr, "FAILED to store download file %s: %s!\n",
@@ -399,7 +385,8 @@ static int handleInput(FILE*           fh,
             if(PublicationSet::exportPublicationSetToCustom(
                   &publicationSet,
                   customPrintingHeader, customPrintingTrailer,
-                  customPrintingTemplate, monthNames, nbsp, useXMLStyle, stdout) == false) {
+                  customPrintingTemplate, monthNames, nbsp, useXMLStyle,
+                  downloadDirectory, stdout) == false) {
                result++;
             }
          }
@@ -613,7 +600,8 @@ int main(int argc, char** argv)
                   &publicationSet,
                   customPrintingHeader, customPrintingTrailer,
                   customPrintingTemplate, monthNames,
-                  nbsp, useXMLStyle, stdout) == false) {
+                  nbsp, useXMLStyle, downloadDirectory,
+                  stdout) == false) {
                exit(1);
             }
          }

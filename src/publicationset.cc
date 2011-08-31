@@ -143,6 +143,33 @@ void PublicationSet::sort(const std::string* sortKey,
 }
 
 
+
+// ###### Generate name for file download ###################################
+std::string PublicationSet::makeDownloadFileName(const char*        downloadDirectory,
+                                                 const std::string& anchor,
+                                                 const std::string& mimeString)
+{
+   std::string extension = "data";
+   if(mimeString == "application/pdf") {
+      extension = ".pdf";
+   }
+   else if(mimeString == "application/xml") {
+      extension = ".xml";
+   }
+   else if(mimeString == "text/html") {
+      extension = ".html";
+   }
+   else if(mimeString == "text/plain") {
+      extension = ".txt";
+   }
+
+   if( (downloadDirectory != NULL) && (strlen(downloadDirectory) != 0) ) {
+      return((std::string)downloadDirectory + "/" + anchor + extension);
+   }
+   return(anchor + extension);
+}
+
+
 // ###### Export to BibTeX ##################################################
 bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet,
                                                   const char*     fileNamePrefix,
@@ -436,6 +463,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                                           const std::vector<std::string>& monthNames,
                                           const std::string&              nbsp,
                                           const bool                      xmlStyle,
+                                          const char*                     downloadDirectory,
                                           FILE*                           fh)
 {
    std::string             result;
@@ -455,6 +483,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
             case 'C':   // Anchor
                result += string2utf8(publication->anchor, nbsp, xmlStyle);
                break;
+            case '#':   // Download file name
+               child = findChildNode(publication, "url.mime");
+               result += makeDownloadFileName(downloadDirectory, publication->keyword,
+                                              (child != NULL) ? child->value : "");
+             break;
             case 'a':   // Author LOOP BEGIN
                if(authorBegin != std::string::npos) {
                   fputs("ERROR: Unexpected author loop begin %a -> an author loop is still open!\n", stderr);
@@ -863,6 +896,7 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
                                                   const std::vector<std::string>& monthNames,
                                                   const std::string&              nbsp,
                                                   const bool                      xmlStyle,
+                                                  const char*                     downloadDirectory,
                                                   FILE*                           fh)
 {
    Node* publication = NULL;
@@ -881,7 +915,9 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
       }
       const std::string result = applyTemplate(publication, prevPublication, nextPublication,
                                                printingTemplate,
-                                               monthNames, nbsp, xmlStyle, fh);
+                                               monthNames, nbsp, xmlStyle,
+                                               downloadDirectory,
+                                               fh);
 
       fputs(string2utf8(processBackslash(customPrintingHeader), nbsp).c_str(), stdout);
       fputs(result.c_str(), stdout);
