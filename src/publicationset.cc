@@ -649,7 +649,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                break;
             case 'd':   // DOI
                child = findChildNode(publication, "doi");
-               if(child) { result += string2utf8("DOI~" + child->value, "", xmlStyle); } else { skip = true; }
+               if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
                break;
             case 'y':   // URL mime type
                child = findChildNode(publication, "url.mime");

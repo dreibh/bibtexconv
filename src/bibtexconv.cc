@@ -64,12 +64,30 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
       Node* publication = publicationSet->get(index);
       Node* url         = findChildNode(publication, "url");
       if(url != NULL) {
-         if( (checkNewURLsOnly == true) &&
-             ( (findChildNode(publication, "url.size") != NULL) &&
-               (findChildNode(publication, "url.mime") != NULL) &&
-               (findChildNode(publication, "url.checked") != NULL) ) ) {
-            fprintf(stderr, "Skipping URL of %s.\n", publication->keyword.c_str());
-            continue;
+         puts("x1");
+         if( (findChildNode(publication, "url.size") != NULL) &&
+             (findChildNode(publication, "url.mime") != NULL) &&
+             (findChildNode(publication, "url.checked") != NULL) ) {
+         puts("x2");
+            if(downloadDirectory != NULL) {
+         puts("x3");
+               const std::string downloadFileName =
+                  PublicationSet::makeDownloadFileName(downloadDirectory,
+                                                       publication->keyword,
+                                                       findChildNode(publication, "url.mime")->value);
+               FILE* downloadFH = fopen(downloadFileName.c_str(), "rb");
+               if(downloadFH != NULL) {
+                  fclose(downloadFH);
+                  fprintf(stderr, "Skipping URL of %s (already available as %s).\n",
+                          publication->keyword.c_str(),
+                          downloadFileName.c_str());
+                  continue;
+               }
+            }
+            if(checkNewURLsOnly == true) {
+               fprintf(stderr, "Skipping URL of %s.\n", publication->keyword.c_str());
+               continue;
+            }
          }
 
          fprintf(stderr, "Checking URL of %s ... ", publication->keyword.c_str());
