@@ -64,13 +64,10 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
       Node* publication = publicationSet->get(index);
       Node* url         = findChildNode(publication, "url");
       if(url != NULL) {
-         puts("x1");
          if( (findChildNode(publication, "url.size") != NULL) &&
              (findChildNode(publication, "url.mime") != NULL) &&
              (findChildNode(publication, "url.checked") != NULL) ) {
-         puts("x2");
             if(downloadDirectory != NULL) {
-         puts("x3");
                const std::string downloadFileName =
                   PublicationSet::makeDownloadFileName(downloadDirectory,
                                                        publication->keyword,
@@ -84,7 +81,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                   continue;
                }
             }
-            if(checkNewURLsOnly == true) {
+            else if(checkNewURLsOnly == true) {
                fprintf(stderr, "Skipping URL of %s.\n", publication->keyword.c_str());
                continue;
             }
