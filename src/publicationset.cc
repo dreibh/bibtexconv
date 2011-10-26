@@ -346,6 +346,9 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          const Node* volume       = findChildNode(publication, "volume");
          const Node* number       = findChildNode(publication, "number");
          const Node* pages        = findChildNode(publication, "pages");
+         const Node* isbn         = findChildNode(publication, "isbn");
+         const Node* issn         = findChildNode(publication, "issn");
+         const Node* doi          = findChildNode(publication, "doi");
 
          fprintf(fh, "<reference anchor=\"%s\">\n", publication->keyword.c_str());
          fputs("\t<front>\n", fh);
@@ -411,6 +414,24 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                seriesValue += ", ";
             }
             seriesValue += "Pages " + pages->value;
+         }
+         if(issn) {
+            if(seriesValue != "") {
+               seriesValue += ", ";
+            }
+            seriesValue += "ISSN~" + issn->value;
+         }
+         if(isbn) {
+            if(seriesValue != "") {
+               seriesValue += ", ";
+            }
+            seriesValue += "ISBN~" + isbn->value;
+         }
+         if(doi) {
+            if(seriesValue != "") {
+               seriesValue += ", ";
+            }
+            seriesValue += "DOI~" + doi->value;
          }
          if(seriesValue != "") {
             seriesName += ",";
