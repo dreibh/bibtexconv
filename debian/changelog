@@ -1,4 +1,4 @@
-bibtexconv (0.7.10~beta4.3-0ubuntu1) oneiric; urgency=low
+bibtexconv (0.7.10~beta4.4-0ubuntu1) oneiric; urgency=low
 
   * Initial Debian release (Closes: #xxxxxx).
   * Initial Ubuntu release (LP: #777269).

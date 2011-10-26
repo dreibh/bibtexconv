@@ -374,7 +374,10 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                fprintf(fh, "day=\"%u\" ", day->number);
             }
             if(month) {
-               fprintf(fh, "month=\"%u\" ", month->number);
+               static const char* xmlMonthNames[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+               if((month->number >= 1) && (month->number <= 12)) {
+                  fprintf(fh, "month=\"%s\" ", xmlMonthNames[month->number - 1]);
+               }
             }
             if(year) {
                fprintf(fh, "year=\"%u\" ", year->number);
@@ -384,7 +387,6 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          fputs("\t</front>\n", fh);
 
          std::string seriesName  = "";
-         std::string seriesValue = "";
          if(howpublished) {
             seriesName = howpublished->value;
          }
@@ -394,14 +396,24 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          if(journal) {
             seriesName = journal->value;
          }
+         std::string seriesValue = "";
          if(volume) {
             seriesValue += "Volume " + volume->value;
          }
          if(number) {
+            if(seriesValue != "") {
+               seriesValue += ", ";
+            }
             seriesValue += "Number " + number->value;
          }
          if(pages) {
+            if(seriesValue != "") {
+               seriesValue += ", ";
+            }
             seriesValue += "Pages " + pages->value;
+         }
+         if(seriesValue != "") {
+            seriesName += ",";
          }
          if((seriesName != "") || (seriesValue != "")) {
             fprintf(fh, "\t<seriesInfo name=\"%s\" value=\"%s\" />\n",
