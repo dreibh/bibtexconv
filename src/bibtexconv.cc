@@ -63,14 +63,15 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
       Node* publication = publicationSet->get(index);
       Node* url         = findChildNode(publication, "url");
       if(url != NULL) {
-         if( (findChildNode(publication, "url.size") != NULL) &&
-             (findChildNode(publication, "url.mime") != NULL) &&
-             (findChildNode(publication, "url.checked") != NULL) ) {
+         const Node* urlSize    = findChildNode(publication, "url.size");
+         const Node* urlMime    = findChildNode(publication, "url.mime");
+         const Node* urlChecked = findChildNode(publication, "url.checked");
+         if( (urlSize != NULL) && (urlMime != NULL) && (urlChecked != NULL) ) {
             if(downloadDirectory != NULL) {
                const std::string downloadFileName =
                   PublicationSet::makeDownloadFileName(downloadDirectory,
                                                        publication->keyword,
-                                                       findChildNode(publication, "url.mime")->value);
+                                                       urlMime->value);
                FILE* downloadFH = fopen(downloadFileName.c_str(), "rb");
                if(downloadFH != NULL) {
                   fclose(downloadFH);
@@ -81,7 +82,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                }
             }
             else if(checkNewURLsOnly == true) {
-               fprintf(stderr, "Skipping URL of %s.\n", publication->keyword.c_str());
+               fprintf(stderr, "Skipping URL of %s (not a new entry).\n", publication->keyword.c_str());
                continue;
             }
          }
