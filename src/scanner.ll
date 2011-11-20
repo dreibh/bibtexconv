@@ -29,6 +29,7 @@ std::string string;
 std::string comment;
 %}
 
+%option yylineno
 
 %x STRING
 %x COMMENT
