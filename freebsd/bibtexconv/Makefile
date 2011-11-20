@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	bibtexconv
-PORTVERSION=	0.7.3
+PORTVERSION=	0.8.0
 CATEGORIES=	net
 MASTER_SITES=	http://www.iem.uni-due.de/~dreibh/bibtexconv/download/ \
 		http://www.exp-math.uni-essen.de/~dreibh/bibtexconv/download/
@@ -14,7 +14,7 @@ MASTER_SITES=	http://www.iem.uni-due.de/~dreibh/bibtexconv/download/ \
 MAINTAINER=	dreibh@iem.uni-due.de
 COMMENT=	BibTeX Converter
 
-# LIB_DEPENDS+=
+LIB_DEPENDS+=   libcurl libcrypto
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	""
@@ -23,7 +23,7 @@ USE_GMAKE=	yes
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-PLIST_FILES=	bin/bibtexconv
-MAN8=		bibtexconv.8
+PLIST_FILES=	bin/bibtexconv bin/bibtexconv-odt
+MAN8=		bibtexconv.8 bibtexconv-odt.8
 
 .include <bsd.port.mk>

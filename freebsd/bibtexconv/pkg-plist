@@ -1,2 +1,4 @@
 bin/bibtexconv
+bin/bibtexconv-odt
 man/man8/bibtexconv.8
+man/man8/bibtexconv-odt.8
