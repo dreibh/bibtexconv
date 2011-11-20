@@ -28,6 +28,15 @@ else
 fi
 
 
+# ###### Operating system checks ############################################
+case $host_os in
+freebsd*)
+   CFLAGS="$CFLAGS -I/usr/local/include"
+   CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+   LDFLAGS="$LDFLAGS -L/usr/local/lib"
+esac
+
+
 # ###### libcurl ############################################################
 AC_CHECK_LIB(curl, curl_easy_perform,
                [ CURL_LIBS=-lcurl ],
