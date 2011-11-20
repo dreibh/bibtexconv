@@ -1,9 +1,11 @@
 #!/bin/sh
 
+PACKAGE="bibtexconv"
+
 if [ -e work ] ; then
    rm -rf work
 fi
-find . -name "*.tbz" | xargs rm
+find /usr/ports/packages/All -name "$PACKAGE-*.tbz" | xargs rm
 
 
 echo "1. ###### make deinstall ##############################################" && \
@@ -15,7 +17,7 @@ make package && \
 echo "4. ###### make deinstall ##############################################" && \
 make deinstall && \
 echo "5. ###### pkg_add #####################################################" && \
-pkg_add *.tbz && \
+pkg_add /usr/ports/packages/All/$PACKAGE-*.tbz && \
 echo "6. ###### make deinstall ##############################################" && \
 make deinstall && \
 echo "7. ###### make reinstall ##############################################" && \
@@ -23,4 +25,4 @@ make reinstall && \
 echo "8. ###### make package ################################################" && \
 make package && \
 echo "9. ###### tar tzvf *.tbz ##############################################" && \
-tar tzvf *.tbz
+tar tzvf /usr/ports/packages/All/$PACKAGE-*.tbz
