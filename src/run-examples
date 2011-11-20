@@ -3,3 +3,4 @@ bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -export-to-bibtex=Updated
 bibtexconv /usr/share/bibtexconv/ExampleReferences.bib </usr/share/bibtexconv/web-example.export >MyPublications.html
 bibtexconv /usr/share/bibtexconv/ExampleReferences.bib </usr/share/bibtexconv/text-example.export >MyPublications.txt
 bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
+bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
