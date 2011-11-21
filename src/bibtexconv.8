@@ -19,7 +19,7 @@
 .\" Contact: dreibh@iem.uni-due.de
 .\"
 .\" ###### Setup ############################################################
-.Dd October 27, 2011
+.Dd November 20, 2011
 .Dt bibtexconv 8
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -136,7 +136,9 @@ Uses export script /usr/share/bibtexconv/web-example.export to export references
 .It bibtexconv /usr/share/bibtexconv/ExampleReferences.bib </usr/share/bibtexconv/text-example.export >MyPublications.txt
 Uses export script /usr/share/bibtexconv/text-example.export to export references from /usr/share/bibtexconv/ExampleReferences.bib to MyPublications.txt as plain text.
 .It bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
-Convert all references to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference.".
+Convert all references to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference.", for example reference.Globecom2010.xml for entry Globecom2010.
+.It bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
+Convert all references to BibTeX references. For each reference, an own file is generated, named with the prefix "", for example Globecom2010.bib for entry Globecom2010.
 .El
 .\" ###### Authors ##########################################################
 .Sh AUTHORS
