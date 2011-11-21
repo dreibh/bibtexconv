@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	bibtexconv
-PORTVERSION=	0.8.0
+PORTVERSION=	0.8.1
 CATEGORIES=	net
 MASTER_SITES=	http://www.iem.uni-due.de/~dreibh/bibtexconv/download/ \
 		http://www.exp-math.uni-essen.de/~dreibh/bibtexconv/download/

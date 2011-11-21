@@ -1,6 +1,6 @@
-bibtexconv (0.8.0-2ubuntu1) precise; urgency=low
+bibtexconv (0.8.1-0ubuntu1) precise; urgency=low
 
   * Initial Debian release (Closes: #649404).
   * Initial Ubuntu release (LP: #777269).
 
- -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Wed, 16 Nov 2011 21:34:56 +0200
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Mon, 20 Nov 2011 07:07:07 +0200
