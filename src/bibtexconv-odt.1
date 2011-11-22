@@ -40,7 +40,7 @@ runs bibtexconv to generate an Open Document Text (ODT) content.xml file, which
 is then joined with an existing template ODT file into an output ODT file.
 .Pp
 .\" ###### Arguments ########################################################
-.Sh ARGUMENTS
+.Sh OPTIONS
 The following arguments have to be provided:
 .Bl -tag -width indent
 .It Template ODT
@@ -53,7 +53,7 @@ The input BibTeX file for BibTeXConv.
 The input export script for BibTeXConv.
 .El
 .\" ###### Arguments ########################################################
-.Sh EXAMPLES
+.Sh EXAMPLE
 .Bl -tag -width indent
 .It bibtexconv-odt /usr/share/doc/bibtexconv/examples/ODT-Template.odt MyPublications.odt /usr/share/doc/bibtexconv/examples/ExampleReferences.bib /usr/share/doc/bibtexconv/examples/odt-example.export
 Uses export script /usr/share/doc/bibtexconv/examples/odt-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.odt as OpenDocument Text (ODT), according to the template ODT file /usr/share/doc/bibtexconv/examples/ODT-Template.odt.
