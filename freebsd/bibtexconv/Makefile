@@ -24,6 +24,6 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 PLIST_FILES=	bin/bibtexconv bin/bibtexconv-odt
-MAN8=		bibtexconv.8 bibtexconv-odt.8
+MAN1=		bibtexconv.1 bibtexconv-odt.1
 
 .include <bsd.port.mk>

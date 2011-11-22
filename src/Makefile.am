@@ -15,7 +15,7 @@ dist_bibtexconv_DATA = ExampleReferences.bib ODT-Template.odt odt-example.export
 
 dist_bin_SCRIPTS = bibtexconv-odt
 
-dist_man_MANS = bibtexconv.8 bibtexconv-odt.8
+dist_man_MANS = bibtexconv.1 bibtexconv-odt.1
 
 
 CLEANFILES = grammar.cc grammar.h scanner.cc

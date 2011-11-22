@@ -19,8 +19,8 @@
 .\" Contact: dreibh@iem.uni-due.de
 .\"
 .\" ###### Setup ############################################################
-.Dd November 20, 2011
-.Dt bibtexconv 8
+.Dd November 22, 2011
+.Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
 .Sh NAME
@@ -55,7 +55,7 @@ scripts) which allows for fine-granular selection of entries, sorting and
 export template specification.
 .Pp
 .\" ###### Arguments ########################################################
-.Sh ARGUMENTS
+.Sh OPTIONS
 The following arguments have to be provided:
 .Bl -tag -width indent
 .It BibTeX file
@@ -83,7 +83,7 @@ Add \url{} commands to url tags in BibTeX export.
 When reading the BibTeX file, ignore "note" items with ISBN and ISSN.
 .It Fl add-notes-with-isbn-and-issn
 When writing a BibTeX file, create "note" items with ISBN and ISSN.
-.It non-interactive
+.It Fl non-interactive
 Turns on non-interactive mode. Useful for just performing URL checks and
 ISBN/ISSN verification.
 .El
