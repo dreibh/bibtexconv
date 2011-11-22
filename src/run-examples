@@ -1,6 +1,26 @@
 #!/bin/sh
+# $Id$
+#
+# Copyright (C) 2010-2011 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: dreibh@iem.uni-due.de
+
 bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
 bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/web-example.export >MyPublications.html
 bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/text-example.export >MyPublications.txt
 bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
 bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
+bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=Downloads -non-interactive
