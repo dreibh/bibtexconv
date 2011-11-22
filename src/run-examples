@@ -1,6 +1,6 @@
 #!/bin/sh
-bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
-bibtexconv /usr/share/bibtexconv/ExampleReferences.bib </usr/share/bibtexconv/web-example.export >MyPublications.html
-bibtexconv /usr/share/bibtexconv/ExampleReferences.bib </usr/share/bibtexconv/text-example.export >MyPublications.txt
-bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
-bibtexconv /usr/share/bibtexconv/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
+bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
+bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/web-example.export >MyPublications.html
+bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/text-example.export >MyPublications.txt
+bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
+bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
