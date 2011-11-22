@@ -1,19 +1,19 @@
-This package was debianized by Thomas Dreibholz <dreibh@iem.uni-due.de>
-on Tue, 02 Feb 2010 08:08:08 +0200.
+Format: http://www.debian.org/doc/copyright-format/1.0
+Upstream-Name: BibTeXConv
+Source: http://www.iem.uni-due.de/~dreibh/bibtexconv/
 
-The original source can be found at:
-http://www.iem.uni-due.de/~dreibh/subnetcalc/
-
-BibTeXConv and Debian/Ubuntu packaging is
-
-  Copyright (C) 2010-2011 Thomas Dreibholz
-
-License:
-
+Files: *
+Copyright: Copyright (C) 2010-2011 Thomas Dreibholz
+License: GPL-3
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-
+  .
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  .
   On Debian systems, the complete text of the GNU General
   Public License can be found in `/usr/share/common-licenses/GPL-3'.
