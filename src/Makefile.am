@@ -10,8 +10,8 @@ bibtexconv_SOURCES = \
    grammar.yy scanner.ll
 bibtexconv_LDADD = $(CURL_LIBS) $(CRYPTO_LIBS)
 
-bibtexconvdir        = $(datadir)/bibtexconv
-dist_bibtexconv_DATA = ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export text-example.export
+examplesdir        = $(docdir)/examples
+dist_examples_DATA = ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export text-example.export
 
 dist_bin_SCRIPTS = bibtexconv-odt
 

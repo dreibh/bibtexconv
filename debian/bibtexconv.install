@@ -1,7 +1,7 @@
-src/ExampleReferences.bib  /usr/share/bibtexconv
-src/ODT-Template.odt       /usr/share/bibtexconv
+src/ExampleReferences.bib  /usr/share/doc/bibtexconv/examples
+src/ODT-Template.odt       /usr/share/doc/bibtexconv/examples
 src/bibtexconv             /usr/bin
 src/bibtexconv-odt         /usr/bin
-src/odt-example.export     /usr/share/bibtexconv
-src/text-example.export    /usr/share/bibtexconv
-src/web-example.export     /usr/share/bibtexconv
+src/odt-example.export     /usr/share/doc/bibtexconv/examples
+src/text-example.export    /usr/share/doc/bibtexconv/examples
+src/web-example.export     /usr/share/doc/bibtexconv/examples
