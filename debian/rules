@@ -6,3 +6,7 @@
 # Use upstream ChangeLog for installation
 override_dh_installchangelogs:
 	dh_installchangelogs -k ChangeLog
+
+# Do not compress example files
+override_dh_compress:
+	dh_compress -X.bib -X.export -X.odt
