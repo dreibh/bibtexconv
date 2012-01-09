@@ -170,7 +170,13 @@ std::string extractToken(std::string& string, const std::string& delimiters)
 {
    if(string[0] == '\"') {
       string = string.substr(1, string.size() - 1);
-      return(extractToken(string, "\""));
+      if((string.size() > 0) && (string[0] != '\"')) {
+         return(extractToken(string, "\""));
+      }
+      else {
+         string = string.substr(1, string.size() - 1);
+         return("");
+      }
    }
    for(size_t i = 0; i < string.size(); i++) {
       if(string[i] == '\\') {

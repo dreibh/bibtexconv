@@ -30,7 +30,7 @@ extern void yyerror(const char* errorText);
 extern int  yylex();
 
 
-#define NODE_CUSTOM_ENTRIES 3
+#define NODE_CUSTOM_ENTRIES 5
 
 struct Node {
    struct Node*             prev;
