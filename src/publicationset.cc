@@ -576,7 +576,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   return("");
                }
                authorIndex += 3;
-               if(authorIndex < author->arguments.size()) {
+               if( (author != NULL) && (authorIndex < author->arguments.size()) ) {
                   i = authorBegin;
                }
                else {
@@ -684,7 +684,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
                child = findChildNode(publication, "doi");
                if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
                break;
-            case 'y':   // URL mime type
+            case 'z':   // URL mime type
+               child = findChildNode(publication, "url.mime");
+               if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
+               break;
+            case 'y':   // URL type
                child = findChildNode(publication, "url.mime");
                if(child) {
                   if(child->value == "application/pdf") {

@@ -578,48 +578,6 @@ int main(int argc, char** argv)
          if(checkURLs) {
             result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly);
          }
-
-         // ====== Export all to BibTeX =====================================
-         if(exportToBibTeX) {
-            if(PublicationSet::exportPublicationSetToBibTeX(
-               &publicationSet, exportToBibTeX, false,
-               skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
-               exit(1);
-            }
-         }
-         if(exportToSeparateBibTeXs) {
-            if(PublicationSet::exportPublicationSetToBibTeX(
-               &publicationSet, exportToSeparateBibTeXs, true,
-               skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
-               exit(1);
-            }
-         }
-
-         // ====== Export all to XML ========================================
-         if(exportToXML) {
-            if(PublicationSet::exportPublicationSetToXML(
-               &publicationSet, exportToXML, false) == false) {
-               exit(1);
-            }
-         }
-         if(exportToSeparateXMLs) {
-            if(PublicationSet::exportPublicationSetToXML(
-               &publicationSet, exportToSeparateXMLs, true) == false) {
-               exit(1);
-            }
-         }
-
-         // ====== Export all to custom format ==============================
-         if(exportToCustom) {
-            if(PublicationSet::exportPublicationSetToCustom(
-                  &publicationSet,
-                  customPrintingHeader, customPrintingTrailer,
-                  customPrintingTemplate, monthNames,
-                  nbsp, useXMLStyle, downloadDirectory,
-                  stdout) == false) {
-               exit(1);
-            }
-         }
       }
       else {
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
@@ -627,6 +585,48 @@ int main(int argc, char** argv)
          result = handleInput(stdin, publicationSet,
                               downloadDirectory, checkURLs, checkNewURLsOnly);
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
+      }
+
+      // ====== Export all to BibTeX ========================================
+      if(exportToBibTeX) {
+         if(PublicationSet::exportPublicationSetToBibTeX(
+            &publicationSet, exportToBibTeX, false,
+            skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
+            exit(1);
+         }
+      }
+      if(exportToSeparateBibTeXs) {
+         if(PublicationSet::exportPublicationSetToBibTeX(
+            &publicationSet, exportToSeparateBibTeXs, true,
+            skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
+            exit(1);
+         }
+      }
+
+      // ====== Export all to XML ===========================================
+      if(exportToXML) {
+         if(PublicationSet::exportPublicationSetToXML(
+            &publicationSet, exportToXML, false) == false) {
+            exit(1);
+         }
+      }
+      if(exportToSeparateXMLs) {
+         if(PublicationSet::exportPublicationSetToXML(
+            &publicationSet, exportToSeparateXMLs, true) == false) {
+            exit(1);
+         }
+      }
+
+      // ====== Export all to custom format =================================
+      if(exportToCustom) {
+         if(PublicationSet::exportPublicationSetToCustom(
+               &publicationSet,
+               customPrintingHeader, customPrintingTrailer,
+               customPrintingTemplate, monthNames,
+               nbsp, useXMLStyle, downloadDirectory,
+               stdout) == false) {
+            exit(1);
+         }
       }
    }
    if(bibTeXFile) {
