@@ -92,6 +92,7 @@ static const std::string* gSortKey       = NULL;
 static const bool*        gSortAscending = NULL;
 static size_t             gMaxSortLevels = 0;
 
+// ###### Node comparison function for qsort() ##############################
 static int publicationNodeComparisonFunction(const void* ptr1, const void* ptr2)
 {
    const Node* node1 = *((const Node**)ptr1);
@@ -487,11 +488,16 @@ struct StackEntry {
    bool   skip;
 };
 
+// NOTE: PublicationSet::applyTemplate() will *NOT* be thread-safe!
+static unsigned int gNumber      = 0;
+static unsigned int gTotalNumber = 0;
+
 
 // ###### Apply printing template to publication ############################
 std::string PublicationSet::applyTemplate(Node*                           publication,
                                           Node*                           prevPublication,
                                           Node*                           nextPublication,
+                                          const char*                     namingTemplate,
                                           const std::string&              printingTemplate,
                                           const std::vector<std::string>& monthNames,
                                           const std::string&              nbsp,
@@ -507,6 +513,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
    size_t                  authorBegin          = std::string::npos;
    bool                    skip                 = false;
    const size_t            printingTemplateSize = printingTemplate.size();
+
+   gNumber++;
+   gTotalNumber++;
+
    for(size_t i = 0; i < printingTemplateSize; i++) {
       if( (printingTemplate[i] == '%') && (i + 1 < printingTemplateSize) ) {
          switch(printingTemplate[i + 1]) {
@@ -515,6 +525,63 @@ std::string PublicationSet::applyTemplate(Node*                           public
                break;
             case 'C':   // Anchor
                result += string2utf8(publication->anchor, nbsp, xmlStyle);
+               break;
+            case 'Z':   // Name based on naming template
+               {
+                  size_t p;
+                  size_t begin      = 0;
+                  size_t len        = strlen(namingTemplate);
+                  bool   inTemplate = false;
+                  for(p = 0; p < len; p++) {
+                     if(inTemplate == false) {
+                        if(namingTemplate[p] == '%') {
+                           inTemplate = true;
+                           char str[p + 1];
+                           if(p > begin) {
+                              memcpy((char*)&str, &namingTemplate[begin], p - begin);
+                           }
+                           str[p - begin] = 0x00;
+                           result += string2utf8(str, nbsp, xmlStyle);
+                           begin = p + 1;
+                        }
+                     }
+                     else {
+                        if(namingTemplate[p] == '%') {
+                           result += "%";
+                           inTemplate = false;
+                           begin      = p + 1;
+                        }
+                        else if(isdigit(namingTemplate[p])) {
+                           // Number
+                        }
+                        else if( (namingTemplate[p] == 'n') ||
+                                 (namingTemplate[p] == 'N') ) {
+                           char str[p + 3];
+                           str[0] = '%';
+                           if(p > begin) {
+                              memcpy((char*)&str[1], &namingTemplate[begin], p - begin);
+                           }
+                           str[p - begin + 1] = 'u';
+                           str[p - begin + 2] = 0x00;
+                           if(namingTemplate[p] == 'n') {
+                              result += format(str, gNumber);
+                           }
+                           else if(namingTemplate[p] == 'N') {
+                              result += format(str, gTotalNumber);
+                           }
+                           inTemplate = false;
+                           begin      = p + 1;
+                        }
+                        else {
+                           fprintf(stderr, "ERROR: Bad naming template \"%s\"!\n", namingTemplate);
+                           return("");
+                        }
+                     }
+                  }
+                  if(begin < p) {
+                     result += string2utf8(&namingTemplate[begin], nbsp, xmlStyle);
+                  }
+               }
                break;
             case '#':   // Download file name
                child = findChildNode(publication, "url.mime");
@@ -927,6 +994,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
 
 // ###### Export to custom ##################################################
 bool PublicationSet::exportPublicationSetToCustom(PublicationSet*                 publicationSet,
+                                                  const char*                     namingTemplate,
                                                   const std::string&              customPrintingHeader,
                                                   const std::string&              customPrintingTrailer,
                                                   const std::string&              printingTemplate,
@@ -937,6 +1005,7 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
                                                   FILE*                           fh)
 {
    Node* publication = NULL;
+   gNumber           = 0;
    for(size_t index = 0; index < publicationSet->size(); index++) {
       // ====== Get prev, current and next publications =====================
       if(publicationSet->get(index)->value == "Comment") {
@@ -950,7 +1019,9 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
          nextPublicationIndex++;
          nextPublication = (index + nextPublicationIndex< publicationSet->size()) ? publicationSet->get(index + nextPublicationIndex) : NULL;
       }
+
       const std::string result = applyTemplate(publication, prevPublication, nextPublication,
+                                               namingTemplate,
                                                printingTemplate,
                                                monthNames, nbsp, xmlStyle,
                                                downloadDirectory,

@@ -5,7 +5,7 @@
 templatenew
 template+ [%bY===== YEAR %Y =====\n][%bM---- %M %Y ----\n]
 # ***** Label
-template+ \[%C\]~
+template+ \[%Z\]~
 # ***** Authors
 template+ %a[%f|%n; | and ]%F[, %G]%A:
 # ***** Title
@@ -29,7 +29,7 @@ echo ===== Begin of My Publications List =====\n
 # Select and export all entries.
 citeAll
 sort year/A month/D day/D
-export
+export Ref%%Total%02N-Sub%02n-X
 
 
 # Print after all publications:

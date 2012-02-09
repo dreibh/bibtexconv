@@ -397,8 +397,12 @@ static int handleInput(FILE*           fh,
             if(checkURLs) {
                result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly);
             }
+            const char* namingTemplate = "%u";
+            if(input[6] == ' ') {
+               namingTemplate = (const char*)&input[7];
+            }
             if(PublicationSet::exportPublicationSetToCustom(
-                  &publicationSet,
+                  &publicationSet, namingTemplate,
                   customPrintingHeader, customPrintingTrailer,
                   customPrintingTemplate, monthNames, nbsp, useXMLStyle,
                   downloadDirectory, stdout) == false) {
@@ -620,7 +624,7 @@ int main(int argc, char** argv)
       // ====== Export all to custom format =================================
       if(exportToCustom) {
          if(PublicationSet::exportPublicationSetToCustom(
-               &publicationSet,
+               &publicationSet, "%u",
                customPrintingHeader, customPrintingTrailer,
                customPrintingTemplate, monthNames,
                nbsp, useXMLStyle, downloadDirectory,

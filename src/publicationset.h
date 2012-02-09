@@ -67,6 +67,7 @@ class PublicationSet
                                          const char*     fileNamePrefix,
                                          const bool      separateFiles);
    static bool exportPublicationSetToCustom(PublicationSet*                 publicationSet,
+                                            const char*                     namingTemplate,
                                             const std::string&              customPrintingHeader,
                                             const std::string&              customPrintingTrailer,
                                             const std::string&              printingTemplate,
@@ -80,6 +81,7 @@ class PublicationSet
    static std::string applyTemplate(Node*                           publication,
                                     Node*                           prevPublication,
                                     Node*                           nextPublication,
+                                    const char*                     namingTemplate,
                                     const std::string&              printingTemplate,
                                     const std::vector<std::string>& monthNames,
                                     const std::string&              nbsp,

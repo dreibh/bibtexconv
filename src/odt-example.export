@@ -68,7 +68,7 @@ template+ </text:span>
 # ***** Title
 template+  “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[ ([%y, ]%sK~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %H][, %B][, %r][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %I][, %i][, %d][, %@][, [[%M~%D, |%M~]%Y].</text:p>
+template+ [, %H][, %B][, %r][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %I][, %i][, DOI~<text:a xlink:type="simple" xlink:href="http://dx.doi.org/%d">%d</text:a>][, %@][, [[%M~%D, |%M~]%Y].</text:p>
 # ***** URL including hyperlink
 template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a>.</text:span></text:p>]
 # ***** End of Entry
