@@ -29,7 +29,7 @@ echo ===== Begin of My Publications List =====\n
 # Select and export all entries.
 citeAll
 sort year/A month/D day/D
-export Ref%%Total%02N-Sub%02n-X
+export Ref%02n
 
 
 # Print after all publications:

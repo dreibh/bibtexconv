@@ -27,16 +27,19 @@ TEMPLATE_ODT="$1"
 OUTPUT_ODT="$2"
 BIBTEX_FILE="$3"
 EXPORT_SCRIPT="$4"
-TEMP_ZIP=`mktemp`
+TEMP_ZIP=`mktemp -d`
 
 RESULT=1
 
-bibtexconv $BIBTEX_FILE <$EXPORT_SCRIPT >content.xml && \
-cp "$TEMPLATE_ODT" "$TEMP_ZIP"
-zip "$TEMP_ZIP" --out "$OUTPUT_ODT" -x content.xml && \
-zip "$OUTPUT_ODT" content.xml && \
-RESULT=0
+bibtexconv $BIBTEX_FILE <$EXPORT_SCRIPT >$TEMP_ZIP/content.xml && \
+cp "$TEMPLATE_ODT" $TEMP_ZIP/template.odt && \
+( cd $TEMP_ZIP && \
+  zip template.odt --out output.odt -x content.xml && \
+  zip output.odt content.xml ) && \
+RESULT=0 && \
+mv $TEMP_ZIP/output.odt "$OUTPUT_ODT"
 
-rm -f content.xml "$TEMP_ZIP"
+rm -rf $TEMP_ZIP
+
 
 exit $RESULT
