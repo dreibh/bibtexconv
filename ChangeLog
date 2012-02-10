@@ -1,4 +1,231 @@
 ------------------------------------------------------------------------
+r1339 | dreibh | 2012-02-09 16:13:09 +0100 (Thu, 09 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ExampleReferences.bib
+
+Updated example.
+
+------------------------------------------------------------------------
+r1338 | dreibh | 2012-02-09 16:12:29 +0100 (Thu, 09 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/ExampleReferences.bib
+   M /trunk/bibtexconv/src/bibtexconv.cc
+   M /trunk/bibtexconv/src/odt-example.export
+   M /trunk/bibtexconv/src/publicationset.cc
+   M /trunk/bibtexconv/src/publicationset.h
+   M /trunk/bibtexconv/src/text-example.export
+   M /trunk/bibtexconv/src/web-example.export
+
+Improved export: added naming template.
+
+------------------------------------------------------------------------
+r1336 | dreibh | 2012-02-06 14:35:27 +0100 (Mon, 06 Feb 2012) | 4 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/bibtexconv.cc
+   M /trunk/bibtexconv/src/publicationset.cc
+   M /trunk/bibtexconv/src/stringhandling.cc
+   M /trunk/bibtexconv/src/web-example.export
+
+- Bugfix for NULL pointer handling.
+- Improved BibTeX/XML export: also allow export in interactive mode.
+- Improved handling of Northern European and Turkish characters in fields.
+
+------------------------------------------------------------------------
+r1335 | dreibh | 2012-01-15 16:59:11 +0100 (Sun, 15 Jan 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/web-example.export
+
+A small export improvement.
+
+------------------------------------------------------------------------
+r1334 | dreibh | 2012-01-09 23:40:39 +0100 (Mon, 09 Jan 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/dreibholz-thesises.export
+   M /trunk/bibtexconv/src/node.h
+   M /trunk/bibtexconv/src/stringhandling.cc
+
+Two string handling fixes.
+
+------------------------------------------------------------------------
+r1132 | dreibh | 2011-11-22 12:49:17 +0100 (Tue, 22 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/bibtexconv-odt.1
+
+Manpage fix.
+
+------------------------------------------------------------------------
+r1131 | dreibh | 2011-11-22 12:28:13 +0100 (Tue, 22 Nov 2011) | 2 lines
+Changed paths:
+   A /trunk/bibtexconv/src/Downloads
+   M /trunk/bibtexconv/src/make-it
+   M /trunk/bibtexconv/src/run-examples
+
+Updated test script.
+
+------------------------------------------------------------------------
+r1130 | dreibh | 2011-11-22 12:21:32 +0100 (Tue, 22 Nov 2011) | 2 lines
+Changed paths:
+   A /trunk/bibtexconv/debian/bibtexconv.examples (from /trunk/bibtexconv/debian/bibtexconv.install:1127)
+   M /trunk/bibtexconv/debian/bibtexconv.install
+   M /trunk/bibtexconv/debian/rules
+
+The scripts are now correctly installing the examples again, without compressing the files.
+
+------------------------------------------------------------------------
+r1129 | dreibh | 2011-11-22 11:31:27 +0100 (Tue, 22 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/run-examples
+
+Updated examples script.
+
+------------------------------------------------------------------------
+r1128 | dreibh | 2011-11-22 11:30:40 +0100 (Tue, 22 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/bibtexconv-odt.1
+   M /trunk/bibtexconv/src/bibtexconv.1
+
+Updated examples directory.
+
+------------------------------------------------------------------------
+r1127 | dreibh | 2011-11-22 11:24:20 +0100 (Tue, 22 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/debian/bibtexconv.install
+   M /trunk/bibtexconv/src/Makefile.am
+
+Examples are now installed to /usr/share/doc/bibtexconv/examples.
+
+------------------------------------------------------------------------
+r1126 | dreibh | 2011-11-22 11:09:55 +0100 (Tue, 22 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/debian/copyright
+
+Converted debian/copyright to new format.
+
+------------------------------------------------------------------------
+r1125 | dreibh | 2011-11-22 08:38:22 +0100 (Tue, 22 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/Makefile.am
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/debian/bibtexconv.manpages
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
+   M /trunk/bibtexconv/src/Makefile.am
+   A /trunk/bibtexconv/src/bibtexconv-odt.1 (from /trunk/bibtexconv/src/bibtexconv-odt.8:1124)
+   D /trunk/bibtexconv/src/bibtexconv-odt.8
+   A /trunk/bibtexconv/src/bibtexconv.1 (from /trunk/bibtexconv/src/bibtexconv.8:1124)
+   D /trunk/bibtexconv/src/bibtexconv.8
+
+Some improvements according to suggestions by Beno?\195?\174t Knecht.
+
+------------------------------------------------------------------------
+r1123 | dreibh | 2011-11-21 11:01:44 +0100 (Mon, 21 Nov 2011) | 3 lines
+Changed paths:
+   M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
+   M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
+   A /trunk/bibtexconv/freebsd/bibtexconv/make-diff
+   M /trunk/bibtexconv/freebsd/bibtexconv/make-shar
+   M /trunk/bibtexconv/freebsd/bibtexconv/pkg-descr
+   M /trunk/bibtexconv/freebsd/bibtexconv/test-packaging
+
+Updated FreeBSD packaging files.
+
+
+------------------------------------------------------------------------
+r1118 | dreibh | 2011-11-21 07:43:17 +0100 (Mon, 21 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
+
+Updated packaging files.
+
+------------------------------------------------------------------------
+r1117 | dreibh | 2011-11-21 07:42:40 +0100 (Mon, 21 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/bibtexconv.8
+
+Updated manpage.
+
+------------------------------------------------------------------------
+r1116 | dreibh | 2011-11-20 20:14:52 +0100 (Sun, 20 Nov 2011) | 3 lines
+Changed paths:
+   M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
+   M /trunk/bibtexconv/freebsd/bibtexconv/test-packaging
+
+Updated packaging test script for FreeBSD.
+
+
+------------------------------------------------------------------------
+r1115 | dreibh | 2011-11-20 20:03:19 +0100 (Sun, 20 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/debian/changelog
+
+Added Debian ITP number.
+
+------------------------------------------------------------------------
+r1114 | dreibh | 2011-11-20 19:22:14 +0100 (Sun, 20 Nov 2011) | 3 lines
+Changed paths:
+   D /trunk/bibtexconv/freebsd/bibtexconv/pkg-plist
+
+Removed unneeded pkg-plist.
+
+
+------------------------------------------------------------------------
+r1112 | dreibh | 2011-11-20 19:20:49 +0100 (Sun, 20 Nov 2011) | 3 lines
+Changed paths:
+   M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
+   M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
+   M /trunk/bibtexconv/freebsd/bibtexconv/pkg-plist
+
+Updated FreeBSD packaging files.
+
+
+------------------------------------------------------------------------
+r1111 | dreibh | 2011-11-20 19:10:19 +0100 (Sun, 20 Nov 2011) | 3 lines
+Changed paths:
+   M /trunk/bibtexconv/src/scanner.ll
+
+Fixed compile problem under FreeBSD.
+
+
+------------------------------------------------------------------------
+r1110 | dreibh | 2011-11-20 19:09:00 +0100 (Sun, 20 Nov 2011) | 3 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+
+FreeBSD needs to include /usr/local/include and /usr/local/lib to find libcurl.
+
+
+------------------------------------------------------------------------
+r1109 | dreibh | 2011-11-20 13:40:33 +0100 (Sun, 20 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/bibtexconv.8
+   M /trunk/bibtexconv/src/run-examples
+
+Updated examples.
+
+------------------------------------------------------------------------
+r1103 | dreibh | 2011-11-16 21:58:21 +0100 (Wed, 16 Nov 2011) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+
+Version update.
+
+------------------------------------------------------------------------
 r1086 | dreibh | 2011-10-27 09:31:44 +0200 (Thu, 27 Oct 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
