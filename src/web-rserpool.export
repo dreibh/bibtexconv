@@ -51,13 +51,13 @@ template+ [ <strong>%1.</strong>]
 template+ </p></li>\n\n
 
 # ***** End of Subsection: YEAR
-template+ [%eY</ul>\n\n]
+# template+ [%eY</ul>\n\n]
 
 
 # ====== Finally, print all selected publications ===========================
 
 echo <h2>RFCs related to RSerPool</h2>
-
+echo <ul>
 clear
 cite RFC3237
 cite rfc-rserpool-overview
@@ -69,12 +69,13 @@ cite rfc-rserpool-mib
 cite rfc-rserpool-threats
 sort year/D month/D day/D title/A
 export
+echo </ul>
 
 
 echo <h2>Internet Drafts (IDs) related to RSerPool</h2>
+echo <ul>
 
 clear
-
 cite draft-ietf-rserpool-api
 
 cite draft-dreibholz-rserpool-asap-hropt
@@ -94,6 +95,7 @@ cite draft-ietf-rserpool-service
 
 sort year/D month/D day/D title/A
 export
+echo </ul>
 
 
 # ====== Generate tail ======================================================
