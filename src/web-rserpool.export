@@ -1,0 +1,92 @@
+# Example for export to XHTML 1.1
+# $Id$
+
+
+# ###########################################################################
+# #### Export to XHTML 1.1                                               ####
+# ###########################################################################
+
+echo <?xml version="1.0" encoding="utf-8" ?>\n
+echo <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">\n
+echo <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">\n
+echo <head>\n
+echo <title>Publications</title>\n
+echo </head>\n
+
+echo <body>\n\n
+
+echo <!-- ###### Publications ############################################# -->\n
+#echo <h2 id="Publications">Publications</h2>\n\n
+
+
+# ====== Set header and trailer of each publication entry ===================
+# ----- Encode strings in XML style, e.g. <, >, &, etc.--------------
+xmlStyle
+# ----- Non-breakable space character -------------------------------
+nbsp &nbsp;
+
+
+# ====== This is the printing template ======================================
+templatenew
+
+# ***** Begin of Subsection: YEAR
+# template+ [%bY<h3>%Y</h3><ul>\n\n]
+
+# ****** Begin of Entry
+template+ <li><p class=\"description\">
+
+# ***** Authors
+template+ %a[%f|%n; | and ]%F[,~%G]%A:
+# ***** Title
+template+  [``<a type="%z" href="%U">%T</a>´´|``%T´´][ ([<a type="%z" href="%U">%y</a>, ]%sK~KiB)]
+# ***** Bibliographic data of publication
+template+ [, %3][, %H][, in <em>%J</em>][, in <em>%B</em>]
+template+ [, %t[~%N][, %r][, vol.~%V][, pp.~%P]|[, %r][, vol.~%V][, no.~%N][, pp.~%P]]
+template+ [, %$][, %S][, %?][, DOI~<a href="http://dx.doi.org/%d">%d</a>][, %I][, %i][, %@][, %X][, [[%M~%D, |%M~]%Y].
+# , \[<a type="text/x-bibtex" href="refs/%L.bib">BibTeX</a>, <a type="text/xml" href="refs/%L.xml">XML</a>\].
+# ****** Awards
+template+ [ <strong>%1.</strong>]
+
+# ****** End of Entry
+template+ </p></li>\n\n
+
+# ***** End of Subsection: YEAR
+template+ [%eY</ul>\n\n]
+
+
+# ====== Finally, print all selected publications ===========================
+
+echo <h2>RFCs related to RSerPool</h2>
+
+clear
+cite RFC3237
+cite rfc-rserpool-overview
+cite rfc-rserpool-asap
+cite rfc-rserpool-enrp
+cite rfc-rserpool-common-param
+cite rfc-rserpool-policies
+cite rfc-rserpool-mib
+cite rfc-rserpool-threats
+sort year/D month/D day/D title/A
+export
+
+
+echo <h2>Internet Drafts (IDs) related to RSerPool</h2>
+echo <p>Please note that not all of the local links are working yet. We are trying to use .xml for all of the RSerPool IDs. You can use the tools available at xml.resource.org to convert the xml source files to text or html files (even nroff is possible).</p>
+
+clear
+cite draft-ietf-rserpool-api  TD-IW01
+cite draft-dreibholz-rserpool-asap-hropt  TD-ID02
+cite draft-dreibholz-rserpool-enrp-takeover  TD-ID03
+cite draft-dreibholz-rserpool-delay    TD-ID04
+cite draft-coene-rserpool-applic-ipfix    TD-ID05
+cite draft-dreibholz-rserpool-applic-distcomp   TD-ID06
+cite draft-dreibholz-rserpool-applic-mobility   TD-ID07
+cite draft-dreibholz-rserpool-score    TD-ID08
+sort year/D month/D day/D title/A
+export
+
+
+# ====== Generate tail ======================================================
+echo </body>\n
+echo </html>\n
