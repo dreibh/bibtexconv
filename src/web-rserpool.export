@@ -72,7 +72,6 @@ export
 
 
 echo <h2>Internet Drafts (IDs) related to RSerPool</h2>
-echo <p>Please note that not all of the local links are working yet. We are trying to use .xml for all of the RSerPool IDs. You can use the tools available at xml.resource.org to convert the xml source files to text or html files (even nroff is possible).</p>
 
 clear
 cite draft-ietf-rserpool-api  TD-IW01
