@@ -299,12 +299,18 @@ static std::string              customPrintingTemplate =
    "\\[%C\\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n";  // ", \"%T\"[, %B][, %J][, %?][, %$][, Volume~%V][, Number~%N][, pp.~%P][, %I][, %i][, %@][, [[%m, %D, |%m~]%Y].\\nURL: %U.\\n\\n";
 static std::vector<std::string> monthNames;
 
-
 static int handleInput(FILE*           fh,
                        PublicationSet& publicationSet,
                        const char*     downloadDirectory,
                        const bool      checkURLs,
                        const bool      checkNewURLsOnly,
+                       const char*     exportToBibTeX,
+                       const char*     exportToSeparateBibTeXs,
+                       const char*     exportToXML,
+                       const char*     exportToSeparateXMLs,
+                       const bool      skipNotesWithISBNandISSN,
+                       const bool      addNotesWithISBNandISSN,
+                       const bool      addUrlCommand,
                        unsigned int    recursionLevel = 0)
 {
    int result = 0;
@@ -401,12 +407,44 @@ static int handleInput(FILE*           fh,
             if(input[6] == ' ') {
                namingTemplate = (const char*)&input[7];
             }
+
+            // ====== Export all to custom ==================================
             if(PublicationSet::exportPublicationSetToCustom(
                   &publicationSet, namingTemplate,
                   customPrintingHeader, customPrintingTrailer,
                   customPrintingTemplate, monthNames, nbsp, useXMLStyle,
                   downloadDirectory, stdout) == false) {
                result++;
+            }
+
+            // ====== Export all to BibTeX ==================================
+            if(exportToBibTeX) {
+               if(PublicationSet::exportPublicationSetToBibTeX(
+                  &publicationSet, exportToBibTeX, false,
+                  skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
+                  exit(1);
+               }
+            }
+            if(exportToSeparateBibTeXs) {
+               if(PublicationSet::exportPublicationSetToBibTeX(
+                  &publicationSet, exportToSeparateBibTeXs, true,
+                  skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
+                  exit(1);
+               }
+            }
+
+            // ====== Export all to XML =====================================
+            if(exportToXML) {
+               if(PublicationSet::exportPublicationSetToXML(
+                  &publicationSet, exportToXML, false) == false) {
+                  exit(1);
+               }
+            }
+            if(exportToSeparateXMLs) {
+               if(PublicationSet::exportPublicationSetToXML(
+                  &publicationSet, exportToSeparateXMLs, true) == false) {
+                  exit(1);
+               }
             }
          }
          else if((strncmp(input, "clear", 5)) == 0) {
@@ -446,6 +484,10 @@ static int handleInput(FILE*           fh,
                if(includeFH != NULL) {
                   result += handleInput(includeFH, publicationSet,
                                         downloadDirectory, checkURLs, checkNewURLsOnly,
+                                        exportToBibTeX, exportToSeparateBibTeXs,
+                                        exportToXML, exportToSeparateXMLs,
+                                        skipNotesWithISBNandISSN, addNotesWithISBNandISSN,
+                                        addUrlCommand,
                                         recursionLevel + 1);
                   fclose(includeFH);
                }
@@ -587,9 +629,14 @@ int main(int argc, char** argv)
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
                  (unsigned int)publicationSet.maxSize());
          result = handleInput(stdin, publicationSet,
-                              downloadDirectory, checkURLs, checkNewURLsOnly);
+                              downloadDirectory, checkURLs, checkNewURLsOnly,
+                              exportToBibTeX, exportToSeparateBibTeXs,
+                              exportToXML, exportToSeparateXMLs,
+                              addUrlCommand,
+                              skipNotesWithISBNandISSN, addNotesWithISBNandISSN);
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
       }
+
 
       // ====== Export all to BibTeX ========================================
       if(exportToBibTeX) {
