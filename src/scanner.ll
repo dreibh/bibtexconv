@@ -54,13 +54,14 @@ std::string comment;
 <STRING>\n                                           { ++yylineno; }
 <STRING>\"                                           { BEGIN 0;
                                                        yylval.iText = strdup(string.c_str());
-                                                       // printf("S=<%s>\n",yylval.iText);
+                                                       // printf("S1=<%s> l=%d\n",yylval.iText, yylineno);
                                                        return(T_String); }
 <STRING>.                                            { string += *yytext; };
 
 
  /* ====== String in parentheses { this is an example } ================== */
 "{"[^\n]+"}"                                         { yylval.iText = strdup(yytext);
+                                                       // printf("S2=<%s> l=%d\n",yylval.iText, yylineno);
                                                        return(T_String); }
 
 
@@ -69,7 +70,7 @@ std::string comment;
 <COMMENT>\n                                          { BEGIN 0;
                                                        ++yylineno;
                                                        yylval.iText = strdup(comment.c_str());
-                                                       // printf("C=<%s>\n",yylval.iText);
+                                                       // printf("C=<%s> l=%d\n",yylval.iText, yylineno);
                                                        return(T_Comment); }
 <COMMENT>.                                           { comment += *yytext; }
 
@@ -86,6 +87,7 @@ std::string comment;
 [pP][hH][dD][tT][hH][eE][sS][iI][sS]                 { return(T_PhDThesis);     }
 
 [a-zA-Z0-9\-\.\+]+                                   { yylval.iText = strdup(yytext);
+                                                       // printf("K=<%s> l=%d\n",yylval.iText, yylineno);
                                                        return(T_Keyword); }
 
 
@@ -93,7 +95,7 @@ std::string comment;
 " "                                                  { }
 "\t"                                                 { }
 "\r"                                                 { }
-"\n"                                                 { ++yylineno; }
+"\n"                                                 { }
 
 %%
 
