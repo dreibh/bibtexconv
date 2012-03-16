@@ -751,6 +751,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
                child = findChildNode(publication, "doi");
                if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
                break;
+            case 'q':   // URN
+               child = findChildNode(publication, "urn");
+               if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
+               break;
             case 'z':   // URL mime type
                child = findChildNode(publication, "url.mime");
                if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }

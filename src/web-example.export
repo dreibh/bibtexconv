@@ -59,7 +59,7 @@ template+  [``<a type="%z" href="%U">%T</a>´´|``%T´´][ ([%y, ]%sK~KiB)]
 # ***** Bibliographic data of publication
 template+ [, %H][, in <em>%J</em>][, in <em>%B</em>]
 template+ [, %t[, %N][, %r][, vol.~%V][, pp.~%P]|[, %r][, vol.~%V][, no.~%N][, pp.~%P]]
-template+ [, %$][, %S][, %?][, DOI~<a href="http://dx.doi.org/%d">%d</a>][, %I][, %i][, %@][, %X][, [[%M~%D, |%M~]%Y].
+template+ [, %$][, %S][, %?][, URN~<a href="http://www.nbn-resolving.de/%q">%q</a>][, DOI~<a href="http://dx.doi.org/%d">%d</a>][, %I][, %i][, %@][, %X][, [[%M~%D, |%M~]%Y].
 # ****** Awards
 template+ [ <strong>%1.</strong>]
 
