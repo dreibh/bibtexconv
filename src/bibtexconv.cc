@@ -535,7 +535,7 @@ int main(int argc, char** argv)
    bool        interactive              = true;
    bool        checkURLs                = false;
    bool        checkNewURLsOnly         = false;
-   bool        skipNotesWithISBNandISSN = true;
+   bool        skipNotesWithISBNandISSN = false;
    bool        addNotesWithISBNandISSN  = false;
    bool        addUrlCommand            = false;
    const char* exportToBibTeX           = NULL;
@@ -674,8 +674,8 @@ int main(int argc, char** argv)
                               downloadDirectory, checkURLs, checkNewURLsOnly,
                               exportToBibTeX, exportToSeparateBibTeXs,
                               exportToXML, exportToSeparateXMLs,
-                              addUrlCommand,
-                              skipNotesWithISBNandISSN, addNotesWithISBNandISSN);
+                              skipNotesWithISBNandISSN, addNotesWithISBNandISSN,
+                              addUrlCommand);
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
       }
    }

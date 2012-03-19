@@ -11,11 +11,11 @@ template+ %a[%f|%n; | and ]%F[, %G]%A:
 # ***** Title
 template+  ["%T"] [([%y, ]%sK~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %H][, in %B][, in %J][, %r][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %?][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].\n
+template+ [, %H][, in %B][, in %J][, %r][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %?][, URN: %q][, DOI: %d.][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].\n
 template+ [URL: %U.\n]
 template+ \n
 
-#template [%bY===== YEAR %Y =====\n][%bM---- %M %Y ----\n]*~\[%C\] %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %H][, %J][, %?][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %@][, [[%M %D, |%M~]%Y][, %I][, %i].\nURL: %U.\n\n
+#template [%bY===== YEAR %Y =====\n][%bM---- %M %Y ----\n]*~\[%C\] %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %H][, %J][, %?][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %@][, [[%M %D, |%M~]%Y][, URN: %q][, DOI: %d][, %I][, %i].\nURL: %U.\n\n
 
 
 # Before any citation is printed, print a list title:
