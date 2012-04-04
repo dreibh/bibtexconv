@@ -206,8 +206,8 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
             }
          }
 
-         fprintf(fh, "@%s{ %s, \n", publication->value.c_str(),
-                                    publication->keyword.c_str());
+         fprintf(fh, "@%s{ %s,\n", publication->value.c_str(),
+                                   publication->keyword.c_str());
 
          bool  empty           = true;
          Node* child           = publication->child;
