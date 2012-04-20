@@ -1,4 +1,146 @@
 ------------------------------------------------------------------------
+r1355 | dreibh | 2012-04-04 15:56:34 +0200 (Wed, 04 Apr 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/bibtexconv.lsm
+
+Updated LSM entry.
+
+------------------------------------------------------------------------
+r1354 | dreibh | 2012-04-04 15:05:26 +0200 (Wed, 04 Apr 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/publicationset.cc
+
+Removed superflous space character at line end in BibTeX output.
+
+------------------------------------------------------------------------
+r1352 | dreibh | 2012-03-19 11:12:12 +0100 (Mon, 19 Mar 2012) | 3 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ExampleReferences.bib
+   M /trunk/bibtexconv/src/bibtexconv.cc
+   M /trunk/bibtexconv/src/odt-example.export
+   M /trunk/bibtexconv/src/text-example.export
+
+- Fixed parameter handling bug: now skipping ISBN/ISSN notes when supposed to do.
+- Updated examples.
+
+------------------------------------------------------------------------
+r1351 | dreibh | 2012-03-16 16:12:06 +0100 (Fri, 16 Mar 2012) | 3 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   A /trunk/bibtexconv/src/r1.bib
+
+- Version update.
+- Added test file.
+
+------------------------------------------------------------------------
+r1350 | dreibh | 2012-03-16 16:10:55 +0100 (Fri, 16 Mar 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/scanner.ll
+
+Fixed bug for line number counting.
+
+------------------------------------------------------------------------
+r1349 | dreibh | 2012-03-16 15:33:34 +0100 (Fri, 16 Mar 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/publicationset.cc
+   M /trunk/bibtexconv/src/web-example.export
+
+Added support for handling URNs.
+
+------------------------------------------------------------------------
+r1348 | dreibh | 2012-02-15 20:45:25 +0100 (Wed, 15 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/bibtexconv.cc
+
+Export handling improvements.
+
+------------------------------------------------------------------------
+r1347 | dreibh | 2012-02-13 16:28:26 +0100 (Mon, 13 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/web-rserpool.export
+
+A small fix.
+
+------------------------------------------------------------------------
+r1346 | dreibh | 2012-02-13 16:16:23 +0100 (Mon, 13 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/bibtexconv.cc
+   A /trunk/bibtexconv/src/run-example-rserpool
+   M /trunk/bibtexconv/src/web-rserpool.export
+
+Export improvement: interactive run now performs BibTeX/XML export for each "export" statement.
+
+------------------------------------------------------------------------
+r1345 | dreibh | 2012-02-13 15:54:27 +0100 (Mon, 13 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/web-rserpool.export
+
+Updated example.
+
+------------------------------------------------------------------------
+r1344 | dreibh | 2012-02-13 11:24:49 +0100 (Mon, 13 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/web-rserpool.export
+
+A small fix.
+
+------------------------------------------------------------------------
+r1343 | dreibh | 2012-02-13 11:17:34 +0100 (Mon, 13 Feb 2012) | 2 lines
+Changed paths:
+   A /trunk/bibtexconv/src/web-rserpool.export (from /trunk/bibtexconv/src/web-example.export:1342)
+
+Added another HTML example.
+
+------------------------------------------------------------------------
+r1342 | dreibh | 2012-02-10 19:34:09 +0100 (Fri, 10 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   M /trunk/bibtexconv/freebsd/bibtexconv/make-diff
+   M /trunk/bibtexconv/freebsd/bibtexconv/test-packaging
+   M /trunk/bibtexconv/src/bibtexconv-odt
+   M /trunk/bibtexconv/src/bibtexconv-odt.1
+   M /trunk/bibtexconv/src/bibtexconv.1
+   M /trunk/bibtexconv/src/bibtexconv.cc
+   M /trunk/bibtexconv/src/grammar.yy
+   M /trunk/bibtexconv/src/make-it
+   M /trunk/bibtexconv/src/node.cc
+   M /trunk/bibtexconv/src/node.h
+   M /trunk/bibtexconv/src/publicationset.cc
+   M /trunk/bibtexconv/src/publicationset.h
+   M /trunk/bibtexconv/src/run-examples
+   M /trunk/bibtexconv/src/scanner.ll
+   M /trunk/bibtexconv/src/stringhandling.cc
+   M /trunk/bibtexconv/src/stringhandling.h
+   M /trunk/bibtexconv/src/unification.cc
+   M /trunk/bibtexconv/src/unification.h
+
+Updated ChangeLog and headers.
+
+------------------------------------------------------------------------
+r1341 | dreibh | 2012-02-10 19:30:48 +0100 (Fri, 10 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+
+Version update.
+
+------------------------------------------------------------------------
+r1340 | dreibh | 2012-02-10 19:30:39 +0100 (Fri, 10 Feb 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/bibtexconv-odt
+   M /trunk/bibtexconv/src/run-examples
+   M /trunk/bibtexconv/src/text-example.export
+
+Fixed temporary file handling (used the same name, preventing parallel execution in the same directory).
+
+------------------------------------------------------------------------
 r1339 | dreibh | 2012-02-09 16:13:09 +0100 (Thu, 09 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/ExampleReferences.bib
