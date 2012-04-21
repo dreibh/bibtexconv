@@ -1,4 +1,14 @@
 ------------------------------------------------------------------------
+r1360 | dreibh | 2012-04-20 08:00:20 +0200 (Fri, 20 Apr 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+
+Updated PPA version.
+
+------------------------------------------------------------------------
 r1355 | dreibh | 2012-04-04 15:56:34 +0200 (Wed, 04 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
