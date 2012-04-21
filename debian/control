@@ -9,7 +9,7 @@ Build-Depends: autotools-dev,
                flex,
                libcurl4-openssl-dev,
                libssl-dev
-Standards-Version: 3.9.2
+Standards-Version: 3.9.3
 
 Package: bibtexconv
 Architecture: any
@@ -17,7 +17,6 @@ Depends: file,
          zip,
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends:
 Description: BibTeX Converter
  BibTeXConv is a BibTeX file converter which allows one to export
  BibTeX entries to other formats, including customly defined

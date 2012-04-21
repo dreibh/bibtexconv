@@ -1,11 +1,7 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@
-
-# Use upstream ChangeLog for installation
-override_dh_installchangelogs:
-	dh_installchangelogs -k ChangeLog
+	dh $@ --with autotools_dev
 
 # Do not compress example files
 override_dh_compress:

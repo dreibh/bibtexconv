@@ -3,7 +3,7 @@ Upstream-Name: BibTeXConv
 Source: http://www.iem.uni-due.de/~dreibh/bibtexconv/
 
 Files: *
-Copyright: Copyright (C) 2010-2011 Thomas Dreibholz
+Copyright: Copyright (C) 2010-2012 Thomas Dreibholz
 License: GPL-3
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
