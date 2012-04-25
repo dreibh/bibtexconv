@@ -25,6 +25,8 @@
 #include <assert.h>
 #include <errno.h>
 #include <iostream>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <curl/curl.h>
 #include <curl/easy.h>
 #include <openssl/md5.h>
@@ -54,6 +56,15 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                           const char*     downloadDirectory,
                           const bool      checkNewURLsOnly)
 {
+   if(downloadDirectory != NULL) {
+      if( (mkdir(downloadDirectory, S_IRWXU|S_IXGRP|S_IRGRP|S_IXOTH|S_IROTH) < 0) &&
+          (errno != EEXIST) ) {
+         fprintf(stderr, "ERROR: Failed to create download directory: %s!\n",
+                 strerror(errno));
+         exit(1);
+      }
+   }
+
    unsigned int errors = 0;
    for(size_t index = 0; index < publicationSet->size(); index++) {
       // ====== Get prev, current and next publications =====================

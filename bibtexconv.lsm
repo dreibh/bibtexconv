@@ -1,7 +1,7 @@
 Begin4
 Title:          bibtexconv
-Version:        0.8.15
-Entered-date:   2012-04-20
+Version:        0.8.16
+Entered-date:   2012-04-24
 Description:    BibTeXConv is a BibTeX file converter which allows to export
                 BibTeX entries to other formats, including customly defined
                 text output. Furthermore, it provides the possibility to
