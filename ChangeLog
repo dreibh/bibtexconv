@@ -1,4 +1,38 @@
 ------------------------------------------------------------------------
+r1371 | dreibh | 2012-04-25 08:33:59 +0200 (Wed, 25 Apr 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/bibtexconv.cc
+   M /trunk/bibtexconv/src/run-examples
+
+Create download directory, if not already existing.
+
+------------------------------------------------------------------------
+r1362 | dreibh | 2012-04-21 20:05:07 +0200 (Sat, 21 Apr 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+
+Updated ChangeLog.
+
+------------------------------------------------------------------------
+r1361 | dreibh | 2012-04-21 20:04:50 +0200 (Sat, 21 Apr 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.in
+   D /trunk/bibtexconv/debian/bibtexconv.install
+   D /trunk/bibtexconv/debian/bibtexconv.manpages
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/debian/control
+   M /trunk/bibtexconv/debian/copyright
+   M /trunk/bibtexconv/debian/rules
+   M /trunk/bibtexconv/src/bibtexconv-odt.1
+   M /trunk/bibtexconv/src/bibtexconv.1
+
+Fixed Debian packaging, according to comments on mentor's list.
+
+------------------------------------------------------------------------
 r1360 | dreibh | 2012-04-20 08:00:20 +0200 (Fri, 20 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
