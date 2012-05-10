@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # $Id$
 #
 # Copyright (C) 2010-2012 by Thomas Dreibholz
@@ -18,6 +18,8 @@
 #
 # Contact: dreibh@iem.uni-due.de
 
+set -e
+
 if [ $# -ne 4 ] ; then
    echo >&2 "Usage: $0 [Template ODT] [Output ODT] [BibTeX file] [Export script]"
    exit 1
@@ -31,15 +33,15 @@ TEMP_ZIP=`mktemp -d`
 
 RESULT=1
 
-bibtexconv $BIBTEX_FILE <$EXPORT_SCRIPT >$TEMP_ZIP/content.xml && \
-cp "$TEMPLATE_ODT" $TEMP_ZIP/template.odt && \
-( cd $TEMP_ZIP && \
+bibtexconv "$BIBTEX_FILE" <"$EXPORT_SCRIPT" >"$TEMP_ZIP/content.xml" && \
+cp "$TEMPLATE_ODT" "$TEMP_ZIP/template.odt" && \
+( cd "$TEMP_ZIP" && \
   zip template.odt --out output.odt -x content.xml && \
   zip output.odt content.xml ) && \
 RESULT=0 && \
-mv $TEMP_ZIP/output.odt "$OUTPUT_ODT"
+mv "$TEMP_ZIP/output.odt" "$OUTPUT_ODT"
 
-rm -rf $TEMP_ZIP
+rm -rf "$TEMP_ZIP"
 
 
 exit $RESULT
