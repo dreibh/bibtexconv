@@ -56,7 +56,7 @@ export template specification.
 .Pp
 .\" ###### Arguments ########################################################
 .Sh OPTIONS
-The following arguments have to be provided:
+The following arguments may be provided:
 .Bl -tag -width indent
 .It BibTeX file
 The BibTeX input file.
@@ -69,6 +69,8 @@ Write the results as XML (as used by IETF Internet Draft processing tools)
 into the given file.
 .It Fl export-to-separate-xmls=prefix
 Write the results as XML; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex-"), the entry key and ".xml".
+.It Fl nbsp=string
+Replace non-breakable space by given string (for example, "&nbsp;" when writing HTML).
 .It Fl check-urls
 Check URLs by downloading the content file and adding MD5, size and MIME type
 entries.
@@ -78,7 +80,7 @@ MD5, size and/or MIME type are still unknown.
 .It Fl store-downloads=directory
 Combined with \-check-urls, all checked references are downloaded and stored in the given directory. Existing files will be overwritten.
 .It Fl add-url-command
-Add \url{} commands to url tags in BibTeX export.
+Add \\url{} commands to url tags in BibTeX export.
 .It Fl skip-notes-with-isbn-and-issn
 When reading the BibTeX file, ignore "note" items with ISBN and ISSN.
 .It Fl add-notes-with-isbn-and-issn
@@ -140,11 +142,3 @@ Convert all references to XML references to be includable in IETF Internet Draft
 .It bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
 Convert all references to BibTeX references. For each reference, an own file is generated, named with the prefix "", for example Globecom2010.bib for entry Globecom2010.
 .El
-.\" ###### Authors ##########################################################
-.Sh AUTHORS
-Thomas Dreibholz
-.br
-http://www.iem.uni-due.de/~dreibh/bibtexconv
-.br
-mailto://dreibh@iem.uni-due.de
-.br
