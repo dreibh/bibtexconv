@@ -1,4 +1,42 @@
 ------------------------------------------------------------------------
+r1375 | dreibh | 2012-05-11 15:38:36 +0200 (Fri, 11 May 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/bibtexconv.1
+
+Removed AUTHORS section from manpage (deprecated).
+
+------------------------------------------------------------------------
+r1374 | dreibh | 2012-05-11 14:35:00 +0200 (Fri, 11 May 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/debian/control
+   M /trunk/bibtexconv/src/bibtexconv.1
+
+Minor updates.
+
+------------------------------------------------------------------------
+r1373 | dreibh | 2012-05-10 22:39:04 +0200 (Thu, 10 May 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/debian/compat
+   M /trunk/bibtexconv/debian/copyright
+   A /trunk/bibtexconv/pbuilderrc.debian
+   A /trunk/bibtexconv/pbuilderrc.ubuntu
+   M /trunk/bibtexconv/src/bibtexconv-odt
+   M /trunk/bibtexconv/src/bibtexconv.cc
+
+Some Debian Sid fixes according to comments by Beno?\195?\174t Knecht.
+
+------------------------------------------------------------------------
+r1372 | dreibh | 2012-04-25 18:12:31 +0200 (Wed, 25 Apr 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   M /trunk/bibtexconv/bibtexconv.lsm
+
+Updated ChangeLog.
+
+------------------------------------------------------------------------
 r1371 | dreibh | 2012-04-25 08:33:59 +0200 (Wed, 25 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
