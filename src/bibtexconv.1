@@ -134,9 +134,9 @@ which are read by bibtexconv from standard input.
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
--export-to-bibtex=UpdatedReferences.bib \e
+\-export-to-bibtex=UpdatedReferences.bib \e
 .br
--check-urls -only-check-new-urls -non-interactive
+\-check-urls \-only-check-new-urls \-non-interactive
 .br
 Checks URLs of all entries in /usr/share/doc/bibtexconv/examples/ExampleReferences.bib, adds MD5, size and MIME type
 items and writes the results to UpdatedReferences.bib.
@@ -158,14 +158,14 @@ Uses export script /usr/share/doc/bibtexconv/examples/text-example.export to exp
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
--non-interactive -export-to-separate-xmls=reference.
+\-non-interactive \-export-to-separate-xmls=reference.
 .br
 Convert all references to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference.", for example reference.Globecom2010.xml for entry Globecom2010.
 .It bibtexconv \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
--non-interactive -export-to-separate-bibtexs=
+\-non-interactive \-export-to-separate-bibtexs=
 .br
 Convert all references to BibTeX references. For each reference, an own file is generated, named with the prefix "", for example Globecom2010.bib for entry Globecom2010.
 .El
