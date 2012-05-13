@@ -571,7 +571,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s [BibTeX file] {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
+      fprintf(stderr, "Usage: %s BibTeX_File {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {

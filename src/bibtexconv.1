@@ -19,7 +19,7 @@
 .\" Contact: dreibh@iem.uni-due.de
 .\"
 .\" ###### Setup ############################################################
-.Dd April 20, 2012
+.Dd May 12, 2012
 .Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -29,7 +29,7 @@
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
 .Nm bibtexconv
-.Op BibTeX file
+BibTeX_File
 .Op Fl export-to-bibtex=file
 .Op Fl export-to-separate-bibtexs=prefix
 .Op Fl export-to-xml=file
@@ -58,7 +58,7 @@ export template specification.
 .Sh OPTIONS
 The following arguments may be provided:
 .Bl -tag -width indent
-.It BibTeX file
+.It BibTeX_File
 The BibTeX input file.
 .It Fl export-to-bibtex=file
 Write the results as BibTeX into the given file.
@@ -130,15 +130,42 @@ Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of y
 system) for example export scripts. The export scripts contain the commands
 which are read by bibtexconv from standard input.
 .Bl -tag -width indent
-.It bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
+.It bibtexconv \e
+.br
+/usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
+.br
+-export-to-bibtex=UpdatedReferences.bib \e
+.br
+-check-urls -only-check-new-urls -non-interactive
+.br
 Checks URLs of all entries in /usr/share/doc/bibtexconv/examples/ExampleReferences.bib, adds MD5, size and MIME type
 items and writes the results to UpdatedReferences.bib.
-.It bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/web-example.export >MyPublications.html
+.It bibtexconv \e
+.br
+/usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
+.br
+</usr/share/doc/bibtexconv/examples/web-example.export >MyPublications.html
+.br
 Uses export script /usr/share/doc/bibtexconv/examples/web-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.html as XHTML 1.1.
-.It bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/text-example.export >MyPublications.txt
+.It bibtexconv \e
+.br
+/usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
+.br
+</usr/share/doc/bibtexconv/examples/text-example.export >MyPublications.txt
+.br
 Uses export script /usr/share/doc/bibtexconv/examples/text-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.txt as plain text.
-.It bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
+.It bibtexconv \e
+.br
+/usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
+.br
+-non-interactive -export-to-separate-xmls=reference.
+.br
 Convert all references to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference.", for example reference.Globecom2010.xml for entry Globecom2010.
-.It bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
+.It bibtexconv \e
+.br
+/usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
+.br
+-non-interactive -export-to-separate-bibtexs=
+.br
 Convert all references to BibTeX references. For each reference, an own file is generated, named with the prefix "", for example Globecom2010.bib for entry Globecom2010.
 .El
