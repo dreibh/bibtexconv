@@ -86,7 +86,7 @@ std::string comment;
 [tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return(T_TechReport);    }
 [pP][hH][dD][tT][hH][eE][sS][iI][sS]                 { return(T_PhDThesis);     }
 
-[a-zA-Z0-9\-\.\+]+                                   { yylval.iText = strdup(yytext);
+[a-zA-Z0-9\-\.\+\:]+                                 { yylval.iText = strdup(yytext);
                                                        // printf("K=<%s> l=%d\n",yylval.iText, yylineno);
                                                        return(T_Keyword); }
 
