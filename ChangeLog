@@ -1,4 +1,37 @@
 ------------------------------------------------------------------------
+r1378 | dreibh | 2012-05-14 00:02:53 +0200 (Mon, 14 May 2012) | 2 lines
+Changed paths:
+   D /trunk/bibtexconv/debian/bibtexconv.lintian-overrides
+   M /trunk/bibtexconv/src/bibtexconv.1
+
+Minor fixes.
+
+------------------------------------------------------------------------
+r1377 | dreibh | 2012-05-13 22:56:15 +0200 (Sun, 13 May 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/debian/control
+   M /trunk/bibtexconv/debian/copyright
+   M /trunk/bibtexconv/src/bibtexconv-odt
+   M /trunk/bibtexconv/src/bibtexconv-odt.1
+   M /trunk/bibtexconv/src/bibtexconv.1
+   M /trunk/bibtexconv/src/bibtexconv.cc
+
+Further improvements according to suggestions of Beno?\195?\174t Knecht.
+
+------------------------------------------------------------------------
+r1376 | dreibh | 2012-05-12 23:03:19 +0200 (Sat, 12 May 2012) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.in
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/bibtexconv-odt.1
+
+Minor updates.
+
+------------------------------------------------------------------------
 r1375 | dreibh | 2012-05-11 15:38:36 +0200 (Fri, 11 May 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.1
