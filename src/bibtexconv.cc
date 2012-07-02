@@ -109,7 +109,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
          else {
             snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s", "/tmp/bibtexconv-dXXXXXX");
          }
-         snprintf((char*)&mimeFileName, sizeof(mimeFileName), "%s",     "/tmp/bibtexconv-mXXXXXX");
+         snprintf((char*)&mimeFileName, sizeof(mimeFileName), "%s",      "/tmp/bibtexconv-mXXXXXX");
 
          if( (mkstemp((char*)&downloadFileName) > 0) &&
              (mkstemp((char*)&mimeFileName) > 0) ) {
@@ -124,6 +124,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                      curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
                      curl_easy_setopt(curl, CURLOPT_WRITEDATA,      downloadFH);
                      curl_easy_setopt(curl, CURLOPT_WRITEHEADER,    headerFH);
+                     curl_easy_setopt(curl, CURLOPT_USERAGENT,      "bibtexconv/1.0 (compatible; MC680x0; AmigaOS)");
                      curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);   // follow redirects
                      curl_easy_setopt(curl, CURLOPT_AUTOREFERER,    1L);   // set referer on redirect
 
