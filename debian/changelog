@@ -1,3 +1,9 @@
+bibtexconv (0.8.21-1ubuntu1) quantal; urgency=low
+
+  * New upstream version.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Mon, 02 Jul 2012 03:03:03 +0200
+
 bibtexconv (0.8.20-1ubuntu1) precise; urgency=low
 
   * Initial Debian release (Closes: #649404).
