@@ -459,6 +459,9 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       node->priority = 230;
    }
 
+   else if(node->keyword == "language") {
+      node->priority = 225;
+   }
    else if(node->keyword == "isbn") {
       node->priority = 224;
    }

@@ -1,3 +1,9 @@
+bibtexconv (0.8.22-1ubuntu1) quantal; urgency=low
+
+  * New upstream version.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Thu, 12 Jul 2012 23:23:23 +0200
+
 bibtexconv (0.8.21-1ubuntu1) quantal; urgency=low
 
   * New upstream version.
