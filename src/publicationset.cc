@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include <algorithm>
 #include <string>
@@ -498,9 +499,10 @@ inline static std::string getNextAction(const char* inputString, size_t& counter
 {
    std::string result;
    if(inputString[0] == '{') {
-      std::string input(inputString);
+      std::string input((const char*)&inputString[1]);
       result = extractToken(input, std::string("}"));
-      std::transform(result.begin(), result.end(), result.begin(), ::toupper);
+      std::transform(result.begin(), result.end(), result.begin(), ::tolower);
+      counter += result.size() + 1;
    }
    else {
       char str[2];
@@ -508,8 +510,7 @@ inline static std::string getNextAction(const char* inputString, size_t& counter
       str[1] = 0x00;
       result = std::string(str);
    }
-   fprintf(stderr,"R=<%s>\n",result.c_str());
-   counter += result.size() - 1;
+   // fprintf(stderr,"R=<%s>\n",result.c_str());
    return(result);
 }
 
@@ -534,6 +535,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
    size_t                  authorBegin          = std::string::npos;
    bool                    skip                 = false;
    const size_t            printingTemplateSize = printingTemplate.size();
+   std::string             type                 = std::string("");
 
    gNumber++;
    gTotalNumber++;
@@ -594,7 +596,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   }
                   else {
                      fprintf(stderr, "ERROR: Bad naming template \"%s\"!\n", namingTemplate);
-                     return("");
+                     exit(1);
                   }
                }
             }
@@ -610,7 +612,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          else if( (action == "a") || (action == "begin-author-loop") ) {   // Author LOOP BEGIN
             if(authorBegin != std::string::npos) {
                fputs("ERROR: Unexpected author loop begin %a -> an author loop is still open!\n", stderr);
-               return("");
+               exit(1);
             }
             author      = findChildNode(publication, "author");
             authorIndex = 0;
@@ -659,7 +661,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          else if( (action == "A") || (action == "end-author-loop") ) {   // Author LOOP EBD
             if(authorBegin == std::string::npos) {
                fputs("ERROR: Unexpected author loop end %A -> %a author loop begin needed first!\n", stderr);
-               return("");
+               exit(1);
             }
             authorIndex += 3;
             if( (author != NULL) && (authorIndex < author->arguments.size()) ) {
@@ -754,7 +756,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "institution");
             if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "I") || (action == "ISBN") ) {   // ISBN
+         else if( (action == "I") || (action == "isbn") ) {   // ISBN
             child = findChildNode(publication, "isbn");
             if(child) { result += string2utf8("ISBN~" + child->value, nbsp, xmlStyle); } else { skip = true; }
          }
@@ -798,22 +800,36 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
             } else { skip = true; }
          }
-         else if( (action == "s") || (action == "url-size-") ) {   // URL size
-            child = findChildNode(publication, "url.size");
-            if(i + 2 < printingTemplateSize) {
+         else if( (action == "s") || (hasPrefix(action, "url-size-",  type)) ) {   // URL size
+            if((action.size() == 1) && (i + 2 < printingTemplateSize)) {
                switch(printingTemplate[i + 2]) {
-                  case 'B':   // B
-                     if(child) { result += string2utf8(format("%llu", atoll(child->value.c_str())), nbsp, xmlStyle); } else { skip = true; }
-                   break;
                   case 'K':   // KiB
-                     if(child) { result += string2utf8(format("%llu", atoll(child->value.c_str()) / 1024), nbsp, xmlStyle); } else { skip = true; }
+                     type = "kib";
                    break;
                   case 'M':   // MiB
-                     if(child) { result += string2utf8(format("%1.1lf", atoll(child->value.c_str()) / (double)(1024 * 1024)), nbsp, xmlStyle); } else { skip = true; }
+                     type = "mib";
+                   break;
+                  default:   // Bytes
+                     type = "";
                    break;
                }
                i++;
             }
+            child = findChildNode(publication, "url.size");
+            if(child) {
+               double divisor;
+               if(type == "kib") {
+                  divisor = 1024.0;
+               }
+               else if(type == "mib") {
+                  divisor = 1024.0 * 1024.0;
+               }
+               else {
+                  divisor = 1.0;
+               }
+               result += string2utf8(format("%1.0f", floor(atoll(child->value.c_str()) / divisor)), nbsp, xmlStyle);
+            }
+            else { skip = true; }
          }
          else if( (action == "X") || (action == "note") ) {   // Note
             child = findChildNode(publication, "note");
@@ -832,50 +848,56 @@ std::string PublicationSet::applyTemplate(Node*                           public
          else if(action == "%") {   // %
             result += '%';
          }
-         else if( (action == "b") || (action == "begin-subdivision") ||
-                  (action == "w") || (action == "within-subdivision") ||
-                  (action == "e") || (action == "end-subdivision") ) {   // Begin/Within/End of subdivision
+         else if( (action == "b") || (hasPrefix(action, "begin-subdivision-",  type)) ||
+                  (action == "w") || (hasPrefix(action, "within-subdivision-", type)) ||
+                  (action == "e") || (hasPrefix(action, "end-subdivision-",    type)) ) {   // Begin/Within/End of subdivision
             if(i + 2 < printingTemplateSize) {
-               const char* type = NULL;
-               switch(printingTemplate[i + 2]) {
-                  case 'D':
-                     type = "day";
-                     break;
-                  case 'm':
-                  case 'M':
-                     type = "month";
-                     break;
-                  case 'Y':
-                     type = "year";
-                     break;
-                  default:
-                     fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in subdivision part of custom printing template!",
-                     printingTemplate[i + 2]);
-                     return("");
-                     break;
+               if ((action.size() == 1) && (i + 2 < printingTemplateSize) ) {
+                  switch(printingTemplate[i + 2]) {
+                     case 'D':
+                        type = "day";
+                      break;
+                     case 'm':
+                     case 'M':
+                        type = "month";
+                      break;
+                     case 'Y':
+                        type = "year";
+                      break;
+                     default:
+                        fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in subdivision part of custom printing template!",
+                        printingTemplate[i + 2]);
+                        exit(1);
+                      break;
+                  }
+                  i++;
                }
-               if(type != NULL) {
-                  const Node* prevChild = (prevPublication != NULL) ? findChildNode(prevPublication, type) : NULL;
-                  child                 = findChildNode(publication, type);
-                  const Node* nextChild = (nextPublication != NULL) ? findChildNode(nextPublication, type) : NULL;
-
-                  bool begin = (prevChild == NULL) ||
-                              ( (prevChild != NULL) && (child != NULL) && (prevChild->value != child->value) );
-                  bool end = (nextChild == NULL) ||
-                              ( (child != NULL) && (nextChild != NULL) && (child->value != nextChild->value) );
-                  switch(printingTemplate[i + 1]) {
-                     case 'b':
-                        skip = ! begin;
-                        break;
-                     case 'w':
-                        skip = (begin || end);
-                        break;
-                     case 'e':
-                        skip = ! end;
-                        break;
+               else {
+                  if( (type != "day") && (type != "month") && (type != "year") ) {
+                     fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in subdivision part of custom printing template!",
+                     action.c_str());
+                     exit(1);
                   }
                }
-               i++;
+               const Node* prevChild = (prevPublication != NULL) ? findChildNode(prevPublication, type.c_str()) : NULL;
+               child                 = findChildNode(publication, type.c_str());
+               const Node* nextChild = (nextPublication != NULL) ? findChildNode(nextPublication, type.c_str()) : NULL;
+
+               bool begin = (prevChild == NULL) ||
+                           ( (prevChild != NULL) && (child != NULL) && (prevChild->value != child->value) );
+               bool end = (nextChild == NULL) ||
+                           ( (child != NULL) && (nextChild != NULL) && (child->value != nextChild->value) );
+               switch(action[0]) {
+                  case 'b':
+                     skip = ! begin;
+                     break;
+                  case 'w':
+                     skip = (begin || end);
+                     break;
+                  case 'e':
+                     skip = ! end;
+                     break;
+               }
             }
          }
          else if( (action == "1") || (action == "custom-1") ||
@@ -883,7 +905,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   (action == "3") || (action == "custom-3") ||
                   (action == "4") || (action == "custom-4") ||
                   (action == "5") || (action == "custom-5") ) {   // Custom #1..5
-            const unsigned int id = printingTemplate[i + 1] - '1';
+            const unsigned int id = action[action.size() - 1] - '1';
             if(publication->custom[id] != "") {
                result += string2utf8(publication->custom[id], nbsp, xmlStyle);
             }
@@ -892,8 +914,8 @@ std::string PublicationSet::applyTemplate(Node*                           public
             }
          }
          else {
-            fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in custom printing template!",
-                     printingTemplate[i + 1]);
+            fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in custom printing template!",
+                     action.c_str());
             exit(1);
          }
          i++;
@@ -930,7 +952,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          else {
             fputs("ERROR: Unexpected ']' in custom printing template!\n", stderr);
-            return("");
+            exit(1);
          }
       }
       else if(printingTemplate[i] == '|') {
@@ -967,7 +989,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          else {
             fputs("ERROR: Unexpected '|' in custom printing template!\n", stderr);
-            return("");
+            exit(1);
          }
       }
       else {

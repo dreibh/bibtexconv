@@ -41,5 +41,6 @@ std::string processBackslash(const std::string& string);
 std::string laTeXtoURL(const std::string& str);
 std::string urlToLaTeX(const std::string& str);
 std::string format(const char* fmt, ...);
+bool hasPrefix(const std::string& string, const std::string& prefix, std::string& rest);
 
 #endif

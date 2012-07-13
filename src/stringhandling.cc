@@ -294,3 +294,14 @@ std::string format(const char* fmt, ...)
    va_end(va);
    return(std::string(buffer));
 }
+
+
+// ###### Check string for given prefix #####################################
+bool hasPrefix(const std::string& string, const std::string& prefix, std::string& rest)
+{
+   if(string.substr(0, prefix.size()) == prefix) {
+      rest = string.substr(prefix.size());
+      return(true);
+   }
+   return(false);
+}
