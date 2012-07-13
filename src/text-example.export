@@ -3,19 +3,19 @@
 
 
 templatenew
-template+ [%bY===== YEAR %Y =====\n][%bM---- %M %Y ----\n]
+template+ [%{begin-subdivision-year}===== YEAR %{year} =====\n][%{begin-subdivision-month}---- %{month-name} %{year} ----\n]
 # ***** Label
-template+ \[%Z\]~
+template+ \[%{name}\]~
 # ***** Authors
-template+ %a[%f|%n; | and ]%F[, %G]%A:
+template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]%{end-author-loop}:
 # ***** Title
-template+  ["%T"] [([%y, ]%sK~KiB)]
+template+  ["%{title}"] [([%{url-type}, ]%{url-size-kib}~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %H][, in %B][, in %J][, %r][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, %?][, URN: %q][, DOI: %d.][, %I][, %i][, %@][, [[%M %D, |%M~]%Y].\n
-template+ [URL: %U.\n]
+template+ [, %{how-published}][, in %{booktitle}][, in %{journal}][, %{series}][, vol.~%{volume}][, %{type}~%{number}|, no.~%{number}][, pp.~%{pages}][, %{note}][, %$][, %{school}][, %{institution}][, URN: %{urn}][, DOI: %{doi}.][, %{isbn}][, %{issn}][, %{address}][, [[%{month-name} %{day}, |%{month-name}~]%{year}].\n
+template+ [URL: %{url}.\n]
 template+ \n
 
-#template [%bY===== YEAR %Y =====\n][%bM---- %M %Y ----\n]*~\[%C\] %a[%f|%n; | and ]%F, %G%A: \"%T\"[, %B][, %H][, %J][, %?][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %@][, [[%M %D, |%M~]%Y][, URN: %q][, DOI: %d][, %I][, %i].\nURL: %U.\n\n
+#template [%{begin-subdivision-year}===== YEAR %{year} =====\n][%{begin-subdivision-month}---- %{month-name} %{year} ----\n]*~\[%{anchor}\] %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}, %{author-give-name}%{end-author-loop}: \"%{title}\"[, %{booktitle}][, %{how-published}][, %{journal}][, %{institution}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}][, %$][, %{school}][, %{address}][, [[%{month-name} %{day}, |%{month-name}~]%{year}][, URN: %{urn}][, DOI: %{doi}][, %{isbn}][, %{issn}].\nURL: %{url}.\n\n
 
 
 # Before any citation is printed, print a list title:

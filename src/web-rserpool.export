@@ -30,28 +30,28 @@ nbsp &nbsp;
 templatenew
 
 # ***** Begin of Subsection: YEAR
-# template+ [%bY<h3>%Y</h3><ul>\n\n]
+# template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 
 # ****** Begin of Entry
 template+ <li><p class=\"description\">
 
 # ***** Authors
-template+ %a[%f|%n; | and ]%F[,~%G]%A:
+template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[,~%{author-give-name}]%{end-author-loop}:
 # ***** Title
-template+  [``<a type="%z" href="%U">%T</a>´´|``%T´´][ ([<a type="%z" href="%U">%y</a>, ]%sK~KiB)]
+template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´][ ([<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %3][, %H][, in <em>%J</em>][, in <em>%B</em>]
-template+ [, %t[~%N][, %r][, vol.~%V][, pp.~%P]|[, %r][, vol.~%V][, no.~%N][, pp.~%P]]
-template+ [, %$][, %S][, %?][, DOI~<a href="http://dx.doi.org/%d">%d</a>][, %I][, %i][, %@][, %X][, [[%M~%D, |%M~]%Y]
-template+ , \[<a type="text/x-bibtex" href="refs/%L.bib">BibTeX</a>, <a type="text/xml" href="refs/%L.xml">XML</a>\].
+template+ [, %{custom-3}][, %{how-published}][, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
+template+ [, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
+template+ [, %$][, %{school}][, %{institution}][, DOI~<a href="http://dx.doi.org/%{doi}">%{doi}</a>][, %{isbn}][, %{issn}][, %{address}][, %{note}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
+template+ , \[<a type="text/x-bibtex" href="refs/%{label}.bib">BibTeX</a>, <a type="text/xml" href="refs/%{label}.xml">XML</a>\].
 # ****** Awards
-template+ [ <strong>%1.</strong>]
+template+ [ <strong>%{custom-1}.</strong>]
 
 # ****** End of Entry
 template+ </p></li>\n\n
 
 # ***** End of Subsection: YEAR
-# template+ [%eY</ul>\n\n]
+# template+ [%{end-subdivision-year}</ul>\n\n]
 
 
 # ====== Finally, print all selected publications ===========================

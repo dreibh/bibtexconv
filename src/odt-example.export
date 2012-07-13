@@ -54,23 +54,23 @@ nbsp \xc2\xa0
 # ====== This is the printing template ======================================
 templatenew
 # ***** Subsection: year
-template+ [%bY<text:h text:style-name="Heading_20_2" text:outline-level="2">Year %Y</text:h>]
+template+ [%{begin-subdivision-year}<text:h text:style-name="Heading_20_2" text:outline-level="2">Year %{year}</text:h>]
 # ***** Subsubsection: month
-template+ [%bM<text:h text:style-name="Heading_20_3" text:outline-level="3">%M</text:h>]
+template+ [%{begin-subdivision-month}<text:h text:style-name="Heading_20_3" text:outline-level="3">%{month-name}</text:h>]
 
 # ***** Begin of Entry
 template+ <text:p text:style-name="P1">
 # ***** Label including text mark
 template+ <text:span text:style-name="T1">
-template+ <text:bookmark-start text:name="%L"/>\[%C\] <text:bookmark-end text:name="%L"/>
-template+ %a[%f|%n; | and ]%F[, %G]%A:
+template+ <text:bookmark-start text:name="%{label}"/>\[%{anchor}\] <text:bookmark-end text:name="%{label}"/>
+template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]%{end-author-loop}:
 template+ </text:span>
 # ***** Title
-template+  “[<text:a xlink:type="simple" xlink:href="%U">%T</text:a>|%T]”[ ([%y, ]%sK~KiB)]
+template+  “[<text:a xlink:type="simple" xlink:href="%{url}">%{title}</text:a>|%{title}]”[ ([%{url-type}, ]%{url-size-kib}~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %H][, %B][, %r][, %J][, %?][, %$][, vol.~%V][, %t~%N|, no.~%N][, pp.~%P][, %X][, %$][, %S][, URN~<text:a xlink:type="simple" xlink:href="http://www.nbn-resolving.de/%q">%q</text:a>][, DOI~<text:a xlink:type="simple" xlink:href="http://dx.doi.org/%d">%d</text:a>][, %I][, %i][, %@][, [[%M~%D, |%M~]%Y].</text:p>
+template+ [, %{how-published}][, %{booktitle}][, %{series}][, %{journal}][, %{institution}][, %$][, vol.~%{volume}][, %{type}~%{number}|, no.~%{number}][, pp.~%{pages}][, %{note}][, %$][, %{school}][, URN~<text:a xlink:type="simple" xlink:href="http://www.nbn-resolving.de/%{urn}">%{urn}</text:a>][, DOI~<text:a xlink:type="simple" xlink:href="http://dx.doi.org/%{doi}">%{doi}</text:a>][, %{isbn}][, %{issn}][, %{address}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}].</text:p>
 # ***** URL including hyperlink
-template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%U">%U</text:a>.</text:span></text:p>]
+template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%{url}">%{url}</text:a>.</text:span></text:p>]
 # ***** End of Entry
 template+ <text:p text:style-name="P1"/>
 

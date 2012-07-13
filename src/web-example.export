@@ -47,27 +47,27 @@ nbsp &nbsp;
 templatenew
 
 # ***** Begin of Subsection: YEAR
-template+ [%bY<h3>%Y</h3><ul>\n\n]
+template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 
 # ****** Begin of Entry
 template+ <li><p class=\"description\">
 
 # ***** Authors
-template+ %a[%f|%n; | and ]%F[,~%G]%A:
+template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[,~%{author-give-name}]%{end-author-loop}:
 # ***** Title
-template+  [``<a type="%z" href="%U">%T</a>´´|``%T´´][ ([<a type="%z" href="%U">%y</a>, ]%sK~KiB)]
+template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´][ ([<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %H][, in <em>%J</em>][, in <em>%B</em>]
-template+ [, %3|, %t[~%N][, %r][, vol.~%V][, pp.~%P]|[, %r][, vol.~%V][, no.~%N][, pp.~%P]]
-template+ [, %$][, %S][, %?][, URN~<a href="http://www.nbn-resolving.de/%q">%q</a>][, DOI~<a href="http://dx.doi.org/%d">%d</a>][, %I][, %i][, %@][, %X][, [[%M~%D, |%M~]%Y], \[<a type="text/x-bibtex" href="bibtex/%L.bib">BibTeX</a>, <a type="text/xml" href="bibxml/%L.xml">XML</a>\].
+template+ [, %{how-published}][, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
+template+ [, %{custom-3}|, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
+template+ [, %$][, %{school}][, %{institution}][, URN~<a href="http://www.nbn-resolving.de/%{urn}">%{urn}</a>][, DOI~<a href="http://dx.doi.org/%{doi}">%{doi}</a>][, %{isbn}][, %{issn}][, %{address}][, %{note}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}], \[<a type="text/x-bibtex" href="bibtex/%{label}.bib">BibTeX</a>, <a type="text/xml" href="bibxml/%{label}.xml">XML</a>\].
 # ****** Awards
-template+ [ <strong>%1.</strong>]
+template+ [ <strong>%{custom-1}.</strong>]
 
 # ****** End of Entry
 template+ </p></li>\n\n
 
 # ***** End of Subsection: YEAR
-template+ [%eY</ul>\n\n]
+template+ [%{end-subdivision-year}</ul>\n\n]
 
 
 # ====== Finally, print all selected publications ===========================

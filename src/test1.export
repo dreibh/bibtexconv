@@ -1,8 +1,8 @@
 # This is the printing template:
 
-#template \[%C\] %L\n %a\tAUTHOR: [[%fFIRST|%lLAST|%nNOT-FIRST]: initials=%g given=%G full=%F]\n%A\n
+#template \[%{anchor}\] %{label}\n %{begin-author-loop}\tAUTHOR: [[%{is-first-author?}FIRST|%{is-last-author?}LAST|%{is-not-first-author?}NOT-FIRST]: initials=%{author-initials} given=%{author-give-name} full=%{author-family-name}]\n%{end-author-loop}\n
 
-template \[%C\] %a[%f|%n; | and ]%F[, %G]%A: \"%T\"[, %B][, %J][, %?][, vol.~%V][, no.~%N][, pp.~%P][, %$][, %S][, %@][, [[%M %D, |%M~]%Y][, %I][, %i].\nURL: %U.\n
+template \[%{anchor}\] %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]%{end-author-loop}: \"%{title}\"[, %{booktitle}][, %{journal}][, %{institution}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}][, %$][, %{school}][, %{address}][, [[%{month-name} %{day}, |%{month-name}~]%{year}][, %{isbn}][, %{issn}].\nURL: %{url}.\n
 
 
 # Before any citation is printed, print a list title:
