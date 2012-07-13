@@ -764,6 +764,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "issn");
             if(child) { result += string2utf8("ISSN~" + child->value, nbsp, xmlStyle); } else { skip = true; }
          }
+         else if( (action == "x") || (action == "language") ) {   // Language
+            child = findChildNode(publication, "language");
+            if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+         }
          else if( (action == "U") || (action == "url") ) {   // URL
             child = findChildNode(publication, "url");
             if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
@@ -865,7 +869,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                         type = "year";
                       break;
                      default:
-                        fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in subdivision part of custom printing template!",
+                        fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in subdivision part of custom printing template!\n",
                         printingTemplate[i + 2]);
                         exit(1);
                       break;
@@ -874,7 +878,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
                else {
                   if( (type != "day") && (type != "month") && (type != "year") ) {
-                     fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in subdivision part of custom printing template!",
+                     fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in subdivision part of custom printing template!\n",
                      action.c_str());
                      exit(1);
                   }
