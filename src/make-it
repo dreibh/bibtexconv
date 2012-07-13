@@ -18,6 +18,4 @@
 #
 # Contact: dreibh@iem.uni-due.de
 
-bison -d grammar.yy && \
-flex -o scanner.cc scanner.l && \
-g++ -g -O2 -Wall scanner.cc grammar.tab.cc node.cc unification.cc stringhandling.cc bibtexconv.cc -o bibtexconv
+./bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive -skip-notes-with-isbn-and-issn && mv UpdatedReferences.bib ExampleReferences.bib

@@ -71,6 +71,7 @@ s/%wm/%{within-subdivision-month}/g
 s/%wM/%{within-subdivision-month}/g
 s/%wY/%{within-subdivision-year}/g
 s/%X/%{note}/g
+s/%x/%{language}/g
 s/%y/%{url-type}/g
 s/%Y/%{year}/g
 s/%Z/%{name}/g
