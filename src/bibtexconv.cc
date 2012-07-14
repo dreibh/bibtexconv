@@ -74,6 +74,7 @@ static bool downloadFile(CURL*         curl,
    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);   // follow redirects
    curl_easy_setopt(curl, CURLOPT_AUTOREFERER,    1L);   // set referer on redirect
    curl_easy_setopt(curl, CURLOPT_COOKIEFILE,     "");   // enable cookies
+   curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 30);   // 30s connect timeout
 
    bool  resultIsGood    = false;
    const CURLcode result = curl_easy_perform(curl);
