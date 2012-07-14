@@ -5,6 +5,7 @@ Maintainer: Thomas Dreibholz <dreibh@iem.uni-due.de>
 Homepage: http://www.iem.uni-due.de/~dreibh/bibtexconv/
 Build-Depends: autotools-dev,
                bison,
+               colorgcc,
                debhelper (>= 9),
                flex,
                libcurl4-openssl-dev,
