@@ -436,6 +436,20 @@ void unifyURL(Node* publication, Node* url)
        (url->value.substr(url->value.size() - 1) == "}") ) {
       url->value = url->value.substr(5, url->value.size() - 6);
    }
+
+   // ====== Fix IEEExplore URLs ============================================
+   if( (url->value.substr(0, 27) == "http://ieeexplore.ieee.org/") ||
+       (url->value.substr(0, 28) == "https://ieeexplore.ieee.org/") ) {
+      const size_t tp = url->value.find("tp=&");
+      if(tp != std::string::npos) {
+         url->value = url->value.replace(tp, 4, "");
+      }
+      const size_t is = url->value.find("&isnumber=");
+      if(tp == std::string::npos) {
+         url->value += "&isnumber=";
+      }
+   }
+
    url->value = laTeXtoURL(url->value);
 }
 
