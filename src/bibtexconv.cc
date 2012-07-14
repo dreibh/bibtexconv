@@ -287,8 +287,9 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                            }
                            const Node* urlMimeNode = findChildNode(publication, "url.mime");
                            const Node* urlSizeNode = findChildNode(publication, "url.size");
-                           const Node* urlMD5Node = findChildNode(publication, "url.md5");
+                           const Node* urlMD5Node  = findChildNode(publication, "url.md5");
 
+                           bool failed = false;
                            if((urlMimeNode != NULL) && (urlMimeNode->value != mimeString)) {
                               if( (urlMimeNode->value == "text/html") &&
                                   (mimeString == "application/pdf") ) {
@@ -300,49 +301,53 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  fprintf(stderr, "\nFAILED %s: old mime type has been %s, new type mime is %s\n",
                                          url->value.c_str(),
                                          urlMimeNode->value.c_str(), mimeString.c_str());
-                                 errors++;
+                                 errors++; failed = true;
                               }
                            }
                            if((urlSizeNode != NULL) && (urlSizeNode->value != sizeString)) {
                               fprintf(stderr, "\nFAILED %s: old size has been %s, new size is %s\n",
                                       url->value.c_str(),
                                       urlSizeNode->value.c_str(), sizeString.c_str());
-                              errors++;
+                              errors++; failed = true;
                            }
                            if((urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
                               (urlMD5Node->value != md5String)) {
                               fprintf(stderr, "\nFAILED %s: old MD5 has been %s, new MD5 is %s\n",
                                       url->value.c_str(),
                                       urlMD5Node->value.c_str(), md5String.c_str());
-                              errors++;
+                              errors++; failed = true;
                            }
 
-                           // ====== Update size, mime type and MD5 =========
-                           addOrUpdateChildNode(publication, "url.size", sizeString.c_str());
-                           addOrUpdateChildNode(publication, "url.mime", mimeString.c_str());
-                           addOrUpdateChildNode(publication, "url.md5",  md5String.c_str());
+                           // ====== Update metadata ========================
+                           if(!failed) {
+                              // ====== Update size, mime type and MD5 ======
+                              addOrUpdateChildNode(publication, "url.size", sizeString.c_str());
+                              addOrUpdateChildNode(publication, "url.mime", mimeString.c_str());
+                              addOrUpdateChildNode(publication, "url.md5",  md5String.c_str());
 
-                           // ====== Update check time ======================
-                           const unsigned long long microTime = getMicroTime();
-                           const time_t             timeStamp = microTime / 1000000;
-                           const tm*                timeptr   = localtime(&timeStamp);
-                           char  checkTime[128];
-                           strftime((char*)&checkTime, sizeof(checkTime), "%Y-%m-%d %H:%M:%S %Z", timeptr);
-                           addOrUpdateChildNode(publication, "url.checked", checkTime);
+                              // ====== Update check time ===================
+                              const unsigned long long microTime = getMicroTime();
+                              const time_t             timeStamp = microTime / 1000000;
+                              const tm*                timeptr   = localtime(&timeStamp);
+                              char  checkTime[128];
+                              strftime((char*)&checkTime, sizeof(checkTime), "%Y-%m-%d %H:%M:%S %Z", timeptr);
+                              addOrUpdateChildNode(publication, "url.checked", checkTime);
 
-                           fprintf(stderr, "OK: size=%sB; type=%s; MD5=%s\n",
-                                   sizeString.c_str(), mimeString.c_str(), md5String.c_str());
+                              fprintf(stderr, "OK: size=%sB; type=%s; MD5=%s\n",
+                                      sizeString.c_str(), mimeString.c_str(), md5String.c_str());
 
-                           if(downloadDirectory != NULL) {
-                              fclose(downloadFH);
-                              downloadFH = NULL;
-                              const std::string newFileName =
-                                 PublicationSet::makeDownloadFileName(downloadDirectory, publication->keyword, mimeString);
-                              if(rename(downloadFileName, newFileName.c_str()) < 0) {
-                                 unlink(downloadFileName);
-                                 fprintf(stderr, "\nFAILED to store download file %s: %s!\n",
-                                         newFileName.c_str(), strerror(errno));
-                                 exit(1);
+                              // ====== Move downloaded file ================
+                              if(downloadDirectory != NULL) {
+                                 fclose(downloadFH);
+                                 downloadFH = NULL;
+                                 const std::string newFileName =
+                                    PublicationSet::makeDownloadFileName(downloadDirectory, publication->keyword, mimeString);
+                                 if(rename(downloadFileName, newFileName.c_str()) < 0) {
+                                    unlink(downloadFileName);
+                                    fprintf(stderr, "\nFAILED to store download file %s: %s!\n",
+                                            newFileName.c_str(), strerror(errno));
+                                    exit(1);
+                                 }
                               }
                            }
                         }
