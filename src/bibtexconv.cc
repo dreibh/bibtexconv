@@ -101,12 +101,14 @@ static bool downloadFile(CURL*         curl,
             fprintf(stderr, "FAILED %s - HTTP returns code %u!\n",
                     url, httpErrorCode);
 
+            /*
             rewind(headerFH);
             size_t r = fread((char*)&header, 1, sizeof(header) - 1, headerFH);
             if(r > 0) {
                header[r] = 0x00;
                fputs(header, stderr);
             }
+            */
 
             errors++;
          }
