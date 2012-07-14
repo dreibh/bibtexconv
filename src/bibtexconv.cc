@@ -173,7 +173,8 @@ static bool handleDynamicURL(CURL*             curl,
 // ###### Check URLs ########################################################
 unsigned int checkAllURLs(PublicationSet* publicationSet,
                           const char*     downloadDirectory,
-                          const bool      checkNewURLsOnly)
+                          const bool      checkNewURLsOnly,
+                          const bool      ignoreUpdatesForHTML)
 {
    if(downloadDirectory != NULL) {
       if( (mkdir(downloadDirectory, S_IRWXU|S_IXGRP|S_IRGRP|S_IXOTH|S_IROTH) < 0) &&
@@ -301,24 +302,43 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  urlMD5Node  = NULL;
                               }
                               else {
-                                 fprintf(stderr, "\nFAILED %s: old mime type has been %s, new type mime is %s\n",
+                                 fprintf(stderr, "FAILED %s: old mime type has been %s, new type mime is %s\n",
                                          url->value.c_str(),
                                          urlMimeNode->value.c_str(), mimeString.c_str());
                                  errors++; failed = true;
                               }
                            }
-                           if((urlSizeNode != NULL) && (urlSizeNode->value != sizeString)) {
-                              fprintf(stderr, "\nFAILED %s: old size has been %s, new size is %s\n",
-                                      url->value.c_str(),
-                                      urlSizeNode->value.c_str(), sizeString.c_str());
-                              errors++; failed = true;
+                           if( (!failed) && (urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
+                               (urlSizeNode->value != sizeString) ) {
+                               if( (ignoreUpdatesForHTML == true) &&
+                                   ((urlMimeNode != NULL) &&
+                                    ((urlMimeNode->value == "text/html") ||
+                                     (urlMimeNode->value == "application/xml"))) ) {
+                                  md5String = "ignore";
+                                  fprintf(stderr, "[Size change for HTML/XML document -> setting url.md5=\"ignore\"]");
+                               }
+                               else {
+                                 fprintf(stderr, "FAILED %s: old size has been %s, new size is %s\n",
+                                         url->value.c_str(),
+                                         urlSizeNode->value.c_str(), sizeString.c_str());
+                                 errors++; failed = true;
+                               }
                            }
-                           if((urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
+                           if( (!failed) && (urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
                               (urlMD5Node->value != md5String)) {
-                              fprintf(stderr, "\nFAILED %s: old MD5 has been %s, new MD5 is %s\n",
-                                      url->value.c_str(),
-                                      urlMD5Node->value.c_str(), md5String.c_str());
-                              errors++; failed = true;
+                               if( (ignoreUpdatesForHTML == true) &&
+                                   ((urlMimeNode != NULL) &&
+                                    ((urlMimeNode->value == "text/html") ||
+                                     (urlMimeNode->value == "application/xml"))) ) {
+                                  md5String = "ignore";
+                                  fprintf(stderr, "[MD5 change for HTML/XML document -> setting url.md5=\"ignore\"]");
+                               }
+                               else {
+                                  fprintf(stderr, "FAILED %s: old MD5 has been %s, new MD5 is %s\n",
+                                          url->value.c_str(),
+                                          urlMD5Node->value.c_str(), md5String.c_str());
+                                  errors++; failed = true;
+                               }
                            }
 
                            // ====== Update metadata ========================
@@ -406,6 +426,7 @@ static int handleInput(FILE*           fh,
                        const char*     downloadDirectory,
                        const bool      checkURLs,
                        const bool      checkNewURLsOnly,
+                       const bool      ignoreUpdatesForHTML,
                        const char*     exportToBibTeX,
                        const char*     exportToSeparateBibTeXs,
                        const char*     exportToXML,
@@ -503,7 +524,7 @@ static int handleInput(FILE*           fh,
          }
          else if((strncmp(input, "export", 5)) == 0) {
             if(checkURLs) {
-               result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly);
+               result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly, ignoreUpdatesForHTML);
             }
             const char* namingTemplate = "%u";
             if(input[6] == ' ') {
@@ -585,7 +606,7 @@ static int handleInput(FILE*           fh,
                FILE* includeFH = fopen(includeFileName, "r");
                if(includeFH != NULL) {
                   result += handleInput(includeFH, publicationSet,
-                                        downloadDirectory, checkURLs, checkNewURLsOnly,
+                                        downloadDirectory, checkURLs, checkNewURLsOnly, ignoreUpdatesForHTML,
                                         exportToBibTeX, exportToSeparateBibTeXs,
                                         exportToXML, exportToSeparateXMLs,
                                         skipNotesWithISBNandISSN, addNotesWithISBNandISSN,
@@ -637,6 +658,7 @@ int main(int argc, char** argv)
    bool        interactive              = true;
    bool        checkURLs                = false;
    bool        checkNewURLsOnly         = false;
+   bool        ignoreUpdatesForHTML     = false;
    bool        skipNotesWithISBNandISSN = false;
    bool        addNotesWithISBNandISSN  = false;
    bool        addUrlCommand            = false;
@@ -661,7 +683,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s BibTeX_File {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
+      fprintf(stderr, "Usage: %s BibTeX_File {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-ignore-updates-for-html} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -695,6 +717,9 @@ int main(int argc, char** argv)
       else if( strcmp(argv[i], "-only-check-new-urls") == 0 ) {
          checkNewURLsOnly = true;
       }
+      else if( strcmp(argv[i], "-ignore-updates-for-html") == 0 ) {
+         ignoreUpdatesForHTML = true;
+      }
       else if( strcmp(argv[i], "-add-url-command") == 0 ) {
          addUrlCommand = true;
       }
@@ -724,7 +749,7 @@ int main(int argc, char** argv)
       if(!interactive) {
          publicationSet.addAll(bibTeXFile);
          if(checkURLs) {
-            result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly);
+            result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly, ignoreUpdatesForHTML);
          }
 
          // ====== Export all to BibTeX =====================================
@@ -773,7 +798,7 @@ int main(int argc, char** argv)
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
                  (unsigned int)publicationSet.maxSize());
          result = handleInput(stdin, publicationSet,
-                              downloadDirectory, checkURLs, checkNewURLsOnly,
+                              downloadDirectory, checkURLs, checkNewURLsOnly, ignoreUpdatesForHTML,
                               exportToBibTeX, exportToSeparateBibTeXs,
                               exportToXML, exportToSeparateXMLs,
                               skipNotesWithISBNandISSN, addNotesWithISBNandISSN,

@@ -820,7 +820,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                i++;
             }
             child = findChildNode(publication, "url.size");
-            if(child) {
+            if( (child) && (atoll(child->value.c_str()) != 0) ) {
                double divisor;
                if(type == "kib") {
                   divisor = 1024.0;
