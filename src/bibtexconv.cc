@@ -66,8 +66,8 @@ static bool downloadFile(CURL*         curl,
    }
 
    curl_easy_setopt(curl, CURLOPT_URL,            url);
-   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1L);
+   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 1L);
    curl_easy_setopt(curl, CURLOPT_WRITEDATA,      downloadFH);
    curl_easy_setopt(curl, CURLOPT_WRITEHEADER,    headerFH);
    curl_easy_setopt(curl, CURLOPT_USERAGENT,      "bibtexconv/1.0 (compatible; MC680x0; AmigaOS)");
@@ -285,24 +285,33 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                            for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
                               md5String += format("%02x", (unsigned int)md5[i]);
                            }
-
+                           const Node* urlMimeNode = findChildNode(publication, "url.mime");
                            const Node* urlSizeNode = findChildNode(publication, "url.size");
+                           const Node* urlMD5Node = findChildNode(publication, "url.md5");
+
+                           if((urlMimeNode != NULL) && (urlMimeNode->value != mimeString)) {
+                              if( (urlMimeNode->value == "text/html") &&
+                                  (mimeString == "application/pdf") ) {
+                                 fprintf(stderr, "\nNOTE: change from HTML to PDF -> just updating entry\n");
+                                 urlSizeNode = NULL;
+                                 urlMD5Node  = NULL;
+                              }
+                              else {
+                                 fprintf(stderr, "\nFAILED %s: old mime type has been %s, new type mime is %s\n",
+                                         url->value.c_str(),
+                                         urlMimeNode->value.c_str(), mimeString.c_str());
+                                 errors++;
+                              }
+                           }
                            if((urlSizeNode != NULL) && (urlSizeNode->value != sizeString)) {
-                              fprintf(stderr, "FAILED %s: old size has been %s, new size is %s\n",
+                              fprintf(stderr, "\nFAILED %s: old size has been %s, new size is %s\n",
                                       url->value.c_str(),
                                       urlSizeNode->value.c_str(), sizeString.c_str());
                               errors++;
                            }
-                           const Node* urlMimeNode = findChildNode(publication, "url.mime");
-                           if((urlMimeNode != NULL) && (urlMimeNode->value != mimeString)) {
-                              fprintf(stderr, "FAILED %s: old mime type has been %s, new type mime is %s\n",
-                                      url->value.c_str(),
-                                      urlMimeNode->value.c_str(), mimeString.c_str());
-                              errors++;
-                           }
-                           const Node* urlMD5Node = findChildNode(publication, "url.md5");
-                           if((urlMD5Node != NULL) && (urlMD5Node->value != md5String)) {
-                              fprintf(stderr, "FAILED %s: old MD5 has been %s, new MD5 is %s\n",
+                           if((urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
+                              (urlMD5Node->value != md5String)) {
+                              fprintf(stderr, "\nFAILED %s: old MD5 has been %s, new MD5 is %s\n",
                                       url->value.c_str(),
                                       urlMD5Node->value.c_str(), md5String.c_str());
                               errors++;
@@ -331,14 +340,14 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  PublicationSet::makeDownloadFileName(downloadDirectory, publication->keyword, mimeString);
                               if(rename(downloadFileName, newFileName.c_str()) < 0) {
                                  unlink(downloadFileName);
-                                 fprintf(stderr, "FAILED to store download file %s: %s!\n",
+                                 fprintf(stderr, "\nFAILED to store download file %s: %s!\n",
                                          newFileName.c_str(), strerror(errno));
                                  exit(1);
                               }
                            }
                         }
                         else {
-                           fprintf(stderr, "FAILED %s: size is zero!\n", url->value.c_str());
+                           fprintf(stderr, "\nFAILED %s: size is zero!\n", url->value.c_str());
                            errors++;
                         }
                      }

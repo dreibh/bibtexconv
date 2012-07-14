@@ -17,6 +17,7 @@ dist_bin_SCRIPTS = bibtexconv-odt
 
 dist_man_MANS = bibtexconv.1 bibtexconv-odt.1
 
+EXTRA_DIST = converter.sed convert-to-new-format
 
 CLEANFILES = grammar.cc grammar.h scanner.cc
 

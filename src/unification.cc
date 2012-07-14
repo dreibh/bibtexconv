@@ -432,6 +432,7 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
 // ###### Unify "url" section ###############################################
 void unifyURL(Node* publication, Node* url)
 {
+   // ====== Remove deprecated \url{...} ====================================
    if( (url->value.substr(0, 5) == "\\url{") &&
        (url->value.substr(url->value.size() - 1) == "}") ) {
       url->value = url->value.substr(5, url->value.size() - 6);
@@ -440,12 +441,8 @@ void unifyURL(Node* publication, Node* url)
    // ====== Fix IEEExplore URLs ============================================
    if( (url->value.substr(0, 27) == "http://ieeexplore.ieee.org/") ||
        (url->value.substr(0, 28) == "https://ieeexplore.ieee.org/") ) {
-      const size_t tp = url->value.find("tp=&");
-      if(tp != std::string::npos) {
-         url->value = url->value.replace(tp, 4, "");
-      }
       const size_t is = url->value.find("&isnumber=");
-      if(tp == std::string::npos) {
+      if(is == std::string::npos) {   // URL would otherwise not point to PDF download!
          url->value += "&isnumber=";
       }
    }
