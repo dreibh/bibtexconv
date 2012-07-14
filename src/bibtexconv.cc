@@ -308,8 +308,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  errors++; failed = true;
                               }
                            }
-                           if( (!failed) && (urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
-                               (urlSizeNode->value != sizeString) ) {
+                           if( (!failed) && (urlSizeNode != NULL) && (urlSizeNode->value != sizeString) ) {
                                if( (ignoreUpdatesForHTML == true) &&
                                    ((urlMimeNode != NULL) &&
                                     ((urlMimeNode->value == "text/html") ||
@@ -346,7 +345,9 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                               // ====== Update size, mime type and MD5 ======
                               addOrUpdateChildNode(publication, "url.size", sizeString.c_str());
                               addOrUpdateChildNode(publication, "url.mime", mimeString.c_str());
-                              addOrUpdateChildNode(publication, "url.md5",  md5String.c_str());
+                              if( (urlMD5Node == NULL) || (urlMD5Node->value != "ignore")) {
+                                 addOrUpdateChildNode(publication, "url.md5",  md5String.c_str());
+                              }
 
                               // ====== Update check time ===================
                               const unsigned long long microTime = getMicroTime();
