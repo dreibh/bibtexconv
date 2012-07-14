@@ -185,6 +185,12 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
       }
    }
 
+   CURL* curl = curl_easy_init();
+   if(curl == NULL) {
+      fputs("ERROR: Failed to initialize libcurl!\n", stderr);
+      exit(1);
+   }
+
    unsigned int errors = 0;
    for(size_t index = 0; index < publicationSet->size(); index++) {
       // ====== Get prev, current and next publications =====================
@@ -236,157 +242,150 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
             if(downloadFH != NULL) {
                FILE* headerFH = tmpfile();
                if(headerFH != NULL) {
-                  CURL* curl = curl_easy_init();
-                  if(curl != NULL) {
-                     bool resultIsGood = downloadFile(curl, url->value.c_str(), headerFH, downloadFH, errors);
-                     if(resultIsGood) {
-                        // Special handling for dynamic URLs of some publishers
-                        resultIsGood = handleDynamicURL(curl, url->value, headerFH, downloadFH, errors);
-                     }
-                     if(resultIsGood) {
-                        unsigned long long totalSize = 0;
-                        unsigned char      md5[MD5_DIGEST_LENGTH];
-                        MD5_CTX md5_ctx;
-                        MD5_Init(&md5_ctx);
+                  bool resultIsGood = downloadFile(curl, url->value.c_str(), headerFH, downloadFH, errors);
+                  if(resultIsGood) {
+                     // Special handling for dynamic URLs of some publishers
+                     resultIsGood = handleDynamicURL(curl, url->value, headerFH, downloadFH, errors);
+                  }
+                  if(resultIsGood) {
+                     unsigned long long totalSize = 0;
+                     unsigned char      md5[MD5_DIGEST_LENGTH];
+                     MD5_CTX md5_ctx;
+                     MD5_Init(&md5_ctx);
 
-                        // ====== Compute size and MD5 ======================
-                        while(!feof(downloadFH)) {
-                           char input[16384];
-                           const size_t bytesRead = fread(&input, 1, sizeof(input), downloadFH);
-                           if(bytesRead > 0) {
-                              totalSize += (unsigned long long)bytesRead;
-                              MD5_Update(&md5_ctx, &input, bytesRead);
-                           }
+                     // ====== Compute size and MD5 =========================
+                     while(!feof(downloadFH)) {
+                        char input[16384];
+                        const size_t bytesRead = fread(&input, 1, sizeof(input), downloadFH);
+                        if(bytesRead > 0) {
+                           totalSize += (unsigned long long)bytesRead;
+                           MD5_Update(&md5_ctx, &input, bytesRead);
                         }
+                     }
 
-                        if(totalSize > 0) {
-                           // ====== Compute mime type (using "file") =======
-                           std::string mimeString;
-                           std::string command = format("/usr/bin/file --mime-type -b %s >%s", downloadFileName, mimeFileName);
-                           if(system(command.c_str()) == 0) {
-                              FILE* mimeFH = fopen(mimeFileName, "r");
-                              if(mimeFH != NULL) {
-                                 char input[1024];
-                                 if(fgets((char*)&input, sizeof(input) - 1, mimeFH) != NULL) {
-                                    mimeString = std::string(input);
-                                    if( (mimeString.size() > 0) &&
-                                        (mimeString[mimeString.size() - 1] == '\n') ) {
-                                       mimeString = mimeString.substr(0, mimeString.size() - 1);
-                                    }
-                                 }
-                                 fclose(mimeFH);
-                              }
-                           }
-                           else {
-                              fprintf(stderr, "FAILED %s: failed to obtain mime type of download file!\n",
-                                      url->value.c_str());
-                           }
-
-                           // ====== Compare size, mime type and MD5 ========
-                           std::string sizeString = format("%llu", totalSize);
-                           std::string md5String;
-                           MD5_Final((unsigned char*)&md5, &md5_ctx);
-                           for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
-                              md5String += format("%02x", (unsigned int)md5[i]);
-                           }
-                           const Node* urlMimeNode = findChildNode(publication, "url.mime");
-                           const Node* urlSizeNode = findChildNode(publication, "url.size");
-                           const Node* urlMD5Node  = findChildNode(publication, "url.md5");
-
-                           bool failed = false;
-                           if((urlMimeNode != NULL) && (urlMimeNode->value != mimeString)) {
-                              if( (urlMimeNode->value == "text/html") &&
-                                  (mimeString == "application/pdf") ) {
-                                 fprintf(stderr, "\nNOTE: change from HTML to PDF -> just updating entry\n");
-                                 urlSizeNode = NULL;
-                                 urlMD5Node  = NULL;
-                              }
-                              else {
-                                 fprintf(stderr, "FAILED %s: old mime type has been %s, new type mime is %s\n",
-                                         url->value.c_str(),
-                                         urlMimeNode->value.c_str(), mimeString.c_str());
-                                 errors++; failed = true;
-                              }
-                           }
-                           if( (!failed) && (urlSizeNode != NULL) && (urlSizeNode->value != sizeString) ) {
-                               if( (ignoreUpdatesForHTML == true) &&
-                                   ((urlMimeNode != NULL) &&
-                                    ((urlMimeNode->value == "text/html") ||
-                                     (urlMimeNode->value == "application/xml"))) ) {
-                                  md5String = "ignore";
-                                  fprintf(stderr, "[Size change for HTML/XML document -> setting url.md5=\"ignore\"]");
-                               }
-                               else {
-                                 fprintf(stderr, "FAILED %s: old size has been %s, new size is %s\n",
-                                         url->value.c_str(),
-                                         urlSizeNode->value.c_str(), sizeString.c_str());
-                                 errors++; failed = true;
-                               }
-                           }
-                           if( (!failed) && (urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
-                              (urlMD5Node->value != md5String)) {
-                               if( (ignoreUpdatesForHTML == true) &&
-                                   ((urlMimeNode != NULL) &&
-                                    ((urlMimeNode->value == "text/html") ||
-                                     (urlMimeNode->value == "application/xml"))) ) {
-                                  md5String = "ignore";
-                                  fprintf(stderr, "[MD5 change for HTML/XML document -> setting url.md5=\"ignore\"]");
-                               }
-                               else {
-                                  fprintf(stderr, "FAILED %s: old MD5 has been %s, new MD5 is %s\n",
-                                          url->value.c_str(),
-                                          urlMD5Node->value.c_str(), md5String.c_str());
-                                  errors++; failed = true;
-                               }
-                           }
-
-                           // ====== Update metadata ========================
-                           if(!failed) {
-                              // ====== Update size, mime type and MD5 ======
-                              addOrUpdateChildNode(publication, "url.size", sizeString.c_str());
-                              addOrUpdateChildNode(publication, "url.mime", mimeString.c_str());
-                              if( (urlMD5Node == NULL) || (urlMD5Node->value != "ignore")) {
-                                 addOrUpdateChildNode(publication, "url.md5",  md5String.c_str());
-                              }
-
-                              // ====== Update check time ===================
-                              const unsigned long long microTime = getMicroTime();
-                              const time_t             timeStamp = microTime / 1000000;
-                              const tm*                timeptr   = localtime(&timeStamp);
-                              char  checkTime[128];
-                              strftime((char*)&checkTime, sizeof(checkTime), "%Y-%m-%d %H:%M:%S %Z", timeptr);
-                              addOrUpdateChildNode(publication, "url.checked", checkTime);
-
-                              fprintf(stderr, "OK: size=%sB; type=%s; MD5=%s\n",
-                                      sizeString.c_str(), mimeString.c_str(), md5String.c_str());
-
-                              // ====== Move downloaded file ================
-                              if(downloadDirectory != NULL) {
-                                 fclose(downloadFH);
-                                 downloadFH = NULL;
-                                 const std::string newFileName =
-                                    PublicationSet::makeDownloadFileName(downloadDirectory, publication->keyword, mimeString);
-                                 if(rename(downloadFileName, newFileName.c_str()) < 0) {
-                                    unlink(downloadFileName);
-                                    fprintf(stderr, "\nFAILED to store download file %s: %s!\n",
-                                            newFileName.c_str(), strerror(errno));
-                                    exit(1);
+                     if(totalSize > 0) {
+                        // ====== Compute mime type (using "file") =======
+                        std::string mimeString;
+                        std::string command = format("/usr/bin/file --mime-type -b %s >%s", downloadFileName, mimeFileName);
+                        if(system(command.c_str()) == 0) {
+                           FILE* mimeFH = fopen(mimeFileName, "r");
+                           if(mimeFH != NULL) {
+                              char input[1024];
+                              if(fgets((char*)&input, sizeof(input) - 1, mimeFH) != NULL) {
+                                 mimeString = std::string(input);
+                                 if( (mimeString.size() > 0) &&
+                                     (mimeString[mimeString.size() - 1] == '\n') ) {
+                                    mimeString = mimeString.substr(0, mimeString.size() - 1);
                                  }
                               }
+                              fclose(mimeFH);
                            }
                         }
                         else {
-                           fprintf(stderr, "\nFAILED %s: size is zero!\n", url->value.c_str());
-                           errors++;
+                           fprintf(stderr, "FAILED %s: failed to obtain mime type of download file!\n",
+                                   url->value.c_str());
+                        }
+
+                        // ====== Compare size, mime type and MD5 ===========
+                        std::string sizeString = format("%llu", totalSize);
+                        std::string md5String;
+                        MD5_Final((unsigned char*)&md5, &md5_ctx);
+                        for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
+                           md5String += format("%02x", (unsigned int)md5[i]);
+                        }
+                        const Node* urlMimeNode = findChildNode(publication, "url.mime");
+                        const Node* urlSizeNode = findChildNode(publication, "url.size");
+                        const Node* urlMD5Node  = findChildNode(publication, "url.md5");
+
+                        bool failed = false;
+                        if((urlMimeNode != NULL) && (urlMimeNode->value != mimeString)) {
+                           if( (urlMimeNode->value == "text/html") &&
+                               (mimeString == "application/pdf") ) {
+                              fprintf(stderr, "\nNOTE: change from HTML to PDF -> just updating entry\n");
+                              urlSizeNode = NULL;
+                              urlMD5Node  = NULL;
+                           }
+                           else {
+                              fprintf(stderr, "FAILED %s: old mime type has been %s, new type mime is %s\n",
+                                      url->value.c_str(),
+                                      urlMimeNode->value.c_str(), mimeString.c_str());
+                              errors++; failed = true;
+                           }
+                        }
+                        if( (!failed) && (urlSizeNode != NULL) && (urlSizeNode->value != sizeString) ) {
+                            if( (ignoreUpdatesForHTML == true) &&
+                                ((urlMimeNode != NULL) &&
+                                 ((urlMimeNode->value == "text/html") ||
+                                  (urlMimeNode->value == "application/xml"))) ) {
+                               md5String = "ignore";
+                               fprintf(stderr, "[Size change for HTML/XML document -> setting url.md5=\"ignore\"]");
+                            }
+                            else {
+                              fprintf(stderr, "FAILED %s: old size has been %s, new size is %s\n",
+                                      url->value.c_str(),
+                                      urlSizeNode->value.c_str(), sizeString.c_str());
+                              errors++; failed = true;
+                            }
+                        }
+                        if( (!failed) && (urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
+                           (urlMD5Node->value != md5String)) {
+                            if( (ignoreUpdatesForHTML == true) &&
+                                ((urlMimeNode != NULL) &&
+                                 ((urlMimeNode->value == "text/html") ||
+                                  (urlMimeNode->value == "application/xml"))) ) {
+                               md5String = "ignore";
+                               fprintf(stderr, "[MD5 change for HTML/XML document -> setting url.md5=\"ignore\"]");
+                            }
+                            else {
+                               fprintf(stderr, "FAILED %s: old MD5 has been %s, new MD5 is %s\n",
+                                       url->value.c_str(),
+                                       urlMD5Node->value.c_str(), md5String.c_str());
+                               errors++; failed = true;
+                            }
+                        }
+
+                        // ====== Update metadata ===========================
+                        if(!failed) {
+                           // ====== Update size, mime type and MD5 =========
+                           addOrUpdateChildNode(publication, "url.size", sizeString.c_str());
+                           addOrUpdateChildNode(publication, "url.mime", mimeString.c_str());
+                           if( (urlMD5Node == NULL) || (urlMD5Node->value != "ignore")) {
+                              addOrUpdateChildNode(publication, "url.md5",  md5String.c_str());
+                           }
+
+                           // ====== Update check time ======================
+                           const unsigned long long microTime = getMicroTime();
+                           const time_t             timeStamp = microTime / 1000000;
+                           const tm*                timeptr   = localtime(&timeStamp);
+                           char  checkTime[128];
+                           strftime((char*)&checkTime, sizeof(checkTime), "%Y-%m-%d %H:%M:%S %Z", timeptr);
+                           addOrUpdateChildNode(publication, "url.checked", checkTime);
+
+                           fprintf(stderr, "OK: size=%sB; type=%s; MD5=%s\n",
+                                   sizeString.c_str(), mimeString.c_str(), md5String.c_str());
+
+                           // ====== Move downloaded file ===================
+                           if(downloadDirectory != NULL) {
+                              fclose(downloadFH);
+                              downloadFH = NULL;
+                              const std::string newFileName =
+                                 PublicationSet::makeDownloadFileName(downloadDirectory, publication->keyword, mimeString);
+                              if(rename(downloadFileName, newFileName.c_str()) < 0) {
+                                 unlink(downloadFileName);
+                                 fprintf(stderr, "\nFAILED to store download file %s: %s!\n",
+                                         newFileName.c_str(), strerror(errno));
+                                 exit(1);
+                              }
+                           }
                         }
                      }
-                     curl_easy_cleanup(curl);
-                  }
-                  else {
-                     fputs("ERROR: Failed to initialize libcurl!\n", stderr);
-                     exit(1);
+                     else {
+                        fprintf(stderr, "\nFAILED %s: size is zero!\n", url->value.c_str());
+                        errors++;
+                     }
                   }
                   fclose(headerFH);
+                  headerFH = NULL;
                }
                else {
                   fputs("ERROR: Failed to create temporary header file!\n", stderr);
@@ -394,6 +393,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                }
                if(downloadFH != NULL) {
                   fclose(downloadFH);
+                  downloadFH = NULL;
                   unlink(downloadFileName);
                }
                unlink(mimeFileName);
@@ -409,6 +409,10 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
          }
       }
    }
+
+   curl_easy_cleanup(curl);
+   curl = NULL;
+
    return(errors);
 }
 
