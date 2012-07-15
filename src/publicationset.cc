@@ -549,6 +549,9 @@ std::string PublicationSet::applyTemplate(Node*                           public
          else if( (action == "C") || (action == "anchor") ) {   // Anchor
             result += string2utf8(publication->anchor, nbsp, xmlStyle);
          }
+         else if( (action == "c") || (action == "class") ) {   // Class (e.g. TechReport, InProceedings, etc.)
+            result += string2utf8(publication->value, nbsp, xmlStyle);
+         }
          else if( (action == "Z") || (action == "name") ) {   // Name based on naming template
             size_t p;
             size_t begin      = 0;
@@ -647,6 +650,46 @@ std::string PublicationSet::applyTemplate(Node*                           public
                std::string familyName = author->arguments[authorIndex + 0];
                removeBrackets(familyName);
                result += string2utf8(familyName, nbsp, xmlStyle);
+            }
+         }
+         else if( (action.substr(0, 3) == "is?") ||
+                  (action.substr(0, 7) == "is-not?") ||
+                  (action.substr(0, 13) == "is-less-than?") ||
+                  (action.substr(0, 22) == "is-less-than-or-equal?") ||
+                  (action.substr(0, 16) == "is-greater-than?") ||
+                  (action.substr(0, 25) == "is-greater-than-or-equal?") ) {   // IS string
+            if(i + 1 < printingTemplateSize) {
+               StackEntry        entry         = stack.back();
+               const std::string writtenString = result.substr(entry.pos);
+
+               if(action.substr(0, 3) == "is?") {
+                  const std::string comparisonString = action.substr(3);
+                  skip = ! (writtenString == comparisonString);
+               }
+               else if(action.substr(0, 7) == "is-not?") {
+                  const std::string comparisonString = action.substr(7);
+                  skip = ! (writtenString != comparisonString);
+               }
+               else if(action.substr(0, 13) == "is-less-than?") {
+                  const std::string comparisonString = action.substr(13);
+                  skip = ! (writtenString == comparisonString);
+               }
+               else if(action.substr(0, 22) == "is-less-than-or-equal?") {
+                  const std::string comparisonString = action.substr(22);
+                  skip = ! (writtenString == comparisonString);
+               }
+               else if(action.substr(0, 16) == "is-greater-than?") {
+                  const std::string comparisonString = action.substr(16);
+                  skip = ! (writtenString == comparisonString);
+               }
+               else if(action.substr(0, 25) == "is-greater-than-or-equal?") {
+                  const std::string comparisonString = action.substr(25);
+                  skip = ! (writtenString == comparisonString);
+               }
+
+               if(!skip) {
+                  result = result.substr(0, entry.pos);   // Remove the written "test" string.
+               }
             }
          }
          else if( (action == "f") || (action == "is-first-author?") ) {       // IS first author

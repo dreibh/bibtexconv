@@ -32,6 +32,7 @@ s/%bm/%{begin-subdivision-month}/g
 s/%bM/%{begin-subdivision-month}/g
 s/%bY/%{begin-subdivision-year}/g
 s/%C/%{anchor}/g
+s/%c/%{class}/g
 s/%D/%{day}/g
 s/%d/%{doi}/g
 s/%#/%{download-file-name}/g
