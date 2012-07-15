@@ -6,7 +6,7 @@ Homepage: http://www.iem.uni-due.de/~dreibh/bibtexconv/
 Build-Depends: autotools-dev,
                bison,
                colorgcc,
-               debhelper (>= 9),
+               debhelper (>= 7),
                flex,
                libcurl4-openssl-dev,
                libssl-dev
