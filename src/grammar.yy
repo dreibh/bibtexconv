@@ -47,6 +47,10 @@ Node* bibTeXFile = NULL;
 %token <iText>  T_String
 %token <iText>  T_Comment
 
+%destructor { free($$); } T_Keyword
+%destructor { free($$); } T_String
+%destructor { free($$); } T_Comment
+
 %type <nodePtr> bibTeXFile
 %type <nodePtr> publicationCollection
 %type <nodePtr> publication
@@ -73,48 +77,48 @@ publicationCollection
 
 publication
     : T_Comment
-         { $$ = makePublication("Comment", $1, NULL); }
+         { $$ = makePublication("Comment", $1, NULL); free($1); }
     | T_AT T_Article T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("Article", $4, $6); }
+         { $$ = makePublication("Article", $4, $6); free($4); }
     | T_AT T_Book T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("Book", $4, $6); }
+         { $$ = makePublication("Book", $4, $6); free($4); }
     | T_AT T_InCollection T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("InCollection", $4, $6); }
+         { $$ = makePublication("InCollection", $4, $6); free($4); }
     | T_AT T_InProceedings T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("InProceedings", $4, $6); }
+         { $$ = makePublication("InProceedings", $4, $6); free($4); }
     | T_AT T_Manual T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("Manual", $4, $6); }
+         { $$ = makePublication("Manual", $4, $6); free($4); }
     | T_AT T_MastersThesis T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("MastersThesis", $4, $6); }
+         { $$ = makePublication("MastersThesis", $4, $6); free($4); }
     | T_AT T_Misc T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("Misc", $4, $6); }
+         { $$ = makePublication("Misc", $4, $6); free($4); }
     | T_AT T_PhDThesis T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("PhDThesis", $4, $6); }
+         { $$ = makePublication("PhDThesis", $4, $6); free($4); }
     | T_AT T_TechReport T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
-         { $$ = makePublication("TechReport", $4, $6); }
+         { $$ = makePublication("TechReport", $4, $6); free($4); }
     ;
 
 publicationInfo
     : publicationInfoItem T_Comma publicationInfo              { $$ = makePublicationInfo($1, $3); }
-    | publicationInfoItem T_Comma T_Comment publicationInfo    { $$ = makePublicationInfo($1, $4); }
-    | publicationInfoItem T_Comment publicationInfoJustComment { $$ = $1; }   /* Comments at end of entry */
+    | publicationInfoItem T_Comma T_Comment publicationInfo    { $$ = makePublicationInfo($1, $4); free($3); }
+    | publicationInfoItem T_Comment publicationInfoJustComment { $$ = $1; free($2); }   /* Comments at end of entry */
     | publicationInfoItem                                      { $$ = $1; }
     ;
 
 publicationInfoItem
-    : T_Keyword T_Equals T_Keyword { $$ = makePublicationInfoItem($1, $3); }
-    | T_Keyword T_Equals T_String  { $$ = makePublicationInfoItem($1, $3); }
-    | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { $$ = makePublicationInfoItem($1, $4); }
-    | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace  { $$ = makePublicationInfoItem($1, $4); }
+    : T_Keyword T_Equals T_Keyword { $$ = makePublicationInfoItem($1, $3); free($1); free($3); }
+    | T_Keyword T_Equals T_String  { $$ = makePublicationInfoItem($1, $3); free($1); free($3); }
+    | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { $$ = makePublicationInfoItem($1, $4); free($1); free($4); }
+    | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace  { $$ = makePublicationInfoItem($1, $4); free($1); free($4); }
     ;
 
 /* Just comments at end of entry */
 publicationInfoJustComment
-   : publicationInfoItemJustComment T_Comment publicationInfoJustComment { $$ = NULL; }
-   | T_Comment { $$ = NULL; }
+   : publicationInfoItemJustComment T_Comment publicationInfoJustComment { free($2); $$ = NULL; }
+   | T_Comment { free($1); $$ = NULL; }
    ;
 
 /* Just comments at end of entry */
 publicationInfoItemJustComment
-    : T_Comment { $$ = NULL; }
+    : T_Comment { free($1); $$ = NULL; }
     ;
