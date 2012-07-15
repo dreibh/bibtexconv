@@ -318,7 +318,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  ((urlMimeNode->value == "text/html") ||
                                   (urlMimeNode->value == "application/xml"))) ) {
                                md5String = "ignore";
-                               fprintf(stderr, "[Size change for HTML/XML document -> setting url.md5=\"ignore\"]");
+                               fprintf(stderr, "[Size change for HTML/XML document -> setting url.md5=\"ignore\"] ");
                             }
                             else {
                               fprintf(stderr, "FAILED %s: old size has been %s, new size is %s\n",
@@ -334,7 +334,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  ((urlMimeNode->value == "text/html") ||
                                   (urlMimeNode->value == "application/xml"))) ) {
                                md5String = "ignore";
-                               fprintf(stderr, "[MD5 change for HTML/XML document -> setting url.md5=\"ignore\"]");
+                               fprintf(stderr, "[MD5 change for HTML/XML document -> setting url.md5=\"ignore\"] ");
                             }
                             else {
                                fprintf(stderr, "FAILED %s: old MD5 has been %s, new MD5 is %s\n",
