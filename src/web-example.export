@@ -57,7 +57,7 @@ template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | an
 # ***** Title
 template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´]
 # ****** URL
-template+ [%{url}%{is-not?}(|%{language}%{is-not?} (]
+template+ [%{url}%{is-not?} (|%{language}%{is-not?} (]
 template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB]
 # ****** Language
 template+ [%{url}%{is-not?}[%x%{is-not?}, ]]
