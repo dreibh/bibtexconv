@@ -57,14 +57,14 @@ template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | an
 # ***** Title
 template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´]
 # ****** URL
-template+ [%{url}%{is-not?}(|%{language}%{is-not?}(]
+template+ [%{url}%{is-not?}(|%{language}%{is-not?} (]
 template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB]
 # ****** Language
-template+ [%{url}%{is-not?}, ]
-template+ [%x%{is?norsk}på norsk
-template+ |%x%{is?german}auf Deutsch
-template+ |%x%{is?ngerman}auf Deutsch
-template+ |%x%{is?english}in Englisch
+template+ [%{url}%{is-not?}[%x%{is-not?}, ]]
+template+ [%{language}%{is?norsk}på norsk
+template+ |%{language}%{is?german}auf Deutsch
+template+ |%{language}%{is?ngerman}auf Deutsch
+template+ |%{language}%{is?english}in English
 template+ |in %{language}]
 template+ [%{url}%{is-not?})|%{language}%{is-not?})]
 # ***** Bibliographic data of publication

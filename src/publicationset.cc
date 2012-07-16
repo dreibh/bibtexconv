@@ -662,7 +662,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
                StackEntry        entry         = stack.back();
                const std::string writtenString = result.substr(entry.pos);
 
-               if(action.substr(0, 3) == "is?") {
+               if(skip == true) {
+                   // Text will already be skipped ...
+               }
+               else if(action.substr(0, 3) == "is?") {
                   const std::string comparisonString = action.substr(3);
                   skip = ! (writtenString == comparisonString);
                }
@@ -670,36 +673,40 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   const std::string comparisonString = action.substr(7);
                   skip = ! (writtenString != comparisonString);
                }
-               else if(action.substr(0, 13) == "is-less-than?") {
+               else if(action.substr(0, 13) < "is-less-than?") {
                   const std::string comparisonString = action.substr(13);
                   skip = ! (writtenString == comparisonString);
                }
-               else if(action.substr(0, 22) == "is-less-than-or-equal?") {
+               else if(action.substr(0, 22) <= "is-less-than-or-equal?") {
                   const std::string comparisonString = action.substr(22);
                   skip = ! (writtenString == comparisonString);
                }
-               else if(action.substr(0, 16) == "is-greater-than?") {
+               else if(action.substr(0, 16) > "is-greater-than?") {
                   const std::string comparisonString = action.substr(16);
                   skip = ! (writtenString == comparisonString);
                }
-               else if(action.substr(0, 25) == "is-greater-than-or-equal?") {
+               else if(action.substr(0, 25) >= "is-greater-than-or-equal?") {
                   const std::string comparisonString = action.substr(25);
                   skip = ! (writtenString == comparisonString);
                }
 
-               if(!skip) {
-                  result = result.substr(0, entry.pos);   // Remove the written "test" string.
-               }
+               result.erase(entry.pos);   // Remove the written "test" string.
             }
          }
          else if( (action == "f") || (action == "is-first-author?") ) {       // IS first author
-            skip = ! (authorIndex == 0);
+            if(skip == false) {
+               skip = ! (authorIndex == 0);
+            }
          }
          else if( (action == "n") || (action == "is-not-first-author?") ) {   // IS not first author
-            skip = ! ((author != NULL) && (authorIndex > 0));
+            if(skip == false) {
+               skip = ! ((author != NULL) && (authorIndex > 0));
+            }
          }
          else if( (action == "l") || (action == "is-last-author?") ) {        // IS last author
-            skip = ! ((author != NULL) && (authorIndex + 3 >= author->arguments.size()));
+            if(skip == false) {
+               skip = ! ((author != NULL) && (authorIndex + 3 >= author->arguments.size()));
+            }
          }
          else if( (action == "A") || (action == "end-author-loop") ) {   // Author LOOP EBD
             if(authorBegin == std::string::npos) {
