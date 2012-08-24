@@ -881,7 +881,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                else {
                   divisor = 1.0;
                }
-               result += string2utf8(format("%1.0f", floor(atoll(child->value.c_str()) / divisor)), nbsp, xmlStyle);
+               result += string2utf8(format("%1.0f", ceil(atoll(child->value.c_str()) / divisor)), nbsp, xmlStyle);
             }
             else { skip = true; }
          }
