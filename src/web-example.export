@@ -70,7 +70,7 @@ template+ [%{url}%{is-not?})|%{language}%{is-not?})]
 # ***** Bibliographic data of publication
 template+ [, %{how-published}][, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
 template+ [, %{custom-3}|, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
-template+ [, %$][, %{school}][, %{institution}][, URN~<a href="http://www.nbn-resolving.de/%{urn}">%{urn}</a>][, DOI~<a href="http://dx.doi.org/%{doi}">%{doi}</a>][, %{isbn}][, %{issn}][, %{address}][, %{note}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}], \[<a type="text/x-bibtex" href="bibtex/%{label}.bib">BibTeX</a>, <a type="text/xml" href="bibxml/%{label}.xml">XML</a>\].
+template+ [, %$][, %{school}][, %{institution}][, URN~<a href="http://www.nbn-resolving.de/%{urn}">%{urn}</a>][, DOI~<a href="http://dx.doi.org/%{doi}">%{doi}</a>][, %{isbn}][, %{issn}][, %{address}][, %{note}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}].
 # ****** Awards
 template+ [ <strong>%{custom-1}.</strong>]
 
