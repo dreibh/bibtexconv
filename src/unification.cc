@@ -345,7 +345,7 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
    int yearNumber = 1;
    if(year != NULL) {
       yearNumber = atol(year->value.c_str());
-      if((yearNumber < 1700) || (yearNumber > 2012)) {
+      if((yearNumber < 1700) || (yearNumber > 2020)) {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"year\" section (year=%d?)!\n" ,
                  publication->keyword.c_str(), yearNumber);
       }
