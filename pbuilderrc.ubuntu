@@ -5,11 +5,35 @@
 #
 # read pbuilderrc.5 document for notes on specific options.
 
-MIRRORSITE=http://de.archive.ubuntu.com/ubuntu/
-DISTRIBUTION=precise
+MIRRORSITE=http://no.archive.ubuntu.com/ubuntu/
+DISTRIBUTION=raring
 COMPONENTS="main universe"
 
 # OTHERMIRROR="deb http://de.archive.ubuntu.com/ubuntu/ main restricted universe multiverse"
 # OTHERMIRROR="deb http://ppa.launchpad.net/dreibh/ubuntu $DISTRIBUTION main"
 
 # NOTE: Upon changes, run "sudo pbuilder --override-config" to update repositories!
+
+
+# Turn OFF ccache! It will not work properly!
+CCACHEDIR=
+
+
+# =================================================================
+
+mkdir /var/cache/pbuilder/hook.d || true
+
+HOOKDIR="/var/cache/pbuilder/hook.d"
+
+cat >/var/cache/pbuilder/hook.d/C10shell <<EOF
+#!/bin/sh
+# invoke shell if build fails.
+
+apt-get install -y --force-yes vim less bash
+cd /tmp/buildd/*/debian/..
+/bin/bash < /dev/tty > /dev/tty 2> /dev/tty
+EOF
+
+sudo chmod a+x /var/cache/pbuilder/hook.d/C10shell
+
+# =================================================================
