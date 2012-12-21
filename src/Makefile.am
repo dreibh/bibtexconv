@@ -7,7 +7,7 @@ bibtexconv_SOURCES = \
    unification.cc unification.h stringhandling.cc stringhandling.h \
    node.cc node.h \
    publicationset.h publicationset.cc \
-   grammar.yy scanner.ll
+   grammar.hh grammar.yy scanner.ll
 bibtexconv_LDADD = $(CURL_LIBS) $(CRYPTO_LIBS) -lstdc++
 
 
