@@ -12,7 +12,7 @@ bibtexconv_LDADD = $(CURL_LIBS) $(CRYPTO_LIBS) -lstdc++
 
 
 %.cc %.cc.hh:	%.yy
-	bison -d --defines=$<.hh $<
+	bison -d --defines=$(patsubst %.yy,%.hh,$<) --output=$(patsubst %.yy,%.cc,$<) $<
 
 
 examplesdir        = $(docdir)/examples
@@ -24,7 +24,7 @@ dist_man_MANS = bibtexconv.1 bibtexconv-odt.1
 
 EXTRA_DIST = converter.sed convert-to-new-format
 
-CLEANFILES = grammar.cc grammar.cc.hh scanner.cc
+CLEANFILES = grammar.cc grammar.hh scanner.cc
 
 
 # t1_SOURCES = t1.cc stringhandling.cc stringhandling.h
