@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <string>
 
-#include "grammar.h"
+#include "grammar.hh"
 
 std::string string;
 std::string comment;
