@@ -30,6 +30,7 @@ std::string comment;
 %}
 
 %option yylineno
+%option nounput
 
 %x STRING
 %x COMMENT
