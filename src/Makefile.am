@@ -11,7 +11,7 @@ bibtexconv_SOURCES = \
 bibtexconv_LDADD = $(CURL_LIBS) $(CRYPTO_LIBS) -lstdc++
 
 
-%.cc %.cc.hh:	%.yy
+%.cc %.hh:	%.yy
 	bison -d --defines=$(patsubst %.yy,%.hh,$<) --output=$(patsubst %.yy,%.cc,$<) $<
 
 
