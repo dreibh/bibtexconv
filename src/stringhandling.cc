@@ -21,6 +21,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <algorithm>
 
 #include "stringhandling.h"
 
@@ -280,6 +281,15 @@ std::string urlToLaTeX(const std::string& str)
       }
       result += str[i];
    }
+   return(result);
+}
+
+
+// ###### Convert BibTeX label to HTML-compliant id attribute ###############
+std::string labelToHTMLLabel(const std::string& string)
+{
+   std::string result(string);
+   std::replace(result.begin(), result.end(), '+', '_'); 
    return(result);
 }
 

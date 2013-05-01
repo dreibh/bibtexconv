@@ -546,6 +546,9 @@ std::string PublicationSet::applyTemplate(Node*                           public
          if( (action == "L") || (action == "label") ) {   // Original BibTeX label
             result += string2utf8(publication->keyword, nbsp, xmlStyle);
          }
+         else if(action == "html-label") {   // Original BibTeX label
+            result += labelToHTMLLabel(string2utf8(publication->keyword, nbsp, xmlStyle));
+         }
          else if( (action == "C") || (action == "anchor") ) {   // Anchor
             result += string2utf8(publication->anchor, nbsp, xmlStyle);
          }

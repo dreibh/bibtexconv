@@ -40,6 +40,7 @@ std::string extractToken(std::string& string, const std::string& delimiters);
 std::string processBackslash(const std::string& string);
 std::string laTeXtoURL(const std::string& str);
 std::string urlToLaTeX(const std::string& str);
+std::string labelToHTMLLabel(const std::string& string);
 std::string format(const char* fmt, ...);
 bool hasPrefix(const std::string& string, const std::string& prefix, std::string& rest);
 
