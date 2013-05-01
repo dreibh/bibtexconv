@@ -961,10 +961,31 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   (action == "2") || (action == "custom-2") ||
                   (action == "3") || (action == "custom-3") ||
                   (action == "4") || (action == "custom-4") ||
-                  (action == "5") || (action == "custom-5") ) {   // Custom #1..5
+                  (action == "5") || (action == "custom-5") ||
+                  (action == "6") || (action == "custom-6") ||
+                  (action == "7") || (action == "custom-7") ||
+                  (action == "8") || (action == "custom-8") ||
+                  (action == "9") || (action == "custom-9") ) {   // Custom #1..9
             const unsigned int id = action[action.size() - 1] - '1';
             if(publication->custom[id] != "") {
                result += string2utf8(publication->custom[id], nbsp, xmlStyle);
+            }
+            else {
+               skip = true;
+            }
+         }
+         else if( (action == "custom-1-as-is") ||
+                  (action == "custom-2-as-is") ||
+                  (action == "custom-3-as-is") ||
+                  (action == "custom-4-as-is") ||
+                  (action == "custom-5-as-is") ||
+                  (action == "custom-6-as-is") ||
+                  (action == "custom-7-as-is") ||
+                  (action == "custom-8-as-is") ||
+                  (action == "custom-9-as-is") ) {
+            const unsigned int id = action[7] - '1';
+            if(publication->custom[id] != "") {
+               result += publication->custom[id];
             }
             else {
                skip = true;
