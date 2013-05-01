@@ -187,6 +187,10 @@ std::string extractToken(std::string& string, const std::string& delimiters)
          return("");
       }
    }
+   else if(string[0] == '#') {   // The rest of the line is a comment. Ignore it!
+      string = "";
+      return("");
+   }
    for(size_t i = 0; i < string.size(); i++) {
       if(string[i] == '\\') {
          i++;
