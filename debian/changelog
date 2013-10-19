@@ -1,3 +1,9 @@
+bibtexconv (1.0.0~rc1-1ubuntu1) raring; urgency=low
+
+  * New upstream version.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Sat, 19 Oct 2013 22:22:22 +0200
+
 bibtexconv (0.9.4-1ubuntu1) raring; urgency=low
 
   * New upstream version.
