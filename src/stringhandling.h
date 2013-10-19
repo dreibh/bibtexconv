@@ -1,7 +1,7 @@
 /* $Id$
  *
  * BibTeX Converter
- * Copyright (C) 2010-2012 by Thomas Dreibholz
+ * Copyright (C) 2010-2013 by Thomas Dreibholz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,6 +41,7 @@ std::string processBackslash(const std::string& string);
 std::string laTeXtoURL(const std::string& str);
 std::string urlToLaTeX(const std::string& str);
 std::string labelToHTMLLabel(const std::string& string);
+std::string labelToXMLLabel(const std::string& string);
 std::string format(const char* fmt, ...);
 bool hasPrefix(const std::string& string, const std::string& prefix, std::string& rest);
 

@@ -1,7 +1,7 @@
 /* $Id$
  *
  * BibTeX Converter
- * Copyright (C) 2010-2012 by Thomas Dreibholz
+ * Copyright (C) 2010-2013 by Thomas Dreibholz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -294,6 +294,15 @@ std::string labelToHTMLLabel(const std::string& string)
 {
    std::string result(string);
    std::replace(result.begin(), result.end(), '+', '_'); 
+   return(result);
+}
+
+
+// ###### Convert BibTeX label to XML-compliant target attribute ############
+std::string labelToXMLLabel(const std::string& string)
+{
+   std::string result(string);
+   std::replace(result.begin(), result.end(), '+', '');
    return(result);
 }
 
