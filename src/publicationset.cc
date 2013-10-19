@@ -1,7 +1,7 @@
 /* $Id$
  *
  * BibTeX Converter
- * Copyright (C) 2010-2012 by Thomas Dreibholz
+ * Copyright (C) 2010-2013 by Thomas Dreibholz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -352,7 +352,15 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          const Node* issn         = findChildNode(publication, "issn");
          const Node* doi          = findChildNode(publication, "doi");
 
-         fprintf(fh, "<reference anchor=\"%s\">\n", publication->keyword.c_str());
+         if(url == NULL) {
+            fprintf(fh, "<reference anchor=\"%s\">\n",
+                    labelToXMLLabel(publication->keyword).c_str());
+         }
+         else {
+            fprintf(fh, "<reference anchor=\"%s\" target=\"%s\">\n",
+                    labelToXMLLabel(publication->keyword).c_str(),
+                    url->value.c_str());
+         }
          fputs("\t<front>\n", fh);
          if(title) {
             fprintf(fh, "\t\t<title>%s</title>\n", string2xml(title->value).c_str());

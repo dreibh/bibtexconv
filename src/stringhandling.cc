@@ -302,7 +302,7 @@ std::string labelToHTMLLabel(const std::string& string)
 std::string labelToXMLLabel(const std::string& string)
 {
    std::string result(string);
-   std::replace(result.begin(), result.end(), '+', '');
+   result.erase(std::remove(result.begin(), result.end(), '+'), result.end());
    return(result);
 }
 
