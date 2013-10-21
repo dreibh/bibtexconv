@@ -486,8 +486,7 @@ static int handleInput(FILE*           fh,
                }
             }
             else {
-               fprintf(stderr, "ERROR: Publication '%s' not found!\n",
-                       (const char*)&input[5]);
+               fprintf(stderr, "ERROR: Publication '%s' not found!\n", keyword.c_str());
                result++;
             }
          }
