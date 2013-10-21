@@ -447,6 +447,11 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
             seriesName += ",";
          }
          if((seriesName != "") || (seriesValue != "")) {
+            if(seriesValue == "") {
+               // This would produce an ugly space.
+               seriesValue = seriesName;
+               seriesName  = "";
+            }
             fprintf(fh, "\t<seriesInfo name=\"%s\" value=\"%s\" />\n",
                     string2xml(seriesName).c_str(),
                     string2xml(seriesValue).c_str());
