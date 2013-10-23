@@ -9,6 +9,7 @@ Build-Depends: autotools-dev,
                debhelper (>= 7.0.50~),
                flex,
                libcurl4-openssl-dev,
+               libfile-fcntllock-perl,
                libssl-dev
 Standards-Version: 3.9.4
 
