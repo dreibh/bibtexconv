@@ -8,7 +8,7 @@ bibtexconv_SOURCES = \
    node.cc node.h \
    publicationset.h publicationset.cc \
    grammar.hh grammar.yy scanner.ll
-bibtexconv_LDADD = $(CURL_LIBS) $(CRYPTO_LIBS) -lstdc++ -lm
+bibtexconv_LDADD = $(CURL_LIBS) $(CRYPTO_LIBS) -lm
 
 
 %.cc %.hh:	%.yy

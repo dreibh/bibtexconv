@@ -1,5 +1,137 @@
 ------------------------------------------------------------------------
-r1607 | dreibh | 2012-12-21 19:36:46 +0100 (fr., 21 des. 2012) | 3 lines
+r1677 | dreibh | 2013-10-21 22:30:00 +0200 (Mon, 21 Oct 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/bibtexconv.cc
+
+Fixed error message.
+
+------------------------------------------------------------------------
+r1676 | dreibh | 2013-10-21 15:15:27 +0200 (Mon, 21 Oct 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/publicationset.cc
+
+XML output improvement.
+
+------------------------------------------------------------------------
+r1674 | dreibh | 2013-10-19 21:08:19 +0200 (Sat, 19 Oct 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/bibtexconv-odt
+   M /trunk/bibtexconv/src/bibtexconv-odt.1
+   M /trunk/bibtexconv/src/bibtexconv.1
+   M /trunk/bibtexconv/src/bibtexconv.cc
+   M /trunk/bibtexconv/src/convert-to-new-format
+   M /trunk/bibtexconv/src/converter.sed
+   M /trunk/bibtexconv/src/grammar.yy
+   M /trunk/bibtexconv/src/make-it
+   M /trunk/bibtexconv/src/node.cc
+   M /trunk/bibtexconv/src/node.h
+   M /trunk/bibtexconv/src/publicationset.h
+   M /trunk/bibtexconv/src/run-examples
+   M /trunk/bibtexconv/src/scanner.ll
+   M /trunk/bibtexconv/src/unification.cc
+   M /trunk/bibtexconv/src/unification.h
+
+Packaging file and header updates.
+
+------------------------------------------------------------------------
+r1673 | dreibh | 2013-10-19 21:03:51 +0200 (Sat, 19 Oct 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/publicationset.cc
+   M /trunk/bibtexconv/src/stringhandling.cc
+
+XML label handling improvement.
+
+------------------------------------------------------------------------
+r1672 | dreibh | 2013-10-19 20:59:59 +0200 (Sat, 19 Oct 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/stringhandling.cc
+   M /trunk/bibtexconv/src/stringhandling.h
+
+Added string converter for XML labels.
+
+------------------------------------------------------------------------
+r1671 | dreibh | 2013-10-18 23:52:07 +0200 (Fri, 18 Oct 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/make-ppa
+   M /trunk/dia-experimental/make-ppa
+   M /trunk/fractgen2/make-ppa
+   M /trunk/netperfmeter/make-ppa
+   M /trunk/rtpaudio2/make-ppa
+   M /trunk/slideshow/make-ppa
+   M /trunk/subnetcalc/make-ppa
+   M /trunk/tsctp/make-ppa
+   M /trunk/wireshark-experimental/make-ppa
+
+Updated make-ppa.
+
+------------------------------------------------------------------------
+r1642 | dreibh | 2013-05-02 16:54:59 +0200 (Thu, 02 May 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/build-deb
+
+Build script update.
+
+------------------------------------------------------------------------
+r1640 | dreibh | 2013-05-02 13:29:01 +0200 (Thu, 02 May 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/build-deb
+
+Improved build scripts.
+
+------------------------------------------------------------------------
+r1639 | dreibh | 2013-05-02 09:56:41 +0200 (Thu, 02 May 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/build-deb
+   M /trunk/bibtexconv/clean-deb
+   M /trunk/bibtexconv/make-deb
+
+Updated build system for Debian/Ubuntu packages.
+
+------------------------------------------------------------------------
+r1638 | dreibh | 2013-05-01 23:12:33 +0200 (Wed, 01 May 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   A /trunk/bibtexconv/src/grammar.h
+
+Re-added mistakenly removed grammar.h.
+
+------------------------------------------------------------------------
+r1637 | dreibh | 2013-05-01 18:40:01 +0200 (Wed, 01 May 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/node.h
+   M /trunk/bibtexconv/src/publicationset.cc
+
+Improved handling of custom output.
+
+------------------------------------------------------------------------
+r1636 | dreibh | 2013-05-01 15:02:57 +0200 (Wed, 01 May 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/stringhandling.cc
+
+Fixed comments handling.
+
+------------------------------------------------------------------------
+r1635 | dreibh | 2013-05-01 11:36:08 +0200 (Wed, 01 May 2013) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/debian/control
+   M /trunk/bibtexconv/make-ppa
+   M /trunk/bibtexconv/src/Makefile.am
+   D /trunk/bibtexconv/src/grammar.h
+   M /trunk/bibtexconv/src/publicationset.cc
+   M /trunk/bibtexconv/src/stringhandling.cc
+   M /trunk/bibtexconv/src/stringhandling.h
+
+Added possibility to convert BibTeX label to HTML id.
+
+------------------------------------------------------------------------
+r1607 | dreibh | 2012-12-21 19:36:46 +0100 (Fri, 21 Dec 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
    M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
@@ -8,21 +140,21 @@ FreeBSD packaging update.
 
 
 ------------------------------------------------------------------------
-r1606 | dreibh | 2012-12-21 19:26:33 +0100 (fr., 21 des. 2012) | 2 lines
+r1606 | dreibh | 2012-12-21 19:26:33 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
 
 Added dependency.
 
 ------------------------------------------------------------------------
-r1605 | dreibh | 2012-12-21 19:22:22 +0100 (fr., 21 des. 2012) | 2 lines
+r1605 | dreibh | 2012-12-21 19:22:22 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
 
 Updated LSM entry.
 
 ------------------------------------------------------------------------
-r1604 | dreibh | 2012-12-21 19:21:39 +0100 (fr., 21 des. 2012) | 3 lines
+r1604 | dreibh | 2012-12-21 19:21:39 +0100 (Fri, 21 Dec 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/src/Makefile.am
@@ -32,7 +164,7 @@ Changed paths:
 - Updated LSM entry.
 
 ------------------------------------------------------------------------
-r1603 | dreibh | 2012-12-21 19:18:42 +0100 (fr., 21 des. 2012) | 2 lines
+r1603 | dreibh | 2012-12-21 19:18:42 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.ac
    M /trunk/bibtexconv/debian/changelog
@@ -40,14 +172,14 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1602 | dreibh | 2012-12-21 19:16:57 +0100 (fr., 21 des. 2012) | 2 lines
+r1602 | dreibh | 2012-12-21 19:16:57 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
 
 Another trial.
 
 ------------------------------------------------------------------------
-r1601 | dreibh | 2012-12-21 19:07:59 +0100 (fr., 21 des. 2012) | 3 lines
+r1601 | dreibh | 2012-12-21 19:07:59 +0100 (Fri, 21 Dec 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
 
@@ -55,7 +187,7 @@ Further FreeBSD compile fixing.
 
 
 ------------------------------------------------------------------------
-r1600 | dreibh | 2012-12-21 19:04:37 +0100 (fr., 21 des. 2012) | 2 lines
+r1600 | dreibh | 2012-12-21 19:04:37 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/scanner.ll
@@ -63,7 +195,7 @@ Changed paths:
 FreeBSD compile fix. Now, it works.
 
 ------------------------------------------------------------------------
-r1599 | dreibh | 2012-12-21 19:01:47 +0100 (fr., 21 des. 2012) | 2 lines
+r1599 | dreibh | 2012-12-21 19:01:47 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/grammar.yy
@@ -71,14 +203,14 @@ Changed paths:
 Fixed compile problem under FreeBSD.
 
 ------------------------------------------------------------------------
-r1598 | dreibh | 2012-12-21 19:01:32 +0100 (fr., 21 des. 2012) | 2 lines
+r1598 | dreibh | 2012-12-21 19:01:32 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/scanner.ll
 
 Fixed warning.
 
 ------------------------------------------------------------------------
-r1595 | dreibh | 2012-12-21 18:25:11 +0100 (fr., 21 des. 2012) | 2 lines
+r1595 | dreibh | 2012-12-21 18:25:11 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/debian/changelog
@@ -88,14 +220,14 @@ Changed paths:
 Updated packaging files.
 
 ------------------------------------------------------------------------
-r1594 | dreibh | 2012-12-21 18:24:31 +0100 (fr., 21 des. 2012) | 2 lines
+r1594 | dreibh | 2012-12-21 18:24:31 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/ExampleReferences.bib
 
 Updated example input file.
 
 ------------------------------------------------------------------------
-r1593 | dreibh | 2012-12-21 18:24:22 +0100 (fr., 21 des. 2012) | 2 lines
+r1593 | dreibh | 2012-12-21 18:24:22 +0100 (Fri, 21 Dec 2012) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/configure.ac (from /trunk/bibtexconv/configure.in:1592)
    D /trunk/bibtexconv/configure.in
@@ -103,7 +235,7 @@ Changed paths:
 Renamed configure.in to configure.ac.
 
 ------------------------------------------------------------------------
-r1560 | dreibh | 2012-11-30 19:19:41 +0100 (fr., 30 nov. 2012) | 2 lines
+r1560 | dreibh | 2012-11-30 19:19:41 +0100 (Fri, 30 Nov 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -112,7 +244,7 @@ Changed paths:
 A minor fix for "year" validity warning.
 
 ------------------------------------------------------------------------
-r1525 | dreibh | 2012-10-20 23:50:30 +0200 | 1 line
+r1525 | dreibh | 2012-10-20 23:50:30 +0200 (Sat, 20 Oct 2012) | 1 line
 Changed paths:
    M /trunk/bibtexconv/make-ppa
    M /trunk/dia-experimental/make-ppa
@@ -126,7 +258,7 @@ Changed paths:
 
 Build script updates.
 ------------------------------------------------------------------------
-r1498 | dreibh | 2012-08-25 20:43:25 +0200 | 2 lines
+r1498 | dreibh | 2012-08-25 20:43:25 +0200 (Sat, 25 Aug 2012) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/build-deb
    M /trunk/bibtexconv/clean-deb
@@ -136,7 +268,7 @@ Changed paths:
 Updated build scripts.
 
 ------------------------------------------------------------------------
-r1497 | dreibh | 2012-08-25 13:37:37 +0200 | 2 lines
+r1497 | dreibh | 2012-08-25 13:37:37 +0200 (Sat, 25 Aug 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
    M /trunk/bibtexconv/bibtexconv.lsm
@@ -146,7 +278,7 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1496 | dreibh | 2012-08-24 23:02:14 +0200 (fr., 24 aug. 2012) | 2 lines
+r1496 | dreibh | 2012-08-24 23:02:14 +0200 (Fri, 24 Aug 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -155,14 +287,14 @@ Changed paths:
 Size should be rounded up. Otherwise, it could e.g. be 0 KiB or 0 MiB.
 
 ------------------------------------------------------------------------
-r1495 | dreibh | 2012-08-24 22:29:50 +0200 (fr., 24 aug. 2012) | 2 lines
+r1495 | dreibh | 2012-08-24 22:29:50 +0200 (Fri, 24 Aug 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web-example.export
 
 Updated example.
 
 ------------------------------------------------------------------------
-r1491 | dreibh | 2012-07-16 22:03:07 +0200 (ma., 16 juli 2012) | 2 lines
+r1491 | dreibh | 2012-07-16 22:03:07 +0200 (Mon, 16 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -170,14 +302,14 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1490 | dreibh | 2012-07-16 22:02:35 +0200 (ma., 16 juli 2012) | 2 lines
+r1490 | dreibh | 2012-07-16 22:02:35 +0200 (Mon, 16 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web-example.export
 
 Template fix.
 
 ------------------------------------------------------------------------
-r1489 | dreibh | 2012-07-16 21:18:59 +0200 (ma., 16 juli 2012) | 2 lines
+r1489 | dreibh | 2012-07-16 21:18:59 +0200 (Mon, 16 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
    M /trunk/bibtexconv/src/r1.bib
@@ -186,7 +318,7 @@ Changed paths:
 A couple of fixes in comparison handling.
 
 ------------------------------------------------------------------------
-r1488 | dreibh | 2012-07-15 18:13:52 +0200 | 2 lines
+r1488 | dreibh | 2012-07-15 18:13:52 +0200 (Sun, 15 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/converter.sed
    M /trunk/bibtexconv/src/publicationset.cc
@@ -196,7 +328,7 @@ Changed paths:
 Added support for comparisons.
 
 ------------------------------------------------------------------------
-r1487 | dreibh | 2012-07-15 13:46:57 +0200 | 3 lines
+r1487 | dreibh | 2012-07-15 13:46:57 +0200 (Sun, 15 Jul 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
    M /trunk/bibtexconv/debian/control
@@ -206,14 +338,14 @@ Changed paths:
 - Output improvements.
 
 ------------------------------------------------------------------------
-r1486 | dreibh | 2012-07-15 13:46:14 +0200 | 2 lines
+r1486 | dreibh | 2012-07-15 13:46:14 +0200 (Sun, 15 Jul 2012) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/debug.memcheck
 
 Added debug script.
 
 ------------------------------------------------------------------------
-r1484 | dreibh | 2012-07-15 12:42:48 +0200 | 2 lines
+r1484 | dreibh | 2012-07-15 12:42:48 +0200 (Sun, 15 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -223,21 +355,21 @@ Changed paths:
 Version updates.
 
 ------------------------------------------------------------------------
-r1483 | dreibh | 2012-07-15 12:24:29 +0200 | 2 lines
+r1483 | dreibh | 2012-07-15 12:24:29 +0200 (Sun, 15 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/grammar.yy
 
 Fixed memory leaks.
 
 ------------------------------------------------------------------------
-r1482 | dreibh | 2012-07-15 00:21:15 +0200 | 2 lines
+r1482 | dreibh | 2012-07-15 00:21:15 +0200 (Sun, 15 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Reuse CURL object (not done before due to problems with libcurl). This solves the issue of libcurl aborting due to having used all file descriptors. libcurl seems to not free socket for DNS lookup.
 
 ------------------------------------------------------------------------
-r1481 | dreibh | 2012-07-14 18:10:37 +0200 | 2 lines
+r1481 | dreibh | 2012-07-14 18:10:37 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -247,14 +379,14 @@ Changed paths:
 Updated build script to make use of colorgcc. Note that it requires to explicitly add libstdc++ in Makefile.am. Otherwise, linking fails with missing stdc++ symbols.
 
 ------------------------------------------------------------------------
-r1480 | dreibh | 2012-07-14 17:49:44 +0200 | 2 lines
+r1480 | dreibh | 2012-07-14 17:49:44 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Bugfix.
 
 ------------------------------------------------------------------------
-r1479 | dreibh | 2012-07-14 17:13:18 +0200 | 2 lines
+r1479 | dreibh | 2012-07-14 17:13:18 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/publicationset.cc
@@ -262,7 +394,7 @@ Changed paths:
 Some error handling improvements.
 
 ------------------------------------------------------------------------
-r1478 | dreibh | 2012-07-14 16:47:17 +0200 | 2 lines
+r1478 | dreibh | 2012-07-14 16:47:17 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/node.cc
@@ -270,21 +402,21 @@ Changed paths:
 Some minor improvements.
 
 ------------------------------------------------------------------------
-r1477 | dreibh | 2012-07-14 13:47:50 +0200 | 2 lines
+r1477 | dreibh | 2012-07-14 13:47:50 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Adapted timeout.
 
 ------------------------------------------------------------------------
-r1476 | dreibh | 2012-07-14 12:40:43 +0200 | 2 lines
+r1476 | dreibh | 2012-07-14 12:40:43 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Error handling improvements.
 
 ------------------------------------------------------------------------
-r1475 | dreibh | 2012-07-14 12:19:06 +0200 | 3 lines
+r1475 | dreibh | 2012-07-14 12:19:06 +0200 (Sat, 14 Jul 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -294,27 +426,27 @@ Changed paths:
 - Activated SSL certificate checks by default.
 
 ------------------------------------------------------------------------
-r1474 | dreibh | 2012-07-14 11:49:47 +0200 | 2 lines
+r1474 | dreibh | 2012-07-14 11:49:47 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/unification.cc
 
 Added fixes for IEEExplore URLs.
 
 ------------------------------------------------------------------------
-r1473 | dreibh | 2012-07-14 11:31:59 +0200 | 2 lines
+r1473 | dreibh | 2012-07-14 11:31:59 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Added ability to obtain dynamic download link for IEEExplore publications.
 
 ------------------------------------------------------------------------
-r1472 | dreibh | 2012-07-14 10:41:16 +0200 | 1 line
+r1472 | dreibh | 2012-07-14 10:41:16 +0200 (Sat, 14 Jul 2012) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Enable cookies when downloading references. They are not stored.
 ------------------------------------------------------------------------
-r1471 | dreibh | 2012-07-14 00:09:22 +0200 | 2 lines
+r1471 | dreibh | 2012-07-14 00:09:22 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/ExampleReferences.bib
    D /trunk/bibtexconv/src/cv.export
@@ -337,7 +469,7 @@ Changed paths:
 Export script example updates.
 
 ------------------------------------------------------------------------
-r1470 | dreibh | 2012-07-14 00:09:06 +0200 | 2 lines
+r1470 | dreibh | 2012-07-14 00:09:06 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/converter.sed
    M /trunk/bibtexconv/src/make-it
@@ -345,14 +477,14 @@ Changed paths:
 Script updates.
 
 ------------------------------------------------------------------------
-r1469 | dreibh | 2012-07-14 00:08:45 +0200 | 2 lines
+r1469 | dreibh | 2012-07-14 00:08:45 +0200 (Sat, 14 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 Minor fix.
 
 ------------------------------------------------------------------------
-r1468 | dreibh | 2012-07-13 23:40:41 +0200 (fr., 13 juli 2012) | 2 lines
+r1468 | dreibh | 2012-07-13 23:40:41 +0200 (Fri, 13 Jul 2012) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/convert-to-new-format (from /trunk/bibtexconv/src/converter.sed:1467)
    M /trunk/bibtexconv/src/converter.sed
@@ -360,7 +492,7 @@ Changed paths:
 Added export script conversion helper scripts.
 
 ------------------------------------------------------------------------
-r1467 | dreibh | 2012-07-13 23:34:09 +0200 (fr., 13 juli 2012) | 2 lines
+r1467 | dreibh | 2012-07-13 23:34:09 +0200 (Fri, 13 Jul 2012) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/converter.sed
    M /trunk/bibtexconv/src/publicationset.cc
@@ -370,21 +502,21 @@ Changed paths:
 Made new template handling work.
 
 ------------------------------------------------------------------------
-r1466 | dreibh | 2012-07-13 22:16:36 +0200 (fr., 13 juli 2012) | 2 lines
+r1466 | dreibh | 2012-07-13 22:16:36 +0200 (Fri, 13 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 Supports more verbose template symbols now.
 
 ------------------------------------------------------------------------
-r1465 | dreibh | 2012-07-13 22:16:04 +0200 (fr., 13 juli 2012) | 2 lines
+r1465 | dreibh | 2012-07-13 22:16:04 +0200 (Fri, 13 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web-example.export
 
 Improved example.
 
 ------------------------------------------------------------------------
-r1464 | dreibh | 2012-07-12 23:17:08 +0200 (to., 12 juli 2012) | 2 lines
+r1464 | dreibh | 2012-07-12 23:17:08 +0200 (Thu, 12 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -393,21 +525,21 @@ Changed paths:
 Added support for BibTeX "language" entries.
 
 ------------------------------------------------------------------------
-r1437 | dreibh | 2012-07-02 14:57:13 +0200 (ma., 02 juli 2012) | 2 lines
+r1437 | dreibh | 2012-07-02 14:57:13 +0200 (Mon, 02 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/make-ppa
 
 Script update.
 
 ------------------------------------------------------------------------
-r1436 | dreibh | 2012-07-02 14:42:31 +0200 (ma., 02 juli 2012) | 2 lines
+r1436 | dreibh | 2012-07-02 14:42:31 +0200 (Mon, 02 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
 
 Updated ChangeLog.
 
 ------------------------------------------------------------------------
-r1435 | dreibh | 2012-07-02 14:32:03 +0200 (ma., 02 juli 2012) | 2 lines
+r1435 | dreibh | 2012-07-02 14:32:03 +0200 (Mon, 02 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/configure.in
@@ -416,7 +548,7 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1434 | dreibh | 2012-07-02 14:22:12 +0200 (ma., 02 juli 2012) | 2 lines
+r1434 | dreibh | 2012-07-02 14:22:12 +0200 (Mon, 02 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/ExampleReferences.bib
    M /trunk/bibtexconv/src/scanner.ll
@@ -424,14 +556,14 @@ Changed paths:
 Fix to also accept anchors with colons.
 
 ------------------------------------------------------------------------
-r1433 | dreibh | 2012-07-02 14:09:44 +0200 (ma., 02 juli 2012) | 2 lines
+r1433 | dreibh | 2012-07-02 14:09:44 +0200 (Mon, 02 Jul 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 E.g. tools.ietf.org wants a User-Agent for HTTP requests. Now, bibtexconv makes these servers happy by adding such a string.
 
 ------------------------------------------------------------------------
-r1409 | dreibh | 2012-06-08 15:52:33 +0200 (fr., 08 juni 2012) | 3 lines
+r1409 | dreibh | 2012-06-08 15:52:33 +0200 (Fri, 08 Jun 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
 
@@ -439,7 +571,7 @@ FreeBSD packaging update.
 
 
 ------------------------------------------------------------------------
-r1398 | dreibh | 2012-06-03 11:15:53 +0200 | 3 lines
+r1398 | dreibh | 2012-06-03 11:15:53 +0200 (Sun, 03 Jun 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
    M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
@@ -450,7 +582,7 @@ Updated FreeBSD packaging files.
 
 
 ------------------------------------------------------------------------
-r1378 | dreibh | 2012-05-14 00:02:53 +0200 (ma., 14 mai 2012) | 2 lines
+r1378 | dreibh | 2012-05-14 00:02:53 +0200 (Mon, 14 May 2012) | 2 lines
 Changed paths:
    D /trunk/bibtexconv/debian/bibtexconv.lintian-overrides
    M /trunk/bibtexconv/src/bibtexconv.1
@@ -458,7 +590,7 @@ Changed paths:
 Minor fixes.
 
 ------------------------------------------------------------------------
-r1377 | dreibh | 2012-05-13 22:56:15 +0200 | 2 lines
+r1377 | dreibh | 2012-05-13 22:56:15 +0200 (Sun, 13 May 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -472,7 +604,7 @@ Changed paths:
 Further improvements according to suggestions of Beno?\195?\174t Knecht.
 
 ------------------------------------------------------------------------
-r1376 | dreibh | 2012-05-12 23:03:19 +0200 | 2 lines
+r1376 | dreibh | 2012-05-12 23:03:19 +0200 (Sat, 12 May 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
    M /trunk/bibtexconv/bibtexconv.lsm
@@ -483,14 +615,14 @@ Changed paths:
 Minor updates.
 
 ------------------------------------------------------------------------
-r1375 | dreibh | 2012-05-11 15:38:36 +0200 (fr., 11 mai 2012) | 2 lines
+r1375 | dreibh | 2012-05-11 15:38:36 +0200 (Fri, 11 May 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.1
 
 Removed AUTHORS section from manpage (deprecated).
 
 ------------------------------------------------------------------------
-r1374 | dreibh | 2012-05-11 14:35:00 +0200 (fr., 11 mai 2012) | 2 lines
+r1374 | dreibh | 2012-05-11 14:35:00 +0200 (Fri, 11 May 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/debian/control
@@ -499,7 +631,7 @@ Changed paths:
 Minor updates.
 
 ------------------------------------------------------------------------
-r1373 | dreibh | 2012-05-10 22:39:04 +0200 (to., 10 mai 2012) | 2 lines
+r1373 | dreibh | 2012-05-10 22:39:04 +0200 (Thu, 10 May 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -513,7 +645,7 @@ Changed paths:
 Some Debian Sid fixes according to comments by Beno?\195?\174t Knecht.
 
 ------------------------------------------------------------------------
-r1372 | dreibh | 2012-04-25 18:12:31 +0200 (on., 25 april 2012) | 2 lines
+r1372 | dreibh | 2012-04-25 18:12:31 +0200 (Wed, 25 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
    M /trunk/bibtexconv/bibtexconv.lsm
@@ -521,7 +653,7 @@ Changed paths:
 Updated ChangeLog.
 
 ------------------------------------------------------------------------
-r1371 | dreibh | 2012-04-25 08:33:59 +0200 (on., 25 april 2012) | 2 lines
+r1371 | dreibh | 2012-04-25 08:33:59 +0200 (Wed, 25 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/configure.in
@@ -532,14 +664,14 @@ Changed paths:
 Create download directory, if not already existing.
 
 ------------------------------------------------------------------------
-r1362 | dreibh | 2012-04-21 20:05:07 +0200 | 2 lines
+r1362 | dreibh | 2012-04-21 20:05:07 +0200 (Sat, 21 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
 
 Updated ChangeLog.
 
 ------------------------------------------------------------------------
-r1361 | dreibh | 2012-04-21 20:04:50 +0200 | 2 lines
+r1361 | dreibh | 2012-04-21 20:04:50 +0200 (Sat, 21 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/configure.in
@@ -555,7 +687,7 @@ Changed paths:
 Fixed Debian packaging, according to comments on mentor's list.
 
 ------------------------------------------------------------------------
-r1360 | dreibh | 2012-04-20 08:00:20 +0200 (fr., 20 april 2012) | 2 lines
+r1360 | dreibh | 2012-04-20 08:00:20 +0200 (Fri, 20 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
    M /trunk/bibtexconv/bibtexconv.lsm
@@ -565,14 +697,14 @@ Changed paths:
 Updated PPA version.
 
 ------------------------------------------------------------------------
-r1355 | dreibh | 2012-04-04 15:56:34 +0200 (on., 04 april 2012) | 2 lines
+r1355 | dreibh | 2012-04-04 15:56:34 +0200 (Wed, 04 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
 
 Updated LSM entry.
 
 ------------------------------------------------------------------------
-r1354 | dreibh | 2012-04-04 15:05:26 +0200 (on., 04 april 2012) | 2 lines
+r1354 | dreibh | 2012-04-04 15:05:26 +0200 (Wed, 04 Apr 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -581,7 +713,7 @@ Changed paths:
 Removed superflous space character at line end in BibTeX output.
 
 ------------------------------------------------------------------------
-r1352 | dreibh | 2012-03-19 11:12:12 +0100 (ma., 19 mars 2012) | 3 lines
+r1352 | dreibh | 2012-03-19 11:12:12 +0100 (Mon, 19 Mar 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/ExampleReferences.bib
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -592,7 +724,7 @@ Changed paths:
 - Updated examples.
 
 ------------------------------------------------------------------------
-r1351 | dreibh | 2012-03-16 16:12:06 +0100 (fr., 16 mars 2012) | 3 lines
+r1351 | dreibh | 2012-03-16 16:12:06 +0100 (Fri, 16 Mar 2012) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -602,14 +734,14 @@ Changed paths:
 - Added test file.
 
 ------------------------------------------------------------------------
-r1350 | dreibh | 2012-03-16 16:10:55 +0100 (fr., 16 mars 2012) | 2 lines
+r1350 | dreibh | 2012-03-16 16:10:55 +0100 (Fri, 16 Mar 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/scanner.ll
 
 Fixed bug for line number counting.
 
 ------------------------------------------------------------------------
-r1349 | dreibh | 2012-03-16 15:33:34 +0100 (fr., 16 mars 2012) | 2 lines
+r1349 | dreibh | 2012-03-16 15:33:34 +0100 (Fri, 16 Mar 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
    M /trunk/bibtexconv/src/web-example.export
@@ -617,7 +749,7 @@ Changed paths:
 Added support for handling URNs.
 
 ------------------------------------------------------------------------
-r1348 | dreibh | 2012-02-15 20:45:25 +0100 (on., 15 feb. 2012) | 2 lines
+r1348 | dreibh | 2012-02-15 20:45:25 +0100 (Wed, 15 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -626,14 +758,14 @@ Changed paths:
 Export handling improvements.
 
 ------------------------------------------------------------------------
-r1347 | dreibh | 2012-02-13 16:28:26 +0100 (ma., 13 feb. 2012) | 2 lines
+r1347 | dreibh | 2012-02-13 16:28:26 +0100 (Mon, 13 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web-rserpool.export
 
 A small fix.
 
 ------------------------------------------------------------------------
-r1346 | dreibh | 2012-02-13 16:16:23 +0100 (ma., 13 feb. 2012) | 2 lines
+r1346 | dreibh | 2012-02-13 16:16:23 +0100 (Mon, 13 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -644,28 +776,28 @@ Changed paths:
 Export improvement: interactive run now performs BibTeX/XML export for each "export" statement.
 
 ------------------------------------------------------------------------
-r1345 | dreibh | 2012-02-13 15:54:27 +0100 (ma., 13 feb. 2012) | 2 lines
+r1345 | dreibh | 2012-02-13 15:54:27 +0100 (Mon, 13 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web-rserpool.export
 
 Updated example.
 
 ------------------------------------------------------------------------
-r1344 | dreibh | 2012-02-13 11:24:49 +0100 (ma., 13 feb. 2012) | 2 lines
+r1344 | dreibh | 2012-02-13 11:24:49 +0100 (Mon, 13 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web-rserpool.export
 
 A small fix.
 
 ------------------------------------------------------------------------
-r1343 | dreibh | 2012-02-13 11:17:34 +0100 (ma., 13 feb. 2012) | 2 lines
+r1343 | dreibh | 2012-02-13 11:17:34 +0100 (Mon, 13 Feb 2012) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/web-rserpool.export (from /trunk/bibtexconv/src/web-example.export:1342)
 
 Added another HTML example.
 
 ------------------------------------------------------------------------
-r1342 | dreibh | 2012-02-10 19:34:09 +0100 (fr., 10 feb. 2012) | 2 lines
+r1342 | dreibh | 2012-02-10 19:34:09 +0100 (Fri, 10 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
    M /trunk/bibtexconv/freebsd/bibtexconv/make-diff
@@ -690,7 +822,7 @@ Changed paths:
 Updated ChangeLog and headers.
 
 ------------------------------------------------------------------------
-r1341 | dreibh | 2012-02-10 19:30:48 +0100 (fr., 10 feb. 2012) | 2 lines
+r1341 | dreibh | 2012-02-10 19:30:48 +0100 (Fri, 10 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -698,7 +830,7 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1340 | dreibh | 2012-02-10 19:30:39 +0100 (fr., 10 feb. 2012) | 2 lines
+r1340 | dreibh | 2012-02-10 19:30:39 +0100 (Fri, 10 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv-odt
    M /trunk/bibtexconv/src/run-examples
@@ -707,14 +839,14 @@ Changed paths:
 Fixed temporary file handling (used the same name, preventing parallel execution in the same directory).
 
 ------------------------------------------------------------------------
-r1339 | dreibh | 2012-02-09 16:13:09 +0100 (to., 09 feb. 2012) | 2 lines
+r1339 | dreibh | 2012-02-09 16:13:09 +0100 (Thu, 09 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/ExampleReferences.bib
 
 Updated example.
 
 ------------------------------------------------------------------------
-r1338 | dreibh | 2012-02-09 16:12:29 +0100 (to., 09 feb. 2012) | 2 lines
+r1338 | dreibh | 2012-02-09 16:12:29 +0100 (Thu, 09 Feb 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -729,7 +861,7 @@ Changed paths:
 Improved export: added naming template.
 
 ------------------------------------------------------------------------
-r1336 | dreibh | 2012-02-06 14:35:27 +0100 (ma., 06 feb. 2012) | 4 lines
+r1336 | dreibh | 2012-02-06 14:35:27 +0100 (Mon, 06 Feb 2012) | 4 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -743,14 +875,14 @@ Changed paths:
 - Improved handling of Northern European and Turkish characters in fields.
 
 ------------------------------------------------------------------------
-r1335 | dreibh | 2012-01-15 16:59:11 +0100 | 2 lines
+r1335 | dreibh | 2012-01-15 16:59:11 +0100 (Sun, 15 Jan 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web-example.export
 
 A small export improvement.
 
 ------------------------------------------------------------------------
-r1334 | dreibh | 2012-01-09 23:40:39 +0100 (ma., 09 jan. 2012) | 2 lines
+r1334 | dreibh | 2012-01-09 23:40:39 +0100 (Mon, 09 Jan 2012) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -761,7 +893,7 @@ Changed paths:
 Two string handling fixes.
 
 ------------------------------------------------------------------------
-r1132 | dreibh | 2011-11-22 12:49:17 +0100 (ti., 22 nov. 2011) | 2 lines
+r1132 | dreibh | 2011-11-22 12:49:17 +0100 (Tue, 22 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/configure.in
@@ -771,7 +903,7 @@ Changed paths:
 Manpage fix.
 
 ------------------------------------------------------------------------
-r1131 | dreibh | 2011-11-22 12:28:13 +0100 (ti., 22 nov. 2011) | 2 lines
+r1131 | dreibh | 2011-11-22 12:28:13 +0100 (Tue, 22 Nov 2011) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/Downloads
    M /trunk/bibtexconv/src/make-it
@@ -780,7 +912,7 @@ Changed paths:
 Updated test script.
 
 ------------------------------------------------------------------------
-r1130 | dreibh | 2011-11-22 12:21:32 +0100 (ti., 22 nov. 2011) | 2 lines
+r1130 | dreibh | 2011-11-22 12:21:32 +0100 (Tue, 22 Nov 2011) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/debian/bibtexconv.examples (from /trunk/bibtexconv/debian/bibtexconv.install:1127)
    M /trunk/bibtexconv/debian/bibtexconv.install
@@ -789,14 +921,14 @@ Changed paths:
 The scripts are now correctly installing the examples again, without compressing the files.
 
 ------------------------------------------------------------------------
-r1129 | dreibh | 2011-11-22 11:31:27 +0100 (ti., 22 nov. 2011) | 2 lines
+r1129 | dreibh | 2011-11-22 11:31:27 +0100 (Tue, 22 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/run-examples
 
 Updated examples script.
 
 ------------------------------------------------------------------------
-r1128 | dreibh | 2011-11-22 11:30:40 +0100 (ti., 22 nov. 2011) | 2 lines
+r1128 | dreibh | 2011-11-22 11:30:40 +0100 (Tue, 22 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -806,7 +938,7 @@ Changed paths:
 Updated examples directory.
 
 ------------------------------------------------------------------------
-r1127 | dreibh | 2011-11-22 11:24:20 +0100 (ti., 22 nov. 2011) | 2 lines
+r1127 | dreibh | 2011-11-22 11:24:20 +0100 (Tue, 22 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/bibtexconv.install
    M /trunk/bibtexconv/src/Makefile.am
@@ -814,14 +946,14 @@ Changed paths:
 Examples are now installed to /usr/share/doc/bibtexconv/examples.
 
 ------------------------------------------------------------------------
-r1126 | dreibh | 2011-11-22 11:09:55 +0100 (ti., 22 nov. 2011) | 2 lines
+r1126 | dreibh | 2011-11-22 11:09:55 +0100 (Tue, 22 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/copyright
 
 Converted debian/copyright to new format.
 
 ------------------------------------------------------------------------
-r1125 | dreibh | 2011-11-22 08:38:22 +0100 (ti., 22 nov. 2011) | 2 lines
+r1125 | dreibh | 2011-11-22 08:38:22 +0100 (Tue, 22 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/Makefile.am
    M /trunk/bibtexconv/bibtexconv.lsm
@@ -837,7 +969,7 @@ Changed paths:
 Some improvements according to suggestions by Beno?\195?\174t Knecht.
 
 ------------------------------------------------------------------------
-r1123 | dreibh | 2011-11-21 11:01:44 +0100 (ma., 21 nov. 2011) | 3 lines
+r1123 | dreibh | 2011-11-21 11:01:44 +0100 (Mon, 21 Nov 2011) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
    M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
@@ -850,7 +982,7 @@ Updated FreeBSD packaging files.
 
 
 ------------------------------------------------------------------------
-r1118 | dreibh | 2011-11-21 07:43:17 +0100 (ma., 21 nov. 2011) | 2 lines
+r1118 | dreibh | 2011-11-21 07:43:17 +0100 (Mon, 21 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -859,14 +991,14 @@ Changed paths:
 Updated packaging files.
 
 ------------------------------------------------------------------------
-r1117 | dreibh | 2011-11-21 07:42:40 +0100 (ma., 21 nov. 2011) | 2 lines
+r1117 | dreibh | 2011-11-21 07:42:40 +0100 (Mon, 21 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.8
 
 Updated manpage.
 
 ------------------------------------------------------------------------
-r1116 | dreibh | 2011-11-20 20:14:52 +0100 | 3 lines
+r1116 | dreibh | 2011-11-20 20:14:52 +0100 (Sun, 20 Nov 2011) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
    M /trunk/bibtexconv/freebsd/bibtexconv/test-packaging
@@ -875,14 +1007,14 @@ Updated packaging test script for FreeBSD.
 
 
 ------------------------------------------------------------------------
-r1115 | dreibh | 2011-11-20 20:03:19 +0100 | 2 lines
+r1115 | dreibh | 2011-11-20 20:03:19 +0100 (Sun, 20 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
 
 Added Debian ITP number.
 
 ------------------------------------------------------------------------
-r1114 | dreibh | 2011-11-20 19:22:14 +0100 | 3 lines
+r1114 | dreibh | 2011-11-20 19:22:14 +0100 (Sun, 20 Nov 2011) | 3 lines
 Changed paths:
    D /trunk/bibtexconv/freebsd/bibtexconv/pkg-plist
 
@@ -890,7 +1022,7 @@ Removed unneeded pkg-plist.
 
 
 ------------------------------------------------------------------------
-r1112 | dreibh | 2011-11-20 19:20:49 +0100 | 3 lines
+r1112 | dreibh | 2011-11-20 19:20:49 +0100 (Sun, 20 Nov 2011) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
    M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
@@ -900,7 +1032,7 @@ Updated FreeBSD packaging files.
 
 
 ------------------------------------------------------------------------
-r1111 | dreibh | 2011-11-20 19:10:19 +0100 | 3 lines
+r1111 | dreibh | 2011-11-20 19:10:19 +0100 (Sun, 20 Nov 2011) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/scanner.ll
 
@@ -908,7 +1040,7 @@ Fixed compile problem under FreeBSD.
 
 
 ------------------------------------------------------------------------
-r1110 | dreibh | 2011-11-20 19:09:00 +0100 | 3 lines
+r1110 | dreibh | 2011-11-20 19:09:00 +0100 (Sun, 20 Nov 2011) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
 
@@ -916,7 +1048,7 @@ FreeBSD needs to include /usr/local/include and /usr/local/lib to find libcurl.
 
 
 ------------------------------------------------------------------------
-r1109 | dreibh | 2011-11-20 13:40:33 +0100 | 2 lines
+r1109 | dreibh | 2011-11-20 13:40:33 +0100 (Sun, 20 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.8
    M /trunk/bibtexconv/src/run-examples
@@ -924,7 +1056,7 @@ Changed paths:
 Updated examples.
 
 ------------------------------------------------------------------------
-r1103 | dreibh | 2011-11-16 21:58:21 +0100 (on., 16 nov. 2011) | 2 lines
+r1103 | dreibh | 2011-11-16 21:58:21 +0100 (Wed, 16 Nov 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
    M /trunk/bibtexconv/bibtexconv.lsm
@@ -934,7 +1066,7 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1086 | dreibh | 2011-10-27 09:31:44 +0200 (to., 27 okt. 2011) | 2 lines
+r1086 | dreibh | 2011-10-27 09:31:44 +0200 (Thu, 27 Oct 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -947,14 +1079,14 @@ Changed paths:
 Some code clean-ups and documentation updates.
 
 ------------------------------------------------------------------------
-r1085 | dreibh | 2011-10-26 21:46:42 +0200 (on., 26 okt. 2011) | 2 lines
+r1085 | dreibh | 2011-10-26 21:46:42 +0200 (Wed, 26 Oct 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 More XML output improvements.
 
 ------------------------------------------------------------------------
-r1084 | dreibh | 2011-10-26 21:33:55 +0200 (on., 26 okt. 2011) | 2 lines
+r1084 | dreibh | 2011-10-26 21:33:55 +0200 (Wed, 26 Oct 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -963,7 +1095,7 @@ Changed paths:
 Some improvements.
 
 ------------------------------------------------------------------------
-r1078 | dreibh | 2011-10-20 18:29:47 +0200 (to., 20 okt. 2011) | 2 lines
+r1078 | dreibh | 2011-10-20 18:29:47 +0200 (Thu, 20 Oct 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -974,14 +1106,14 @@ Changed paths:
 Updates for support of Ubuntu 12.04 Precise Pangolin.
 
 ------------------------------------------------------------------------
-r1071 | dreibh | 2011-09-01 10:12:11 +0200 (to., 01 sep. 2011) | 2 lines
+r1071 | dreibh | 2011-09-01 10:12:11 +0200 (Thu, 01 Sep 2011) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/filter-empty-entries
 
 Added build script.
 
 ------------------------------------------------------------------------
-r1070 | dreibh | 2011-09-01 10:09:58 +0200 (to., 01 sep. 2011) | 2 lines
+r1070 | dreibh | 2011-09-01 10:09:58 +0200 (Thu, 01 Sep 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
    M /trunk/bibtexconv/debian.conf
@@ -990,7 +1122,7 @@ Changed paths:
 Updated build scripts.
 
 ------------------------------------------------------------------------
-r1069 | dreibh | 2011-09-01 10:09:48 +0200 (to., 01 sep. 2011) | 3 lines
+r1069 | dreibh | 2011-09-01 10:09:48 +0200 (Thu, 01 Sep 2011) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/web-example.export
@@ -999,7 +1131,7 @@ Changed paths:
 - Improved HTML export example.
 
 ------------------------------------------------------------------------
-r1068 | dreibh | 2011-09-01 08:13:31 +0200 (to., 01 sep. 2011) | 3 lines
+r1068 | dreibh | 2011-09-01 08:13:31 +0200 (Thu, 01 Sep 2011) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/publicationset.cc
@@ -1008,7 +1140,7 @@ Changed paths:
 - Fixed DOI handling.
 
 ------------------------------------------------------------------------
-r1067 | dreibh | 2011-08-31 20:33:05 +0200 (on., 31 aug. 2011) | 2 lines
+r1067 | dreibh | 2011-08-31 20:33:05 +0200 (Wed, 31 Aug 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1019,14 +1151,14 @@ Changed paths:
 Added export option for download file name.
 
 ------------------------------------------------------------------------
-r1062 | dreibh | 2011-08-25 08:52:13 +0200 (to., 25 aug. 2011) | 2 lines
+r1062 | dreibh | 2011-08-25 08:52:13 +0200 (Thu, 25 Aug 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/ExampleReferences.bib
 
 Updated example.
 
 ------------------------------------------------------------------------
-r1061 | dreibh | 2011-08-25 08:45:09 +0200 (to., 25 aug. 2011) | 2 lines
+r1061 | dreibh | 2011-08-25 08:45:09 +0200 (Thu, 25 Aug 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1036,7 +1168,7 @@ Changed paths:
 Only add note of either ISBN or ISSN number, not two notes.
 
 ------------------------------------------------------------------------
-r1060 | dreibh | 2011-08-25 08:06:21 +0200 (to., 25 aug. 2011) | 2 lines
+r1060 | dreibh | 2011-08-25 08:06:21 +0200 (Thu, 25 Aug 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
    M /trunk/bibtexconv/src/node.h
@@ -1044,7 +1176,7 @@ Changed paths:
 Added check functionality.
 
 ------------------------------------------------------------------------
-r1059 | dreibh | 2011-08-25 07:30:58 +0200 (to., 25 aug. 2011) | 2 lines
+r1059 | dreibh | 2011-08-25 07:30:58 +0200 (Thu, 25 Aug 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.8
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -1054,7 +1186,7 @@ Changed paths:
 Added features to write separate BibTeX and XML files.
 
 ------------------------------------------------------------------------
-r1058 | dreibh | 2011-08-09 13:18:49 +0200 (ti., 09 aug. 2011) | 2 lines
+r1058 | dreibh | 2011-08-09 13:18:49 +0200 (Tue, 09 Aug 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1062,7 +1194,7 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1057 | dreibh | 2011-08-05 17:53:16 +0200 (fr., 05 aug. 2011) | 2 lines
+r1057 | dreibh | 2011-08-05 17:53:16 +0200 (Fri, 05 Aug 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.8
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -1073,7 +1205,7 @@ Changed paths:
 Added option to turn adding "\url{...}" commands on/off.
 
 ------------------------------------------------------------------------
-r1048 | dreibh | 2011-06-02 19:39:41 +0200 (to., 02 juni 2011) | 2 lines
+r1048 | dreibh | 2011-06-02 19:39:41 +0200 (Thu, 02 Jun 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1083,7 +1215,7 @@ Changed paths:
 Added download feature for reference URLs -> storage into directory.
 
 ------------------------------------------------------------------------
-r1047 | dreibh | 2011-06-02 18:33:39 +0200 (to., 02 juni 2011) | 2 lines
+r1047 | dreibh | 2011-06-02 18:33:39 +0200 (Thu, 02 Jun 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bugs.bib
    M /trunk/bibtexconv/src/publicationset.cc
@@ -1092,14 +1224,14 @@ Changed paths:
 Some fixes for author string handling.
 
 ------------------------------------------------------------------------
-r1044 | dreibh | 2011-05-06 10:19:47 +0200 (fr., 06 mai 2011) | 2 lines
+r1044 | dreibh | 2011-05-06 10:19:47 +0200 (Fri, 06 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 Also added "octets" tag to XML output.
 
 ------------------------------------------------------------------------
-r1043 | dreibh | 2011-05-06 08:56:30 +0200 (fr., 06 mai 2011) | 2 lines
+r1043 | dreibh | 2011-05-06 08:56:30 +0200 (Fri, 06 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bugs.bib
    M /trunk/bibtexconv/src/publicationset.cc
@@ -1107,7 +1239,7 @@ Changed paths:
 Added missing "type" tag to XML export.
 
 ------------------------------------------------------------------------
-r1042 | dreibh | 2011-05-05 10:06:06 +0200 (to., 05 mai 2011) | 2 lines
+r1042 | dreibh | 2011-05-05 10:06:06 +0200 (Thu, 05 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1115,21 +1247,21 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1041 | dreibh | 2011-05-05 09:59:14 +0200 (to., 05 mai 2011) | 2 lines
+r1041 | dreibh | 2011-05-05 09:59:14 +0200 (Thu, 05 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/unification.cc
 
 Removed debug output.
 
 ------------------------------------------------------------------------
-r1040 | dreibh | 2011-05-05 09:45:51 +0200 (to., 05 mai 2011) | 2 lines
+r1040 | dreibh | 2011-05-05 09:45:51 +0200 (Thu, 05 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/odt-example.export
 
 Updated ODT example export script.
 
 ------------------------------------------------------------------------
-r1039 | dreibh | 2011-05-05 09:44:37 +0200 (to., 05 mai 2011) | 2 lines
+r1039 | dreibh | 2011-05-05 09:44:37 +0200 (Thu, 05 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/ODT-Template.odt
    M /trunk/bibtexconv/src/bugs.bib
@@ -1144,7 +1276,7 @@ Changed paths:
 Fixed problem with handling special author names like "R Core Development Team", which are given in brackets, e.g. "{R Core Development Team}".
 
 ------------------------------------------------------------------------
-r1038 | dreibh | 2011-05-05 08:30:26 +0200 (to., 05 mai 2011) | 2 lines
+r1038 | dreibh | 2011-05-05 08:30:26 +0200 (Thu, 05 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bugs.bib
    M /trunk/bibtexconv/src/node.cc
@@ -1153,13 +1285,13 @@ Changed paths:
 Improved sorting of entries.
 
 ------------------------------------------------------------------------
-r1037 | dreibh | 2011-05-04 19:27:38 +0200 (on., 04 mai 2011) | 1 line
+r1037 | dreibh | 2011-05-04 19:27:38 +0200 (Wed, 04 May 2011) | 1 line
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
 
 Added LP number to changelog.
 ------------------------------------------------------------------------
-r1036 | dreibh | 2011-05-04 10:25:47 +0200 (on., 04 mai 2011) | 2 lines
+r1036 | dreibh | 2011-05-04 10:25:47 +0200 (Wed, 04 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
    M /trunk/bibtexconv/debian/compat
@@ -1169,14 +1301,14 @@ Changed paths:
 Packaging file fixes.
 
 ------------------------------------------------------------------------
-r1035 | dreibh | 2011-05-04 08:52:56 +0200 (on., 04 mai 2011) | 2 lines
+r1035 | dreibh | 2011-05-04 08:52:56 +0200 (Wed, 04 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
 
 Updated LSM entry.
 
 ------------------------------------------------------------------------
-r1033 | dreibh | 2011-05-04 07:57:30 +0200 (on., 04 mai 2011) | 2 lines
+r1033 | dreibh | 2011-05-04 07:57:30 +0200 (Wed, 04 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
    M /trunk/slideshow/debian/changelog
@@ -1184,7 +1316,7 @@ Changed paths:
 Scripts updates.
 
 ------------------------------------------------------------------------
-r1027 | dreibh | 2011-05-03 19:42:13 +0200 (ti., 03 mai 2011) | 2 lines
+r1027 | dreibh | 2011-05-03 19:42:13 +0200 (Tue, 03 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1192,7 +1324,7 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r1026 | dreibh | 2011-05-03 19:40:09 +0200 (ti., 03 mai 2011) | 2 lines
+r1026 | dreibh | 2011-05-03 19:40:09 +0200 (Tue, 03 May 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/control
    M /trunk/bibtexconv/make-ppa
@@ -1201,7 +1333,7 @@ Changed paths:
 Fixed spelling errors reported by lintian.
 
 ------------------------------------------------------------------------
-r1022 | dreibh | 2011-04-29 18:15:15 +0200 (fr., 29 april 2011) | 2 lines
+r1022 | dreibh | 2011-04-29 18:15:15 +0200 (Fri, 29 Apr 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1210,7 +1342,7 @@ Changed paths:
 Bugfix: added support for "edition" entry when sorting entries.
 
 ------------------------------------------------------------------------
-r1017 | dreibh | 2011-04-11 20:48:11 +0200 (ma., 11 april 2011) | 2 lines
+r1017 | dreibh | 2011-04-11 20:48:11 +0200 (Mon, 11 Apr 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1219,7 +1351,7 @@ Changed paths:
 Updated packaging files.
 
 ------------------------------------------------------------------------
-r1016 | dreibh | 2011-04-11 20:46:31 +0200 (ma., 11 april 2011) | 4 lines
+r1016 | dreibh | 2011-04-11 20:46:31 +0200 (Mon, 11 Apr 2011) | 4 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/publicationset.cc
@@ -1233,14 +1365,14 @@ Fixed problem with handling URL entries:
 - On writing a BibTeX entry, the URL is converted to LaTeX-compliant URL string.
 
 ------------------------------------------------------------------------
-r1015 | dreibh | 2011-04-08 13:37:22 +0200 (fr., 08 april 2011) | 2 lines
+r1015 | dreibh | 2011-04-08 13:37:22 +0200 (Fri, 08 Apr 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 Bugfix for URL export to BibTeX.
 
 ------------------------------------------------------------------------
-r1014 | dreibh | 2011-04-08 13:26:07 +0200 (fr., 08 april 2011) | 2 lines
+r1014 | dreibh | 2011-04-08 13:26:07 +0200 (Fri, 08 Apr 2011) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/bugs.bib
    M /trunk/bibtexconv/src/dreibholz-papers.export
@@ -1248,7 +1380,7 @@ Changed paths:
 Added tests.
 
 ------------------------------------------------------------------------
-r989 | dreibh | 2011-02-11 23:34:41 +0100 (fr., 11 feb. 2011) | 2 lines
+r989 | dreibh | 2011-02-11 23:34:41 +0100 (Fri, 11 Feb 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
    M /trunk/bibtexconv/make-deb
@@ -1261,19 +1393,19 @@ Changed paths:
 Updated packaging files.
 
 ------------------------------------------------------------------------
-r981 | dreibh | 2011-02-02 15:18:48 +0100 (on., 02 feb. 2011) | 1 line
+r981 | dreibh | 2011-02-02 15:18:48 +0100 (Wed, 02 Feb 2011) | 1 line
 Changed paths:
    M /trunk/bibtexconv/make-deb
 
 make-deb update.
 ------------------------------------------------------------------------
-r973 | dreibh | 2011-02-01 15:23:33 +0100 (ti., 01 feb. 2011) | 1 line
+r973 | dreibh | 2011-02-01 15:23:33 +0100 (Tue, 01 Feb 2011) | 1 line
 Changed paths:
    M /trunk/bibtexconv/make-deb
 
 Packaging update.
 ------------------------------------------------------------------------
-r967 | dreibh | 2011-02-01 12:36:24 +0100 (ti., 01 feb. 2011) | 2 lines
+r967 | dreibh | 2011-02-01 12:36:24 +0100 (Tue, 01 Feb 2011) | 2 lines
 Changed paths:
    R /trunk/bibtexconv/COPYING
    A /trunk/bibtexconv/COPYING.GPL (from /trunk/bibtexconv/COPYING:964)
@@ -1282,7 +1414,7 @@ Changed paths:
 Updated license: allow BibTeXConv to be linked with OpenSSL.
 
 ------------------------------------------------------------------------
-r966 | dreibh | 2011-02-01 12:35:16 +0100 (ti., 01 feb. 2011) | 2 lines
+r966 | dreibh | 2011-02-01 12:35:16 +0100 (Tue, 01 Feb 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/bibtexconv.install
    A /trunk/bibtexconv/debian/bibtexconv.lintian-overrides
@@ -1295,32 +1427,32 @@ Changed paths:
 Updated Debian packaging: fixed lintian-reported problems.
 
 ------------------------------------------------------------------------
-r965 | dreibh | 2011-02-01 12:34:24 +0100 (ti., 01 feb. 2011) | 2 lines
+r965 | dreibh | 2011-02-01 12:34:24 +0100 (Tue, 01 Feb 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.8
 
 Fixed problem in manpage.
 
 ------------------------------------------------------------------------
-r963 | dreibh | 2011-02-01 08:46:54 +0100 (ti., 01 feb. 2011) | 1 line
+r963 | dreibh | 2011-02-01 08:46:54 +0100 (Tue, 01 Feb 2011) | 1 line
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
 
 Debian packaging update.
 ------------------------------------------------------------------------
-r959 | dreibh | 2011-02-01 08:27:04 +0100 (ti., 01 feb. 2011) | 1 line
+r959 | dreibh | 2011-02-01 08:27:04 +0100 (Tue, 01 Feb 2011) | 1 line
 Changed paths:
    M /trunk/bibtexconv/make-deb
 
 Updated make-deb script.
 ------------------------------------------------------------------------
-r949 | dreibh | 2011-02-01 08:24:53 +0100 (ti., 01 feb. 2011) | 1 line
+r949 | dreibh | 2011-02-01 08:24:53 +0100 (Tue, 01 Feb 2011) | 1 line
 Changed paths:
    M /trunk/bibtexconv/make-deb
 
 Updated make-deb script.
 ------------------------------------------------------------------------
-r935 | dreibh | 2011-01-28 09:44:00 +0100 (fr., 28 jan. 2011) | 2 lines
+r935 | dreibh | 2011-01-28 09:44:00 +0100 (Fri, 28 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/configure.in
@@ -1331,14 +1463,14 @@ Changed paths:
 Fixed handling of commnets within BibTeX entry by updated grammar.
 
 ------------------------------------------------------------------------
-r934 | dreibh | 2011-01-26 09:46:09 +0100 (on., 26 jan. 2011) | 2 lines
+r934 | dreibh | 2011-01-26 09:46:09 +0100 (Wed, 26 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/freebsd/bibtexconv/distinfo
 
 Updated distinfo.
 
 ------------------------------------------------------------------------
-r933 | dreibh | 2011-01-26 09:38:58 +0100 (on., 26 jan. 2011) | 2 lines
+r933 | dreibh | 2011-01-26 09:38:58 +0100 (Wed, 26 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/freebsd/bibtexconv/Makefile
    M /trunk/bibtexconv/freebsd/bibtexconv/pkg-descr
@@ -1346,7 +1478,7 @@ Changed paths:
 FreeBSD packaging update.
 
 ------------------------------------------------------------------------
-r928 | dreibh | 2011-01-22 15:30:12 +0100 | 2 lines
+r928 | dreibh | 2011-01-22 15:30:12 +0100 (Sat, 22 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/changelog
    M /trunk/bibtexconv/make-deb
@@ -1363,26 +1495,26 @@ Changed paths:
 make-deb updates.
 
 ------------------------------------------------------------------------
-r918 | dreibh | 2011-01-22 00:40:44 +0100 | 1 line
+r918 | dreibh | 2011-01-22 00:40:44 +0100 (Sat, 22 Jan 2011) | 1 line
 Changed paths:
    M /trunk/bibtexconv/clean-deb
 
 Updated clean-deb.
 ------------------------------------------------------------------------
-r907 | dreibh | 2011-01-22 00:06:49 +0100 | 1 line
+r907 | dreibh | 2011-01-22 00:06:49 +0100 (Sat, 22 Jan 2011) | 1 line
 Changed paths:
    M /trunk/bibtexconv/make-deb
 
 Fix for building unstable/default distribution packages.
 ------------------------------------------------------------------------
-r900 | dreibh | 2011-01-21 22:26:29 +0100 (fr., 21 jan. 2011) | 2 lines
+r900 | dreibh | 2011-01-21 22:26:29 +0100 (Fri, 21 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
 
 ChangeLog update.
 
 ------------------------------------------------------------------------
-r897 | dreibh | 2011-01-21 22:12:22 +0100 (fr., 21 jan. 2011) | 2 lines
+r897 | dreibh | 2011-01-21 22:12:22 +0100 (Fri, 21 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/clean-deb
    M /trunk/bibtexconv/configure.in
@@ -1394,20 +1526,20 @@ Changed paths:
 Made Debian packaging compatible to format "3.0 (quilt)".
 
 ------------------------------------------------------------------------
-r890 | dreibh | 2011-01-21 10:56:21 +0100 (fr., 21 jan. 2011) | 2 lines
+r890 | dreibh | 2011-01-21 10:56:21 +0100 (Fri, 21 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 Important bugfix: ISBN/ISSN notes for entries without ISBN/ISSN has been generated mistakenly when isbn/issn pointers had been set by a previous entry.
 
 ------------------------------------------------------------------------
-r880 | dreibh | 2011-01-12 11:28:39 +0100 (on., 12 jan. 2011) | 1 line
+r880 | dreibh | 2011-01-12 11:28:39 +0100 (Wed, 12 Jan 2011) | 1 line
 Changed paths:
    D /trunk/bibtexconv/debian/source
 
 
 ------------------------------------------------------------------------
-r878 | dreibh | 2011-01-04 20:44:39 +0100 (ti., 04 jan. 2011) | 2 lines
+r878 | dreibh | 2011-01-04 20:44:39 +0100 (Tue, 04 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
    M /trunk/bibtexconv/src/stringhandling.cc
@@ -1415,21 +1547,21 @@ Changed paths:
 URL string handling fix (URL and DOI entries).
 
 ------------------------------------------------------------------------
-r877 | dreibh | 2011-01-04 20:01:57 +0100 (ti., 04 jan. 2011) | 2 lines
+r877 | dreibh | 2011-01-04 20:01:57 +0100 (Tue, 04 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web-example.export
 
 Updated HTML export example.
 
 ------------------------------------------------------------------------
-r876 | dreibh | 2011-01-04 11:55:34 +0100 (ti., 04 jan. 2011) | 2 lines
+r876 | dreibh | 2011-01-04 11:55:34 +0100 (Tue, 04 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/make-ppa
 
 Updated bibtexconv's make-ppa script.
 
 ------------------------------------------------------------------------
-r875 | dreibh | 2011-01-04 09:57:16 +0100 (ti., 04 jan. 2011) | 2 lines
+r875 | dreibh | 2011-01-04 09:57:16 +0100 (Tue, 04 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.8
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -1440,7 +1572,7 @@ Changed paths:
 Added option to add/remote ISBN/ISSN notes.
 
 ------------------------------------------------------------------------
-r872 | dreibh | 2011-01-02 16:20:21 +0100 | 2 lines
+r872 | dreibh | 2011-01-02 16:20:21 +0100 (Sun, 02 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/bibtexconv.lsm
    M /trunk/bibtexconv/debian/control
@@ -1462,7 +1594,7 @@ Changed paths:
 Language fix (convertor -> converter).
 
 ------------------------------------------------------------------------
-r871 | dreibh | 2011-01-02 15:26:16 +0100 | 3 lines
+r871 | dreibh | 2011-01-02 15:26:16 +0100 (Sun, 02 Jan 2011) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
    M /trunk/bibtexconv/bibtexconv.lsm
@@ -1473,21 +1605,21 @@ Changed paths:
 - Write LSM entry.
 
 ------------------------------------------------------------------------
-r870 | dreibh | 2011-01-02 15:04:57 +0100 | 2 lines
+r870 | dreibh | 2011-01-02 15:04:57 +0100 (Sun, 02 Jan 2011) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/run-examples
 
 Added test script.
 
 ------------------------------------------------------------------------
-r869 | dreibh | 2011-01-02 15:02:36 +0100 | 2 lines
+r869 | dreibh | 2011-01-02 15:02:36 +0100 (Sun, 02 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.8
 
 Documentation update.
 
 ------------------------------------------------------------------------
-r868 | dreibh | 2011-01-02 14:47:32 +0100 | 2 lines
+r868 | dreibh | 2011-01-02 14:47:32 +0100 (Sun, 02 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/ODT-Template.odt
    M /trunk/bibtexconv/src/bibtexconv-odt
@@ -1496,7 +1628,7 @@ Changed paths:
 ODT export improvements.
 
 ------------------------------------------------------------------------
-r867 | dreibh | 2011-01-02 14:34:35 +0100 | 2 lines
+r867 | dreibh | 2011-01-02 14:34:35 +0100 (Sun, 02 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/bibtexconv.install
    M /trunk/bibtexconv/src/Makefile.am
@@ -1505,7 +1637,7 @@ Changed paths:
 Examples and documentation updates.
 
 ------------------------------------------------------------------------
-r866 | dreibh | 2011-01-02 14:27:39 +0100 | 2 lines
+r866 | dreibh | 2011-01-02 14:27:39 +0100 (Sun, 02 Jan 2011) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/bibtexconv.install
@@ -1528,7 +1660,7 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r865 | dreibh | 2011-01-02 14:19:22 +0100 | 2 lines
+r865 | dreibh | 2011-01-02 14:19:22 +0100 (Sun, 02 Jan 2011) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/ExampleReferences.bib
    M /trunk/bibtexconv/src/Makefile.am
@@ -1545,7 +1677,7 @@ Changed paths:
 Added more examples, directory clean-up.
 
 ------------------------------------------------------------------------
-r864 | dreibh | 2010-12-29 23:27:28 +0100 (on., 29 des. 2010) | 2 lines
+r864 | dreibh | 2010-12-29 23:27:28 +0100 (Wed, 29 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/dreibholz-talks.export
    M /trunk/bibtexconv/src/odt-example.export
@@ -1553,7 +1685,7 @@ Changed paths:
 ODT export improvement.
 
 ------------------------------------------------------------------------
-r863 | dreibh | 2010-12-29 22:09:57 +0100 (on., 29 des. 2010) | 2 lines
+r863 | dreibh | 2010-12-29 22:09:57 +0100 (Wed, 29 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
    M /trunk/bibtexconv/src/web.export
@@ -1561,7 +1693,7 @@ Changed paths:
 Output fixes.
 
 ------------------------------------------------------------------------
-r862 | dreibh | 2010-12-29 21:23:33 +0100 (on., 29 des. 2010) | 3 lines
+r862 | dreibh | 2010-12-29 21:23:33 +0100 (Wed, 29 Dec 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/node.cc
@@ -1572,7 +1704,7 @@ Changed paths:
 - Output improvements.
 
 ------------------------------------------------------------------------
-r860 | dreibh | 2010-12-29 16:17:47 +0100 (on., 29 des. 2010) | 2 lines
+r860 | dreibh | 2010-12-29 16:17:47 +0100 (Wed, 29 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/odt-example.export
    M /trunk/bibtexconv/src/publicationset.cc
@@ -1580,7 +1712,7 @@ Changed paths:
 Output improvements (DOI, series, institution).
 
 ------------------------------------------------------------------------
-r859 | dreibh | 2010-12-29 15:46:44 +0100 (on., 29 des. 2010) | 2 lines
+r859 | dreibh | 2010-12-29 15:46:44 +0100 (Wed, 29 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
    M /trunk/bibtexconv/src/publicationset.cc
@@ -1588,7 +1720,7 @@ Changed paths:
 Small output improvements for BibTeX export.
 
 ------------------------------------------------------------------------
-r858 | dreibh | 2010-12-29 01:40:55 +0100 (on., 29 des. 2010) | 3 lines
+r858 | dreibh | 2010-12-29 01:40:55 +0100 (Wed, 29 Dec 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/dreibholz-papers.export
@@ -1598,7 +1730,7 @@ Changed paths:
 - Improved DOI handling.
 
 ------------------------------------------------------------------------
-r854 | dreibh | 2010-12-28 22:11:41 +0100 (ti., 28 des. 2010) | 3 lines
+r854 | dreibh | 2010-12-28 22:11:41 +0100 (Tue, 28 Dec 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1609,42 +1741,42 @@ Changed paths:
 - Version update.
 
 ------------------------------------------------------------------------
-r853 | dreibh | 2010-12-28 21:34:17 +0100 (ti., 28 des. 2010) | 2 lines
+r853 | dreibh | 2010-12-28 21:34:17 +0100 (Tue, 28 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Code clean-ups.
 
 ------------------------------------------------------------------------
-r852 | dreibh | 2010-12-28 21:12:57 +0100 (ti., 28 des. 2010) | 2 lines
+r852 | dreibh | 2010-12-28 21:12:57 +0100 (Tue, 28 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 curl download now supports following redirections.
 
 ------------------------------------------------------------------------
-r851 | dreibh | 2010-12-28 20:13:55 +0100 (ti., 28 des. 2010) | 2 lines
+r851 | dreibh | 2010-12-28 20:13:55 +0100 (Tue, 28 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 More verbose HTTP download errors.
 
 ------------------------------------------------------------------------
-r850 | dreibh | 2010-12-28 20:13:43 +0100 (ti., 28 des. 2010) | 2 lines
+r850 | dreibh | 2010-12-28 20:13:43 +0100 (Tue, 28 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/web.export
 
 Updated web export script.
 
 ------------------------------------------------------------------------
-r849 | dreibh | 2010-12-28 20:10:53 +0100 (ti., 28 des. 2010) | 2 lines
+r849 | dreibh | 2010-12-28 20:10:53 +0100 (Tue, 28 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 Added support to print file type.
 
 ------------------------------------------------------------------------
-r848 | dreibh | 2010-12-28 18:45:43 +0100 (ti., 28 des. 2010) | 3 lines
+r848 | dreibh | 2010-12-28 18:45:43 +0100 (Tue, 28 Dec 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/dreibholz-id-individual.export
    M /trunk/bibtexconv/src/dreibholz-papers.export
@@ -1656,7 +1788,7 @@ Changed paths:
 - Wrote export script for HTML output.
 
 ------------------------------------------------------------------------
-r847 | dreibh | 2010-12-27 23:27:04 +0100 (ma., 27 des. 2010) | 2 lines
+r847 | dreibh | 2010-12-27 23:27:04 +0100 (Mon, 27 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/publicationset.cc
@@ -1664,7 +1796,7 @@ Changed paths:
 Some improvements for export and URL checking output.
 
 ------------------------------------------------------------------------
-r846 | dreibh | 2010-12-27 22:28:40 +0100 (ma., 27 des. 2010) | 3 lines
+r846 | dreibh | 2010-12-27 22:28:40 +0100 (Mon, 27 Dec 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/autogen.sh
    M /trunk/bibtexconv/src/cv.export
@@ -1676,7 +1808,7 @@ Changed paths:
 - Added support for "howpublished" entry.
 
 ------------------------------------------------------------------------
-r845 | dreibh | 2010-12-27 20:54:03 +0100 (ma., 27 des. 2010) | 2 lines
+r845 | dreibh | 2010-12-27 20:54:03 +0100 (Mon, 27 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/src/Makefile.am
@@ -1684,7 +1816,7 @@ Changed paths:
 Fixed library dependency.
 
 ------------------------------------------------------------------------
-r844 | dreibh | 2010-12-27 20:06:07 +0100 (ma., 27 des. 2010) | 2 lines
+r844 | dreibh | 2010-12-27 20:06:07 +0100 (Mon, 27 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1696,7 +1828,7 @@ Changed paths:
 BibTeXConv now identifies MIME type of URLs (using "file" tool).
 
 ------------------------------------------------------------------------
-r843 | dreibh | 2010-12-27 19:21:49 +0100 (ma., 27 des. 2010) | 6 lines
+r843 | dreibh | 2010-12-27 19:21:49 +0100 (Mon, 27 Dec 2010) | 6 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -1717,28 +1849,28 @@ A set of improvements to BibTeXConv:
 - Fixed month handling for BibTeX export.
 
 ------------------------------------------------------------------------
-r842 | dreibh | 2010-12-12 02:30:47 +0100 | 2 lines
+r842 | dreibh | 2010-12-12 02:30:47 +0100 (Sun, 12 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Fixed libcurl initialization/clean-up calls.
 
 ------------------------------------------------------------------------
-r841 | dreibh | 2010-12-12 01:04:32 +0100 | 2 lines
+r841 | dreibh | 2010-12-12 01:04:32 +0100 (Sun, 12 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Improved detection of bad HTTP URLs in BibTeX entries.
 
 ------------------------------------------------------------------------
-r840 | dreibh | 2010-12-11 02:21:22 +0100 | 2 lines
+r840 | dreibh | 2010-12-11 02:21:22 +0100 (Sat, 11 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 URL checking improvements.
 
 ------------------------------------------------------------------------
-r839 | dreibh | 2010-12-11 01:38:06 +0100 | 2 lines
+r839 | dreibh | 2010-12-11 01:38:06 +0100 (Sat, 11 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1749,7 +1881,7 @@ Changed paths:
 Added support to verify URLs in BibTeX entries (using libcurl).
 
 ------------------------------------------------------------------------
-r838 | dreibh | 2010-12-10 03:56:02 +0100 (fr., 10 des. 2010) | 2 lines
+r838 | dreibh | 2010-12-10 03:56:02 +0100 (Fri, 10 Dec 2010) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/cv.export
    A /trunk/bibtexconv/src/dreibholz-id-individual.export
@@ -1767,14 +1899,14 @@ Changed paths:
 Updated export scripts.
 
 ------------------------------------------------------------------------
-r837 | dreibh | 2010-12-10 03:55:04 +0100 (fr., 10 des. 2010) | 2 lines
+r837 | dreibh | 2010-12-10 03:55:04 +0100 (Fri, 10 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 Added template entry for "Note".
 
 ------------------------------------------------------------------------
-r836 | dreibh | 2010-12-10 02:58:48 +0100 (fr., 10 des. 2010) | 2 lines
+r836 | dreibh | 2010-12-10 02:58:48 +0100 (Fri, 10 Dec 2010) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/dreibholz-others.export
    A /trunk/bibtexconv/src/dreibholz-papers.export
@@ -1785,7 +1917,7 @@ Changed paths:
 Added export tests.
 
 ------------------------------------------------------------------------
-r835 | dreibh | 2010-12-10 02:56:41 +0100 (fr., 10 des. 2010) | 2 lines
+r835 | dreibh | 2010-12-10 02:56:41 +0100 (Fri, 10 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/publicationset.cc
@@ -1794,7 +1926,7 @@ Changed paths:
 Template code improvements.
 
 ------------------------------------------------------------------------
-r834 | dreibh | 2010-12-06 00:26:39 +0100 (ma., 06 des. 2010) | 2 lines
+r834 | dreibh | 2010-12-06 00:26:39 +0100 (Mon, 06 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -1808,7 +1940,7 @@ Changed paths:
 Sorting of publications is now working.
 
 ------------------------------------------------------------------------
-r833 | dreibh | 2010-12-04 13:19:17 +0100 | 2 lines
+r833 | dreibh | 2010-12-04 13:19:17 +0100 (Sat, 04 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -1821,21 +1953,21 @@ Changed paths:
 Started to write sorting code. Does not actually sort entries yet.
 
 ------------------------------------------------------------------------
-r831 | dreibh | 2010-12-03 12:13:51 +0100 (fr., 03 des. 2010) | 2 lines
+r831 | dreibh | 2010-12-03 12:13:51 +0100 (Fri, 03 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/source/format
 
 Reverted Debian format change.
 
 ------------------------------------------------------------------------
-r830 | dreibh | 2010-12-03 12:11:32 +0100 (fr., 03 des. 2010) | 2 lines
+r830 | dreibh | 2010-12-03 12:11:32 +0100 (Fri, 03 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/debian/source/format
 
 bibtexconv's Debian packaging format is "3.0 (quilt)"-compliant.
 
 ------------------------------------------------------------------------
-r829 | dreibh | 2010-12-03 12:09:46 +0100 (fr., 03 des. 2010) | 4 lines
+r829 | dreibh | 2010-12-03 12:09:46 +0100 (Fri, 03 Dec 2010) | 4 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/bibtexconv.install
@@ -1852,7 +1984,7 @@ Changed paths:
 - Updated Debian packaging.
 
 ------------------------------------------------------------------------
-r828 | dreibh | 2010-12-03 11:46:56 +0100 (fr., 03 des. 2010) | 2 lines
+r828 | dreibh | 2010-12-03 11:46:56 +0100 (Fri, 03 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/make-odt
    M /trunk/bibtexconv/src/odt-example.export
@@ -1860,21 +1992,21 @@ Changed paths:
 Improved ODT output.
 
 ------------------------------------------------------------------------
-r827 | dreibh | 2010-12-03 11:45:57 +0100 (fr., 03 des. 2010) | 2 lines
+r827 | dreibh | 2010-12-03 11:45:57 +0100 (Fri, 03 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/publicationset.cc
 
 Fixed null pointer problem.
 
 ------------------------------------------------------------------------
-r826 | dreibh | 2010-12-03 11:19:22 +0100 (fr., 03 des. 2010) | 2 lines
+r826 | dreibh | 2010-12-03 11:19:22 +0100 (Fri, 03 Dec 2010) | 2 lines
 Changed paths:
    D /trunk/bibtexconv/src/odt
 
 Removed odt template directory. Now, it is possible to just specify a template ODT file directly!
 
 ------------------------------------------------------------------------
-r825 | dreibh | 2010-12-03 11:18:25 +0100 (fr., 03 des. 2010) | 2 lines
+r825 | dreibh | 2010-12-03 11:18:25 +0100 (Fri, 03 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/make-odt
@@ -1884,7 +2016,7 @@ Changed paths:
 Improved ODT export.
 
 ------------------------------------------------------------------------
-r824 | dreibh | 2010-12-03 10:52:20 +0100 (fr., 03 des. 2010) | 2 lines
+r824 | dreibh | 2010-12-03 10:52:20 +0100 (Fri, 03 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/node.h
@@ -1896,7 +2028,7 @@ Changed paths:
 A set of improvement for the template processing.
 
 ------------------------------------------------------------------------
-r823 | dreibh | 2010-12-02 22:06:47 +0100 (to., 02 des. 2010) | 2 lines
+r823 | dreibh | 2010-12-02 22:06:47 +0100 (Thu, 02 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    A /trunk/bibtexconv/src/dreibholz-journal-2010.export
@@ -1906,7 +2038,7 @@ Changed paths:
 Improved export of publication data.
 
 ------------------------------------------------------------------------
-r822 | dreibh | 2010-12-02 14:32:12 +0100 (to., 02 des. 2010) | 2 lines
+r822 | dreibh | 2010-12-02 14:32:12 +0100 (Thu, 02 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian/changelog
@@ -1917,7 +2049,7 @@ Changed paths:
 Version update.
 
 ------------------------------------------------------------------------
-r821 | dreibh | 2010-12-02 14:25:06 +0100 (to., 02 des. 2010) | 2 lines
+r821 | dreibh | 2010-12-02 14:25:06 +0100 (Thu, 02 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/bibtexconv.cc
@@ -1930,14 +2062,14 @@ Changed paths:
 Code clean-ups.
 
 ------------------------------------------------------------------------
-r820 | dreibh | 2010-12-02 14:23:51 +0100 (to., 02 des. 2010) | 2 lines
+r820 | dreibh | 2010-12-02 14:23:51 +0100 (Thu, 02 Dec 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Added possibility to include export files (recursive).
 
 ------------------------------------------------------------------------
-r703 | dreibh | 2010-08-10 09:44:18 +0200 (ti., 10 aug. 2010) | 2 lines
+r703 | dreibh | 2010-08-10 09:44:18 +0200 (Tue, 10 Aug 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    A /trunk/bibtexconv/freebsd (from /trunk/subnetcalc/freebsd:701)
@@ -1953,7 +2085,7 @@ Changed paths:
 Added FreeBSD packaging files.
 
 ------------------------------------------------------------------------
-r671 | dreibh | 2010-07-30 10:08:37 +0200 (fr., 30 juli 2010) | 2 lines
+r671 | dreibh | 2010-07-30 10:08:37 +0200 (Fri, 30 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/Makefile.am
    A /trunk/bibtexconv/autogen.sh
@@ -1962,7 +2094,7 @@ Changed paths:
 Updated configure scripts.
 
 ------------------------------------------------------------------------
-r644 | dreibh | 2010-07-17 17:30:13 +0200 | 2 lines
+r644 | dreibh | 2010-07-17 17:30:13 +0200 (Sat, 17 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/odt-example.export
@@ -1972,28 +2104,28 @@ Changed paths:
 Added month name handling.
 
 ------------------------------------------------------------------------
-r643 | dreibh | 2010-07-17 17:04:46 +0200 | 2 lines
+r643 | dreibh | 2010-07-17 17:04:46 +0200 (Sat, 17 Jul 2010) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/make-odt
 
 Added script make-odt to simplify ODT generation.
 
 ------------------------------------------------------------------------
-r642 | dreibh | 2010-07-17 16:47:08 +0200 | 1 line
+r642 | dreibh | 2010-07-17 16:47:08 +0200 (Sat, 17 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/odt-example.export
    M /trunk/bibtexconv/src/test1.export
 
 
 ------------------------------------------------------------------------
-r641 | dreibh | 2010-07-17 16:46:18 +0200 | 2 lines
+r641 | dreibh | 2010-07-17 16:46:18 +0200 (Sat, 17 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/odt-example.export
 
 Improved ODT export style.
 
 ------------------------------------------------------------------------
-r640 | dreibh | 2010-07-17 16:37:57 +0200 | 2 lines
+r640 | dreibh | 2010-07-17 16:37:57 +0200 (Sat, 17 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/odt-example.export
    M /trunk/bibtexconv/src/stringhandling.cc
@@ -2002,7 +2134,7 @@ Changed paths:
 Encoding fixes.
 
 ------------------------------------------------------------------------
-r639 | dreibh | 2010-07-17 15:59:55 +0200 | 2 lines
+r639 | dreibh | 2010-07-17 15:59:55 +0200 (Sat, 17 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/odt-example.export
@@ -2013,7 +2145,7 @@ Changed paths:
 Some fixes for the ODT contents.xml export.
 
 ------------------------------------------------------------------------
-r638 | dreibh | 2010-07-17 14:59:07 +0200 | 2 lines
+r638 | dreibh | 2010-07-17 14:59:07 +0200 (Sat, 17 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/odt-example.export
@@ -2022,7 +2154,7 @@ Changed paths:
 Working ODT contents.xml export.
 
 ------------------------------------------------------------------------
-r637 | dreibh | 2010-07-17 13:56:22 +0200 | 2 lines
+r637 | dreibh | 2010-07-17 13:56:22 +0200 (Sat, 17 Jul 2010) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/odt
    A /trunk/bibtexconv/src/odt/Configurations2
@@ -2045,7 +2177,7 @@ Changed paths:
 Added ODT files.
 
 ------------------------------------------------------------------------
-r636 | dreibh | 2010-07-17 12:35:41 +0200 | 1 line
+r636 | dreibh | 2010-07-17 12:35:41 +0200 (Sat, 17 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/stringhandling.cc
@@ -2055,14 +2187,14 @@ Changed paths:
 
 
 ------------------------------------------------------------------------
-r635 | dreibh | 2010-07-16 22:41:19 +0200 (fr., 16 juli 2010) | 2 lines
+r635 | dreibh | 2010-07-16 22:41:19 +0200 (Fri, 16 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Code clean-ups.
 
 ------------------------------------------------------------------------
-r634 | dreibh | 2010-07-16 22:33:45 +0200 (fr., 16 juli 2010) | 2 lines
+r634 | dreibh | 2010-07-16 22:33:45 +0200 (Fri, 16 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/node.cc
@@ -2074,21 +2206,21 @@ Changed paths:
 Export to custom format now working interactively.
 
 ------------------------------------------------------------------------
-r633 | dreibh | 2010-07-16 21:08:26 +0200 (fr., 16 juli 2010) | 2 lines
+r633 | dreibh | 2010-07-16 21:08:26 +0200 (Fri, 16 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Added author export to custom file.
 
 ------------------------------------------------------------------------
-r632 | dreibh | 2010-07-16 21:08:11 +0200 (fr., 16 juli 2010) | 2 lines
+r632 | dreibh | 2010-07-16 21:08:11 +0200 (Fri, 16 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/unification.cc
 
 Improved unification code to (hopefully) handle UTF-8 correctly.
 
 ------------------------------------------------------------------------
-r630 | dreibh | 2010-07-14 09:53:26 +0200 (on., 14 juli 2010) | 2 lines
+r630 | dreibh | 2010-07-14 09:53:26 +0200 (Wed, 14 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/Makefile.am
    M /trunk/bibtexconv/debian/bibtexconv.install
@@ -2098,14 +2230,14 @@ Changed paths:
 Improved Debian files.
 
 ------------------------------------------------------------------------
-r629 | dreibh | 2010-07-14 09:53:09 +0200 (on., 14 juli 2010) | 2 lines
+r629 | dreibh | 2010-07-14 09:53:09 +0200 (Wed, 14 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Code clean-ups.
 
 ------------------------------------------------------------------------
-r628 | dreibh | 2010-07-14 09:52:36 +0200 (on., 14 juli 2010) | 2 lines
+r628 | dreibh | 2010-07-14 09:52:36 +0200 (Wed, 14 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/node.cc
@@ -2115,14 +2247,14 @@ Changed paths:
 Implemented export to custom file.
 
 ------------------------------------------------------------------------
-r627 | dreibh | 2010-07-13 13:30:30 +0200 (ti., 13 juli 2010) | 2 lines
+r627 | dreibh | 2010-07-13 13:30:30 +0200 (Tue, 13 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
 
 Started adding export to custom file.
 
 ------------------------------------------------------------------------
-r626 | dreibh | 2010-07-13 12:31:14 +0200 (ti., 13 juli 2010) | 3 lines
+r626 | dreibh | 2010-07-13 12:31:14 +0200 (Tue, 13 Jul 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/configure.in
    M /trunk/bibtexconv/debian.conf
@@ -2132,7 +2264,7 @@ Changed paths:
 - Debian packaging now working.
 
 ------------------------------------------------------------------------
-r625 | dreibh | 2010-07-13 12:20:30 +0200 (ti., 13 juli 2010) | 2 lines
+r625 | dreibh | 2010-07-13 12:20:30 +0200 (Tue, 13 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/scanner.ll
    M /trunk/bibtexconv/src/stringhandling.cc
@@ -2140,7 +2272,7 @@ Changed paths:
 Fixed quoted string handling problem.
 
 ------------------------------------------------------------------------
-r624 | dreibh | 2010-07-13 12:15:33 +0200 (ti., 13 juli 2010) | 2 lines
+r624 | dreibh | 2010-07-13 12:15:33 +0200 (Tue, 13 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/Makefile.am
    M /trunk/bibtexconv/src/bibtexconv.8
@@ -2151,7 +2283,7 @@ Changed paths:
 autoconf/automake are now working.
 
 ------------------------------------------------------------------------
-r623 | dreibh | 2010-07-13 12:01:12 +0200 (ti., 13 juli 2010) | 2 lines
+r623 | dreibh | 2010-07-13 12:01:12 +0200 (Tue, 13 Jul 2010) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/AUTHORS
    A /trunk/bibtexconv/BUGS
@@ -2183,7 +2315,7 @@ Changed paths:
 Added autoconf/automake and Debian packaging files.
 
 ------------------------------------------------------------------------
-r622 | dreibh | 2010-07-13 11:28:46 +0200 (ti., 13 juli 2010) | 2 lines
+r622 | dreibh | 2010-07-13 11:28:46 +0200 (Tue, 13 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/make-it
@@ -2197,19 +2329,19 @@ Changed paths:
 XML export now working with special characters.
 
 ------------------------------------------------------------------------
-r621 | dreibh | 2010-07-13 11:15:59 +0200 (ti., 13 juli 2010) | 1 line
+r621 | dreibh | 2010-07-13 11:15:59 +0200 (Tue, 13 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/t1.cc
 
 
 ------------------------------------------------------------------------
-r620 | dreibh | 2010-07-13 11:12:49 +0200 (ti., 13 juli 2010) | 1 line
+r620 | dreibh | 2010-07-13 11:12:49 +0200 (Tue, 13 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/t1.cc
 
 
 ------------------------------------------------------------------------
-r619 | dreibh | 2010-07-13 10:01:25 +0200 (ti., 13 juli 2010) | 3 lines
+r619 | dreibh | 2010-07-13 10:01:25 +0200 (Tue, 13 Jul 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/node.cc
@@ -2221,13 +2353,13 @@ Changed paths:
 - Added XML output.
 
 ------------------------------------------------------------------------
-r618 | dreibh | 2010-07-12 19:24:04 +0200 (ma., 12 juli 2010) | 1 line
+r618 | dreibh | 2010-07-12 19:24:04 +0200 (Mon, 12 Jul 2010) | 1 line
 Changed paths:
    A /trunk/bibtexconv/src/t1.cc
 
 
 ------------------------------------------------------------------------
-r617 | dreibh | 2010-07-12 19:09:41 +0200 (ma., 12 juli 2010) | 2 lines
+r617 | dreibh | 2010-07-12 19:09:41 +0200 (Mon, 12 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/grammar.yy
@@ -2239,7 +2371,7 @@ Changed paths:
 Added BiBTeX export.
 
 ------------------------------------------------------------------------
-r616 | dreibh | 2010-07-12 18:47:36 +0200 (ma., 12 juli 2010) | 2 lines
+r616 | dreibh | 2010-07-12 18:47:36 +0200 (Mon, 12 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/make-it
    A /trunk/bibtexconv/src/unification.cc (from /trunk/bibtexconv/src/node.cc:615)
@@ -2248,7 +2380,7 @@ Changed paths:
 Moved unification code into separate file.
 
 ------------------------------------------------------------------------
-r615 | dreibh | 2010-07-12 18:42:27 +0200 (ma., 12 juli 2010) | 3 lines
+r615 | dreibh | 2010-07-12 18:42:27 +0200 (Mon, 12 Jul 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
    M /trunk/bibtexconv/src/node.h
@@ -2257,28 +2389,28 @@ Changed paths:
 - Added unification of pages section.
 
 ------------------------------------------------------------------------
-r614 | dreibh | 2010-07-12 16:16:05 +0200 (ma., 12 juli 2010) | 2 lines
+r614 | dreibh | 2010-07-12 16:16:05 +0200 (Mon, 12 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
 
 Added ISSN validation.
 
 ------------------------------------------------------------------------
-r613 | dreibh | 2010-07-12 15:54:47 +0200 (ma., 12 juli 2010) | 2 lines
+r613 | dreibh | 2010-07-12 15:54:47 +0200 (Mon, 12 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
 
 Added ISBN-13 validation.
 
 ------------------------------------------------------------------------
-r612 | dreibh | 2010-07-12 15:44:21 +0200 (ma., 12 juli 2010) | 2 lines
+r612 | dreibh | 2010-07-12 15:44:21 +0200 (Mon, 12 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
 
 Added ISBN-10 validation.
 
 ------------------------------------------------------------------------
-r611 | dreibh | 2010-07-12 14:54:52 +0200 (ma., 12 juli 2010) | 3 lines
+r611 | dreibh | 2010-07-12 14:54:52 +0200 (Mon, 12 Jul 2010) | 3 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
 
@@ -2286,7 +2418,7 @@ Changed paths:
 - Added unification of booktitle section.
 
 ------------------------------------------------------------------------
-r610 | dreibh | 2010-07-12 14:33:25 +0200 (ma., 12 juli 2010) | 2 lines
+r610 | dreibh | 2010-07-12 14:33:25 +0200 (Mon, 12 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
    M /trunk/bibtexconv/src/node.h
@@ -2294,7 +2426,7 @@ Changed paths:
 Added unification of author, date and url sections.
 
 ------------------------------------------------------------------------
-r609 | dreibh | 2010-07-12 12:11:39 +0200 (ma., 12 juli 2010) | 2 lines
+r609 | dreibh | 2010-07-12 12:11:39 +0200 (Mon, 12 Jul 2010) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
    M /trunk/bibtexconv/src/grammar.yy
@@ -2303,7 +2435,7 @@ Changed paths:
 Extended grammar and scanner to successfully scan Referenzarchiv.bib.
 
 ------------------------------------------------------------------------
-r608 | dreibh | 2010-07-12 09:21:01 +0200 (ma., 12 juli 2010) | 2 lines
+r608 | dreibh | 2010-07-12 09:21:01 +0200 (Mon, 12 Jul 2010) | 2 lines
 Changed paths:
    A /trunk/bibtexconv/src/bibtexconv.cc
    D /trunk/bibtexconv/src/grammar.y
@@ -2317,14 +2449,14 @@ Changed paths:
 Converted to C++.
 
 ------------------------------------------------------------------------
-r607 | dreibh | 2010-07-11 22:08:00 +0200 | 1 line
+r607 | dreibh | 2010-07-11 22:08:00 +0200 (Sun, 11 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/grammar.y
    M /trunk/bibtexconv/src/node.c
 
 
 ------------------------------------------------------------------------
-r606 | dreibh | 2010-07-11 21:50:14 +0200 | 1 line
+r606 | dreibh | 2010-07-11 21:50:14 +0200 (Sun, 11 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/grammar.y
    M /trunk/bibtexconv/src/node.c
@@ -2332,7 +2464,7 @@ Changed paths:
 
 
 ------------------------------------------------------------------------
-r605 | dreibh | 2010-07-11 21:23:36 +0200 | 1 line
+r605 | dreibh | 2010-07-11 21:23:36 +0200 (Sun, 11 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/grammar.y
    M /trunk/bibtexconv/src/make-it
@@ -2342,7 +2474,7 @@ Changed paths:
 
 
 ------------------------------------------------------------------------
-r604 | dreibh | 2010-07-11 20:44:29 +0200 | 1 line
+r604 | dreibh | 2010-07-11 20:44:29 +0200 (Sun, 11 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/grammar.y
    M /trunk/bibtexconv/src/make-it
@@ -2350,20 +2482,20 @@ Changed paths:
 
 
 ------------------------------------------------------------------------
-r603 | dreibh | 2010-07-11 19:18:36 +0200 | 1 line
+r603 | dreibh | 2010-07-11 19:18:36 +0200 (Sun, 11 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/grammar.y
 
 
 ------------------------------------------------------------------------
-r602 | dreibh | 2010-07-11 18:32:30 +0200 | 1 line
+r602 | dreibh | 2010-07-11 18:32:30 +0200 (Sun, 11 Jul 2010) | 1 line
 Changed paths:
    M /trunk/bibtexconv/src/grammar.y
    M /trunk/bibtexconv/src/scanner.l
 
 
 ------------------------------------------------------------------------
-r601 | dreibh | 2010-07-11 17:29:48 +0200 | 1 line
+r601 | dreibh | 2010-07-11 17:29:48 +0200 (Sun, 11 Jul 2010) | 1 line
 Changed paths:
    A /trunk/bibtexconv
    A /trunk/bibtexconv/src
