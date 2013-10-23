@@ -1,8 +1,6 @@
-bibtexconv (1.0.0~rc1.2-1ubuntu1) trusty; urgency=low
+bibtexconv (1.0.0~rc1.3-1ubuntu1) trusty; urgency=low
 
   * New upstream version.
-  * debian/control: Added libfile-fcntllock-perl to get rid of
-                    warning on NFS-safe locks.
 
  -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Mon, 21 Oct 2013 22:22:22 +0200
 
