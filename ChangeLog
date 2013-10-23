@@ -1,4 +1,14 @@
 ------------------------------------------------------------------------
+r1681 | dreibh | 2013-10-23 13:30:18 +0200 (Wed, 23 Oct 2013) | 1 line
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/src/Makefile.am
+   A /trunk/bibtexconv/update-changelog
+
+Packaging file updates.
+------------------------------------------------------------------------
 r1677 | dreibh | 2013-10-21 22:30:00 +0200 (Mon, 21 Oct 2013) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/bibtexconv.cc
