@@ -11,8 +11,10 @@ AutoReqProv: on
 BuildRequires: bison
 BuildRequires: flex
 BuildRequires: openssl-devel
+BuildRequires: libcurl-devel
 Requires: file
 Requires: zip
+Requires: libcurl
 Requires: openssl-libs
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 
