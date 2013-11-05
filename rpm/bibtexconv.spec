@@ -1,6 +1,6 @@
 Name: bibtexconv
 Version: 1.0.0
-Release: 1%{?dist}
+Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
 License: GPLv3
