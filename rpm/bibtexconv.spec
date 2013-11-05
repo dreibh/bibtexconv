@@ -1,11 +1,11 @@
 Name: bibtexconv
 Version: 1.0.0
 Release: 1%{?dist}
-Summary: BibTeX Converter
-Group: Productivity/Publishing/TeX/Utilities
+Summary: BibTeX converter
+Group: Applications/Databases
 License: GPLv3
-Source: %{name}-%{version}.tar.gz
-URL: http://www.iem.uni-due.de/~dreibh/bibtexconv/download/bibtexconv-1.0.0.tar.gz
+URL: http://www.iem.uni-due.de/~dreibh/bibtexconv/
+Source: http://www.iem.uni-due.de/~dreibh/bibtexconv/download/%{name}-%{version}.tar.gz
 
 AutoReqProv: on
 BuildRequires: bison
