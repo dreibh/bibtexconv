@@ -389,7 +389,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    }
 
    if(node->value == "") {   // Empty content -> This item is useless
-      node->keyword = "empty";
+      node->keyword = "removeme";
    }
 
    // ====== Set priorities for well-known keyword fields ===================
