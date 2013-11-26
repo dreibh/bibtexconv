@@ -478,7 +478,7 @@ static int handleInput(FILE*           fh,
                }
                if(!publicationSet.add(publication)) {
                   fprintf(stderr, "ERROR: Publication '%s' has already been added!\n",
-                           (const char*)&input[5]);
+                          (const char*)&input[5]);
                   result++;
                }
                for(size_t i = 0; i < NODE_CUSTOM_ENTRIES; i++) {

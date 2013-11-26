@@ -388,6 +388,10 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       trim(node->value);
    }
 
+   if(node->value == "") {   // Empty content -> This item is useless
+      node->keyword = "empty";
+   }
+
    // ====== Set priorities for well-known keyword fields ===================
    if(node->keyword == "author") {
       node->priority = 255;

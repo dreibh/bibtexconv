@@ -104,10 +104,10 @@ static int publicationNodeComparisonFunction(const void* ptr1, const void* ptr2)
       const Node* child2 = findChildNode((Node*)node2, gSortKey[i].c_str());
       int result = 0;
       if( (child1 == NULL) && (child2 != NULL) ) {
-         result = -1;
+         result = 1;
       }
       if( (child1 != NULL) && (child2 == NULL) ) {
-         result = 1;
+         result = -1;
       }
       else if( (child1 != NULL) && (child2 != NULL) ) {
          if(child1->value < child2->value) {
