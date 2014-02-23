@@ -79,6 +79,9 @@ std::string comment;
  /* ====== Keywords ====================================================== */
 [aA][rR][tT][iI][cC][lL][eE]                         { return(T_Article);       }
 [bB][oO][oO][kK]                                     { return(T_Book);          }
+[bB][oO][oO][kK][lL][eE][tT]                         { return(T_Booklet);       }
+[cC][oO][nN][fF][eE][rR][eE][nN][cC][eE]             { return(T_InProceedings); }
+[iI][nN][bB][oO][oO][kK]                             { return(T_InBook);        }
 [iI][nN][cC][oO][lL][lL][eE][cC][tT][iI][oO][nN]     { return(T_InCollection);  }
 [iI][nN][pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS] { return(T_InProceedings); }
 [mM][aA][nN][uU][aA][lL]                             { return(T_Manual);        }
@@ -86,6 +89,8 @@ std::string comment;
 [mM][iI][sS][cC]                                     { return(T_Misc);          }
 [tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return(T_TechReport);    }
 [pP][hH][dD][tT][hH][eE][sS][iI][sS]                 { return(T_PhDThesis);     }
+[pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return(T_Proceedings);   }
+[uU][nN][pP][uU][bB][lL][iI][sS][hH][eE][dD]         { return(T_Unpublished);   }
 
 [a-zA-Z0-9\-\.\+\:]+                                 { yylval.iText = strdup(yytext);
                                                        // printf("K=<%s> l=%d\n",yylval.iText, yylineno);

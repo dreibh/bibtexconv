@@ -34,13 +34,17 @@ Node* bibTeXFile = NULL;
 
 %token T_Article
 %token T_Book
+%token T_Booklet
+%token T_InBook
 %token T_InProceedings
 %token T_InCollection
 %token T_Manual
 %token T_MastersThesis
 %token T_Misc
 %token T_PhDThesis
+%token T_Proceedings
 %token T_TechReport
+%token T_Unpublished
 
 %token <iText>  T_Keyword
 %token <iText>  T_String
@@ -81,6 +85,10 @@ publication
          { $$ = makePublication("Article", $4, $6); free($4); }
     | T_AT T_Book T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Book", $4, $6); free($4); }
+    | T_AT T_Booklet T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Booklet", $4, $6); free($4); }
+    | T_AT T_InBook T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("InBook", $4, $6); free($4); }
     | T_AT T_InCollection T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("InCollection", $4, $6); free($4); }
     | T_AT T_InProceedings T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
@@ -95,6 +103,10 @@ publication
          { $$ = makePublication("PhDThesis", $4, $6); free($4); }
     | T_AT T_TechReport T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("TechReport", $4, $6); free($4); }
+    | T_AT T_Proceedings T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Proceedings", $4, $6); free($4); }
+    | T_AT T_Unpublished T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Unpublished", $4, $6); free($4); }
     ;
 
 publicationInfo
