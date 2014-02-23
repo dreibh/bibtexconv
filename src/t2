@@ -10,30 +10,32 @@ if [ "$type" = "authorUrl" ] ; then
 
    declare -A authorUrl
    authorUrl=(
-      ["Thomas Dreibholz"]="http://www.exp-math.uni-essen.de/~dreibh/"
-      ["Erwin Paul Rathgeb"]="http://www.tdr.wiwi.uni-due.de/team/erwin-p-rathgeb/"
-      ["Michael Tüxen"]="https://www.fh-muenster.de/fb2/personen/professoren/tuexen/" 
-      ["Martin Becke"]="http://www.tdr.wiwi.uni-due.de/team/martin-becke/"
-      ["Hakim Adhari"]="http://www.tdr.wiwi.uni-due.de/team/hakim-adhari/"
-      ["Ernst Gunnar Gran"]="https://simula.no/people/ernstgr"
       ["Amund Kvalbein"]="https://simula.no/people/amundk"
-      ["Irene Rüngeler"]="https://www.fh-münster.de/fb2/personen/mitarbeiter/ruengeler/"
-      ["Michael Striewe"]="http://paluno.uni-due.de/das-institut/team/wissenschaftliche-mitarbeiter/michael-striewe/"
-      ["Özgü Alay"]="http://simula.no/people/ozgu"
-      ["Robin Seggelmann"]="http://www.robin-seggelmann.de/"
-      ["Simone Ferlin-Oliveira"]="http://simula.no/people/ferlin"
-      ["Paul D. Amer"]="http://www.eecis.udel.edu/~amer/"
-      ["Randall R. Stewart"]="http://people.freebsd.org/~rrs/"
-      ["Jobin Pulinthanath"]="http://www.tdr.wiwi.uni-due.de/team/ehemalige-mitarbeiter/jobin-pulinthanath/"
       ["Andreas Jungmaier"]="http://www.tdr.wiwi.uni-due.de/team/ehemalige-mitarbeiter/andreas-jungmaier/"
       ["Carsten Hohendorf"]="http://www.tdr.wiwi.uni-due.de/team/ehemalige-mitarbeiter/carsten-hohendorf/"
-      ["Sebastian Werner"]="http://www.tdr.wiwi.uni-due.de/team/sebastian-werner/"
-      ["Markus Packeiser"]="http://www.tdr.wiwi.uni-due.de/team/markus-packeiser/"
+      ["Christian Henke"]="http://www.av.tu-berlin.de/menue/team/former_fellows/christian_henke/"
       ["Daniel Bialla"]="https://www.uni-due.de/zim/organisation/mitarbeiterInnen/mitarbeiter_details.php?id=104"
       ["Dieter Huth"]="https://www.uni-due.de/zim/organisation/mitarbeiterInnen/mitarbeiter_details.php?id=35"
-      ["Johannes Formann"]="http://dc.informatik.uni-essen.de/Formann/all/"
+      ["Ernst Gunnar Gran"]="https://simula.no/people/ernstgr"
+      ["Erwin Paul Rathgeb"]="http://www.tdr.wiwi.uni-due.de/team/erwin-p-rathgeb/"
+      ["Fu Fa"]="http://cist.hainu.edu.cn/news/showteacherdetail.do?userId=44"
+      ["Hakim Adhari"]="http://www.tdr.wiwi.uni-due.de/team/hakim-adhari/"
+      ["Irene Rüngeler"]="https://www.fh-münster.de/fb2/personen/mitarbeiter/ruengeler/"
       ["Janardhan R. Iyengar"]="http://www.fandm.edu/janardhan-iyengar"
-      ["Christian Henke"]="http://www.av.tu-berlin.de/menue/team/former_fellows/christian_henke/"
+      ["Jobin Pulinthanath"]="http://www.tdr.wiwi.uni-due.de/team/ehemalige-mitarbeiter/jobin-pulinthanath/"
+      ["Johannes Formann"]="http://dc.informatik.uni-essen.de/Formann/all/"
+      ["Markus Packeiser"]="http://www.tdr.wiwi.uni-due.de/team/markus-packeiser/"
+      ["Martin Becke"]="http://www.familie-becke.de/"
+      ["Michael Striewe"]="http://paluno.uni-due.de/das-institut/team/wissenschaftliche-mitarbeiter/michael-striewe/"
+      ["Michael Tüxen"]="https://www.fh-muenster.de/fb2/personen/professoren/tuexen/" 
+      ["Özgü Alay"]="http://simula.no/people/ozgu"
+      ["Paul D. Amer"]="http://www.eecis.udel.edu/~amer/"
+      ["Randall R. Stewart"]="http://people.freebsd.org/~rrs/"
+      ["Robin Seggelmann"]="http://www.robin-seggelmann.de/"
+      ["Sebastian Werner"]="http://www.tdr.wiwi.uni-due.de/team/sebastian-werner/"
+      ["Simone Ferlin-Oliveira"]="http://simula.no/people/ferlin"
+      ["Thomas Dreibholz"]="http://www.exp-math.uni-essen.de/~dreibh/"
+      ["Xing Zhou"]="http://cist.hainu.edu.cn/news/showteacherdetail.do?userId=66"
       # [""]=""
    )
 
@@ -42,18 +44,51 @@ if [ "$type" = "authorUrl" ] ; then
    if [ "$url" != "" ] ; then
       echo -n "<a href=\"$url\">$authorText</a>"
    else
-      echo >&2 "WARNING: No URL for author $author"
+      echo >&2 "NOTE: No URL for author $author"
       echo -n "$authorText"
    fi
 
 
 elif [ "$type" = "location" ] ; then
    place="$2"
+   city=""
+   region=""
+   country=""
+   url=""
+
+   if [[ "$place" =~ ^([^,]*)(,[ \t])([^/]*)/(.*)$ ]] ; then   # City, Region/Country
+       q=${BASH_REMATCH[0]}
+       city=${BASH_REMATCH[1]}
+       region=${BASH_REMATCH[3]}
+       country=${BASH_REMATCH[4]}
+   elif [[ "$place" =~ ^([^,]*)([,/][ \t]*)(.*)$ ]] ; then   # City/Country
+       city=${BASH_REMATCH[1]}
+       region=""
+       country=${BASH_REMATCH[3]}
+   elif [[ "$place" =~ ^([^,/]*)$ ]] ; then   # Country only (e.g. Singapore)
+       country=${BASH_REMATCH[1]}
+   else
+       echo >&2 "NOTE: Cannot interpret place $place"
+   fi
+
+   
+   if [ "$country" != "" ] ; then
+      s=""
+      if [ "$city" != "" ] ; then
+         s="$city, "
+      fi
+      if [ "$region" != "" ] ; then
+         s="$s$region, "
+      fi
+      s="$s$country"
+      url="https://www.openstreetmap.org/search?query=$s"
+   fi
+
    
    if [ "$url" != "" ] ; then
       echo -n "<a href=\"$url\">$place</a>"
    else
-      echo >&2 "WARNING: No URL for place $place"
+      echo >&2 "NOTE: No URL for place $place"
       echo -n "$place"
    fi
 fi
