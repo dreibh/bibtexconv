@@ -1005,7 +1005,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             }
          }
          else {
-            fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in custom printing template!",
+            fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in custom printing template!\n",
                      action.c_str());
             exit(1);
          }
