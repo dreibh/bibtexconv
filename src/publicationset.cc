@@ -1004,6 +1004,44 @@ std::string PublicationSet::applyTemplate(Node*                           public
                skip = true;
             }
          }
+         else if(action == "exec") {   // Execute command and pipe in the result
+            if(i + 1 < printingTemplateSize) {
+               StackEntry        entry = stack.back();
+               const std::string call  = result.substr(entry.pos);
+
+               if(skip != true) {
+                   // Text will already be skipped ...
+                  result.erase(entry.pos);   // Remove the written "exec" string.
+
+                  FILE* pipe = popen(call.c_str(), "r");
+                  if(pipe == NULL) {
+                     fprintf(stderr, "Unable to run %s!\n", call.c_str());
+                     exit(1);
+                  }
+                  
+                  skip = true;
+                  char buffer[16384];
+                  ssize_t inputBytes;
+                  while( (inputBytes = fread((char*)&buffer, 1, sizeof(buffer) - 1, pipe)) > 0 ) {
+                     if(inputBytes > 0) {
+                         buffer[inputBytes] = 0x00;
+                         result += buffer;
+                         skip = false;
+                     }
+                     else {
+                        fprintf(stderr, "Reading from run of %s failed!\n", call.c_str());
+                        exit(1);
+                     }
+                  }
+
+                  const int returnCode = pclose(pipe);
+                  if(returnCode != 0) {
+                     fprintf(stderr, "Run of %s failed with code %d!\n", call.c_str(), returnCode);
+                     exit(1);
+                  }
+               }
+            }          
+         }
          else {
             fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in custom printing template!\n",
                      action.c_str());
