@@ -53,7 +53,9 @@ template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 template+ <li><p class=\"description\">
 
 # ***** Authors
-template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[,~%{author-give-name}]%{end-author-loop}:
+template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]
+template+ [./get-author-url authors.list "%{author-give-name} %{author-family-name}" "%{author-family-name}[,~%{author-give-name}]"%{exec}]
+template+ %{end-author-loop}:
 # ***** Title
 template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´]
 # ****** URL
