@@ -27,10 +27,10 @@ if(length(args) != 3) {
 }
 
 fileName     <- args[1]
-authorName   <- args[2]
+authorName   <- gsub("&nbsp;", " ", args[2])
 defaultText  <- args[3]
 authorsTable <- read.table(fileName, header=TRUE)
-authorIndex  <- which(authorsTable$Name == args[2])
+authorIndex  <- which(authorsTable$Name == authorName)
 
 if(length(authorIndex) == 0) {   # Case #1: the name is not in the table -> use default text
    cat(sep="", defaultText)
