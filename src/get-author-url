@@ -1,4 +1,4 @@
-#!/usr/bin/Rscript
+#!/usr/bin/Rscript --default-packages=utils
 # $Id$
 #
 # Web example script to get HTML author URL from author in list
@@ -19,6 +19,8 @@
 #
 # Contact: dreibh@iem.uni-due.de
 #
+
+require(utils)
 
 args <- commandArgs(TRUE)
 if(length(args) != 3) {

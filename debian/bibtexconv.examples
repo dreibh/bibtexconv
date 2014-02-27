@@ -3,3 +3,5 @@ src/ODT-Template.odt
 src/odt-example.export
 src/text-example.export
 src/web-example.export
+src/authors.list
+src/get-author-url
