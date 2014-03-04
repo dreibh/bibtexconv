@@ -33,11 +33,11 @@ AC_ARG_ENABLE([maintainer-mode],
 [  --enable-maintainer-mode            enable maintainer mode ]
 [default=yes]],enable_maintainer_mode=$enableval,enable_maintainer_mode=no)
 if test "$enable_maintainer_mode" = "yes"; then
-   CFLAGS="$CFLAGS -Wall -g3"
-   CXXFLAGS="$CXXFLAGS -Wall -g3"
+   CFLAGS="$CFLAGS -Wall -Wunreachable-code -g3"
+   CXXFLAGS="$CXXFLAGS -Wall -Wunreachable-code -g3"
 else
-   CFLAGS="$CFLAGS -Wall"
-   CXXFLAGS="$CXXFLAGS -Wall"
+   CFLAGS="$CFLAGS -Wall -Wunreachable-code"
+   CXXFLAGS="$CXXFLAGS -Wall -Wunreachable-code"
 fi
 
 
