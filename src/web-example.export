@@ -55,7 +55,7 @@ template+ <li><p class=\"description\">
 
 # ***** Authors
 template+ %{begin-author-loop}[%{is-first-author?}|%{is-last-author?} and |; ]
-template+ [./get-author-url authors.list "%{author-family-name}[, %{author-give-name}]" "%{author-family-name}[,~%{author-give-name}]"%{exec}]
+template+ [./get-author-url authors.list '%{author-family-name}[, %{author-give-name}]' '%{author-family-name}[,~%{author-give-name}]'%{exec}]
 template+ %{end-author-loop}:
 # ***** Title
 template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´]
