@@ -24,14 +24,17 @@
 import codecs
 import csv
 import sys
+import re;
 
 
 if len(sys.argv) != 4:
    sys.stderr.write('Usage: get-author-url author_list author_name default_text\n')
    sys.exit(1)
 
+replaceBbspStrings = re.compile(u'&nbsp;', re.UNICODE)
+
 authorList = unicode(sys.argv[1], 'utf-8')
-authorName = unicode(sys.argv[2], 'utf-8')
+authorName = unicode(replaceBbspStrings.sub(u' ', unicode(sys.argv[2], 'utf-8')))
 authorText = unicode(sys.argv[3], 'utf-8')
 
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
