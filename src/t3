@@ -1,0 +1,28 @@
+#!/usr/bin/python
+
+from xml.dom.minidom import parse
+
+xmldoc = parse('y.xml')
+
+
+authorList = xmldoc.getElementsByTagName('author') 
+for author in authorList:
+   print author.attributes['fullname'].value
+
+dateList = xmldoc.getElementsByTagName('date')
+month = dateList[0].attributes['month'].value
+try:
+   day = dateList[0].attributes['day'].value
+except:
+   day = 0
+year  = dateList[0].attributes['year'].value
+print day,month,year
+
+titleList = xmldoc.getElementsByTagName('title')
+title = titleList[0].childNodes[0].data
+print title
+
+seriesInfoList = xmldoc.getElementsByTagName('seriesInfo')
+series = seriesInfoList[0].attributes['name'].value
+name   = seriesInfoList[0].attributes['value'].value
+print series, name
