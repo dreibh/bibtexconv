@@ -1,4 +1,25 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+# $Id$
+#
+# Web example script to get HTML author URL from author in list
+# Copyright (C) 2014 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: dreibh@iem.uni-due.de
+#
 
 from xml.dom.minidom import parse
 import re
@@ -8,8 +29,8 @@ import csv
 import codecs
 
 
-# ====== Handle arguments ===================================================
-document = '/home/dreibh/src/bibxml/bibxml3/reference.I-D.draft-ietf-behave-sctpnat-09.xml'
+draftPrefix = 'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.'
+rfcPrefix   = 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.'
 
 
 # ====== Unicode wrapper for CSV reader =====================================
@@ -27,82 +48,131 @@ def utf_8_encoder(unicode_csv_data):
         yield line.encode('utf-8')
 
 
-# ====== Get document information from XML file =============================
-xmlFile = parse(document)
+# ====== Get BibTeX from IETF document ======================================
+def getBibTeXFromIETFDocument(document):
+   url      = ''
+   m = re.match('^draft-(.*)$', document)
+   if m != None:
+      print m.group(1)
+      url = draftPrefix + m.group(1) + '.xml'
 
-authorSurnameList = []
-authorList = xmlFile.getElementsByTagName('author') 
-for author in authorList:
-   print author.attributes['initials'].value[0]
-   authorRegExp = author.attributes['initials'].value[0] + '.*' + \
-                  author.attributes['surname'].value
-   authorSurnameList.append(authorRegExp)
+   if url == '':
+      m = re.match('^RFC([0-9]*)$', document)
+      if m != None:
+         print m.group(1)
+         url = rfcPrefix + m.group(1) + '.xml'
 
-dateList = xmlFile.getElementsByTagName('date')
-month = dateList[0].attributes['month'].value
-try:
-   day = dateList[0].attributes['day'].value
-except:
-   day = 0
-year = dateList[0].attributes['year'].value
-print day,month,year
-
-titleList = xmlFile.getElementsByTagName('title')
-title = titleList[0].childNodes[0].data
-print title
-
-seriesInfoList = xmlFile.getElementsByTagName('seriesInfo')
-series = seriesInfoList[0].attributes['name'].value
-name   = seriesInfoList[0].attributes['value'].value
-print series, name
-
-formatList = xmlFile.getElementsByTagName('format')
-url = formatList[0].attributes['target'].value
-print url
+   if url == '':
+      sys.stderr.write('ERROR: Unknown document type ' + document + '!\n')
+      sys.exit(1)
 
 
-# ====== Get full author list from text file ================================
-print 'Fetching ' + url + ' ...'
-txtFile = open('d.txt')
-#urllib.urlopen(url)
+   # ====== Get document information from XML file =============================
+   print 'Fetching ' + url + ' ...'
+   try:
+      xmlFile = urllib.urlopen(url)
+      print 'Parsing XML ...'
+      xmlDocument = parse(xmlFile)
+   except:
+      sys.stderr.write('ERROR: Failed to get XML information from ' + url + '!\n')
+      sys.exit(1)
 
-fullAuthorList   = []
-inAuthorsSection = False
-line = txtFile.readline()
-while line:
-   if len(authorSurnameList) < 1:
-      break
-   if inAuthorsSection == True:
-      if re.search('^[\s]', line):
-         if not re.search('^[\s]*$', line):
-           m = re.match('[^a-zA-Z0-9]+(' + authorSurnameList[0] + ')$', line)
-           if m != None:
-              fullAuthorList.append(m.group(1))
-              authorSurnameList.remove(authorSurnameList[0])
-              #sys.stdout.write(line)
-      else:
-         inAuthorsSection = False
-   else:
-      if re.search('^(Authors. Addresses)$', line):
-         inAuthorsSection = True   
-   
+   authorSurnameList = []
+   authorList = xmlDocument.getElementsByTagName('author') 
+   for author in authorList:
+      # print author.attributes['initials'].value[0]
+      authorRegExp = author.attributes['initials'].value[0] + '.*' + \
+                     author.attributes['surname'].value
+      authorSurnameList.append(authorRegExp)
+
+   dateList = xmlDocument.getElementsByTagName('date')
+   month = dateList[0].attributes['month'].value
+   try:
+      day = dateList[0].attributes['day'].value
+   except:
+      day = 0
+   year = dateList[0].attributes['year'].value
+   print day,month,year
+
+   titleList = xmlDocument.getElementsByTagName('title')
+   title = titleList[0].childNodes[0].data
+   print title
+
+   seriesInfoList = xmlDocument.getElementsByTagName('seriesInfo')
+   series = seriesInfoList[0].attributes['name'].value
+   name   = seriesInfoList[0].attributes['value'].value
+   print series, name
+
+   formatList = xmlDocument.getElementsByTagName('format')
+   url = formatList[0].attributes['target'].value
+   print url
+
+
+   # ====== Get full author list from text file ================================
+   print 'Fetching ' + url + ' ...'
+   try:
+      txtFile = urllib.urlopen(url)
+   except:
+      sys.stderr.write('ERROR: Failed to get document from ' + url + '!\n')
+      sys.exit(1)
+
+   fullAuthorList   = []
+   inAuthorsSection = False
    line = txtFile.readline()
-
-print fullAuthorList
-
-
-# ====== Fix author list via author fix list ================================
-csv.register_dialect('authors-fix', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
-
-inputFile = codecs.open('authors-fix.list', 'r', 'utf-8')
-inputCSV = unicode_csv_reader(inputFile, dialect='authors-fix')
-
-authorRow = None
-for row in inputCSV:
-   for i in range(0, len(fullAuthorList), 1):
-      if row[0] == fullAuthorList[i]:
-         print 'Fix: ' + fullAuthorList[i] + ' -> ' + row[1]
-         fullAuthorList[i] = row[1]
+   while line:
+      if len(authorSurnameList) < 1:
          break
-        
-print fullAuthorList
+      if inAuthorsSection == True:
+         if re.search('^[\s]', line):
+            if not re.search('^[\s]*$', line):
+              m = re.match('[^a-zA-Z0-9]+(' + authorSurnameList[0] + ')(, Ed\.|)$', line)
+              if m != None:
+                 fullAuthorList.append(m.group(1))
+                 authorSurnameList.remove(authorSurnameList[0])
+              # sys.stdout.write(line)
+              
+         # Staying in author search mode: the line may just be a header!
+         #else:
+            #inAuthorsSection = False
+            
+      else:
+         if re.search('^.*(Authors\' Addresses|Editor\'s Address)$', line):
+            inAuthorsSection = True   
+      
+      line = txtFile.readline()
+
+   print authorSurnameList
+   print fullAuthorList
+
+   if len(authorSurnameList) > 0:
+      sys.stderr.write('ERROR: Unable to obtain full author name list!\n')
+      sys.stderr.write('Still missing: ' + str(authorSurnameList) + '\n')
+      sys.exit(1)
+
+
+   # ====== Fix author list via author fix list ================================
+   csv.register_dialect('authors-fix', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
+
+   inputFile = codecs.open('authors-fix.list', 'r', 'utf-8')
+   inputCSV = unicode_csv_reader(inputFile, dialect='authors-fix')
+
+   authorRow = None
+   for row in inputCSV:
+      for i in range(0, len(fullAuthorList), 1):
+         if row[0] == fullAuthorList[i]:
+            print 'Fix: ' + fullAuthorList[i] + ' -> ' + row[1]
+            fullAuthorList[i] = row[1]
+            break
+
+   print authorSurnameList
+   print fullAuthorList
+
+
+
+# ###### Handle arguments ###################################################
+if len(sys.argv) < 2:
+   sys.stderr.write('Usage: ietf2bibtex document [...]\n')
+   sys.exit(1)
+
+for i in range(1, len(sys.argv)):
+   getBibTeXFromIETFDocument(sys.argv[i])
