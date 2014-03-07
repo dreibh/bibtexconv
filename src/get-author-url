@@ -27,6 +27,7 @@ import sys
 import re;
 
 
+# ====== Handle arguments ===================================================
 if len(sys.argv) != 4:
    sys.stderr.write('Usage: get-author-url author_list author_name default_text\n')
    sys.exit(1)
@@ -42,6 +43,7 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 sys.stdin  = codecs.getreader('utf8')(sys.stdin)
 
 
+# ====== Unicode wrapper for CSV reader =====================================
 def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
     # csv.py doesn't do Unicode; encode temporarily as UTF-8:
     csv_reader = csv.reader(utf_8_encoder(unicode_csv_data),
@@ -50,16 +52,19 @@ def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
         # decode UTF-8 back to Unicode, cell by cell:
         yield [unicode(cell, 'utf-8') for cell in row]
 
+# ====== Unicode wrapper for CSV reader =====================================
 def utf_8_encoder(unicode_csv_data):
     for line in unicode_csv_data:
         yield line.encode('utf-8')
 
 
-csv.register_dialect('authors', delimiter=' ', quoting=csv.QUOTE_MINIMAL,skipinitialspace=True)
+# ====== Read CSV authors list ==============================================
+csv.register_dialect('authors', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
 
 inputFile = codecs.open('authors.list', 'r', 'utf-8')
 inputCSV = unicode_csv_reader(inputFile, dialect='authors')
 
+# ====== Output HTML ========================================================
 authorRow = None
 for row in inputCSV:
    # print row
