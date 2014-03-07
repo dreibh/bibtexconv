@@ -1,28 +1,108 @@
 #!/usr/bin/python
 
 from xml.dom.minidom import parse
+import re
+import sys
+import urllib
+import csv
+import codecs
 
-xmldoc = parse('y.xml')
+
+# ====== Handle arguments ===================================================
+document = '/home/dreibh/src/bibxml/bibxml3/reference.I-D.draft-ietf-behave-sctpnat-09.xml'
 
 
-authorList = xmldoc.getElementsByTagName('author') 
+# ====== Unicode wrapper for CSV reader =====================================
+def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
+    # csv.py doesn't do Unicode; encode temporarily as UTF-8:
+    csv_reader = csv.reader(utf_8_encoder(unicode_csv_data),
+                            dialect=dialect, **kwargs)
+    for row in csv_reader:
+        # decode UTF-8 back to Unicode, cell by cell:
+        yield [unicode(cell, 'utf-8') for cell in row]
+
+# ====== Unicode wrapper for CSV reader =====================================
+def utf_8_encoder(unicode_csv_data):
+    for line in unicode_csv_data:
+        yield line.encode('utf-8')
+
+
+# ====== Get document information from XML file =============================
+xmlFile = parse(document)
+
+authorSurnameList = []
+authorList = xmlFile.getElementsByTagName('author') 
 for author in authorList:
-   print author.attributes['fullname'].value
+   print author.attributes['initials'].value[0]
+   authorRegExp = author.attributes['initials'].value[0] + '.*' + \
+                  author.attributes['surname'].value
+   authorSurnameList.append(authorRegExp)
 
-dateList = xmldoc.getElementsByTagName('date')
+dateList = xmlFile.getElementsByTagName('date')
 month = dateList[0].attributes['month'].value
 try:
    day = dateList[0].attributes['day'].value
 except:
    day = 0
-year  = dateList[0].attributes['year'].value
+year = dateList[0].attributes['year'].value
 print day,month,year
 
-titleList = xmldoc.getElementsByTagName('title')
+titleList = xmlFile.getElementsByTagName('title')
 title = titleList[0].childNodes[0].data
 print title
 
-seriesInfoList = xmldoc.getElementsByTagName('seriesInfo')
+seriesInfoList = xmlFile.getElementsByTagName('seriesInfo')
 series = seriesInfoList[0].attributes['name'].value
 name   = seriesInfoList[0].attributes['value'].value
 print series, name
+
+formatList = xmlFile.getElementsByTagName('format')
+url = formatList[0].attributes['target'].value
+print url
+
+
+# ====== Get full author list from text file ================================
+print 'Fetching ' + url + ' ...'
+txtFile = open('d.txt')
+#urllib.urlopen(url)
+
+fullAuthorList   = []
+inAuthorsSection = False
+line = txtFile.readline()
+while line:
+   if len(authorSurnameList) < 1:
+      break
+   if inAuthorsSection == True:
+      if re.search('^[\s]', line):
+         if not re.search('^[\s]*$', line):
+           m = re.match('[^a-zA-Z0-9]+(' + authorSurnameList[0] + ')$', line)
+           if m != None:
+              fullAuthorList.append(m.group(1))
+              authorSurnameList.remove(authorSurnameList[0])
+              #sys.stdout.write(line)
+      else:
+         inAuthorsSection = False
+   else:
+      if re.search('^(Authors. Addresses)$', line):
+         inAuthorsSection = True   
+   
+   line = txtFile.readline()
+
+print fullAuthorList
+
+
+# ====== Fix author list via author fix list ================================
+csv.register_dialect('authors-fix', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
+
+inputFile = codecs.open('authors-fix.list', 'r', 'utf-8')
+inputCSV = unicode_csv_reader(inputFile, dialect='authors-fix')
+
+authorRow = None
+for row in inputCSV:
+   for i in range(0, len(fullAuthorList), 1):
+      if row[0] == fullAuthorList[i]:
+         print 'Fix: ' + fullAuthorList[i] + ' -> ' + row[1]
+         fullAuthorList[i] = row[1]
+         break
+        
+print fullAuthorList
