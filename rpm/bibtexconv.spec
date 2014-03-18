@@ -25,6 +25,8 @@ BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries 
 %setup -q
 
 %build
+autoreconf -if
+
 %configure
 make %{?_smp_mflags}
 
