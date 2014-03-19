@@ -482,6 +482,13 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       node->priority = 220;
    }
 
+   else if(node->keyword == "keywords") {
+      node->priority = 211;
+   }
+   else if(node->keyword == "abstract") {
+      node->priority = 210;
+   }
+   
    else if(node->keyword == "url") {
       node->priority = 199;
    }

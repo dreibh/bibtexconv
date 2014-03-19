@@ -846,6 +846,14 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "urn");
             if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
          }
+         else if(action == "keywords") {   // Keywords
+            child = findChildNode(publication, "keywords");
+            if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+         }
+         else if(action == "abstract") {   // Abstract
+            child = findChildNode(publication, "abstract");
+            if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
+         }
          else if( (action == "z") || (action == "url-mime") ) {   // URL mime type
             child = findChildNode(publication, "url.mime");
             if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
