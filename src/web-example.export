@@ -2,7 +2,11 @@
 # $Id$
 
 # Select all entries.
-citeAll
+# citeAll
+cite PAMS2014-LEDBAT
+cite PAMS2013-NorNet
+cite CAIA2014
+cite Dre2012
 
 # Usually, there should be a more fine-granular selection.
 # For convenience, it is useful to make them in included files.
@@ -29,9 +33,33 @@ echo <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">\n
 echo <head>\n
 echo <title>Publications</title>\n
 echo <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />\n
+echo <link rel="stylesheet" href="http://www.iem.uni-due.de/~dreibh/bonn.css" type="text/css" />\n
 echo </head>\n
 
 echo <body>\n\n
+
+
+echo <script type="text/javascript">\n
+
+echo function togglePublicationDetails(publication) {\n
+echo     var element = document.getElementById(publication + "-Details");\n
+echo     var link    = document.getElementById(publication + "-Link");\n
+echo     if(element.style.display == "block") {\n
+echo        element.style.display = "none";\n
+echo        link.innerHTML        = "More&nbsp;...";\n
+echo     }\n
+echo     else {\n
+echo         element.style.display = "block";\n
+echo         link.innerHTML        = "Less&nbsp;...";\n
+echo     }\n
+echo }\n\n
+
+echo function makePublicationDetailsLink(publication) {\n
+echo    document.write("<" + "a id=\\\"" + publication + "-Link\\\" href=\\\"javascript:togglePublicationDetails('" + publication + "');\\\"><" + "strong>Details ...<" + "/strong>" + "<" + "/a>");\n
+echo }\n
+
+echo </script>\n\n
+
 
 echo <!-- ###### Publications ############################################# -->\n
 echo <h2 id="Publications">Publications</h2>\n\n
@@ -73,12 +101,25 @@ template+ [%{url}%{is-not?})|%{language}%{is-not?})]
 # ***** Bibliographic data of publication
 template+ [, %{how-published}][, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
 template+ [, %{custom-3}|, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
-template+ [, %$][, %{school}][, %{institution}][, URN~<a href="http://www.nbn-resolving.de/%{urn}">%{urn}</a>][, DOI~<a href="http://dx.doi.org/%{doi}">%{doi}</a>][, %{isbn}][, %{issn}][, %{address}][, %{note}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}].
+template+ [, %$][, %{school}][, %{institution}][, URN~<a href="http://www.nbn-resolving.de/%{urn}">%{urn}</a>][, DOI~<a href="http://dx.doi.org/%{doi}">%{doi}</a>][, %{isbn}][, %{issn}][, %{address}][, %{note}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
+# ****** Toggle details
+template+ [[%{keywords}][%{abstract}]%{is-not?}
+template+ , \[<script type="text/javascript">makePublicationDetailsLink('Publications-%{html-label}');</script>\]
+template+ ]
+template+ .
 # ****** Awards
 template+ [ <strong>%{custom-1}.</strong>]
+template+ </p>
+# ***** Details
+template+ [[%{keywords}][%{abstract}]%{is-not?}\n
+template+ <noscript><p class="description"><strong>JavaScript is required for details!</strong></p></noscript>
+template+ <div id="Publications-%{html-label}-Details" class="publication-details-hiddenbox">
+template+ [<p class="publication-details"><strong>Keywords:</strong> %{keywords}</p>]
+template+ [<p class="publication-details"><strong>Abstract:</strong> %{abstract}</p>]
+template+ </div>\n]
 
 # ****** End of Entry
-template+ </p></li>\n\n
+template+ </li>\n\n
 
 # ***** End of Subsection: YEAR
 template+ [%{end-subdivision-year}</ul>\n\n]
