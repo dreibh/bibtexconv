@@ -7,6 +7,8 @@ cite PAMS2014-LEDBAT
 cite PAMS2013-NorNet
 cite CAIA2014
 cite Dre2012
+cite CRNA-Rapport2013
+cite LinuxTag2005
 
 # Usually, there should be a more fine-granular selection.
 # For convenience, it is useful to make them in included files.
@@ -41,21 +43,24 @@ echo <body>\n\n
 
 echo <script type="text/javascript">\n
 
+echo textShowDetails = "Details&nbsp;...";\n
+echo textHideDetails = "Less details&nbsp;...";\n\n
+
 echo function togglePublicationDetails(publication) {\n
 echo     var element = document.getElementById(publication + "-Details");\n
 echo     var link    = document.getElementById(publication + "-Link");\n
 echo     if(element.style.display == "block") {\n
 echo        element.style.display = "none";\n
-echo        link.innerHTML        = "More&nbsp;...";\n
+echo        link.innerHTML        = textShowDetails;\n
 echo     }\n
 echo     else {\n
 echo         element.style.display = "block";\n
-echo         link.innerHTML        = "Less&nbsp;...";\n
+echo         link.innerHTML        = textHideDetails;\n
 echo     }\n
 echo }\n\n
 
 echo function makePublicationDetailsLink(publication) {\n
-echo    document.write("<" + "a id=\\\"" + publication + "-Link\\\" href=\\\"javascript:togglePublicationDetails('" + publication + "');\\\"><" + "strong>Details ...<" + "/strong>" + "<" + "/a>");\n
+echo    document.write("<" + "a href=\\\"javascript:togglePublicationDetails('" + publication + "');\\\"><" + "strong id=\\\"" + publication + "-Link\\\">" + textShowDetails + "<" + "/strong>" + "<" + "/a>");\n
 echo }\n
 
 echo </script>\n\n
@@ -86,7 +91,9 @@ template+ %{begin-author-loop}[%{is-first-author?}|%{is-last-author?} and |; ]
 template+ [./get-author-url authors.list '%{author-family-name}[, %{author-give-name}]' '%{author-family-name}[, %{author-give-name}]'%{exec}]
 template+ %{end-author-loop}:
 # ***** Title
+template+ <span[%{language}%{is?norsk} xml:lang="no"|%{language}%{is?german} xml:lang="de"|%{language}%{is?ngerman} xml:lang="de"|%{language}%{is?english} xml:lang="en"]>
 template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´]
+template+ </span>
 # ****** URL
 template+ [%{url}%{is-not?} (|%{language}%{is-not?} (]
 template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB]
@@ -114,8 +121,12 @@ template+ </p>
 template+ [[%{keywords}][%{abstract}]%{is-not?}\n
 template+ <noscript><p class="description"><strong>JavaScript is required for details!</strong></p></noscript>
 template+ <div id="Publications-%{html-label}-Details" class="publication-details-hiddenbox">
-template+ [<p class="publication-details"><strong>Keywords:</strong> %{keywords}</p>]
-template+ [<p class="publication-details"><strong>Abstract:</strong> %{abstract}</p>]
+template+ [<p class="publication-details"><strong>Keywords: </strong>
+template+ <span[%{language}%{is?norsk} xml:lang="no"|%{language}%{is?german} xml:lang="de"|%{language}%{is?ngerman} xml:lang="de"|%{language}%{is?english} xml:lang="en"]>%{keywords}</span></p>
+template+ ]
+template+ [<p class="publication-details"><strong>Abstract: </strong>
+template+ <span[%{language}%{is?norsk} xml:lang="no"|%{language}%{is?german} xml:lang="de"|%{language}%{is?ngerman} xml:lang="de"|%{language}%{is?english} xml:lang="en"]>%{abstract}</span></p>
+template+ ]
 template+ </div>\n]
 
 # ****** End of Entry
