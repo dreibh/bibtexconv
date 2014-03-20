@@ -125,30 +125,44 @@ struct LanguageTableEntry
    const char* latex;
 };
 
+// based on ISO 639-1 codes
+// URL: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 static const LanguageTableEntry languageTable[] = {
    { "de",    "german"     },
    { "de",    "ngerman"    },  
-   { "de-at", "austrian"   },
-   { "de-at", "naustrian"  },  
+   { "de-AT", "austrian"   },
+   { "de-AT", "naustrian"  },  
    { "en",    "english"    },
    
-   { "en-us", "USenglish"  },
-   { "en-us", "american"   },
-   { "en-gb", "UKenglish"  },
-   { "en-gb", "british"    },
-   { "en-ca", "canadian"   },
-   { "en-au", "australian" },
-   { "en-nz", "newzealand" },
+   { "en-US", "USenglish"  },
+   { "en-US", "american"   },
+   { "en-GB", "UKenglish"  },
+   { "en-GB", "british"    },
+   { "en-CA", "canadian"   },
+   { "en-AU", "australian" },
+   { "en-NZ", "newzealand" },
    
-   { "no-nb", "norsk"      },
-   { "no-nn", "nynorsk"    },
+   { "nb-NO", "norsk"      },
+   { "nn-NO", "nynorsk"    },
    
    { "fr",    "french"     },
    { "fr",    "francais"   },
    
+   { "it",    "italian"    },
    { "es",    "spanish"    },
-
-   { "pt",    "portugese"  }
+   { "pt",    "portugese"  },
+   { "sv",    "swedish"    },
+   { "da",    "danish"     },
+   { "nl",    "dutch"      },
+   { "la",    "latin"      },
+   
+   { "zh-CN", "chinese"    },
+   { "ja-JP", "japanese"   },
+   { "arb",   "arabic"     },
+   { "fas",   "farsi"      },
+   { "ko",    "korean"     },
+   { "ru",    "russian"    },
+   { "el",    "Greek"      }
 };
 
 
