@@ -862,10 +862,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          else if(action == "abstract") {   // Abstract
             child = findChildNode(publication, "abstract");
-            if(child) {
-               std::string abstract = string2utf8(child->value, nbsp, lineBreak, xmlStyle);
-               result += abstract;         
-            } else { skip = true; }
+            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
          else if( (action == "z") || (action == "url-mime") ) {   // URL mime type
             child = findChildNode(publication, "url.mime");

@@ -115,9 +115,7 @@ static const ReplaceTableEntry replaceTable[] = {
    { "\\\"" ,      "\"",       "&quot;"  },
    { "&"  ,        "&",        "&amp;"   },
    { "'"  ,        "'",        "&apos;"  },
-   { "--"  ,       "–",        "–"       },
-
-   { "\n"  ,       "\n",        "<br/>"  }
+   { "--"  ,       "–",        "–"       }
 };
 
 
@@ -188,6 +186,7 @@ std::string string2utf8(const std::string& string,
 {
    std::string result(string);
    size_t      pos = 0;
+
    while(pos < result.size()) {
       for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
          if(result.substr(pos, replaceTable[i].input.size()) == replaceTable[i].input) {
@@ -198,13 +197,15 @@ std::string string2utf8(const std::string& string,
          }
       }
 
-      if(nbsp.size() > 0) {
-         if(result.substr(pos, 1) == "~") {
-            result.replace(pos, 1, nbsp);
-         }
-         else if(result.substr(pos, 1) == "\\n") {
-            result.replace(pos, 1, lineBreak);
-         }
+      // Non-breakable space
+      if( (nbsp.size() > 0) && (result.substr(pos, 1) == "~")) {
+         result.replace(pos, 1, nbsp);
+      }
+      
+      // Line break
+      if(result.substr(pos, 1) == "\n") {
+         result.replace(pos, 1, lineBreak);
+         pos += lineBreak.size() - 1;
       }
 
       pos++;
