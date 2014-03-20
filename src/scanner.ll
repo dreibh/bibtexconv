@@ -50,9 +50,8 @@ std::string comment;
  /* ====== Quoted string ================================================= */
 \"                                                   { BEGIN STRING; string = ""; }
 <STRING>\\n                                          { string += '\n'; }
-<STRING>\\t                                          { string += '\t'; }
 <STRING>\\\"                                         { string += "\\\""; }
-<STRING>\n                                           { ++yylineno; }
+<STRING>\n                                           { string += '\n'; ++yylineno; }
 <STRING>\"                                           { BEGIN 0;
                                                        yylval.iText = strdup(string.c_str());
                                                        // printf("S1=<%s> l=%d\n",yylval.iText, yylineno);
@@ -99,7 +98,6 @@ std::string comment;
 
  /* ====== Miscellaneous ==================================================== */
 " "                                                  { }
-"\t"                                                 { }
 "\r"                                                 { }
 "\n"                                                 { }
 

@@ -73,6 +73,7 @@ class PublicationSet
                                             const std::string&              printingTemplate,
                                             const std::vector<std::string>& monthNames,
                                             const std::string&              nbsp,
+                                            const std::string&              lineBreak,
                                             const bool                      xmlStyle,
                                             const char*                     downloadDirectory,
                                             FILE*                           fh);
@@ -85,6 +86,7 @@ class PublicationSet
                                     const std::string&              printingTemplate,
                                     const std::vector<std::string>& monthNames,
                                     const std::string&              nbsp,
+                                    const std::string&              lineBreak,
                                     const bool                      xmlStyle,
                                     const char*                     downloadDirectory,
                                     FILE*                           fh);

@@ -115,7 +115,9 @@ static const ReplaceTableEntry replaceTable[] = {
    { "\\\"" ,      "\"",       "&quot;"  },
    { "&"  ,        "&",        "&amp;"   },
    { "'"  ,        "'",        "&apos;"  },
-   { "--"  ,       "–",        "–"       }
+   { "--"  ,       "–",        "–"       },
+
+   { "\n"  ,       "\n",        "<br/>"  }
 };
 
 
@@ -181,6 +183,7 @@ const char* getXMLLanguageFromLaTeX(const char* language)
 // ###### Convert ASCII string to UTF-8 #####################################
 std::string string2utf8(const std::string& string,
                         const std::string& nbsp,
+                        const std::string& lineBreak,
                         const bool         xmlStyle)
 {
    std::string result(string);
@@ -189,14 +192,19 @@ std::string string2utf8(const std::string& string,
       for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
          if(result.substr(pos, replaceTable[i].input.size()) == replaceTable[i].input) {
             result.replace(pos, replaceTable[i].input.size(),
-                                ((xmlStyle == true) ? replaceTable[i].xmlOutput : replaceTable[i].utf8Output));
+                           ((xmlStyle == true) ? replaceTable[i].xmlOutput : replaceTable[i].utf8Output));
             pos += ((xmlStyle == true) ? replaceTable[i].xmlOutput.size() : replaceTable[i].utf8Output.size()) - 1;
             break;
          }
       }
 
-      if( (nbsp.size() > 0) && (result.substr(pos, 1) == "~") ) {
-         result.replace(pos, 1, nbsp);
+      if(nbsp.size() > 0) {
+         if(result.substr(pos, 1) == "~") {
+            result.replace(pos, 1, nbsp);
+         }
+         else if(result.substr(pos, 1) == "\\n") {
+            result.replace(pos, 1, lineBreak);
+         }
       }
 
       pos++;
@@ -298,7 +306,7 @@ std::string extractToken(std::string& string, const std::string& delimiters)
 }
 
 
-// ###### Process backslash comments (newline, tab, etc.) ###################
+// ###### Process backslash commands (newline, tab, etc.) ###################
 std::string processBackslash(const std::string& string)
 {
    const size_t size   = string.size();
@@ -309,9 +317,6 @@ std::string processBackslash(const std::string& string)
          switch(string[i + 1]) {
             case 'n':
                result += '\n';
-             break;
-            case 't':
-               result += '\t';
              break;
             case 'x':
                if(i + 3 < size) {
@@ -325,7 +330,16 @@ std::string processBackslash(const std::string& string)
                   }
                }
              break;
+            case '\\':
+            case ' ':
+            case '"':
+            case '\'':
+            case '{':
+            case '}':
+               result += string[i + 1];
+             break;
             default:
+               result += string[i + 0];
                result += string[i + 1];
              break;
          }
@@ -404,6 +418,17 @@ std::string format(const char* fmt, ...)
    vsnprintf(buffer, sizeof(buffer), fmt, va);
    va_end(va);
    return(std::string(buffer));
+}
+
+
+// ###### Replace all occurrences of from by to #############################
+void replaceAll(std::string& str, const std::string &from, const std::string& to)
+{
+   size_t pos = 0;
+   while ((pos = str.find(from, pos)) != std::string::npos) {
+      str.replace(pos, from.length(), to);
+      pos += to.length();
+   }
 }
 
 

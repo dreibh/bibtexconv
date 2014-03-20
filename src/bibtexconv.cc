@@ -420,6 +420,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
 // ###### Handle interactive input ##########################################
 static bool                     useXMLStyle            = false;
 static std::string              nbsp                   = " ";
+static std::string              lineBreak              = "\n";
 static std::string              customPrintingHeader   = "";
 static std::string              customPrintingTrailer  = "";
 static std::string              customPrintingTemplate =
@@ -539,7 +540,7 @@ static int handleInput(FILE*           fh,
             if(PublicationSet::exportPublicationSetToCustom(
                   &publicationSet, namingTemplate,
                   customPrintingHeader, customPrintingTrailer,
-                  customPrintingTemplate, monthNames, nbsp, useXMLStyle,
+                  customPrintingTemplate, monthNames, nbsp, lineBreak, useXMLStyle,
                   downloadDirectory, stdout) == false) {
                result++;
             }
@@ -588,6 +589,9 @@ static int handleInput(FILE*           fh,
          }
          else if((strncmp(input, "nbsp ", 5)) == 0) {
             nbsp = (const char*)&input[5];
+         }
+         else if((strncmp(input, "linebreak ", 10)) == 0) {
+            lineBreak = (const char*)&input[10];
          }
          else if((strncmp(input, "utf8Style", 8)) == 0) {
             useXMLStyle = false;
@@ -687,7 +691,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s BibTeX_File {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-check-urls} {-only-check-new-urls} {-ignore-updates-for-html} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
+      fprintf(stderr, "Usage: %s BibTeX_File {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-linebreak=string} {-check-urls} {-only-check-new-urls} {-ignore-updates-for-html} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -711,6 +715,9 @@ int main(int argc, char** argv)
       }
       else if( strncmp(argv[i], "-nbsp=", 5) == 0 ) {
          nbsp = (const char*)&argv[i][5];
+      }
+      else if( strncmp(argv[i], "-linebreak=", 11) == 0 ) {
+         lineBreak = (const char*)&argv[i][11];
       }
       else if( strcmp(argv[i], "-non-interactive") == 0 ) {
          interactive = false;
@@ -792,7 +799,7 @@ int main(int argc, char** argv)
                   &publicationSet, "%u",
                   customPrintingHeader, customPrintingTrailer,
                   customPrintingTemplate, monthNames,
-                  nbsp, useXMLStyle, downloadDirectory,
+                  nbsp, lineBreak, useXMLStyle, downloadDirectory,
                   stdout) == false) {
                exit(1);
             }

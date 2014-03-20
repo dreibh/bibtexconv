@@ -29,11 +29,12 @@
 const char* getXMLLanguageFromLaTeX(const char* language);
 
 std::string string2utf8(const std::string& string,
-                        const std::string& nbsp = " ",
-                        const bool         xmlStyle = false);
+                        const std::string& nbsp      = " ",
+                        const std::string& lineBreak = "\n",
+                        const bool         xmlStyle  = false);
 
 inline std::string string2xml(const std::string& string) {
-   return(string2utf8(string, "&#160;", true));
+   return(string2utf8(string, "&#160;", "\n", true));
 }
 
 std::string& removeBrackets(std::string& string);
@@ -45,6 +46,7 @@ std::string urlToLaTeX(const std::string& str);
 std::string labelToHTMLLabel(const std::string& string);
 std::string labelToXMLLabel(const std::string& string);
 std::string format(const char* fmt, ...);
+void replaceAll(std::string& str, const std::string& from, const std::string& to);
 bool hasPrefix(const std::string& string, const std::string& prefix, std::string& rest);
 
 #endif
