@@ -21,6 +21,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <algorithm>
 
 #include "stringhandling.h"
@@ -116,6 +117,51 @@ static const ReplaceTableEntry replaceTable[] = {
    { "'"  ,        "'",        "&apos;"  },
    { "--"  ,       "–",        "–"       }
 };
+
+
+struct LanguageTableEntry
+{
+   const char* xml;
+   const char* latex;
+};
+
+static const LanguageTableEntry languageTable[] = {
+   { "de",    "german"     },
+   { "de",    "ngerman"    },  
+   { "de-at", "austrian"   },
+   { "de-at", "naustrian"  },  
+   { "en",    "english"    },
+   
+   { "en-us", "USenglish"  },
+   { "en-us", "american"   },
+   { "en-gb", "UKenglish"  },
+   { "en-gb", "british"    },
+   { "en-ca", "canadian"   },
+   { "en-au", "australian" },
+   { "en-nz", "newzealand" },
+   
+   { "no-nb", "norsk"      },
+   { "no-nn", "nynorsk"    },
+   
+   { "fr",    "french"     },
+   { "fr",    "francais"   },
+   
+   { "es",    "spanish"    },
+
+   { "pt",    "portugese"  }
+};
+
+
+// ###### Get XML language ##################################################
+const char* getXMLLanguageFromLaTeX(const char* language)
+{
+   for(size_t i = 0; i < (sizeof(languageTable) / sizeof(LanguageTableEntry)); i++) {
+      if(strcmp(languageTable[i].latex, language) == 0) {
+         return(languageTable[i].xml);
+      }
+   }
+   return(NULL);
+}
 
 
 // ###### Convert ASCII string to UTF-8 #####################################

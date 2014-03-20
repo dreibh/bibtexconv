@@ -91,7 +91,7 @@ template+ %{begin-author-loop}[%{is-first-author?}|%{is-last-author?} and |; ]
 template+ [./get-author-url authors.list '%{author-family-name}[, %{author-give-name}]' '%{author-family-name}[, %{author-give-name}]'%{exec}]
 template+ %{end-author-loop}:
 # ***** Title
-template+ <span[%{language}%{is?norsk} xml:lang="no"|%{language}%{is?german} xml:lang="de"|%{language}%{is?ngerman} xml:lang="de"|%{language}%{is?english} xml:lang="en"]>
+template+ <span[ xml:lang="%{xml-language}"]>
 template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´]
 template+ </span>
 # ****** URL
@@ -122,10 +122,10 @@ template+ [[%{keywords}][%{abstract}]%{is-not?}\n
 template+ <noscript><p class="description"><strong>JavaScript is required for details!</strong></p></noscript>
 template+ <div id="Publications-%{html-label}-Details" class="publication-details-hiddenbox">
 template+ [<p class="publication-details"><strong>Keywords: </strong>
-template+ <span[%{language}%{is?norsk} xml:lang="no"|%{language}%{is?german} xml:lang="de"|%{language}%{is?ngerman} xml:lang="de"|%{language}%{is?english} xml:lang="en"]>%{keywords}</span></p>
+template+ <span[ xml:lang="%{xml-language}"]>%{keywords}</span></p>
 template+ ]
 template+ [<p class="publication-details"><strong>Abstract: </strong>
-template+ <span[%{language}%{is?norsk} xml:lang="no"|%{language}%{is?german} xml:lang="de"|%{language}%{is?ngerman} xml:lang="de"|%{language}%{is?english} xml:lang="en"]>%{abstract}</span></p>
+template+ <span[ xml:lang="%{xml-language}"]>%{abstract}</span></p>
 template+ ]
 template+ </div>\n]
 

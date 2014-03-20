@@ -26,6 +26,8 @@
 #include <string>
 
 
+const char* getXMLLanguageFromLaTeX(const char* language);
+
 std::string string2utf8(const std::string& string,
                         const std::string& nbsp = " ",
                         const bool         xmlStyle = false);

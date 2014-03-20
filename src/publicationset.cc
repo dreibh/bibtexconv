@@ -834,6 +834,15 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "language");
             if(child) { result += string2utf8(child->value, nbsp, xmlStyle); } else { skip = true; }
          }
+         else if( (action == "x") || (action == "xml-language") ) {   // Language
+            child = findChildNode(publication, "language");
+            if(child) {
+               const char* language = getXMLLanguageFromLaTeX(child->value.c_str());
+               if(language != NULL) {                   
+                  result += std::string(language);
+               } else { skip = true; }
+            } else { skip = true; }
+         }
          else if( (action == "U") || (action == "url") ) {   // URL
             child = findChildNode(publication, "url");
             if(child) { result += string2utf8(child->value, "", xmlStyle); } else { skip = true; }
