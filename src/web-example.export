@@ -102,7 +102,7 @@ template+ </span>
 template+ [%{url}%{is-not?} (|%{language}%{is-not?} (]
 template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB]
 # ****** Language
-template+ [%{url}%{is-not?}[%x%{is-not?}, ]]
+template+ [%{url}%{is-not?}[%{language}%{is-not?}, ]]
 template+ [%{language}%{is?norsk}på norsk
 template+ |%{language}%{is?german}auf Deutsch
 template+ |%{language}%{is?ngerman}auf Deutsch
