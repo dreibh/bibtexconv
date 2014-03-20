@@ -1,7 +1,7 @@
 .\" $Id$
 .\"
 .\" BibTeX Converter
-.\" Copyright (C) 2010-2013 by Thomas Dreibholz
+.\" Copyright (C) 2010-2014 by Thomas Dreibholz
 .\"
 .\" This program is free software: you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 .\" Contact: dreibh@iem.uni-due.de
 .\"
 .\" ###### Setup ############################################################
-.Dd May 12, 2012
+.Dd Mar 21, 2014
 .Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -35,6 +35,7 @@ BibTeX_File
 .Op Fl export-to-xml=file
 .Op Fl export-to-separate-xmls=prefix
 .Op Fl nbsp=string
+.Op Fl linebreak=string
 .Op Fl non-interactive
 .Op Fl check-urls
 .Op Fl only-check-new-urls
@@ -71,6 +72,8 @@ into the given file.
 Write the results as XML; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex-"), the entry key and ".xml".
 .It Fl nbsp=string
 Replace non-breakable space by given string (for example, "&nbsp;" when writing HTML).
+.It Fl linebreak=string
+Replace linebreak by given string (for example, "<br />" when writing HTML).
 .It Fl check-urls
 Check URLs by downloading the content file and adding MD5, size and MIME type
 entries.
