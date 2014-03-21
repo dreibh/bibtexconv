@@ -312,6 +312,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          return(false);
       }
       fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
+      fputs("<!DOCTYPE rfc PUBLIC '-//IETF//DTD RFC 2629//EN' 'http://xml.resource.org/authoring/rfc2629.dtd'>\n", fh);
    }
 
    for(size_t index = 0; index < publicationSet->size(); index++) {
@@ -332,6 +333,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                return(false);
             }
             fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
+            fputs("<!DOCTYPE rfc PUBLIC '-//IETF//DTD RFC 2629//EN' 'http://xml.resource.org/authoring/rfc2629.dtd'>\n", fh);
          }
 
          const Node* title        = findChildNode(publication, "title");
