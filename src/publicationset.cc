@@ -781,6 +781,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "pages");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
+         else if(action == "numpages") {   // Number of pages
+            child = findChildNode(publication, "numpages");
+            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
+         }
          else if( (action == "@") || (action == "address") ) {   // Address
             child = findChildNode(publication, "address");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }

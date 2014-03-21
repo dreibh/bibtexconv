@@ -2,15 +2,15 @@
 # $Id$
 
 # Select all entries.
-citeAll
-#cite Globecom2010
-#cite LCN2005-EdgeDevice
-#cite PAMS2014-LEDBAT
-#cite PAMS2013-NorNet
-#cite CAIA2014
-#cite Dre2012
-#cite CRNA-Rapport2013
-#cite LinuxTag2005
+#citeAll
+cite Globecom2010
+cite LCN2005-EdgeDevice
+cite PAMS2014-LEDBAT
+cite PAMS2013-NorNet
+cite CAIA2014
+cite Dre2012
+cite CRNA-Rapport2013
+cite LinuxTag2005
 
 # Usually, there should be a more fine-granular selection.
 # For convenience, it is useful to make them in included files.
@@ -100,7 +100,7 @@ template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´�
 template+ </span>
 # ****** URL
 template+ [%{url}%{is-not?} (|%{language}%{is-not?} (]
-template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB]
+template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB[, %{numpages}~pages]]
 # ****** Language
 template+ [%{url}%{is-not?}[%{language}%{is-not?}, ]]
 template+ [%{language}%{is?norsk}på norsk
