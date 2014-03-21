@@ -15,7 +15,7 @@ Standards-Version: 3.9.4
 Package: bibtexconv
 Architecture: any
 Depends: file,
-         zip,
+         zip,pdfinfo,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: BibTeX Converter

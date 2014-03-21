@@ -508,8 +508,11 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "url.mime") {
       node->priority = 196;
    }
-   else if(node->keyword == "url.checked") {
+   else if(node->keyword == "url.pagesize") {
       node->priority = 195;
+   }
+   else if(node->keyword == "url.checked") {
+      node->priority = 194;
    }
 
    else {

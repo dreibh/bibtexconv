@@ -228,6 +228,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
 
          char downloadFileName[256];
          char mimeFileName[256];
+         char metaFileName[256];
          if(downloadDirectory != NULL) {
             snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s/%s", downloadDirectory, "/bibtexconv-dXXXXXX");
          }
@@ -235,6 +236,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
             snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s", "/tmp/bibtexconv-dXXXXXX");
          }
          snprintf((char*)&mimeFileName, sizeof(mimeFileName), "%s",      "/tmp/bibtexconv-mXXXXXX");
+         snprintf((char*)&metaFileName, sizeof(metaFileName), "%s",      "/tmp/bibtexconv-pXXXXXX");
 
          if( (mkstemp((char*)&downloadFileName) > 0) &&
              (mkstemp((char*)&mimeFileName) > 0) ) {
@@ -342,6 +344,38 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                        urlMD5Node->value.c_str(), md5String.c_str());
                                errors++; failed = true;
                             }
+                        }
+                       
+                        // ====== Check PDF metadata ========================
+                        if(mimeString == "application/pdf") {
+                           std::string command = format("/usr/bin/pdfinfo %s >%s", downloadFileName, metaFileName);
+                           if(system(command.c_str()) == 0) {
+                              FILE* metaFH = fopen(metaFileName, "r");
+                              if(metaFH != NULL) {
+                                 while(!feof(metaFH)) {
+                                    char input[1024];
+                                    if(fgets((char*)&input, sizeof(input) - 1, metaFH) != NULL) {
+                                       printf("IN=%s",input);
+                                       if(strncmp(input, "Pages:          ", 16) == 0) {
+                                          addOrUpdateChildNode(publication, "numpages", format("%u", atol((const char*)&input[16])).c_str());
+                                       }
+                                       else if(strncmp(input, "Keywords:       ", 16) == 0) {
+                                          Node* keywords = findChildNode(publication, "keywords");
+                                          if(keywords == NULL) {
+                                             addOrUpdateChildNode(publication, "keywords", 
+                                                                  string2utf8(std::string((const char*)&input[16]), "~", "").c_str());
+                                          }
+                                       }
+                                       else if(strncmp(input, "Page size:      ", 16) == 0) {
+                                          addOrUpdateChildNode(publication, "url.pagesize",
+                                                               string2utf8(std::string((const char*)&input[16]), "~", "").c_str());
+                                       }
+                                    }
+                                 }
+                                 fclose(metaFH);
+                              }
+                           }
+                           
                         }
 
                         // ====== Update metadata ===========================
