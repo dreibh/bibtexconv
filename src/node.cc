@@ -514,6 +514,9 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "url.checked") {
       node->priority = 194;
    }
+   else if(node->keyword == "url.keywords") {
+      node->priority = 193;
+   }
 
    else {
       // printf("UNKNOWN=<%s>\n", node->keyword.c_str());

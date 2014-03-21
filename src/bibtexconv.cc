@@ -362,7 +362,9 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                        else if(strncmp(input, "Keywords:       ", 16) == 0) {
                                           Node* keywords = findChildNode(publication, "keywords");
                                           if(keywords == NULL) {
-                                             addOrUpdateChildNode(publication, "keywords", 
+                                             // If there are no "keywords", add "url.keywords".
+                                             // They can be renamed manually after a check.
+                                             addOrUpdateChildNode(publication, "url.keywords", 
                                                                   string2utf8(std::string((const char*)&input[16]), "~", "").c_str());
                                           }
                                        }
