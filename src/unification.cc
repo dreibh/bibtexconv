@@ -482,15 +482,13 @@ void unifyPages(Node* publication, Node* pages)
    unsigned int b;
    if(sscanf(numbers.c_str(), "%u %u", &a, &b) != 2) {
       if(sscanf(numbers.c_str(), "%u", &a) != 1) {
-         fprintf(stderr, "WARNING: Entry %s has possibly invalid page numbers in \"pages\" section (pages=%s)!\n" ,
-                 publication->keyword.c_str(), pages->value.c_str());
          a = b = 0;
       }
       else {
          b = a;
       }
    }
-   if(a != 0) {
+   if((a != 0) && (a <= b)) {
       char pagesString[64];
       if(a != b) {
          snprintf((char*)&pagesString, sizeof(pagesString), "%u--%u", a, b);
@@ -499,5 +497,31 @@ void unifyPages(Node* publication, Node* pages)
          snprintf((char*)&pagesString, sizeof(pagesString), "%u", a);
       }
       pages->value = pagesString;
+      
+      Node* numpages = findChildNode(publication, "numpages");
+      if(numpages) {
+         unsigned int n = atol(numpages->value.c_str());
+         if(n != 1 + (b - a)) {
+            fprintf(stderr, "WARNING: Entry %s has inconsistent invalid page numbers and number of pages (pages=%s; numpages=%s)!\n" ,
+                    publication->keyword.c_str(), pages->value.c_str(), numpages->value.c_str());
+         }
+      }
+      addOrUpdateChildNode(publication, "numpages", format("%u", 1 + (b - a)).c_str());
    }
+   else {
+      fprintf(stderr, "WARNING: Entry %s has possibly invalid page numbers in \"pages\" section (pages=%s)!\n" ,
+              publication->keyword.c_str(), pages->value.c_str());
+   }
+}
+
+
+// ###### Unify "numpages" section #############################################
+void unifyNumPages(Node* publication, Node* numpages)
+{
+   const unsigned int numberOfPages = atol(numpages->value.c_str());
+   if( (numberOfPages < 1) || (numberOfPages >= 999999) ) {
+      fprintf(stderr, "WARNING: Entry %s has invalid page of numbers in \"numpages\" section (numpages=%s)!\n" ,
+              publication->keyword.c_str(), numpages->value.c_str());
+   }
+   numpages->value = format("%u", numberOfPages);
 }

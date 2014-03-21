@@ -326,6 +326,10 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       if(pages != NULL) {
          unifyPages(publication, pages);
       }
+      Node* numpages = findChildNode(publication, "numpages");
+      if(numpages != NULL) {
+         unifyNumPages(publication, numpages);
+      }
 
       Node* isbn = findChildNode(publication, "isbn");
       if(isbn != NULL) {
@@ -427,11 +431,14 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "edition") {
       node->priority = 244;
    }
-   else if(node->keyword == "pages") {
+   else if(node->keyword == "editor") {
       node->priority = 243;
    }
-   else if(node->keyword == "editor") {
+   else if(node->keyword == "pages") {
       node->priority = 242;
+   }
+   else if(node->keyword == "numpages") {
+      node->priority = 241;
    }
 
    else if(node->keyword == "day") {

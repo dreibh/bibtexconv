@@ -34,5 +34,6 @@ void unifyISSN(Node* publication, Node* issn);
 void unifyDate(Node* publication, Node* year, Node* month, Node* day);
 void unifyURL(Node* publication, Node* url);
 void unifyPages(Node* publication, Node* pages);
+void unifyNumPages(Node* publication, Node* numpages);
 
 #endif

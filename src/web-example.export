@@ -2,9 +2,9 @@
 # $Id$
 
 # Select all entries.
-# citeAll
-cite Globecom2010
-cite LCN2005-EdgeDevice
+citeAll
+#cite Globecom2010
+#cite LCN2005-EdgeDevice
 #cite PAMS2014-LEDBAT
 #cite PAMS2013-NorNet
 #cite CAIA2014
