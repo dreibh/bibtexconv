@@ -355,7 +355,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  while(!feof(metaFH)) {
                                     char input[1024];
                                     if(fgets((char*)&input, sizeof(input) - 1, metaFH) != NULL) {
-                                       printf("IN=%s",input);
+                                       // printf("IN=%s",input);
                                        if(strncmp(input, "Pages:          ", 16) == 0) {
                                           addOrUpdateChildNode(publication, "numpages", format("%u", atol((const char*)&input[16])).c_str());
                                        }
