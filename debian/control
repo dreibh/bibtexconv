@@ -15,7 +15,8 @@ Standards-Version: 3.9.4
 Package: bibtexconv
 Architecture: any
 Depends: file,
-         zip,pdfinfo,
+         poppler-utils,
+         zip,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: BibTeX Converter
