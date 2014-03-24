@@ -29,9 +29,14 @@ import csv
 import codecs
 
 
-draftPrefix = 'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.'
-rfcPrefix   = 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.'
+draftPrefix  = 'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.'
+rfcPrefix    = 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.'
 
+monthIDTable    = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
+                    'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ]
+monthNameTable = [ 'January', 'February', 'March', 'April',
+                   'May', 'June', 'July', 'August',
+                   'September', 'October', 'November', 'December', 'INVALID' ]
 
 # ====== Unicode wrapper for CSV reader =====================================
 def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
@@ -50,17 +55,30 @@ def utf_8_encoder(unicode_csv_data):
 
 # ====== Get BibTeX from IETF document ======================================
 def getBibTeXFromIETFDocument(document):
-   url      = ''
+   issn         = None
+   documentType = None
+   number       = None
+   institution  = None
+   language     = 'english'
+   note         = None
+
+   url = ''
    m = re.match('^draft-(.*)$', document)
    if m != None:
-      print m.group(1)
-      url = draftPrefix + m.group(1) + '.xml'
+      url          = draftPrefix + m.group(1) + '.xml'
+      documentType = 'Internet Draft'
+      number       = m.group(1)
+      institution  = 'IETF'
+      note         = 'Work in Progress'
 
    if url == '':
       m = re.match('^RFC([0-9]*)$', document)
       if m != None:
-         print m.group(1)
          url = rfcPrefix + m.group(1) + '.xml'
+         documentType = 'RFC'
+         number       = m.group(1)
+         issn         = '2070-1721'
+         institution  = 'IETF'
 
    if url == '':
       sys.stderr.write('ERROR: Unknown document type ' + document + '!\n')
@@ -86,26 +104,45 @@ def getBibTeXFromIETFDocument(document):
       authorSurnameList.append(authorRegExp)
 
    dateList = xmlDocument.getElementsByTagName('date')
-   month = dateList[0].attributes['month'].value
+   month    = 0
+   for monthName in monthNameTable:
+      month = month + 1
+      if monthName == dateList[0].attributes['month'].value:
+         break
    try:
       day = dateList[0].attributes['day'].value
    except:
       day = 0
    year = dateList[0].attributes['year'].value
-   print day,month,year
+   #print day,month,year
 
    titleList = xmlDocument.getElementsByTagName('title')
    title = titleList[0].childNodes[0].data
-   print title
+   #print title
 
    seriesInfoList = xmlDocument.getElementsByTagName('seriesInfo')
    series = seriesInfoList[0].attributes['name'].value
    name   = seriesInfoList[0].attributes['value'].value
-   print series, name
+   #print series, name
 
    formatList = xmlDocument.getElementsByTagName('format')
    url = formatList[0].attributes['target'].value
-   print url
+   #print url
+   
+   # For I-Ds, use a secure URL instead of HTTP.
+   url = url.replace('http://www.rfc-editor.org/rfc/',
+                     'https://www.rfc-editor.org/rfc/')
+   url = url.replace('http://www.ietf.org/internet-drafts/',
+                     'https://tools.ietf.org/id/')
+   #print url
+
+   abstractList = xmlDocument.getElementsByTagName('t')
+   abstract     = None
+   try:
+      abstract = abstractList[0].childNodes[0].data
+   except:
+      pass
+   #print 'A=',abstract,"."
 
 
    # ====== Get full author list from text file ================================
@@ -118,31 +155,45 @@ def getBibTeXFromIETFDocument(document):
 
    fullAuthorList   = []
    inAuthorsSection = False
-   line = txtFile.readline()
+   line       = txtFile.readline()
+   lineNumber = 0
    while line:
+      lineNumber = lineNumber + 1
+
+      # ====== RFC category =================================================
+      if lineNumber < 15:
+         if re.search('^Category:', line):
+            m = re.match('^Category: (.*)[ ][ ].*$', line)
+            if m != None:
+               category = m.group(1)
+               if documentType == 'RFC':       
+                  if category != 'Experimental':
+                     documentType = category.strip() + ' RFC'
+
+      # ====== Authors section ==============================================
       if len(authorSurnameList) < 1:
          break
       if inAuthorsSection == True:
          if re.search('^[\s]', line):
             if not re.search('^[\s]*$', line):
-              m = re.match('[^a-zA-Z0-9]+(' + authorSurnameList[0] + ')(, Ed\.|)$', line)
-              if m != None:
-                 fullAuthorList.append(m.group(1))
-                 authorSurnameList.remove(authorSurnameList[0])
-              # sys.stdout.write(line)
+               for author in authorSurnameList:
+                  m = re.match('[^a-zA-Z0-9]+(' + author + ')(, Ed\.| \(.*\)|)$', line)
+                  if m != None:
+                     fullAuthorList.append(m.group(1))
+                     authorSurnameList.remove(author)
+                  #print line,m,'[^a-zA-Z0-9]+(' + author + ')(, Ed\.|)$'
               
          # Staying in author search mode: the line may just be a header!
          #else:
             #inAuthorsSection = False
-            
       else:
-         if re.search('^.*(Authors\' Addresses|Editor\'s Address)$', line):
+         if re.search('^.*(Authors|\' Addresses|Author\'s Address|Editor\'s Address)$', line):
             inAuthorsSection = True   
       
       line = txtFile.readline()
 
-   print authorSurnameList
-   print fullAuthorList
+   #print authorSurnameList
+   #print fullAuthorList
 
    if len(authorSurnameList) > 0:
       sys.stderr.write('ERROR: Unable to obtain full author name list!\n')
@@ -164,8 +215,41 @@ def getBibTeXFromIETFDocument(document):
             fullAuthorList[i] = row[1]
             break
 
-   print authorSurnameList
-   print fullAuthorList
+   #print authorSurnameList
+   #print fullAuthorList
+
+
+   # ====== Print result ====================================================
+   sys.stdout.write('@TechReport{ ' + document + ',\n')
+   sys.stdout.write('\tauthor = "')
+   isFirstAuthor = True
+   for author in fullAuthorList:
+      if isFirstAuthor == True:
+        isFirstAuthor = False
+      else:
+         sys.stdout.write(' and ')
+      sys.stdout.write(author)
+   sys.stdout.write('",\n')
+
+   sys.stdout.write('\ttitle = "{' + title + '}",\n')
+   sys.stdout.write('\tseries = "' + documentType + '",\n')
+   sys.stdout.write('\tnumber = "' + name + '",\n')
+
+   if day > 0:
+      sys.stdout.write('\tday = "' + day + '",\n')
+   if ((month >= 1) and (month <= 12)):
+      sys.stdout.write('\tmonth = ' + monthIDTable[month - 1] + ',\n')
+   sys.stdout.write('\tyear  = "' + year + '",\n')
+
+   sys.stdout.write('\tinstitution  = "' + institution + '",\n')
+   sys.stdout.write('\tlanguage  = "' + language + '",\n')
+   if note != None:
+      sys.stdout.write('\tnote = "' + note + '",\n')
+   if abstract != None:
+      sys.stdout.write('\tabstract  = "{' + abstract + '}",\n')
+   sys.stdout.write('\turl  = "' + url + '"\n')
+   
+   sys.stdout.write('}\n')
 
 
 
