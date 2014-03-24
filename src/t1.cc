@@ -1,19 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
+#include <unistd.h>
 #include <string.h>
+#include <assert.h>
+#include <errno.h>
 #include <iostream>
-
-#include "stringhandling.h"
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <curl/curl.h>
+#include <curl/easy.h>
+#include <openssl/md5.h>
 
 
 int main(int argc, char** argv)
 {
-   std::string s1 = laTeXtoURL("http://bla.de/bla bla_bla MS.htm");
-   std::string s2 = urlToLaTeX(s1);
-
-   std::cout << s1 << std::endl;
-   std::cout << s2 << std::endl;
-   
+   for(int i = 0; i < 9999;i++) {
+      FILE* fh = fopen("/tmp/test.dat", "w+b");
+      if(fh != NULL) {
+         printf("ok: %d   fd=%d\n", i, fileno(fh));
+         fclose(fh);
+         fh = NULL;
+      }
+      else {
+         perror("failed");
+      }
+   }
    return 0;
 }

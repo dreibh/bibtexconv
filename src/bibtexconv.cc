@@ -238,8 +238,9 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
          snprintf((char*)&mimeFileName, sizeof(mimeFileName), "%s",      "/tmp/bibtexconv-mXXXXXX");
          snprintf((char*)&metaFileName, sizeof(metaFileName), "%s",      "/tmp/bibtexconv-pXXXXXX");
 
-         if( (mkstemp((char*)&downloadFileName) > 0) &&
-             (mkstemp((char*)&mimeFileName) > 0) ) {
+         const int dfd = mkstemp((char*)&downloadFileName);
+         const int mfd = mkstemp((char*)&mimeFileName);
+         if( (dfd > 0) && (mfd > 0) ) {
             FILE* downloadFH = fopen(downloadFileName, "w+b");
             if(downloadFH != NULL) {
                FILE* headerFH = tmpfile();
@@ -284,7 +285,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                            }
                         }
                         else {
-                           fprintf(stderr, "FAILED %s: failed to obtain mime type of download file!\n",
+                           fprintf(stderr, "WARNING %s: failed to obtain mime type of download file!\n",
                                    url->value.c_str());
                         }
 
@@ -308,10 +309,9 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                               urlMD5Node  = NULL;
                            }
                            else {
-                              fprintf(stderr, "FAILED %s: old mime type has been %s, new type mime is %s\n",
+                              fprintf(stderr, "UPDATED %s: old mime type has been %s, new type mime is %s\n",
                                       url->value.c_str(),
                                       urlMimeNode->value.c_str(), mimeString.c_str());
-                              errors++; failed = true;
                            }
                         }
                         if( (!failed) && (urlSizeNode != NULL) && (urlSizeNode->value != sizeString) ) {
@@ -323,10 +323,9 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                fprintf(stderr, "[Size change for HTML/XML document -> setting url.md5=\"ignore\"] ");
                             }
                             else {
-                              fprintf(stderr, "FAILED %s: old size has been %s, new size is %s\n",
+                              fprintf(stderr, "UPDATED %s: old size has been %s, new size is %s\n",
                                       url->value.c_str(),
                                       urlSizeNode->value.c_str(), sizeString.c_str());
-                              errors++; failed = true;
                             }
                         }
                         if( (!failed) && (urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
@@ -339,10 +338,9 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                fprintf(stderr, "[MD5 change for HTML/XML document -> setting url.md5=\"ignore\"] ");
                             }
                             else {
-                               fprintf(stderr, "FAILED %s: old MD5 has been %s, new MD5 is %s\n",
+                               fprintf(stderr, "UPDATED %s: old MD5 has been %s, new MD5 is %s\n",
                                        url->value.c_str(),
                                        urlMD5Node->value.c_str(), md5String.c_str());
-                               errors++; failed = true;
                             }
                         }
                        
@@ -410,7 +408,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  unlink(downloadFileName);
                                  fprintf(stderr, "\nFAILED to store download file %s: %s!\n",
                                          newFileName.c_str(), strerror(errno));
-                                 exit(1);
+                                 errors++;
                               }
                            }
                         }
@@ -425,7 +423,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                }
                else {
                   fputs("ERROR: Failed to create temporary header file!\n", stderr);
-                  exit(1);
+                  errors++;
                }
                if(downloadFH != NULL) {
                   fclose(downloadFH);
@@ -436,12 +434,18 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
             }
             else {
                fputs("ERROR: Failed to create temporary download file!\n", stderr);
-               exit(1);
+               errors++;
             }
          }
          else {
             fputs("ERROR: Failed to create temporary file name!\n", stderr);
-            exit(1);
+            errors++;
+         }
+         if(dfd >= 0) {
+            close(dfd);
+         }
+         if(mfd >= 0) {
+            close(mfd);
          }
       }
    }
