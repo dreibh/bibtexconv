@@ -1,0 +1,6 @@
+#!/bin/bash
+
+REFERENCES=~/src/papers/Referenzarchiv.bib
+DOCUMENTS=`grep -E "^@[a-zA-Z]*{[ \t].*,.*$" "$REFERENCES" | sed -e "s/,//g" | awk '{ print $2; }' | grep -E "^RFC|^draft"`
+
+echo $DOCUMENTS
