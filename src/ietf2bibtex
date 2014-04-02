@@ -86,10 +86,10 @@ def getBibTeXFromIETFDocument(document):
 
 
    # ====== Get document information from XML file =============================
-   print 'Fetching ' + url + ' ...'
+   sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
       xmlFile = urllib.urlopen(url)
-      print 'Parsing XML ...'
+      # print 'Parsing XML ...'
       xmlDocument = parse(xmlFile)
    except:
       sys.stderr.write('ERROR: Failed to get XML information from ' + url + '!\n')
@@ -146,14 +146,14 @@ def getBibTeXFromIETFDocument(document):
 
 
    # ====== Get full author list from text file ================================
-   print 'Fetching ' + url + ' ...'
+   sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
       txtFile = urllib.urlopen(url)
    except:
       sys.stderr.write('ERROR: Failed to get document from ' + url + '!\n')
       sys.exit(1)
 
-   fullAuthorList   = []
+   fullAuthorList   = list(authorSurnameList)
    inAuthorsSection = False
    line       = txtFile.readline()
    lineNumber = 0
@@ -176,11 +176,12 @@ def getBibTeXFromIETFDocument(document):
       if inAuthorsSection == True:
          if re.search('^[\s]', line):
             if not re.search('^[\s]*$', line):
+               i = 0
                for author in authorSurnameList:
                   m = re.match('[^a-zA-Z0-9]+(' + author + ')(, Ed\.| \(.*\)|)$', line)
                   if m != None:
-                     fullAuthorList.append(m.group(1))
-                     authorSurnameList.remove(author)
+                     fullAuthorList[i] = m.group(1)
+                  i = i + 1
                   #print line,m,'[^a-zA-Z0-9]+(' + author + ')(, Ed\.|)$'
               
          # Staying in author search mode: the line may just be a header!
@@ -192,13 +193,8 @@ def getBibTeXFromIETFDocument(document):
       
       line = txtFile.readline()
 
-   #print authorSurnameList
-   #print fullAuthorList
-
-   if len(authorSurnameList) > 0:
-      sys.stderr.write('ERROR: Unable to obtain full author name list!\n')
-      sys.stderr.write('Still missing: ' + str(authorSurnameList) + '\n')
-      sys.exit(1)
+   #print 'I=',authorSurnameList
+   #print 'F=',fullAuthorList
 
 
    # ====== Fix author list via author fix list ================================
@@ -211,12 +207,18 @@ def getBibTeXFromIETFDocument(document):
    for row in inputCSV:
       for i in range(0, len(fullAuthorList), 1):
          if row[0] == fullAuthorList[i]:
-            print 'Fix: ' + fullAuthorList[i] + ' -> ' + row[1]
+            sys.stderr.write('Fix: ' + fullAuthorList[i] + ' -> ' + row[1] + '\n')
             fullAuthorList[i] = row[1]
             break
 
    #print authorSurnameList
    #print fullAuthorList
+
+
+   # ====== Check ===========================================================
+   for i in range(1, len(authorSurnameList)):
+      if authorSurnameList[i] == fullAuthorList[i]:
+        sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorSurnameList[i]) + '" from list!\n')
 
 
    # ====== Print result ====================================================
@@ -232,7 +234,7 @@ def getBibTeXFromIETFDocument(document):
    sys.stdout.write('",\n')
 
    sys.stdout.write('\ttitle = "{' + title + '}",\n')
-   sys.stdout.write('\tseries = "' + documentType + '",\n')
+   sys.stdout.write('\ttype = "' + documentType + '",\n')
    sys.stdout.write('\tnumber = "' + name + '",\n')
 
    if day > 0:
@@ -243,13 +245,15 @@ def getBibTeXFromIETFDocument(document):
 
    sys.stdout.write('\tinstitution  = "' + institution + '",\n')
    sys.stdout.write('\tlanguage  = "' + language + '",\n')
+   if issn != None:
+      sys.stdout.write('\tissn = "' + issn + '",\n')
    if note != None:
       sys.stdout.write('\tnote = "' + note + '",\n')
    if abstract != None:
       sys.stdout.write('\tabstract  = "{' + abstract + '}",\n')
    sys.stdout.write('\turl  = "' + url + '"\n')
    
-   sys.stdout.write('}\n')
+   sys.stdout.write('}\n\n')
 
 
 
@@ -257,6 +261,10 @@ def getBibTeXFromIETFDocument(document):
 if len(sys.argv) < 2:
    sys.stderr.write('Usage: ietf2bibtex document [...]\n')
    sys.exit(1)
+
+sys.stdout = codecs.getwriter('utf8')(sys.stdout)
+sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+sys.stdin  = codecs.getreader('utf8')(sys.stdin)
 
 for i in range(1, len(sys.argv)):
    getBibTeXFromIETFDocument(sys.argv[i])
