@@ -95,6 +95,7 @@ def getBibTeXFromIETFDocument(document):
       sys.stderr.write('ERROR: Failed to get XML information from ' + url + '!\n')
       sys.exit(1)
 
+   fullAuthorList   = []
    authorRegExpList = []
    authorList = xmlDocument.getElementsByTagName('author') 
    if len(authorList) == 0:
@@ -105,12 +106,15 @@ def getBibTeXFromIETFDocument(document):
       # print author.attributes
       # print author.attributes['initials'].value[0]
       try:
-         authorRegExp = author.attributes['initials'].value[0] + '.+' + \
+         authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z \.]+' + \
                         author.attributes['surname'].value
          authorRegExpList.append(authorRegExp)
+         fullAuthorList.append(author.attributes['initials'].value[0] +'. ' + \
+                               author.attributes['surname'].value)
       except:
          continue
-   # print authorRegExpList
+   #print authorRegExpList
+   #print fullAuthorList
 
    dateList = xmlDocument.getElementsByTagName('date')
    month    = 0
@@ -119,14 +123,21 @@ def getBibTeXFromIETFDocument(document):
       if monthName == dateList[0].attributes['month'].value:
          break
    try:
-      day = dateList[0].attributes['day'].value
+      day = int(dateList[0].attributes['day'].value)
    except:
       day = 0
-   year = dateList[0].attributes['year'].value
+   try:
+      year = int(dateList[0].attributes['year'].value)
+   except:   # Some RFCs have some garbage before the year content.
+      year = dateList[0].attributes['year'].value
+      l = len(year)
+      year = int(year[l-4:l])
    #print day,month,year
 
    titleList = xmlDocument.getElementsByTagName('title')
    title = titleList[0].childNodes[0].data
+   title = title.strip().replace(' (', '~(')
+   title = title.strip().replace(' - ', ' -- ')
    #print title
 
    seriesInfoList = xmlDocument.getElementsByTagName('seriesInfo')
@@ -154,9 +165,9 @@ def getBibTeXFromIETFDocument(document):
    #print 'A=',abstract,"."
    
    if abstract != None:
-      #if re.search('^\n', abstract):
-      #   print "xxxx"
       abstract = abstract.strip().replace('\n', ' ')
+      abstract = abstract.strip().replace(' (', '~(')
+      abstract = abstract.strip().replace(' - ', ' -- ')
       abstract = abstract.strip().replace(' [STANDARDS-TRACK]','')
 
       abstract = abstract.replace('</t><t>', '\n')
@@ -176,7 +187,6 @@ def getBibTeXFromIETFDocument(document):
       sys.stderr.write('ERROR: Failed to get document from ' + url + '!\n')
       sys.exit(1)
 
-   fullAuthorList   = list(authorRegExpList)
    inAuthorsSection = False
    line       = txtFile.readline()
    lineNumber = 0
@@ -202,11 +212,12 @@ def getBibTeXFromIETFDocument(document):
                i = 0
                # sys.stderr.write(line)
                for author in authorRegExpList:
-                  m = re.match('^(.*[\t ]+)(' + author + ')(.*)$', line)
+                  m = re.match('^(.*[\t ]+)(' + author + ')([,\t ](.*)|)$', line)
                   if m != None:
-                     fullAuthorList[i] = m.group(2)
+                     #print line, i
+                     if len(m.group(2)) >= len(fullAuthorList[i]):
+                        fullAuthorList[i] = str(m.group(2))
                   i = i + 1
-                  # print line,m
               
          # Staying in author search mode: the line may just be a header!
          #else:
@@ -262,10 +273,10 @@ def getBibTeXFromIETFDocument(document):
    sys.stdout.write('\tnumber = "' + name + '",\n')
 
    if day > 0:
-      sys.stdout.write('\tday = "' + day + '",\n')
+      sys.stdout.write('\tday = "' + str(day) + '",\n')
    if ((month >= 1) and (month <= 12)):
       sys.stdout.write('\tmonth = ' + monthIDTable[month - 1] + ',\n')
-   sys.stdout.write('\tyear  = "' + year + '",\n')
+   sys.stdout.write('\tyear  = "' + str(year) + '",\n')
 
    sys.stdout.write('\tinstitution  = "' + institution + '",\n')
    sys.stdout.write('\tlanguage  = "' + language + '",\n')
