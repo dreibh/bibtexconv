@@ -33,6 +33,7 @@ std::string comment;
 %option nounput
 
 %x STRING
+%x XSTRING
 %x COMMENT
 
 
@@ -47,14 +48,25 @@ std::string comment;
 "="                                                  { return(T_Equals); }
 
 
- /* ====== Quoted string ================================================= */
+ /* ====== Quoted strings ================================================ */
+\"\{                                                  { BEGIN XSTRING; string = ""; }
+<XSTRING>\\n                                          { string += '\n';   }
+<XSTRING>\\\"                                         { string += "\\\""; }
+<XSTRING>\n                                           { string += '\n';   }
+<XSTRING>\}\"                                         { BEGIN 0;
+                                                       yylval.iText = strdup(string.c_str());
+                                                       // printf("S1a=<%s> l=%d\n",yylval.iText, yylineno);
+                                                       return(T_String); }
+<XSTRING>.                                            { string += *yytext; };
+
+
 \"                                                   { BEGIN STRING; string = ""; }
-<STRING>\\n                                          { string += '\n'; }
+<STRING>\\n                                          { string += '\n';   }
 <STRING>\\\"                                         { string += "\\\""; }
-<STRING>\n                                           { string += '\n'; ++yylineno; }
+<STRING>\n                                           { string += '\n';   }
 <STRING>\"                                           { BEGIN 0;
                                                        yylval.iText = strdup(string.c_str());
-                                                       // printf("S1=<%s> l=%d\n",yylval.iText, yylineno);
+                                                       // printf("S1b=<%s> l=%d\n",yylval.iText, yylineno);
                                                        return(T_String); }
 <STRING>.                                            { string += *yytext; };
 

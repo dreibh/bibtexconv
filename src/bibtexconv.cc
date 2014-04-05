@@ -731,7 +731,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s BibTeX_File {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-linebreak=string} {-check-urls} {-only-check-new-urls} {-ignore-updates-for-html} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
+      fprintf(stderr, "Usage: %s BibTeX_file {-merge=BibTeX_file} {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-linebreak=string} {-check-urls} {-only-check-new-urls} {-ignore-updates-for-html} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
@@ -752,6 +752,9 @@ int main(int argc, char** argv)
       }
       else if( strncmp(argv[i], "-store-downloads=", 17) == 0 ) {
          downloadDirectory = (const char*)&argv[i][17];
+      }
+      else if( strncmp(argv[i], "-merge=", 7) == 0 ) {
+         // process later ...
       }
       else if( strncmp(argv[i], "-nbsp=", 5) == 0 ) {
          nbsp = (const char*)&argv[i][5];
@@ -795,6 +798,20 @@ int main(int argc, char** argv)
    int result = yyparse();
    fclose(yyin);
 
+   for(int i = 2; i < argc; i++) {
+      if( strncmp(argv[i], "-merge=", 7) == 0 ) {       
+         const char* mergeFile = (const char*)&argv[i][7];
+         yyin = fopen(argv[1], "r");
+         if(yyin == NULL) {
+            fprintf(stderr, "ERROR: Unable to merge BibTeX input file %s!\n", mergeFile);
+            exit(1);
+         }
+         result = yyparse();
+         fprintf(stderr,"R=%d\n",result);
+         fclose(yyin);        
+      }
+   }
+   
    if(result == 0) {
       PublicationSet publicationSet(countNodes(bibTeXFile));
       if(!interactive) {
