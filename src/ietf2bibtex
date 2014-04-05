@@ -29,8 +29,8 @@ import csv
 import codecs
 
 
-draftPrefix  = 'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.'
-rfcPrefix    = 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.'
+draftPrefix  = 'https://xml.resource.org/public/rfc/bibxml3/reference.I-D.'
+rfcPrefix    = 'https://xml.resource.org/public/rfc/bibxml/reference.RFC.'
 
 monthIDTable    = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
                     'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ]
@@ -95,13 +95,22 @@ def getBibTeXFromIETFDocument(document):
       sys.stderr.write('ERROR: Failed to get XML information from ' + url + '!\n')
       sys.exit(1)
 
-   authorSurnameList = []
+   authorRegExpList = []
    authorList = xmlDocument.getElementsByTagName('author') 
+   if len(authorList) == 0:
+      sys.stderr.write('ERROR: It seems that the XML file ' + url + ' does not exist. Wrong document name?\n')
+      sys.exit(1)
+
    for author in authorList:
+      # print author.attributes
       # print author.attributes['initials'].value[0]
-      authorRegExp = author.attributes['initials'].value[0] + '.*' + \
-                     author.attributes['surname'].value
-      authorSurnameList.append(authorRegExp)
+      try:
+         authorRegExp = author.attributes['initials'].value[0] + '.+' + \
+                        author.attributes['surname'].value
+         authorRegExpList.append(authorRegExp)
+      except:
+         continue
+   # print authorRegExpList
 
    dateList = xmlDocument.getElementsByTagName('date')
    month    = 0
@@ -143,6 +152,20 @@ def getBibTeXFromIETFDocument(document):
    except:
       pass
    #print 'A=',abstract,"."
+   
+   if abstract != None:
+      #if re.search('^\n', abstract):
+      #   print "xxxx"
+      abstract = abstract.strip().replace('\n', ' ')
+      abstract = abstract.strip().replace(' [STANDARDS-TRACK]','')
+
+      abstract = abstract.replace('</t><t>', '\n')
+      while True:
+         oldLength = len(abstract)
+         abstract = abstract.replace('  ', ' ')
+         newLength = len(abstract)
+         if oldLength == newLength:
+            break
 
 
    # ====== Get full author list from text file ================================
@@ -153,7 +176,7 @@ def getBibTeXFromIETFDocument(document):
       sys.stderr.write('ERROR: Failed to get document from ' + url + '!\n')
       sys.exit(1)
 
-   fullAuthorList   = list(authorSurnameList)
+   fullAuthorList   = list(authorRegExpList)
    inAuthorsSection = False
    line       = txtFile.readline()
    lineNumber = 0
@@ -171,29 +194,30 @@ def getBibTeXFromIETFDocument(document):
                      documentType = category.strip() + ' RFC'
 
       # ====== Authors section ==============================================
-      if len(authorSurnameList) < 1:
+      if len(authorRegExpList) < 1:
          break
       if inAuthorsSection == True:
          if re.search('^[\s]', line):
             if not re.search('^[\s]*$', line):
                i = 0
-               for author in authorSurnameList:
-                  m = re.match('[^a-zA-Z0-9]+(' + author + ')(, Ed\.| \(.*\)|)$', line)
+               # sys.stderr.write(line)
+               for author in authorRegExpList:
+                  m = re.match('^(.*[\t ]+)(' + author + ')(.*)$', line)
                   if m != None:
-                     fullAuthorList[i] = m.group(1)
+                     fullAuthorList[i] = m.group(2)
                   i = i + 1
-                  #print line,m,'[^a-zA-Z0-9]+(' + author + ')(, Ed\.|)$'
+                  # print line,m
               
          # Staying in author search mode: the line may just be a header!
          #else:
             #inAuthorsSection = False
       else:
-         if re.search('^.*(Authors|\' Addresses|Author\'s Address|Editor\'s Address)$', line):
+         if re.search('^.*(Editors|Authors|\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line):
             inAuthorsSection = True   
       
       line = txtFile.readline()
 
-   #print 'I=',authorSurnameList
+   #print 'I=',authorRegExpList
    #print 'F=',fullAuthorList
 
 
@@ -211,14 +235,14 @@ def getBibTeXFromIETFDocument(document):
             fullAuthorList[i] = row[1]
             break
 
-   #print authorSurnameList
+   #print authorRegExpList
    #print fullAuthorList
 
 
    # ====== Check ===========================================================
-   for i in range(1, len(authorSurnameList)):
-      if authorSurnameList[i] == fullAuthorList[i]:
-        sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorSurnameList[i]) + '" from list!\n')
+   for i in range(1, len(authorRegExpList)):
+      if authorRegExpList[i] == fullAuthorList[i]:
+        sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorRegExpList[i]) + '" from list!\n')
 
 
    # ====== Print result ====================================================
