@@ -221,10 +221,11 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
             }
             empty = false;
 
-            if( (child->keyword == "title") ||
+            if( (child->keyword == "title")     ||
                 (child->keyword == "booktitle") ||
-                (child->keyword == "series") ||
-                (child->keyword == "journal") ) {
+                (child->keyword == "series")    ||
+                (child->keyword == "journal")   ||
+                (child->keyword == "abstract") ) {
                fprintf(fh, "%s\t%s = \"{%s}\"", separator, child->keyword.c_str(), child->value.c_str());
             }
             else if( (child->keyword == "day") ||
