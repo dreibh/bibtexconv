@@ -2,5 +2,17 @@
 
 REFERENCES=~/src/papers/Referenzarchiv.bib
 DOCUMENTS=`grep -E "^@[a-zA-Z]*{[ \t].*,.*$" "$REFERENCES" | sed -e "s/,//g" | awk '{ print $2; }' | grep -E "^RFC|^draft"`
+OUTPUT_FILE="updated.bib"
 
-echo $DOCUMENTS
+
+echo "" >"$OUTPUT_FILE"
+echo "$DOCUMENTS" | (
+   while read name ; do
+      if [[ "$name" =~ ^(RFC[0-9]+$)|(draft-[a-z].*$) ]] ; then
+         echo "Processing $name ..."
+         ./ietf2bibtex "$name" >>"$OUTPUT_FILE"
+      else
+         echo "Skipping $name"
+      fi
+   done
+)
