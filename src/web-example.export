@@ -2,15 +2,15 @@
 # $Id$
 
 # Select all entries.
-#citeAll
-cite Globecom2010
-cite LCN2005-EdgeDevice
-cite PAMS2014-LEDBAT
-cite PAMS2013-NorNet
-cite CAIA2014
-cite Dre2012
-cite CRNA-Rapport2013
-cite LinuxTag2005
+citeAll
+#cite Globecom2010
+#cite LCN2005-EdgeDevice
+#cite PAMS2014-LEDBAT
+#cite PAMS2013-NorNet
+#cite CAIA2014
+#cite Dre2012
+#cite CRNA-Rapport2013
+# cite LinuxTag2005
 
 # Usually, there should be a more fine-granular selection.
 # For convenience, it is useful to make them in included files.
@@ -96,17 +96,18 @@ template+ [./get-author-url authors.list '%{author-family-name}[, %{author-give-
 template+ %{end-author-loop}:
 # ***** Title
 template+ <span[ xml:lang="%{xml-language}"]>
-template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´]
+template+  [``<a[ type="%{url-mime}"] href="%{url}">%{title}</a>´´|``%{title}´´]
 template+ </span>
 # ****** URL
 template+ [%{url}%{is-not?} (|%{language}%{is-not?} (]
 template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB[, %{numpages}~pages]]
 # ****** Language
-template+ [%{url}%{is-not?}[%{language}%{is-not?}, ]]
-template+ [%{language}%{is?norsk}på norsk
+template+ [%{url-size-KiB}%{is-not?}[%{language}%{is-not?}, ]]
+template+ [%{language}%{is?english}in English
 template+ |%{language}%{is?german}auf Deutsch
 template+ |%{language}%{is?ngerman}auf Deutsch
-template+ |%{language}%{is?english}in English
+template+ |%{language}%{is?norsk}på norsk
+template+ |%{language}%{is?french}au français
 template+ |in %{language}]
 template+ [%{url}%{is-not?})|%{language}%{is-not?})]
 # ***** Bibliographic data of publication
@@ -122,7 +123,7 @@ template+ .
 template+ [ <strong>%{custom-1}.</strong>]
 template+ </p>
 # ***** Details
-template+ [[%{keywords}][%{abstract}]%{is-not?}\n
+template+ [[%{keywords}][%{abstract}][%{url}]%{is-not?}\n
 template+ <noscript><p class="description"><strong>JavaScript is required for details!</strong></p></noscript>
 template+ <div id="Publications-%{html-label}-Details" class="publication-details-hiddenbox">
 template+ [<p class="publication-details"><strong>Keywords: </strong>
@@ -130,6 +131,9 @@ template+ <span[ xml:lang="%{xml-language}"]>%{keywords}</span></p>
 template+ ]
 template+ [<p class="publication-details"><strong>Abstract: </strong>
 template+ <span[ xml:lang="%{xml-language}"]>%{abstract}</span></p>
+template+ ]
+template+ [<p class="publication-details"><strong>URL: </strong>
+template+ <a[ type="%{url-mime}"] href="%{url}">%{url}</a>
 template+ ]
 template+ </div>\n]
 
