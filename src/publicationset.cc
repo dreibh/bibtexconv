@@ -871,6 +871,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "abstract");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
+         else if(action == "url-md5") {   // MD5
+            child = findChildNode(publication, "url.md5");
+            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
+         }
          else if( (action == "z") || (action == "url-mime") ) {   // URL mime type
             child = findChildNode(publication, "url.mime");
             if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }

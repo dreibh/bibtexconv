@@ -27,13 +27,13 @@
 
 std::string string;
 std::string comment;
+int         level;
 %}
 
 %option yylineno
 %option nounput
 
 %x STRING
-%x XSTRING
 %x COMMENT
 
 
@@ -49,25 +49,22 @@ std::string comment;
 
 
  /* ====== Quoted strings ================================================ */
-\"\{                                                  { BEGIN XSTRING; string = ""; }
-<XSTRING>\\n                                          { string += '\n';   }
-<XSTRING>\\\"                                         { string += "\\\""; }
-<XSTRING>\n                                           { string += '\n';   }
-<XSTRING>\}\"                                         { BEGIN 0;
-                                                       yylval.iText = strdup(string.c_str());
-                                                       // printf("S1a=<%s> l=%d\n",yylval.iText, yylineno);
-                                                       return(T_String); }
-<XSTRING>.                                            { string += *yytext; };
-
-
-\"                                                   { BEGIN STRING; string = ""; }
+\"                                                   { BEGIN STRING; string = ""; level = 0; }
 <STRING>\\n                                          { string += '\n';   }
 <STRING>\\\"                                         { string += "\\\""; }
 <STRING>\n                                           { string += '\n';   }
-<STRING>\"                                           { BEGIN 0;
-                                                       yylval.iText = strdup(string.c_str());
-                                                       // printf("S1b=<%s> l=%d\n",yylval.iText, yylineno);
-                                                       return(T_String); }
+<STRING>\{                                           { string += '{'; level++; }
+<STRING>\}                                           { string += '}'; level--; }
+<STRING>\"                                           { if(level > 0) {
+                                                          string += "\"";
+                                                       }
+                                                       else {
+                                                          BEGIN 0;
+                                                          yylval.iText = strdup(string.c_str());
+                                                          // printf("S1=<%s> l=%d\n",yylval.iText, yylineno);
+                                                          return(T_String);                                                         
+                                                       } 
+                                                     }
 <STRING>.                                            { string += *yytext; };
 
 
