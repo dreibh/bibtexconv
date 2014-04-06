@@ -110,7 +110,7 @@ def getBibTeXFromIETFDocument(document):
       # print author.attributes
       # print author.attributes['initials'].value[0]
       try:
-         authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z \.]+' + \
+         authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.]+' + \
                         author.attributes['surname'].value
          authorRegExpList.append(authorRegExp)
          fullAuthorList.append(author.attributes['initials'].value[0] +'. ' + \
@@ -145,9 +145,11 @@ def getBibTeXFromIETFDocument(document):
    #print title
 
    seriesInfoList = xmlDocument.getElementsByTagName('seriesInfo')
-   series = seriesInfoList[0].attributes['name'].value
-   name   = seriesInfoList[0].attributes['value'].value
-   #print series, name
+   for seriesInfo in seriesInfoList:
+      if seriesInfo.attributes['name'].value == 'RFC':
+         series = seriesInfo.attributes['name'].value
+         name   = seriesInfo.attributes['value'].value
+   print series, name
 
    formatList = xmlDocument.getElementsByTagName('format')
    url = formatList[0].attributes['target'].value
@@ -211,24 +213,23 @@ def getBibTeXFromIETFDocument(document):
       if len(authorRegExpList) < 1:
          break
       if inAuthorsSection == True:
-         if re.search('^[\s]', line):
-            if not re.search('^[\s]*$', line):
-               i = 0
-               # sys.stderr.write(line)
-               for author in authorRegExpList:
-                  m = re.match('^(.*[\t ]+)(' + author + ')([,\t ](.*)|)$', line)
-                  if m != None:
-                     #print line, i
-                     if len(m.group(2)) >= len(fullAuthorList[i]):
-                        fullAuthorList[i] = str(m.group(2))
-                  i = i + 1
+         if not re.search('^[\s]*$', line):
+            i = 0
+            #sys.stderr.write(line)
+            for author in authorRegExpList:
+               m = re.match('^(.*)(' + author + ')([,\t ](.*)|)$', line)
+               #print line, i, m
+               if m != None:
+                  if len(m.group(2)) >= len(fullAuthorList[i]):
+                     fullAuthorList[i] = str(m.group(2))
+               i = i + 1
               
          # Staying in author search mode: the line may just be a header!
          #else:
             #inAuthorsSection = False
       else:
-         if re.search('^.*(Editors|Authors|\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line):
-            inAuthorsSection = True   
+         if re.search('^.*(Editors|Authors|\'[ \t]+[Aa]ddresses|Author\'s[ \t]+[Aa]ddress|Editor\'s[ \t]+[Aa]ddress|Author[ \t]+[Ii]nformation).*$', line):
+            inAuthorsSection = True 
       
       line = txtFile.readline()
 

@@ -7,17 +7,17 @@ OUTPUT_FILE="updated.bib"
 OUTPUT_FILE2="merged.bib"
 OUTPUT_FILE3="results.bib"
 
-# echo "" >"$OUTPUT_FILE"
-# echo "$DOCUMENTS" | (
-#    while read name ; do
-#       if [[ "$name" =~ ^(RFC[0-9]+$)|(draft-[a-z].*$) ]] ; then
-#          echo "Processing $name ..."
-#          ./ietf2bibtex "$name" >>"$OUTPUT_FILE"
-#       else
-#          echo "Skipping $name"
-#       fi
-#    done
-# )
+echo "" >"$OUTPUT_FILE"
+echo "$DOCUMENTS" | (
+   while read name ; do
+      if [[ "$name" =~ ^(RFC[0-9]+$)|(draft-[a-z].*$) ]] ; then
+         echo "Processing $name ..."
+         ./ietf2bibtex "$name" >>"$OUTPUT_FILE"
+      else
+         echo "Skipping $name"
+      fi
+   done
+)
 
 cat "$REFERENCES" "$OUTPUT_FILE" >"$OUTPUT_FILE2"
 ./bibtexconv "$OUTPUT_FILE2" "-export-to-bibtex=$OUTPUT_FILE3" -check-urls -only-check-new-urls -add-notes-with-isbn-and-issn -non-interactive
