@@ -29,11 +29,11 @@ import csv
 import codecs
 
 
-draftPrefix  = 'https://xml.resource.org/public/rfc/bibxml3/reference.I-D.'
-rfcPrefix    = 'https://xml.resource.org/public/rfc/bibxml/reference.RFC.'
+draftPrefix = 'https://xml.resource.org/public/rfc/bibxml3/reference.I-D.'
+rfcPrefix   = 'https://xml.resource.org/public/rfc/bibxml/reference.RFC.'
 
-monthIDTable    = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
-                    'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ]
+monthIDTable   = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
+                   'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ]
 monthNameTable = [ 'January', 'February', 'March', 'April',
                    'May', 'June', 'July', 'August',
                    'September', 'October', 'November', 'December', 'INVALID' ]
@@ -68,7 +68,11 @@ def getBibTeXFromIETFDocument(document):
       url          = draftPrefix + m.group(1) + '.xml'
       documentType = 'Internet Draft'
       number       = m.group(1)
-      institution  = 'IETF'
+      m = re.match('^draft-ietf-(.*)$', document)
+      if m != None:
+         institution  = 'IETF'
+      else:
+         institution  = 'IETF, Individual Submission'
       note         = 'Work in Progress'
 
    if url == '':
@@ -276,17 +280,17 @@ def getBibTeXFromIETFDocument(document):
       sys.stdout.write('\tday = "' + str(day) + '",\n')
    if ((month >= 1) and (month <= 12)):
       sys.stdout.write('\tmonth = ' + monthIDTable[month - 1] + ',\n')
-   sys.stdout.write('\tyear  = "' + str(year) + '",\n')
+   sys.stdout.write('\tyear = "' + str(year) + '",\n')
 
-   sys.stdout.write('\tinstitution  = "' + institution + '",\n')
-   sys.stdout.write('\tlanguage  = "' + language + '",\n')
+   sys.stdout.write('\tinstitution = "' + institution + '",\n')
+   sys.stdout.write('\tlanguage = "' + language + '",\n')
    if issn != None:
       sys.stdout.write('\tissn = "' + issn + '",\n')
    if note != None:
       sys.stdout.write('\tnote = "' + note + '",\n')
    if abstract != None:
-      sys.stdout.write('\tabstract  = "{' + abstract + '}",\n')
-   sys.stdout.write('\turl  = "' + url + '"\n')
+      sys.stdout.write('\tabstract = "{' + abstract + '}",\n')
+   sys.stdout.write('\turl = "' + url + '"\n')
    
    sys.stdout.write('}\n\n')
 

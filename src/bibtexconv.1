@@ -30,7 +30,6 @@
 .Sh SYNOPSIS
 .Nm bibtexconv
 BibTeX_file
-.Op Fl merge=BibTeX_file
 .Op Fl export-to-bibtex=file
 .Op Fl export-to-separate-bibtexs=prefix
 .Op Fl export-to-xml=file
@@ -62,9 +61,6 @@ The following arguments may be provided:
 .Bl -tag -width indent
 .It BibTeX_File
 The BibTeX input file.
-.It Fl merge=BibTeX_file
-Adds the given BibTeX input file. Existing entries in memory will be replaced by
-versions from this file. New entries will be appended.
 .It Fl export-to-bibtex=file
 Write the results as BibTeX into the given file.
 .It Fl export-to-separate-bibtexs=prefix

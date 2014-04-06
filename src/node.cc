@@ -152,6 +152,32 @@ size_t countChildNodes(const Node* node, const char* childKeyword)
 // ###### Make publication collection #######################################
 Node* makePublicationCollection(Node* node1, Node* node2)
 {
+   // ====== If there is already an existing node, clear and use it =========
+   Node* n = node2;
+   while(n != NULL) {
+      if(n->keyword == node1->keyword) {
+         printf("Duplicate: %s\n", n->keyword.c_str());
+
+         // node1 is old. Remove its contents, but reuse it for newer data.
+         freeNode(node1->child);
+         node1->child = n->child;
+         n->child     = NULL;
+         
+         // Get rid of old node n.
+         if(n->prev) {
+            n->prev->next = n->next;
+         }
+         if(n->next) {
+            n->next->prev = n->prev;
+         }
+         delete n;
+         break;
+      }
+      n = n->next;
+   }
+
+   // ====== Add a new node =================================================
+   printf("add: %s\n", node1->keyword.c_str());
    node2->prev = node1;
    node1->next = node2;
    return(node1);
@@ -275,7 +301,9 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       requiresField(publication, "url.mime",     0, 1);
       requiresField(publication, "url.md5",      0, 1);
       requiresField(publication, "url.checked",  0, 1);
+      requiresField(publication, "urn",          0, 1);
       requiresField(publication, "pages",        0, 1);
+      requiresField(publication, "numpages",     0, 1);
       requiresField(publication, "day",          0, 1);
       requiresField(publication, "month",        0, 1);
       requiresField(publication, "address",      0, 1);
@@ -289,6 +317,8 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       requiresField(publication, "number",       0, 1);
       requiresField(publication, "issue",        0, 1);
       requiresField(publication, "volume",       0, 1);
+      requiresField(publication, "abstract",     0, 1);
+      requiresField(publication, "keywords",     0, 1);
       if(publication->value == "Article") {
          requiresField(publication, "journal", 1, 1);
       }
@@ -340,7 +370,7 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
          unifyISSN(publication, issn);
       }
 
-      Node* year =  findChildNode(publication, "year");
+      Node* year  = findChildNode(publication, "year");
       Node* month = findChildNode(publication, "month");
       Node* day   = findChildNode(publication, "day");
       if( (year != NULL) || (month != NULL) || (day != NULL) ) {

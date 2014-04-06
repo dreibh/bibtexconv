@@ -74,7 +74,7 @@ bibTeXFile
     ;
 
 publicationCollection
-    : publication publicationCollection  { $$ = makePublicationCollection($1, $2);   }
+    : publication publicationCollection  { $$ = makePublicationCollection($1, $2); }
     | publication                        { $$ = $1; }
     ;
 
