@@ -177,7 +177,6 @@ Node* makePublicationCollection(Node* node1, Node* node2)
    }
 
    // ====== Add a new node =================================================
-   printf("add: %s\n", node1->keyword.c_str());
    node2->prev = node1;
    node1->next = node2;
    return(node1);
