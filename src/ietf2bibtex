@@ -37,6 +37,7 @@ blacklistTable = [
    'draft-ietf-rserpool-*',
    'draft-ahmed-lssctp-*',
    'draft-adams-qos-broadband',
+   'draft-iyengar-sctp-cacc',
    'RFC3246'
 ]
 
@@ -65,7 +66,7 @@ def utf_8_encoder(unicode_csv_data):
 def getBibTeXFromIETFDocument(document):
    for blacklistEntry in blacklistTable:
       if re.match(blacklistEntry, document):
-         sys.stderr.write(document + ' is blacklisted. Skipping.\n')
+         sys.stderr.write(document + ' is blacklisted due to bad metadata in XML file. Skipping.\n')
          return
    
    issn         = None
