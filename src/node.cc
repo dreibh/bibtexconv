@@ -156,7 +156,16 @@ Node* makePublicationCollection(Node* node1, Node* node2)
    Node* n = node2;
    while(n != NULL) {
       if(n->keyword == node1->keyword) {
-         printf("Duplicate: %s\n", n->keyword.c_str());
+         // fprintf(stderr, "NOTE: Duplicate: %s\n", n->keyword.c_str());
+
+         const Node* oldTitle = findChildNode(node1, "title");
+         Node*       newTitle = findChildNode(n, "title");
+         if( (oldTitle != NULL) && (newTitle != NULL) && (oldTitle->value != newTitle->value) ) {
+            fprintf(stderr, "NOTE: Keeping old title:\nOld = \"%s\"\nNew = \"%s\"\n",
+                    oldTitle->value.c_str(),
+                    newTitle->value.c_str());
+            newTitle->value = oldTitle->value;            
+         }
 
          // node1 is old. Remove its contents, but reuse it for newer data.
          freeNode(node1->child);
