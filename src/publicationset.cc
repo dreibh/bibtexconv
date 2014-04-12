@@ -894,6 +894,9 @@ std::string PublicationSet::applyTemplate(Node*                           public
                else if(child->value == "text/plain") {
                   result += "TXT";
                }
+               else if(child->value == "image/svg+xml") {
+                  result += "SVG";
+               }
                else {
                   result += child->value;
                }
