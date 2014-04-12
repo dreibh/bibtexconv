@@ -280,6 +280,12 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                      (mimeString[mimeString.size() - 1] == '\n') ) {
                                     mimeString = mimeString.substr(0, mimeString.size() - 1);
                                  }
+                                 
+                                 // RFCs/I-Ds are sometimes misidentified as C/C++ source:
+                                 if( (mineString == "text/x-c") ||
+                                     (mineString == "text/x-c++") ) {
+                                    mimeString = "text/plain";
+                                 }
                               }
                               fclose(mimeFH);
                            }
