@@ -34,8 +34,7 @@ rfcPrefix   = 'https://xml.resource.org/public/rfc/bibxml/reference.RFC.'
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
-   'draft-ietf-rserpool-*',
-   'draft-ahmed-lssctp-*',
+   'draft-ahmed-lssctp',
    'draft-adams-qos-broadband',
    'draft-iyengar-sctp-cacc',
    'RFC3246'
@@ -187,6 +186,7 @@ def getBibTeXFromIETFDocument(document):
    #print 'A=',abstract,"."
    
    if abstract != None:
+      abstract = abstract.strip().replace('\t', ' ')
       abstract = abstract.strip().replace('\n', ' ')
       abstract = abstract.strip().replace(' (', '~(')
       abstract = abstract.strip().replace(' - ', ' -- ')
@@ -222,10 +222,10 @@ def getBibTeXFromIETFDocument(document):
          if re.search('^Category:', line):
             m = re.match('^Category: (.*)[ ][ ].*$', line)
             if m != None:
-               category = m.group(1)
-               if documentType == 'RFC':       
+               category = m.group(1).strip()
+               if documentType == 'RFC':
                   if category != 'Experimental':
-                     documentType = category.strip() + ' RFC'
+                     documentType = category + ' RFC'
 
       # ====== Authors section ==============================================
       if len(authorRegExpList) < 1:
