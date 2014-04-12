@@ -282,8 +282,8 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  }
                                  
                                  // RFCs/I-Ds are sometimes misidentified as C/C++ source:
-                                 if( (mineString == "text/x-c") ||
-                                     (mineString == "text/x-c++") ) {
+                                 if( (mimeString == "text/x-c") ||
+                                     (mimeString == "text/x-c++") ) {
                                     mimeString = "text/plain";
                                  }
                               }
@@ -401,7 +401,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                            strftime((char*)&checkTime, sizeof(checkTime), "%Y-%m-%d %H:%M:%S %Z", timeptr);
                            addOrUpdateChildNode(publication, "url.checked", checkTime);
 
-                           fprintf(stderr, "OK: size=%sB; type=%s; MD5=%s\n",
+                           fprintf(stderr, "OK: size=%sB;\ttype=%s;\tMD5=%s\n",
                                    sizeString.c_str(), mimeString.c_str(), md5String.c_str());
 
                            // ====== Move downloaded file ===================
