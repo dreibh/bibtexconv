@@ -35,7 +35,7 @@ rfcPrefix   = 'https://xml.resource.org/public/rfc/bibxml/reference.RFC.'
 # Documents where meta-information XML is wrong:
 blacklistTable = [
    'draft-ahmed-lssctp',
-   'draft-adams-qos-broadband',
+   'draft-ietf-rserpool-api',
    'draft-iyengar-sctp-cacc',
    'RFC3246'
 ]
@@ -86,7 +86,7 @@ def getBibTeXFromIETFDocument(document):
          institution  = 'IETF'
       else:
          institution  = 'IETF, Individual Submission'
-      note         = 'Work in Progress'
+      # note = 'Work in Progress'
 
    if url == '':
       m = re.match('^RFC([0-9]*)$', document)

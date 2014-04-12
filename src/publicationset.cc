@@ -345,6 +345,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          const Node* url          = findChildNode(publication, "url");
          const Node* urlMime      = findChildNode(publication, "url.mime");
          const Node* urlSize      = findChildNode(publication, "url.size");
+         const Node* type         = findChildNode(publication, "type");
          const Node* howpublished = findChildNode(publication, "howpublished");
          const Node* booktitle    = findChildNode(publication, "booktitle");
          const Node* journal      = findChildNode(publication, "journal");
@@ -403,6 +404,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          fputs("\t</front>\n", fh);
 
          std::string seriesName  = "";
+         std::string seriesValue = "";
          if(howpublished) {
             seriesName = howpublished->value;
          }
@@ -412,15 +414,27 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          if(journal) {
             seriesName = journal->value;
          }
-         std::string seriesValue = "";
-         if(volume) {
-            seriesValue += "Volume " + volume->value;
+         if(type) {
+            seriesName = type->value;
+            if(number) {
+               if(seriesValue != "") {
+                  seriesValue += ", ";
+               }
+               seriesValue += number->value;
+               number = NULL;
+            }
          }
          if(number) {
             if(seriesValue != "") {
                seriesValue += ", ";
             }
             seriesValue += "Number " + number->value;
+         }
+         if(volume) {
+            if(seriesValue != "") {
+               seriesValue += ", ";
+            }
+            seriesValue += "Volume " + volume->value;
          }
          if(pages) {
             if(seriesValue != "") {
@@ -445,9 +459,6 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                seriesValue += ", ";
             }
             seriesValue += "DOI~" + doi->value;
-         }
-         if(seriesValue != "") {
-            seriesName += ",";
          }
          if((seriesName != "") || (seriesValue != "")) {
             if(seriesValue == "") {

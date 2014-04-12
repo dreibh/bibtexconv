@@ -281,8 +281,9 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                     mimeString = mimeString.substr(0, mimeString.size() - 1);
                                  }
                                  
-                                 // RFCs/I-Ds are sometimes misidentified as C/C++ source:
-                                 if( (mimeString == "text/x-c") ||
+                                 // RFCs/I-Ds are sometimes misidentified as source code:
+                                 if( (mimeString == "text/x-pascal") ||
+                                     (mimeString == "text/x-c") ||
                                      (mimeString == "text/x-c++") ) {
                                     mimeString = "text/plain";
                                  }
