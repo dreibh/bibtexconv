@@ -34,6 +34,7 @@ rfcPrefix   = 'https://xml.resource.org/public/rfc/bibxml/reference.RFC.'
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
+   #'draft-ietf-rserpool-',
    'draft-ahmed-lssctp',
    'draft-ietf-rserpool-api',
    'draft-iyengar-sctp-cacc',
@@ -212,8 +213,9 @@ def getBibTeXFromIETFDocument(document):
       sys.exit(1)
 
    inAuthorsSection = False
-   line       = txtFile.readline()
-   lineNumber = 0
+   foundDate        = False
+   line             = txtFile.readline()
+   lineNumber       = 0
    while line:
       lineNumber = lineNumber + 1
 
@@ -226,6 +228,29 @@ def getBibTeXFromIETFDocument(document):
                if documentType == 'RFC':
                   if category != 'Experimental':
                      documentType = category + ' RFC'
+         if foundDate == False:
+            m = re.match('.* (January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+,|) ([0-9][0-9][0-9][0-9])$', line)
+            if m != None:
+               foundDate = True
+               newMonth = 0
+               for monthName in monthNameTable:
+                  newMonth = newMonth + 1
+                  if monthName == m.group(1):
+                     break
+               if newMonth != month:
+                  sys.stderr.write('Fix: Month ' + str(month) + ' -> ' + str(newMonth) + '\n')
+                  month = newMonth
+               try:
+                  newDay = int(m.group(2).replace(',', ''))
+               except:
+                  newDay = 0
+               if newDay != day:
+                  sys.stderr.write('Fix: Day ' + str(day) + ' -> ' + str(newDay) + '\n')
+                  day = newDay
+               newYear = int(m.group(3))
+               if newYear != year:
+                  sys.stderr.write('Fix: Year ' + str(year) + ' -> ' + str(newYear) + '\n')
+                  year = newYear
 
       # ====== Authors section ==============================================
       if len(authorRegExpList) < 1:
@@ -274,6 +299,8 @@ def getBibTeXFromIETFDocument(document):
 
 
    # ====== Check ===========================================================
+   if foundDate == False:   
+      sys.stderr.write('WARNING: Unable to find date of document!')
    for i in range(1, len(authorRegExpList)):
       if authorRegExpList[i] == fullAuthorList[i]:
         sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorRegExpList[i]) + '" from list!\n')
