@@ -34,7 +34,7 @@ rfcPrefix   = 'https://xml.resource.org/public/rfc/bibxml/reference.RFC.'
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
-   #'draft-ietf-rserpool-',
+   'draft-ietf-rserpool-',
    'draft-ahmed-lssctp',
    'draft-ietf-rserpool-api',
    'draft-iyengar-sctp-cacc',
