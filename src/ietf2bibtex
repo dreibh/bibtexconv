@@ -28,9 +28,8 @@ import urllib
 import csv
 import codecs
 
-
-draftPrefix = 'https://xml.resource.org/public/rfc/bibxml3/reference.I-D.'
-rfcPrefix   = 'https://xml.resource.org/public/rfc/bibxml/reference.RFC.'
+draftPrefix = 'http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.'
+rfcPrefix   = 'http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.'
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
