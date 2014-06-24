@@ -1,8 +1,8 @@
-bibtexconv (1.1.0~rc1.11-1ubuntu1) utopic; urgency=low
+bibtexconv (1.1.0-1ubuntu1) utopic; urgency=low
 
   * New upstream version.
 
- -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Sun, 22 Jun 2014 08:08:08 +0200
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Tue, 24 Jun 2014 08:08:08 +0200
 
 bibtexconv (1.0.2-1ubuntu1) trusty; urgency=low
 
