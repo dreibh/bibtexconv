@@ -8,6 +8,8 @@ URL: http://www.iem.uni-due.de/~dreibh/bibtexconv/
 Source: http://www.iem.uni-due.de/~dreibh/bibtexconv/download/%{name}-%{version}.tar.gz
 
 AutoReqProv: on
+BuildRequires: autoconf
+BuildRequires: automake
 BuildRequires: bison
 BuildRequires: flex
 BuildRequires: openssl-devel
