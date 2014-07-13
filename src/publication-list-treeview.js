@@ -30,10 +30,17 @@ function preventDefault(event) {
 // ###### Handle click on list item #########################################
 function handleClickOnListItem(event) {
    // ====== Only react on clicks on the list item, not to sub-elements =====
-   if (event.target.tagName != 'LI') {
-      return;
+   if (event.target.tagName == 'A') {
+      return;                    // Case #1: hyperlink => nothing to do here!
    }
-   listItem = event.target;
+   else if (event.target.tagName == 'LI') {
+      listItem = event.target;   // Case #2: click on bullet point.
+   }
+   else {
+      if (event.target.parentNode.tagName == 'LI') {
+         listItem = event.target.parentNode;   // Case #3: parent is bullet point.
+      }
+   }
    
    // ====== Expand/collapse div-elemenets of this list item ================
    var divList = listItem.getElementsByTagName('div');
@@ -65,5 +72,6 @@ function initializePublicationList() {
       listItem.className = 'treeview-collapsed';
    }
 }
+
 
 document.addEventListener('DOMContentLoaded', initializePublicationList, false);
