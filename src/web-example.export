@@ -42,32 +42,19 @@ echo <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />\n
 echo <link rel="stylesheet" href="http://www.iem.uni-due.de/~dreibh/bonn.css" type="text/css" />\n
 echo </head>\n
 
-echo <body>\n\n
+echo <script type="text/javascript" src="publication-list-treeview.js"></script>\n
 
-
-echo <script type="text/javascript">\n
-
-echo textShowDetails = "Details&nbsp;...";\n
-echo textHideDetails = "Less details&nbsp;...";\n\n
-
-echo function togglePublicationDetails(publication) {\n
-echo     var element = document.getElementById(publication + "-Details");\n
-echo     var link    = document.getElementById(publication + "-Link");\n
-echo     if(element.style.display == "block") {\n
-echo        element.style.display = "none";\n
-echo        link.innerHTML        = textShowDetails;\n
-echo     }\n
-echo     else {\n
-echo         element.style.display = "block";\n
-echo         link.innerHTML        = textHideDetails;\n
-echo     }\n
-echo }\n\n
-
-echo function makePublicationDetailsLink(publication) {\n
-echo    document.write("<" + "a href=\\\"javascript:togglePublicationDetails('" + publication + "');\\\"><" + "strong id=\\\"" + publication + "-Link\\\">" + textShowDetails + "<" + "/strong>" + "<" + "/a>");\n
+echo <style>\n
+echo li.treeview-collapsed {\n
+echo    list-style-image: url(Images/ListItem-Collapsed.svg);\n
 echo }\n
 
-echo </script>\n\n
+echo li.treeview-expanded {\n
+echo    list-style-image: url(Images/ListItem-Expanded.svg);\n
+echo }\n
+echo </style>\n
+
+echo <body>\n\n
 
 
 echo <!-- ###### Publications ############################################# -->\n
@@ -88,7 +75,7 @@ templatenew
 template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 
 # ****** Begin of Entry
-template+ <li><p class=\"description\">
+template+ <li class="treeview-collapsed"><p class=\"description\">
 
 # ***** Authors
 template+ %{begin-author-loop}[%{is-first-author?}|%{is-last-author?} and |; ]
@@ -124,11 +111,6 @@ template+ [, DOI~<a href="http://dx.doi.org/%{doi}">%{doi}</a>]
 template+ [, %{isbn}][, %{issn}][, %{address}]
 template+ [, %{note}]
 template+ [, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
-
-# ****** Toggle details
-template+ [[%{keywords}][%{abstract}]%{is-not?}
-template+ , \[<script type="text/javascript">makePublicationDetailsLink('Publications-%{html-label}');</script>\]
-template+ ]
 template+ .
 
 # ****** Awards
@@ -137,8 +119,7 @@ template+ </p>
 
 # ***** Details
 template+ [[%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
-template+ <noscript><p class="description"><strong>JavaScript is required for details!</strong></p></noscript>
-template+ <div id="Publications-%{html-label}-Details" class="publication-details-hiddenbox">
+template+ <div class="publication-details-hiddenbox">
 template+ [<p class="publication-details"><strong>Keywords: </strong>
 template+ <span[ xml:lang="%{xml-language}"]>%{keywords}</span></p>
 template+ ]
