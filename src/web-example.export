@@ -126,7 +126,7 @@ template+ ]
 template+ [<p class="publication-details"><strong>Abstract: </strong>
 template+ <span[ xml:lang="%{xml-language}"]>%{abstract}</span></p>
 template+ ]
-template+ [<p class="publication-details"><strong>URL: </strong>
+template+ [<p class="publication-details" style="text-align: left;"><strong>URL:&nbsp;</strong>
 template+ <a[ type="%{url-mime}"] href="%{url}">%{url}</a></p>
 template+ ]
 template+ [<p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>]
