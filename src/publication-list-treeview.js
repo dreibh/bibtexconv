@@ -43,16 +43,24 @@ function handleClickOnListItem(event) {
    }
    
    // ====== Expand/collapse div-elemenets of this list item ================
+   var expand = 0;   // What to do here?
+   if(listItem.className == 'treeview-collapsed') {
+      expand = 1;
+      listItem.className = 'treeview-expanded';
+   }
+   else if(listItem.className == 'treeview-expanded') {
+      expand = -1;
+      listItem.className = 'treeview-collapsed';
+   }
+   
    var divList = listItem.getElementsByTagName('div');
    for (var index = 0; index < divList.length; index++) {
       var div = divList[index]
-      if(div.style.display == "block") {
+      if (expand == -1) {
          div.style.display = "none";    // collapse
-         listItem.className = 'treeview-collapsed';
       }
-      else {
+      else if (expand == 1) {
          div.style.display = "block";   // expand
-         listItem.className = 'treeview-expanded';
       }
    }
 }
@@ -61,15 +69,21 @@ function handleClickOnListItem(event) {
 // ###### Add listener to all list items ####################################
 function initializePublicationList() {
    var listItemList = document.getElementsByTagName('li');
+   var prefetched   = false;
    for (var index = 0; index < listItemList.length; index++) {
       var listItem = listItemList[index]
-      listItem.addEventListener('mousedown', preventDefault, false);
-      listItem.addEventListener('click', handleClickOnListItem, false);
-      if(index == listItemList.length - 1) {
-         // Prefetch the expanded bullet image!
-         listItem.className = 'treeview-expanded';
+      if( (listItem.className == 'treeview-collapsed') ||
+          (listItem.className == 'treeview-expanded') ) {
+         listItem.addEventListener('mousedown', preventDefault, false);
+         listItem.addEventListener('click', handleClickOnListItem, false);
+
+         if(!prefetched) {
+            // Prefetch the expanded bullet image!
+            listItem.className = 'treeview-expanded';
+            listItem.className = 'treeview-collapsed';
+            prefetched = true;
+         }
       }
-      listItem.className = 'treeview-collapsed';
    }
 }
 

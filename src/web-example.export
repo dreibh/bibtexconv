@@ -130,7 +130,6 @@ template+ [<p class="publication-details"><strong>URL: </strong>
 template+ <a[ type="%{url-mime}"] href="%{url}">%{url}</a></p>
 template+ ]
 template+ [<p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>]
-
 template+ </div>\n]
 
 # ****** End of Entry
