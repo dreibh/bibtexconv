@@ -40,6 +40,9 @@ function handleClickOnListItem(event) {
       if (event.target.parentNode.tagName == 'LI') {
          listItem = event.target.parentNode;   // Case #3: parent is bullet point.
       }
+      else {
+         return;   // Case #4: click elsewhere -> do nothing!
+      }
    }
    
    // ====== Expand/collapse div-elemenets of this list item ================
