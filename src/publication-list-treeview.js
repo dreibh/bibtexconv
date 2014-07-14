@@ -1,4 +1,4 @@
-// $Id: bibtexconv.cc 1838 2014-04-12 19:02:25Z dreibh $
+// $Id$
 //
 // Publication List Treeview
 // Copyright (C) 2014 by Thomas Dreibholz
