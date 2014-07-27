@@ -250,9 +250,9 @@ def getBibTeXFromIETFDocument(document):
                   month = newMonth
                   
                # ====== Get day =============================================
-               m = re.match('.* ([0-9]+) ' + monthNameTable[month - 1] + ' ' + str(year) + '$', line)
-               if m != None:   #   Format: <Day> <Month>, <Year>
-                  newDay = int(m.group(1))
+               m2 = re.match('.* ([0-9]+) ' + monthNameTable[month - 1] + ' ' + str(year) + '$', line)
+               if m2 != None:   #   Format: <Day> <Month>, <Year>
+                  newDay = int(m2.group(1))
                else:   # Format: <Month> <Day>, <Year>
                   try:
                      newDay = int(m.group(2).replace(',', ''))
@@ -310,7 +310,7 @@ def getBibTeXFromIETFDocument(document):
 
    # ====== Check ===========================================================
    if foundDate == False:   
-      sys.stderr.write('WARNING: Unable to find date of document!')
+      sys.stderr.write('WARNING: Unable to find date of document!\n')
    for i in range(1, len(authorRegExpList)):
       if authorRegExpList[i] == fullAuthorList[i]:
         sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorRegExpList[i]) + '" from list!\n')
