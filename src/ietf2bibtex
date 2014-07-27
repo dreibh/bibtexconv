@@ -89,13 +89,14 @@ def getBibTeXFromIETFDocument(document):
       # note = 'Work in Progress'
 
    if url == '':
-      m = re.match('^RFC([0-9]*)$', document)
+      m = re.match('^[Rr][Ff][Cc]([0-9]*)$', document)
       if m != None:
          url = rfcPrefix + m.group(1) + '.xml'
          documentType = 'RFC'
          number       = m.group(1)
          issn         = '2070-1721'
          institution  = 'IETF'
+         document     = documentType + str(number)
 
    if url == '':
       sys.stderr.write('ERROR: Unknown document type ' + document + '!\n')
@@ -229,8 +230,16 @@ def getBibTeXFromIETFDocument(document):
                      documentType = category + ' RFC'
          if foundDate == False:
             m = re.match('.* (January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+,|) ([0-9][0-9][0-9][0-9])$', line)
-            if m != None:
+            if m != None:               
                foundDate = True
+               
+               # ====== Get year ============================================
+               newYear = int(m.group(3))
+               if newYear != year:
+                  sys.stderr.write('Fix: Year ' + str(year) + ' -> ' + str(newYear) + '\n')
+                  year = newYear
+
+               # ====== Get month ===========================================
                newMonth = 0
                for monthName in monthNameTable:
                   newMonth = newMonth + 1
@@ -239,17 +248,19 @@ def getBibTeXFromIETFDocument(document):
                if newMonth != month:
                   sys.stderr.write('Fix: Month ' + str(month) + ' -> ' + str(newMonth) + '\n')
                   month = newMonth
-               try:
-                  newDay = int(m.group(2).replace(',', ''))
-               except:
-                  newDay = 0
+                  
+               # ====== Get day =============================================
+               m = re.match('.* ([0-9]+) ' + monthNameTable[month - 1] + ' ' + str(year) + '$', line)
+               if m != None:   #   Format: <Day> <Month>, <Year>
+                  newDay = int(m.group(1))
+               else:   # Format: <Month> <Day>, <Year>
+                  try:
+                     newDay = int(m.group(2).replace(',', ''))
+                  except:
+                     newDay = 0
                if newDay != day:
                   sys.stderr.write('Fix: Day ' + str(day) + ' -> ' + str(newDay) + '\n')
                   day = newDay
-               newYear = int(m.group(3))
-               if newYear != year:
-                  sys.stderr.write('Fix: Year ' + str(year) + ' -> ' + str(newYear) + '\n')
-                  year = newYear
 
       # ====== Authors section ==============================================
       if len(authorRegExpList) < 1:
