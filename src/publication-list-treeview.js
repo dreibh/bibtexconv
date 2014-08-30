@@ -40,8 +40,11 @@ function handleClickOnListItem(event) {
       if (event.target.parentNode.tagName == 'LI') {
          listItem = event.target.parentNode;   // Case #3: parent is bullet point.
       }
+      else if (event.target.parentNode.parentNode.tagName == 'LI') {
+         listItem = event.target.parentNode.parentNode;   // Case #4: parent of parent is bullet point.
+      }
       else {
-         return;   // Case #4: click elsewhere -> do nothing!
+         return;   // Case #5: click elsewhere -> do nothing!
       }
    }
    
