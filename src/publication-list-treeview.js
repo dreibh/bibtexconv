@@ -27,26 +27,57 @@ function preventDefault(event) {
 }
 
 
+// ###### Mouse-Over effect for publication item ############################
+function mouseOverEffect() {
+   var divList = this.getElementsByTagName('div');
+   if (divList.length > 0) {
+      var div = divList[0];
+      div.style.backgroundColor='#ffffbb';
+   }
+}
+
+
+// ###### Mouse-Out effect for publication item #############################
+function mouseOutEffect() {
+   var divList = this.getElementsByTagName('div');
+   if (divList.length > 0) {
+      var div = divList[0];
+      div.style.backgroundColor='transparent';
+   }
+}
+
+
 // ###### Handle click on list item #########################################
 function handleClickOnListItem(event) {
    // ====== Only react on clicks on the list item, not to sub-elements =====
+   var selectedDiv = null;
    if (event.target.tagName == 'A') {
-      return;                    // Case #1: hyperlink => nothing to do here!
-   }
-   else if (event.target.tagName == 'LI') {
-      listItem = event.target;   // Case #2: click on bullet point.
+      // Case #1: hyperlink => nothing to do here!
+      return;                    
    }
    else {
-      if (event.target.parentNode.tagName == 'LI') {
-         listItem = event.target.parentNode;   // Case #3: parent is bullet point.
+      // Case #2: walk through tree's root to find LI element.
+      node = event.target;
+      while ((node != null) && (node.tagName != 'LI')) {
+         if (node.tagName == 'DIV') {
+            selectedDiv = node;
+         }
+         node = node.parentNode;
       }
-      else if (event.target.parentNode.parentNode.tagName == 'LI') {
-         listItem = event.target.parentNode.parentNode;   // Case #4: parent of parent is bullet point.
+      if ((node == null) || (node.tagName != 'LI')) {
+         return;
       }
-      else {
-         return;   // Case #5: click elsewhere -> do nothing!
-      }
+      listItem = node;
    }
+
+   
+   // ====== Check whether click is in first div ============================
+   var divList = listItem.getElementsByTagName('div');
+   if ((selectedDiv != null) && (selectedDiv != divList[0])) {
+      // The click is in a further div. Just skip it!
+      return;
+   }
+
    
    // ====== Expand/collapse div-elemenets of this list item ================
    var expand = 0;   // What to do here?
@@ -59,8 +90,8 @@ function handleClickOnListItem(event) {
       listItem.className = 'treeview-collapsed';
    }
    
-   var divList = listItem.getElementsByTagName('div');
-   for (var index = 0; index < divList.length; index++) {
+   // NOTE: The first div is skipped!
+   for (var index = 1; index < divList.length; index++) {
       var div = divList[index]
       if (expand == -1) {
          div.style.display = "none";    // collapse
@@ -83,6 +114,9 @@ function initializePublicationList() {
          listItem.addEventListener('mousedown', preventDefault, false);
          listItem.addEventListener('click', handleClickOnListItem, false);
 
+         listItem.addEventListener('mouseover', mouseOverEffect, false);
+         listItem.addEventListener('mouseout', mouseOutEffect, false);
+      
          if(!prefetched) {
             // Prefetch the expanded bullet image!
             listItem.className = 'treeview-expanded';

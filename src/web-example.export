@@ -2,15 +2,15 @@
 # $Id$
 
 # Select all entries.
-citeAll
-#cite Globecom2010
-#cite LCN2005-EdgeDevice
-#cite PAMS2014-LEDBAT
-#cite PAMS2013-NorNet
-#cite CAIA2014
-#cite Dre2012
-#cite CRNA-Rapport2013
-#cite LinuxTag2005
+#citeAll
+cite Globecom2010
+cite LCN2005-EdgeDevice
+cite PAMS2014-LEDBAT
+cite PAMS2013-NorNet
+cite CAIA2014
+cite Dre2012
+cite CRNA-Rapport2013
+cite LinuxTag2005
 
 # Usually, there should be a more fine-granular selection.
 # For convenience, it is useful to make them in included files.
@@ -75,7 +75,9 @@ templatenew
 template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 
 # ****** Begin of Entry
-template+ <li class="treeview-collapsed"><p class=\"description\">
+template+ <li class="treeview-collapsed">
+template+ <div>
+template+ <p class=\"description\">
 
 # ***** Authors
 template+ %{begin-author-loop}[%{is-first-author?}|%{is-last-author?} and |; ]
@@ -116,6 +118,7 @@ template+ .
 # ****** Awards
 template+ [ <strong>%{custom-1}.</strong>]
 template+ </p>
+template+ </div>
 
 # ***** Details
 template+ [[%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
