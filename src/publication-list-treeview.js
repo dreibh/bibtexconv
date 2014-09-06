@@ -32,7 +32,7 @@ function mouseOverEffect() {
    var divList = this.getElementsByTagName('div');
    if (divList.length > 0) {
       var div = divList[0];
-      div.style.backgroundColor='#ffffbb';
+      div.style.backgroundColor='#ffffcc';
    }
 }
 
