@@ -1,0 +1,34 @@
+# Example for export to plain text
+# $Id$
+
+
+cite Princeton2014
+cite ComNets2013-Edge
+cite ComNets2013-Core
+cite PAMS2013-NorNet
+
+cite NNUW2-Dreibholz-NorNetCore-Introduction
+cite NNUW2-Dreibholz-NorNetCore-Tutorial
+
+cite PAMS2014-NorNetEdge
+cite IWQoS2014
+cite NNUW2-Hayes-Shared-Bottleneck-Detection
+cite Globecom2014
+
+
+templatenew
+
+# ***** Authors
+template+   %{label}:\n    author:\n
+template+ %{begin-author-loop}      - ins: [%{author-initials} ]%{author-family-name}\n%{end-author-loop}
+# ***** Title
+template+ [    title: %{title}\n]
+# ***** Bibliographic data of publication
+template+ [    seriesinfo: %{booktitle}\n]
+template+ [    target: %{url}\n]
+template+ [    date: %{year}][-%{month-number}\n]
+
+
+# Select and export all entries.
+sort year/A month/D day/D
+export
