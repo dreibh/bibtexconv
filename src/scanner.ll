@@ -100,7 +100,7 @@ int         level;
 [pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return(T_Proceedings);   }
 [uU][nN][pP][uU][bB][lL][iI][sS][hH][eE][dD]         { return(T_Unpublished);   }
 
-[a-zA-Z0-9\-\.\+\:]+                                 { yylval.iText = strdup(yytext);
+[a-zA-Z0-9\-\.\+\:\_]+                               { yylval.iText = strdup(yytext);
                                                        // printf("K=<%s> l=%d\n",yylval.iText, yylineno);
                                                        return(T_Keyword); }
 
