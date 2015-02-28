@@ -168,7 +168,11 @@ def getBibTeXFromIETFDocument(document):
    #print series, name
 
    formatList = xmlDocument.getElementsByTagName('format')
-   url = formatList[0].attributes['target'].value
+   try:
+      url = formatList[0].attributes['target'].value
+   except:
+      url = 'https://tools.ietf.org/id/' + document + '.txt'
+      sys.stderr.write('WARNING: No target URL found, assuming ' + url + '\n')
    #print url
    
    # For I-Ds, use a secure URL instead of HTTP.
