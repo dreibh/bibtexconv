@@ -10,7 +10,7 @@ Build-Depends: autotools-dev,
                flex,
                libcurl4-openssl-dev,
                libssl-dev
-Standards-Version: 3.9.4
+Standards-Version: 3.9.6
 
 Package: bibtexconv
 Architecture: any
