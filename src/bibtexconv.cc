@@ -66,8 +66,8 @@ static bool downloadFile(CURL*         curl,
    }
 
    curl_easy_setopt(curl, CURLOPT_URL,            url);
-   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1L);
+   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 1L);
    curl_easy_setopt(curl, CURLOPT_WRITEDATA,      downloadFH);
    curl_easy_setopt(curl, CURLOPT_WRITEHEADER,    headerFH);
    curl_easy_setopt(curl, CURLOPT_USERAGENT,      "bibtexconv/1.0 (compatible; MC680x0; AmigaOS)");

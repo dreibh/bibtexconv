@@ -1,11 +1,11 @@
-bibtexconv (1.1.2~rc1.0-1ubuntu1) vivid; urgency=low
+bibtexconv (1.1.2-1ubuntu1) vivid; urgency=low
 
   * New upstream version.
   * debian/control: updated standards version.
   * debian/watch: added pgpsigurlmangle option.
   * debian/upstream/signing-key.asc: added upstream public key.
 
- -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Sun, 01 Mar 2015 08:08:08 +0200
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Thu, 19 Mar 2015 08:08:08 +0200
 
  bibtexconv (1.1.1-1ubuntu1) vivid; urgency=low
 
