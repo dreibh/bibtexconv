@@ -981,7 +981,6 @@ std::string PublicationSet::applyTemplate(Node*                           public
                         fprintf(stderr, "ERROR: Unexpected %% placeholder '%c' in subdivision part of custom printing template!\n",
                         printingTemplate[i + 2]);
                         exit(1);
-                      break;
                   }
                   i++;
                }

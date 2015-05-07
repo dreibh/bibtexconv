@@ -672,13 +672,11 @@ static int handleInput(FILE*           fh,
                else {
                   fprintf(stderr, "ERROR: Unable to open include file '%s'!\n", includeFileName);
                   exit(1);
-                  break;
                }
             }
             else {
                fprintf(stderr, "ERROR: Include file nesting level limit reached!\n");
                exit(1);
-               break;
             }
          }
          else if((strncmp(input, "monthNames ", 11)) == 0) {
@@ -690,7 +688,6 @@ static int handleInput(FILE*           fh,
                if(i > 11) {
                   fputs("ERROR: There are only 12 month names possible in monthNames!\n", stderr);
                   exit(1);
-                  break;
                }
                i++;
             }
@@ -698,7 +695,6 @@ static int handleInput(FILE*           fh,
          else {
             fprintf(stderr, "ERROR: Bad command '%s'!\n", input);
             exit(1);
-            break;
          }
       }
    }
