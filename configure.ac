@@ -1,4 +1,4 @@
-AC_INIT([BibTeXConv], [1.1.3~rc1], [dreib@iem.uni-due.de])
+AC_INIT([BibTeXConv], [1.1.3], [dreib@iem.uni-due.de])
 
 AM_INIT_AUTOMAKE
 AC_PREREQ(2.60)
