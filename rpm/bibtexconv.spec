@@ -42,6 +42,7 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/man/man1/bibtexconv-odt.1.gz
 %{_datadir}/doc/bibtexconv/examples/authors.list
 %{_datadir}/doc/bibtexconv/examples/get-author-url
+%{_datadir}/doc/bibtexconv/examples/publication-list-treeview.js
 %{_datadir}/doc/bibtexconv/examples/ExampleReferences.bib
 %{_datadir}/doc/bibtexconv/examples/ODT-Template.odt
 %{_datadir}/doc/bibtexconv/examples/odt-example.export
