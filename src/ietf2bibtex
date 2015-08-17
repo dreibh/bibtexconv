@@ -161,17 +161,23 @@ def getBibTeXFromIETFDocument(document):
    seriesInfoList = xmlDocument.getElementsByTagName('seriesInfo')
    series = None
    name   = None
+   doi    = None
    for seriesInfo in seriesInfoList:
       if seriesInfo.attributes['name'].value in ['RFC', 'Internet-Draft']:
          series = seriesInfo.attributes['name'].value
          name   = seriesInfo.attributes['value'].value
-   #print series, name
+      elif seriesInfo.attributes['name'].value == 'DOI':
+         doi = seriesInfo.attributes['value'].value
+   #print series, name, doi
 
    formatList = xmlDocument.getElementsByTagName('format')
    try:
       url = formatList[0].attributes['target'].value
    except:
-      url = 'https://tools.ietf.org/id/' + document + '.txt'
+      if documentType == 'RFC':
+         url = 'https://tools.ietf.org/rfc/' + document.lower() + '.txt'
+      else:
+         url = 'https://tools.ietf.org/id/' + document + '.txt'
       sys.stderr.write('WARNING: No target URL found, assuming ' + url + '\n')
    #print url
    
@@ -346,6 +352,8 @@ def getBibTeXFromIETFDocument(document):
    sys.stdout.write('\tlanguage = "' + language + '",\n')
    if issn != None:
       sys.stdout.write('\tissn = "' + issn + '",\n')
+   if doi != None:
+      sys.stdout.write('\tdoi = "' + doi + '",\n')
    if note != None:
       sys.stdout.write('\tnote = "' + note + '",\n')
    if abstract != None:
