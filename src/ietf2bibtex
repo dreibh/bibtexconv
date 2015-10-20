@@ -217,16 +217,17 @@ def getBibTeXFromIETFDocument(document):
       lineNumber = lineNumber + 1
 
       # ====== RFC category =================================================
-      if lineNumber < 15:
+      if lineNumber < 20:
          if re.search('^Category:', line.strip().decode()):
             m = re.match('^Category: (.*)[ ][ ].*$', line.strip().decode())
             if m != None:
-               category = m.group(1)
+               category = m.group(1).strip()
                if documentType == 'RFC':
                   if category != 'Experimental':
                      documentType = category + ' RFC'
          if foundDate == False:
             m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|) ([0-9][0-9][0-9][0-9])$', line.strip().decode())
+            # print(m,line)
             if m != None:
                foundDate = True
 
