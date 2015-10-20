@@ -48,6 +48,7 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/doc/bibtexconv/examples/odt-example.export
 %{_datadir}/doc/bibtexconv/examples/text-example.export
 %{_datadir}/doc/bibtexconv/examples/web-example.export
+%{_datadir}/doc/bibtexconv/examples/publication-list-treeview.js
 
 %doc
 
