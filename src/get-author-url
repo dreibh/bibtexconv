@@ -78,7 +78,7 @@ for row in inputCSV:
 if authorRow == None:
    # The authorName is not in the table -> use default text
    sys.stdout.write(authorText)
-   sys.stderr.write('NOTE: Did not find authorName ' + authorName + ' in ' + authorList + '!\n')
+   sys.stderr.write('NOTE: Did not find author name ' + authorName + ' in ' + authorList + '!\n')
    sys.exit(0)
 else:
    # Found the authorName -> print the result
