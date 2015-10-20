@@ -1,0 +1,56 @@
+.\" $Id: ietf2bibtex.1 1822 2014-04-06 14:02:47Z dreibh $
+.\"
+.\" BibTeX Converter
+.\" Copyright (C) 2014-2015 by Thomas Dreibholz
+.\"
+.\" This program is free software: you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation, either version 3 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program.  If not, see <http://www.gnu.org/licenses/>.
+.\"
+.\" Contact: dreibh@iem.uni-due.de
+.\"
+.\" ###### Setup ############################################################
+.Dd Apr 6, 2014
+.Dt ietf2bibtex 1
+.Os ietf2bibtex
+.\" ###### Name #############################################################
+.Sh NAME
+.Nm ietf2bibtex
+.Nd Create BibTeX entry for IETF document
+.\" ###### Synopsis #########################################################
+.Sh SYNOPSIS
+.Nm ietf2bibtex
+document
+.Op document ...
+.\" ###### Description ######################################################
+.Sh DESCRIPTION
+.Nm ietf2bibtex
+creates a BibTeX entry for an IETF document (i.e. RFC or Internet Draft). The
+necessary information is automatically obtained from online XML references and
+the actual document.
+.Pp
+.\" ###### Arguments ########################################################
+.Sh OPTIONS
+The following argument must be provided:
+.Bl -tag -width indent
+.It document
+The name of the IETF document, e.g. like RFC5351 or
+draft-dreibholz-mptcp-nornet-experience.
+.El
+.Pp
+.\" ###### Arguments ########################################################
+.Sh EXAMPLES
+.Bl -tag -width indent
+.It ietf2bibtex RFC5351
+.It ietf2bibtex RFC5351 RFC5352 RFC5353 RFC5354 RFC5355 RFC5356 RFC5525 >RSerPool.bib
+.It ietf2bibtex draft-dreibholz-mptcp-nornet-experience
+.El
