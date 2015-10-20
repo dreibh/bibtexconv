@@ -67,7 +67,7 @@ def getBibTeXFromIETFDocument(document):
       if re.match(blacklistEntry, document):
          sys.stderr.write(document + ' is blacklisted due to bad metadata in XML file. Skipping.\n')
          return
-   
+
    issn         = None
    documentType = None
    number       = None
@@ -115,7 +115,7 @@ def getBibTeXFromIETFDocument(document):
 
    fullAuthorList   = []
    authorRegExpList = []
-   authorList = xmlDocument.getElementsByTagName('author') 
+   authorList = xmlDocument.getElementsByTagName('author')
    if len(authorList) == 0:
       sys.stderr.write('ERROR: It seems that the XML file ' + url + ' does not exist. Wrong document name?\n')
       sys.exit(1)
@@ -180,7 +180,7 @@ def getBibTeXFromIETFDocument(document):
          url = 'https://tools.ietf.org/id/' + document + '.txt'
       sys.stderr.write('WARNING: No target URL found, assuming ' + url + '\n')
    #print url
-   
+
    # For I-Ds, use a secure URL instead of HTTP.
    url = url.replace('http://www.rfc-editor.org/rfc/',
                      'https://www.rfc-editor.org/rfc/')
@@ -195,7 +195,7 @@ def getBibTeXFromIETFDocument(document):
    except:
       pass
    #print 'A=',abstract,"."
-   
+
    if abstract != None:
       abstract = abstract.strip().replace('\t', ' ')
       abstract = abstract.strip().replace('\n', ' ')
@@ -239,10 +239,10 @@ def getBibTeXFromIETFDocument(document):
                   if category != 'Experimental':
                      documentType = category + ' RFC'
          if foundDate == False:
-            m = re.match('.* (January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+,|) ([0-9][0-9][0-9][0-9])$', line)
-            if m != None:               
+            m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|) ([0-9][0-9][0-9][0-9])$', line.strip())
+            if m != None:
                foundDate = True
-               
+
                # ====== Get year ============================================
                newYear = int(m.group(3))
                if newYear != year:
@@ -258,7 +258,7 @@ def getBibTeXFromIETFDocument(document):
                if newMonth != month:
                   sys.stderr.write('Fix: Month ' + str(month) + ' -> ' + str(newMonth) + '\n')
                   month = newMonth
-                  
+
                # ====== Get day =============================================
                m2 = re.match('.* ([0-9]+) ' + monthNameTable[month - 1] + ' ' + str(year) + '$', line)
                if m2 != None:   #   Format: <Day> <Month>, <Year>
@@ -286,14 +286,14 @@ def getBibTeXFromIETFDocument(document):
                   if len(m.group(2)) >= len(fullAuthorList[i]):
                      fullAuthorList[i] = str(m.group(2))
                i = i + 1
-              
+
          # Staying in author search mode: the line may just be a header!
          #else:
             #inAuthorsSection = False
       else:
          if re.search('^.*(Editors|Authors|\'[ \t]+[Aa]ddresses|Author\'s[ \t]+[Aa]ddress|Editor\'s[ \t]+[Aa]ddress|Author[ \t]+[Ii]nformation).*$', line):
-            inAuthorsSection = True 
-      
+            inAuthorsSection = True
+
       line = txtFile.readline()
 
    #print 'I=',authorRegExpList
@@ -319,7 +319,7 @@ def getBibTeXFromIETFDocument(document):
 
 
    # ====== Check ===========================================================
-   if foundDate == False:   
+   if foundDate == False:
       sys.stderr.write('WARNING: Unable to find date of document!\n')
    for i in range(1, len(authorRegExpList)):
       if authorRegExpList[i] == fullAuthorList[i]:
@@ -359,7 +359,7 @@ def getBibTeXFromIETFDocument(document):
    if abstract != None:
       sys.stdout.write('\tabstract = "{' + abstract + '}",\n')
    sys.stdout.write('\turl = "' + url + '"\n')
-   
+
    sys.stdout.write('}\n\n')
 
 
