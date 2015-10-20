@@ -3,7 +3,7 @@
 # $Id$
 #
 # Web example script to get HTML author URL from author in list
-# Copyright (C) 2014 by Thomas Dreibholz
+# Copyright (C) 2014-2015 by Thomas Dreibholz
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,9 +24,10 @@
 from xml.dom.minidom import parse
 import re
 import sys
-import urllib
+import urllib.request
 import csv
 import codecs
+
 
 draftPrefix = 'http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.'
 rfcPrefix   = 'http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.'
@@ -45,20 +46,6 @@ monthIDTable   = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
 monthNameTable = [ 'January', 'February', 'March', 'April',
                    'May', 'June', 'July', 'August',
                    'September', 'October', 'November', 'December', 'INVALID' ]
-
-# ====== Unicode wrapper for CSV reader =====================================
-def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
-    # csv.py doesn't do Unicode; encode temporarily as UTF-8:
-    csv_reader = csv.reader(utf_8_encoder(unicode_csv_data),
-                            dialect=dialect, **kwargs)
-    for row in csv_reader:
-        # decode UTF-8 back to Unicode, cell by cell:
-        yield [unicode(cell, 'utf-8') for cell in row]
-
-# ====== Unicode wrapper for CSV reader =====================================
-def utf_8_encoder(unicode_csv_data):
-    for line in unicode_csv_data:
-        yield line.encode('utf-8')
 
 
 # ====== Get BibTeX from IETF document ======================================
@@ -106,7 +93,7 @@ def getBibTeXFromIETFDocument(document):
    # ====== Get document information from XML file =============================
    sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
-      xmlFile = urllib.urlopen(url)
+      xmlFile = urllib.request.urlopen(url)
       # print 'Parsing XML ...'
       xmlDocument = parse(xmlFile)
    except Exception as e:
@@ -217,7 +204,7 @@ def getBibTeXFromIETFDocument(document):
    # ====== Get full author list from text file ================================
    sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
-      txtFile = urllib.urlopen(url)
+      txtFile = urllib.request.urlopen(url)
    except Exception as e:
       sys.stderr.write('ERROR: Failed to get document from ' + url + ': ' + str(e) + '!\n')
       sys.exit(1)
@@ -231,15 +218,15 @@ def getBibTeXFromIETFDocument(document):
 
       # ====== RFC category =================================================
       if lineNumber < 15:
-         if re.search('^Category:', line):
-            m = re.match('^Category: (.*)[ ][ ].*$', line)
+         if re.search('^Category:', line.strip().decode()):
+            m = re.match('^Category: (.*)[ ][ ].*$', line.strip().decode())
             if m != None:
-               category = m.group(1).strip()
+               category = m.group(1)
                if documentType == 'RFC':
                   if category != 'Experimental':
                      documentType = category + ' RFC'
          if foundDate == False:
-            m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|) ([0-9][0-9][0-9][0-9])$', line.strip())
+            m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|) ([0-9][0-9][0-9][0-9])$', line.strip().decode())
             if m != None:
                foundDate = True
 
@@ -260,7 +247,7 @@ def getBibTeXFromIETFDocument(document):
                   month = newMonth
 
                # ====== Get day =============================================
-               m2 = re.match('.* ([0-9]+) ' + monthNameTable[month - 1] + ' ' + str(year) + '$', line)
+               m2 = re.match('.* ([0-9]+) ' + monthNameTable[month - 1] + ' ' + str(year) + '$', line.strip().decode())
                if m2 != None:   #   Format: <Day> <Month>, <Year>
                   newDay = int(m2.group(1))
                else:   # Format: <Month> <Day>, <Year>
@@ -276,11 +263,11 @@ def getBibTeXFromIETFDocument(document):
       if len(authorRegExpList) < 1:
          break
       if inAuthorsSection == True:
-         if not re.search('^[\s]*$', line):
+         if not re.search('^[\s]*$', line.strip().decode()):
             i = 0
             #sys.stderr.write(line)
             for author in authorRegExpList:
-               m = re.match('^(.*)(' + author + ')([^a-zA-Z@].*)$', line)
+               m = re.match('^(.*)(' + author + ')([^a-zA-Z@].*)$', line.strip().decode())
                #print line, i, m, author
                if m != None:
                   if len(m.group(2)) >= len(fullAuthorList[i]):
@@ -291,7 +278,7 @@ def getBibTeXFromIETFDocument(document):
          #else:
             #inAuthorsSection = False
       else:
-         if re.search('^.*(Editors|Authors|\'[ \t]+[Aa]ddresses|Author\'s[ \t]+[Aa]ddress|Editor\'s[ \t]+[Aa]ddress|Author[ \t]+[Ii]nformation).*$', line):
+         if re.search('^.*(Editors|Authors|\'[ \t]+[Aa]ddresses|Author\'s[ \t]+[Aa]ddress|Editor\'s[ \t]+[Aa]ddress|Author[ \t]+[Ii]nformation).*$', line.strip().decode()):
             inAuthorsSection = True
 
       line = txtFile.readline()
@@ -304,7 +291,7 @@ def getBibTeXFromIETFDocument(document):
    csv.register_dialect('authors-fix', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
 
    inputFile = codecs.open('authors-fix.list', 'r', 'utf-8')
-   inputCSV = unicode_csv_reader(inputFile, dialect='authors-fix')
+   inputCSV = csv.reader(inputFile, dialect='authors-fix')
 
    authorRow = None
    for row in inputCSV:
@@ -368,10 +355,6 @@ def getBibTeXFromIETFDocument(document):
 if len(sys.argv) < 2:
    sys.stderr.write('Usage: ietf2bibtex document [...]\n')
    sys.exit(1)
-
-sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-sys.stderr = codecs.getwriter('utf8')(sys.stderr)
-sys.stdin  = codecs.getreader('utf8')(sys.stdin)
 
 for i in range(1, len(sys.argv)):
    getBibTeXFromIETFDocument(sys.argv[i])
