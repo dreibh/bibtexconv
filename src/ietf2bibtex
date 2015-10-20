@@ -109,8 +109,8 @@ def getBibTeXFromIETFDocument(document):
       xmlFile = urllib.urlopen(url)
       # print 'Parsing XML ...'
       xmlDocument = parse(xmlFile)
-   except:
-      sys.stderr.write('ERROR: Failed to get XML information from ' + url + '!\n')
+   except Exception as e:
+      sys.stderr.write('ERROR: Failed to get XML information from ' + url + ': ' + str(e) + '!\n')
       sys.exit(1)
 
    fullAuthorList   = []
@@ -178,7 +178,7 @@ def getBibTeXFromIETFDocument(document):
          url = 'https://tools.ietf.org/rfc/' + document.lower() + '.txt'
       else:
          url = 'https://tools.ietf.org/id/' + document + '.txt'
-      sys.stderr.write('WARNING: No target URL found, assuming ' + url + '\n')
+      #sys.stderr.write('WARNING: No target URL found, assuming ' + url + '\n')
    #print url
 
    # For I-Ds, use a secure URL instead of HTTP.
@@ -218,8 +218,8 @@ def getBibTeXFromIETFDocument(document):
    sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
       txtFile = urllib.urlopen(url)
-   except:
-      sys.stderr.write('ERROR: Failed to get document from ' + url + '!\n')
+   except Exception as e:
+      sys.stderr.write('ERROR: Failed to get document from ' + url + ': ' + str(e) + '!\n')
       sys.exit(1)
 
    inAuthorsSection = False
