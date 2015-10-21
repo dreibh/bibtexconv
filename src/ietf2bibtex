@@ -217,7 +217,7 @@ def getBibTeXFromIETFDocument(document):
       lineNumber = lineNumber + 1
 
       # ====== RFC category =================================================
-      if lineNumber < 20:
+      if lineNumber < 30:
          if re.search('^Category:', line.strip().decode()):
             m = re.match('^Category: (.*)[ ][ ].*$', line.strip().decode())
             if m != None:
@@ -268,8 +268,8 @@ def getBibTeXFromIETFDocument(document):
             i = 0
             #sys.stderr.write(line)
             for author in authorRegExpList:
-               m = re.match('^(.*)(' + author + ')([^a-zA-Z@].*)$', line.strip().decode())
-               #print line, i, m, author
+               m = re.match('^(.*)(' + author + ')$', line.strip().decode())
+               # print(line.strip(), i, m, author)
                if m != None:
                   if len(m.group(2)) >= len(fullAuthorList[i]):
                      fullAuthorList[i] = str(m.group(2))
