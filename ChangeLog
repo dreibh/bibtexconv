@@ -1,4 +1,196 @@
 ------------------------------------------------------------------------
+r2029 | dreibh | 2015-10-21 19:32:18 +0200 (Wed, 21 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/node.cc
+
+Improved sorting: volume before issue and number.
+
+------------------------------------------------------------------------
+r2028 | dreibh | 2015-10-21 12:01:14 +0200 (Wed, 21 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.ac
+
+No need to initialize libtool.
+
+------------------------------------------------------------------------
+r2027 | dreibh | 2015-10-21 12:01:05 +0200 (Wed, 21 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ietf2bibtex
+
+Some small improvements.
+
+------------------------------------------------------------------------
+r2025 | dreibh | 2015-10-20 14:19:56 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/make-ppa
+   M /trunk/bibtexconv/rpm/bibtexconv.spec
+
+Packaging file updates.
+
+------------------------------------------------------------------------
+r2024 | dreibh | 2015-10-20 14:16:04 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/bibtexconv.1
+   A /trunk/bibtexconv/src/ietf2bibtex.1
+
+Added/updated manpages.
+
+------------------------------------------------------------------------
+r2023 | dreibh | 2015-10-20 14:07:08 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/rpm/bibtexconv.spec
+
+RPM package update.
+
+------------------------------------------------------------------------
+r2022 | dreibh | 2015-10-20 14:03:46 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ietf2bibtex
+
+Some fixes.
+
+------------------------------------------------------------------------
+r2021 | dreibh | 2015-10-20 13:58:19 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ietf2bibtex
+
+A fix.
+
+------------------------------------------------------------------------
+r2020 | dreibh | 2015-10-20 13:57:49 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ietf2bibtex
+
+Phython 3.x compatibility.
+
+------------------------------------------------------------------------
+r2019 | dreibh | 2015-10-20 13:53:42 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ietf2bibtex
+
+Some more improvements.
+
+------------------------------------------------------------------------
+r2018 | dreibh | 2015-10-20 13:35:37 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ietf2bibtex
+
+A fix.
+
+------------------------------------------------------------------------
+r2017 | dreibh | 2015-10-20 13:09:46 +0200 (Tue, 20 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/get-author-url
+
+String fix.
+
+------------------------------------------------------------------------
+r2016 | dreibh | 2015-08-17 14:19:17 +0200 (Mon, 17 Aug 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/authors-fix.list
+
+Another update.
+
+------------------------------------------------------------------------
+r2015 | dreibh | 2015-08-17 13:47:08 +0200 (Mon, 17 Aug 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/authors-fix.list
+
+Updated example fix list.
+
+------------------------------------------------------------------------
+r2014 | dreibh | 2015-08-17 11:45:14 +0200 (Mon, 17 Aug 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ietf2bibtex
+
+Improved ietf2bibtex script.
+
+------------------------------------------------------------------------
+r2013 | dreibh | 2015-08-17 11:36:14 +0200 (Mon, 17 Aug 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/authors-fix.list
+
+Updated example.
+
+------------------------------------------------------------------------
+r2012 | dreibh | 2015-07-07 13:41:15 +0200 (Tue, 07 Jul 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/authors.list
+
+List update.
+
+------------------------------------------------------------------------
+r2011 | dreibh | 2015-07-07 13:29:20 +0200 (Tue, 07 Jul 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/authors.list
+
+Updated URL list example.
+
+------------------------------------------------------------------------
+r2010 | dreibh | 2015-07-06 22:02:18 +0200 (Mon, 06 Jul 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/authors-fix.list
+
+Updated list.
+
+------------------------------------------------------------------------
+r2009 | dreibh | 2015-06-05 12:06:34 +0200 (Fri, 05 Jun 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/rpm/bibtexconv.spec
+
+Added missing file to .spec.
+
+------------------------------------------------------------------------
+r2006 | dreibh | 2015-05-11 15:43:27 +0200 (Mon, 11 May 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/rpm/bibtexconv.spec
+
+New release.
+
+------------------------------------------------------------------------
+r2003 | dreibh | 2015-05-07 15:53:16 +0200 (Thu, 07 May 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.ac
+
+No colorgcc by default.
+
+------------------------------------------------------------------------
+r2002 | dreibh | 2015-05-07 15:52:25 +0200 (Thu, 07 May 2015) | 3 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/make-ppa
+   M /trunk/bibtexconv/src/bibtexconv.cc
+   M /trunk/bibtexconv/src/publicationset.cc
+
+clang warning fixes.
+
+
+------------------------------------------------------------------------
+r1992 | dreibh | 2015-04-02 15:31:09 +0200 (Thu, 02 Apr 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/authors.list
+
+List update.
+
+------------------------------------------------------------------------
+r1991 | dreibh | 2015-03-19 10:40:08 +0100 (Thu, 19 Mar 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/rpm/bibtexconv.spec
+   M /trunk/bibtexconv/src/bibtexconv.cc
+
+New release.
+
+------------------------------------------------------------------------
 r1972 | dreibh | 2015-03-01 12:05:31 +0100 (Sun, 01 Mar 2015) | 1 line
 Changed paths:
    M /trunk/bibtexconv/ChangeLog
