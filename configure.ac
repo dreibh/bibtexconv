@@ -6,7 +6,7 @@ AC_PREREQ(2.60)
 AC_CONFIG_HEADERS([config.h:config.in])
 AC_CONFIG_SRCDIR([src/bibtexconv.cc])
 
-LT_INIT
+# LT_INIT
 # AC_PROG_LIBTOOL
 AC_PROG_CC
 AC_PROG_CXX
