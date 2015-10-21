@@ -226,7 +226,7 @@ def getBibTeXFromIETFDocument(document):
                   if category != 'Experimental':
                      documentType = category + ' RFC'
          if foundDate == False:
-            m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|) ([0-9][0-9][0-9][0-9])$', line.strip().decode())
+            m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|)[ ]*([0-9][0-9][0-9][0-9])$', line.strip().decode())
             # print(m,line)
             if m != None:
                foundDate = True
