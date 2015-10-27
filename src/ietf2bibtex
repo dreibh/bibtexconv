@@ -256,7 +256,7 @@ def getBibTeXFromIETFDocument(document):
                      newDay = int(m.group(2).replace(',', ''))
                   except:
                      newDay = 0
-               if newDay != day:
+               if ((newDay != 0) and (newDay != day)):
                   sys.stderr.write('Fix: Day ' + str(day) + ' -> ' + str(newDay) + '\n')
                   day = newDay
 
@@ -264,7 +264,12 @@ def getBibTeXFromIETFDocument(document):
       if len(authorRegExpList) < 1:
          break
       if inAuthorsSection == True:
-         if not re.search('^[\s]*$', line.strip().decode()):
+         try:
+            # Sometimes, there may be some strange letters inside -> decode fails.
+            d = line.strip().decode()
+         except:
+            d=''   # Just ignore not-decodable stuff for now.
+         if not re.search('^[\s]*$', d):
             i = 0
             #sys.stderr.write(line)
             for author in authorRegExpList:
