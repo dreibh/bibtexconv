@@ -1,4 +1,40 @@
 ------------------------------------------------------------------------
+r2037 | dreibh | 2015-10-27 09:49:19 +0100 (Tue, 27 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/make-ppa
+   M /trunk/bibtexconv/rpm/bibtexconv.spec
+
+New release.
+
+------------------------------------------------------------------------
+r2032 | dreibh | 2015-10-21 19:44:21 +0200 (Wed, 21 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/ChangeLog
+   M /trunk/bibtexconv/bibtexconv.lsm
+   M /trunk/bibtexconv/debian/bibtexconv.examples
+
+Packaging file updates.
+
+------------------------------------------------------------------------
+r2031 | dreibh | 2015-10-21 19:41:57 +0200 (Wed, 21 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/src/ietf2bibtex
+
+A small fix.
+
+------------------------------------------------------------------------
+r2030 | dreibh | 2015-10-21 19:35:29 +0200 (Wed, 21 Oct 2015) | 2 lines
+Changed paths:
+   M /trunk/bibtexconv/configure.ac
+   M /trunk/bibtexconv/debian/changelog
+   M /trunk/bibtexconv/rpm/bibtexconv.spec
+
+Version bump.
+
+------------------------------------------------------------------------
 r2029 | dreibh | 2015-10-21 19:32:18 +0200 (Wed, 21 Oct 2015) | 2 lines
 Changed paths:
    M /trunk/bibtexconv/src/node.cc
