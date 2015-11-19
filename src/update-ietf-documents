@@ -21,3 +21,7 @@ echo "$DOCUMENTS" | (
 
 cat "$REFERENCES" "$OUTPUT_FILE" >"$OUTPUT_FILE2"
 ./bibtexconv "$OUTPUT_FILE2" "-export-to-bibtex=$OUTPUT_FILE3" -check-urls -only-check-new-urls -add-notes-with-isbn-and-issn -non-interactive
+echo "Done."
+
+diff ~/src/papers/Referenzarchiv.bib results.bib | grep -v url.checked | grep -v -E '^[[:alnum:]]+' | grep -v "^---$"
+colordiff $REFERENCES results.bib |grep author|grep -B1 '>'

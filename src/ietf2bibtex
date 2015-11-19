@@ -273,7 +273,7 @@ def getBibTeXFromIETFDocument(document):
             i = 0
             #sys.stderr.write(line)
             for author in authorRegExpList:
-               m = re.match('^(.*)(' + author + ')([\t ].*|)$', line.strip().decode())
+               m = re.match('^(.*)(' + author + ')([\t ].*|,.*|)$', line.strip().decode())
                # print(line.strip(), i, m, author)
                if m != None:
                   if len(m.group(2)) >= len(fullAuthorList[i]):
