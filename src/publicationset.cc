@@ -853,6 +853,13 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "language");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
+         else if( (action == "O") || (action == "content-language") ) {   // Content Language
+            child = findChildNode(publication, "content-language");
+            if(child == NULL) {   // No content language -> try same as "language" instead:
+               child = findChildNode(publication, "language");
+            }
+            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
+         }
          else if( (action == "x") || (action == "xml-language") ) {   // Language
             child = findChildNode(publication, "language");
             if(child) {
