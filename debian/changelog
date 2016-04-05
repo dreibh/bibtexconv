@@ -1,3 +1,13 @@
+bibtexconv (1.1.6-1ubuntu1) vivid; urgency=low
+
+  * New upstream version.
+  * debian/control: Updated standards version.
+  * debian/control: added dependency dpkg-dev for hardening options.
+  * debian/compat: now using debhelper 9.
+  * debian/rules: using buildflags.mk for hardening options.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Tue, 05 Apr 2016 08:08:08 +0200
+
 bibtexconv (1.1.5-1ubuntu1) vivid; urgency=low
 
   * New upstream version.
