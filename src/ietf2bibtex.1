@@ -36,7 +36,33 @@ document
 .Nm ietf2bibtex
 creates a BibTeX entry for an IETF document (i.e. RFC or Internet Draft). The
 necessary information is automatically obtained from online XML references and
-the actual document.
+the actual document. Notes, that author names are sometimes wrong, misspelled,
+incomplete or inconsistent. Therefore, ietf2bibtex reads a file
+"authors-fix.list" from the current directory. It contains name translations
+in the form of
+"Old Name" "New Name", for example:
+.br
+"A. Bundy"  "Al Bundy"
+.br
+"J. Muller" "Joe Müller"
+.br
+"J. Moller" "Jarle Møller"
+.br
+...
+.br
+Known limitations of ietf2bibtex:
+.br
+IETF metadata and documents only contain ASCII characters. To obtain the
+correct non-ASCII author names (e.g. German, Norwegian, French, etc.), it
+is necessary to use authors-fix.list.
+.br
+IETF metadata has often wrong or limited author information for a document.
+ietf2bibtex tries to obtain the author information from the document.
+Unusual formatting sometimes prevents this.
+.br
+IETF metadata often has the wrong date for a document.
+ietf2bibtex tries to obtain the date from the document.
+Unusual formatting sometimes prevents this.
 .Pp
 .\" ###### Arguments ########################################################
 .Sh OPTIONS

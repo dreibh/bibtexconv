@@ -16,7 +16,7 @@ bibtexconv_LDADD = $(CURL_LIBS) $(CRYPTO_LIBS) -lm
 
 
 examplesdir        = $(docdir)/examples
-dist_examples_DATA = ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export text-example.export authors.list get-author-url publication-list-treeview.js
+dist_examples_DATA = ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export text-example.export authors.list authors-fix.list get-author-url publication-list-treeview.js
 
 dist_bin_SCRIPTS = bibtexconv-odt
 
