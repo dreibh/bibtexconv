@@ -291,7 +291,7 @@ def getBibTeXFromIETFDocument(document):
                i = i + 1
 
       else:
-         m = re.search('(^[0-9\.]*[ \t]+.*|^)(Editors|Authors|Authors\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line.strip().decode(), re.IGNORECASE)
+         m = re.search('(^([0-9\.]*|[A-Z]\.)[ \t]+.*|^)(Editors|Authors|Authors\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line.strip().decode(), re.IGNORECASE)
          if m != None:
             # Check whether line is in table of contents
             m2 = re.search('\. \.[ \t]*[0-9]+$', line.strip().decode())
