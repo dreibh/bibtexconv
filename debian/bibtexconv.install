@@ -1,0 +1,3 @@
+src/ODT-Template.odt /usr/share/bibtexconv
+src/bibtexconv       /usr/bin
+src/bibtexconv-odt   /usr/bin
