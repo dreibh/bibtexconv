@@ -290,11 +290,14 @@ def getBibTeXFromIETFDocument(document):
                      # print('!!!', line.strip(), i, m, author)
                i = i + 1
 
-      else:          
-         m = re.search('^.*(Editors|Authors|Authors\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line.strip().decode(), re.IGNORECASE)
+      else:
+         m = re.search('(^[0-9\.]*[ \t]+.*|^)(Editors|Authors|Authors\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line.strip().decode(), re.IGNORECASE)
          if m != None:
-            # print(line.strip(), m)
-            inAuthorsSection = True
+            # Check whether line is in table of contents
+            m2 = re.search('\. \.[ \t]*[0-9]+$', line.strip().decode())
+            if m2 == None:
+               # print('Begin of Author Section:', line)
+               inAuthorsSection = True
 
       line = txtFile.readline()
 
