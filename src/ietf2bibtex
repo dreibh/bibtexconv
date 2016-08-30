@@ -37,6 +37,7 @@ blacklistTable = [
    'draft-ahmed-lssctp',
    'draft-ietf-rserpool-api',
    'draft-iyengar-sctp-cacc',
+   'draft-boucadair-mptcp-plain-mode',
    'RFC3246'
 ]
 
@@ -107,8 +108,8 @@ def getBibTeXFromIETFDocument(document):
       sys.exit(1)
 
    for author in authorList:
-      # print(author.attributes)
       # print(author.attributes['initials'].value[0])
+      # print(author.attributes['surname'].value)
       try:
          authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
                         author.attributes['surname'].value
