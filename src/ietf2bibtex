@@ -22,6 +22,7 @@
 
 from xml.dom.minidom import parse
 import re
+import os
 import sys
 import csv
 import codecs
@@ -310,9 +311,22 @@ def getBibTeXFromIETFDocument(document):
 
    # ====== Fix author list via author fix list ================================
    csv.register_dialect('authors-fix', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
+   inputCSV = None
 
-   inputFile = codecs.open('authors-fix.list', 'r', 'utf-8')
-   inputCSV = csv.reader(inputFile, dialect='authors-fix')
+   authorsFixFileNameList = [ 'authors-fix.list', '/usr/share/ietf2bibtex/authors-fix.list' ]
+   for authorsFixFileName in authorsFixFileNameList:
+      if os.path.exists(authorsFixFileName):
+         try:
+            inputFile = codecs.open(authorsFixFileName, 'r', 'utf-8')
+            inputCSV  = csv.reader(inputFile, dialect='authors-fix')
+            break
+         except:
+            pass
+
+   if inputCSV == None:
+      sys.stderr.write('ERROR: Unable to load authors-fix.list\n')
+      sys.exit(1)
+
 
    authorRow = None
    for row in inputCSV:
