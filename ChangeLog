@@ -1,3 +1,97 @@
+commit ccbb48264d65c45c81ec5b420c6ba1c556a1aa17
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Aug 30 08:28:11 2016 +0200
+
+    Some more fixes for ietf2bibtex.
+
+ src/ietf2bibtex | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+commit 75b0b55feb4ad6ca34a251c1caff2e506e3791f1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Aug 29 14:22:07 2016 +0200
+
+    Build script update.
+
+ make-ppa | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9952c39b108042647b960a74b6e35bb42cc43a0b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Aug 29 14:21:37 2016 +0200
+
+    Some fixes.
+
+ debian/control              | 13 +++++++++++++
+ debian/ietf2bibtex.manpages |  4 +---
+ src/ietf2bibtex             |  7 +++----
+ src/ietf2bibtex.1           |  2 +-
+ 4 files changed, 18 insertions(+), 8 deletions(-)
+
+commit 4274797b700ca1452b50e93698fba540df56c2e9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Aug 29 14:12:44 2016 +0200
+
+    Some packaging updates for ietf2bibtex.
+
+ configure.ac                | 2 +-
+ debian/bibtexconv.install   | 3 +++
+ debian/bibtexconv.manpages  | 2 ++
+ debian/changelog            | 7 +++++++
+ debian/ietf2bibtex.examples | 1 +
+ debian/ietf2bibtex.install  | 1 +
+ debian/ietf2bibtex.manpages | 3 +++
+ src/Makefile.am             | 4 ++--
+ 8 files changed, 20 insertions(+), 3 deletions(-)
+
+commit f046cb11504e80d1673d5e436bccbc00a7e0ac9a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Aug 29 13:59:35 2016 +0200
+
+    Updated manpage.
+
+ src/Makefile.am   |  2 +-
+ src/ietf2bibtex.1 | 28 +++++++++++++++++++++++++++-
+ 2 files changed, 28 insertions(+), 2 deletions(-)
+
+commit 624a3e44f62086540710e705fade649632056338
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Aug 29 13:38:21 2016 +0200
+
+    Another fix.
+
+ src/ietf2bibtex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 47a2c7c99f1560e2fb9bf61ed4457fa979725014
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Aug 29 13:05:03 2016 +0200
+
+    Some fixes.
+
+ src/ietf2bibtex | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+commit 3f9f87a04d867f3ad5d8082afa240cb4991a2a9a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Aug 29 11:34:03 2016 +0200
+
+    Updated helper script.
+
+ ChangeLog        | 9776 ++++++++++++++++++++++++++++++++----------------------
+ update-changelog |    2 +-
+ 2 files changed, 5871 insertions(+), 3907 deletions(-)
+
+commit 96e9d57f1b309f13677c60b668e7f0e645dde4a6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Aug 29 11:33:48 2016 +0200
+
+    Some improvements for ietf2bibtex.
+
+ src/authors-fix.list |  1 +
+ src/ietf2bibtex      | 55 +++++++++++++++++++++++++++++-----------------------
+ 2 files changed, 32 insertions(+), 24 deletions(-)
+
 commit d39ea0155f9cf10a9a1f918b5b12def5b480cbdc
 Author: Priv.-Doz. Dr. Thomas Dreibholz <dreibh@iem.uni-due.de>
 Date:   Tue Apr 5 16:11:22 2016 +0200

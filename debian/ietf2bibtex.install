@@ -1,1 +1,2 @@
-src/ietf2bibtex /usr/bin
+src/authors-fix.list /usr/share/ietf2bibtex
+src/ietf2bibtex      /usr/bin
