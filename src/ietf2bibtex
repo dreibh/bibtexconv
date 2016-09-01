@@ -313,7 +313,7 @@ def getBibTeXFromIETFDocument(document):
    csv.register_dialect('authors-fix', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
    inputCSV = None
 
-   authorsFixFileNameList = [ 'authors-fix.list', '/usr/share/ietf2bibtex/authors-fix.list' ]
+   authorsFixFileNameList = [ 'authors-fix.list', '/usr/share/doc/examples/ietf2bibtex/authors-fix.list' ]
    for authorsFixFileName in authorsFixFileNameList:
       if os.path.exists(authorsFixFileName):
          try:

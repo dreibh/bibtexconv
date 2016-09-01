@@ -1,4 +1,4 @@
-bibtexconv (1.1.7~rc3-1ubuntu1) yakkety; urgency=low
+bibtexconv (1.1.7~rc3.1-1ubuntu1) yakkety; urgency=low
 
   * New upstream version.
   * debian/: Added files for ietf2bibtex.
