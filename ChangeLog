@@ -1,3 +1,76 @@
+commit 3de36b2286876f821b189f7d8bbb91070e2a2968
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Sep 15 13:57:19 2016 +0200
+
+    A fix.
+
+ src/authors-fix.list | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit a2d59da27aeaa9cc53a9f0244376fff517dfd392
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Sep 1 16:54:04 2016 +0200
+
+    Improved installation of examples files.
+
+ configure.ac                | 2 +-
+ debian/bibtexconv.examples  | 1 +
+ debian/bibtexconv.install   | 1 -
+ debian/changelog            | 2 +-
+ debian/ietf2bibtex.examples | 1 +
+ debian/ietf2bibtex.install  | 1 -
+ src/ietf2bibtex             | 2 +-
+ 7 files changed, 5 insertions(+), 5 deletions(-)
+
+commit c00930f2e2068b26dbbd67d5e49815b5ac74e90b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 31 17:24:20 2016 +0200
+
+    Updated packaging files.
+
+ ChangeLog                   | 94 +++++++++++++++++++++++++++++++++++++++++++++
+ configure.ac                |  2 +-
+ debian/changelog            |  2 +-
+ debian/ietf2bibtex.examples |  1 -
+ debian/ietf2bibtex.install  |  3 +-
+ 5 files changed, 98 insertions(+), 4 deletions(-)
+
+commit a30f772bdb165ef65e0958d864e7c1415fa23721
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 31 17:23:25 2016 +0200
+
+    Some improvements.
+
+ src/ietf2bibtex | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+commit c7210d31e75264ba4ba3f38d3a97a30cc91d77ed
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 31 17:14:07 2016 +0200
+
+    Fixed double installation of ODT-Template.odt.
+
+ debian/bibtexconv.examples | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 4649275abcf2c3a8f11702adb1b4803b5f32a031
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Aug 30 21:22:58 2016 +0200
+
+    A fix for ietf2bibtex.
+
+ src/ietf2bibtex | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit b04f504157599df09685f4e5cd60444cb45a7dd5
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Aug 30 21:22:50 2016 +0200
+
+    Updated the example authors list.
+
+ src/authors.list | 38 +++++++++++++++++++++++++++++---------
+ 1 file changed, 29 insertions(+), 9 deletions(-)
+
 commit ccbb48264d65c45c81ec5b420c6ba1c556a1aa17
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Aug 30 08:28:11 2016 +0200
