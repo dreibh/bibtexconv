@@ -1,3 +1,36 @@
+commit ff7621abeb56d3fad9a08fa5f4ae63e0b4a58c4e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 9 11:52:28 2017 +0200
+
+    Fixed dependency. Version bump.
+
+ configure.ac        | 2 +-
+ debian/changelog    | 6 ++++++
+ debian/control      | 1 -
+ rpm/bibtexconv.spec | 2 +-
+ 4 files changed, 8 insertions(+), 3 deletions(-)
+
+commit ec60f9df4618009befd02fbda222aeb5e0eec26b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 9 11:41:27 2017 +0200
+
+    Version bump.
+
+ debian/changelog | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3b9f1281f90d66ace07bb567a9fcc192f03d3744
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 9 11:39:38 2017 +0200
+
+    Script updates.
+
+ ChangeLog                  | 90 ++++++++++++++++++++++++++++++++++++++++++++++
+ debian/bibtexconv.examples |  2 +-
+ debian/bibtexconv.manpages |  2 +-
+ make-ppa                   |  2 +-
+ 4 files changed, 93 insertions(+), 3 deletions(-)
+
 commit 53e7035d5caff5aa768f764279fbdbc06bba83c6
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Wed Aug 9 11:29:44 2017 +0200
