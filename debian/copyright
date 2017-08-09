@@ -1,10 +1,10 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: BibTeXConv
 Upstream-Contact: Thomas Dreibholz <dreibh@iem.uni-due.de>
-Source: http://www.iem.uni-due.de/~dreibh/bibtexconv/
+Source: https://www.uni-due.de/~be0001/bibtexconv/
 
 Files: *
-Copyright: Copyright (C) 2010-2015 Thomas Dreibholz
+Copyright: Copyright (C) 2010-2017 Thomas Dreibholz
 License: GPL-3+
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by

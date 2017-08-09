@@ -8,7 +8,7 @@
 PORTNAME=	bibtexconv
 PORTVERSION=	1.0.0
 CATEGORIES=	converters
-MASTER_SITES=	http://www.iem.uni-due.de/~dreibh/bibtexconv/download/ \
+MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/ \
 		http://www.exp-math.uni-essen.de/~dreibh/bibtexconv/download/
 
 MAINTAINER=	dreibh@iem.uni-due.de

@@ -1,11 +1,11 @@
 Name: bibtexconv
-Version: 1.1.7
+Version: 1.1.8
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
 License: GPLv3
-URL: http://www.iem.uni-due.de/~dreibh/bibtexconv/
-Source: http://www.iem.uni-due.de/~dreibh/bibtexconv/download/%{name}-%{version}.tar.gz
+URL: https://www.uni-due.de/~be0001/bibtexconv/
+Source: https://www.uni-due.de/~be0001/bibtexconv/download/%{name}-%{version}.tar.gz
 
 AutoReqProv: on
 BuildRequires: autoconf
@@ -56,5 +56,5 @@ make DESTDIR=%{buildroot} install
 %doc
 
 %changelog
-* Mon Nov 04 2013 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.0.0
+* Mon Nov 04 2017 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.0.0
 - Initial RPM release

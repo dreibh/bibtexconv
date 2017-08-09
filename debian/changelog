@@ -1,3 +1,11 @@
+bibtexconv (1.1.8-1ubuntu1) yakkety; urgency=low
+
+  * New upstream version.
+  * debian/watch: URL update
+  * debian/control: URL update
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Wed, 09 Aug 2017 08:08:08 +0200
+
 bibtexconv (1.1.7-1ubuntu1) yakkety; urgency=low
 
   * New upstream version.

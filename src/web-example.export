@@ -39,7 +39,7 @@ echo <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">\n
 echo <head>\n
 echo <title>Publications</title>\n
 echo <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />\n
-echo <link rel="stylesheet" href="http://www.iem.uni-due.de/~dreibh/bonn.css" type="text/css" />\n
+echo <link rel="stylesheet" href="https://www.uni-due.de/~be0001/bonn.css" type="text/css" />\n
 echo </head>\n
 
 echo <script type="text/javascript" src="publication-list-treeview.js"></script>\n
