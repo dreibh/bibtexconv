@@ -1,3 +1,9 @@
+bibtexconv (1.1.9-1ubuntu1) artful; urgency=low
+
+  * New upstream version.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Wed, 09 Aug 2017 08:08:08 +0200
+
 bibtexconv (1.1.8-1ubuntu1) artful; urgency=low
 
   * New upstream version.
