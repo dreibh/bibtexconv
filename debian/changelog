@@ -1,4 +1,4 @@
-bibtexconv (1.1.8-1ubuntu1) yakkety; urgency=low
+bibtexconv (1.1.8-1ubuntu1) artful; urgency=low
 
   * New upstream version.
   * debian/watch: URL update
