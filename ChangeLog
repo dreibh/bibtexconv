@@ -1,3 +1,93 @@
+commit 53e7035d5caff5aa768f764279fbdbc06bba83c6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 9 11:29:44 2017 +0200
+
+    Updated URL.
+
+ bibtexconv.lsm                    | 10 +++++-----
+ build-deb                         |  2 +-
+ clean-deb                         |  2 +-
+ configure.ac                      |  2 +-
+ debian/changelog                  |  8 ++++++++
+ debian/control                    |  2 +-
+ debian/copyright                  |  4 ++--
+ debian/watch                      |  2 +-
+ filter-empty-entries              |  2 +-
+ freebsd/bibtexconv/Makefile       |  2 +-
+ freebsd/bibtexconv/make-diff      |  2 +-
+ freebsd/bibtexconv/pkg-descr      |  2 +-
+ freebsd/bibtexconv/test-packaging |  2 +-
+ make-deb                          |  2 +-
+ make-rpm                          |  2 +-
+ rpm/bibtexconv.spec               |  8 ++++----
+ src/bibtexconv-odt                |  2 +-
+ src/bibtexconv-odt.1              |  2 +-
+ src/bibtexconv.1                  |  2 +-
+ src/bibtexconv.cc                 |  2 +-
+ src/convert-to-new-format         |  2 +-
+ src/converter.sed                 |  2 +-
+ src/debug.memcheck                |  2 +-
+ src/get-author-url                |  2 +-
+ src/grammar.yy                    |  2 +-
+ src/ietf2bibtex                   |  2 +-
+ src/ietf2bibtex.1                 |  2 +-
+ src/make-it                       |  2 +-
+ src/node.cc                       |  2 +-
+ src/node.h                        |  2 +-
+ src/publication-list-treeview.js  |  2 +-
+ src/publicationset.cc             |  2 +-
+ src/publicationset.h              |  2 +-
+ src/run-examples                  |  2 +-
+ src/scanner.ll                    |  2 +-
+ src/stringhandling.cc             |  2 +-
+ src/stringhandling.h              |  2 +-
+ src/unification.cc                |  2 +-
+ src/unification.h                 |  2 +-
+ src/web-example.export            |  2 +-
+ 40 files changed, 55 insertions(+), 47 deletions(-)
+
+commit d87c5c7b779bd3253088b4955947ad021c30e7f8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 9 11:29:35 2017 +0200
+
+    Added helper scripts.
+
+ UpdateDoc1.sed |  3 +++
+ UpdateDocFiles | 25 +++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+)
+
+commit c47da174203403c74bd0be1a335f823d8f7b404a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 4 12:36:27 2016 +0100
+
+    RPM build fix.
+
+ rpm/bibtexconv.spec | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit df622500fe4e89fa57a9d104e811e9fc2098e222
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 4 10:24:36 2016 +0100
+
+    Updated LSM entry.
+
+ bibtexconv.lsm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3d87329245e95bff43e1138b7f511a6e6f719178
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 4 10:22:16 2016 +0100
+
+    Updated packaging files.
+
+ ChangeLog           | 73 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ bibtexconv.lsm      |  6 ++---
+ configure.ac        |  2 +-
+ debian/changelog    |  4 +--
+ make-ppa            |  2 +-
+ rpm/bibtexconv.spec |  2 +-
+ 6 files changed, 81 insertions(+), 8 deletions(-)
+
 commit 3de36b2286876f821b189f7d8bbb91070e2a2968
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Thu Sep 15 13:57:19 2016 +0200
