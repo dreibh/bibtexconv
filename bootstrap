@@ -1,5 +1,4 @@
 #! /bin/sh
-# $Id: bootstrap 546 2010-05-24 18:43:15Z dreibh $
 
 set -x
 
