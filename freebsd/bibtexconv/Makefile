@@ -14,7 +14,7 @@ MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/ \
 MAINTAINER=	dreibh@iem.uni-due.de
 COMMENT=	BibTeX Converter
 
-LIB_DEPENDS+=   libcurl libcrypto
+LIB_DEPENDS+=   libcurl.so:ftp/curl libcrypto.so:security/openssl
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	""
