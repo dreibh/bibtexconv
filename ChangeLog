@@ -1,3 +1,89 @@
+commit 500a7325de232220114cc9288e1741babe923009
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Oct 29 21:57:53 2017 +0100
+
+    Build script updates.
+
+ UpdateDoc1.sed                    |  4 ++--
+ UpdateDocFiles                    |  3 +--
+ bootstrap                         |  1 -
+ build-deb                         |  3 +--
+ clean-deb                         |  3 +--
+ configure.ac                      |  2 +-
+ debian/changelog                  |  6 ++++++
+ filter-empty-entries              |  3 +--
+ freebsd/bibtexconv/make-diff      |  1 -
+ freebsd/bibtexconv/test-packaging |  1 -
+ make-deb                          | 10 ++++++----
+ make-ppa                          |  2 +-
+ make-rpm                          |  3 +--
+ 13 files changed, 21 insertions(+), 21 deletions(-)
+
+commit 2f3e9282d3e5d2fdcdc1bed73fb5b5e6acdcb0c4
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Oct 29 21:55:47 2017 +0100
+
+    Header updates.
+
+ src/bibtexconv-odt               | 3 +--
+ src/bibtexconv-odt.1             | 4 +---
+ src/bibtexconv.1                 | 4 +---
+ src/bibtexconv.cc                | 5 ++---
+ src/convert-to-new-format        | 3 +--
+ src/converter.sed                | 3 +--
+ src/debug.memcheck               | 3 +--
+ src/get-author-url               | 3 +--
+ src/grammar.yy                   | 5 ++---
+ src/ietf2bibtex                  | 2 +-
+ src/ietf2bibtex.1                | 4 +---
+ src/make-it                      | 3 +--
+ src/mkd-example.export           | 1 -
+ src/node.cc                      | 5 ++---
+ src/node.h                       | 5 ++---
+ src/odt-example.export           | 1 -
+ src/publication-list-treeview.js | 4 +---
+ src/publicationset.cc            | 5 ++---
+ src/publicationset.h             | 5 ++---
+ src/run-examples                 | 3 +--
+ src/scanner.ll                   | 5 ++---
+ src/stringhandling.cc            | 5 ++---
+ src/stringhandling.h             | 5 ++---
+ src/t2                           | 1 -
+ src/text-example.export          | 1 -
+ src/unification.cc               | 5 ++---
+ src/unification.h                | 5 ++---
+ src/w2.export                    | 1 -
+ src/web-example.export           | 1 -
+ src/web-rserpool.export          | 1 -
+ 30 files changed, 34 insertions(+), 67 deletions(-)
+
+commit af6fd03bdef3e93b09acbeef741e0205473f21dc
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Oct 29 21:47:50 2017 +0100
+
+    Updated FreeBSD port.
+
+ freebsd/bibtexconv/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit bfef8408eb79dfcf56369821e4a22d02b15e0b72
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Oct 29 21:39:40 2017 +0100
+
+    Improved autogen.sh.
+
+ autogen.sh | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+commit 81d04e5f80ef1c28ac8ad34419458585c953ab36
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 9 11:52:42 2017 +0200
+
+    Updated ChangeLog.
+
+ ChangeLog | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
 commit ff7621abeb56d3fad9a08fa5f4ae63e0b4a58c4e
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Wed Aug 9 11:52:28 2017 +0200
