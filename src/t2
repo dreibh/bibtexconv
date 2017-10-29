@@ -1,6 +1,5 @@
 #!/bin/bash
 # Export converter for web example
-# $Id$
 
 type="$1"
 if [ "$type" = "authorUrl" ] ; then
