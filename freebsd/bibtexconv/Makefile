@@ -2,7 +2,7 @@
 # $FreeBSD: head/converters/bibtexconv/Makefile 428136 2016-12-08 17:01:31Z tijl $
 
 PORTNAME=	bibtexconv
-PORTVERSION=	1.1.10
+PORTVERSION=	1.1.11
 CATEGORIES=	converters
 MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/
 
