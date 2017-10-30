@@ -4,8 +4,7 @@
 PORTNAME=	bibtexconv
 PORTVERSION=	1.1.10
 CATEGORIES=	converters
-MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/ \
-		http://www.exp-math.uni-essen.de/~dreibh/bibtexconv/download/
+MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/
 
 MAINTAINER=	dreibh@iem.uni-due.de
 COMMENT=	BibTeX Converter
