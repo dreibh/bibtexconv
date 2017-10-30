@@ -1,3 +1,19 @@
+commit 0107a9457bce61f00ef763a89c5d5163d8d9c038
+Merge: 8693428 992e96a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 23:33:05 2017 +0100
+
+    Merge branch 'master' of github.com:dreibh/bibtexconv
+
+commit 869342891e3855807502dcea4dd0d799ea536933
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 23:32:23 2017 +0100
+
+    Updated ChangeLog.
+
+ ChangeLog | 112 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
+
 commit 131cfd0858481c683eee7d1d4721161a9f8a3f1d
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Mon Oct 30 23:32:13 2017 +0100
@@ -6,6 +22,23 @@ Date:   Mon Oct 30 23:32:13 2017 +0100
 
  bibtexconv.lsm | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 992e96a19b50a55fa5b32b8835d17df4d9b96c8f
+Merge: 0d5f0cc ea0ae49
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 21:46:30 2017 +0100
+
+    Merge branch 'master' of https://github.com/dreibh/bibtexconv
+
+commit 0d5f0cced7d3bcf2402e5957db6ef56fedb241bb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 21:46:20 2017 +0100
+
+    Updated FreeBSD port.
+
+ freebsd/bibtexconv/Makefile | 2 +-
+ freebsd/bibtexconv/distinfo | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 commit ea0ae49a9516395629c539555b12460a77549b19
 Author: Thomas Dreibholz <dreibh@simula.no>
