@@ -1,3 +1,13 @@
+commit dfe76b8e84ea448b9f943c0f46fbfcbeab3bc275
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Oct 29 21:58:21 2017 +0100
+
+    Minor updates.
+
+ ChangeLog      | 86 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ bibtexconv.lsm |  6 ++--
+ 2 files changed, 89 insertions(+), 3 deletions(-)
+
 commit 500a7325de232220114cc9288e1741babe923009
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Sun Oct 29 21:57:53 2017 +0100
