@@ -1,3 +1,115 @@
+commit 131cfd0858481c683eee7d1d4721161a9f8a3f1d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 23:32:13 2017 +0100
+
+    Updated LSM entry.
+
+ bibtexconv.lsm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit ea0ae49a9516395629c539555b12460a77549b19
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 21:41:26 2017 +0100
+
+    New release.
+
+ configure.ac        | 2 +-
+ debian/changelog    | 6 ++++++
+ rpm/bibtexconv.spec | 2 +-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+
+commit babb970198d8c30837bcac980329859b23ceda79
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 21:24:10 2017 +0100
+
+    A fix.
+
+ freebsd/bibtexconv/Makefile | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 96b211193867a85308f1095c8077b3c4660f9842
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 21:23:04 2017 +0100
+
+    A fix.
+
+ freebsd/bibtexconv/distinfo | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 00ce693e011f1eb0dfd5a9964e5cf14e04215184
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 20:55:55 2017 +0100
+
+    Updated build scripts.
+
+ freebsd/bibtexconv/make-diff      | 3 ++-
+ freebsd/bibtexconv/test-packaging | 3 +--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 5c71312563c24d6025d812e6975474741f2d6f5a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 20:49:00 2017 +0100
+
+    Updated FreeBSD port.
+
+ freebsd/bibtexconv/Makefile | 35 +++++++++++++++++++++--------------
+ 1 file changed, 21 insertions(+), 14 deletions(-)
+
+commit 14333d43307325af1b9e618d93c5da089cdf8995
+Merge: 2a4104f 39e2182
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 20:48:14 2017 +0100
+
+    Merge branch 'master' of https://github.com/dreibh/bibtexconv
+
+commit 2a4104fa80d7c5556a25fcefb6a75283043d0ce7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 20:47:32 2017 +0100
+
+    Updated script.
+
+ freebsd/bibtexconv/test-packaging | 27 +++++++++++++++++++--------
+ 1 file changed, 19 insertions(+), 8 deletions(-)
+
+commit 39e2182884cdef8e4aa8ec3f3c2d88b3c156d428
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 19:42:35 2017 +0100
+
+    FreeBSD build fix.
+
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit dcd6d9a69585bbfcbd764032d78f373ec40ad92b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 19:21:48 2017 +0100
+
+    Updated distinfo.
+
+ freebsd/bibtexconv/distinfo | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 3f761ac7dcc4177c938ae826e0319fca5bddbc24
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 19:08:40 2017 +0100
+
+    Script update.
+
+ make-ppa | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+commit c1fe2b546c7124a9069182540d387400ac9ca83a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 19:06:32 2017 +0100
+
+    New release.
+
+ ChangeLog           | 10 ++++++++++
+ configure.ac        |  2 +-
+ debian/changelog    |  2 +-
+ rpm/bibtexconv.spec |  2 +-
+ 4 files changed, 13 insertions(+), 3 deletions(-)
+
 commit dfe76b8e84ea448b9f943c0f46fbfcbeab3bc275
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Sun Oct 29 21:58:21 2017 +0100
