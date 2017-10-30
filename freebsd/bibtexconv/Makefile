@@ -1,12 +1,8 @@
-# New ports collection makefile for: bibtexconv
-# Date created:                      07 June 2012
-# Whom:                              Thomas Dreibholz <dreibh@iem.uni-due.de>
-#
-# $FreeBSD: ports/converters/bibtexconv/Makefile,v 1.1 2010/08/04 20:00:20 dreibh Exp $
-#
+# Created by: Thomas Dreibholz <dreibh@iem.uni-due.de>
+# $FreeBSD: head/converters/bibtexconv/Makefile 428136 2016-12-08 17:01:31Z tijl $
 
 PORTNAME=	bibtexconv
-PORTVERSION=	1.0.0
+PORTVERSION=	1.1.10
 CATEGORIES=	converters
 MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/ \
 		http://www.exp-math.uni-essen.de/~dreibh/bibtexconv/download/
@@ -14,16 +10,27 @@ MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/ \
 MAINTAINER=	dreibh@iem.uni-due.de
 COMMENT=	BibTeX Converter
 
-LIB_DEPENDS+=   libcurl.so:ftp/curl libcrypto.so:security/openssl
+LICENSE=	GPLv3
+
+LIB_DEPENDS=	libcurl.so:ftp/curl
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	""
-USE_GMAKE=	yes
+USES=		gmake
 
-LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING
+PLIST_FILES=	bin/bibtexconv bin/bibtexconv-odt \
+		man/man1/bibtexconv.1.gz man/man1/bibtexconv-odt.1.gz
 
-PLIST_FILES=	bin/bibtexconv bin/bibtexconv-odt
-MAN1=		bibtexconv.1 bibtexconv-odt.1
+PORTEXAMPLES=	ExampleReferences.bib ODT-Template.odt odt-example.export \
+		web-example.export text-example.export
+
+OPTIONS_DEFINE=	EXAMPLES
+
+pre-configure:
+	@${REINPLACE_CMD} -e 's|install-data-am: install-dist_examplesDATA|install-data-am:|' \
+	${WRKSRC}/src/Makefile.in
+
+post-install:
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${PORTEXAMPLES:S,^,${WRKSRC}/src/,} ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>
