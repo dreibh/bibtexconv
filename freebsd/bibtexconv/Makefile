@@ -27,8 +27,9 @@ OPTIONS_DEFINE=	EXAMPLES
 pre-configure:
 	@${REINPLACE_CMD} -e 's|install-data-am: install-dist_examplesDATA|install-data-am:|' \
 	${WRKSRC}/src/Makefile.in
+	@${REINPLACE_CMD} -e 's|/usr/bin/python3|${PYTHON_CMD}|' ${WRKSRC}/src/ietf2bibtex
 
-post-install:
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${PORTEXAMPLES:S,^,${WRKSRC}/src/,} ${STAGEDIR}${EXAMPLESDIR}
 
