@@ -9,15 +9,17 @@ MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/
 MAINTAINER=	dreibh@iem.uni-due.de
 COMMENT=	BibTeX Converter
 
-LICENSE=	GPLv3
+LICENSE=	GPLv3+
+LICENSE_FILE=	${WRKSRC}/COPYING.GPL
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
 GNU_CONFIGURE=	yes
-USES=		gmake
+USES=		gmake ssl python:3.4+
 
-PLIST_FILES=	bin/bibtexconv bin/bibtexconv-odt \
-		man/man1/bibtexconv.1.gz man/man1/bibtexconv-odt.1.gz
+PLIST_FILES=	bin/bibtexconv bin/bibtexconv-odt bin/ietf2bibtex \
+		man/man1/bibtexconv.1.gz man/man1/bibtexconv-odt.1.gz \
+		man/man1/ietf2bibtex.1.gz
 
 PORTEXAMPLES=	ExampleReferences.bib ODT-Template.odt odt-example.export \
 		web-example.export text-example.export
