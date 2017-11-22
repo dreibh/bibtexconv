@@ -1,2 +1,2 @@
-/usr/bin/bibtexconv
-/usr/bin/bibtexconv-odt
+debian/tmp/usr/bin/bibtexconv
+debian/tmp/usr/bin/bibtexconv-odt
