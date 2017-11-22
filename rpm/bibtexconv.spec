@@ -1,5 +1,5 @@
 Name: bibtexconv
-Version: 1.1.11
+Version: 1.1.12~b1
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
@@ -8,8 +8,7 @@ URL: https://www.uni-due.de/~be0001/bibtexconv/
 Source: https://www.uni-due.de/~be0001/bibtexconv/download/%{name}-%{version}.tar.gz
 
 AutoReqProv: on
-BuildRequires: autoconf
-BuildRequires: automake
+BuildRequires: cmake
 BuildRequires: bison
 BuildRequires: flex
 BuildRequires: openssl-devel
@@ -59,5 +58,5 @@ make DESTDIR=%{buildroot} install
 %doc
 
 %changelog
-* Mon Nov 04 2017 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.0.0
+* Wed Nov 22 2017 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.0.0
 - Initial RPM release
