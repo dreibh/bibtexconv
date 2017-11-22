@@ -12,18 +12,6 @@ Build-Depends: bison,
                pkg-config
 Standards-Version: 4.1.1
 
-Package: ietf2bibtex
-Architecture: all
-Depends: bibtexconv,
-         python3,
-         python3-urllib3,
-         ${misc:Depends},
-         ${shlibs:Depends}
-Description: Create BibTeX entry for IETF document (RFC or Internet Draft)
- ietf2bibtex creates a BibTeX entry for an IETF document (i.e. RFC or Internet
- Draft). The necessary information is automatically obtained from online XML
- references and the actual document.
-
 Package: bibtexconv
 Architecture: any
 Depends: file,
@@ -38,3 +26,15 @@ Description: BibTeX Converter
  text output. Furthermore, it provides the possibility to
  check URLs (including MD5, size and MIME type computations)
  and to verify ISBN and ISSN numbers.
+
+Package: ietf2bibtex
+Architecture: all
+Depends: bibtexconv,
+         python3,
+         python3-urllib3,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Create BibTeX entry for IETF document (RFC or Internet Draft)
+ ietf2bibtex creates a BibTeX entry for an IETF document (i.e. RFC or Internet
+ Draft). The necessary information is automatically obtained from online XML
+ references and the actual document.

@@ -1,9 +1,10 @@
 bibtexconv (1.1.12~b1-1ubuntu1) bionic; urgency=low
 
   * New upstream version.
-  * debian/control: change from autoconf/automake to cmake.
+  * debian/control: Change from autoconf/automake to cmake.
   * debian/control: Updated standards version.
-  * debian/rules: change from autoconf/automake to cmake.
+  * debian/rules: Change from autoconf/automake to cmake.
+  * debian/copyright: Removed entry for not-existing file. 
 
  -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Thu, 23 Nov 2017 01:01:01 +0800
 
