@@ -2,7 +2,7 @@
 # $FreeBSD: head/converters/bibtexconv/Makefile 428136 2016-12-08 17:01:31Z tijl $
 
 PORTNAME=	bibtexconv
-PORTVERSION=	1.1.11
+PORTVERSION=	1.1.12
 CATEGORIES=	converters
 MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/
 
@@ -15,14 +15,18 @@ LICENSE_FILE=	${WRKSRC}/COPYING.GPL
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
 GNU_CONFIGURE=	yes
-USES=		gmake ssl python:3.4+
+USES=		cmake ssl python:3.4+
 
 PLIST_FILES=	bin/bibtexconv bin/bibtexconv-odt bin/ietf2bibtex \
 		man/man1/bibtexconv.1.gz man/man1/bibtexconv-odt.1.gz \
 		man/man1/ietf2bibtex.1.gz
 
 PORTEXAMPLES=	ExampleReferences.bib ODT-Template.odt odt-example.export \
-		web-example.export text-example.export
+		web-example.export text-example.export \
+		Images/ListItem-Collapsed.dia Images/ListItem-Collapsed.svg \
+		Images/ListItem-Expanded.dia Images/ListItem-Expanded.svg \
+		Images/make-images
+
 
 OPTIONS_DEFINE=	EXAMPLES
 

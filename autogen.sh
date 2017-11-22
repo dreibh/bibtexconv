@@ -1,7 +1,7 @@
 #!/bin/bash
 
-./bootstrap
-./configure --prefix=/usr --enable-maintainer-mode
+rm -f CMakeCache.txt
+cmake -DCMAKE_INSTALL_PREFIX=/usr $@ .
 
 # ------ Obtain number of cores ---------------------------------------------
 # Try Linux

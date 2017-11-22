@@ -27,9 +27,7 @@ BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries 
 %setup -q
 
 %build
-autoreconf -if
-
-%configure
+%cmake -DCMAKE_INSTALL_PREFIX=/usr .
 make %{?_smp_mflags}
 
 %install
@@ -52,6 +50,11 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/doc/bibtexconv/examples/text-example.export
 %{_datadir}/doc/bibtexconv/examples/web-example.export
 %{_datadir}/doc/bibtexconv/examples/publication-list-treeview.js
+%{_datadir}/doc/bibtexconv/examples/Images/ListItem-Collapsed.dia
+%{_datadir}/doc/bibtexconv/examples/Images/ListItem-Collapsed.svg
+%{_datadir}/doc/bibtexconv/examples/Images/ListItem-Expanded.dia
+%{_datadir}/doc/bibtexconv/examples/Images/ListItem-Expanded.svg
+%{_datadir}/doc/bibtexconv/examples/Images/make-images
 
 %doc
 

@@ -3,14 +3,14 @@ Section: tex
 Priority: optional
 Maintainer: Thomas Dreibholz <dreibh@iem.uni-due.de>
 Homepage: https://www.uni-due.de/~be0001/bibtexconv/
-Build-Depends: autotools-dev,
-               bison,
+Build-Depends: bison,
+               cmake,
                debhelper (>= 9),
-               dpkg-dev (>= 1.16.1~),
                flex,
                libcurl4-openssl-dev,
-               libssl-dev
-Standards-Version: 3.9.7
+               libssl-dev,
+               pkg-config
+Standards-Version: 4.1.1
 
 Package: bibtexconv
 Architecture: any

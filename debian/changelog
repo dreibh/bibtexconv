@@ -1,3 +1,12 @@
+bibtexconv (1.1.12~b1-1ubuntu1) bionic; urgency=low
+
+  * New upstream version.
+  * debian/control: change from autoconf/automake to cmake.
+  * debian/control: Updated standards version.
+  * debian/rules: change from autoconf/automake to cmake.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Thu, 23 Nov 2017 01:01:01 +0800
+
 bibtexconv (1.1.11-1ubuntu1) bionic; urgency=low
 
   * New upstream version.

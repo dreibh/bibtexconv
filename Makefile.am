@@ -1,3 +1,0 @@
-SUBDIRS = src
-
-EXTRA_DIST = AUTHORS BUGS COPYING COPYING.GPL ChangeLog INSTALL NEWS README bootstrap bibtexconv.lsm

@@ -1,13 +1,11 @@
 #!/usr/bin/make -f
 
-export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-DPKG_EXPORT_BUILDFLAGS = 1
-include /usr/share/dpkg/buildflags.mk
-
-
 %:
-	dh $@ --with autotools_dev
+	dh $@ --buildsystem=cmake --parallel
 
-# Do not compress example files
-override_dh_compress:
-	dh_compress -X.bib -X.export -X.odt
+override_dh_auto_configure:
+	dh_auto_configure --
+
+# Use upstream ChangeLog for installation
+override_dh_installchangelogs:
+	dh_installchangelogs -k ChangeLog
