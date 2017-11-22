@@ -155,10 +155,8 @@ FIND_PACKAGE(FLEX)
 # ###### libcurl ############################################################
 FIND_PACKAGE(CURL REQUIRED)
 
-# ###### libssl (MD5 computation) ###########################################
-FIND_PACKAGE(PkgConfig)
-PKG_SEARCH_MODULE(CRYPTO libcrypto REQUIRED)
-INCLUDE_DIRECTORIES(${CRYPTO_INCLUDE_DIRS})
+# ###### libcrypto (MD5 computation) ########################################
+FIND_LIBRARY(CRYPTO_LIBRARY NAMES "libcrypto.so" PATHS ${CMAKE_LIBRARY_PATH} REQUIRED)
 
 
 #################################################
