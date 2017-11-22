@@ -1,3 +1,130 @@
+commit 10a7e28fe8ae765ec95efc09eb50625cbcd3e810
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 21:24:23 2017 +0100
+
+    Updated RPM packaging to work with CMake build.
+
+ rpm.conf            | 3 +--
+ rpm/bibtexconv.spec | 7 +++----
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+commit e7dae41a81578032b4d9d0c79d6a7c09d12e89dc
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 21:16:26 2017 +0100
+
+    Lintian warnings fixed.
+
+ debian/changelog |  5 +++--
+ debian/control   | 24 ++++++++++++------------
+ debian/copyright | 16 ----------------
+ 3 files changed, 15 insertions(+), 30 deletions(-)
+
+commit 12126c334e491672f7ade875291608f110167347
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 21:11:57 2017 +0100
+
+    Packaging with CMake is working now.
+
+ debian/bibtexconv.examples  | 24 ++++++++++++------------
+ debian/bibtexconv.install   |  4 ++--
+ debian/bibtexconv.manpages  |  4 ++--
+ debian/control              | 24 ++++++++++++------------
+ debian/ietf2bibtex.examples |  2 +-
+ debian/ietf2bibtex.install  |  2 +-
+ debian/ietf2bibtex.manpages |  2 +-
+ 7 files changed, 31 insertions(+), 31 deletions(-)
+
+commit 86856369516fa97568d3b9723c790e95f59fc2fe
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 21:02:22 2017 +0100
+
+    Building under FreeBSD.
+
+ CMakeLists.txt     | 6 ++----
+ src/CMakeLists.txt | 2 +-
+ 2 files changed, 3 insertions(+), 5 deletions(-)
+
+commit 2fda123bc1890b8fd8f236399e51046fc3bd129c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 20:38:15 2017 +0100
+
+    Added CMakeLists.txt.
+
+ CMakeLists.txt     | 182 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/CMakeLists.txt |  35 +++++++++++
+ 2 files changed, 217 insertions(+)
+
+commit dae3d172916315a0d5af2c77ace5b94a0a59d607
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 20:36:29 2017 +0100
+
+    Changed build scripts from autoconf/automake to cmake.
+
+ Makefile.am                 |  3 ---
+ autogen.sh                  |  4 ++--
+ bootstrap                   | 52 ---------------------------------------------
+ debian.conf                 |  3 +--
+ debian/bibtexconv.examples  | 19 +++++++++++------
+ debian/bibtexconv.install   |  4 ++--
+ debian/bibtexconv.manpages  |  4 ++--
+ debian/changelog            |  9 ++++++++
+ debian/control              | 10 ++++-----
+ debian/ietf2bibtex.examples |  2 +-
+ debian/ietf2bibtex.install  |  2 +-
+ debian/ietf2bibtex.manpages |  2 +-
+ debian/rules                | 16 ++++++--------
+ freebsd/bibtexconv/Makefile | 10 ++++++---
+ rpm/bibtexconv.spec         |  9 +++++---
+ src/Images/CMakeLists.txt   |  6 ++++++
+ src/Makefile.am             | 31 ---------------------------
+ 17 files changed, 62 insertions(+), 124 deletions(-)
+
+commit 98c0c78356bfc4da2af0fc04a2356b71a95deef5
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 20:36:09 2017 +0100
+
+    Updated build scripts.
+
+ build-deb | 2 +-
+ make-deb  | 6 +++---
+ make-rpm  | 8 ++++----
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+commit 49679e1b44ea49acb7c830bbb9e7a808491a3f8b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 16 22:21:45 2017 +0100
+
+    Added missing part of the patch.
+
+ freebsd/bibtexconv/Makefile | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+commit 91b18f1d5dc7ae1b57729cfca3bab48c6165a630
+Merge: 9987edd f0585e7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 16 22:04:17 2017 +0100
+
+    Merge branch 'master' of https://github.com/dreibh/bibtexconv
+
+commit 9987edddfdccc07c26124819696c5418972d87f2
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 16 22:03:04 2017 +0100
+
+    FreeBSD packaging update (provided by Danilo G. Baio).
+
+ freebsd/bibtexconv/Makefile | 3 ++-
+ freebsd/bibtexconv/distinfo | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+commit f0585e7dd57128afce6ba37f89632a4586c081a7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 30 23:33:13 2017 +0100
+
+    Updated ChangeLog.
+
+ ChangeLog | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
 commit 0107a9457bce61f00ef763a89c5d5163d8d9c038
 Merge: 8693428 992e96a
 Author: Thomas Dreibholz <dreibh@simula.no>
