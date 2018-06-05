@@ -1,3 +1,52 @@
+commit 7181e5cc79982583966bd1561c7283e33341d635
+Author: Thomas Dreibholz <dreibh@iem.uni-due.de>
+Date:   Mon May 14 15:01:09 2018 +0200
+
+    Update for Ubuntu 18.10.
+
+ CMakeLists.txt      | 2 +-
+ debian/changelog    | 4 ++--
+ debian/control      | 2 +-
+ make-ppa            | 2 +-
+ rpm/bibtexconv.spec | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+commit 50694b2201e04acbfb924fe4dc54cb62a80bd021
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jan 9 10:47:21 2018 +0100
+
+    Removed obsolete file.
+
+ configure.ac | 74 ------------------------------------------------------------
+ 1 file changed, 74 deletions(-)
+
+commit 4722baed781068a09068f0157085d60e30b972aa
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jan 5 13:47:49 2018 +0100
+
+    Updated list.
+
+ src/authors-fix.list | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+commit 0231a9f25e99772d99612de1e02bd325676a77e4
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 21:42:29 2017 +0100
+
+    Fixed Lintian warning.
+
+ debian/changelog | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 301550bce0eebe29a066ccb98e71c67880713c9a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 22 21:27:14 2017 +0100
+
+    Updated ChangeLog.
+
+ ChangeLog | 127 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 127 insertions(+)
+
 commit 10a7e28fe8ae765ec95efc09eb50625cbcd3e810
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Wed Nov 22 21:24:23 2017 +0100

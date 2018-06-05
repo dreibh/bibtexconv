@@ -1,4 +1,4 @@
-bibtexconv (1.1.12~b2-1ubuntu1) cosmic; urgency=low
+bibtexconv (1.1.12-1ubuntu1) cosmic; urgency=low
 
   * New upstream version.
   * debian/control: Change from autoconf/automake to cmake.
@@ -6,7 +6,7 @@ bibtexconv (1.1.12~b2-1ubuntu1) cosmic; urgency=low
   * debian/rules: Change from autoconf/automake to cmake.
   * debian/copyright: Removed entry for not-existing file.
 
- -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Mon, 14 May 2018 01:01:01 +0800
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Tue, 06 Jun 2018 08:08:08 +0800
 
 bibtexconv (1.1.11-1ubuntu1) bionic; urgency=low
 
