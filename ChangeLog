@@ -1,3 +1,15 @@
+commit 46e3f5120fc905eeb2aaa8104d81dad72a3875f8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 5 11:05:52 2018 +0200
+
+    Version bump.
+
+ CMakeLists.txt      |  2 +-
+ ChangeLog           | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+ debian/changelog    |  4 ++--
+ rpm/bibtexconv.spec |  2 +-
+ 4 files changed, 53 insertions(+), 4 deletions(-)
+
 commit 7181e5cc79982583966bd1561c7283e33341d635
 Author: Thomas Dreibholz <dreibh@iem.uni-due.de>
 Date:   Mon May 14 15:01:09 2018 +0200
