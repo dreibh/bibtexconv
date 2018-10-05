@@ -118,7 +118,7 @@ before_install:
        sudo docker ps
     elif [ "$TRAVIS_OS_NAME" = "osx" ] ; then
        brew update
-       brew install cmake
+       brew install bison curl
     fi
 
 
@@ -127,9 +127,9 @@ install:
     if [ "$TRAVIS_OS_NAME" = "linux" ] ; then
        if [ "$VARIANT" = "ubuntu" ] ; then
           sudo docker exec -t ubuntu-test bash -c "apt-get update"
-          sudo docker exec -t ubuntu-test bash -c "apt-get install -y cmake gcc g++ clang make libboost-all-dev"
+          sudo docker exec -t ubuntu-test bash -c "apt-get install -y cmake gcc g++ clang make flex bison libcurl4-openssl-dev libssl-dev"
        elif [ "$VARIANT" = "fedora" ] ; then
-          sudo docker exec -t ubuntu-test bash -c "dnf install -y cmake gcc gcc-c++ clang make boost-devel"
+          sudo docker exec -t ubuntu-test bash -c "dnf install -y cmake gcc gcc-c++ clang make flex bison libcurl-devel openssl-devel"
        fi
     fi
 
