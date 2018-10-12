@@ -9,6 +9,8 @@ Source: https://www.uni-due.de/~be0001/bibtexconv/download/%{name}-%{version}.ta
 
 AutoReqProv: on
 BuildRequires: cmake
+BuildRequires: gcc
+BuildRequires: gcc-c++
 BuildRequires: bison
 BuildRequires: flex
 BuildRequires: openssl-devel
