@@ -2,7 +2,7 @@
 # $FreeBSD: head/converters/bibtexconv/Makefile 428136 2016-12-08 17:01:31Z tijl $
 
 PORTNAME=	bibtexconv
-PORTVERSION=	1.1.12
+PORTVERSION=	1.1.13
 CATEGORIES=	converters
 MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/
 
@@ -10,7 +10,7 @@ MAINTAINER=	dreibh@iem.uni-due.de
 COMMENT=	BibTeX Converter
 
 LICENSE=	GPLv3+
-LICENSE_FILE=	${WRKSRC}/COPYING.GPL
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
@@ -27,16 +27,6 @@ PORTEXAMPLES=	ExampleReferences.bib ODT-Template.odt odt-example.export \
 		Images/ListItem-Expanded.dia Images/ListItem-Expanded.svg \
 		Images/make-images
 
-
 OPTIONS_DEFINE=	EXAMPLES
-
-pre-configure:
-	@${REINPLACE_CMD} -e 's|install-data-am: install-dist_examplesDATA|install-data-am:|' \
-	${WRKSRC}/src/Makefile.in
-	@${REINPLACE_CMD} -e 's|/usr/bin/python3|${PYTHON_CMD}|' ${WRKSRC}/src/ietf2bibtex
-
-post-install-EXAMPLES-on:
-	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	${INSTALL_DATA} ${PORTEXAMPLES:S,^,${WRKSRC}/src/,} ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>
