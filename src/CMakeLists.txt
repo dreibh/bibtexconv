@@ -1,3 +1,5 @@
+SET(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 #############################################################################
 # PROGRAMS
 #############################################################################
@@ -18,16 +20,16 @@ INSTALL(FILES bibtexconv-odt.1 ietf2bibtex.1
         DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 
 
-#################################################
+#############################################################################
 # EXAMPLES
-#################################################
+#############################################################################
 
 INSTALL(FILES ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export text-example.export authors.list authors-fix.list get-author-url publication-list-treeview.js
         DESTINATION ${CMAKE_INSTALL_DATADIR}/doc/bibtexconv/examples)
 
 
-#################################################
+#############################################################################
 # SUBDIRECTORIES
-#################################################
+#############################################################################
 
 ADD_SUBDIRECTORY(Images)

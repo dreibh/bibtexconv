@@ -141,9 +141,9 @@ FIND_PACKAGE(CURL REQUIRED)
 FIND_LIBRARY(CRYPTO_LIBRARY NAMES "libcrypto.so" PATHS ${CMAKE_LIBRARY_PATH} REQUIRED)
 
 
-#################################################
+#############################################################################
 # COMPILER FLAGS
-#################################################
+#############################################################################
 
 SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -Wall -DUSE_UTF8 -D_FORTIFY_SOURCE=2 -O2 -Wformat -Wformat-security")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -DUSE_UTF8 -D_FORTIFY_SOURCE=2 -O2 -Wformat -Wformat-security")
@@ -155,8 +155,8 @@ IF (CMAKE_BUILD_TYPE MATCHES DEBUG)
 ENDIF()
 
 
-#################################################
+#############################################################################
 # SUBDIRECTORIES
-#################################################
+#############################################################################
 
 ADD_SUBDIRECTORY(src)
