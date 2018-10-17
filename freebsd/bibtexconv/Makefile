@@ -16,6 +16,7 @@ LIB_DEPENDS=	libcurl.so:ftp/curl
 
 GNU_CONFIGURE=	yes
 USES=		cmake ssl python:3.4+
+CMAKE_ARGS+=    -DCMAKE_INSTALL_MANDIR=${PREFIX}/man
 
 PLIST_FILES=	bin/bibtexconv bin/bibtexconv-odt bin/ietf2bibtex \
 		man/man1/bibtexconv.1.gz man/man1/bibtexconv-odt.1.gz \
