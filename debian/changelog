@@ -1,4 +1,4 @@
-bibtexconv (1.1.14~rc1.0-1ubuntu1) cosmic; urgency=low
+bibtexconv (1.1.14~rc1.0-1ubuntu1) disco; urgency=low
 
   * New upstream version.
   * debian/control: updated standards version.
