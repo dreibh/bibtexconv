@@ -1,0 +1,44 @@
+# Example for export to YAML, suitable for Debian metadata:
+# https://wiki.debian.org/UpstreamMetadata
+
+monthNames jan feb mar apr may jun jul aug sep oct nov dec
+
+templatenew
+template+  -\n
+
+# Authors:
+template+ %{begin-author-loop}[%{is-first-author?}  Author: |%{is-not-first-author?} and | and ][%{author-give-name} ]%{author-family-name}%{end-author-loop}\n
+
+template+ [  Booktitle:  %{booktitle}\n]
+# template+ [  Editor: %{editor}\n]
+template+ [  Journal: %{journal}\n]
+template+ [  Number: %{number}\n]
+template+ [  Pages: %{pages}\n]
+template+ [  Publisher: %{publisher}\n]
+template+ [  Title: %{title}\n]
+template+ [  Type: %{type}\n]
+template+ [  Volume: %{volume}\n]
+
+template+ [  ISBN %{isbn}\n]
+template+ [  ISSN: %{issn}\n]
+template+ [  DOI: %{doi}\n]
+
+template+ [  Year: %{year}\n]
+template+ [  Month: %{month-name}\n]
+template+ [  Day: %{day}\n]
+
+template+ [  URL: %{url}\n]
+
+
+# Before any citation is printed, print a list title:
+echo ===== Begin of My Publications List =====\n
+
+# Set header and trailer of each publication entry:
+#header *~
+#trailer \n
+
+
+# Select and export all entries.
+citeAll
+sort year/A month/D day/D
+export Ref%02n
