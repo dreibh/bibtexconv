@@ -1,5 +1,5 @@
 Name: bibtexconv
-Version: 1.1.13
+Version: 1.1.14~rc1.0
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
@@ -50,6 +50,7 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/doc/bibtexconv/examples/odt-example.export
 %{_datadir}/doc/bibtexconv/examples/text-example.export
 %{_datadir}/doc/bibtexconv/examples/web-example.export
+%{_datadir}/doc/bibtexconv/examples/yaml-example.export
 %{_datadir}/doc/bibtexconv/examples/publication-list-treeview.js
 %{_datadir}/doc/bibtexconv/examples/Images/ListItem-Collapsed.dia
 %{_datadir}/doc/bibtexconv/examples/Images/ListItem-Collapsed.svg

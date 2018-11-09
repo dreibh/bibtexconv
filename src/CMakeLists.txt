@@ -24,7 +24,7 @@ INSTALL(FILES bibtexconv-odt.1 ietf2bibtex.1
 # EXAMPLES
 #############################################################################
 
-INSTALL(FILES ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export text-example.export authors.list authors-fix.list get-author-url publication-list-treeview.js
+INSTALL(FILES ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export yaml-example.export text-example.export authors.list authors-fix.list get-author-url publication-list-treeview.js
         DESTINATION ${CMAKE_INSTALL_DATADIR}/doc/bibtexconv/examples)
 
 
