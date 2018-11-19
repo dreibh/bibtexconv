@@ -61,5 +61,5 @@ make DESTDIR=%{buildroot} install
 %doc
 
 %changelog
-* Wed Nov 22 2017-2019 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.0.0
+* Wed Nov 22 2017 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.0.0
 - Initial RPM release
