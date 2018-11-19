@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Thomas Dreibholz <dreibh@iem.uni-due.de>
 Homepage: https://www.uni-due.de/~be0001/bibtexconv/
 Build-Depends: bison,
-               cmake,
+               cmake (>= 3.0) | cmake3,
                debhelper (>= 9),
                flex,
                libcurl4-openssl-dev,
