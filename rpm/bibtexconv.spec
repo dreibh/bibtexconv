@@ -37,12 +37,9 @@ make DESTDIR=%{buildroot} install
 %files
 %{_bindir}/bibtexconv
 %{_bindir}/bibtexconv-odt
-%{_bindir}/ietf2bibtex
 %{_datadir}/man/man1/bibtexconv.1.gz
 %{_datadir}/man/man1/bibtexconv-odt.1.gz
-%{_datadir}/man/man1/ietf2bibtex.1.gz
 %{_datadir}/doc/bibtexconv/examples/authors.list
-%{_datadir}/doc/bibtexconv/examples/authors-fix.list
 %{_datadir}/doc/bibtexconv/examples/get-author-url
 %{_datadir}/doc/bibtexconv/examples/publication-list-treeview.js
 %{_datadir}/doc/bibtexconv/examples/ExampleReferences.bib
@@ -58,7 +55,21 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/doc/bibtexconv/examples/Images/ListItem-Expanded.svg
 %{_datadir}/doc/bibtexconv/examples/Images/make-images
 
-%doc
+
+%package ietf2bibtex
+Summary: Create BibTeX entry for IETF document (RFC or Internet Draft)
+Requires: %{name} = %{version}-%{release}
+
+%description ietf2bibtex
+ietf2bibtex creates a BibTeX entry for an IETF document (i.e. RFC or Internet
+Draft). The necessary information is automatically obtained from online XML
+references and the actual document.
+
+%files ietf2bibtex
+%{_bindir}/ietf2bibtex
+%{_datadir}/doc/bibtexconv/examples/authors-fix.list
+%{_datadir}/man/man1/ietf2bibtex.1.gz
+
 
 %changelog
 * Wed Nov 22 2017 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.0.0
