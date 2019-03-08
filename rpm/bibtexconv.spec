@@ -37,8 +37,8 @@ make DESTDIR=%{buildroot} install
 %files
 %{_bindir}/bibtexconv
 %{_bindir}/bibtexconv-odt
-%{_datadir}/man/man1/bibtexconv.1.gz
-%{_datadir}/man/man1/bibtexconv-odt.1.gz
+%{_mandir}/man1/bibtexconv.1.gz
+%{_mandir}/man1/bibtexconv-odt.1.gz
 %{_datadir}/doc/bibtexconv/examples/authors.list
 %{_datadir}/doc/bibtexconv/examples/get-author-url
 %{_datadir}/doc/bibtexconv/examples/publication-list-treeview.js
@@ -68,7 +68,7 @@ references and the actual document.
 %files ietf2bibtex
 %{_bindir}/ietf2bibtex
 %{_datadir}/doc/bibtexconv/examples/authors-fix.list
-%{_datadir}/man/man1/ietf2bibtex.1.gz
+%{_mandir}/man1/ietf2bibtex.1.gz
 
 
 %changelog
