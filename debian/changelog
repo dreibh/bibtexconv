@@ -1,4 +1,4 @@
-bibtexconv (1.1.14~rc1.0-1ubuntu1) disco; urgency=low
+bibtexconv (1.1.14-1ubuntu1) disco; urgency=medium
 
   * New upstream version.
   * debian/control: updated standards version.
