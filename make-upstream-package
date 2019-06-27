@@ -51,8 +51,8 @@ echo -e ""
 echo -e "\x1b[34m`date +%FT%H:%M:%S`: ====== Creating upstream package ======================================\x1b[0m"
 echo -e ""
 for UPSTREAM_PACKAGE_TYPE in xz bz2 gz ; do
-   echo -n "Looking for ${PACKAGE}-${UPSTREAM_VERSION}.tar.${UPSTREAM_PACKAGE_TYPE} ... "
-   UPSTREAM_PACKAGE="`find . -maxdepth 1 -name "${PACKAGE}-${UPSTREAM_VERSION}.tar.${UPSTREAM_PACKAGE_TYPE}" -printf '%f'`"
+   echo -n "Looking for ${PACKAGE}-*.tar.${UPSTREAM_PACKAGE_TYPE} ... "
+   UPSTREAM_PACKAGE="`find . -maxdepth 1 -name "${PACKAGE}-*.tar.${UPSTREAM_PACKAGE_TYPE}" -printf '%f'`"
    if [ -e "${UPSTREAM_PACKAGE}" ] ; then
       echo "found!"
       break
@@ -69,13 +69,13 @@ if [ ! -e "${UPSTREAM_PACKAGE}" ]; then
 
    echo -e "\x1b[34m------ Looking for upstream package ... ------\x1b[0m"
    for UPSTREAM_PACKAGE_TYPE in xz bz2 gz ; do
-      UPSTREAM_PACKAGE="`find . -maxdepth 1 -name "${PACKAGE}-${UPSTREAM_VERSION}.tar.${UPSTREAM_PACKAGE_TYPE}" -printf '%f'`"
+      UPSTREAM_PACKAGE="`find . -maxdepth 1 -name "${PACKAGE}-*.tar.${UPSTREAM_PACKAGE_TYPE}" -printf '%f'`"
       if [ -e "${UPSTREAM_PACKAGE}" ] ; then
          break
       fi
    done
    if [ ! -e "${UPSTREAM_PACKAGE}" ] ; then
-      echo -e "\x1b[34mERROR: No upstream package (${PACKAGE}-${UPSTREAM_VERSION}.tar.*) found!\x1b[0m"
+      echo -e "\x1b[34mERROR: No upstream package (${PACKAGE}-*.tar.*) found!\x1b[0m"
       exit 1
    fi
 
