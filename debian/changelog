@@ -1,3 +1,9 @@
+bibtexconv (1.1.15-1ubuntu1) disco; urgency=medium
+
+  * New upstream release.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Fri, 26 Jul 2019 10:48:19 +0200
+
 bibtexconv (1.1.14-1ubuntu1) disco; urgency=medium
 
   * New upstream version.

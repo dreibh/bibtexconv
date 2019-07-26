@@ -1,11 +1,11 @@
 Name: bibtexconv
-Version: 1.1.14
+Version: 1.1.15
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
 License: GPLv3
 URL: https://www.uni-due.de/~be0001/bibtexconv/
-Source: https://www.uni-due.de/~be0001/bibtexconv/download/%{name}-%{version}.tar.gz
+Source: https://www.uni-due.de/~be0001/bibtexconv/download/%{name}-%{version}.tar.xz
 
 AutoReqProv: on
 BuildRequires: cmake
@@ -72,6 +72,8 @@ references and the actual document.
 
 
 %changelog
+* Fri Jul 26 2019 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.1.15
+- New upstream release.
 * Tue May 21 2019 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.1.14
 - New upstream release.
 * Wed Nov 22 2017 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.0.0

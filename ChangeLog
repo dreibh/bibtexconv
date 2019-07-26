@@ -1,3 +1,33 @@
+commit 72b97875b172effbd67d5b5089a3e83dcee478d8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jun 27 21:35:43 2019 +0200
+
+    CI script update.
+
+commit 300757a787d8a5c0e32ab48a3ec82223beafeb91
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jun 27 21:35:04 2019 +0200
+
+    Build script update.
+
+commit 19dfa7ee9551e12e4ff37ccca1b5d5ad526c2542
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jun 13 16:59:25 2019 +0200
+
+    Updated build script.
+
+commit efd5d9771827d2eb8829a178aa2a1257fe26bdde
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 21 17:23:30 2019 +0200
+
+    An update.
+
+commit d0a4a80cf3c325aabd5d3a4f17a53b567d7776bf
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 21 16:51:34 2019 +0200
+
+    New release 1.1.14.
+
 commit 480461c145d66c1e4f9ec7244d02cbd54cc26db7
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue May 21 16:40:24 2019 +0200
