@@ -149,7 +149,7 @@ static const LanguageTableEntry languageTable[] = {
    
    { "it",    "italian"    },
    { "es",    "spanish"    },
-   { "pt",    "portugese"  },
+   { "pt",    "portuguese" },
    { "sv",    "swedish"    },
    { "da",    "danish"     },
    { "nl",    "dutch"      },
