@@ -1,3 +1,10 @@
+bibtexconv (1.1.16~rc1.3-1ubuntu1) disco; urgency=medium
+
+  * New upstream release.
+  * debian/control: Updated standards version to 4.4.0.1.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Tue, 06 Aug 2019 22:39:34 +0200
+
 bibtexconv (1.1.15-1ubuntu1) disco; urgency=medium
 
   * New upstream release.
