@@ -3,7 +3,7 @@ Version: 1.1.16~rc1.3
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
-License: GPLv3
+License: GPL-3+
 URL: https://www.uni-due.de/~be0001/bibtexconv/
 Source: https://www.uni-due.de/~be0001/bibtexconv/download/%{name}-%{version}.tar.xz
 
