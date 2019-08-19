@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
-USES=		cmake python:3.4+ ssl tar:xz
+USES=		bison cmake python:3.4+ ssl tar:xz
 
 CMAKE_ARGS+=    -DCMAKE_INSTALL_MANDIR=${PREFIX}/man
 
