@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 #
 # Travis CI Scripts
 # Copyright (C) 2018-2019 by Thomas Dreibholz
@@ -17,6 +17,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Contact: dreibh@iem.uni-due.de
+
+# Bash options:
+set -e
 
 
 . `dirname $0`/get-container
@@ -389,8 +392,13 @@ elif [ "${TRAVIS_OS_NAME}" == "linux" -a "${QEMU}" == "FreeBSD" ] ; then
       # Basic dependencies:
       ssh -p 8829 -oStrictHostKeyChecking=no -i ~/.ssh/id_rsa root@localhost \
          env ASSUME_ALWAYS_YES=yes pkg install -y bash gcc joe git
+
+      # Bash shell:
+      # Use bash, and make sure it is available under /bin/bash.
       ssh -p 8829 -oStrictHostKeyChecking=no -i ~/.ssh/id_rsa root@localhost \
          chsh -s /usr/local/bin/bash
+      ssh -p 8829 -oStrictHostKeyChecking=no -i ~/.ssh/id_rsa root@localhost \
+         ln -s /usr/local/bin/bash /bin/bash || true
 
       # Ports collection:
       # This is the slow method via portsnap:
