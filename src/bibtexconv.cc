@@ -69,7 +69,7 @@ static bool downloadFile(CURL*         curl,
    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 1L);
    curl_easy_setopt(curl, CURLOPT_WRITEDATA,      downloadFH);
    curl_easy_setopt(curl, CURLOPT_WRITEHEADER,    headerFH);
-   curl_easy_setopt(curl, CURLOPT_USERAGENT,      "bibtexconv/1.0 (compatible; MC680x0; AmigaOS)");
+   curl_easy_setopt(curl, CURLOPT_USERAGENT,      "bibtexconv/1.1 (AmigaOS; MC680x0)");
    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);   // follow redirects
    curl_easy_setopt(curl, CURLOPT_AUTOREFERER,    1L);   // set referer on redirect
    curl_easy_setopt(curl, CURLOPT_COOKIEFILE,     "");   // enable cookies
