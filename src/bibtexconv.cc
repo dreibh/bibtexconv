@@ -83,15 +83,15 @@ static bool downloadFile(CURL*         curl,
 
       // ====== Check HTTP result =========================
       if( (strncmp(url, "http", 4)) == 0) {
-         unsigned int v1, v2, httpErrorCode = 999;
-         char         header[8192];
+         unsigned httpErrorCode = 999;
+         char     header[8192];
          while(!feof(headerFH)) {
             // The actual result will be of the last request
             // in the header file (may have been redirected!)
             if(!fgets((char*)&header, sizeof(header) - 1, headerFH)) {
                break;
             }
-            sscanf(header, "HTTP/%u.%u %u ", &v1, &v2, &httpErrorCode);
+            sscanf(header, "HTTP/%*[^ ] %u ", &httpErrorCode);
          }
          if(httpErrorCode == 200) {
              resultIsGood = true;
@@ -279,7 +279,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                      (mimeString[mimeString.size() - 1] == '\n') ) {
                                     mimeString = mimeString.substr(0, mimeString.size() - 1);
                                  }
-                                 
+
                                  // RFCs/I-Ds are sometimes misidentified as source code:
                                  if( (mimeString == "text/x-pascal") ||
                                      (mimeString == "text/x-c") ||
@@ -349,7 +349,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                        urlMD5Node->value.c_str(), md5String.c_str());
                             }
                         }
-                       
+
                         // ====== Check PDF metadata ========================
                         if(mimeString == "application/pdf") {
                            std::string command = format("/usr/bin/pdfinfo %s >%s", downloadFileName, metaFileName);
@@ -368,7 +368,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                           if(keywords == NULL) {
                                              // If there are no "keywords", add "url.keywords".
                                              // They can be renamed manually after a check.
-                                             addOrUpdateChildNode(publication, "url.keywords", 
+                                             addOrUpdateChildNode(publication, "url.keywords",
                                                                   string2utf8(std::string((const char*)&input[16]), "~", "").c_str());
                                           }
                                        }
@@ -381,7 +381,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  fclose(metaFH);
                               }
                            }
-                           
+
                         }
 
                         // ====== Update metadata ===========================
@@ -796,7 +796,7 @@ int main(int argc, char** argv)
    }
    int result = yyparse();
    fclose(yyin);
-   
+
    if(result == 0) {
       PublicationSet publicationSet(countNodes(bibTeXFile));
       if(!interactive) {
