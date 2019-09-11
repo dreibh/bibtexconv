@@ -1,3 +1,51 @@
+commit e4bc36ad4fa2221633c5525c3b34a80b7950cb8d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Sep 10 15:24:59 2019 +0300
+
+    Updated build scripts
+
+commit 1ee9bd9ff28cbbd5b932af16cfb3250887192069
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Sep 10 15:24:46 2019 +0300
+
+    Updated Travis CI configuration.
+
+commit 4c89939867f1d5bfa438a4ea1b206ee68264ad75
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Sep 5 17:38:06 2019 +0200
+
+    Updated build scripts
+
+commit 61ee4235f3c5b1d56d013cb950f41455a203b90e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Sep 4 21:58:09 2019 +0200
+
+    Version bump.
+
+commit 44f1d823c4488d715672574e7258c52827f85a16
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Sep 4 21:54:42 2019 +0200
+
+    Minor update.
+
+commit e080ed483eaebeb06c998d7a37c7b96f8c7457ca
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Sep 4 21:48:50 2019 +0200
+
+    Fix for handling HTTP/2 URLs.
+
+commit 3a198195b61542b67685f313f1f81f499e175111
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Aug 23 10:12:36 2019 +0200
+
+    Updated packaging files.
+
+commit a1f7526ea0b0de13869657fd67a4feaf48ad4013
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Aug 23 10:11:29 2019 +0200
+
+    New release bibtexconv-1.1.17.
+
 commit b6f9b8a40333f1017ff117441155b07e5ee1f015
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Wed Aug 21 17:19:06 2019 +0200
