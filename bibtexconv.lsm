@@ -1,7 +1,7 @@
 Begin4
 Title:          bibtexconv
-Version:        1.1.17
-Entered-date:   2019-08-23
+Version:        1.1.18
+Entered-date:   2019-09-11
 Description:    BibTeXConv is a BibTeX file converter which allows to export
                 BibTeX entries to other formats, including customly defined
                 text output. Furthermore, it provides the possibility to
@@ -11,7 +11,7 @@ Keywords:       BibTeX, Publication Lists, Export
 Author:         dreibh@iem.uni-due.de (Thomas Dreibholz)
 Maintained-by:  dreibh@iem.uni-due.de (Thomas Dreibholz)
 Primary-site:   https://www.uni-due.de/~be0001/bibtexconv
-                170 kB download/bibtexconv-1.1.17.tar.xz
+                171 kB download/bibtexconv-1.1.18.tar.xz
 Original-site:  https://www.uni-due.de/~be0001/bibtexconv
 Platforms:      Linux, FreeBSD, MacOS, Solaris
 Copying-policy: GPL-3+
