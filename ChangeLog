@@ -1,3 +1,105 @@
+commit 9b1102ab8499ba79991ae6b4501e71a79d541677
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Feb 7 13:18:53 2020 +0100
+
+    Updated Debian standards version.
+
+commit d7fdf3f71df0b30b1f789040e09b6030a3cff49d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Feb 7 12:52:08 2020 +0100
+
+    Updated build scripts
+
+commit a11330f27025927a3f5faabad3f545f25c496420
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 5 14:27:06 2019 +0100
+
+    Version bump.
+
+commit 3f4c592d74152a4880102377f79142410859d283
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 5 13:37:12 2019 +0100
+
+    Updated Travis CI configuration: updated FreeBSD releases.
+
+commit 99b6d51a9a99182d6750108ce3dfe0a84ebfd825
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 5 13:19:18 2019 +0100
+
+    Updated Travis CI configuration: added Ubuntu 20.04.
+
+commit 43d731d6cdf3830cdaf4db77b44b74043abdf8e5
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 5 12:32:12 2019 +0100
+
+    Updated Travis CI configuration: removed Fedora 29, added Fedora 31.
+
+commit b18cdbb33c17264b89e72a23d0eb69a852ddd595
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 5 12:13:35 2019 +0100
+
+    Header updates.
+
+commit cdd6cd4e30800b9cfdb5bca2316caf3004f48d8f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 5 12:09:42 2019 +0100
+
+    Updated build scripts
+
+commit 24d3b8e451d93a72f50d430d9c9ee2553bf05cd8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 5 12:09:42 2019 +0100
+
+    Updated build scripts
+
+commit abf3d833f294369db033dc4dc009b884d29e9c42
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 5 12:06:18 2019 +0100
+
+    Removed obsolete files.
+
+commit 8e1e85f839b1f727f32652aa0494bbd785e094c9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 28 14:41:24 2019 +0100
+
+    Updated Debian/Ubuntu packaging files.
+
+commit af9662174dadd041d6408081a8baa9262af1ec6c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Oct 18 12:26:40 2019 +0200
+
+    Updated build scripts
+
+commit fa8ed2394c2aff9add9324e668b8a16285ecbba8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 16 13:52:29 2019 +0200
+
+    Updated build scripts
+
+commit 7b40fced4656e73a39d3be4ec5325cedeaf93187
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Sep 13 12:40:33 2019 +0300
+
+    Updated build scripts
+
+commit 704764f14e35ee8e2e8fd08279df26cdbe5d4660
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Sep 11 12:02:22 2019 +0300
+
+    Updated example script.
+
+commit 4abbb731600cbc1c9a171081ff8fb045d4b0dde6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Sep 11 09:36:20 2019 +0300
+
+    Updated LSM entry.
+
+commit 0592114cf112bf23c2581d7cf2341702bb20d889
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Sep 11 09:33:23 2019 +0300
+
+    New release bibtexconv-1.1.18.
+
 commit e4bc36ad4fa2221633c5525c3b34a80b7950cb8d
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Sep 10 15:24:59 2019 +0300
