@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
 # Web example script to get HTML author URL from author in list
-# Copyright (C) 2018-2020 by Thomas Dreibholz
+# Copyright (C) 2014-2020 by Thomas Dreibholz
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,64 +20,41 @@
 # Contact: dreibh@iem.uni-due.de
 #
 
-import codecs
 import csv
 import sys
 import re;
 
 
-# ====== Handle arguments ===================================================
 if len(sys.argv) != 4:
    sys.stderr.write('Usage: get-author-url author_list author_name default_text\n')
    sys.exit(1)
 
-replaceBbspStrings = re.compile(u'&nbsp;', re.UNICODE)
+replaceBbspStrings = re.compile('&nbsp;', re.UNICODE)
 
-authorList = unicode(sys.argv[1], 'utf-8')
-authorName = unicode(replaceBbspStrings.sub(u' ', unicode(sys.argv[2], 'utf-8')))
-authorText = unicode(sys.argv[3], 'utf-8')
-
-sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-sys.stderr = codecs.getwriter('utf8')(sys.stderr)
-sys.stdin  = codecs.getreader('utf8')(sys.stdin)
+authorList = sys.argv[1]
+authorName = replaceBbspStrings.sub(' ', sys.argv[2])
+authorText = sys.argv[3]
 
 
-# ====== Unicode wrapper for CSV reader =====================================
-def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
-    # csv.py doesn't do Unicode; encode temporarily as UTF-8:
-    csv_reader = csv.reader(utf_8_encoder(unicode_csv_data),
-                            dialect=dialect, **kwargs)
-    for row in csv_reader:
-        # decode UTF-8 back to Unicode, cell by cell:
-        yield [unicode(cell, 'utf-8') for cell in row]
+csv.register_dialect('authors', delimiter=' ', quoting=csv.QUOTE_MINIMAL,skipinitialspace=True)
 
-# ====== Unicode wrapper for CSV reader =====================================
-def utf_8_encoder(unicode_csv_data):
-    for line in unicode_csv_data:
-        yield line.encode('utf-8')
+inputFile = open('authors.list', 'r')
+inputCSV = csv.reader(inputFile, dialect='authors')
 
-
-# ====== Read CSV authors list ==============================================
-csv.register_dialect('authors', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
-
-inputFile = codecs.open('authors.list', 'r', 'utf-8')
-inputCSV = unicode_csv_reader(inputFile, dialect='authors')
-
-# ====== Output HTML ========================================================
 authorRow = None
 for row in inputCSV:
    # print row
    if row[0] == authorName:
       if authorRow != None:
          # the authorName is multiple times in the table -> warning
-         sys.stderr.write('WARNING: Multiple occurences of authorName ' + authorName + ' in ' + authorList + '!\n')
+         sys.stderr.write('WARNING: Multiple occurences of authorName ' + authorName + ' in ' + fileName, '!\n')
       authorRow = row
 
 
 if authorRow == None:
    # The authorName is not in the table -> use default text
    sys.stdout.write(authorText)
-   sys.stderr.write('NOTE: Did not find author name ' + authorName + ' in ' + authorList + '!\n')
+   sys.stderr.write('Not in list: ' + authorText + '\n')
    sys.exit(0)
 else:
    # Found the authorName -> print the result
