@@ -1,3 +1,45 @@
+commit cec84f4b5b8be7617071b6bfe1f333125977f4c0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:30:57 2020 +0200
+
+    Updated Travis CI configuration for Ubuntu builds.
+
+commit b48d40d8579efed1e499ff9e4ece7d53c31c68b7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 11:42:56 2020 +0200
+
+    Updated Travis CI configuration: Ubuntu 19.04 (Disco Dingo) is now obsolete.
+
+commit 6bf363e0e826d7c590a963d139ba626eb63f0dd4
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 14 19:04:43 2020 +0200
+
+    Updated build scripts
+
+commit a6dd0d9b43d986198ff7141290e48669b3f3dff1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Mar 26 09:56:51 2020 +0100
+
+    Updated build scripts
+
+commit 35bdef15f1d86940c32cce69ceb9644e479ffb50
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Mar 13 17:47:23 2020 +0100
+
+    Converted example script to Python 3.
+
+commit bc8779c6b64943ceeed3bb0a58665adae5c4dec6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Feb 7 13:27:57 2020 +0100
+
+    Updated LSM entry.
+
+commit 98f12216530f7430d7700f7ecbaecb9a393ccc4a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Feb 7 13:21:38 2020 +0100
+
+    New release bibtexconv-1.1.19.
+
 commit 9b1102ab8499ba79991ae6b4501e71a79d541677
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Fri Feb 7 13:18:53 2020 +0100
