@@ -17,10 +17,10 @@
 #
 # Contact: dreibh@iem.uni-due.de
 
-./bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
-./bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/web-example.export >MyPublications.html
-./bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/text-example.export >MyPublications.txt
-./bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
-./bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
-./bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=Downloads -non-interactive
-./bibtexconv-odt /usr/share/doc/bibtexconv/examples/ODT-Template.odt MyPublications.odt /usr/share/doc/bibtexconv/examples/ExampleReferences.bib odt-example.export
+./bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
+./bibtexconv ExampleReferences.bib <web-example.export >MyPublications.html
+./bibtexconv ExampleReferences.bib <text-example.export >MyPublications.txt
+./bibtexconv ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
+./bibtexconv ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
+./bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=Downloads -non-interactive
+./bibtexconv-odt ODT-Template.odt MyPublications.odt ExampleReferences.bib odt-example.export

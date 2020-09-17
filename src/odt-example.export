@@ -67,7 +67,7 @@ template+ </text:span>
 # ***** Title
 template+  “[<text:a xlink:type="simple" xlink:href="%{url}">%{title}</text:a>|%{title}]”[ ([%{url-type}, ]%{url-size-kib}~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %{how-published}][, %{booktitle}][, %{series}][, %{journal}][, %{institution}][, %$][, vol.~%{volume}][, %{type}~%{number}|, no.~%{number}][, pp.~%{pages}][, %{note}][, %$][, %{school}][, URN~<text:a xlink:type="simple" xlink:href="http://www.nbn-resolving.de/%{urn}">%{urn}</text:a>][, DOI~<text:a xlink:type="simple" xlink:href="http://dx.doi.org/%{doi}">%{doi}</text:a>][, %{isbn}][, %{issn}][, %{address}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}].</text:p>
+template+ [, %{how-published}][, %{booktitle}][, %{series}][, %{journal}][, %{institution}][, %$][, vol.~%{volume}][, %{type}~%{number}|, no.~%{number}][, pp.~%{pages}][, %{note}][, %$][, %{school}][, URN~<text:a xlink:type="simple" xlink:href="https://www.nbn-resolving.de/%{urn}">%{urn}</text:a>][, DOI~<text:a xlink:type="simple" xlink:href="https://dx.doi.org/%{doi}">%{doi}</text:a>][, %{isbn}][, %{issn}][, %{address}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}].</text:p>
 # ***** URL including hyperlink
 template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%{url}">%{url}</text:a>.</text:span></text:p>]
 # ***** End of Entry
