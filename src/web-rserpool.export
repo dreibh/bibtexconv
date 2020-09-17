@@ -39,10 +39,16 @@ template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | an
 # ***** Title
 template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´][ ([<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB)]
 # ***** Bibliographic data of publication
-template+ [, %{custom-3}][, %{how-published}][, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
-template+ [, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
-template+ [, %$][, %{school}][, %{institution}][, DOI~<a href="http://dx.doi.org/%{doi}">%{doi}</a>][, %{isbn}][, %{issn}][, %{address}][, %{note}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
-template+ , \[<a type="text/x-bibtex" href="refs/%{label}.bib">BibTeX</a>, <a type="text/xml" href="refs/%{label}.xml">XML</a>\].
+template+ [, %{how-published}]
+template+ [, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
+template+ [, %{custom-3}|, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
+template+ [, %{publisher}][, %{school}][, %{institution}]
+template+ [, URN~<a href="https://www.nbn-resolving.de/%{urn}">%{urn}</a>]
+template+ [, DOI~<a href="https://dx.doi.org/%{doi}">%{doi}</a>]
+template+ [, %{isbn}][, %{issn}][, %{address}]
+template+ [, %{note}]
+template+ [, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
+template+ .
 # ****** Awards
 template+ [ <strong>%{custom-1}.</strong>]
 
