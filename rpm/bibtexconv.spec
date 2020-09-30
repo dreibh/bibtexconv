@@ -29,10 +29,10 @@ BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries 
 
 %build
 %cmake -DCMAKE_INSTALL_PREFIX=/usr .
-make %{?_smp_mflags}
+%cmake_build
 
 %install
-make DESTDIR=%{buildroot} install
+%cmake_install
 
 %files
 %{_bindir}/bibtexconv
