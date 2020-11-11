@@ -10,6 +10,7 @@ usr/share/doc/bibtexconv/examples/ODT-Template.odt
 usr/share/doc/bibtexconv/examples/authors.list
 usr/share/doc/bibtexconv/examples/get-author-url
 usr/share/doc/bibtexconv/examples/odt-example.export
+usr/share/doc/bibtexconv/examples/publication-list-treeview.js
 usr/share/doc/bibtexconv/examples/text-example.export
 usr/share/doc/bibtexconv/examples/web-example.export
 usr/share/doc/bibtexconv/examples/yaml-example.export
