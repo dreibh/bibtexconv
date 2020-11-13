@@ -1,9 +1,9 @@
-bibtexconv (1.1.21~rc1-1ubuntu1) hirsute; urgency=medium
+bibtexconv (1.1.21-1ubuntu1) hirsute; urgency=medium
 
   * New upstream release.
   * debian/control: Updated standards version to 4.5.0.3.
 
- -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Tue, 10 Nov 2020 14:20:46 +0100
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Fri, 13 Nov 2020 19:00:22 +0100
 
 bibtexconv (1.1.20-1ubuntu1) focal; urgency=medium
 
