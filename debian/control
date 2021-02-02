@@ -10,7 +10,7 @@ Build-Depends: bison,
                libcurl4-openssl-dev,
                libssl-dev,
                pkg-config
-Standards-Version: 4.5.0.3
+Standards-Version: 4.5.1.0
 Rules-Requires-Root: no
 Vcs-Git: https://github.com/dreibh/bibtexconv.git
 Vcs-Browser: https://github.com/dreibh/bibtexconv
