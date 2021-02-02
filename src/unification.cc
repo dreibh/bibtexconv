@@ -344,7 +344,7 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
    int yearNumber = 1;
    if(year != NULL) {
       yearNumber = atol(year->value.c_str());
-      if((yearNumber < 1700) || (yearNumber > 2020)) {
+      if((yearNumber < 1700) || (yearNumber > 2030)) {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"year\" section (year=%d?)!\n" ,
                  publication->keyword.c_str(), yearNumber);
       }
@@ -496,7 +496,7 @@ void unifyPages(Node* publication, Node* pages)
          snprintf((char*)&pagesString, sizeof(pagesString), "%u", a);
       }
       pages->value = pagesString;
-      
+
       Node* numpages = findChildNode(publication, "numpages");
       if(numpages) {
          unsigned int n = atol(numpages->value.c_str());
