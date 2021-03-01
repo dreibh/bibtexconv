@@ -276,7 +276,6 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
              ((isbn != NULL) || (issn != NULL)) ) {
             if(isbn) {
                fprintf(fh, "%s\tnote = \"{ISBN} %s\"", separator, isbn->value.c_str());
-               separator = ",\n";
             }
             else if(issn) {
                fprintf(fh, "%s\tnote = \"{ISSN} %s\"", separator, issn->value.c_str());
@@ -863,7 +862,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "language");
             if(child) {
                const char* language = getXMLLanguageFromLaTeX(child->value.c_str());
-               if(language != NULL) {                   
+               if(language != NULL) {
                   result += std::string(language);
                } else { skip = true; }
             } else { skip = true; }
@@ -1066,7 +1065,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                      fprintf(stderr, "Unable to run %s!\n", call.c_str());
                      exit(1);
                   }
-                  
+
                   skip = true;
                   char buffer[16384];
                   ssize_t inputBytes;
@@ -1088,7 +1087,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                      exit(1);
                   }
                }
-            }          
+            }
          }
          else {
             fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in custom printing template!\n",
