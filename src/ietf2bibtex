@@ -30,7 +30,7 @@ import urllib.request
 
 
 draftPrefix = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids/reference.I-D.'
-rfcPrefix   = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.'
+rfcPrefix   = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcs/reference.RFC.'
 verboseMode = True
 
 # Documents where meta-information XML is wrong:
@@ -111,16 +111,25 @@ def getBibTeXFromIETFDocument(document):
       sys.exit(1)
 
    for author in authorList:
-      # print(author.attributes['initials'].value[0])
-      # print(author.attributes['surname'].value)
+      #print(author)
+      #print(author.attributes['fullname'].value)
+      #print(author.attributes['initials'].value[0])
+      #print(author.attributes['surname'].value)
+      # ------ Try old format first -----------------------------------------
       try:
          authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
                         author.attributes['surname'].value
          authorRegExpList.append(authorRegExp)
          fullAuthorList.append(author.attributes['initials'].value[0] +'. ' + \
                                author.attributes['surname'].value)
+      # ------ Try new format -----------------------------------------------
       except:
-         continue
+         try:
+            authorRegExp = author.attributes['fullname'].value
+            authorRegExpList.append(authorRegExp)
+            fullAuthorList.append(author.attributes['fullname'].value)
+         except:
+            continue
    # print(authorRegExpList)
    # print(fullAuthorList)
 
@@ -354,9 +363,9 @@ def getBibTeXFromIETFDocument(document):
    # ====== Check ===========================================================
    if foundDate == False:
       sys.stderr.write('WARNING: Unable to find date of document ' + document + '!\n')
-   for i in range(1, len(authorRegExpList)):
-      if authorRegExpList[i] == fullAuthorList[i]:
-        sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorRegExpList[i]) + '" from list!\n')
+   # for i in range(1, len(authorRegExpList)):
+   #    if authorRegExpList[i] == fullAuthorList[i]:
+   #      sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorRegExpList[i]) + '" from list!\n')
 
 
    # ====== Print result ====================================================
