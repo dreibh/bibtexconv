@@ -42,7 +42,22 @@ blacklistTable = [
    'draft-ietf-rserpool-api',
    'draft-iyengar-sctp-cacc',
    'draft-boucadair-mptcp-plain-mode',
-   'RFC3246'
+   'RFC3246',
+   'RFC821',
+   'RFC854',
+   'RFC889',
+   'RFC768',
+   'RFC793',
+   'RFC826',
+   'RFC791',
+   'RFC863',
+   'RFC862',
+   'RFC864',
+   'RFC867',
+   'RFC896',
+   'RFC959',
+   'RFC950',
+   'RFC792'
 ]
 
 monthIDTable   = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
