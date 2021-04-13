@@ -31,6 +31,7 @@ import urllib.request
 
 draftPrefix = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids/reference.I-D.'
 rfcPrefix   = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.'
+verboseMode = True
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
@@ -53,7 +54,7 @@ monthNameTable = [ 'January', 'February', 'March', 'April',
 def getBibTeXFromIETFDocument(document):
    for blacklistEntry in blacklistTable:
       if re.match(blacklistEntry, document):
-         sys.stderr.write(document + ' is blacklisted due to bad metadata in XML file. Skipping.\n')
+         sys.stderr.write('NOTE: ' + document + ' is blacklisted due to bad metadata in XML file. Skipping.\n')
          return
 
    issn         = None
@@ -92,7 +93,8 @@ def getBibTeXFromIETFDocument(document):
 
 
    # ====== Get document information from XML file =============================
-   sys.stderr.write('Fetching ' + url + ' ...\n')
+   if verboseMode == True:
+      sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
       xmlFile = urllib.request.urlopen(url)
       # print('Parsing XML ...')
@@ -208,7 +210,8 @@ def getBibTeXFromIETFDocument(document):
       # print('A=',abstract,".")
 
    # ====== Get full author list from text file ================================
-   sys.stderr.write('Fetching ' + url + ' ...\n')
+   if verboseMode == True:
+      sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
       txtFile = urllib.request.urlopen(url)
    except Exception as e:
@@ -224,23 +227,24 @@ def getBibTeXFromIETFDocument(document):
 
       # ====== RFC category =================================================
       if lineNumber < 30:
-         if re.search('^Category:', line.strip().decode()):
-            m = re.match('^Category: (.*)[ ][ ].*$', line.strip().decode())
+         if re.search('^Category:', line.decode().strip()):
+            m = re.match('^Category: (.*)[ ][ ].*$', line.decode().strip())
             if m != None:
                category = m.group(1).strip()
                if documentType == 'RFC':
                   if category != 'Experimental':
                      documentType = category + ' RFC'
          if foundDate == False:
-            m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|)[ ]*([0-9][0-9][0-9][0-9])$', line.strip().decode())
-            # print(m,line.strip().decode())
+            m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|)[ ]*([0-9][0-9][0-9][0-9])$', line.decode().strip())
+            # print(m,line.decode().strip())
             if m != None:
                foundDate = True
 
                # ====== Get year ============================================
                newYear = int(m.group(3))
                if newYear != year:
-                  sys.stderr.write('Fix: Year ' + str(year) + ' -> ' + str(newYear) + '\n')
+                  if verboseMode == True:
+                     sys.stderr.write('Fix: Year ' + str(year) + ' -> ' + str(newYear) + '\n')
                   year = newYear
 
                # ====== Get month ===========================================
@@ -250,11 +254,12 @@ def getBibTeXFromIETFDocument(document):
                   if monthName == m.group(1):
                      break
                if newMonth != month:
-                  sys.stderr.write('Fix: Month ' + str(month) + ' -> ' + str(newMonth) + '\n')
+                  if verboseMode == True:
+                     sys.stderr.write('Fix: Month ' + str(month) + ' -> ' + str(newMonth) + '\n')
                   month = newMonth
 
                # ====== Get day =============================================
-               m2 = re.match('.* ([0-9]+) ' + monthNameTable[month - 1] + ' ' + str(year) + '$', line.strip().decode())
+               m2 = re.match('.* ([0-9]+) ' + monthNameTable[month - 1] + ' ' + str(year) + '$', line.decode().strip())
                if m2 != None:   #   Format: <Day> <Month>, <Year>
                   newDay = int(m2.group(1))
                else:   # Format: <Month> <Day>, <Year>
@@ -263,7 +268,8 @@ def getBibTeXFromIETFDocument(document):
                   except:
                      newDay = 0
                if ((newDay != 0) and (newDay != day)):
-                  sys.stderr.write('Fix: Day ' + str(day) + ' -> ' + str(newDay) + '\n')
+                  if verboseMode == True:
+                     sys.stderr.write('Fix: Day ' + str(day) + ' -> ' + str(newDay) + '\n')
                   day = newDay
 
       # ====== Authors section ==============================================
@@ -273,12 +279,12 @@ def getBibTeXFromIETFDocument(document):
       if inAuthorsSection == True:
          try:
             # Sometimes, there may be some strange letters inside -> decode fails.
-            d = line.strip().decode()
+            d = line.decode().strip()
          except:
             d=''   # Just ignore not-decodable stuff for now.
 
          # ------ Check for end of author section ---------------------------
-         if re.search('^[0-9\.]*  ', line.strip().decode()):
+         if re.search('^[0-9\.]*  ', d):
             # print('End of Author Section:', line)
             inAuthorsSection = False
 
@@ -287,7 +293,7 @@ def getBibTeXFromIETFDocument(document):
             i = 0
             # sys.stderr.write(line)
             for author in authorRegExpList:
-               m = re.match('^(.*)(' + author + ')([\t ].*|,.*|)$', line.strip().decode())
+               m = re.match('^(.*)(' + author + ')([\t ].*|,.*|)$', line.decode().strip())
                # print(line.strip(), i, m, author)
                if m != None:
                   if len(m.group(2)) >= len(fullAuthorList[i]):
@@ -297,10 +303,10 @@ def getBibTeXFromIETFDocument(document):
 
       else:
          try:
-            m = re.search('(^([0-9\.]*|[A-Z]\.)[ \t]+.*|^)(Editors|Authors|Authors\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line.strip().decode(), re.IGNORECASE)
+            m = re.search('(^([0-9\.]*|[A-Z]\.)[ \t]+.*|^)(Editors|Authors|Authors\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line.decode().strip(), re.IGNORECASE)
             if m != None:
                # Check whether line is in table of contents
-               m2 = re.search('\. \.[ \t]*[0-9]+$', line.strip().decode())
+               m2 = re.search('\. \.[ \t]*[0-9]+$', line.decode().strip())
                if m2 == None:
                   # print('Begin of Author Section:', line)
                   inAuthorsSection = True
@@ -336,7 +342,8 @@ def getBibTeXFromIETFDocument(document):
    for row in inputCSV:
       for i in range(0, len(fullAuthorList), 1):
          if row[0] == fullAuthorList[i]:
-            sys.stderr.write('Fix: ' + fullAuthorList[i] + ' -> ' + row[1] + '\n')
+            if verboseMode == True:
+               sys.stderr.write('Fix: ' + fullAuthorList[i] + ' -> ' + row[1] + '\n')
             fullAuthorList[i] = row[1]
             break
 
@@ -346,7 +353,7 @@ def getBibTeXFromIETFDocument(document):
 
    # ====== Check ===========================================================
    if foundDate == False:
-      sys.stderr.write('WARNING: Unable to find date of document!\n')
+      sys.stderr.write('WARNING: Unable to find date of document ' + document + '!\n')
    for i in range(1, len(authorRegExpList)):
       if authorRegExpList[i] == fullAuthorList[i]:
         sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorRegExpList[i]) + '" from list!\n')
@@ -392,8 +399,13 @@ def getBibTeXFromIETFDocument(document):
 
 # ###### Handle arguments ###################################################
 if len(sys.argv) < 2:
-   sys.stderr.write('Usage: ietf2bibtex document [...]\n')
+   sys.stderr.write('Usage: ietf2bibtex [--quiet|--verbose] document ...\n')
    sys.exit(1)
 
 for i in range(1, len(sys.argv)):
-   getBibTeXFromIETFDocument(sys.argv[i])
+   if sys.argv[i] == '--quiet':
+      verboseMode = False
+   elif sys.argv[i] == '--verbose':
+      verboseMode = True
+   else:
+      getBibTeXFromIETFDocument(sys.argv[i])
