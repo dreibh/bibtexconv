@@ -29,9 +29,11 @@ import codecs
 import urllib.request
 
 
-draftPrefix = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids/reference.I-D.'
-rfcPrefix   = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcs/reference.RFC.'
-verboseMode = True
+draftPrefix    = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids/reference.I-D.'
+rfcPrefix      = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcs/reference.RFC.'
+verboseMode    = True
+authorsFixFile = 'DEFAULT'
+
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
@@ -328,12 +330,16 @@ def getBibTeXFromIETFDocument(document):
    # print('F=' + str(fullAuthorList))
 
 
-   # ====== Fix author list via author fix list ================================
+   # ====== Fix author list via author fix file ================================
    csv.register_dialect('authors-fix', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
    inputCSV = None
-
-   authorsFixFileNameList = [ 'authors-fix.list', '/usr/share/doc/examples/ietf2bibtex/authors-fix.list' ]
-   for authorsFixFileName in authorsFixFileNameList:
+   if authorsFixFile == 'DEFAULT':
+      authorsFixFileList = [ 'authors-fix.list', '/usr/share/doc/bibtexconv/examples/authors-fix.list' ]
+   elif authorsFixFile != None:
+      authorsFixFileList = [ authorsFixFile ]
+   else:
+      authorsFixFileList = [ ]
+   for authorsFixFileName in authorsFixFileList:
       if os.path.exists(authorsFixFileName):
          try:
             inputFile = codecs.open(authorsFixFileName, 'r', 'utf-8')
@@ -342,10 +348,11 @@ def getBibTeXFromIETFDocument(document):
          except:
             pass
 
-   if inputCSV == None:
-      sys.stderr.write('ERROR: Unable to load authors-fix.list\n')
+   if ((authorsFixFile != None) and (inputCSV == None)):
+      sys.stderr.write('ERROR: Unable to load authors fix file. Use option --authors-fix-file=FILE or --no-authors-fix-file!\n')
       sys.exit(1)
-
+   elif inputCSV != None:
+      sys.stderr.write('NOTE: Using authors fix file ' + authorsFixFileName + '\n')
 
    authorRow = None
    for row in inputCSV:
@@ -408,7 +415,7 @@ def getBibTeXFromIETFDocument(document):
 
 # ###### Handle arguments ###################################################
 if len(sys.argv) < 2:
-   sys.stderr.write('Usage: ietf2bibtex [--quiet|--verbose] document ...\n')
+   sys.stderr.write('Usage: ietf2bibtex [--quiet|--verbose] [--authors-fix-file=FILE|--no-authors-fix-file] document ...\n')
    sys.exit(1)
 
 for i in range(1, len(sys.argv)):
@@ -416,5 +423,10 @@ for i in range(1, len(sys.argv)):
       verboseMode = False
    elif sys.argv[i] == '--verbose':
       verboseMode = True
+   elif sys.argv[i] == '--no-authors-fix-file':
+      authorsFixFile = None
+   elif sys.argv[i][0:19] == '--authors-fix-file=':
+      authorsFixFile = sys.argv[i][19:]
+      i = i + 1
    else:
       getBibTeXFromIETFDocument(sys.argv[i])
