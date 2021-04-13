@@ -30,7 +30,7 @@ import urllib.request
 
 
 draftPrefix = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids/reference.I-D.'
-rfcPrefix   = 'https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.'
+rfcPrefix   = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.'
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
@@ -176,7 +176,7 @@ def getBibTeXFromIETFDocument(document):
                      'https://tools.ietf.org/id/')
    # Fix redirect URL:
    url = url.replace('https://www.ietf.org/internet-drafts/',
-                     'https://www.ietf.org/id/')
+                     'https://tools.ietf.org/id/')
    # print(url)
 
    abstractList = xmlDocument.getElementsByTagName('t')
