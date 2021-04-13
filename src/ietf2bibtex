@@ -352,7 +352,8 @@ def getBibTeXFromIETFDocument(document):
       sys.stderr.write('ERROR: Unable to load authors fix file. Use option --authors-fix-file=FILE or --no-authors-fix-file!\n')
       sys.exit(1)
    elif inputCSV != None:
-      sys.stderr.write('NOTE: Using authors fix file ' + authorsFixFileName + '\n')
+      if verboseMode == True:
+         sys.stderr.write('NOTE: Using authors fix file ' + authorsFixFileName + '\n')
 
    authorRow = None
    for row in inputCSV:
