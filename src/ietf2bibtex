@@ -29,8 +29,8 @@ import codecs
 import urllib.request
 
 
-draftPrefix = 'http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.'
-rfcPrefix   = 'http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.'
+draftPrefix = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids/reference.I-D.'
+rfcPrefix   = 'https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.'
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
@@ -66,7 +66,7 @@ def getBibTeXFromIETFDocument(document):
    url = ''
    m = re.match('^draft-(.*)$', document)
    if m != None:
-      url          = draftPrefix + m.group(1) + '.xml'
+      url          = draftPrefix + document + '.xml'
       documentType = 'Internet Draft'
       number       = m.group(1)
       m = re.match('^draft-ietf-(.*)$', document)
@@ -169,11 +169,14 @@ def getBibTeXFromIETFDocument(document):
       # sys.stderr.write('WARNING: No target URL found, assuming ' + url + '\n')
    # print(url)
 
-   # For I-Ds, use a secure URL instead of HTTP.
+   # For I-Ds, use a secure URL instead of HTTP:
    url = url.replace('http://www.rfc-editor.org/rfc/',
                      'https://www.rfc-editor.org/rfc/')
    url = url.replace('http://www.ietf.org/internet-drafts/',
                      'https://tools.ietf.org/id/')
+   # Fix redirect URL:
+   url = url.replace('https://www.ietf.org/internet-drafts/',
+                     'https://www.ietf.org/id/')
    # print(url)
 
    abstractList = xmlDocument.getElementsByTagName('t')
@@ -230,7 +233,7 @@ def getBibTeXFromIETFDocument(document):
                      documentType = category + ' RFC'
          if foundDate == False:
             m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|)[ ]*([0-9][0-9][0-9][0-9])$', line.strip().decode())
-            # print(m,line)
+            # print(m,line.strip().decode())
             if m != None:
                foundDate = True
 
@@ -265,7 +268,8 @@ def getBibTeXFromIETFDocument(document):
 
       # ====== Authors section ==============================================
       if len(authorRegExpList) < 1:
-         break
+         line = txtFile.readline()
+         continue
       if inAuthorsSection == True:
          try:
             # Sometimes, there may be some strange letters inside -> decode fails.
