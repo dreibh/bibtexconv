@@ -1,3 +1,9 @@
+bibtexconv (1.2.0-1ubuntu1) hirsute; urgency=medium
+
+  * New upstream release.
+
+ -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Thu, 29 Apr 2021 12:14:54 +0200
+
 bibtexconv (1.1.22-1ubuntu1) hirsute; urgency=medium
 
   * New upstream release.

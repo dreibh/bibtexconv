@@ -1,3 +1,69 @@
+commit a4df38b81aa6cc5d845dbfcc92da175406551a3e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 14:21:49 2021 +0200
+
+    Minor update.
+
+commit f1e16e132fc144c8907027feab3d0c6bd8c2cd5f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 14:18:27 2021 +0200
+
+    Some clean-ups.
+
+commit 805d4f59c3b11375ff521720b66d320e9fe7fa68
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 14:13:31 2021 +0200
+
+    Added option to specify authors fix file.
+
+commit 9d7f7d240628632c96cd1d809807dbfb60bea8ef
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 13:45:18 2021 +0200
+
+    Improved script.
+
+commit a3e55a958e8aa49c0bb5faaac690f54a34c08708
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 13:39:13 2021 +0200
+
+    Some fixes.
+
+commit 1fc94a11982f7e6cff203b04f50767daeca87cda
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 11:56:55 2021 +0200
+
+    Parallelised example script.
+
+commit 9ddb10fa0f4afd399d676e903aea8ecaf7505601
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 11:55:04 2021 +0200
+
+    Further improvements.
+
+commit e51fc4ffe0fdf6e1eebe7b03f94e5a0a303fb170
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 10:44:06 2021 +0200
+
+    Further improvements.
+
+commit 764f7c693cfd561a58017ff82cef065a61f4e2fe
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 13 10:26:19 2021 +0200
+
+    Improved script.
+
+commit 4af3533592000104838c139c7bcd19149824b55b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Mar 7 00:00:41 2021 +0100
+
+    Updated LSM entry.
+
+commit faf7bf58cbce7c55ba4d59bba8206e8745e83847
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Mar 6 23:40:16 2021 +0100
+
+    New release bibtexconv-1.1.22.
+
 commit 1d45893f93f54ecba107552bb306a9910a5fe405
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Fri Mar 5 20:50:55 2021 +0100
