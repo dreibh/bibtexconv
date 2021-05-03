@@ -1,5 +1,4 @@
 # Created by: Thomas Dreibholz <dreibh@iem.uni-due.de>
-# $FreeBSD: head/converters/bibtexconv/Makefile 428136 2016-12-08 17:01:31Z tijl $
 
 PORTNAME=	bibtexconv
 PORTVERSION=	1.2.0
@@ -14,8 +13,16 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
-USES=		bison cmake python:3.4+ ssl tar:xz
+USES=		bison cmake ssl python:3.4+ shebangfix tar:xz
 
-CMAKE_ARGS+=    -DCMAKE_INSTALL_MANDIR=${PREFIX}/man
+SHEBANG_FILES=	src/ietf2bibtex
+
+CMAKE_ARGS=	-DCMAKE_INSTALL_DOCDIR=${EXAMPLESDIR} -DCMAKE_INSTALL_MANDIR=${MANPREFIX}/man
+
+OPTIONS_DEFINE=	EXAMPLES
+
+# Remove trailing subdir from CMAKE_INSTALL_DOCDIR
+post-patch:
+	@${REINPLACE_CMD} -e 's|/examples||' ${WRKSRC}/src/CMakeLists.txt ${WRKSRC}/src/Images/CMakeLists.txt
 
 .include <bsd.port.mk>
