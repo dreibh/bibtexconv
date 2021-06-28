@@ -163,14 +163,14 @@ Node* makePublicationCollection(Node* node1, Node* node2)
             fprintf(stderr, "NOTE: Keeping old title:\nOld = \"%s\"\nNew = \"%s\"\n",
                     oldTitle->value.c_str(),
                     newTitle->value.c_str());
-            newTitle->value = oldTitle->value;            
+            newTitle->value = oldTitle->value;
          }
 
          // node1 is old. Remove its contents, but reuse it for newer data.
          freeNode(node1->child);
          node1->child = n->child;
          n->child     = NULL;
-         
+
          // Get rid of old node n.
          if(n->prev) {
             n->prev->next = n->next;
@@ -398,8 +398,10 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
 Node* makePublicationInfo(Node* node1, Node* node2)
 {
    if(node1 != NULL) {
-      node2->prev = node1;
-      node1->next = node2;
+      if(node2 != NULL) {
+         node2->prev = node1;
+         node1->next = node2;
+      }
       return(node1);
    }
    else {
@@ -535,7 +537,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
    else if(node->keyword == "abstract") {
       node->priority = 210;
    }
-   
+
    else if(node->keyword == "url") {
       node->priority = 199;
    }
