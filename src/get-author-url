@@ -38,7 +38,7 @@ authorText = sys.argv[3]
 
 csv.register_dialect('authors', delimiter=' ', quoting=csv.QUOTE_MINIMAL,skipinitialspace=True)
 
-inputFile = open('authors.list', 'r')
+inputFile = open(authorList, 'r')
 inputCSV = csv.reader(inputFile, dialect='authors')
 
 authorRow = None
@@ -47,7 +47,7 @@ for row in inputCSV:
    if row[0] == authorName:
       if authorRow != None:
          # the authorName is multiple times in the table -> warning
-         sys.stderr.write('WARNING: Multiple occurences of authorName ' + authorName + ' in ' + fileName, '!\n')
+         sys.stderr.write('WARNING: Multiple occurences of authorName ' + authorName + ' in ' + authorList + '!\n')
       authorRow = row
 
 
