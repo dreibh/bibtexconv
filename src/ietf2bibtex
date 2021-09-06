@@ -29,7 +29,7 @@ import codecs
 import urllib.request
 
 
-draftPrefix    = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids/reference.I-D.'
+draftPrefix    = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids-new/reference.I-D.'
 rfcPrefix      = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcs/reference.RFC.'
 verboseMode    = True
 authorsFixFile = 'DEFAULT'
@@ -38,7 +38,6 @@ authorsFixFile = 'DEFAULT'
 # Documents where meta-information XML is wrong:
 blacklistTable = [
    'draft-ahmed-lssctp',
-   'draft-boucadair-mptcp-plain-mode',
    'draft-ietf-rserpool-api',
    'draft-ietf-rserpool-applic',
    'draft-ietf-rserpool-arch',
