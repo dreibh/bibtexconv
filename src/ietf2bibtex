@@ -38,25 +38,15 @@ authorsFixFile = 'DEFAULT'
 # Documents where meta-information XML is wrong:
 blacklistTable = [
    'draft-ahmed-lssctp',
-   'draft-ietf-rserpool-api',
-   'draft-iyengar-sctp-cacc',
    'draft-boucadair-mptcp-plain-mode',
-   'RFC3246',
-   'RFC821',
-   'RFC854',
-   'RFC889',
-   'RFC768',
-   'RFC793',
-   'RFC826',
-   'RFC791',
-   'RFC863',
-   "RFC862",
-   'RFC864',
-   'RFC867',
-   'RFC896',
-   'RFC959',
-   'RFC950',
-   'RFC792'
+   'draft-ietf-rserpool-api',
+   'draft-ietf-rserpool-applic',
+   'draft-ietf-rserpool-arch',
+   'draft-ietf-rserpool-comp',
+   'draft-ietf-rserpool-mib',
+   'draft-ietf-rserpool-tcpmapping',
+   'draft-iyengar-sctp-cacc',
+   'RFC3246'
 ]
 
 monthIDTable   = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
@@ -97,12 +87,12 @@ def getBibTeXFromIETFDocument(document):
    if url == '':
       m = re.match('^[Rr][Ff][Cc]([0-9]*)$', document)
       if m != None:
-         url = rfcPrefix + m.group(1) + '.xml'
          documentType = 'RFC'
-         number       = m.group(1)
+         number       = int(m.group(1))
          issn         = '2070-1721'
          institution  = 'IETF'
          document     = documentType + str(number)
+         url          = rfcPrefix + '{0:04d}'.format(number) + '.xml'
 
    if url == '':
       sys.stderr.write('ERROR: Unknown document type ' + document + '!\n')
