@@ -37,7 +37,6 @@ authorsFixFile = 'DEFAULT'
 
 # Documents where meta-information XML is wrong:
 blacklistTable = [
-   'draft-ietf-rserpool-',
    'draft-ahmed-lssctp',
    'draft-ietf-rserpool-api',
    'draft-iyengar-sctp-cacc',
@@ -51,7 +50,7 @@ blacklistTable = [
    'RFC826',
    'RFC791',
    'RFC863',
-   'RFC862',
+   "RFC862",
    'RFC864',
    'RFC867',
    'RFC896',
@@ -64,13 +63,14 @@ monthIDTable   = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
                    'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ]
 monthNameTable = [ 'January', 'February', 'March', 'April',
                    'May', 'June', 'July', 'August',
-                   'September', 'October', 'November', 'December', 'INVALID' ]
+                   'September', 'October', 'November', 'December',
+                   'INVALID' ]
 
 
 # ====== Get BibTeX from IETF document ======================================
 def getBibTeXFromIETFDocument(document):
    for blacklistEntry in blacklistTable:
-      if re.match(blacklistEntry, document):
+      if document == blacklistEntry:
          sys.stderr.write('NOTE: ' + document + ' is blacklisted due to bad metadata in XML file. Skipping.\n')
          return
 
