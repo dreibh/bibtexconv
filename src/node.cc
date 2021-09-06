@@ -426,7 +426,10 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
 
    node->keyword = keywordString;
    node->value   = value;
-   if( (node->keyword != "author") ) {   // Brackets must remain for author string!
+   // ------ Remove brackets ------------------------------
+   // Exception: Brackets must remain for author string,
+   //            e.g. "{ETSI}"!
+   if( (node->keyword != "author") ) {
       removeBrackets(node->value);
       trim(node->value);
    }

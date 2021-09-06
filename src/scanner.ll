@@ -61,14 +61,14 @@ int         level;
                                                           BEGIN 0;
                                                           yylval.iText = strdup(string.c_str());
                                                           // printf("S1=<%s> l=%d\n",yylval.iText, yylineno);
-                                                          return(T_String);                                                         
-                                                       } 
+                                                          return(T_String);
+                                                       }
                                                      }
 <STRING>.                                            { string += *yytext; };
 
 
  /* ====== String in parentheses { this is an example } ================== */
-"{"[^\n]+"}"                                         { yylval.iText = strdup(yytext);
+"{"[^\n]+"}"                                         { yylval.iText = strndup((const char*)&yytext[1], strlen(yytext) - 2);
                                                        // printf("S2=<%s> l=%d\n",yylval.iText, yylineno);
                                                        return(T_String); }
 
