@@ -1,3 +1,75 @@
+commit 37de7245d7a0a6281c15f166fbe75abf6086d987
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Sep 6 23:19:30 2021 +0200
+
+    Improved error handling.
+
+commit 431deeff3290b99b9c3aa29adde7f0019dacef17
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Sep 6 23:02:18 2021 +0200
+
+    Minor updates.
+
+commit 1f139e59e163a4b3cd9ad876fa8715ba69199730
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Sep 6 22:50:26 2021 +0200
+
+    Bugfix: Fixed URL creation for RFCs.
+
+commit 7e2b4460244378d098d23c9b08b4ce4485ea5bd8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Sep 6 22:48:52 2021 +0200
+
+    Improved script.
+
+commit 9c0d291efebc674dbe80e2a8bc6f55bd549ddc1e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Sep 6 22:48:33 2021 +0200
+
+    Updated authors fix list.
+
+commit 5e5802144f8d06fb1c7665ea181012cc033350d7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Sep 6 21:57:44 2021 +0200
+
+    Bugfix: Fixed blacklist handling.
+
+commit d9488060bfe1b04e457483031e2184b769ffb5ea
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Sep 6 21:40:52 2021 +0200
+
+    Bugfix: Fixed handling of {...} instead of "...".
+
+commit 77fae626722c24fe33fef8960b38c521ffe6c37d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 28 16:22:14 2021 +0200
+
+    Ignore superflous comma after last entry.
+
+commit 4b67875f71f8df0d3e6738e566122dd41e1f59fb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon May 3 19:13:42 2021 +0000
+
+    FreeBSD packaging update.
+
+commit ac552b224882c12156ff99f208ce980536a837e1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 29 12:18:58 2021 +0200
+
+    Updated build scripts
+
+commit b9b07e062b644d2b63894706884e65021965cc6b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 29 12:18:47 2021 +0200
+
+    Updated LSM entry.
+
+commit 86dca973c41f44f67667e9ff5e1e284c60e4fc81
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 29 12:15:01 2021 +0200
+
+    New release bibtexconv-1.2.0.
+
 commit a4df38b81aa6cc5d845dbfcc92da175406551a3e
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Apr 13 14:21:49 2021 +0200
