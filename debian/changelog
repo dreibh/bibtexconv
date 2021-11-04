@@ -159,7 +159,7 @@ bibtexconv (1.1.2-1ubuntu1) vivid; urgency=low
 
  -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Thu, 19 Mar 2015 08:08:08 +0200
 
- bibtexconv (1.1.1-1ubuntu1) vivid; urgency=low
+bibtexconv (1.1.1-1ubuntu1) vivid; urgency=low
 
   * New upstream version.
 
