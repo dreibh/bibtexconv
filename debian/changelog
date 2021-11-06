@@ -3,6 +3,7 @@ bibtexconv (1.3.1~test1-1ubuntu1) hirsute; urgency=medium
   * New upstream release.
   * debian/: Installation of examples with dh_installexamples.
   * debian/control: Fixed invalid use of variable ${shlibs:Depends}.
+  * debian/copyright: Removed GPL OpenSSL exception.
 
  -- Thomas Dreibholz <dreibh@iem.uni-due.de>  Sat, 06 Nov 2021 19:40:00 +0100
 
