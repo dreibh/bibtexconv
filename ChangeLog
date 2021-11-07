@@ -1,3 +1,118 @@
+commit f3d5d9d634955a7bc15055d1236bb09e8e92a0d1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Nov 7 19:27:58 2021 +0100
+
+    Version update.
+
+commit 4d3bba913e21b5b71865364417eb54e5e51f1108
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Nov 7 19:00:41 2021 +0100
+
+    Updated build scripts
+
+commit 57bdbe1f8b220dc3d524ca4417cc37d835dd612e
+Merge: c7c5cf1 79b59ad
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Nov 7 17:16:35 2021 +0100
+
+    Merge branch 'master' of github.com:dreibh/bibtexconv
+
+commit c7c5cf174a8d2194c9b7cb69945764b707d031b7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 21:08:35 2021 +0100
+
+    Removed GPL OpenSSL exception from debian/copyright, since it is not required any longer.
+
+commit 2ce4e9092f5b92840f3a849a0c241d97b35ee07b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 21:00:58 2021 +0100
+
+    Using dh_installman for the manpages in the Debian/Ubuntu package.
+
+commit 79b59add32e70f411e96c2283d7d5c5ed622af6f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 20:57:23 2021 +0100
+
+    Using dh_installman for the manpages in the Debian/Ubuntu package.
+
+commit 01e3840f915866d83938ecdc7b7c0e8dc0959326
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 20:52:11 2021 +0100
+
+    BibTeXConv does not use OpenSSL code, it only links to libssl for the MD5 computation function.
+
+commit f97cdbd9aacd4b9503cdac313e6d9bf4f48f778e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 20:49:22 2021 +0100
+
+    Updated build scripts
+
+commit 96978ebc01e7f71451df553695368f7a5dcaf773
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 19:53:09 2021 +0100
+
+    Version update.
+
+commit 1a49270d92dbcbe6f454fd05226dd9be231fca2c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 19:52:48 2021 +0100
+
+    Using dh_installexamples for the examples in the Debian/Ubuntu package.
+
+commit 8f01ad6c50e8a3cf259813483cecba9ad9e685ce
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 19:37:05 2021 +0100
+
+    Fixed use of substitution variable ${shlibs:Depends}.
+
+commit ce0674e4f64fc8d5f393a827fd16cd9d3ce9110e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Nov 6 18:42:26 2021 +0100
+
+    Updated build scripts
+
+commit 974dcb425862cde87200edf020bf959aca99ae46
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 4 15:32:29 2021 +0100
+
+    Updated build scripts
+
+commit ff2979578adbf2e3e3699653e5d2b39353d81c07
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 4 14:46:04 2021 +0100
+
+    Fixed typo.
+
+commit 65efe2197014e1c99309a1673a4a6d1c12d239c3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 4 14:45:53 2021 +0100
+
+    Updated scripts.
+
+commit 43ae9ee6170d1479070fcf36cd6423a2d2b30f3c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 3 18:22:37 2021 +0100
+
+    Updated build scripts
+
+commit 878031a9e8b8d5d9330c05e2170b7f5fde7ae3b8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 3 18:22:35 2021 +0100
+
+    Updated build scripts
+
+commit 588a06fb06781503891e040cb4d9ce3322763654
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Oct 19 16:06:20 2021 +0200
+
+    Updated build scripts
+
+commit dc083f0ae53cd415364a5fc8d91850921e0f6a22
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Sep 7 10:50:43 2021 +0200
+
+    New release bibtexconv-1.3.0.
+
 commit 37de7245d7a0a6281c15f166fbe75abf6086d987
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Mon Sep 6 23:19:30 2021 +0200
