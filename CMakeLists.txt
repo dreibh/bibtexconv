@@ -33,28 +33,6 @@ INCLUDE(CheckIncludeFile)
 
 
 #############################################################################
-# OS DEPENDENT
-#############################################################################
-
-IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    MESSAGE(STATUS ${CMAKE_SYSTEM_NAME} " supported")
-
-ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-    MESSAGE(STATUS ${CMAKE_SYSTEM_NAME} " supported")
-
-ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    MESSAGE(STATUS ${CMAKE_SYSTEM_NAME} " supported")
-
-ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "NetBSD")
-    MESSAGE(STATUS ${CMAKE_SYSTEM_NAME} " supported")
-
-ELSE()
-    MESSAGE(FATAL_ERROR ${CMAKE_SYSTEM_NAME} " not supported (yet?)")
-
-ENDIF()
-
-
-#############################################################################
 # REQUIREMENTS
 #############################################################################
 
