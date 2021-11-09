@@ -1,5 +1,7 @@
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
+
 #############################################################################
 # PROGRAMS
 #############################################################################
@@ -9,7 +11,7 @@ FLEX_TARGET( scanner scanner.ll ${CMAKE_CURRENT_BINARY_DIR}/scanner.cc)
 ADD_EXECUTABLE(bibtexconv bibtexconv.cc
    node.cc unification.cc unification.h stringhandling.cc publicationset.cc
    ${BISON_grammar_OUTPUTS} ${FLEX_scanner_OUTPUTS})
-TARGET_LINK_LIBRARIES(bibtexconv ${CRYPTO_LIBRARY} ${CURL_LIBRARY})
+TARGET_LINK_LIBRARIES(bibtexconv ${OPENSSL_CRYPTO_LIBRARY} ${CURL_LIBRARY})
 INSTALL(TARGETS bibtexconv RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 INSTALL(FILES bibtexconv.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 
