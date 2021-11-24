@@ -359,14 +359,13 @@ def getBibTeXFromIETFDocument(document):
       if verboseMode == True:
          sys.stderr.write('NOTE: Using authors fix file ' + authorsFixFileName + '\n')
 
-   authorRow = None
-   for row in inputCSV:
-      for i in range(0, len(fullAuthorList), 1):
-         if row[0] == fullAuthorList[i]:
-            if verboseMode == True:
-               sys.stderr.write('Fix: ' + fullAuthorList[i] + ' -> ' + row[1] + '\n')
-            fullAuthorList[i] = row[1]
-            break
+      for row in inputCSV:
+         for i in range(0, len(fullAuthorList), 1):
+            if row[0] == fullAuthorList[i]:
+               if verboseMode == True:
+                  sys.stderr.write('Fix: ' + fullAuthorList[i] + ' -> ' + row[1] + '\n')
+               fullAuthorList[i] = row[1]
+               break
 
    # print(authorRegExpList)
    # print(fullAuthorList)
