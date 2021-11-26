@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0.2)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
 PROJECT(bibtexconv LANGUAGES C CXX)
 
 SET(BUILD_MAJOR "1")
@@ -30,67 +30,6 @@ ADD_CUSTOM_TARGET(dist COMMAND ${CMAKE_MAKE_PROGRAM} clean package_source)
 
 
 INCLUDE(CheckIncludeFile)
-INCLUDE(CheckStructHasMember)
-
-
-#############################################################################
-# OS DEPENDENT
-#############################################################################
-
-IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    MESSAGE(STATUS ${CMAKE_SYSTEM_NAME} " supported")
-
-ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-    MESSAGE(STATUS ${CMAKE_SYSTEM_NAME} " supported")
-    SET(CMAKE_REQUIRED_INCLUDES "/usr/local/include" "/usr/include")
-    SET(CMAKE_LIBRARY_PATH "/usr/local/lib")
-    INCLUDE_DIRECTORIES("/usr/local/include")
-
-ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    MESSAGE(STATUS ${CMAKE_SYSTEM_NAME} " supported")
-    SET(CMAKE_REQUIRED_INCLUDES "/usr/local/include" "/usr/include" "/usr/local/opt/openssl/include")
-    SET(CMAKE_LIBRARY_PATH "/usr/local/lib")
-    INCLUDE_DIRECTORIES("/usr/local/include" "/usr/local/opt/openssl/include")
-
-ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "NetBSD")
-    MESSAGE(STATUS ${CMAKE_SYSTEM_NAME} " supported")
-    SET(CMAKE_REQUIRED_INCLUDES "/usr/pkg/include" "/usr/include" "/usr/local/include")
-    SET(CMAKE_LIBRARY_PATH "/usr/local/lib")
-    INCLUDE_DIRECTORIES("/usr/pkg/include" "/usr/local/include")
-
-ELSE()
-    MESSAGE(FATAL_ERROR ${CMAKE_SYSTEM_NAME} " not supported (yet?)")
-
-ENDIF()
-
-
-#############################################################################
-# CHECK STRUCT MEMBERS
-#############################################################################
-
-CHECK_STRUCT_HAS_MEMBER("struct sockaddr" "sa_len" "sys/types.h;sys/socket.h" HAVE_SA_LEN)
-IF (HAVE_SA_LEN)
-    MESSAGE(STATUS "HAVE_SA_LEN")
-    ADD_DEFINITIONS(-DHAVE_SA_LEN)
-ENDIF()
-
-CHECK_STRUCT_HAS_MEMBER("struct sockaddr_in" "sin_len" "sys/types.h;netinet/in.h" HAVE_SIN_LEN)
-IF (HAVE_SIN_LEN)
-    MESSAGE(STATUS "HAVE_SIN_LEN")
-    ADD_DEFINITIONS(-DHAVE_SIN_LEN)
-ENDIF()
-
-CHECK_STRUCT_HAS_MEMBER("struct sockaddr_in6" "sin6_len" "sys/types.h;netinet/in.h" HAVE_SIN6_LEN)
-IF (HAVE_SIN6_LEN)
-    MESSAGE(STATUS "HAVE_SIN6_LEN")
-    ADD_DEFINITIONS(-DHAVE_SIN6_LEN)
-ENDIF()
-
-CHECK_STRUCT_HAS_MEMBER("struct sockaddr_storage" "ss_len" "sys/types.h;sys/socket.h" HAVE_SS_LEN)
-IF (HAVE_SS_LEN)
-    MESSAGE(STATUS "HAVE_SS_LEN")
-    ADD_DEFINITIONS(-DHAVE_SS_LEN)
-ENDIF()
 
 
 #############################################################################
@@ -108,7 +47,7 @@ FIND_PACKAGE(FLEX)
 FIND_PACKAGE(CURL REQUIRED)
 
 # ###### libcrypto (MD5 computation) ########################################
-FIND_LIBRARY(CRYPTO_LIBRARY NAMES "libcrypto.so" PATHS ${CMAKE_LIBRARY_PATH} REQUIRED)
+FIND_PACKAGE(OpenSSL REQUIRED)
 
 
 #############################################################################
