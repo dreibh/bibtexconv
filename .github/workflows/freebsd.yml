@@ -22,7 +22,7 @@ on:
   push:
     branches:
       - master
-      - dreibh/github-actions
+      #- dreibh/github-actions
       - dreibh/github-actions-freebsd
 
 jobs:
