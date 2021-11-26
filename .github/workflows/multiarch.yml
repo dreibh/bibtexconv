@@ -38,11 +38,11 @@ jobs:
             distro: ubuntu20.04
             cc: gcc
             cxx: g++
-          - label: "Ubuntu 20.04 (Focal Fossa): GCC/S390x"
+          - label: "Ubuntu 20.04 (Focal Fossa): Clang/S390x"
             arch: s390x
             distro: ubuntu20.04
-            cc: gcc
-            cxx: g++
+            cc: clang
+            cxx: clang++
           - label: "Ubuntu 20.04 (Focal Fossa): GCC/RISC-V"
             arch: riscv64
             distro: ubuntu20.04
@@ -55,13 +55,18 @@ jobs:
             distro: bookworm
             cc: gcc
             cxx: g++
-
-          # ====== Fedora Linux =============================================
-          - label: "Fedora 35: Clang/ARMv8"
-            arch: aarch64
-            distro: fedora35
+          - label: "Debian 12 (Bookworm): Clang/ARMv7"
+            arch: arm32v7
+            distro: bookworm
             cc: clang
             cxx: clang++
+
+          # ====== Fedora Linux =============================================
+          - label: "Fedora 35: GCC/PPC64"
+            arch: ppc64le
+            distro: fedora35
+            cc: gcc
+            cxx: g++
 
 
     # ###### Build commands #################################################
