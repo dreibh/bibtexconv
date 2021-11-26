@@ -67,7 +67,7 @@ sudo dnf install bibtexconv
 
 For ready-to-install FreeBSD packages of BibTeXConv, it is included in the ports collection, see Index of /head/converters/bibtexconv/!
 
-    pkg install subnetcalc
+    pkg install bibtexconv
 
 Alternatively, to compile it from the ports sources:
 
@@ -92,21 +92,3 @@ The Git repository of the BibTeXConv sources can be found at https://github.com/
 
 - Pull Requests for BibTeXConv: https://github.com/dreibh/bibtexconv/pulls.
   Your contributions to BibTeXConv are always welcome!
-
-- Travis CI automated build tests of BibTeXConv: https://travis-ci.org/dreibh/bibtexconv.
-
-- Coverity Scan analysis of BibTeXConv: https://scan.coverity.com/projects/dreibh-bibtexconv.
-
-### Current Stable Release
-
-The tarball has been signed with my GnuPG key DF605BB0760F2D65. Its authenticity and integrity can be verified by:
-
-gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys DF605BB0760F2D65
-gpg --verify bibtexconv-VERSION.tar.xz.asc bibtexconv-VERSION.tar.xz
-
-- [bibtexconv-1.1.18.tar.xz (Tar/XZ file)](https://www.uni-due.de/~be0001/bibtexconv/download/bibtexconv-1.1.18.tar.xz)
-- [bibtexconv-1.1.18.tar.xz.asc (Signature)](https://www.uni-due.de/~be0001/bibtexconv/download/bibtexconv-1.1.18.tar.xz.asc)
-
-## Requirements
-
-    Linux or FreeBSD (other OS should work too), a C++ compiler, Flex/Yacc, libcurl, libcrypto.
