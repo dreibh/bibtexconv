@@ -1,3 +1,227 @@
+commit 6da0b65242a2354c479a71d76ba946493b622f9e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 29 11:08:40 2021 +0100
+
+    Updated CI scripts
+
+commit d756a299a67e89f06f1c6d27e2e9874ec263e278
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 29 11:08:38 2021 +0100
+
+    Travis CI is dead. Removed obsolete Travis CI scripts and configuration.
+
+commit 1c78aaa224d97a5e5234c087e7c0b92d0552dd68
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 29 11:08:37 2021 +0100
+
+    Updated build scripts
+
+commit b55889355393592e3c59f7846e1e5a27a6cfa2dd
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 29 11:04:56 2021 +0100
+
+    Updated build scripts
+
+commit dacfa6a07eef76f4046457d731339045753117df
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 29 11:04:54 2021 +0100
+
+    Updated build scripts
+
+commit acab48707b0c390dfd3255937c0ed6056bececa8
+Merge: 2095616 c2da1e9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 21:52:31 2021 +0100
+
+    Merge branch 'master' into dreibh/github-actions
+
+commit 2095616c52081fdd54f397475a0eed88ad83f09c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 21:50:56 2021 +0100
+
+    Improved CI workflows.
+
+commit f3ace25d0cc78d2a7d17616b965bb62375303942
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 21:49:00 2021 +0100
+
+    Updated build scripts
+
+commit c2da1e9bb18e20ac1643f007db1b8782b155260b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 15:23:47 2021 +0100
+
+    Removed test workflow.
+
+commit 71e361f3724619fcad711c28f283829d509c53a2
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 15:16:08 2021 +0100
+
+    Updated workflows.
+
+commit f81ffa3d8933b69658274043933ca9a8818c8ef6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 15:06:10 2021 +0100
+
+    A fix.
+
+commit 68028b31cc7d6bd9b3d52375d93252fd351b4789
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 14:45:19 2021 +0100
+
+    Need to specific C++ standard version.
+
+commit 791044c30fa69b568231ae3cd9e639a305989deb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 13:45:54 2021 +0100
+
+    Improved workflow.
+
+commit 057c0dac366681ec295f946c780f5a0c7b956d63
+Merge: d82ff82 3a5b9a2
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 13:01:13 2021 +0100
+
+    Merge branch 'master' into dreibh/github-actions
+
+commit 3a5b9a29d7c59086088fa59cd7e8d5af85a23be0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 13:00:03 2021 +0100
+
+    Updated ReadMe file.
+
+commit d54e45d90b6a381ea538fe3774e2de490c59577b
+Merge: cc71783 bce136f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 12:57:29 2021 +0100
+
+    Merge pull request #1 from TechnologyClassroom/add-readme
+    
+    Copy readme from site
+
+commit d82ff828c56e14b66c96ce21a1cb01ae2efd01fd
+Merge: 6eca2f2 cc71783
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 10:03:10 2021 +0100
+
+    Merge branch 'master' into dreibh/github-actions
+
+commit cc717839e947c639175589ed8f66cff712928f4d
+Merge: 73cc031 0a91ef0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 26 09:58:25 2021 +0100
+
+    Merge pull request #3 from pinotree/cmake-improvements
+    
+    Various CMake improvements
+
+commit 6eca2f2e7f78c3f0ff2af9fffed992298ffd0d00
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 25 23:22:22 2021 +0100
+
+    Added GitHub Actions workflows.
+
+commit 34d7a63fd0fe39a81f6609860943ff1cb1096e74
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 25 22:56:05 2021 +0100
+
+    Updated CI scripts
+
+commit e9da7bdb6dc4a67673e6625e584d556769ca11b1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 25 22:56:02 2021 +0100
+
+    Travis CI is dead. Removed obsolete Travis CI scripts and configuration.
+
+commit 9fb6e37c74719f8ea1a85eecc0e0684f8227fd8b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 25 22:56:00 2021 +0100
+
+    Updated build scripts
+
+commit 73cc0318d51be4cb124a4d7e5634759d54b4d38a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Nov 25 09:37:06 2021 +0100
+
+    Removed empty tests/control.
+
+commit 7ffd9cc8f8d7edf6cbd60b49914b6a3492c50b8b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Nov 24 10:18:05 2021 +0100
+
+    Bugfix: Properly handle not-existing authors fix list with --no-authors-fix-file option.
+
+commit 0a91ef0fd66cd7887145470eadf1b28b651b316a
+Author: Pino Toscano <toscano.pino@tiscali.it>
+Date:   Tue Nov 9 07:27:44 2021 +0100
+
+    cmake: drop OS check/limitation
+    
+    The code is portable enough to support different OSes as it is already,
+    and potential differences in the build systems are already handled
+    thanks to CMake. Hence, drop the checks for "supported"/"not supported"
+    OSes, as it should build (and work) fine also on other OSes different
+    than Linux/FreeBSD/macOS/NetBSD.
+
+commit da81b6a87234982a2636887c93918a52c1b169fc
+Author: Pino Toscano <toscano.pino@tiscali.it>
+Date:   Tue Nov 9 07:25:44 2021 +0100
+
+    cmake: drop OS-specific include paths and library dirs
+    
+    They were needed for using non-system libraries such as CURL and
+    OpenSSL; considering that those libraries are properly located, and
+    their paths used, there is no more need to have all these manual
+    additions.
+
+commit afd03f5a9dee946d5f44c3738f1a1727edf00efc
+Author: Pino Toscano <toscano.pino@tiscali.it>
+Date:   Tue Nov 9 07:23:20 2021 +0100
+
+    cmake: use proper variables for CURL
+    
+    Make use of the right variables provided by the FindCURL.cmake module
+    of CMake to use the headers of CURL and its library.
+
+commit 73c3b58a8bd01913587a04d3049578acd4db9f83
+Author: Pino Toscano <toscano.pino@tiscali.it>
+Date:   Tue Nov 9 07:19:58 2021 +0100
+
+    cmake: use CMake's FindOpenSSL.cmake module
+    
+    Use the FindOpenSSL.cmake module provided by CMake to find the OpenSSL
+    libraries, properly using its results for what is needed.
+
+commit cdd291b28d33c764d84a984b4acaf7c9cdd1d4e4
+Author: Pino Toscano <toscano.pino@tiscali.it>
+Date:   Tue Nov 9 07:17:30 2021 +0100
+
+    cmake: bump requirement to 3.2
+    
+    Bump the CMake requirement to 3.2: this way it is possible to rely on
+    the FindOpenSSL.cmake module shipped by CMake that provides separate
+    variables for the OpenSSL libraries.
+
+commit 2ea986d738393e725b7d48a2cb405667f928c51b
+Author: Pino Toscano <toscano.pino@tiscali.it>
+Date:   Tue Nov 9 07:16:45 2021 +0100
+
+    cmake: drop size checks for sockaddr structs
+    
+    They appear to be unused, so simply drop them.
+
+commit 20155b273201cd0a07cd0b926a2f959ccaf9d1bd
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 8 20:39:03 2021 +0100
+
+    Updated LSM entry.
+
+commit 8a0fd310eb0f64c7f7005e9c9f4f49b4b6c9fc14
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Nov 7 20:54:17 2021 +0100
+
+    New release bibtexconv-1.3.1.
+
 commit f3d5d9d634955a7bc15055d1236bb09e8e92a0d1
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Sun Nov 7 19:27:58 2021 +0100
@@ -652,6 +876,12 @@ Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Mon Oct 28 14:41:24 2019 +0100
 
     Updated Debian/Ubuntu packaging files.
+
+commit bce136f55a2dcd8a90e533e3de88c51520c14347
+Author: TechnologyClassroom <michael.steven.mcmahon@gmail.com>
+Date:   Fri Oct 25 13:50:13 2019 -0400
+
+    Copy readme from site
 
 commit af9662174dadd041d6408081a8baa9262af1ec6c
 Author: Thomas Dreibholz <dreibh@simula.no>

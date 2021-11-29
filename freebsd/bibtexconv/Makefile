@@ -1,7 +1,7 @@
 # Created by: Thomas Dreibholz <dreibh@iem.uni-due.de>
 
 PORTNAME=	bibtexconv
-PORTVERSION=	1.3.1
+PORTVERSION=	1.3.2
 CATEGORIES=	converters
 MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/
 
