@@ -27,8 +27,7 @@ import sys
 import csv
 import codecs
 import urllib.request
-import pyquery
-urllib.request.urlopen
+
 
 datatrackerPrefix = 'https://datatracker.ietf.org/doc/'
 draftPrefix       = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids-new/reference.I-D.'
@@ -58,38 +57,30 @@ monthNameTable = [ 'January', 'February', 'March', 'April',
                    'INVALID' ]
 
 
-# ====== Get URL of I-D metadata ============================================
-# This is the URL of either the I-D XML itself, or the reference XML!
+# ###### Get URL of I-D metadata ############################################
 def getURLforIDmetadata(document):
-   url            = None
-   datatrackerURL = datatrackerPrefix + document + '/'
-   urlRE          = re.compile(r'https://.*' + document + '-\d+\.xml')
+   # ====== Find latest version =============================================
+   print(document)
+   if not re.match(r'^.*-[0-9][0-9]$', document):
+      datatrackerURL = datatrackerPrefix + document + '/99/bibtex/'
+      if verboseMode == True:
+         sys.stderr.write('Fetching ' + datatrackerURL + ' ...\n')
+      datatrackerStatus = urllib.request.urlopen(datatrackerURL).readlines()
+      numberRE = re.compile(r'^(number[ \t]*=[ \t]*\{)([^ ]*)-([0-9]+)\},$')
+      for line in datatrackerStatus:
+         line = line.decode('utf-8').strip()
+         match = numberRE.match(line)
+         if match != None:
+            name           = match.group(2)
+            lastestVersion = match.group(3)
+            document = name + '-' + lastestVersion
+            sys.stderr.write('Latest version of ' + name + ' is ' + lastestVersion + ' => ' + document + '\n')
 
-   if verboseMode == True:
-      sys.stderr.write('Fetching ' + datatrackerURL + ' ...\n')
-   try:
-      datatrackerStatus = pyquery.PyQuery(urllib.request.urlopen(datatrackerURL).read())
-      for link in datatrackerStatus('a'):
-         try:
-            href = datatrackerStatus(link).attr['href']
-            if urlRE.match(href):
-               if (url == None) or (url < href):
-                  url = href
-         except:
-            pass
-   except Exception as e:
-      sys.stderr.write('ERROR: Failed to get I-D status information from ' + datatrackerURL + ': ' + str(e) + '!\n')
-      sys.exit(1)
-
-   if url == None:
-      url = draftPrefix + document + '.xml'
-      sys.stderr.write('Using metadata from BibXML: ' + url + '\n')
-   else:
-      sys.stderr.write('Using metadata from actual I-D: ' + url + '\n')
+   url = draftPrefix + document + '.xml'
    return url
 
 
-# ====== Get BibTeX from IETF document ======================================
+# ###### Get BibTeX from IETF document ######################################
 def getBibTeXFromIETFDocument(document):
    for blacklistEntry in blacklistTable:
       if document == blacklistEntry:
