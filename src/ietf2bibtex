@@ -27,12 +27,14 @@ import sys
 import csv
 import codecs
 import urllib.request
+import pyquery
+urllib.request.urlopen
 
-
-draftPrefix    = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids-new/reference.I-D.'
-rfcPrefix      = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcs/reference.RFC.'
-verboseMode    = True
-authorsFixFile = 'DEFAULT'
+datatrackerPrefix = 'https://datatracker.ietf.org/doc/'
+draftPrefix       = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids-new/reference.I-D.'
+rfcPrefix         = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcs/reference.RFC.'
+verboseMode       = True
+authorsFixFile    = 'DEFAULT'
 
 
 # Documents where meta-information XML is wrong:
@@ -56,6 +58,37 @@ monthNameTable = [ 'January', 'February', 'March', 'April',
                    'INVALID' ]
 
 
+# ====== Get URL of I-D metadata ============================================
+# This is the URL of either the I-D XML itself, or the reference XML!
+def getURLforIDmetadata(document):
+   url            = None
+   datatrackerURL = datatrackerPrefix + document + '/'
+   urlRE          = re.compile(r'https://.*' + document + '-\d+\.xml')
+
+   if verboseMode == True:
+      sys.stderr.write('Fetching ' + datatrackerURL + ' ...\n')
+   try:
+      datatrackerStatus = pyquery.PyQuery(urllib.request.urlopen(datatrackerURL).read())
+      for link in datatrackerStatus('a'):
+         try:
+            href = datatrackerStatus(link).attr['href']
+            if urlRE.match(href):
+               if (url == None) or (url < href):
+                  url = href
+         except:
+            pass
+   except Exception as e:
+      sys.stderr.write('ERROR: Failed to get I-D status information from ' + datatrackerURL + ': ' + str(e) + '!\n')
+      sys.exit(1)
+
+   if url == None:
+      url = draftPrefix + document + '.xml'
+      sys.stderr.write('Using metadata from BibXML: ' + url + '\n')
+   else:
+      sys.stderr.write('Using metadata from actual I-D: ' + url + '\n')
+   return url
+
+
 # ====== Get BibTeX from IETF document ======================================
 def getBibTeXFromIETFDocument(document):
    for blacklistEntry in blacklistTable:
@@ -73,7 +106,7 @@ def getBibTeXFromIETFDocument(document):
    url = ''
    m = re.match('^draft-(.*)$', document)
    if m != None:
-      url          = draftPrefix + document + '.xml'
+      url          = getURLforIDmetadata(document)
       documentType = 'Internet Draft'
       number       = m.group(1)
       m = re.match('^draft-ietf-(.*)$', document)
@@ -111,7 +144,13 @@ def getBibTeXFromIETFDocument(document):
 
    fullAuthorList   = []
    authorRegExpList = []
-   authorList = xmlDocument.getElementsByTagName('author')
+   # Try to read the actual draft XML file first:
+   frontList = xmlDocument.getElementsByTagName('front')
+   if frontList != None:
+      authorList = frontList[0].getElementsByTagName('author')
+   else:
+      # Else, try to read the reference XML file:
+      authorList = xmlDocument.getElementsByTagName('author')
    if len(authorList) == 0:
       sys.stderr.write('ERROR: It seems that the XML file ' + url + ' does not exist. Wrong document name?\n')
       sys.exit(1)
@@ -121,19 +160,19 @@ def getBibTeXFromIETFDocument(document):
       #print(author.attributes['fullname'].value)
       #print(author.attributes['initials'].value[0])
       #print(author.attributes['surname'].value)
-      # ------ Try old format first -----------------------------------------
+      # ------ Try new format first -----------------------------------------
       try:
-         authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
-                        author.attributes['surname'].value
+         authorRegExp = author.attributes['fullname'].value
          authorRegExpList.append(authorRegExp)
-         fullAuthorList.append(author.attributes['initials'].value[0] +'. ' + \
-                               author.attributes['surname'].value)
-      # ------ Try new format -----------------------------------------------
+         fullAuthorList.append(author.attributes['fullname'].value)
+      # ------ Try old format -----------------------------------------------
       except:
          try:
-            authorRegExp = author.attributes['fullname'].value
+            authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
+                           author.attributes['surname'].value
             authorRegExpList.append(authorRegExp)
-            fullAuthorList.append(author.attributes['fullname'].value)
+            fullAuthorList.append(author.attributes['initials'].value[0] +'. ' + \
+                                  author.attributes['surname'].value)
          except:
             continue
    # print(authorRegExpList)
