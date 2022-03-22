@@ -180,10 +180,13 @@ def getBibTeXFromIETFDocument(document):
 
    dateList = xmlDocument.getElementsByTagName('date')
    month    = 0
-   for monthName in monthNameTable:
-      month = month + 1
-      if monthName == dateList[0].attributes['month'].value:
-         break
+   try:
+      for monthName in monthNameTable:
+         month = month + 1
+         if monthName == dateList[0].attributes['month'].value:
+            break
+   except:
+      month = 0
    try:
       day = int(dateList[0].attributes['day'].value)
    except:
