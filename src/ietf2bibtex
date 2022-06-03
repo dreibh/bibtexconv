@@ -48,6 +48,7 @@ blacklistTable = [
    'draft-ietf-rserpool-mib',
    'draft-ietf-rserpool-tcpmapping',
    'draft-iyengar-sctp-cacc',
+   'draft-xue-mptcp-tmpp-unware-hosts',
    'RFC3246'
 ]
 
@@ -63,7 +64,6 @@ monthNameTable = [ 'January', 'February', 'March', 'April',
 def fetch(url):
    urlHash = hashlib.sha256(url.encode('utf-8')).hexdigest()
    cacheFileName = '/tmp/ietf2bibtex-' + urlHash + '.data'
-   print(cacheFileName)
 
    if not os.path.exists(cacheFileName):
       if verboseMode == True:
@@ -77,14 +77,16 @@ def fetch(url):
 
 
 # ###### Get URL of I-D metadata ############################################
-def getURLforIDmetadata(document):
+def getMetadata(document):
+   authorList = [ ]
+
    # ====== Find latest version =============================================
    if not re.match(r'^.*-[0-9][0-9]$', document):
       datatrackerURL = datatrackerPrefix + document + '/99/bibtex/'
-      if verboseMode == True:
-         sys.stderr.write('Fetching ' + datatrackerURL + ' ...\n')
       datatrackerStatus = fetch(datatrackerURL).readlines()
+
       numberRE = re.compile(r'^(number[ \t]*=[ \t]*\{)([^ ]*)-([0-9]+)\},$')
+      authorRE = re.compile(r'^([ \t]*author[ \t]*=[ \t]*{)(.*)(})')
       for line in datatrackerStatus:
          line = line.decode('utf-8').strip()
          match = numberRE.match(line)
@@ -94,12 +96,36 @@ def getURLforIDmetadata(document):
             document = name + '-' + lastestVersion
             sys.stderr.write('Latest version of ' + name + ' is ' + lastestVersion + ' => ' + document + '\n')
 
+         # ====== Find author list ==========================================
+         else:
+            match = authorRE.match(line)
+            if match != None:
+               names = match.group(2).split(' and ')
+               for name in names:
+                  fullname = re.sub('^(Professor |Dr\. )', '', name)
+                  n = fullname.split(' ')
+                  surname  = n[len(n) - 1]
+                  initials = ''
+                  for i in range(0, len(n) - 1):
+                     initials = initials + n[i][0] + '.'
+                  if (initials == '') or (fullname.find('@') != -1):
+                     authorList = None
+                     sys.stderr.write('Bad author entry in ' + document + '\n')
+                     break
+                  authorList.append({
+                      'fullname': fullname,
+                      'initials': initials,
+                      'surname':  surname
+                  })
+               # print(authorList)
+
    url = draftPrefix + document + '.xml'
-   return url
+
+   return [ url, authorList ]
 
 
 # ###### Get BibTeX from IETF document ######################################
-def getBibTeXFromIETFDocument(document):
+def getBibTeXForIETFDocument(document):
    for blacklistEntry in blacklistTable:
       if document == blacklistEntry:
          sys.stderr.write('NOTE: ' + document + ' is blacklisted due to bad metadata in XML file. Skipping.\n')
@@ -111,11 +137,17 @@ def getBibTeXFromIETFDocument(document):
    institution  = None
    language     = 'english'
    note         = None
+   authorList   = None
 
+   # ====== Get information from BibTeX file ================================
+   # The IETF-provided BibTeX file has:
+   # - Information about the latest version
+   # - More accurate author information
+   # - But *not* the full date
    url = ''
    m = re.match('^draft-(.*)$', document)
    if m != None:
-      url          = getURLforIDmetadata(document)
+      [ url, authorList ] = getMetadata(document)
       documentType = 'Internet Draft'
       number       = m.group(1)
       m = re.match('^draft-ietf-(.*)$', document)
@@ -128,6 +160,7 @@ def getBibTeXFromIETFDocument(document):
    if url == '':
       m = re.match('^[Rr][Ff][Cc]([0-9]*)$', document)
       if m != None:
+         [ url, authorList ] = getMetadata(document)
          documentType = 'RFC'
          number       = int(m.group(1))
          issn         = '2070-1721'
@@ -139,10 +172,30 @@ def getBibTeXFromIETFDocument(document):
       sys.stderr.write('ERROR: Unknown document type ' + document + '!\n')
       sys.exit(1)
 
+   # ------ Get authors list ------------------------------------------------
+   fullAuthorList   = []
+   authorRegExpList = []
 
-   # ====== Get document information from XML file =============================
-   if verboseMode == True:
-      sys.stderr.write('Fetching ' + url + ' ...\n')
+   if authorList != None:
+      for author in authorList:
+         # print(author)
+         # print('fullname=', author['fullname'])
+         # print('initials=', author['initials'][0])
+         # print('surname=',  author['surname'])
+         if author['fullname'][1] == '.':
+            authorRegExp = author['initials'][0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
+                           author['surname']
+         else:
+            authorRegExp = author['fullname']
+         authorRegExpList.append(authorRegExp)
+         fullAuthorList.append(author['fullname'])
+
+
+   # ====== Get document information from XML file ==========================
+   # The IETF-provided XML file has:
+   # - Quite inaccurate author information, only ASCII names
+   # - Inaccurate date
+   # - Type information
    try:
       xmlFile = fetch(url)
       # print('Parsing XML ...')
@@ -151,37 +204,43 @@ def getBibTeXFromIETFDocument(document):
       sys.stderr.write('ERROR: Failed to get XML information from ' + url + ': ' + str(e) + '!\n')
       sys.exit(1)
 
-   fullAuthorList   = []
-   authorRegExpList = []
-   # Try to read the actual draft XML file first:
-   frontList = xmlDocument.getElementsByTagName('front')
-   if frontList != None:
-      authorList = frontList[0].getElementsByTagName('author')
-   else:
-      # Else, try to read the reference XML file:
-      authorList = xmlDocument.getElementsByTagName('author')
-   if len(authorList) == 0:
-      sys.stderr.write('ERROR: It seems that the XML file ' + url + ' does not exist. Wrong document name?\n')
-      sys.exit(1)
+   # ------ Get authors list ------------------------------------------------
+   # The BibTeX file information is invalid, so use the less accurate
+   # information from the XML file instead:
+   if authorList == None:
+      sys.stderr.write('Getting author information from XML instead!\n')
 
-   for author in authorList:
-      # print(author)
-      # print('fullname=', author.attributes['fullname'].value)
-      # print('initials=', author.attributes['initials'].value[0])
-      # print('surname=',  author.attributes['surname'].value)
-      try:
-         if author.attributes['fullname'].value[1] == '.':
-            authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
-                           author.attributes['surname'].value
-         else:
-            authorRegExp = author.attributes['fullname'].value
-         authorRegExpList.append(authorRegExp)
-         fullAuthorList.append(author.attributes['fullname'].value)
-      except:
+      # Try to read the actual draft XML file first:
+      frontList = xmlDocument.getElementsByTagName('front')
+
+      if frontList != None:
+         authorList = frontList[0].getElementsByTagName('author')
+      else:
+         # Else, try to read the reference XML file:
+         authorList = xmlDocument.getElementsByTagName('author')
+      if len(authorList) == 0:
+         sys.stderr.write('ERROR: It seems that the XML file ' + url + ' does not exist. Wrong document name?\n')
+         sys.exit(1)
+
+      for author in authorList:
+         # print(author)
+         # print('fullname=', author.attributes['fullname'].value)
+         # print('initials=', author.attributes['initials'].value[0])
+         # print('surname=',  author.attributes['surname'].value)
+         try:
+            if author.attributes['fullname'].value[1] == '.':
+               authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
+                              author.attributes['surname'].value
+            else:
+               authorRegExp = author.attributes['fullname'].value
+            authorRegExpList.append(authorRegExp)
+            fullAuthorList.append(author.attributes['fullname'].value)
+         except:
             continue
-   # print('authorRegExpList=', authorRegExpList)
-   # print('fullAuthorList=',   fullAuthorList)
+      # print('authorRegExpList=', authorRegExpList)
+      # print('fullAuthorList=',   fullAuthorList)
 
+   # ------ Get date --------------------------------------------------------
    dateList = xmlDocument.getElementsByTagName('date')
    month    = 0
    try:
@@ -203,12 +262,14 @@ def getBibTeXFromIETFDocument(document):
       year = int(year[l-4:l])
    # print(day,month,year)
 
+   # ------ Get title -------------------------------------------------------
    titleList = xmlDocument.getElementsByTagName('title')
    title = titleList[0].childNodes[0].data
    title = title.strip().replace(' (', '~(')
    title = title.strip().replace(' - ', ' -- ')
    # print(title)
 
+   # ------ Get type --------------------------------------------------------
    seriesInfoList = xmlDocument.getElementsByTagName('seriesInfo')
    series = None
    name   = None
@@ -221,6 +282,7 @@ def getBibTeXFromIETFDocument(document):
          doi = seriesInfo.attributes['value'].value
    #print(series, name, doi)
 
+   # ------ Get URL ---------------------------------------------------------
    formatList = xmlDocument.getElementsByTagName('format')
    try:
       url = formatList[0].attributes['target'].value
@@ -242,6 +304,7 @@ def getBibTeXFromIETFDocument(document):
                      'https://tools.ietf.org/id/')
    # print(url)
 
+   # ------ Get abstract ----------------------------------------------------
    abstractList = xmlDocument.getElementsByTagName('t')
    abstract     = None
    try:
@@ -271,8 +334,6 @@ def getBibTeXFromIETFDocument(document):
       # print('A=',abstract,'.')
 
    # ====== Get full author list from text file ================================
-   if verboseMode == True:
-      sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
       txtFile = fetch(url)
    except Exception as e:
@@ -493,4 +554,4 @@ for i in range(1, len(sys.argv)):
       authorsFixFile = sys.argv[i][19:]
       i = i + 1
    else:
-      getBibTeXFromIETFDocument(sys.argv[i])
+      getBibTeXForIETFDocument(sys.argv[i])
