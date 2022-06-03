@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+IDs="\
+   draft-dreibholz-mptcp-nornet-experience \
+   draft-dreibholz-taps-neat-socketapi \
+   draft-dreibholz-tsvwg-sctpsocket-sqinfo \
+   draft-dreibholz-tsvwg-sctpsocket-multipath \
+   draft-dreibholz-rserpool-score \
+   draft-dreibholz-rserpool-applic-distcomp \
+   draft-dreibholz-ipv4-flowlabel \
+   draft-dreibholz-rserpool-nextgen-ideas \
+   draft-dreibholz-rserpool-applic-mobility \
+   draft-dreibholz-rserpool-enrp-takeover \
+   draft-dreibholz-rserpool-asap-hropt \
+   draft-dreibholz-rserpool-delay \
+   draft-coene-rserpool-applic-ipfix \
+   draft-hohendorf-secure-sctp \
+   draft-dreibholz-tsvwg-sctp-nextgen-ideas \
+   draft-dreibholz-vnfpool-rserpool-applic \
+   draft-tuexen-tsvwg-sctp-multipath \
+"
+
+ ./ietf2bibtex ${IDs}
