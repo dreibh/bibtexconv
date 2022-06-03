@@ -146,27 +146,22 @@ def getBibTeXFromIETFDocument(document):
       sys.exit(1)
 
    for author in authorList:
-      #print(author)
-      #print(author.attributes['fullname'].value)
-      #print(author.attributes['initials'].value[0])
-      #print(author.attributes['surname'].value)
-      # ------ Try new format first -----------------------------------------
+      # print(author)
+      # print('fullname=', author.attributes['fullname'].value)
+      # print('initials=', author.attributes['initials'].value[0])
+      # print('surname=',  author.attributes['surname'].value)
       try:
-         authorRegExp = author.attributes['fullname'].value
-         authorRegExpList.append(authorRegExp)
-         fullAuthorList.append(author.attributes['fullname'].value)
-      # ------ Try old format -----------------------------------------------
-      except:
-         try:
+         if author.attributes['fullname'].value[1] == '.':
             authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
                            author.attributes['surname'].value
-            authorRegExpList.append(authorRegExp)
-            fullAuthorList.append(author.attributes['initials'].value[0] +'. ' + \
-                                  author.attributes['surname'].value)
-         except:
+         else:
+            authorRegExp = author.attributes['fullname'].value
+         authorRegExpList.append(authorRegExp)
+         fullAuthorList.append(author.attributes['fullname'].value)
+      except:
             continue
-   # print(authorRegExpList)
-   # print(fullAuthorList)
+   # print('authorRegExpList=', authorRegExpList)
+   # print('fullAuthorList=',   fullAuthorList)
 
    dateList = xmlDocument.getElementsByTagName('date')
    month    = 0
@@ -234,7 +229,7 @@ def getBibTeXFromIETFDocument(document):
       abstract = abstractList[0].childNodes[0].data
    except:
       pass
-   # print('A=',abstract,".")
+   # print('A=',abstract,'.')
 
    if abstract != None:
       abstract = abstract.strip().replace('\t', ' ')
@@ -254,7 +249,7 @@ def getBibTeXFromIETFDocument(document):
          if oldLength == newLength:
             break
 
-      # print('A=',abstract,".")
+      # print('A=',abstract,'.')
 
    # ====== Get full author list from text file ================================
    if verboseMode == True:
