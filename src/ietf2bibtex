@@ -21,11 +21,12 @@
 #
 
 from xml.dom.minidom import parse
-import re
-import os
-import sys
-import csv
 import codecs
+import csv
+import hashlib
+import os
+import re
+import sys
 import urllib.request
 
 
@@ -39,6 +40,7 @@ authorsFixFile    = 'DEFAULT'
 # Documents where meta-information XML is wrong:
 blacklistTable = [
    'draft-ahmed-lssctp',
+   'draft-adams-qos-broadband',
    'draft-ietf-rserpool-api',
    'draft-ietf-rserpool-applic',
    'draft-ietf-rserpool-arch',
@@ -57,6 +59,23 @@ monthNameTable = [ 'January', 'February', 'March', 'April',
                    'INVALID' ]
 
 
+# ###### Fetch URL, with caching ############################################
+def fetch(url):
+   urlHash = hashlib.sha256(url.encode('utf-8')).hexdigest()
+   cacheFileName = '/tmp/ietf2bibtex-' + urlHash + '.data'
+   print(cacheFileName)
+
+   if not os.path.exists(cacheFileName):
+      if verboseMode == True:
+         sys.stderr.write('Fetching ' + url + ' into ' + cacheFileName + ' ...\n')
+      inputFile = urllib.request.urlretrieve(url, cacheFileName)
+   else:
+      if verboseMode == True:
+         sys.stderr.write('Using cached ' + url + ' from ' + cacheFileName + ' ...\n')
+
+   return open(cacheFileName, 'rb')
+
+
 # ###### Get URL of I-D metadata ############################################
 def getURLforIDmetadata(document):
    # ====== Find latest version =============================================
@@ -64,7 +83,7 @@ def getURLforIDmetadata(document):
       datatrackerURL = datatrackerPrefix + document + '/99/bibtex/'
       if verboseMode == True:
          sys.stderr.write('Fetching ' + datatrackerURL + ' ...\n')
-      datatrackerStatus = urllib.request.urlopen(datatrackerURL).readlines()
+      datatrackerStatus = fetch(datatrackerURL).readlines()
       numberRE = re.compile(r'^(number[ \t]*=[ \t]*\{)([^ ]*)-([0-9]+)\},$')
       for line in datatrackerStatus:
          line = line.decode('utf-8').strip()
@@ -125,7 +144,7 @@ def getBibTeXFromIETFDocument(document):
    if verboseMode == True:
       sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
-      xmlFile = urllib.request.urlopen(url)
+      xmlFile = fetch(url)
       # print('Parsing XML ...')
       xmlDocument = parse(xmlFile)
    except Exception as e:
@@ -255,7 +274,7 @@ def getBibTeXFromIETFDocument(document):
    if verboseMode == True:
       sys.stderr.write('Fetching ' + url + ' ...\n')
    try:
-      txtFile = urllib.request.urlopen(url)
+      txtFile = fetch(url)
    except Exception as e:
       sys.stderr.write('ERROR: Failed to get document from ' + url + ': ' + str(e) + '!\n')
       sys.exit(1)
@@ -314,6 +333,21 @@ def getBibTeXFromIETFDocument(document):
                      sys.stderr.write('Fix: Day ' + str(day) + ' -> ' + str(newDay) + '\n')
                   day = newDay
 
+            # ====== Author =================================================
+            else:
+               # Author is right-adjusted block
+               block = re.sub('.*[ \t][ \t]', '', line.decode().strip())
+               i = 0
+               for author in authorRegExpList:
+                  m = re.match('^(.*)(' + author + ')([\t ]*|$)', block)
+                  # print(line.strip(), i, m, author)
+                  if m != None:
+                     if len(m.group(2)) >= len(fullAuthorList[i]):
+                        fullAuthorList[i] = str(m.group(2))
+                        # print('!!! A1: ', line.strip(), i, m, author)
+                  i = i + 1
+
+
       # ====== Authors section ==============================================
       if len(authorRegExpList) < 1:
          line = txtFile.readline()
@@ -333,14 +367,13 @@ def getBibTeXFromIETFDocument(document):
          # ------ Parse author section --------------------------------------
          elif not re.search('^[\s]*$', d):
             i = 0
-            # sys.stderr.write(line)
             for author in authorRegExpList:
                m = re.match('^(.*)(' + author + ')([\t ].*|,.*|)$', line.decode().strip())
                # print(line.strip(), i, m, author)
                if m != None:
                   if len(m.group(2)) >= len(fullAuthorList[i]):
                      fullAuthorList[i] = str(m.group(2))
-                     # print('!!!', line.strip(), i, m, author)
+                     # print('!!! A2: ', line.strip(), i, m, author)
                i = i + 1
 
       else:
@@ -390,7 +423,7 @@ def getBibTeXFromIETFDocument(document):
          for i in range(0, len(fullAuthorList), 1):
             if row[0] == fullAuthorList[i]:
                if verboseMode == True:
-                  sys.stderr.write('Fix: ' + fullAuthorList[i] + ' -> ' + row[1] + '\n')
+                  sys.stderr.write('Fix(' + authorsFixFileName + '): ' + fullAuthorList[i] + ' -> ' + row[1] + '\n')
                fullAuthorList[i] = row[1]
                break
 
