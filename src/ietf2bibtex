@@ -108,10 +108,8 @@ def getMetadata(document):
                   initials = ''
                   for i in range(0, len(n) - 1):
                      initials = initials + n[i][0] + '.'
-                  if (initials == '') or (fullname.find('@') != -1):
-                     authorList = None
-                     sys.stderr.write('Bad author entry in ' + document + '\n')
-                     break
+                  # if (initials == '') or (fullname.find('@') != -1):
+                  #    sys.stderr.write('WARNING: Bad author entry in ' + document + ': ' + fullname + '\n')
                   authorList.append({
                       'fullname': fullname,
                       'initials': initials,
@@ -131,23 +129,28 @@ def getBibTeXForIETFDocument(document):
          sys.stderr.write('NOTE: ' + document + ' is blacklisted due to bad metadata in XML file. Skipping.\n')
          return
 
-   issn         = None
-   documentType = None
-   number       = None
-   institution  = None
-   language     = 'english'
-   note         = None
-   authorList   = None
+   issn               = None
+   documentType       = None
+   number             = None
+   institution        = None
+   language           = 'english'
+   note               = None
+   authorList         = None
+   authorRegExpList   = []
+   unsortedAuthorList = None
+   sortedAuthorList   = None
+   fullAuthorList     = None
+
 
    # ====== Get information from BibTeX file ================================
    # The IETF-provided BibTeX file has:
    # - Information about the latest version
-   # - More accurate author information
+   # - More accurate author information, but unordered
    # - But *not* the full date
    url = ''
    m = re.match('^draft-(.*)$', document)
    if m != None:
-      [ url, authorList ] = getMetadata(document)
+      [ url, unsortedAuthorList ] = getMetadata(document)
       documentType = 'Internet Draft'
       number       = m.group(1)
       m = re.match('^draft-ietf-(.*)$', document)
@@ -160,7 +163,7 @@ def getBibTeXForIETFDocument(document):
    if url == '':
       m = re.match('^[Rr][Ff][Cc]([0-9]*)$', document)
       if m != None:
-         [ url, authorList ] = getMetadata(document)
+         [ url, unsortedAuthorList ] = getMetadata(document)
          documentType = 'RFC'
          number       = int(m.group(1))
          issn         = '2070-1721'
@@ -172,29 +175,11 @@ def getBibTeXForIETFDocument(document):
       sys.stderr.write('ERROR: Unknown document type ' + document + '!\n')
       sys.exit(1)
 
-   # ------ Get authors list ------------------------------------------------
-   fullAuthorList   = []
-   authorRegExpList = []
-
-   if authorList != None:
-      for author in authorList:
-         # print(author)
-         # print('fullname=', author['fullname'])
-         # print('initials=', author['initials'][0])
-         # print('surname=',  author['surname'])
-         if author['fullname'][1] == '.':
-            authorRegExp = author['initials'][0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
-                           author['surname']
-         else:
-            authorRegExp = author['fullname']
-         authorRegExpList.append(authorRegExp)
-         fullAuthorList.append(author['fullname'])
-
 
    # ====== Get document information from XML file ==========================
    # The IETF-provided XML file has:
    # - Quite inaccurate author information, only ASCII names
-   # - Inaccurate date
+   # - Inaccurate date, but ordered
    # - Type information
    try:
       xmlFile = fetch(url)
@@ -206,39 +191,73 @@ def getBibTeXForIETFDocument(document):
 
    # ------ Get authors list ------------------------------------------------
    # The BibTeX file information is invalid, so use the less accurate
-   # information from the XML file instead:
-   if authorList == None:
-      sys.stderr.write('Getting author information from XML instead!\n')
+   # information from the XML file instead:+
 
-      # Try to read the actual draft XML file first:
-      frontList = xmlDocument.getElementsByTagName('front')
+   # Try to read the actual draft XML file first:
+   frontList = xmlDocument.getElementsByTagName('front')
 
-      if frontList != None:
-         authorList = frontList[0].getElementsByTagName('author')
-      else:
-         # Else, try to read the reference XML file:
-         authorList = xmlDocument.getElementsByTagName('author')
-      if len(authorList) == 0:
-         sys.stderr.write('ERROR: It seems that the XML file ' + url + ' does not exist. Wrong document name?\n')
+   if frontList != None:
+      authorList = frontList[0].getElementsByTagName('author')
+   else:
+      # Else, try to read the reference XML file:
+      authorList = xmlDocument.getElementsByTagName('author')
+   if len(authorList) == 0:
+      sys.stderr.write('ERROR: It seems that the XML file ' + url + ' does not exist. Wrong document name?\n')
+      sys.exit(1)
+
+   for author in authorList:
+      # print(author)
+      # print('fullname=', author.attributes['fullname'].value)
+      # print('initials=', author.attributes['initials'].value[0])
+      # print('surname=',  author.attributes['surname'].value)
+      if not 'fullname' in author.attributes.keys():
+         sys.stderr.write('ERROR: Invalid author entry in ' + document + '!\n')
          sys.exit(1)
+      if author.attributes['fullname'].value.find('@') != -1:
+         sys.stderr.write('ERROR: Bad author entry in ' + document + ': ' + author.attributes['fullname'].value + '\n')
+         sys.exit(1)
+      try:
+         if author.attributes['fullname'].value[1] == '.':
+            authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
+                           author.attributes['surname'].value
+         else:
+            authorRegExp = author.attributes['fullname'].value
+         authorRegExpList.append(authorRegExp)
+         fullAuthorList.append(author.attributes['fullname'].value)
+      except:
+         continue
+   # print('authorRegExpList=', authorRegExpList)
+   # print('fullAuthorList=',   fullAuthorList)
 
+   # ------ Get sorted author list from unsorted author list ----------------
+   if unsortedAuthorList != None:
+      # sortedAuthorList = [ ]
+      fullAuthorList   = [ ]
       for author in authorList:
-         # print(author)
-         # print('fullname=', author.attributes['fullname'].value)
-         # print('initials=', author.attributes['initials'].value[0])
-         # print('surname=',  author.attributes['surname'].value)
-         try:
-            if author.attributes['fullname'].value[1] == '.':
-               authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
-                              author.attributes['surname'].value
-            else:
-               authorRegExp = author.attributes['fullname'].value
-            authorRegExpList.append(authorRegExp)
+         found = False
+         for a in unsortedAuthorList:
+            if (('surname' in author.attributes.keys()) and
+                ('initials' in author.attributes.keys()) and
+                (author.attributes['surname'].value == a['surname']) and
+                (author.attributes['initials'].value[0] == a['initials'][0])):
+               # sortedAuthorList.append({
+               #       'fullname': a['fullname'],
+               #       'initials': a['initials'],
+               #       'surname':  a['surname']
+               #    })
+               # sortedAuthorList.append(author)
+               fullAuthorList.append(a['fullname'])
+               found = True
+               break
+
+         if not found:
+            # sortedAuthorList.append({
+            #       'fullname': author.attributes['fullname'].value,
+            #       'initials': author.attributes['initials'].value,
+            #       'surname':  author.attributes['surname'].value
+            #    })
             fullAuthorList.append(author.attributes['fullname'].value)
-         except:
-            continue
-      # print('authorRegExpList=', authorRegExpList)
-      # print('fullAuthorList=',   fullAuthorList)
+
 
    # ------ Get date --------------------------------------------------------
    dateList = xmlDocument.getElementsByTagName('date')
@@ -291,8 +310,6 @@ def getBibTeXForIETFDocument(document):
          url = 'https://tools.ietf.org/rfc/' + document.lower() + '.txt'
       else:
          url = 'https://tools.ietf.org/id/' + document + '.txt'
-      # sys.stderr.write('WARNING: No target URL found, assuming ' + url + '\n')
-   # print(url)
 
    # For I-Ds, use a secure URL instead of HTTP:
    url = url.replace('http://www.rfc-editor.org/rfc/',
@@ -302,7 +319,6 @@ def getBibTeXForIETFDocument(document):
    # Fix redirect URL:
    url = url.replace('https://www.ietf.org/internet-drafts/',
                      'https://tools.ietf.org/id/')
-   # print(url)
 
    # ------ Get abstract ----------------------------------------------------
    abstractList = xmlDocument.getElementsByTagName('t')
@@ -330,8 +346,6 @@ def getBibTeXForIETFDocument(document):
          newLength = len(abstract)
          if oldLength == newLength:
             break
-
-      # print('A=',abstract,'.')
 
    # ====== Get full author list from text file ================================
    try:
@@ -451,9 +465,6 @@ def getBibTeXForIETFDocument(document):
 
       line = txtFile.readline()
 
-   # print('I=' + str(authorRegExpList))
-   # print('F=' + str(fullAuthorList))
-
 
    # ====== Fix author list via author fix file ================================
    csv.register_dialect('authors-fix', delimiter=' ', quoting=csv.QUOTE_MINIMAL, skipinitialspace=True)
@@ -488,16 +499,10 @@ def getBibTeXForIETFDocument(document):
                fullAuthorList[i] = row[1]
                break
 
-   # print(authorRegExpList)
-   # print(fullAuthorList)
-
 
    # ====== Check ===========================================================
    if foundDate == False:
       sys.stderr.write('WARNING: Unable to find date of document ' + document + '!\n')
-   # for i in range(1, len(authorRegExpList)):
-   #    if authorRegExpList[i] == fullAuthorList[i]:
-   #      sys.stderr.write('WARNING: Unable to obtain full author name for "' + str(authorRegExpList[i]) + '" from list!\n')
 
 
    # ====== Print result ====================================================
