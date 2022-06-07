@@ -41,6 +41,8 @@ authorsFixFile    = 'DEFAULT'
 blacklistTable = [
    'draft-ahmed-lssctp',
    'draft-adams-qos-broadband',
+   'draft-lopez-mptcp-middlebox',
+   'draft-wei-mptcp-proxy-mechanism',
    'draft-ietf-rserpool-api',
    'draft-ietf-rserpool-applic',
    'draft-ietf-rserpool-arch',
@@ -48,8 +50,7 @@ blacklistTable = [
    'draft-ietf-rserpool-mib',
    'draft-ietf-rserpool-tcpmapping',
    'draft-iyengar-sctp-cacc',
-   'draft-xue-mptcp-tmpp-unware-hosts',
-   'RFC3246'
+   'draft-xue-mptcp-tmpp-unware-hosts'
 ]
 
 monthIDTable   = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun',
@@ -102,7 +103,9 @@ def getMetadata(document):
             if match != None:
                names = match.group(2).split(' and ')
                for name in names:
-                  fullname = re.sub('^(Professor |Dr\. )', '', name)
+                  fullname = re.sub('^(Professor |Dr\. )', '',
+                                re.sub(' ([A-Z]) ', ' \\1. ',
+                                   re.sub('(\.)([A-Z])', '. \\2', name)))
                   n = fullname.split(' ')
                   surname  = n[len(n) - 1]
                   initials = ''
@@ -139,7 +142,7 @@ def getBibTeXForIETFDocument(document):
    authorRegExpList   = []
    unsortedAuthorList = None
    sortedAuthorList   = None
-   fullAuthorList     = None
+   fullAuthorList     = []
 
 
    # ====== Get information from BibTeX file ================================
@@ -183,7 +186,6 @@ def getBibTeXForIETFDocument(document):
    # - Type information
    try:
       xmlFile = fetch(url)
-      # print('Parsing XML ...')
       xmlDocument = parse(xmlFile)
    except Exception as e:
       sys.stderr.write('ERROR: Failed to get XML information from ' + url + ': ' + str(e) + '!\n')
@@ -206,26 +208,22 @@ def getBibTeXForIETFDocument(document):
       sys.exit(1)
 
    for author in authorList:
-      # print(author)
+      if not 'fullname' in author.attributes.keys():
+         continue
+      # print(author.toxml())
       # print('fullname=', author.attributes['fullname'].value)
       # print('initials=', author.attributes['initials'].value[0])
       # print('surname=',  author.attributes['surname'].value)
-      if not 'fullname' in author.attributes.keys():
-         sys.stderr.write('ERROR: Invalid author entry in ' + document + '!\n')
-         sys.exit(1)
       if author.attributes['fullname'].value.find('@') != -1:
          sys.stderr.write('ERROR: Bad author entry in ' + document + ': ' + author.attributes['fullname'].value + '\n')
          sys.exit(1)
-      try:
-         if author.attributes['fullname'].value[1] == '.':
-            authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
-                           author.attributes['surname'].value
-         else:
-            authorRegExp = author.attributes['fullname'].value
-         authorRegExpList.append(authorRegExp)
-         fullAuthorList.append(author.attributes['fullname'].value)
-      except:
-         continue
+      if author.attributes['fullname'].value[1] == '.':
+         authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
+                        author.attributes['surname'].value
+      else:
+         authorRegExp = author.attributes['fullname'].value
+      authorRegExpList.append(authorRegExp)
+      fullAuthorList.append(author.attributes['fullname'].value)
    # print('authorRegExpList=', authorRegExpList)
    # print('fullAuthorList=',   fullAuthorList)
 
@@ -234,6 +232,8 @@ def getBibTeXForIETFDocument(document):
       # sortedAuthorList = [ ]
       fullAuthorList   = [ ]
       for author in authorList:
+         if not 'fullname' in author.attributes.keys():
+            continue
          found = False
          for a in unsortedAuthorList:
             if (('surname' in author.attributes.keys()) and
@@ -256,7 +256,10 @@ def getBibTeXForIETFDocument(document):
             #       'initials': author.attributes['initials'].value,
             #       'surname':  author.attributes['surname'].value
             #    })
-            fullAuthorList.append(author.attributes['fullname'].value)
+
+            fullAuthorList.append(re.sub(' ([A-Z]) ', ' \\1. ',
+                                     re.sub('(\.)([A-Z])', '. \\2', author.attributes['fullname'].value)))
+   # print('fullAuthorList=',   fullAuthorList)
 
 
    # ------ Get date --------------------------------------------------------
