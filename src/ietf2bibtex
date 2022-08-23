@@ -29,8 +29,8 @@ import codecs
 import urllib.request
 
 
-draftPrefix    = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids-new/reference.I-D.'
-rfcPrefix      = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcs/reference.RFC.'
+draftPrefix    = 'https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.'
+rfcPrefix      = 'https://bib.ietf.org/public/rfc/bibxml/reference.RFC.'
 verboseMode    = True
 authorsFixFile = 'DEFAULT'
 
@@ -73,7 +73,7 @@ def getBibTeXFromIETFDocument(document):
    url = ''
    m = re.match('^draft-(.*)$', document)
    if m != None:
-      url          = draftPrefix + document + '.xml'
+      url          = draftPrefix + re.sub('^draft-', '', document) + '.xml'
       documentType = 'Internet Draft'
       number       = m.group(1)
       m = re.match('^draft-ietf-(.*)$', document)
