@@ -31,8 +31,8 @@ import urllib.request
 
 
 datatrackerPrefix = 'https://datatracker.ietf.org/doc/'
-draftPrefix       = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids-new/reference.I-D.'
-rfcPrefix         = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcs/reference.RFC.'
+draftPrefix       = 'https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.'
+rfcPrefix         = 'https://bib.ietf.org/public/rfc/bibxml/reference.RFC.'
 verboseMode       = True
 authorsFixFile    = 'DEFAULT'
 
@@ -83,7 +83,7 @@ def getMetadata(document):
 
    # ====== Find latest version =============================================
    if not re.match(r'^.*-[0-9][0-9]$', document):
-      datatrackerURL = datatrackerPrefix + document + '/99/bibtex/'
+      datatrackerURL = datatrackerPrefix + re.sub('^draft-', '', document) + '/99/bibtex/'
       datatrackerStatus = fetch(datatrackerURL).readlines()
 
       numberRE = re.compile(r'^(number[ \t]*=[ \t]*\{)([^ ]*)-([0-9]+)\},$')
