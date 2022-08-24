@@ -311,9 +311,9 @@ def getBibTeXForIETFDocument(document):
       url = formatList[0].attributes['target'].value
    except:
       if documentType == 'RFC':
-         url = 'https://tools.ietf.org/rfc/' + document.lower() + '.txt'
+         url = 'https://tools.ietf.org/rfc/rfc' + name + '.txt'
       else:
-         url = 'https://tools.ietf.org/id/' + document + '.txt'
+         url = 'https://tools.ietf.org/id/' + name + '.txt'
 
    # For I-Ds, use a secure URL instead of HTTP:
    url = url.replace('http://www.rfc-editor.org/rfc/',
