@@ -83,7 +83,7 @@ def getMetadata(document):
 
    # ====== Find latest version =============================================
    if not re.match(r'^.*-[0-9][0-9]$', document):
-      datatrackerURL = datatrackerPrefix + re.sub('^draft-', '', document) + '/99/bibtex/'
+      datatrackerURL = datatrackerPrefix + document + '/99/bibtex/'
       datatrackerStatus = fetch(datatrackerURL).readlines()
 
       numberRE = re.compile(r'^(number[ \t]*=[ \t]*\{)([^ ]*)-([0-9]+)\},$')
@@ -258,7 +258,8 @@ def getBibTeXForIETFDocument(document):
             #    })
 
             fullAuthorList.append(re.sub(' ([A-Z]) ', ' \\1. ',
-                                     re.sub('(\.)([A-Z])', '. \\2', author.attributes['fullname'].value)))
+                                     re.sub('(\.)([A-Z])', '. \\2',
+                                        re.sub('^([A-Z]) ', '\\1. ', author.attributes['fullname'].value))))
    # print('fullAuthorList=',   fullAuthorList)
 
 
