@@ -12,8 +12,6 @@ Build-Depends: bison,
                pkg-config
 Standards-Version: 4.6.0.1
 Rules-Requires-Root: no
-Vcs-Git: https://github.com/dreibh/bibtexconv.git
-Vcs-Browser: https://github.com/dreibh/bibtexconv
 
 Package: bibtexconv
 Architecture: any
