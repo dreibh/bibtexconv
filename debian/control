@@ -10,7 +10,7 @@ Build-Depends: bison,
                libcurl4-openssl-dev,
                libssl-dev,
                pkg-config
-Standards-Version: 4.6.0.1
+Standards-Version: 4.6.1
 Rules-Requires-Root: no
 
 Package: bibtexconv

@@ -1,3 +1,161 @@
+commit 7ffbf193ec56dd185b29bb86a90dc50e1a2b801f
+Merge: c5f0a99 388fe2c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Sep 11 12:52:47 2022 +0200
+
+    Merge branch 'master' of github.com:dreibh/bibtexconv
+
+commit 388fe2cf5df51ce575bdc5d4e212be4be6924b77
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 31 11:46:50 2022 +0200
+
+    Removed Vcs-* fields from debian/control.
+
+commit 8ea5cc5b5ca16605f98295313e1ae0f183b1efe3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 31 11:18:27 2022 +0200
+
+    Updated CI scripts
+
+commit c8de7743e3aa266bb935eda0b175b01c71078ff2
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 31 11:18:25 2022 +0200
+
+    Updated build scripts
+
+commit c5f0a997f69a3173a58ef9ccee105dbc68528f35
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 24 21:00:23 2022 +0200
+
+    Added uninstall target.
+
+commit 2334609cced4312f59e5871db22da856aa279acf
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 24 20:59:17 2022 +0200
+
+    Updated CI scripts
+
+commit 74dac7526318c13003a2cb05a82e42a45b82c4cd
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 24 20:59:16 2022 +0200
+
+    Updated build scripts
+
+commit 414fe24224ace59511cbccbcd51a0646e9226bda
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 24 20:57:43 2022 +0200
+
+    URL fix.
+
+commit 75ce50d40779a92ef712497bafc64c282c06d17a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Aug 24 20:44:44 2022 +0200
+
+    URL fix and minor improvements.
+
+commit 750fc7726d99701af92bd0859cb1f78087a8fa19
+Merge: f926b28 602e087
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Aug 23 16:28:49 2022 +0200
+
+    Merge branch 'master' into dreibh/ietf2bibtex
+
+commit 602e0875164bb69b0924ac8162a7be810a930d84
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Aug 23 16:21:31 2022 +0200
+
+    Fixed URLs.
+
+commit f926b28dff3bb62f8b0943745c8b9313f608ca75
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 7 18:08:22 2022 +0200
+
+    Another update.
+
+commit 4ba9733403a5e36bf1fe9a0c5e4f3f55bfce504e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 7 17:47:52 2022 +0200
+
+    Further improvements.
+
+commit 44a438aea7c5fe959166ddaedd3dec5d9a0d5f12
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 7 15:43:22 2022 +0200
+
+    Improved script.
+
+commit bde8d732a8842fa55f7ad8ae61f374c6a5932a56
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jun 3 17:14:35 2022 +0200
+
+    Further improvements.
+
+commit 6e383a2c168081db649d27c9ae7d941c01cdb762
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jun 3 13:16:44 2022 +0200
+
+    Improved ietf2bibtex with metadata caching.
+
+commit a325535fcfa5bb4176bc5848c7c15c7223815537
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jun 3 11:59:58 2022 +0200
+
+    Header updates.
+
+commit 5c86402282ce7fc272cfe010f1ad894fb0e04f8c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jun 3 11:58:49 2022 +0200
+
+    Improved ietf2bibtex and updated examples.
+
+commit 6d1b458c6839e50888ba0b89d7d4682fc23f7d8a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jun 3 11:11:24 2022 +0200
+
+    Added test script.
+
+commit 1d272f8150e266cac244956d90b5cd6b254ee5b0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jun 3 11:11:13 2022 +0200
+
+    Removed debug output.
+
+commit 8d5417d5a0c1ba878a476286026133f059ab3ddb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 22 14:35:53 2022 +0100
+
+    Improved script.
+
+commit d0f968d5ae85feea718b3a1dc87453a886c05865
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 22 13:28:53 2022 +0100
+
+    Minor update.
+
+commit c9d460849a6c04805eccdcad4355e6a2c0efd078
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 22 13:21:11 2022 +0100
+
+    Improved ietf2bibtex: try to find the actual XML draft to get the metadata from.
+
+commit 4530d6cd8c72f28e1e76ac82cdbf071be754b454
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Feb 16 12:21:27 2022 +0100
+
+    Updated build scripts
+
+commit 86e02cb7d342a802ea9c2906a8573cab4b695065
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Nov 30 15:28:47 2021 +0100
+
+    Removed invalid field "Homepage" from debian/upstream/metadata
+
+commit dec285a6a7f34e23ca26b1c48668b0c7b13a521f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 29 11:48:16 2021 +0100
+
+    New release bibtexconv-1.3.2.
+
 commit 6da0b65242a2354c479a71d76ba946493b622f9e
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Mon Nov 29 11:08:40 2021 +0100
