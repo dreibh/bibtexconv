@@ -3,7 +3,7 @@ SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR} ${CURL_INCLUDE_DIRS})
 
 #############################################################################
-# PROGRAMS
+#### PROGRAMS                                                            ####
 #############################################################################
 
 BISON_TARGET(grammar grammar.yy ${CMAKE_CURRENT_BINARY_DIR}/grammar.cc)
@@ -23,7 +23,7 @@ INSTALL(FILES bibtexconv-odt.1 ietf2bibtex.1
 
 
 #############################################################################
-# EXAMPLES
+#### EXAMPLES                                                            ####
 #############################################################################
 
 INSTALL(FILES ExampleReferences.bib ODT-Template.odt odt-example.export web-example.export yaml-example.export text-example.export authors.list authors-fix.list get-author-url publication-list-treeview.js
@@ -31,7 +31,7 @@ INSTALL(FILES ExampleReferences.bib ODT-Template.odt odt-example.export web-exam
 
 
 #############################################################################
-# SUBDIRECTORIES
+#### SUBDIRECTORIES                                                      ####
 #############################################################################
 
 ADD_SUBDIRECTORY(Images)
