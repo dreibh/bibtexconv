@@ -33,7 +33,7 @@ if [ "$type" = "authorUrl" ] ; then
       ["Robin Seggelmann"]="http://www.robin-seggelmann.de/"
       ["Sebastian Werner"]="http://www.tdr.wiwi.uni-due.de/team/sebastian-werner/"
       ["Simone Ferlin-Oliveira"]="http://simula.no/people/ferlin"
-      ["Thomas Dreibholz"]="https://www.uni-due.de/~be0001"
+      ["Thomas Dreibholz"]="https://www.nntb.no/~dreibh"
       ["Xing Zhou"]="http://cist.hainu.edu.cn/news/showteacherdetail.do?userId=66"
       # [""]=""
    )

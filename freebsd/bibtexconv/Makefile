@@ -1,11 +1,11 @@
-# Created by: Thomas Dreibholz <dreibh@iem.uni-due.de>
+# Created by: Thomas Dreibholz <thomas.dreibholz@gmail.com>
 
 PORTNAME=	bibtexconv
-PORTVERSION=	1.3.3
+PORTVERSION=	1.3.4~rc0
 CATEGORIES=	converters
-MASTER_SITES=	https://www.uni-due.de/~be0001/bibtexconv/download/
+MASTER_SITES=	https://www.nntb.no/~dreibh/bibtexconv/download/
 
-MAINTAINER=	dreibh@iem.uni-due.de
+MAINTAINER=	thomas.dreibholz@gmail.com
 COMMENT=	BibTeX Converter
 
 LICENSE=	GPLv3+

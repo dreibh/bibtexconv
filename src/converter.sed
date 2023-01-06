@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Contact: dreibh@iem.uni-due.de
+# Contact: thomas.dreibholz@gmail.com
 
 s/%1/%{custom-1}/g
 s/%2/%{custom-2}/g

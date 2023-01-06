@@ -8,11 +8,11 @@ Description:    BibTeXConv is a BibTeX file converter which allows to export
                 check URLs (including MD5, size and MIME type computations)
                 and to verify ISBN and ISSN numbers.
 Keywords:       BibTeX, Publication Lists, Export
-Author:         dreibh@iem.uni-due.de (Thomas Dreibholz)
-Maintained-by:  dreibh@iem.uni-due.de (Thomas Dreibholz)
-Primary-site:   https://www.uni-due.de/~be0001/bibtexconv
+Author:         thomas.dreibholz@gmail.com (Thomas Dreibholz)
+Maintained-by:  thomas.dreibholz@gmail.com (Thomas Dreibholz)
+Primary-site:   https://www.nntb.no/~dreibh/bibtexconv
                 240 kB download/bibtexconv-1.3.1.tar.xz
-Original-site:  https://www.uni-due.de/~be0001/bibtexconv
+Original-site:  https://www.nntb.no/~dreibh/bibtexconv
 Platforms:      Linux, FreeBSD, MacOS, Solaris
 Copying-policy: GPL-3+
 End

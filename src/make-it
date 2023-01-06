@@ -15,6 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Contact: dreibh@iem.uni-due.de
+# Contact: thomas.dreibholz@gmail.com
 
 ./bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive -skip-notes-with-isbn-and-issn && mv UpdatedReferences.bib ExampleReferences.bib

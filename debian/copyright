@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: BibTeXConv
-Upstream-Contact: Thomas Dreibholz <dreibh@iem.uni-due.de>
-Source: https://www.uni-due.de/~be0001/bibtexconv/
+Upstream-Contact: Thomas Dreibholz <thomas.dreibholz@gmail.com>
+Source: https://www.nntb.no/~dreibh/bibtexconv/
 
 Files: *
 Copyright: Copyright (C) 2010-2019 Thomas Dreibholz

@@ -2,7 +2,7 @@
 
 A BibTeX file converter
 
-<https://www.uni-due.de/~be0001/bibtexconv/>
+<https://www.nntb.no/~dreibh/bibtexconv/>
 
 ## Description
 

@@ -1,11 +1,11 @@
 Name: bibtexconv
-Version: 1.3.3
+Version: 1.3.4~rc0
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
 License: GPL-3+
-URL: https://www.uni-due.de/~be0001/bibtexconv/
-Source: https://www.uni-due.de/~be0001/bibtexconv/download/%{name}-%{version}.tar.xz
+URL: https://www.nntb.no/~dreibh/bibtexconv/
+Source: https://www.nntb.no/~dreibh/bibtexconv/download/%{name}-%{version}.tar.xz
 
 AutoReqProv: on
 BuildRequires: cmake
