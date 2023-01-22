@@ -1,3 +1,33 @@
+commit f24de2d9578723e57b77156d65bc1c2d6854c770
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jan 6 21:38:01 2023 +1100
+
+    URL change from UDE to NNTB.
+
+commit c563f98c694f8549f10226588b3dbc5c5df82b7f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jan 6 10:21:55 2023 +1100
+
+    Updated CI scripts
+
+commit 19b78035c4eb96a8cbb58147f09779ed0caf98bc
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jan 6 10:21:46 2023 +1100
+
+    Updated build scripts
+
+commit 15c91da26678d29c77893dd05e914181ed5e23f0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Dec 12 13:29:58 2022 +0100
+
+    Minor CMakeLists.txt updates.
+
+commit d792625e79503c07ea4c8a023c3eb5b16a5d3216
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Sep 11 13:04:28 2022 +0200
+
+    New release bibtexconv-1.3.3.
+
 commit 7ffbf193ec56dd185b29bb86a90dc50e1a2b801f
 Merge: c5f0a99 388fe2c
 Author: Thomas Dreibholz <dreibh@simula.no>
