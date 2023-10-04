@@ -29,7 +29,7 @@
 #include <sys/types.h>
 #include <curl/curl.h>
 #include <curl/easy.h>
-#include <openssl/md5.h>
+#include <openssl/evp.h>
 
 #include "node.h"
 #include "publicationset.h"
@@ -251,9 +251,11 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                   }
                   if(resultIsGood) {
                      unsigned long long totalSize = 0;
-                     unsigned char      md5[MD5_DIGEST_LENGTH];
-                     MD5_CTX md5_ctx;
-                     MD5_Init(&md5_ctx);
+
+                     unsigned int  md5Length = EVP_MD_size(EVP_md5());
+                     unsigned char md5[EVP_MD_size(EVP_md5())];
+                     EVP_MD_CTX*   md5Context = EVP_MD_CTX_new();
+                     EVP_DigestInit_ex(md5Context, EVP_md5(), NULL);
 
                      // ====== Compute size and MD5 =========================
                      while(!feof(downloadFH)) {
@@ -261,7 +263,7 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                         const size_t bytesRead = fread(&input, 1, sizeof(input), downloadFH);
                         if(bytesRead > 0) {
                            totalSize += (unsigned long long)bytesRead;
-                           MD5_Update(&md5_ctx, &input, bytesRead);
+                           EVP_DigestUpdate(md5Context, &input, bytesRead);
                         }
                      }
 
@@ -298,8 +300,8 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                         // ====== Compare size, mime type and MD5 ===========
                         std::string sizeString = format("%llu", totalSize);
                         std::string md5String;
-                        MD5_Final((unsigned char*)&md5, &md5_ctx);
-                        for(unsigned int i = 0; i < MD5_DIGEST_LENGTH; i++) {
+                        EVP_DigestFinal_ex(md5Context, (unsigned char*)&md5, &md5Length);
+                        for(unsigned int i = 0; i < md5Length; i++) {
                            md5String += format("%02x", (unsigned int)md5[i]);
                         }
                         const Node* urlMimeNode = findChildNode(publication, "url.mime");
