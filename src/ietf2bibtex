@@ -69,6 +69,12 @@ def fetch(url):
    if not os.path.exists(cacheFileName):
       if verboseMode == True:
          sys.stderr.write('Fetching ' + url + ' into ' + cacheFileName + ' ...\n')
+
+      # www.rfc-editor.org requires a user-agent:
+      opener = urllib.request.build_opener()
+      opener.addheaders = [ ('User-agent', 'bibtexconv/1.3') ]
+      urllib.request.install_opener(opener)
+
       inputFile = urllib.request.urlretrieve(url, cacheFileName)
    else:
       if verboseMode == True:
@@ -83,7 +89,10 @@ def getMetadata(document):
 
    # ====== Find latest version =============================================
    if not re.match(r'^.*-[0-9][0-9]$', document):
-      datatrackerURL = datatrackerPrefix + document + '/99/bibtex/'
+      if document[0:3] == 'RFC':
+         datatrackerURL = datatrackerPrefix + document.lower() + '/bibtex/'
+      else:
+         datatrackerURL = datatrackerPrefix + document.lower() + '/99/bibtex/'
       datatrackerStatus = fetch(datatrackerURL).readlines()
 
       numberRE = re.compile(r'^(number[ \t]*=[ \t]*\{)([^ ]*)-([0-9]+)\},$')
@@ -311,7 +320,7 @@ def getBibTeXForIETFDocument(document):
       url = formatList[0].attributes['target'].value
    except:
       if documentType == 'RFC':
-         url = 'https://tools.ietf.org/rfc/rfc' + name + '.txt'
+         url = 'https://www.rfc-editor.org/rfc/rfc' + name + '.txt'
       else:
          url = 'https://tools.ietf.org/id/' + name + '.txt'
 
