@@ -110,7 +110,7 @@ publication
 
 publicationInfo
     : publicationInfoItem T_Comma publicationInfo              { $$ = makePublicationInfo($1, $3); }
-    | publicationInfoItem T_Comma T_Comment publicationInfo    { $$ = makePublicationInfo($1, $4); free($3); }
+    /* FIXME: To be removed: | publicationInfoItem T_Comma T_Comment publicationInfo    { $$ = makePublicationInfo($1, $4); free($3); } */
     | publicationInfoItem T_Comment publicationInfoJustComment { $$ = $1; free($2); }   /* Comments at end of entry */
     | publicationInfoItem                                      { $$ = $1; }
     ;
