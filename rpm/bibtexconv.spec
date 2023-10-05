@@ -1,5 +1,5 @@
 Name: bibtexconv
-Version: 1.3.4
+Version: 1.3.5
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
@@ -72,6 +72,8 @@ references and the actual document.
 
 
 %changelog
+* Thu Oct 05 2023 Thomas Dreibholz <thomas.dreibholz@gmail.com> - 1.3.5
+- New upstream release.
 * Sun Jan 22 2023 Thomas Dreibholz <thomas.dreibholz@gmail.com> - 1.3.4
 - New upstream release.
 * Sun Sep 11 2022 Thomas Dreibholz <dreibh@iem.uni-due.de> - 1.3.3

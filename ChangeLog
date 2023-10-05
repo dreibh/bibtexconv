@@ -1,3 +1,63 @@
+commit a469640bb11ef48e7a023aebcc1b553f3f9dca99
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Oct 5 10:23:10 2023 +0200
+
+    Fixed URL.
+
+commit 36d1f65ca243a763b4cfcc7866538750880352a3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 4 17:13:13 2023 +0200
+
+    Updated example file.
+
+commit 5ce6a3153095bfd5f4e1f37aac0ce27f862aa25f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 4 15:27:55 2023 +0200
+
+    Using new API for MD5 computation, removing need for deprecated function calls.
+
+commit 81be9148ff4b53143e1d09b7662acee43068e961
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 4 15:26:55 2023 +0200
+
+    Fixed URLs in example BibTeX file.
+
+commit 018ebd54d35c37f6789d4da2b8c76c27100875f3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 4 14:49:48 2023 +0200
+
+    Updated example files.
+
+commit 3da3dabed98e8c0847cf1b03fa7ba2358cf5609c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 4 14:48:11 2023 +0200
+
+    Bugfix: Fixed ambigious definition.
+
+commit 15d8f5c627de51b5e843ccc9b2b60be348189002
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 4 14:36:12 2023 +0200
+
+    Header updates.
+
+commit 6939eb2fc56073ab0f1cdb28be5caa78bcf90957
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 4 14:26:01 2023 +0200
+
+    Updated build scripts
+
+commit 22e4224848bc1260e75f5fe36074c41c68560255
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Oct 4 14:23:27 2023 +0200
+
+    Fixed URLs to get ietf2bibtex working again with updated IETF servers.
+
+commit 0ae0fb94eec6e74c3c249e1484d54ffc1dab9eaa
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Jan 22 22:50:48 2023 +1100
+
+    New release bibtexconv-1.3.4.
+
 commit f24de2d9578723e57b77156d65bc1c2d6854c770
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Fri Jan 6 21:38:01 2023 +1100
