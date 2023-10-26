@@ -45,7 +45,6 @@ echo <meta name="Keywords" content="Publications" />\n
 echo <meta name="Classification" content="Publications" />\n
 echo <meta name="Viewport" content="width=device-width; initial-scale=1" />\n
 echo <link rel="stylesheet" href="https://www.nntb.no/~dreibh/bonn.css" type="text/css" />\n
-echo </head>\n
 
 echo <script type="text/javascript" src="publication-list-treeview.js"></script>\n
 
@@ -58,6 +57,8 @@ echo li.treeview-expanded {\n
 echo    list-style-image: url(Images/ListItem-Expanded.svg);\n
 echo }\n
 echo </style>\n
+
+echo </head>\n
 
 echo <body>\n\n
 
