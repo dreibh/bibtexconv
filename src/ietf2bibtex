@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Create BibTeX entry for IETF documents (RFCs and Internet Drafts)
-# Copyright (C) 2014-2023 by Thomas Dreibholz
+# Copyright (C) 2014-2024 by Thomas Dreibholz
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
