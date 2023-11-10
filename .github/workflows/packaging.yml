@@ -30,7 +30,7 @@ jobs:
     name: Ubuntu Packaging
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - name: Packaging
       shell: bash
       run: |
@@ -47,7 +47,7 @@ jobs:
       image: debian:unstable
       options: "--privileged"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - name: Packaging
         shell: bash
         # NOTE: The Debian container has no "sudo". It is necessary to install
@@ -68,7 +68,7 @@ jobs:
       image: fedora:latest
       options: "--privileged"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - name: Packaging
         shell: bash
         run: |
