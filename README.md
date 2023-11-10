@@ -8,7 +8,7 @@ A BibTeX file converter
 
 BibTeXConv is a BibTeX file converter which allows to export BibTeX entries to other formats, including customly defined text output. Furthermore, it provides the possibility to check URLs (including MD5, size and MIME type computations) and to verify ISBN and ISSN numbers.
 
-##Examples
+## Examples
 
 Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of your system) for example export scripts. The export scripts contain the commands which are read by bibtexconv from standard input.
 
