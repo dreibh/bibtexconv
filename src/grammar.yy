@@ -34,6 +34,7 @@ Node* bibTeXFile = NULL;
 %token T_Article
 %token T_Book
 %token T_Booklet
+%token T_Data
 %token T_InBook
 %token T_InProceedings
 %token T_InCollection
@@ -86,6 +87,8 @@ publication
          { $$ = makePublication("Book", $4, $6); free($4); }
     | T_AT T_Booklet T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Booklet", $4, $6); free($4); }
+    | T_AT T_Data T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Data", $4, $6); free($4); }
     | T_AT T_InBook T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("InBook", $4, $6); free($4); }
     | T_AT T_InCollection T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace

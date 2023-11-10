@@ -87,6 +87,7 @@ int         level;
 [aA][rR][tT][iI][cC][lL][eE]                         { return(T_Article);       }
 [bB][oO][oO][kK]                                     { return(T_Book);          }
 [bB][oO][oO][kK][lL][eE][tT]                         { return(T_Booklet);       }
+[dD][aA][tT][aA]                                     { return(T_Data);          }
 [cC][oO][nN][fF][eE][rR][eE][nN][cC][eE]             { return(T_InProceedings); }
 [iI][nN][bB][oO][oO][kK]                             { return(T_InBook);        }
 [iI][nN][cC][oO][lL][lL][eE][cC][tT][iI][oO][nN]     { return(T_InCollection);  }
