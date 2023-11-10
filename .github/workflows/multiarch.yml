@@ -72,10 +72,9 @@ jobs:
     # ###### Build commands #################################################
     name: ${{ matrix.label }}
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-      - uses: dreibh/run-on-arch-action@dreibh/tests
+      - uses: uraimo/run-on-arch-action@v2
         name: Build
         id: build
         with:
