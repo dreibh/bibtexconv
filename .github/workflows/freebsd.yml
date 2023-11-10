@@ -33,8 +33,9 @@ jobs:
       matrix:
         include:
 
-          # ====== FreeBSD 13.0 =============================================
-          - label: "FreeBSD 13.0: Clang/x86_64"
+          # ====== FreeBSD 13.2 =============================================
+          - label: "FreeBSD 13.2: Clang/x86_64"
+            release: 13.2
             cc: clang
             cxx: clang++
 
@@ -48,6 +49,7 @@ jobs:
       id: test
       uses: vmactions/freebsd-vm@v1
       with:
+        release: ${{ matrix.release }}
         usesh: true
         run: |
           ASSUME_ALWAYS_YES=yes pkg install -y bash
