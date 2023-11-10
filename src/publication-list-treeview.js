@@ -51,7 +51,7 @@ function handleClickOnListItem(event) {
    var selectedDiv = null;
    if (event.target.tagName == 'A') {
       // Case #1: hyperlink => nothing to do here!
-      return;                    
+      return;
    }
    else {
       // Case #2: walk through tree's root to find LI element.
@@ -68,7 +68,7 @@ function handleClickOnListItem(event) {
       listItem = node;
    }
 
-   
+
    // ====== Check whether click is in first div ============================
    var divList = listItem.getElementsByTagName('div');
    if ((selectedDiv != null) && (selectedDiv != divList[0])) {
@@ -76,7 +76,7 @@ function handleClickOnListItem(event) {
       return;
    }
 
-   
+
    // ====== Expand/collapse div-elemenets of this list item ================
    var expand = 0;   // What to do here?
    if(listItem.className == 'treeview-collapsed') {
@@ -87,7 +87,7 @@ function handleClickOnListItem(event) {
       expand = -1;
       listItem.className = 'treeview-collapsed';
    }
-   
+
    // NOTE: The first div is skipped!
    for (var index = 1; index < divList.length; index++) {
       var div = divList[index]
@@ -114,7 +114,7 @@ function initializePublicationList() {
 
          listItem.addEventListener('mouseover', mouseOverEffect, false);
          listItem.addEventListener('mouseout', mouseOutEffect, false);
-      
+
          if(!prefetched) {
             // Prefetch the expanded bullet image!
             listItem.className = 'treeview-expanded';
