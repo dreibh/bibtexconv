@@ -17,7 +17,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd April 13, 2021
+.Dd November 10, 2023
 .Dt ietf2bibtex 1
 .Os ietf2bibtex
 .\" ###### Name #############################################################
@@ -27,8 +27,8 @@
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
 .Nm ietf2bibtex
-.Op \--quiet|\--verbose
-.Op \--authors-fix-file=NAME|\--no-authors-fix-file
+.Op \-\-quiet|\-\-verbose
+.Op \-\-authors-fix-file=NAME|\-\-no-authors-fix-file
 document
 .Op document ...
 .\" ###### Description ######################################################
@@ -69,15 +69,15 @@ The following arguments may be provided:
 .It document
 The name of the IETF document, e.g. like RFC5351 or
 draft-dreibholz-mptcp-nornet-experience.
-.It \--quiet
+.It \-\-quiet
 Print less progress information.
-.It \--verbose
+.It \-\-verbose
 Print progress information (default).
-.It \--authors-fix-file=NAME
+.It \-\-authors-fix-file=NAME
 Use the given file as authors fix file.
 If not provided, the default is used: try authors-fix.list in the current
 directory first, then /usr/share/doc/bibtexconv/examples/authors-fix.list.
-.It \--no-authors-fix-file
+.It \-\-no-authors-fix-file
 Use no authors fix file.
 .El
 .Pp
@@ -86,6 +86,6 @@ Use no authors fix file.
 .Bl -tag -width indent
 .It ietf2bibtex RFC5351
 .It ietf2bibtex RFC5351 RFC5352 RFC5353 RFC5354 RFC5355 RFC5356 RFC5525 >RSerPool.bib
-.It ietf2bibtex --quiet draft-dreibholz-mptcp-nornet-experience
-.It ietf2bibtex --verbose --authors-fix-file=/usr/share/doc/bibtexconv/examples/authors-fix.list draft-dreibholz-mptcp-nornet-experience
+.It ietf2bibtex \-\-quiet draft-dreibholz-mptcp-nornet-experience
+.It ietf2bibtex \-\-verbose \-\-authors-fix-file=/usr/share/doc/bibtexconv/examples/authors-fix.list draft-dreibholz-mptcp-nornet-experience
 .El
