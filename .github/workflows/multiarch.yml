@@ -62,9 +62,9 @@ jobs:
             cxx: clang++
 
           # ====== Fedora Linux =============================================
-          - label: "Fedora 35: GCC/PPC64"
+          - label: "Fedora 39: GCC/PPC64"
             arch: ppc64le
-            distro: fedora35
+            distro: fedora39
             cc: gcc
             cxx: g++
 
@@ -74,6 +74,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # NOTE: dreibh/run-on-arch-action provides the upstream
+      #       uraimo/run-on-arch-action action, with additional dockerfiles
+      #       needed for the builds here!
       - uses: dreibh/run-on-arch-action@dreibh/tests
         name: Build
         id: build
