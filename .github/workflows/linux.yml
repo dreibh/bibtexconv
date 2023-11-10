@@ -77,7 +77,8 @@ jobs:
     container:
       image: ${{ matrix.image }}
     steps:
-      - uses: actions/checkout@v4
+      # NOTE: actions/checkout@v4 does not work for old Ubuntu 18.04!
+      - uses: actions/checkout@v3
       - name: Build
         shell: bash
         run: |
