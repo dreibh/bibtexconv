@@ -62,9 +62,9 @@ jobs:
             cxx: clang++
 
           # ====== Fedora Linux =============================================
-          - label: "Fedora 37: GCC/PPC64"
-            arch: ppc64le
-            distro: fedora37
+          - label: "Fedora 38: GCC/RISC-V"
+            arch: riscv64
+            distro: fedora38
             cc: gcc
             cxx: g++
 
