@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Thomas Dreibholz <thomas.dreibholz@gmail.com>
 Homepage: https://www.nntb.no/~dreibh/bibtexconv/
 Build-Depends: bison,
-               cmake (>= 3.10),
+               cmake,
                debhelper (>= 12),
                flex,
                libcurl4-openssl-dev,
