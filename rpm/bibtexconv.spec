@@ -48,7 +48,6 @@ BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries 
 %{_datadir}/doc/bibtexconv/examples/text-example.export
 %{_datadir}/doc/bibtexconv/examples/web-example.export
 %{_datadir}/doc/bibtexconv/examples/yaml-example.export
-%{_datadir}/doc/bibtexconv/examples/publication-list-treeview.js
 %{_datadir}/doc/bibtexconv/examples/Images/ListItem-Collapsed.dia
 %{_datadir}/doc/bibtexconv/examples/Images/ListItem-Collapsed.svg
 %{_datadir}/doc/bibtexconv/examples/Images/ListItem-Expanded.dia
