@@ -1,7 +1,7 @@
 # Created by: Thomas Dreibholz <thomas.dreibholz@gmail.com>
 
 PORTNAME=	bibtexconv
-PORTVERSION=	1.3.6~rc1
+PORTVERSION=	1.3.6
 CATEGORIES=	converters
 MASTER_SITES=	https://www.nntb.no/~dreibh/bibtexconv/download/
 
