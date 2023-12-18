@@ -1,5 +1,3 @@
-# Created by: Thomas Dreibholz <thomas.dreibholz@gmail.com>
-
 PORTNAME=	bibtexconv
 PORTVERSION=	1.3.6
 CATEGORIES=	converters
