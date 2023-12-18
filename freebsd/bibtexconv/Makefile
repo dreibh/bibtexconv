@@ -12,7 +12,9 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
-USES=		bison cmake ssl python:3.9+ tar:xz
+USES=		bison cmake ssl python:3.9+ shebangfix tar:xz
+
+SHEBANG_FILES=	src/ietf2bibtex
 
 CMAKE_ARGS=	-DCMAKE_INSTALL_DOCDIR=${EXAMPLESDIR} -DCMAKE_INSTALL_MANDIR=${MANPREFIX}/man
 
