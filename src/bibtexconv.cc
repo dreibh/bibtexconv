@@ -362,21 +362,23 @@ unsigned int checkAllURLs(PublicationSet* publicationSet,
                                     char input[1024];
                                     if(fgets((char*)&input, sizeof(input) - 1, metaFH) != NULL) {
                                        // printf("IN=%s",input);
-                                       if(strncmp(input, "Pages:          ", 16) == 0) {
-                                          addOrUpdateChildNode(publication, "numpages", format("%u", atol((const char*)&input[16])).c_str());
+                                       if(strncmp(input, "Pages:", 6) == 0) {
+                                          addOrUpdateChildNode(publication, "numpages", format("%u", atol((const char*)&input[6])).c_str());
                                        }
-                                       else if(strncmp(input, "Keywords:       ", 16) == 0) {
+                                       else if(strncmp(input, "Keywords:", 9) == 0) {
                                           Node* keywords = findChildNode(publication, "keywords");
                                           if(keywords == NULL) {
                                              // If there are no "keywords", add "url.keywords".
                                              // They can be renamed manually after a check.
+                                             std::string keywords((const char*)&input[9]);
                                              addOrUpdateChildNode(publication, "url.keywords",
-                                                                  string2utf8(std::string((const char*)&input[16]), "~", "").c_str());
+                                                                  string2utf8(trim(keywords), "~", "").c_str());
                                           }
                                        }
-                                       else if(strncmp(input, "Page size:      ", 16) == 0) {
+                                       else if(strncmp(input, "Page size:", 10) == 0) {
+                                          std::string pagesize((const char*)&input[10]);
                                           addOrUpdateChildNode(publication, "url.pagesize",
-                                                               string2utf8(std::string((const char*)&input[16]), "~", "").c_str());
+                                                               string2utf8(trim(pagesize), "~", "").c_str());
                                        }
                                     }
                                  }
