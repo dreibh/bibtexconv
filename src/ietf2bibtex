@@ -112,9 +112,9 @@ def getMetadata(document):
             if match != None:
                names = match.group(2).split(' and ')
                for name in names:
-                  fullname = re.sub('^(Professor |Dr\. )', '',
-                                re.sub(' ([A-Z]) ', ' \\1. ',
-                                   re.sub('(\.)([A-Z])', '. \\2', name)))
+                  fullname = re.sub(r'^(Professor |Dr\. )', '',
+                                re.sub(r' ([A-Z]) ', ' \\1. ',
+                                   re.sub(r'(\.)([A-Z])', '. \\2', name)))
                   n = fullname.split(' ')
                   surname  = n[len(n) - 1]
                   initials = ''
@@ -227,7 +227,7 @@ def getBibTeXForIETFDocument(document):
          sys.stderr.write('ERROR: Bad author entry in ' + document + ': ' + author.attributes['fullname'].value + '\n')
          sys.exit(1)
       if author.attributes['fullname'].value[1] == '.':
-         authorRegExp = author.attributes['initials'].value[0] + '[a-zA-Z][a-zA-Z\s\.\- ]*' + \
+         authorRegExp = author.attributes['initials'].value[0] + r'[a-zA-Z][a-zA-Z\s\.\- ]*' + \
                         author.attributes['surname'].value
       else:
          authorRegExp = author.attributes['fullname'].value
@@ -266,9 +266,9 @@ def getBibTeXForIETFDocument(document):
             #       'surname':  author.attributes['surname'].value
             #    })
 
-            fullAuthorList.append(re.sub(' ([A-Z]) ', ' \\1. ',
-                                     re.sub('(\.)([A-Z])', '. \\2',
-                                        re.sub('^([A-Z]) ', '\\1. ', author.attributes['fullname'].value))))
+            fullAuthorList.append(re.sub(r' ([A-Z]) ', ' \\1. ',
+                                     re.sub(r'(\.)([A-Z])', '. \\2',
+                                        re.sub(r'^([A-Z]) ', '\\1. ', author.attributes['fullname'].value))))
    # print('fullAuthorList=',   fullAuthorList)
 
 
@@ -347,10 +347,10 @@ def getBibTeXForIETFDocument(document):
       abstract = abstract.strip().replace('\n', ' ')
       abstract = abstract.strip().replace(' (', '~(')
       abstract = abstract.strip().replace(' - ', ' -- ')
-      abstract = abstract.strip().replace('i.e. ', 'i.e.\ ')
-      abstract = abstract.strip().replace('e.g. ', 'e.g.\ ')
+      abstract = abstract.strip().replace('i.e. ', 'i.e.\\ ')
+      abstract = abstract.strip().replace('e.g. ', 'e.g.\\ ')
       abstract = abstract.strip().replace(' [STANDARDS-TRACK]','')
-      abstract = re.sub(r'(RFC|STD)( )([0-9]+)', r'\1~\3', abstract.strip())
+      abstract = re.sub(r'(RFC|STD)( )([0-9]+)', '\\1~\\3', abstract.strip())
 
       abstract = abstract.replace('</t><t>', '\n')
       while True:
@@ -376,15 +376,15 @@ def getBibTeXForIETFDocument(document):
 
       # ====== RFC category =================================================
       if lineNumber < 30:
-         if re.search('^Category:', line.decode().strip()):
-            m = re.match('^Category: (.*)[ ][ ].*$', line.decode().strip())
+         if re.search(r'^Category:', line.decode().strip()):
+            m = re.match(r'^Category: (.*)[ ][ ].*$', line.decode().strip())
             if m != None:
                category = m.group(1).strip()
                if documentType == 'RFC':
                   if category != 'Experimental':
                      documentType = category + ' RFC'
          if foundDate == False:
-            m = re.match('^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|)[ ]*([0-9][0-9][0-9][0-9])$', line.decode().strip())
+            m = re.match(r'^.*(January|February|March|April|May|June|July|August|September|October|November|December)( [0-9]+[,]|)[ ]*([0-9][0-9][0-9][0-9])$', line.decode().strip())
             # print(m,line.decode().strip())
             if m != None:
                foundDate = True
@@ -448,15 +448,15 @@ def getBibTeXForIETFDocument(document):
             d=''   # Just ignore not-decodable stuff for now.
 
          # ------ Check for end of author section ---------------------------
-         if re.search('^[0-9\.]*  ', d):
+         if re.search(r'^[0-9\.]*  ', d):
             # print('End of Author Section:', line)
             inAuthorsSection = False
 
          # ------ Parse author section --------------------------------------
-         elif not re.search('^[\s]*$', d):
+         elif not re.search(r'^[\s]*$', d):
             i = 0
             for author in authorRegExpList:
-               m = re.match('^(.*)(' + author + ')([\t ].*|,.*|)$', line.decode().strip())
+               m = re.match(r'^(.*)(' + author + ')([\t ].*|,.*|)$', line.decode().strip())
                # print(line.strip(), i, m, author)
                if m != None:
                   if len(m.group(2)) >= len(fullAuthorList[i]):
@@ -466,10 +466,10 @@ def getBibTeXForIETFDocument(document):
 
       else:
          try:
-            m = re.search('(^([0-9\.]*|[A-Z]\.)[ \t]+.*|^)(Editors|Authors|Authors\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line.decode().strip(), re.IGNORECASE)
+            m = re.search(r'(^([0-9\.]*|[A-Z]\.)[ \t]+.*|^)(Editors|Authors|Authors\'[ \t]+Addresses|Author\'s[ \t]+Address|Editor\'s[ \t]+Address|Author[ \t]+Information).*$', line.decode().strip(), re.IGNORECASE)
             if m != None:
                # Check whether line is in table of contents
-               m2 = re.search('\. \.[ \t]*[0-9]+$', line.decode().strip())
+               m2 = re.search(r'\. \.[ \t]*[0-9]+$', line.decode().strip())
                if m2 == None:
                   # print('Begin of Author Section:', line)
                   inAuthorsSection = True
