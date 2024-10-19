@@ -3,6 +3,8 @@ Section: tex
 Priority: optional
 Maintainer: Thomas Dreibholz <thomas.dreibholz@gmail.com>
 Homepage: https://www.nntb.no/~dreibh/bibtexconv/
+Vcs-Git: https://github.com/dreibh/bibtexconv.git
+Vcs-Browser: https://github.com/dreibh/bibtexconv
 Build-Depends: bison,
                cmake,
                debhelper (>= 12),
@@ -10,7 +12,7 @@ Build-Depends: bison,
                libcurl4-openssl-dev,
                libssl-dev,
                pkg-config
-Standards-Version: 4.6.2
+Standards-Version: 4.7.0
 Rules-Requires-Root: no
 
 Package: bibtexconv
