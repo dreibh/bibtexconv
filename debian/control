@@ -10,8 +10,7 @@ Build-Depends: bison,
                debhelper (>= 12),
                flex,
                libcurl4-openssl-dev,
-               libssl-dev,
-               pkg-config
+               libssl-dev
 Standards-Version: 4.7.0
 Rules-Requires-Root: no
 
