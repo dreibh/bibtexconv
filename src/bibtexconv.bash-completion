@@ -1,0 +1,99 @@
+# shellcheck shell=bash
+#
+# BibTeX Converter
+# Copyright (C) 2014-2025 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: thomas.dreibholz@gmail.com
+
+
+# ###### Bash completion for bibtexconv #####################################
+_bibtexconv()
+{
+   # Based on: https://www.benningtons.net/index.php/bash-completion/
+   local cur prev words cword
+   if type -t _comp_initialize >/dev/null; then
+      _comp_initialize -n = || return
+   elif type -t _init_completion >/dev/null; then
+      _init_completion -n = || return
+   else
+      # Manual initialization for older bash completion versions:
+      COMPREPLY=()
+      cur="${COMP_WORDS[COMP_CWORD]}"
+      # shellcheck disable=SC2034
+      prev="${COMP_WORDS[COMP_CWORD-1]}"
+      # shellcheck disable=SC2034,SC2124
+      words="${COMP_WORDS[@]}"
+      # shellcheck disable=SC2034
+      cword="${COMP_CWORD}"
+   fi
+
+   # ====== Parameters ======================================================
+   if [ "${cword}" -le 1 ] ; then
+      # BibTeX file names:
+      _filedir '@(bib)'
+      return
+   else
+      case "${prev}" in
+         #  ====== BibTeX file ==============================================
+        -export-to-bibtex=)
+            _filedir '@(bib)'
+            return
+            ;;
+         #  ====== XML file =================================================
+        -export-to-xml=)
+            _filedir '@(xml)'
+            return
+            ;;
+         #  ====== Generic file or directory ================================
+         -export-to-separate-bibtexs= | \
+         -export-to-separate-xmls=)
+            _filedir '@(bib)'
+            return
+            ;;
+         #  ====== Directory ================================================
+         -store-downloads=)
+            _filedir -d
+            return
+            ;;
+         #  ====== Generic value ============================================
+         -nbsp= | \
+         -linebreak=)
+            return
+            ;;
+      esac
+   fi
+
+   # ====== All options =====================================================
+   local opts="
+-export-to-bibtex
+-export-to-separate-bibtexs
+-export-to-xml
+-export-to-separate-xmls
+-non-interactive
+-check-urls
+-only-check-new-urls
+-store-downloads
+-add-url-command
+-skip-notes-with-isbn-and-issn
+-add-notes-with-isbn-and-issn
+"
+   # shellcheck disable=SC2207
+   COMPREPLY=( $( compgen -W "${opts}" -- "${cur}" ) )
+
+   return 0
+}
+
+complete -F _bibtexconv bibtexconv
