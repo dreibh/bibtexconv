@@ -9,14 +9,15 @@
 #                          ---  BibTeX Converter  ---
 #                   https://www.nntb.no/~dreibh/bibtexconv/
 # ==========================================================================
-
+#
+# BibTeX Converter
 # Copyright (C) 2010-2025 by Thomas Dreibholz
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -34,9 +35,9 @@ _bibtexconv_odt()
    # Based on: https://www.benningtons.net/index.php/bash-completion/
    local cur prev words cword
    if type -t _comp_initialize >/dev/null; then
-      _comp_initialize || return
+      _comp_initialize -n = || return
    elif type -t _init_completion >/dev/null; then
-      _init_completion || return
+      _init_completion -n = || return
    else
       # Manual initialization for older bash completion versions:
       COMPREPLY=()
