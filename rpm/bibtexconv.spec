@@ -37,6 +37,8 @@ BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries 
 %files
 %{_bindir}/bibtexconv
 %{_bindir}/bibtexconv-odt
+%{_datadir}/bash-completion/completions/bibtexconv
+%{_datadir}/bash-completion/completions/bibtexconv-odt
 %{_mandir}/man1/bibtexconv.1.gz
 %{_mandir}/man1/bibtexconv-odt.1.gz
 %{_datadir}/doc/bibtexconv/examples/authors.list
@@ -66,6 +68,7 @@ references and the actual document.
 
 %files ietf2bibtex
 %{_bindir}/ietf2bibtex
+%{_datadir}/bash-completion/completions/ietf2bibtex
 %{_datadir}/doc/bibtexconv/examples/authors-fix.list
 %{_mandir}/man1/ietf2bibtex.1.gz
 
