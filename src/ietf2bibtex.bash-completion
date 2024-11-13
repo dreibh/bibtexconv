@@ -64,11 +64,11 @@ _ietf2bibtex()
    local opts1="
 --quiet
 --verbose
+--no-authors-fix-file
 "
    # Options with "=" and parameter(s)
    local opts2="
 --authors-fix-file
---no-authors-fix-file
 "
    # shellcheck disable=SC2207
    COMPREPLY=( $( compgen -W "${opts1}"        -- "${cur}" )
