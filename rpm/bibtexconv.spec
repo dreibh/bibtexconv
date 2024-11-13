@@ -1,5 +1,5 @@
 Name: bibtexconv
-Version: 1.3.7~rc0
+Version: 1.4.0~rc0
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
