@@ -1,3 +1,31 @@
+# ==========================================================================
+#                ____  _ _   _____   __  ______
+#                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
+#                |  _ \| | '_ \| |/ _ \  / |   / _ \| '_ \ \ / /
+#                | |_) | | |_) | |  __//  \ |__| (_) | | | \ V /
+#                |____/|_|_.__/|_|\___/_/\_\____\___/|_| |_|\_/
+#
+#                          ---  BibTeX Converter  ---
+#                   https://www.nntb.no/~dreibh/bibtexconv/
+# ==========================================================================
+
+# Copyright (C) 2010-2025 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: thomas.dreibholz@gmail.com
+
 CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 PROJECT(bibtexconv LANGUAGES C CXX)
 
@@ -57,36 +85,18 @@ ENDIF()
 #### REQUIREMENTS                                                        ####
 #############################################################################
 
-# ###### Threads ############################################################
+# ====== Threads ============================================================
 FIND_PACKAGE(Threads REQUIRED)
 
-# ###### Bison and Flex #####################################################
+# ====== Bison and Flex ====================================================#
 FIND_PACKAGE(BISON)
 FIND_PACKAGE(FLEX)
 
-# ###### libcurl ############################################################
+# ====== libcurl ============================================================
 FIND_PACKAGE(CURL REQUIRED)
 
-# ###### libcrypto (MD5 computation) ########################################
+# ====== libcrypto (MD5 computation) ========================================
 FIND_PACKAGE(OpenSSL REQUIRED)
-
-
-#############################################################################
-#### COMPILER FLAGS                                                      ####
-#############################################################################
-
-SET(CMAKE_CXX_STANDARD 11)
-SET(CMAKE_CXX_STANDARD_REQUIRED ON)
-SET(CMAKE_CXX_EXTENSIONS OFF)
-
-SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -Wall -DUSE_UTF8 -D_FORTIFY_SOURCE=2 -O2 -Wformat -Wformat-security")
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -DUSE_UTF8 -D_FORTIFY_SOURCE=2 -O2 -Wformat -Wformat-security")
-
-IF (CMAKE_BUILD_TYPE MATCHES DEBUG)
-    MESSAGE(STATUS "Building in DEBUG mode")
-    # _FORTIFY_SOURCE requires compiling with optimization
-    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O")
-ENDIF()
 
 
 #############################################################################

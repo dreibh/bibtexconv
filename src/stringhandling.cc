@@ -1,22 +1,31 @@
-/*
- * BibTeX Converter
- * Copyright (C) 2010-2025 by Thomas Dreibholz
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
-
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Contact: thomas.dreibholz@gmail.com
- */
+// ==========================================================================
+//                ____  _ _   _____   __  ______
+//                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
+//                |  _ \| | '_ \| |/ _ \  / |   / _ \| '_ \ \ / /
+//                | |_) | | |_) | |  __//  \ |__| (_) | | | \ V /
+//                |____/|_|_.__/|_|\___/_/\_\____\___/|_| |_|\_/
+//
+//                          ---  BibTeX Converter  ---
+//                   https://www.nntb.no/~dreibh/bibtexconv/
+// ==========================================================================
+//
+// BibTeX Converter
+// Copyright (C) 2010-2025 by Thomas Dreibholz
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// Contact: thomas.dreibholz@gmail.com
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -102,7 +111,7 @@ static const ReplaceTableEntry replaceTable[] = {
    { "\\v{S}",     "Š",        "Š"       },
    { "\\v{z}",     "ž",        "ž"       },
    { "\\v{Z}",     "Ž",        "Ž"       },
-   
+
    { "\\r{a}",     "å",        "å"       },
    { "\\r{A}",     "Å",        "Å"       },
 
@@ -128,11 +137,11 @@ struct LanguageTableEntry
 // URL: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 static const LanguageTableEntry languageTable[] = {
    { "de",    "german"     },
-   { "de",    "ngerman"    },  
+   { "de",    "ngerman"    },
    { "de-AT", "austrian"   },
-   { "de-AT", "naustrian"  },  
+   { "de-AT", "naustrian"  },
    { "en",    "english"    },
-   
+
    { "en-US", "USenglish"  },
    { "en-US", "american"   },
    { "en-GB", "UKenglish"  },
@@ -140,13 +149,13 @@ static const LanguageTableEntry languageTable[] = {
    { "en-CA", "canadian"   },
    { "en-AU", "australian" },
    { "en-NZ", "newzealand" },
-   
+
    { "nb-NO", "norsk"      },
    { "nn-NO", "nynorsk"    },
-   
+
    { "fr",    "french"     },
    { "fr",    "francais"   },
-   
+
    { "it",    "italian"    },
    { "es",    "spanish"    },
    { "pt",    "portuguese" },
@@ -154,7 +163,7 @@ static const LanguageTableEntry languageTable[] = {
    { "da",    "danish"     },
    { "nl",    "dutch"      },
    { "la",    "latin"      },
-   
+
    { "zh-CN", "chinese"    },
    { "ja-JP", "japanese"   },
    { "arb",   "arabic"     },
@@ -200,7 +209,7 @@ std::string string2utf8(const std::string& string,
       if( (nbsp.size() > 0) && (result.substr(pos, 1) == "~")) {
          result.replace(pos, 1, nbsp);
       }
-      
+
       // Line break
       if(result.substr(pos, 1) == "\n") {
          result.replace(pos, 1, lineBreak);
@@ -395,7 +404,7 @@ std::string urlToLaTeX(const std::string& str)
 std::string labelToHTMLLabel(const std::string& string)
 {
    std::string result(string);
-   std::replace(result.begin(), result.end(), '+', '_'); 
+   std::replace(result.begin(), result.end(), '+', '_');
    return(result);
 }
 

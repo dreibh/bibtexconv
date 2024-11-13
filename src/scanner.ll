@@ -1,4 +1,15 @@
 /*
+ * ==========================================================================
+ *                ____  _ _   _____   __  ______
+ *                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
+ *                |  _ \| | '_ \| |/ _ \  / |   / _ \| '_ \ \ / /
+ *                | |_) | | |_) | |  __//  \ |__| (_) | | | \ V /
+ *                |____/|_|_.__/|_|\___/_/\_\____\___/|_| |_|\_/
+ *
+ *                          ---  BibTeX Converter  ---
+ *                   https://www.nntb.no/~dreibh/bibtexconv/
+ * ==========================================================================
+ *
  * BibTeX Converter
  * Copyright (C) 2010-2025 by Thomas Dreibholz
  *
@@ -6,7 +17,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
-
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
