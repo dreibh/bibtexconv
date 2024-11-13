@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Create BibTeX entry for IETF documents (RFCs and Internet Drafts)
+# IETF2BibTeX
 # Copyright (C) 2014-2025 by Thomas Dreibholz
 #
 # This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Contact: thomas.dreibholz@gmail.com
-#
+
 
 from xml.dom.minidom import parse
 import codecs
