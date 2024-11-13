@@ -60,14 +60,20 @@ _ietf2bibtex()
    esac
 
    # ====== All options =====================================================
-   local opts="
+   # Simple options without parameter(s)
+   local opts1="
 --quiet
 --verbose
+"
+   # Options with "=" and parameter(s)
+   local opts2="
 --authors-fix-file
 --no-authors-fix-file
 "
    # shellcheck disable=SC2207
-   COMPREPLY=( $( compgen -W "${opts}" -- "${cur}" ) )
+   COMPREPLY=( $( compgen -W "${opts1}"        -- "${cur}" )
+               $( compgen -W "${opts2}" -S "=" -- "${cur}" ) )
+   [[ ${COMPREPLY-} == *= ]] && compopt -o nospace
 
    return 0
 }
