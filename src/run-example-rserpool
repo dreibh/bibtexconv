@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ ! -e refs ] ; then
-   mkdir refs
-fi
-
-make -j2 && \
-./bibtexconv ~/src/papers/Referenzarchiv.bib -export-to-separate-bibtexs=refs/ -export-to-separate-xmls=refs/ <web-rserpool.export >update.html
