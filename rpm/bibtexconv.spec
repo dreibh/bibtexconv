@@ -3,7 +3,7 @@ Version: 1.4.0~rc0
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
-License: GPL-3+
+License: GPL-3.0-or-later
 URL: https://www.nntb.no/~dreibh/bibtexconv/
 Source: https://www.nntb.no/~dreibh/bibtexconv/download/%{name}-%{version}.tar.xz
 
