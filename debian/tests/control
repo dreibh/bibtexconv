@@ -1,5 +1,11 @@
 Tests: 10-bibtexconv-html
+Restrictions: allow-stderr
 Depends: bibtexconv, tidy
 
 Tests: 11-bibtexconv-txt
+Restrictions: allow-stderr
+Depends: bibtexconv
+
+Tests: 20-bibtexconv-odt
+Restrictions: allow-stderr
 Depends: bibtexconv
