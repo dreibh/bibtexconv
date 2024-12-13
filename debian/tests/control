@@ -1,0 +1,5 @@
+Tests: 10-bibtexconv-html
+Depends: bibtexconv, tidy
+
+Tests: 11-bibtexconv-txt
+Depends: bibtexconv
