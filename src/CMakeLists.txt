@@ -82,13 +82,14 @@ INSTALL(FILES       ietf2bibtex.bash-completion
 INSTALL(FILES authors-fix.list
               authors.list
               ExampleReferences.bib
-              get-author-url
               odt-example.export
               ODT-Template.odt
               publication-list-treeview.js
               text-example.export
               web-example.export
               yaml-example.export
+        DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples)
+INSTALL(PROGRAMS get-author-url
         DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples)
 
 
