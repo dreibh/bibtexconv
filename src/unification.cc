@@ -135,11 +135,11 @@ static void splitAuthor(std::string& author,
    trim(givenNameFull);
    trim(familyName);
 
-
+/*
    printf("\t-> %s:\tA=<%s>\t->\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
           author.c_str(),
           givenNameInitials.c_str(), givenNameFull.c_str(), familyName.c_str());
-
+*/
 
    if(givenNameFull != "") {
       if(givenNameFull == givenNameInitials) {   // Given name == initials
