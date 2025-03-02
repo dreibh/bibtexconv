@@ -1180,7 +1180,6 @@ std::string PublicationSet::applyTemplate(Node*                           public
       else {
          std::string character = "";
 
-#ifdef USE_UTF8
          if( ( (((unsigned char)printingTemplate[i]) & 0xE0) == 0xC0 ) &&
                (i + 1 < printingTemplateSize) ) {
             // Two-byte UTF-8 character
@@ -1204,14 +1203,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          else if( (((unsigned char)printingTemplate[i]) & 0x80) == 0 ) {
             // Regular 1-byte character
-#endif
             character += printingTemplate[i];
-#ifdef USE_UTF8
          }
          else {
             // Invalid!
          }
-#endif
 
          // Add current character. We may *not* use XML style encoding here,
          // since the character may be itself part of XML tags!

@@ -54,35 +54,31 @@ static void extractAuthorInitials(const std::string& givenNameFull,
             if(!empty) {
                givenNameInitials += '~';
             }
-#ifdef USE_UTF8
-           if( ( (((unsigned char)givenNameFull[i]) & 0xE0) == 0xC0 ) && (i + 1 < length) ) {
-              // Two-byte UTF-8 character
+            if( ( (((unsigned char)givenNameFull[i]) & 0xE0) == 0xC0 ) && (i + 1 < length) ) {
+               // Two-byte UTF-8 character
+               givenNameInitials += givenNameFull[i];
+               givenNameInitials += givenNameFull[++i];
+            }
+            else if( ( (((unsigned char)givenNameFull[i]) & 0xF0) == 0xE0 ) && (i + 2 < length) ) {
+               // Three-byte UTF-8 character
+               givenNameInitials += givenNameFull[i];
+               givenNameInitials += givenNameFull[++i];
+               givenNameInitials += givenNameFull[++i];
+            }
+            else if( ( (((unsigned char)givenNameFull[i]) & 0xF8) == 0xF0 ) && (i + 3 < length) ) {
+               // Four-byte UTF-8 character
+               givenNameInitials += givenNameFull[i];
+               givenNameInitials += givenNameFull[++i];
+               givenNameInitials += givenNameFull[++i];
+               givenNameInitials += givenNameFull[++i];
+            }
+            else if( (((unsigned char)givenNameFull[i]) & 0x80) == 0 ) {
+               // Regular 1-byte character
               givenNameInitials += givenNameFull[i];
-              givenNameInitials += givenNameFull[++i];
-           }
-           else if( ( (((unsigned char)givenNameFull[i]) & 0xF0) == 0xE0 ) && (i + 2 < length) ) {
-              // Three-byte UTF-8 character
-              givenNameInitials += givenNameFull[i];
-              givenNameInitials += givenNameFull[++i];
-              givenNameInitials += givenNameFull[++i];
-           }
-           else if( ( (((unsigned char)givenNameFull[i]) & 0xF8) == 0xF0 ) && (i + 3 < length) ) {
-              // Four-byte UTF-8 character
-              givenNameInitials += givenNameFull[i];
-              givenNameInitials += givenNameFull[++i];
-              givenNameInitials += givenNameFull[++i];
-              givenNameInitials += givenNameFull[++i];
-           }
-           else if( (((unsigned char)givenNameFull[i]) & 0x80) == 0 ) {
-              // Regular 1-byte character
-#endif
-              givenNameInitials += givenNameFull[i];
-#ifdef USE_UTF8
-           }
-           else {
-              // Invalid!
-           }
-#endif
+            }
+            else {
+               // Invalid!
+            }
             givenNameInitials += '.';
             extract = false;
             empty   = false;
@@ -139,11 +135,11 @@ static void splitAuthor(std::string& author,
    trim(givenNameFull);
    trim(familyName);
 
-/*
+
    printf("\t-> %s:\tA=<%s>\t->\tI=<%s> G=<%s> F=<%s>\n", author.c_str(),
           author.c_str(),
           givenNameInitials.c_str(), givenNameFull.c_str(), familyName.c_str());
-*/
+
 
    if(givenNameFull != "") {
       if(givenNameFull == givenNameInitials) {   // Given name == initials
@@ -223,15 +219,11 @@ void unifyISBN(Node* publication, Node* isbn)
    std::string number = "";
    size_t      length = isbn->value.size();
    for(size_t i = 0; i < length; i++) {
-#ifdef USE_UTF8
       if((isbn->value[i] < 0) && (i + 1 < length)) {
          i++;
       }
-      else
-#endif
-      if( ((isbn->value[i] >= '0') &&
-           (isbn->value[i] <= '9')) ||
-           ((isbn->value[i] == 'X') && (i == length - 1)) ) {
+      else if( ((isbn->value[i] >= '0') && (isbn->value[i] <= '9')) ||
+               ((isbn->value[i] == 'X') && (i == length - 1)) ) {
          number += isbn->value[i];
       }
       else if(isbn->value[i] == '-') {
@@ -300,15 +292,11 @@ void unifyISSN(Node* publication, Node* issn)
    std::string number = "";
    size_t      length = issn->value.size();
    for(size_t i = 0; i < length; i++) {
-#ifdef USE_UTF8
       if((issn->value[i] < 0) && (i + 1 < length)) {
          i++;
       }
-      else
-#endif
-      if( ((issn->value[i] >= '0') &&
-           (issn->value[i] <= '9')) ||
-           ((issn->value[i] == 'X') && (i == issn->value.size() - 1)) ) {
+      else if( ((issn->value[i] >= '0') && (issn->value[i] <= '9')) ||
+               ((issn->value[i] == 'X') && (i == issn->value.size() - 1)) ) {
          number += issn->value[i];
       }
       else if(issn->value[i] == '-') {
@@ -466,14 +454,11 @@ void unifyPages(Node* publication, Node* pages)
    std::string numbers = "";
    size_t      length  = pages->value.size();
    for(size_t i = 0; i < length; i++) {
-#ifdef USE_UTF8
       if((pages->value[i] < 0) && (i + 1 < length)) {
          i++;
       }
-      else
-#endif
-      if( (pages->value[i] >= '0') &&
-          (pages->value[i] <= '9') ) {
+      else if( (pages->value[i] >= '0') &&
+               (pages->value[i] <= '9') ) {
          numbers += pages->value[i];
       }
       else if(pages->value[i] == '-') {
