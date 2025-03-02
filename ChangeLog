@@ -1,3 +1,27 @@
+commit a3124871857cd727be567cb2ba10e85592fd10c8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Mar 2 22:44:03 2025 +0100
+
+    Bugfix: CMakeLists.txt removed USE_UTF8 compile-time option. Always handle UTF-8 now.
+
+commit 4949a66f3eaa2cc587dde790abcee809e7201bd9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 20 16:16:33 2024 +0100
+
+    FreeBSD packaging update.
+
+commit 2b8d6da7ef53c87f78f43a8d6b1dce2ec5fc8719
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 20 16:11:52 2024 +0100
+
+    Updated test script.
+
+commit 5d5c8b39d0a47d88d12d9ad3cffda42d6944a164
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 13 21:33:12 2024 +0100
+
+    New release bibtexconv-1.4.0.
+
 commit d9663f52e0f010d123474a69f822b62258ec184e
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Fri Dec 13 20:53:05 2024 +0100
