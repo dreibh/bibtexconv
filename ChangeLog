@@ -1,3 +1,15 @@
+commit 09a5a7aa0a2e4deac8b3a40510cfd818b76b1226
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Mar 2 23:34:36 2025 +0100
+
+    Bugfix: Commented out debug output.
+
+commit 46d3c5e5f2e9964b28420520480fc1e6614dc028
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Mar 2 23:27:46 2025 +0100
+
+    New release bibtexconv-1.4.1.
+
 commit a3124871857cd727be567cb2ba10e85592fd10c8
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Sun Mar 2 22:44:03 2025 +0100
