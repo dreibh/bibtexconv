@@ -1,3 +1,71 @@
+commit d03b92f5991b44d696896e27ed260a32028916a9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 4 17:14:37 2025 +0100
+
+    Improved README.md.
+
+commit 257f02799c26d103737579ae0cd0388f59613781
+Merge: 7bbc955 6e0c847
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 4 17:14:16 2025 +0100
+
+    Merge branch 'master' of github.com:dreibh/bibtexconv
+
+commit 7bbc95570bb8c57c4093e58be0054fb270414b4b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 4 17:13:11 2025 +0100
+
+    Updated shebang in script.
+
+commit 6e0c847273680052a89889e52d5c81dd97b09778
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 3 22:28:11 2025 +0100
+
+    Fixed URL.
+
+commit b651ba872db5749326e18fa9390d0de66f75fe84
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 3 22:11:51 2025 +0100
+
+    Improved example script.
+
+commit dc5253793a5bbf0d0823a18f3dd4b6fed0e0075b
+Merge: 0bc2550 d1beaf0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 3 19:36:00 2025 +0100
+
+    Merge branch 'master' of github.com:dreibh/bibtexconv
+
+commit 0bc25507baf621800550b473b726d0bcb063f430
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 3 19:35:44 2025 +0100
+
+    Fixed links in example BibTeX file.
+
+commit d1beaf025f3e1880146afba1c2bbe5bfe81241e5
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 3 09:36:27 2025 +0100
+
+    Updated FreeBSD Makefile.
+
+commit 1e2b4d4df14916c3979a1d81dc90c7d7eb98a85f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 3 09:33:05 2025 +0100
+
+    FreeBSD packaging update.
+
+commit 62f101ee152cb2ae49ca1ad118d883bb82c4a76a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Mar 2 23:39:07 2025 +0100
+
+    Updated CI scripts
+
+commit 117110de40417dc58df4553fd76951bba21cb2b5
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Mar 2 23:35:36 2025 +0100
+
+    New release bibtexconv-1.4.2.
+
 commit 09a5a7aa0a2e4deac8b3a40510cfd818b76b1226
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Sun Mar 2 23:34:36 2025 +0100
