@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 #
 # Copyright (C) 2010-2025 by Thomas Dreibholz
 #
@@ -17,10 +17,18 @@
 #
 # Contact: thomas.dreibholz@gmail.com
 
-./bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
-./bibtexconv ExampleReferences.bib <web-example.export >MyPublications.html
-./bibtexconv ExampleReferences.bib <text-example.export >MyPublications.txt
-./bibtexconv ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
-./bibtexconv ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
-./bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=Downloads -non-interactive
-./bibtexconv-odt ODT-Template.odt MyPublications.odt ExampleReferences.bib odt-example.export
+bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
+
+bibtexconv ExampleReferences.bib <web-example.export >MyPublications.html
+
+bibtexconv ExampleReferences.bib <text-example.export >MyPublications.txt
+
+bibtexconv ExampleReferences.bib -export-to-separate-xmls=reference. -non-interactive
+
+bibtexconv ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
+
+bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=Downloads -non-interactive
+
+bibtexconv-odt ODT-Template.odt MyPublications.odt ExampleReferences.bib odt-example.export
+
+soffice --convert-to docx MyPublications.odt
