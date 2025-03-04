@@ -12,33 +12,38 @@ BibTeXConv is a BibTeX file converter which allows to export BibTeX entries to o
 
 Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of your system) for example export scripts. The export scripts contain the commands which are read by bibtexconv from standard input.
 
-- Check URLs of all entries in /usr/share/doc/bibtexconv/examples/ExampleReferences.bib, add MD5, size and MIME type items and write the results to UpdatedReferences.bib:
-
-    bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
-
-- Use the export script /usr/share/doc/bibtexconv/examples/web-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.html as XHTML 1.1.
-
-    bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/web-example.export >MyPublications.html
-
-- Use export script /usr/share/doc/bibtexconv/examples/text-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.txt as plain text:
-
-    bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib </usr/share/doc/bibtexconv/examples/text-example.export >MyPublications.txt
-
-- Convert all references in /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference." (for example: reference.Globecom2010.xml for the reference Globecom2010):
-
-    bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-xmls=reference.
-
-- Convert all references in /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to BibTeX references. For each reference, an own file is generated, named with the prefix "" (here: no prefix; for example: Globecom2010.bib for the reference Globecom2010):
-
-    bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
-
-- Download all references in /usr/share/doc/bibtexconv/examples/ExampleReferences.bib providing an "url" entry to directory Downloads. If the corresponding file is already existing, a download is skipped. That is, the command can be run regularly to maintain an up-to-date publications directory. Updated references (including length, type and MD5 sum of the downloaded entries) are written to UpdatedReferences.bib:
-
-    bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=Downloads -non-interactive
-
-- Use export script /usr/share/doc/bibtexconv/examples/odt-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.odt as OpenDocument Text (ODT), according to the template ODT file /usr/share/doc/bibtexconv/examples/ODT-Template.odt:
-
-    bibtexconv-odt /usr/share/doc/bibtexconv/examples/ODT-Template.odt MyPublications.odt /usr/share/doc/bibtexconv/examples/ExampleReferences.bib /usr/share/doc/bibtexconv/examples/odt-example.export
+- Check URLs of all entries in [ExampleReferences.bib](src/ExampleReferences.bib), add MD5, size and MIME type items and write the results to UpdatedReferences.bib:
+  ```
+  bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
+  ```
+- Use the export script [web-example.export](src/web-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.html as XHTML 1.1. [ExampleReferences.bib](src/ExampleReferences.bib) references the script [get-author-url](src/get-author-url) and the list [authors.list](src/authors.list) to obtain the authors' website URLs.
+  ```
+  bibtexconv ExampleReferences.bib <web-example.export >MyPublications.html
+  ```
+- Use export script [text-example.export](src/text-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.txt as plain text:
+  ```
+  bibtexconv ExampleReferences.bib <text-example.export >MyPublications.txt
+  ```
+- Convert all references in [ExampleReferences.bib](src/ExampleReferences.bib) to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference." (for example: reference.Globecom2010.xml for the reference Globecom2010):
+  ```
+  bibtexconv ExampleReferences.bib -export-to-separate-xmls=reference. -non-interactive
+  ```
+- Convert all references in [ExampleReferences.bib](src/ExampleReferences.bib) to BibTeX references. For each reference, an own file is generated, named with the prefix "" (here: no prefix; for example: Globecom2010.bib for the reference Globecom2010):
+  ```
+  bibtexconv ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
+  ```
+- Download all references in [ExampleReferences.bib](src/ExampleReferences.bib) providing an "url" entry to directory Downloads. If the corresponding file is already existing, a download is skipped. That is, the command can be run regularly to maintain an up-to-date publications directory. Updated references (including length, type and MD5 sum of the downloaded entries) are written to UpdatedReferences.bib:
+  ```
+  bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=Downloads -non-interactive
+  ```
+- Use export script [odt-example.export](src/odt-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.odt as [OpenDocument](https://www.adobe.com/uk/acrobat/resources/document-files/open-doc.html) Text (ODT), according to the template ODT file [ODT-Template.odt](src/ODT-Template.odt):
+  ```
+  bibtexconv-odt ODT-Template.odt MyPublications.odt ExampleReferences.bib odt-example.export
+  ```
+  ODT is the native format of [LibreOffice](https://www.libreoffice.org/)/[OpenOffice](https://www.openoffice.org/). However, LibreOffice/OpenOffice can also be used to convert it to Microsoft Word (DOCX) format, either via GUI or on the command-line to MyPublications.docx:
+  ```
+  soffice --convert-to docx MyPublications.odt
+  ```
 
 ## Binary Package Installation
 
