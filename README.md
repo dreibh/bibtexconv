@@ -47,7 +47,7 @@ Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of y
 
 ## Binary Package Installation
 
-Please use the issue tracker at https://github.com/dreibh/bibtexconv/issues to report bugs and issues!
+Please use the issue tracker at [https://github.com/dreibh/bibtexconv/issues](https://github.com/dreibh/bibtexconv/issues) to report bugs and issues!
 
 ### Ubuntu Linux
 
@@ -70,9 +70,11 @@ sudo dnf install bibtexconv
 
 ### FreeBSD
 
-For ready-to-install FreeBSD packages of BibTeXConv, it is included in the ports collection, see Index of /head/converters/bibtexconv/!
+For ready-to-install FreeBSD packages of BibTeXConv, it is included in the ports collection, see [FreeBSD ports tree index of converters/bibtexconv/](https://cgit.freebsd.org/ports/tree/converters/bibtexconv/)!
 
-    pkg install bibtexconv
+```
+pkg install bibtexconv
+```
 
 Alternatively, to compile it from the ports sources:
 
@@ -86,14 +88,31 @@ make install
 
 BibTeXConv is released under the GNU General Public Licence (GPL).
 
-Please use the issue tracker at https://github.com/dreibh/bibtexconv/issues to report bugs and issues!
+Please use the issue tracker at [https://github.com/dreibh/bibtexconv/issues](https://github.com/dreibh/bibtexconv/issues) to report bugs and issues!
 
 ### Development Version
 
-The Git repository of the BibTeXConv sources can be found at https://github.com/dreibh/bibtexconv:
+The Git repository of the BibTeXConv sources can be found at [https://github.com/dreibh/bibtexconv](https://github.com/dreibh/bibtexconv):
 
-- Issue tracker: https://github.com/dreibh/bibtexconv/issues.
+```
+git clone https://github.com/dreibh/bibtexconv
+cd bibtexconv
+cmake .
+make
+```
+
+Contributions:
+
+- Issue tracker: [https://github.com/dreibh/bibtexconv/issues](https://github.com/dreibh/bibtexconv/issues).
   Please submit bug reports, issues, questions, etc. in the issue tracker!
 
-- Pull Requests for BibTeXConv: https://github.com/dreibh/bibtexconv/pulls.
+- Pull Requests for BibTeXConv: [https://github.com/dreibh/bibtexconv/pulls](https://github.com/dreibh/bibtexconv/pulls).
   Your contributions to BibTeXConv are always welcome!
+
+- CI build tests of BibTeXConv: [https://github.com/dreibh/bibtexconv/actions](https://github.com/dreibh/bibtexconv/actions).
+
+- Coverity Scan analysis of BibTeXConv: [https://scan.coverity.com/projects/dreibh-td-bibtexconv](https://scan.coverity.com/projects/dreibh-td-bibtexconv).
+
+### Current Stable Release
+
+See [https://www.nntb.no/~dreibh/bibtexconv/#Download](https://www.nntb.no/~dreibh/bibtexconv/#Download)!
