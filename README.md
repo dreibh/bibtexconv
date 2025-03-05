@@ -51,7 +51,7 @@ Please use the issue tracker at [https://github.com/dreibh/bibtexconv/issues](ht
 
 ### Ubuntu Linux
 
-For ready-to-install Ubuntu Linux packages of BibTeXConv, see Launchpad PPA for Thomas Dreibholz!
+For ready-to-install Ubuntu Linux packages of BibTeXConv, see [Launchpad PPA for Thomas Dreibholz](https://launchpad.net/~dreibh/+archive/ubuntu/ppa/+packages?field.name_filter=bibtexconv&field.status_filter=published&field.series_filter=)!
 
 ```
 sudo apt-add-repository -sy ppa:dreibh/ppa
@@ -61,7 +61,7 @@ sudo apt-get install bibtexconv
 
 ### Fedora Linux
 
-For ready-to-install Fedora Linux packages of BibTeXConv, see COPR PPA for Thomas Dreibholz!
+For ready-to-install Fedora Linux packages of BibTeXConv, see [COPR PPA for Thomas Dreibholz](https://copr.fedorainfracloud.org/coprs/dreibh/ppa/package/bibtexconv/)!
 
 ```
 sudo dnf copr enable -y dreibh/ppa
@@ -111,7 +111,7 @@ Contributions:
 
 - CI build tests of BibTeXConv: [https://github.com/dreibh/bibtexconv/actions](https://github.com/dreibh/bibtexconv/actions).
 
-- Coverity Scan analysis of BibTeXConv: [https://scan.coverity.com/projects/dreibh-td-bibtexconv](https://scan.coverity.com/projects/dreibh-td-bibtexconv).
+- Coverity Scan analysis of BibTeXConv: [https://scan.coverity.com/projects/dreibh-bibtexconv](https://scan.coverity.com/projects/dreibh-bibtexconv).
 
 ### Current Stable Release
 
