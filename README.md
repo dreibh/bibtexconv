@@ -115,4 +115,4 @@ Contributions:
 
 ### Current Stable Release
 
-See [https://www.nntb.no/~dreibh/bibtexconv/#Download](https://www.nntb.no/~dreibh/bibtexconv/#Download)!
+See [https://www.nntb.no/~dreibh/bibtexconv/#StableRelease](https://www.nntb.no/~dreibh/bibtexconv/#StableRelease)!
