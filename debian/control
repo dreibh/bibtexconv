@@ -11,7 +11,7 @@ Build-Depends: bison,
                flex,
                libcurl4-openssl-dev,
                libssl-dev
-Standards-Version: 4.7.1
+Standards-Version: 4.7.2
 Rules-Requires-Root: no
 
 Package: bibtexconv

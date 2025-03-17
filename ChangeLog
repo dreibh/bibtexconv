@@ -1,3 +1,52 @@
+commit 1f228022076e844f923cca2202ba1cebf52a5d04
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 17 18:53:52 2025 +0100
+
+    Manpage updates.
+
+commit 26e459ee1f6530714ccadc2bcaac50022c174905
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Mar 16 22:56:47 2025 +0100
+
+    Debian packaging improvements.
+
+commit 6bcbe7ae962bfcf2c62e7c120cad88e5561d37f7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Mar 5 13:28:09 2025 +0100
+
+    Updated README.md
+
+commit 6bf0dda1f9b6d49d844b1eb8516ec7c56367b6bb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Mar 5 13:04:35 2025 +0100
+
+    Fixed links.
+
+commit d6b6af05319bb5289510b7cf892d4d9559e89267
+Merge: ee7a67b ee4c4ee
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Mar 5 12:44:37 2025 +0100
+
+    Merge branch 'master' of github.com:dreibh/bibtexconv
+
+commit ee7a67b828ed4ecc858e6cd54111c038680eb736
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Mar 5 12:44:25 2025 +0100
+
+    Improved README.md.
+
+commit ee4c4eebc1de313a129b15c69ab8fbecf29af478
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 4 21:00:02 2025 +0100
+
+    FreeBSD packaging update.
+
+commit d7eae0a9d1d01e35a64fabc597a9a01f959ec089
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 4 19:51:44 2025 +0100
+
+    New release bibtexconv-1.4.3.
+
 commit d03b92f5991b44d696896e27ed260a32028916a9
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Mar 4 17:14:37 2025 +0100
