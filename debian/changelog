@@ -1,3 +1,9 @@
+bibtexconv (1.4.4-2ubuntu1) trixie; urgency=medium
+
+  * debian/tests: Fixed test dependencies.
+
+ -- Thomas Dreibholz <thomas.dreibholz@gmail.com>  Tue, 18 Mar 2025 10:25:31 +0100
+
 bibtexconv (1.4.4-1ubuntu1) trixie; urgency=medium
 
   * New upstream release.

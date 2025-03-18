@@ -1,6 +1,6 @@
 Tests: 10-bibtexconv-html
 Restrictions: allow-stderr
-Depends: bibtexconv, tidy
+Depends: bibtexconv, python3-minimal, tidy
 
 Tests: 11-bibtexconv-txt
 Restrictions: allow-stderr
