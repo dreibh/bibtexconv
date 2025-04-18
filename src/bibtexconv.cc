@@ -33,7 +33,6 @@
 #include <string.h>
 #include <assert.h>
 #include <errno.h>
-#include <iostream>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <curl/curl.h>

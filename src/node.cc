@@ -31,7 +31,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include <set>
 
 #include "node.h"
 #include "unification.h"

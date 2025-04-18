@@ -34,7 +34,6 @@
 
 #include <algorithm>
 #include <string>
-#include <set>
 #include <vector>
 
 #include "publicationset.h"
