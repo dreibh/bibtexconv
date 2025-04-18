@@ -164,7 +164,7 @@ bool Mappings::addMapping(const std::string& mappingName,
       return false;
    }
 
-   char    buffer[65536];
+   char    buffer[16384];
    size_t  bufferSize = sizeof(buffer);
    char*   line       = buffer;
    ssize_t lineLength = getline((char**)&line, &bufferSize, mappingFile);
