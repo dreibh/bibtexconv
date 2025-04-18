@@ -5,8 +5,13 @@
 #include <string.h>
 
 #include <map>
-#include <vector>
+#include <string>
 
+
+struct MappingEntry {
+   std::string                                    Name;
+   std::map<const std::string, const std::string> Mappings;
+};
 
 class Mappings
 {
@@ -14,12 +19,24 @@ class Mappings
    Mappings();
    ~Mappings();
 
-   bool addMapping(const char* mappingName,
-                   const char* mappingFile,
-                   const char* keyColumn,
-                   const char* valueColumn);
+   bool addMapping(const std::string& mappingName,
+                   const std::string& mappingFile,
+                   const std::string& keyColumn,
+                   const std::string& valueColumn);
+
+   inline const MappingEntry* findMapping(const std::string& mappingName) const {
+      std::map<const std::string, MappingEntry*>::const_iterator found = MappingSet.find(mappingName);
+      if(found != MappingSet.end()) {
+         return found->second;
+      }
+      return nullptr;
+   }
+   const std::string& map(const MappingEntry* mappingEntry,
+                          const std::string&  input) const;
 
    private:
+   std::map<const std::string, MappingEntry*> MappingSet;
+
    static inline bool isDelimiter(const char c) {
       return ( (c == ' ') || (c == '\t') || (c == '\n') || (c == '\r') );
    }
@@ -39,6 +56,11 @@ Mappings::Mappings()
 // ###### Destructor ########################################################
 Mappings::~Mappings()
 {
+   std::map<const std::string, MappingEntry*>::iterator iterator = MappingSet.begin();
+   while(iterator != MappingSet.end()) {
+      delete iterator->second;
+      iterator = MappingSet.erase(iterator);
+   }
 }
 
 
@@ -53,39 +75,45 @@ int Mappings::splitLine(const char**       columnArray,
    bool         quoted  = false;
    unsigned int column  = 0;
    columnArray[column]  = nullptr;
-   printf("L=%s\n", line);
    for(unsigned int i = 0; i < lineLength; i++) {
       if(!escaped) {
+         // ------ Special characters ---------------------------------------
          if(line[i] == '\\') {
             escaped = true;
+            continue;
          }
          else if(line[i] == '"') {
             quoted = !quoted;
          }
          else if( (line[i] == '\n') || (line[i] == '\r') ) {
+            if( (i > 0) && (line[i - 1] == '"') ) {   // Unquote
+               line[i - 1] = 0x00;
+            }
             line[i] = 0x00;
          }
 
-         if(!quoted) {
-            // ------ Begin of column ---------------------------------------
-            if( (columnArray[column] == nullptr) && (!isDelimiter(line[i])) ) {
-               columnArray[column] = &line[i];
-               printf("begin c%u  %d   S=%s\n", column, i, columnArray[column]);
+         // ------ Begin of column ------------------------------------------
+         if( (columnArray[column] == nullptr) && (!isDelimiter(line[i])) ) {
+            if(line[i] == '"') {   // Unquote
+               i++;
             }
-            // ------ End of column -----------------------------------------
-            else if(isDelimiter(line[i])) {
-               line[i] = 0x00;
-               printf("end c%u  %d   E=%s.\n", column, i, columnArray[column]);
-               while( (line[i + 1] == ' ') || (line[i + 1] == '\t') ) {
-                  i++;
-               }
-               column++;
-               if(column >= maxColumns) {
-                  break;
-               }
-               columnArray[column] = nullptr;
+            columnArray[column] = &line[i];
+         }
+
+         // ------ End of column --------------------------------------------
+         else if(!quoted && isDelimiter(line[i])) {
+            if( (i > 0) && (line[i - 1] == '"') ) {   // Unquote
+               line[i - 1] = 0x00;
             }
-            else printf("--- c%u q=%d %d   chr=%c\n", column, quoted, i, line[i]);
+            line[i] = 0x00;
+            while(isDelimiter(line[i + 1])) {
+               i++;
+            }
+            column++;
+            if(column >= maxColumns) {
+               break;
+            }
+            columnArray[column] = nullptr;
          }
       }
       else {
@@ -100,17 +128,17 @@ int Mappings::splitLine(const char**       columnArray,
 
 
 // ###### Add mapping #######################################################
-bool Mappings::addMapping(const char* mappingName,
-                          const char* mappingFileName,
-                          const char* keyColumn,
-                          const char* valueColumn)
+bool Mappings::addMapping(const std::string& mappingName,
+                          const std::string& mappingFileName,
+                          const std::string& keyColumn,
+                          const std::string& valueColumn)
 {
    FILE* mappingFile;
 
-   mappingFile = fopen(mappingFileName, "r");
+   mappingFile = fopen(mappingFileName.c_str(), "r");
    if(mappingFile == nullptr) {
       fprintf(stderr, "ERROR: Unable to open mapping file %s: %s!\n",
-               mappingFileName, strerror(errno));
+               mappingFileName.c_str(), strerror(errno));
       return false;
    }
 
@@ -132,25 +160,32 @@ bool Mappings::addMapping(const char* mappingName,
       int valueColumnIndex = -1;
       for(unsigned int i = 0;i<columnsInFile;i++) {
          printf("C<%u>=%s.\n", i, columnArray[i]);
-         if( (keyColumnIndex == -1) && (strcmp(columnArray[i], keyColumn) == 0) ) {
+         if( (keyColumnIndex == -1) && (strcmp(columnArray[i], keyColumn.c_str()) == 0) ) {
             keyColumnIndex = i;
          }
-         if( (valueColumnIndex == -1) && (strcmp(columnArray[i], valueColumn) == 0) ) {
+         if( (valueColumnIndex == -1) && (strcmp(columnArray[i], valueColumn.c_str()) == 0) ) {
             valueColumnIndex = i;
          }
       }
       if(keyColumnIndex < 0)  {
          fprintf(stderr, "ERROR: Key column %s not found in mapping file %s!\n",
-                 keyColumn, mappingFileName);
+                 keyColumn.c_str(), mappingFileName.c_str());
          fclose(mappingFile);
          return false;
       }
       if(valueColumnIndex < 0)  {
          fprintf(stderr, "ERROR: Value column %s not found in mapping file %s!\n",
-                 valueColumn, mappingFileName);
+                 valueColumn.c_str(), mappingFileName.c_str());
          fclose(mappingFile);
          return false;
       }
+
+      // ====== Add new mapping =============================================
+      MappingEntry* mappingEntry = new MappingEntry;
+      assert(mappingEntry != nullptr);
+      mappingEntry->Name = mappingName;
+      MappingSet.insert(std::pair<std::string, MappingEntry*>(
+         mappingEntry->Name, mappingEntry));
 
       // ====== Read data ===================================================
       const unsigned int columnsToProcess =
@@ -161,11 +196,13 @@ bool Mappings::addMapping(const char* mappingName,
             unsigned int columns =
                splitLine((const char**)&columnArray, maxColumns,
                         line, lineLength);
-            printf("-> c=%d  %d\n",columns,columnsToProcess);
             if(columns == columnsToProcess) {
                const char* key   = columnArray[keyColumnIndex];
                const char* value = columnArray[valueColumnIndex];
                printf("OK <%s> <%s>\n", key,value);
+               mappingEntry->Mappings.insert(
+                  std::pair<std::string, std::string>(
+                     std::string(key), std::string(value)));
             }
          }
          line = buffer;
@@ -175,7 +212,7 @@ bool Mappings::addMapping(const char* mappingName,
    // ====== Handle read errors =============================================
    if( (lineLength < 0) && (errno != 0) ) {
       fprintf(stderr, "ERROR: Unable to read from mapping file %s: %s\n",
-              mappingFileName, strerror(errno));
+              mappingFileName.c_str(), strerror(errno));
       fclose(mappingFile);
       return false;
    }
@@ -185,11 +222,28 @@ bool Mappings::addMapping(const char* mappingName,
 }
 
 
+// ###### Apply mapping #####################################################
+const std::string& Mappings::map(const MappingEntry* mappingEntry,
+                                 const std::string& input) const
+{
+   assert(mappingEntry != nullptr);
+   std::map<const std::string, const std::string>::const_iterator found =
+      mappingEntry->Mappings.find(input);
+   if(found != mappingEntry->Mappings.end()) {
+      return found->second;
+   }
+   return input;
+}
+
+
 int main(int argc, char** argv)
 {
    Mappings m;
 
    m.addMapping("author-urls", "authors.list", "Name", "URL");
+
+   const MappingEntry* e = m.findMapping("author-urls");
+   printf("=> %s\n", m.map(e, "Dreibholz, Thomas").c_str());
 
    return 0;
 }
