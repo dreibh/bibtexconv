@@ -41,6 +41,7 @@ BISON_TARGET(grammar grammar.yy ${CMAKE_CURRENT_BINARY_DIR}/grammar.cc)
 FLEX_TARGET( scanner scanner.ll ${CMAKE_CURRENT_BINARY_DIR}/scanner.cc)
 ADD_EXECUTABLE(bibtexconv
    bibtexconv.cc
+   mappings.cc
    node.cc
    publicationset.cc
    stringhandling.cc
@@ -73,6 +74,9 @@ INSTALL(FILES       ietf2bibtex.1
 INSTALL(FILES       ietf2bibtex.bash-completion
         DESTINATION ${CMAKE_INSTALL_DATADIR}/bash-completion/completions
         RENAME      ietf2bibtex)
+
+
+ADD_EXECUTABLE(t1 t1.cc mappings.cc)
 
 
 #############################################################################

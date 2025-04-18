@@ -27,6 +27,11 @@
 //
 // Contact: thomas.dreibholz@gmail.com
 
+#include "mappings.h"
+#include "node.h"
+#include "publicationset.h"
+#include "stringhandling.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -38,10 +43,6 @@
 #include <curl/curl.h>
 #include <curl/easy.h>
 #include <openssl/evp.h>
-
-#include "node.h"
-#include "publicationset.h"
-#include "stringhandling.h"
 
 
 extern int   yyparse();
@@ -730,6 +731,7 @@ int main(int argc, char** argv)
    const char* exportToSeparateXMLs     = NULL;
    const char* exportToCustom           = NULL;
    const char* downloadDirectory        = NULL;
+   Mappings    mappings;
 
    monthNames.push_back("January");
    monthNames.push_back("February");
@@ -749,7 +751,19 @@ int main(int argc, char** argv)
       exit(1);
    }
    for(int i = 2; i < argc; i++) {
-      if( strncmp(argv[i], "-export-to-bibtex=", 18) == 0 ) {
+      if( strncmp(argv[i], "-mapping=", 9) == 0 ) {
+         // const char* colon = index((const char*)&argv[i][9], ':');
+         // if(colon != NULL) {
+         //    std::string name((const char*)&argv[i][9], colon - (const char*)&argv[i][9]);
+         //    std::string mappingFile(colon + 1);
+         //    mappings.addMapping(name, mappingFile);
+         // }
+         // else {
+            fprintf(stderr, "ERROR: Bad mapping specification %s!\n", argv[i]);
+            exit(1);
+         // }
+      }
+      else if( strncmp(argv[i], "-export-to-bibtex=", 18) == 0 ) {
          exportToBibTeX = (const char*)&argv[i][18];
       }
       else if( strncmp(argv[i], "-export-to-separate-bibtexs=", 28) == 0 ) {
