@@ -33,6 +33,8 @@
 #include "package-version.h"
 #include "stringhandling.h"
 
+#include <getopt.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -726,7 +728,26 @@ static int handleInput(FILE*           fh,
 // ###### Usage #############################################################
 [[ noreturn ]] static void usage(const char* program, const int exitCode)
 {
-   fprintf(stderr, "Usage: %s BibTeX_file {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-linebreak=string} {-check-urls} {-only-check-new-urls} {-ignore-updates-for-html} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", program);
+   fprintf(stderr, "Usage: %s BibTeX_file [...] "
+      "[-B bibtex_file_name | --export-to-bibtex bibtex_file_name]"
+      "[-b xml_file_prefix| --export-to-separate-bibtexs xml_file_prefix]"
+      "[-X xml_file_name | --export-to-xml xml_file_name]"
+      "[-x xml_file_prefix | --export-to-separate-xmls xml_file_prefix]"
+      "[-C custom_file | --export-to-custom custom_file]"
+      "[-D directory | --store-downloads directory]"
+      "[-m name:mapping_file:key_column:value_column | --mapping name:mapping_file:key_column:value_column]"
+      "[-s string | --nbsp string]"
+      "[-l string | --linebreak string]"
+      "[-n | --non-interactive]"
+      "[-U | --check-urls]"
+      "[-u | --only-check-new-urls]"
+      "[-w | --ignore-updates-for-html]"
+      "[-a | --add-url-command]"
+      "[-i | --skip-notes-with-isbn-and-issn]"
+      "[-I | --add-notes-with-isbn-and-issn]"
+      "[-h | --help]"
+      "[-v | --version]"
+      "\n", program);
    exit(exitCode);
 }
 
@@ -763,82 +784,131 @@ int main(int argc, char** argv)
    monthNames.push_back("November");
    monthNames.push_back("December");
 
-   if(argc < 2) {
-      usage(argv[0], 1);
-   }
-   for(int i = 2; i < argc; i++) {
-      if( strncmp(argv[i], "-mapping=", 9) == 0 ) {
-         std::vector<std::string> mappingArguments;
-         splitString(mappingArguments,
-                     std::string((const char*)&argv[i][9]));
-         if(mappingArguments.size() == 4) {
-            mappings.addMapping(mappingArguments[0], mappingArguments[1],
-                                mappingArguments[2], mappingArguments[3]);
-         }
-         else {
-            fprintf(stderr, "ERROR: Bad mapping specification %s!\n", argv[i]);
-            exit(1);
-         }
-      }
-      else if( strncmp(argv[i], "-export-to-bibtex=", 18) == 0 ) {
-         exportToBibTeX = (const char*)&argv[i][18];
-      }
-      else if( strncmp(argv[i], "-export-to-separate-bibtexs=", 28) == 0 ) {
-         exportToSeparateBibTeXs = (const char*)&argv[i][28];
-      }
-      else if( strncmp(argv[i], "-export-to-xml=", 15) == 0 ) {
-         exportToXML = (const char*)&argv[i][15];
-      }
-      else if( strncmp(argv[i], "-export-to-separate-xmls=", 25) == 0 ) {
-         exportToSeparateXMLs = (const char*)&argv[i][25];
-      }
-      else if( strncmp(argv[i], "-export-to-custom=", 18) == 0 ) {
-         exportToCustom = (const char*)&argv[i][18];
-      }
-      else if( strncmp(argv[i], "-store-downloads=", 17) == 0 ) {
-         downloadDirectory = (const char*)&argv[i][17];
-      }
-      else if( strncmp(argv[i], "-nbsp=", 5) == 0 ) {
-         nbsp = (const char*)&argv[i][5];
-      }
-      else if( strncmp(argv[i], "-linebreak=", 11) == 0 ) {
-         lineBreak = (const char*)&argv[i][11];
-      }
-      else if( strcmp(argv[i], "-non-interactive") == 0 ) {
-         interactive = false;
-      }
-      else if( strcmp(argv[i], "-check-urls") == 0 ) {
-         checkURLs = true;
-      }
-      else if( strcmp(argv[i], "-only-check-new-urls") == 0 ) {
-         checkNewURLsOnly = true;
-      }
-      else if( strcmp(argv[i], "-ignore-updates-for-html") == 0 ) {
-         ignoreUpdatesForHTML = true;
-      }
-      else if( strcmp(argv[i], "-add-url-command") == 0 ) {
-         addUrlCommand = true;
-      }
-      else if( strcmp(argv[i], "-skip-notes-with-isbn-and-issn") == 0 ) {
-         skipNotesWithISBNandISSN = true;
-      }
-      else if( strcmp(argv[i], "-add-notes-with-isbn-and-issn") == 0 ) {
-         skipNotesWithISBNandISSN = true;   // Drop old ones, if there are any
-         addNotesWithISBNandISSN  = true;   // Compute new ones
-      }
-      else {
-         fprintf(stderr, "ERROR: Bad argument %s!\n", argv[i]);
-         exit(1);
+   const static struct option long_options[] = {
+      { "mapping",                       required_argument, 0, 'm' },
+      { "export-to-bibtex",              required_argument, 0, 'B' },
+      { "export-to-separate-bibtexs",    required_argument, 0, 'b' },
+      { "export-to-xml",                 required_argument, 0, 'X' },
+      { "export-to-separate-xmls",       required_argument, 0, 'x' },
+      { "export-to-custom",              required_argument, 0, 'C' },
+      { "store-downloads",               required_argument, 0, 'D' },
+
+      { "nbsp",                          required_argument, 0, 's' },
+      { "linebreak",                     required_argument, 0, 'l' },
+      { "non-interactive",               no_argument,       0, 'n' },
+      { "check-urls",                    no_argument,       0, 'U' },
+      { "only-check-new-urls",           no_argument,       0, 'u' },
+      { "ignore-updates-for-html",       no_argument,       0, 'w' },
+      { "add-url-command",               no_argument,       0, 'a' },
+      { "skip-notes-with-isbn-and-issn", no_argument,       0, 'i' },
+      { "add-notes-with-isbn-and-issn",  no_argument,       0, 'I' },
+
+      { "",                              no_argument,       0, '-' },
+      { "help",                          no_argument,       0, 'h' },
+      { "version",                       no_argument,       0, 'v' },
+      {  nullptr,                        0,                 0, 0   }
+   };
+
+   int option;
+   int longIndex;
+   while( (option = getopt_long(argc, argv, "m:B:b:X:x:C:D:M:s:l:nUuwaiI-hv", long_options, &longIndex)) != -1 ) {
+      // NOTE: optind already points to the next option here!
+      //       For options with two or more parameters, this
+      //       will be the *second* parameter!
+      switch(option) {
+         case 'B':
+            exportToBibTeX = optarg;
+          break;
+         case 'b':
+            exportToSeparateBibTeXs = optarg;
+          break;
+         case 'X':
+            exportToXML = optarg;
+          break;
+         case 'x':
+            exportToSeparateXMLs = optarg;
+          break;
+         case 'C':
+            exportToCustom = optarg;
+          break;
+         case 'D':
+            downloadDirectory = optarg;
+          break;
+         case 'M': {
+            std::vector<std::string> mappingArguments;
+            splitString(mappingArguments, std::string(optarg));
+            if(mappingArguments.size() == 4) {
+               mappings.addMapping(mappingArguments[0], mappingArguments[1],
+                                   mappingArguments[2], mappingArguments[3]);
+            }
+            else {
+               fprintf(stderr, "ERROR: Bad mapping specification %s!\n", optarg);
+               exit(1);
+            }
+          }
+          break;
+         case 's':
+            nbsp = optarg;
+          break;
+         case 'l':
+            lineBreak = optarg;
+          break;
+         case 'n':
+            interactive = false;
+          break;
+         case 'U':
+            checkURLs = true;
+          break;
+         case 'u':
+            checkNewURLsOnly = true;
+          break;
+         case 'w':
+            ignoreUpdatesForHTML = true;
+          break;
+         case 'a':
+            addUrlCommand = true;
+          break;
+         case 'i':
+            skipNotesWithISBNandISSN = true;
+          break;
+         case 'I':
+            skipNotesWithISBNandISSN = true;   // Drop old ones, if there are any
+            addNotesWithISBNandISSN  = true;   // Compute new ones
+          break;
+         case 'v':
+            version();
+          break;
+         case 'h':
+            usage(argv[0], 0);
+          break;
+         case '-':
+          break;
+         default:
+          break;
       }
    }
 
-   yyin = fopen(argv[1], "r");
-   if(yyin == NULL) {
-      fprintf(stderr, "ERROR: Unable to open BibTeX input file %s!\n", argv[1]);
+   int result = 0;
+   if(optind < argc) {
+      while(optind < argc) {
+         yyin = fopen(argv[optind], "r");
+         if(yyin == NULL) {
+            fprintf(stderr, "ERROR: Unable to open BibTeX input file %s!\n", argv[optind]);
+            exit(1);
+         }
+         result = yyparse();
+         fclose(yyin);
+         if(result != 0) {
+            break;
+         }
+         optind++;
+      }
+   }
+   else {
+      fputs("ERROR: No BibTeX input file provided!\n", stderr);
       exit(1);
    }
-   int result = yyparse();
-   fclose(yyin);
+
 
    if(result == 0) {
       PublicationSet publicationSet(countNodes(bibTeXFile));

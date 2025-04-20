@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd March 17, 2025
+.Dd April 20, 2025
 .Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -39,19 +39,25 @@
 .Sh SYNOPSIS
 .Nm bibtexconv
 BibTeX_file
-.Op Fl export-to-bibtex=file
-.Op Fl export-to-separate-bibtexs=prefix
-.Op Fl export-to-xml=file
-.Op Fl export-to-separate-xmls=prefix
-.Op Fl nbsp=string
-.Op Fl linebreak=string
-.Op Fl non-interactive
-.Op Fl check-urls
-.Op Fl only-check-new-urls
-.Op Fl store-downloads=directory
-.Op Fl add-url-command
-.Op Fl skip-notes-with-isbn-and-issn
-.Op Fl add-notes-with-isbn-and-issn
+.Op ...
+.Op Fl B Ar bibtex_file_name | Fl Fl export-to-bibtex Ar bibtex_file_name
+.Op Fl b Ar bibtex_file_prefix| Fl Fl export-to-separate-bibtexs Ar bibtex_file_prefix
+.Op Fl X Ar xml_file_name | Fl Fl export-to-xml Ar xml_file_name
+.Op Fl x Ar xml_file_prefix | Fl Fl export-to-separate-xmls Ar xml_file_prefix
+.Op Fl C Ar custom_file_name | Fl Fl export-to-custom Ar custom_file_name
+.Op Fl D Ar directory | Fl Fl store-downloads Ar directory
+.Op Fl m Ar name:mapping_file:key_column:value_column | Fl Fl mapping Ar name:mapping_file:key_column:value_column
+.Op Fl s Ar string | Fl Fl nbsp Ar string
+.Op Fl l Ar string | Fl Fl linebreak Ar string
+.Op Fl n | Fl Fl non-interactive
+.Op Fl U | Fl Fl check-urls
+.Op Fl u | Fl Fl only-check-new-urls
+.Op Fl w | Fl Fl ignore-updates-for-html
+.Op Fl a | Fl Fl add-url-command
+.Op Fl i | Fl Fl skip-notes-with-isbn-and-issn
+.Op Fl I | Fl Fl add-notes-with-isbn-and-issn
+.Op Fl h | Fl Fl help
+.Op Fl v | Fl Fl version
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
 .Nm bibtexconv
@@ -68,38 +74,44 @@ export template specification.
 .Sh OPTIONS
 The following arguments may be provided:
 .Bl -tag -width indent
-.It BibTeX_File
-The BibTeX input file.
-.It Fl export-to-bibtex=file
+.It BibTeX_File [...]
+The BibTeX input file. Multiple files may be provided.
+.It Fl B Ar bibtex_file_name | Fl Fl export-to-bibtex Ar bibtex_file_name
 Write the results as BibTeX into the given file.
-.It Fl export-to-separate-bibtexs=prefix
+.It Fl b Ar bibtex_file_prefix| Fl Fl export-to-separate-bibtexs Ar bibtex_file_prefix
 Write the results as BibTeX; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex-"), the entry key and ".bib".
-.It Fl export-to-xml=file
+.It Fl X Ar xml_file_name | Fl Fl export-to-xml Ar xml_file_name
 Write the results as XML (as used by IETF Internet Draft processing tools)
 into the given file.
-.It Fl export-to-separate-xmls=prefix
+.It Fl x Ar xml_file_prefix | Fl Fl export-to-separate-xmls Ar xml_file_prefix
 Write the results as XML; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex-"), the entry key and ".xml".
-.It Fl nbsp=string
+.It Fl C Ar custom_file_name | Fl Fl export-to-custom Ar custom_file_name
+Write the results as custom output into the given file.
+.It Fl D Ar directory | Fl Fl store-downloads Ar directory
+Combined with \-\-check-urls, all checked references are downloaded and stored in the given directory. Existing files will be overwritten.
+.It Fl m Ar name:mapping_file:key_column:value_column | Fl Fl mapping Ar name:mapping_file:key_column:value_column
+Read key and value columns from a mapping file into a mapping with given name.
+.It Fl s Ar string | Fl Fl nbsp Ar string
 Replace non-breakable space by given string (for example, "&nbsp;" when writing HTML).
-.It Fl linebreak=string
+.It Fl l Ar string | Fl Fl linebreak Ar string
 Replace linebreak by given string (for example, "<br />" when writing HTML).
-.It Fl check-urls
-Check URLs by downloading the content file and adding MD5, size and MIME type
-entries.
-.It Fl only-check-new-urls
-Combined with \-check-urls, checks are only performed for new entries where
-MD5, size and/or MIME type are still unknown.
-.It Fl store-downloads=directory
-Combined with \-check-urls, all checked references are downloaded and stored in the given directory. Existing files will be overwritten.
-.It Fl add-url-command
-Add \\url{} commands to url tags in BibTeX export.
-.It Fl skip-notes-with-isbn-and-issn
-When reading the BibTeX file, ignore "note" items with ISBN and ISSN.
-.It Fl add-notes-with-isbn-and-issn
-When writing a BibTeX file, create "note" items with ISBN and ISSN.
-.It Fl non-interactive
+.It Fl n | Fl Fl non-interactive
 Turns on non-interactive mode. Useful for just performing URL checks and
 ISBN/ISSN verification.
+.It Fl U | Fl Fl check-urls
+Check URLs by downloading the content file and adding MD5, size and MIME type
+entries.
+.It Fl u | Fl Fl only-check-new-urls
+Combined with \-\-check-urls, checks are only performed for new entries where
+MD5, size and/or MIME type are still unknown.
+.It Fl w | Fl Fl ignore-updates-for-html
+Ignore changes in HTML files when checking URLs. This is useful for dynamically-generated web pages, where each retrieval creates a new, different HTML file.
+.It Fl a | Fl Fl add-url-command
+Add \\url{} commands to url tags in BibTeX export.
+.It Fl i | Fl Fl skip-notes-with-isbn-and-issn
+When reading the BibTeX file, ignore "note" items with ISBN and ISSN.
+.It Fl I | Fl Fl add-notes-with-isbn-and-issn
+When writing a BibTeX file, create "note" items with ISBN and ISSN.
 .El
 .\" ###### Commands #########################################################
 .Sh COMMANDS
@@ -138,17 +150,17 @@ Changes textual representation of the "non-breakable space", for example
 .Pp
 .\" ###### Arguments ########################################################
 .Sh EXAMPLES
-Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of your
-system) for example export scripts. The export scripts contain the commands
-which are read by bibtexconv from standard input.
+Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of
+your system) for example export scripts. The export scripts contain the
+commands which are read by bibtexconv from standard input.
 .Bl -tag -width indent
 .It bibtexconv \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-\-export-to-bibtex=UpdatedReferences.bib \e
+\-\-export-to-bibtex=UpdatedReferences.bib \e
 .br
-\-check-urls \-only-check-new-urls \-non-interactive
+\-\-check-urls \-\-only-check-new-urls \-\-non-interactive
 .br
 Checks URLs of all entries in /usr/share/doc/bibtexconv/examples/ExampleReferences.bib, adds MD5, size and MIME type
 items and writes the results to UpdatedReferences.bib.
@@ -170,14 +182,14 @@ Uses export script /usr/share/doc/bibtexconv/examples/text-example.export to exp
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-\-non-interactive \-export-to-separate-xmls=reference.
+\-\-non-interactive \-\-export-to-separate-xmls=reference.
 .br
 Convert all references to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference.", for example reference.Globecom2010.xml for entry Globecom2010.
 .It bibtexconv \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-\-non-interactive \-export-to-separate-bibtexs=
+\-\-non-interactive \-\-export-to-separate-bibtexs=
 .br
 Convert all references to BibTeX references. For each reference, an own file is generated, named with the prefix "", for example Globecom2010.bib for entry Globecom2010.
 .El
