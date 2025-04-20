@@ -60,10 +60,13 @@ int Mappings::splitLine(const char**       columnArray,
                         const unsigned int lineLength)
 {
    assert(maxColumns >= 1);
+   for(unsigned int i = 0; i < maxColumns; i++) {
+      columnArray[i]  = nullptr;
+   }
+
    bool         escaped = false;
    bool         quoted  = false;
    unsigned int column  = 0;
-   columnArray[column]  = nullptr;
    for(unsigned int i = 0; i < lineLength; i++) {
       if(!escaped) {
          // ------ Special characters ---------------------------------------
@@ -102,7 +105,6 @@ int Mappings::splitLine(const char**       columnArray,
             if(column >= maxColumns) {
                break;
             }
-            columnArray[column] = nullptr;
          }
       }
       else {
@@ -146,7 +148,7 @@ bool Mappings::addMapping(const std::string& mappingName,
       // ====== Identify key and value column ===============================
       int keyColumnIndex   = -1;
       int valueColumnIndex = -1;
-      for(unsigned int i = 0;i<columnsInFile;i++) {
+      for(unsigned int i = 0; i < columnsInFile; i++) {
          if( (keyColumnIndex == -1) && (strcmp(columnArray[i], keyColumn.c_str()) == 0) ) {
             keyColumnIndex = i;
          }

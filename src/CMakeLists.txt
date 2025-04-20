@@ -88,7 +88,7 @@ INSTALL(FILES       ietf2bibtex.bash-completion
 
 
 # TEST ONLY:
-# ADD_EXECUTABLE(t1 t1.cc mappings.cc)
+# ADD_EXECUTABLE(t1 t1.cc mappings.cc stringhandling.cc)
 
 
 #############################################################################
