@@ -35,9 +35,9 @@ _bibtexconv()
    # Based on: https://www.benningtons.net/index.php/bash-completion/
    local cur prev words cword
    if type -t _comp_initialize >/dev/null; then
-      _comp_initialize -n = || return
+      _comp_initialize || return
    elif type -t _init_completion >/dev/null; then
-      _init_completion -n = || return
+      _init_completion || return
    else
       # Manual initialization for older bash completion versions:
       COMPREPLY=()
@@ -51,78 +51,81 @@ _bibtexconv()
    fi
 
    # ====== Parameters ======================================================
-   if [ "${cword}" -le 1 ] ; then
-      # BibTeX file names:
-      _filedir '@(bib)'
-      return
-   else
-      case "${prev}" in
-         #  ====== BibTeX file ==============================================
-        -export-to-bibtex=)
-            _filedir '@(bib)'
-            return
-            ;;
-         #  ====== XML file =================================================
-        -export-to-xml=)
-            _filedir '@(xml)'
-            return
-            ;;
-         #  ====== Generic file or directory ================================
-         -export-to-separate-bibtexs= | \
-         -export-to-separate-xmls=)
-            _filedir '@(bib)'
-            return
-            ;;
-         #  ====== Directory ================================================
-         -store-downloads=)
-            _filedir -d
-            return
-            ;;
-         #  ====== Generic value ============================================
-         -nbsp= | \
-         -linebreak=)
-            return
-            ;;
-      esac
-   fi
+   case "${prev}" in
+      #  ====== BibTeX file =================================================
+      -B | -export-to-bibtex)
+         _filedir '@(bib)'
+         return
+         ;;
+      #  ====== XML file ====================================================
+      -X | -export-to-xml)
+         _filedir '@(xml)'
+         return
+         ;;
+      #  ====== Generic file or directory ===================================
+      -b | -export-to-separate-bibtexs | \
+      -x | -export-to-separate-xmls)
+         _filedir '@(bib)'
+         return
+         ;;
+      #  ====== Directory ===================================================
+      -D | -store-downloads)
+         _filedir -d
+         return
+         ;;
+      #  ====== Generic value ===============================================
+      -s | -nbsp      | \
+      -l | -linebreak | \
+      -m | -mapping)
+         return
+         ;;
+      *)
+         # BibTeX file names:
+         _filedir '@(bib)'
+         return
+         ;;
+   esac
 
    # ====== All options =====================================================
-   # Simple options without parameter(s)
-   local opts1="
--add-notes-with-isbn-and-issn
--add-url-command
--check-urls
--non-interactive
--only-check-new-urls
--skip-notes-with-isbn-and-issn
-"
-   # Options with "=" and parameter(s)
-   local opts2="
--export-to-bibtex
--export-to-separate-bibtexs
--export-to-separate-xmls
--export-to-xml
--linebreak
--nbsp
--store-downloads
-"
-   # shellcheck disable=SC2207
-   COMPREPLY=( $( compgen -W "${opts1}"        -- "${cur}" )
-               $( compgen -W "${opts2}" -S "=" -- "${cur}" ) )
-   [[ ${COMPREPLY-} == *= ]] && compopt -o nospace
    local opts="
-
--non-interactive
--check-urls
--only-check-new-urls
--store-downloads
--add-url-command
--skip-notes-with-isbn-and-issn
--add-notes-with-isbn-and-issn
+-B
+--export-to-bibtex
+-b
+-X
+--export-to-xml
+-x
+--export-to-separate-xmls
+-C
+--export-to-custom
+-D
+--store-downloads
+-m
+--mapping
+-s
+--nbsp
+-l
+--linebreak
+-n
+--non-interactive
+-U
+--check-urls
+-u
+--only-check-new-urls
+-w
+--ignore-updates-for-html
+-a
+--add-url-command
+-i
+--skip-notes-with-isbn-and-issn
+-I
+--add-notes-with-isbn-and-issn
+-h
+--help
+-v
+--version
 "
    # shellcheck disable=SC2207
    COMPREPLY=( $( compgen -W "${opts}" -- "${cur}" ) )
-
    return 0
 }
 
