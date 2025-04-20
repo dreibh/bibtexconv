@@ -187,7 +187,10 @@ Node* makePublicationCollection(Node* node1, Node* node2)
             n->next->prev = n->prev;
          }
          delete n;
-         return(node1);
+         if(n == node2) {
+            node2 = NULL;
+         }
+         break;
       }
       n = n->next;
    }

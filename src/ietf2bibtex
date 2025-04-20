@@ -122,6 +122,9 @@ def getMetadata(document):
             if match != None:
                names = match.group(2).split(' and ')
                for name in names:
+                  # Work-around for lower-case first character in name:
+                  if len(name) > 0:
+                     name = name[0].upper() + name[1:]
                   fullname = re.sub(r'^(Professor |Dr\. )', '',
                                 re.sub(r' ([A-Z]) ', ' \\1. ',
                                    re.sub(r'(\.)([A-Z])', '. \\2', name)))
