@@ -20,7 +20,7 @@
 #
 
 REFERENCES=~/src/papers/Referenzarchiv.bib
-DOCUMENTS=`grep -E "^@[a-zA-Z]*{[ \t].*,.*$" "${REFERENCES}" | sed -e "s/,//g" | awk '{ print $2; }' | grep -E "^RFC|^draft"`
+DOCUMENTS=$(grep -E "^@[a-zA-Z]*{[ \t].*,.*$" "${REFERENCES}" | sed -e "s/,//g" | awk '{ print $2; }' | grep -E "^RFC|^draft")
 UPDATES_FILE="updated.bib"
 RESULTS_FILE="results.bib"
 PARALLEL=16
@@ -37,8 +37,8 @@ fi
 
 echo "Step 1: Fetching metadata ..."
 echo "$DOCUMENTS" | (
-   while read name ; do
-      rm -f ${name}.bib
+   while read -r name ; do
+      rm -f "${name}".bib
       if [[ "${name}" =~ ^(RFC[0-9]+$)|(draft-[a-z].*$) ]] ; then
          # echo >&2 "Processing ${name} ..."
          echo "./ietf2bibtex ${IETF2BIBTEX_OPTIONS} \"${name}\" >${name}.bib"
@@ -52,13 +52,13 @@ wait
 
 echo "Step 2: Fetching documents ..."
 echo "$DOCUMENTS" | (
-   while read name ; do
-      if [ -e ${name}.bib ] ; then
-         if [ "`stat --format="%s" ${name}.bib`" != "0" ] ; then
+   while read -r name ; do
+      if [ -e "${name}".bib ] ; then
+         if [ "$(stat --format="%s" "${name}".bib)" != "0" ] ; then
             echo "./bibtexconv ${name}.bib -export-to-bibtex=${name}.bib2 ${BIBTEXCONV_OPTIONS} -only-check-new-urls -non-interactive || echo \"ERROR: ${name}.bib seems to be invalid!\""
          else
             echo >&2 "NOTE: Removing empty file ${name}.bib"
-            rm -f ${name}.bib
+            rm -f "${name}".bib
          fi
       fi
    done
@@ -70,11 +70,11 @@ echo "Step 3: Collecting results ..."
 (
    cat ${REFERENCES}
    echo "$DOCUMENTS" | (
-      while read name ; do
-         if [ -e ${name}.bib2 ] ; then
-            cat ${name}.bib2
+      while read -r name ; do
+         if [ -e "${name}".bib2 ] ; then
+            cat "${name}".bib2
          fi
-         rm -f ${name}.bib ${name}.bib2
+         rm -f "${name}".bib "${name}".bib2
       done
    )
 )  >${UPDATES_FILE}
@@ -84,4 +84,4 @@ echo "Done."
 
 echo "Step 4: Showing differences ..."
 diff ~/src/papers/Referenzarchiv.bib ${RESULTS_FILE} | grep -v url.checked | grep -v -E '^[[:alnum:]]+' | grep -v "^---$"| grep -v "[ \t]*url[.a-z0-9]* ="
-colordiff ${REFERENCES} ${RESULTS_FILE} |grep author|grep -B1 '>'
+diff --color ${REFERENCES} ${RESULTS_FILE} |grep author|grep -B1 '>'

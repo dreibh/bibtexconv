@@ -17,6 +17,10 @@
 #
 # Contact: thomas.dreibholz@gmail.com
 
+DOWNLOAD=~/Downloads/BibTeXConv
+mkdir -p $DOWNLOAD
+
+
 bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -only-check-new-urls -non-interactive
 
 bibtexconv ExampleReferences.bib <web-example1.export >MyPublications1.html
@@ -29,7 +33,7 @@ bibtexconv ExampleReferences.bib -export-to-separate-xmls=reference. -non-intera
 
 bibtexconv ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=
 
-bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=Downloads -non-interactive
+bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-urls -store-downloads=$DOWNLOAD -non-interactive
 
 bibtexconv-odt ODT-Template.odt MyPublications.odt ExampleReferences.bib odt-example.export
 

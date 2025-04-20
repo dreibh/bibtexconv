@@ -187,13 +187,15 @@ Node* makePublicationCollection(Node* node1, Node* node2)
             n->next->prev = n->prev;
          }
          delete n;
-         break;
+         return(node1);
       }
       n = n->next;
    }
 
    // ====== Add a new node =================================================
-   node2->prev = node1;
+   if(node2) {
+      node2->prev = node1;
+   }
    node1->next = node2;
    return(node1);
 }
