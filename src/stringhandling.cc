@@ -89,8 +89,6 @@ static const ReplaceTableEntry replaceTable[] = {
    { "{^a}",       "â",        "â"       },
    { "{^A}",       "Â",        "Â"       },
 
-   { "{~o}",       "õ",        "õ"       },
-   { "{~O}",       "Õ",        "Õ"       },
    { "{~a}",       "ã",        "ã"       },
    { "{~A}",       "Ã",        "Ã"       },
    { "{~n}",       "ñ",        "ñ"       },
@@ -104,19 +102,29 @@ static const ReplaceTableEntry replaceTable[] = {
    { "\\={u}",     "ū",        "ū"       },
    { "\\={U}",     "Ū",        "Ū"       },
 
+   { "\\c{c}",     "ç",        "ç"       },
+   { "\\C{C}",     "Ç",        "Ç"       },
+   { "{\\'c}",     "ć",        "ć"       },
+   { "{\\'C}",     "Ć",        "Ć"       },
    { "\\v{c}",     "č",        "č"       },
    { "\\v{C}",     "Č",        "Č"       },
-
+   { "\\v{e}",     "ě",        "ě"       },
+   { "\\v{E}",     "Ě",        "Ě"       },
+   { "\\v{r}",     "ř",        "ř"       },
+   { "\\v{R}",     "Ř",        "Ř"       },
    { "\\v{s}",     "š",        "š"       },
    { "\\v{S}",     "Š",        "Š"       },
    { "\\v{z}",     "ž",        "ž"       },
    { "\\v{Z}",     "Ž",        "Ž"       },
 
-   { "\\r{a}",     "å",        "å"       },
-   { "\\r{A}",     "Å",        "Å"       },
-
    { "{\\ae}",     "æ",        "æ"       },
    { "{\\AE}",     "Æ",        "Æ"       },
+   { "{\\o}",      "ø",        "ø"       },
+   { "{\\O}",      "Ø",        "Ø"       },
+   { "\\r{a}",     "å",        "å"       },
+   { "{\\aa}",     "å",        "å"       },
+   { "\\r{A}",     "Å",        "Å"       },
+   { "{\\AA}",     "Å",        "Å"       },
 
    { "<"  ,        "<",        "&lt;"    },
    { ">"  ,        ">",        "&gt;"    },
@@ -193,36 +201,15 @@ std::string string2utf8(const std::string& string,
                         const bool         xmlStyle)
 {
    std::string result(string);
-   size_t      pos = 0;
-
-   while(pos < result.size()) {
-      for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
-         if(result.substr(pos, replaceTable[i].input.size()) == replaceTable[i].input) {
-            result.replace(pos, replaceTable[i].input.size(),
-                           ((xmlStyle == true) ? replaceTable[i].xmlOutput : replaceTable[i].utf8Output));
-            pos += ((xmlStyle == true) ? replaceTable[i].xmlOutput.size() : replaceTable[i].utf8Output.size()) - 1;
-            break;
-         }
-      }
-
-      // Non-breakable space
-      if( (nbsp.size() > 0) && (result.substr(pos, 1) == "~")) {
-         result.replace(pos, 1, nbsp);
-      }
-
-      // Line break
-      if(result.substr(pos, 1) == "\n") {
-         result.replace(pos, 1, lineBreak);
-         pos += lineBreak.size() - 1;
-      }
-
-      pos++;
+   // std::cout << "IN= " << result << "\n";
+   for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
+      replaceAll(result,
+                 replaceTable[i].input,
+                 ((xmlStyle == true) ? replaceTable[i].xmlOutput : replaceTable[i].utf8Output));
    }
-/*
-   if(result.find("{") != std::string::npos) {
-      fprintf(stderr, "!!! <%s>\n", result.c_str());
-   }
-*/
+   replaceAll(result, "~",  nbsp);
+   replaceAll(result, "\n", lineBreak);
+   // std::cout << "OUT= " << result << "\n";
    return(processBackslash(result));
 }
 
@@ -430,13 +417,17 @@ std::string format(const char* fmt, ...)
 }
 
 
-// ###### Replace all occurrences of from by to #############################
-void replaceAll(std::string& str, const std::string &from, const std::string& to)
+// ###### Replace all occurrences of fromString by toString in string #######
+void replaceAll(std::string&       string,
+                const std::string& fromString,
+                const std::string& toString)
 {
-   size_t pos = 0;
-   while ((pos = str.find(from, pos)) != std::string::npos) {
-      str.replace(pos, from.length(), to);
-      pos += to.length();
+   const size_t fromStringLength = fromString.length();
+   const size_t toStringLength   = toString.length();
+   size_t       cursor           = string.find(fromString);
+   while(cursor != std::string::npos) {
+      string.replace(cursor, fromStringLength, toString);
+      cursor = string.find(fromString, cursor + toStringLength);
    }
 }
 

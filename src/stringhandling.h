@@ -54,7 +54,11 @@ std::string urlToLaTeX(const std::string& str);
 std::string labelToHTMLLabel(const std::string& string);
 std::string labelToXMLLabel(const std::string& string);
 std::string format(const char* fmt, ...);
-void replaceAll(std::string& str, const std::string& from, const std::string& to);
-bool hasPrefix(const std::string& string, const std::string& prefix, std::string& rest);
+void replaceAll(std::string&       string,
+                const std::string& fromString,
+                const std::string& toString);
+bool hasPrefix(const std::string& string,
+               const std::string& prefix,
+               std::string&       rest);
 
 #endif
