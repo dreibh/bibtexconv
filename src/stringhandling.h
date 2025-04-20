@@ -32,6 +32,7 @@
 
 #include <stdarg.h>
 #include <string>
+#include <vector>
 
 
 const char* getXMLLanguageFromLaTeX(const char* language);
@@ -48,6 +49,9 @@ inline std::string string2xml(const std::string& string) {
 std::string& removeBrackets(std::string& string);
 std::string& trim(std::string& string);
 std::string extractToken(std::string& string, const std::string& delimiters);
+void splitString(std::vector<std::string>& tokenVector,
+                 const std::string&        input,
+                 const std::string&        delimiter = std::string(":"));
 std::string processBackslash(const std::string& string);
 std::string laTeXtoURL(const std::string& str);
 std::string urlToLaTeX(const std::string& str);

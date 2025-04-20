@@ -315,6 +315,24 @@ std::string extractToken(std::string& string, const std::string& delimiters)
 }
 
 
+// ###### Split string into token by delimiter ##############################
+void splitString(std::vector<std::string>& tokenVector,
+                 const std::string&        input,
+                 const std::string&        delimiter)
+{
+   size_t startPosition = 0;
+   size_t endPosition   = input.find(delimiter);
+   while(endPosition != std::string::npos) {
+      tokenVector.push_back(
+         input.substr(startPosition, endPosition - startPosition));
+      startPosition = endPosition + delimiter.length();
+      endPosition = input.find(delimiter, startPosition);
+   }
+   tokenVector.push_back(
+      input.substr(startPosition, endPosition - startPosition));
+}
+
+
 // ###### Process backslash commands (newline, tab, etc.) ###################
 std::string processBackslash(const std::string& string)
 {
