@@ -30,6 +30,7 @@
 #include "mappings.h"
 #include "node.h"
 #include "publicationset.h"
+#include "package-version.h"
 #include "stringhandling.h"
 
 #include <stdio.h>
@@ -714,6 +715,22 @@ static int handleInput(FILE*           fh,
 }
 
 
+// ###### Version ###########################################################
+[[ noreturn ]] static void version()
+{
+   printf("BibTeXConv %s\n", BIBTEXCONV_VERSION);
+   exit(0);
+}
+
+
+// ###### Usage #############################################################
+[[ noreturn ]] static void usage(const char* program, const int exitCode)
+{
+   fprintf(stderr, "Usage: %s BibTeX_file {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-linebreak=string} {-check-urls} {-only-check-new-urls} {-ignore-updates-for-html} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", program);
+   exit(exitCode);
+}
+
+
 
 // ###### Main program ######################################################
 int main(int argc, char** argv)
@@ -747,8 +764,7 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    if(argc < 2) {
-      fprintf(stderr, "Usage: %s BibTeX_file {-export-to-bibtex=file} {-export-to-separate-bibtexs=prefix} {-export-to-xml=file} {-export-to-separate-xmls=prefix} {-export-to-custom=file} {-non-interactive} {-nbsp=string} {-linebreak=string} {-check-urls} {-only-check-new-urls} {-ignore-updates-for-html} {-add-url-command} {-skip-notes-with-isbn-and-issn} {-add-notes-with-isbn-and-issn} {-store-downloads=directory}\n", argv[0]);
-      exit(1);
+      usage(argv[0], 1);
    }
    for(int i = 2; i < argc; i++) {
       if( strncmp(argv[i], "-mapping=", 9) == 0 ) {
