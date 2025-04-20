@@ -33,6 +33,7 @@
 #include <assert.h>
 #include <string>
 
+#include "mappings.h"
 #include "node.h"
 #include "stringhandling.h"
 
@@ -84,6 +85,7 @@ class PublicationSet
                                             const std::string&              lineBreak,
                                             const bool                      xmlStyle,
                                             const char*                     downloadDirectory,
+                                            const Mappings&                 mappings,
                                             FILE*                           fh);
 
    private:
@@ -97,6 +99,7 @@ class PublicationSet
                                     const std::string&              lineBreak,
                                     const bool                      xmlStyle,
                                     const char*                     downloadDirectory,
+                                    const Mappings&                 mappings,
                                     FILE*                           fh);
 
    size_t maxEntries;

@@ -559,6 +559,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                                           const std::string&              lineBreak,
                                           const bool                      xmlStyle,
                                           const char*                     downloadDirectory,
+                                          const Mappings&                 mappings,
                                           FILE*                           fh)
 {
    std::string             result;
@@ -1059,6 +1060,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
                skip = true;
             }
          }
+         else if(action == "map") {   // Map from mappings
+            fputs("Y1\n", stderr);
+
+         }
          else if(action == "exec") {   // Execute command and pipe in the result
             if(i + 1 < printingTemplateSize) {
                StackEntry        entry = stack.back();
@@ -1228,6 +1233,7 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
                                                   const std::string&              lineBreak,
                                                   const bool                      xmlStyle,
                                                   const char*                     downloadDirectory,
+                                                  const Mappings&                 mappings,
                                                   FILE*                           fh)
 {
    Node* publication = nullptr;
@@ -1251,6 +1257,7 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
                                                printingTemplate,
                                                monthNames, nbsp, lineBreak, xmlStyle,
                                                downloadDirectory,
+                                               mappings,
                                                fh);
 
       fputs(string2utf8(processBackslash(customPrintingHeader), nbsp).c_str(), stdout);

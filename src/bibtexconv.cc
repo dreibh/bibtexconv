@@ -492,6 +492,7 @@ static std::vector<std::string> monthNames;
 static int handleInput(FILE*           fh,
                        PublicationSet& publicationSet,
                        const char*     downloadDirectory,
+                       const Mappings& mappings,
                        const bool      checkURLs,
                        const bool      checkNewURLsOnly,
                        const bool      ignoreUpdatesForHTML,
@@ -603,7 +604,7 @@ static int handleInput(FILE*           fh,
                   &publicationSet, namingTemplate,
                   customPrintingHeader, customPrintingTrailer,
                   customPrintingTemplate, monthNames, nbsp, lineBreak, useXMLStyle,
-                  downloadDirectory, stdout) == false) {
+                  downloadDirectory, mappings, stdout) == false) {
                result++;
             }
 
@@ -676,7 +677,8 @@ static int handleInput(FILE*           fh,
                FILE* includeFH = fopen(includeFileName, "r");
                if(includeFH != nullptr) {
                   result += handleInput(includeFH, publicationSet,
-                                        downloadDirectory, checkURLs, checkNewURLsOnly, ignoreUpdatesForHTML,
+                                        downloadDirectory, mappings,
+                                        checkURLs, checkNewURLsOnly, ignoreUpdatesForHTML,
                                         exportToBibTeX, exportToSeparateBibTeXs,
                                         exportToXML, exportToSeparateXMLs,
                                         skipNotesWithISBNandISSN, addNotesWithISBNandISSN,
@@ -954,7 +956,7 @@ int main(int argc, char** argv)
                   &publicationSet, "%u",
                   customPrintingHeader, customPrintingTrailer,
                   customPrintingTemplate, monthNames,
-                  nbsp, lineBreak, useXMLStyle, downloadDirectory,
+                  nbsp, lineBreak, useXMLStyle, downloadDirectory, mappings,
                   stdout) == false) {
                exit(1);
             }
@@ -964,7 +966,8 @@ int main(int argc, char** argv)
          fprintf(stderr, "Got %u publications from BibTeX file.\n",
                  (unsigned int)publicationSet.maxSize());
          result = handleInput(stdin, publicationSet,
-                              downloadDirectory, checkURLs, checkNewURLsOnly, ignoreUpdatesForHTML,
+                              downloadDirectory, mappings,
+                              checkURLs, checkNewURLsOnly, ignoreUpdatesForHTML,
                               exportToBibTeX, exportToSeparateBibTeXs,
                               exportToXML, exportToSeparateXMLs,
                               skipNotesWithISBNandISSN, addNotesWithISBNandISSN,
