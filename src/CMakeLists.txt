@@ -87,7 +87,8 @@ INSTALL(FILES       ietf2bibtex.bash-completion
         RENAME      ietf2bibtex)
 
 
-ADD_EXECUTABLE(t1 t1.cc mappings.cc)
+# TEST ONLY:
+# ADD_EXECUTABLE(t1 t1.cc mappings.cc)
 
 
 #############################################################################

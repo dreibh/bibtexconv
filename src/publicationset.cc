@@ -44,7 +44,7 @@ PublicationSet::PublicationSet(const size_t maxSize)
 {
    maxEntries = maxSize;
    publicationArray = new Node*[maxEntries];
-   assert(publicationArray != NULL);
+   assert(publicationArray != nullptr);
    clearAll();
 }
 
@@ -63,7 +63,7 @@ void PublicationSet::clearAll()
 {
    entries = 0;
    for(size_t i = 0;i < maxEntries; i++) {
-      publicationArray[i] = NULL;
+      publicationArray[i] = nullptr;
    }
 }
 
@@ -86,7 +86,7 @@ bool PublicationSet::add(Node* publication)
 // ###### Add all nodes from collection #####################################
 void PublicationSet::addAll(Node* publication)
 {
-   while(publication != NULL) {
+   while(publication != nullptr) {
       if(add(publication)) {
          publication->anchor = publication->keyword;
       }
@@ -96,8 +96,8 @@ void PublicationSet::addAll(Node* publication)
 
 
 // NOTE: PublicationSet::sort() will *NOT* be thread-safe!
-static const std::string* gSortKey       = NULL;
-static const bool*        gSortAscending = NULL;
+static const std::string* gSortKey       = nullptr;
+static const bool*        gSortAscending = nullptr;
 static size_t             gMaxSortLevels = 0;
 
 // ###### Node comparison function for qsort() ##############################
@@ -110,13 +110,13 @@ static int publicationNodeComparisonFunction(const void* ptr1, const void* ptr2)
       const Node* child1 = findChildNode((Node*)node1, gSortKey[i].c_str());
       const Node* child2 = findChildNode((Node*)node2, gSortKey[i].c_str());
       int result = 0;
-      if( (child1 == NULL) && (child2 != NULL) ) {
+      if( (child1 == nullptr) && (child2 != nullptr) ) {
          result = 1;
       }
-      if( (child1 != NULL) && (child2 == NULL) ) {
+      if( (child1 != nullptr) && (child2 == nullptr) ) {
          result = -1;
       }
-      else if( (child1 != NULL) && (child2 != NULL) ) {
+      else if( (child1 != nullptr) && (child2 != nullptr) ) {
          if(child1->value < child2->value) {
             result = -1;
          }
@@ -147,8 +147,8 @@ void PublicationSet::sort(const std::string* sortKey,
 
    qsort(publicationArray, entries, sizeof(Node*), publicationNodeComparisonFunction);
 
-   gSortKey       = NULL;
-   gSortAscending = NULL;
+   gSortKey       = nullptr;
+   gSortAscending = nullptr;
 }
 
 
@@ -172,7 +172,7 @@ std::string PublicationSet::makeDownloadFileName(const char*        downloadDire
       extension = ".txt";
    }
 
-   if( (downloadDirectory != NULL) && (strlen(downloadDirectory) != 0) ) {
+   if( (downloadDirectory != nullptr) && (strlen(downloadDirectory) != 0) ) {
       return((std::string)downloadDirectory + "/" + anchor + extension);
    }
    return(anchor + extension);
@@ -187,10 +187,10 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
                                                   const bool      addNotesWithISBNandISSN,
                                                   const bool      addUrlCommand)
 {
-   FILE* fh = NULL;
+   FILE* fh = nullptr;
    if(!separateFiles) {
       fh = fopen(fileNamePrefix, "w");
-      if(fh == NULL) {
+      if(fh == nullptr) {
          fprintf(stderr, "ERROR: Unable to create BibTeX file %s!\n", fileNamePrefix);
          return(false);
       }
@@ -199,7 +199,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
    for(size_t index = 0; index < publicationSet->size(); index++) {
       const Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
-         if(fh != NULL) {
+         if(fh != nullptr) {
             fprintf(fh, "%%%s\n\n", publication->keyword.c_str());
          }
       }
@@ -208,7 +208,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
             char fileName[1024];
             snprintf((char*)&fileName, sizeof(fileName), "%s%s.bib", fileNamePrefix, publication->keyword.c_str());
             fh = fopen(fileName, "w");
-            if(fh == NULL) {
+            if(fh == nullptr) {
                fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileName);
                return(false);
             }
@@ -219,10 +219,10 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
 
          bool  empty           = true;
          Node* child           = publication->child;
-         const Node* issn      = NULL;
-         const Node* isbn      = NULL;
+         const Node* issn      = nullptr;
+         const Node* isbn      = nullptr;
          const char* separator = "";
-         while(child != NULL) {
+         while(child != nullptr) {
             if(!empty) {
                separator = ",\n";
             }
@@ -281,7 +281,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
          }
 
          if( (addNotesWithISBNandISSN) &&
-             ((isbn != NULL) || (issn != NULL)) ) {
+             ((isbn != nullptr) || (issn != nullptr)) ) {
             if(isbn) {
                fprintf(fh, "%s\tnote = \"{ISBN} %s\"", separator, isbn->value.c_str());
             }
@@ -293,9 +293,9 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
          fputs("\n}\n\n", fh);
       }
 
-      if( (separateFiles) && (fh != NULL)) {
+      if( (separateFiles) && (fh != nullptr)) {
          fclose(fh);
-         fh = NULL;
+         fh = nullptr;
       }
    }
 
@@ -311,10 +311,10 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                                                const char*     fileNamePrefix,
                                                const bool      separateFiles)
 {
-   FILE* fh = NULL;
+   FILE* fh = nullptr;
    if(!separateFiles) {
       fh = fopen(fileNamePrefix, "w");
-      if(fh == NULL) {
+      if(fh == nullptr) {
          fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileNamePrefix);
          return(false);
       }
@@ -326,7 +326,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
       Node* publication = publicationSet->get(index);
 
       if(publication->value == "Comment") {
-         if(fh != NULL) {
+         if(fh != nullptr) {
             fprintf(fh, "<!-- %s -->\n\n", publication->keyword.c_str());
          }
       }
@@ -335,7 +335,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
             char fileName[1024];
             snprintf((char*)&fileName, sizeof(fileName), "%s%s.xml", fileNamePrefix, publication->keyword.c_str());
             fh = fopen(fileName, "w");
-            if(fh == NULL) {
+            if(fh == nullptr) {
                fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileName);
                return(false);
             }
@@ -362,7 +362,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          const Node* issn         = findChildNode(publication, "issn");
          const Node* doi          = findChildNode(publication, "doi");
 
-         if(url == NULL) {
+         if(url == nullptr) {
             fprintf(fh, "<reference anchor=\"%s\">\n",
                     labelToXMLLabel(publication->keyword).c_str());
          }
@@ -427,7 +427,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
                   seriesValue += ", ";
                }
                seriesValue += number->value;
-               number = NULL;
+               number = nullptr;
             }
          }
          if(number) {
@@ -504,9 +504,9 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
          fputs("</reference>\n\n", fh);
       }
 
-      if( (separateFiles) && (fh != NULL)) {
+      if( (separateFiles) && (fh != nullptr)) {
          fclose(fh);
-         fh = NULL;
+         fh = nullptr;
       }
    }
 
@@ -564,7 +564,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
    std::string             result;
    std::vector<StackEntry> stack;
    Node*                   child;
-   Node*                   author               = NULL;
+   Node*                   author               = nullptr;
    size_t                  authorIndex          = 0;
    size_t                  authorBegin          = std::string::npos;
    bool                    skip                 = false;
@@ -647,7 +647,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          else if( (action == "#") || (action == "download-file-name") ) {   // Download file name
             child = findChildNode(publication, "url.mime");
             result += makeDownloadFileName(downloadDirectory, publication->keyword,
-                                           (child != NULL) ? child->value : "");
+                                           (child != nullptr) ? child->value : "");
          }
          else if( (action == "a") || (action == "begin-author-loop") ) {   // Author LOOP BEGIN
             if(authorBegin != std::string::npos) {
@@ -737,12 +737,12 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          else if( (action == "n") || (action == "is-not-first-author?") ) {   // IS not first author
             if(skip == false) {
-               skip = ! ((author != NULL) && (authorIndex > 0));
+               skip = ! ((author != nullptr) && (authorIndex > 0));
             }
          }
          else if( (action == "l") || (action == "is-last-author?") ) {        // IS last author
             if(skip == false) {
-               skip = ! ((author != NULL) && (authorIndex + 3 >= author->arguments.size()));
+               skip = ! ((author != nullptr) && (authorIndex + 3 >= author->arguments.size()));
             }
          }
          else if( (action == "A") || (action == "end-author-loop") ) {   // Author LOOP EBD
@@ -751,11 +751,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
                exit(1);
             }
             authorIndex += 3;
-            if( (author != NULL) && (authorIndex < author->arguments.size()) ) {
+            if( (author != nullptr) && (authorIndex < author->arguments.size()) ) {
                i = authorBegin;
             }
             else {
-               author      = NULL;
+               author      = nullptr;
                authorIndex = 0;
             }
          }
@@ -861,7 +861,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          else if( (action == "O") || (action == "content-language") ) {   // Content Language
             child = findChildNode(publication, "content-language");
-            if(child == NULL) {   // No content language -> try same as "language" instead:
+            if(child == nullptr) {   // No content language -> try same as "language" instead:
                child = findChildNode(publication, "language");
             }
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
@@ -870,7 +870,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "language");
             if(child) {
                const char* language = getXMLLanguageFromLaTeX(child->value.c_str());
-               if(language != NULL) {
+               if(language != nullptr) {
                   result += std::string(language);
                } else { skip = true; }
             } else { skip = true; }
@@ -1004,14 +1004,14 @@ std::string PublicationSet::applyTemplate(Node*                           public
                      exit(1);
                   }
                }
-               const Node* prevChild = (prevPublication != NULL) ? findChildNode(prevPublication, type.c_str()) : NULL;
+               const Node* prevChild = (prevPublication != nullptr) ? findChildNode(prevPublication, type.c_str()) : nullptr;
                child                 = findChildNode(publication, type.c_str());
-               const Node* nextChild = (nextPublication != NULL) ? findChildNode(nextPublication, type.c_str()) : NULL;
+               const Node* nextChild = (nextPublication != nullptr) ? findChildNode(nextPublication, type.c_str()) : nullptr;
 
-               bool begin = (prevChild == NULL) ||
-                           ( (prevChild != NULL) && (child != NULL) && (prevChild->value != child->value) );
-               bool end = (nextChild == NULL) ||
-                           ( (child != NULL) && (nextChild != NULL) && (child->value != nextChild->value) );
+               bool begin = (prevChild == nullptr) ||
+                           ( (prevChild != nullptr) && (child != nullptr) && (prevChild->value != child->value) );
+               bool end = (nextChild == nullptr) ||
+                           ( (child != nullptr) && (nextChild != nullptr) && (child->value != nextChild->value) );
                switch(action[0]) {
                   case 'b':
                      skip = ! begin;
@@ -1069,7 +1069,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   result.erase(entry.pos);   // Remove the written "exec" string.
 
                   FILE* pipe = popen(call.c_str(), "r");
-                  if(pipe == NULL) {
+                  if(pipe == nullptr) {
                      fprintf(stderr, "Unable to run %s!\n", call.c_str());
                      exit(1);
                   }
@@ -1230,7 +1230,7 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
                                                   const char*                     downloadDirectory,
                                                   FILE*                           fh)
 {
-   Node* publication = NULL;
+   Node* publication = nullptr;
    gNumber           = 0;
    for(size_t index = 0; index < publicationSet->size(); index++) {
       // ====== Get prev, current and next publications =====================
@@ -1240,10 +1240,10 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
       Node* prevPublication = publication;
       publication = publicationSet->get(index);
       size_t nextPublicationIndex = 1;
-      Node* nextPublication = (index + nextPublicationIndex< publicationSet->size()) ? publicationSet->get(index + nextPublicationIndex) : NULL;
-      while( (nextPublication != NULL) && (nextPublication->value == "Comment")) {
+      Node* nextPublication = (index + nextPublicationIndex< publicationSet->size()) ? publicationSet->get(index + nextPublicationIndex) : nullptr;
+      while( (nextPublication != nullptr) && (nextPublication->value == "Comment")) {
          nextPublicationIndex++;
-         nextPublication = (index + nextPublicationIndex< publicationSet->size()) ? publicationSet->get(index + nextPublicationIndex) : NULL;
+         nextPublication = (index + nextPublicationIndex< publicationSet->size()) ? publicationSet->get(index + nextPublicationIndex) : nullptr;
       }
 
       const std::string result = applyTemplate(publication, prevPublication, nextPublication,

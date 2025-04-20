@@ -57,7 +57,7 @@ extern Node* bibTeXFile;
 static unsigned long long getMicroTime()
 {
   struct timeval tv;
-  gettimeofday(&tv,NULL);
+  gettimeofday(&tv,nullptr);
   return(((unsigned long long)tv.tv_sec * (unsigned long long)1000000) +
          (unsigned long long)tv.tv_usec);
 }
@@ -187,7 +187,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  const bool      checkNewURLsOnly,
                                  const bool      ignoreUpdatesForHTML)
 {
-   if(downloadDirectory != NULL) {
+   if(downloadDirectory != nullptr) {
       if( (mkdir(downloadDirectory, S_IRWXU|S_IXGRP|S_IRGRP|S_IXOTH|S_IROTH) < 0) &&
           (errno != EEXIST) ) {
          fprintf(stderr, "ERROR: Failed to create download directory: %s!\n",
@@ -197,7 +197,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
    }
 
    CURL* curl = curl_easy_init();
-   if(curl == NULL) {
+   if(curl == nullptr) {
       fputs("ERROR: Failed to initialize libcurl!\n", stderr);
       exit(1);
    }
@@ -210,18 +210,18 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
       }
       Node* publication = publicationSet->get(index);
       Node* url         = findChildNode(publication, "url");
-      if(url != NULL) {
+      if(url != nullptr) {
          const Node* urlSize    = findChildNode(publication, "url.size");
          const Node* urlMime    = findChildNode(publication, "url.mime");
          const Node* urlChecked = findChildNode(publication, "url.checked");
-         if( (urlSize != NULL) && (urlMime != NULL) && (urlChecked != NULL) ) {
-            if(downloadDirectory != NULL) {
+         if( (urlSize != nullptr) && (urlMime != nullptr) && (urlChecked != nullptr) ) {
+            if(downloadDirectory != nullptr) {
                const std::string downloadFileName =
                   PublicationSet::makeDownloadFileName(downloadDirectory,
                                                        publication->keyword,
                                                        urlMime->value);
                FILE* downloadFH = fopen(downloadFileName.c_str(), "rb");
-               if(downloadFH != NULL) {
+               if(downloadFH != nullptr) {
                   fclose(downloadFH);
                   fprintf(stderr, "Skipping URL of %s (already available as %s).\n",
                           publication->keyword.c_str(),
@@ -240,7 +240,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
          char downloadFileName[256];
          char mimeFileName[256];
          char metaFileName[256];
-         if(downloadDirectory != NULL) {
+         if(downloadDirectory != nullptr) {
             snprintf((char*)&downloadFileName, sizeof(downloadFileName), "%s/%s", downloadDirectory, "/bibtexconv-dXXXXXX");
          }
          else {
@@ -253,9 +253,9 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
          const int mfd = mkstemp((char*)&mimeFileName);
          if( (dfd > 0) && (mfd > 0) ) {
             FILE* downloadFH = fopen(downloadFileName, "w+b");
-            if(downloadFH != NULL) {
+            if(downloadFH != nullptr) {
                FILE* headerFH = tmpfile();
-               if(headerFH != NULL) {
+               if(headerFH != nullptr) {
                   bool resultIsGood = downloadFile(curl, url->value.c_str(), headerFH, downloadFH, errors);
                   if(resultIsGood) {
                      // Special handling for dynamic URLs of some publishers
@@ -267,7 +267,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                      unsigned int  md5Length = EVP_MD_size(EVP_md5());
                      unsigned char md5[EVP_MD_size(EVP_md5())];
                      EVP_MD_CTX*   md5Context = EVP_MD_CTX_new();
-                     EVP_DigestInit_ex(md5Context, EVP_md5(), NULL);
+                     EVP_DigestInit_ex(md5Context, EVP_md5(), nullptr);
 
                      // ====== Compute size and MD5 =========================
                      while(!feof(downloadFH)) {
@@ -285,9 +285,9 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                         std::string command = format("/usr/bin/file --mime-type -b %s >%s", downloadFileName, mimeFileName);
                         if(system(command.c_str()) == 0) {
                            FILE* mimeFH = fopen(mimeFileName, "r");
-                           if(mimeFH != NULL) {
+                           if(mimeFH != nullptr) {
                               char input[1024];
-                              if(fgets((char*)&input, sizeof(input) - 1, mimeFH) != NULL) {
+                              if(fgets((char*)&input, sizeof(input) - 1, mimeFH) != nullptr) {
                                  mimeString = std::string(input);
                                  if( (mimeString.size() > 0) &&
                                      (mimeString[mimeString.size() - 1] == '\n') ) {
@@ -321,12 +321,12 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                         const Node* urlMD5Node  = findChildNode(publication, "url.md5");
 
                         bool failed = false;
-                        if((urlMimeNode != NULL) && (urlMimeNode->value != mimeString)) {
+                        if((urlMimeNode != nullptr) && (urlMimeNode->value != mimeString)) {
                            if( (urlMimeNode->value == "text/html") &&
                                (mimeString == "application/pdf") ) {
                               fprintf(stderr, "\nNOTE: change from HTML to PDF -> just updating entry\n");
-                              urlSizeNode = NULL;
-                              urlMD5Node  = NULL;
+                              urlSizeNode = nullptr;
+                              urlMD5Node  = nullptr;
                            }
                            else {
                               fprintf(stderr, "UPDATED %s: old mime type has been %s, new type mime is %s\n",
@@ -334,9 +334,9 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                                       urlMimeNode->value.c_str(), mimeString.c_str());
                            }
                         }
-                        if( (!failed) && (urlSizeNode != NULL) && (urlSizeNode->value != sizeString) ) {
+                        if( (!failed) && (urlSizeNode != nullptr) && (urlSizeNode->value != sizeString) ) {
                             if( (ignoreUpdatesForHTML == true) &&
-                                ((urlMimeNode != NULL) &&
+                                ((urlMimeNode != nullptr) &&
                                  ((urlMimeNode->value == "text/html") ||
                                   (urlMimeNode->value == "application/xml"))) ) {
                                md5String = "ignore";
@@ -348,10 +348,10 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                                       urlSizeNode->value.c_str(), sizeString.c_str());
                             }
                         }
-                        if( (!failed) && (urlMD5Node != NULL) && (urlMD5Node->value != "ignore") &&
+                        if( (!failed) && (urlMD5Node != nullptr) && (urlMD5Node->value != "ignore") &&
                            (urlMD5Node->value != md5String)) {
                             if( (ignoreUpdatesForHTML == true) &&
-                                ((urlMimeNode != NULL) &&
+                                ((urlMimeNode != nullptr) &&
                                  ((urlMimeNode->value == "text/html") ||
                                   (urlMimeNode->value == "application/xml"))) ) {
                                md5String = "ignore";
@@ -369,17 +369,17 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                            std::string command = format("/usr/bin/pdfinfo %s >%s", downloadFileName, metaFileName);
                            if(system(command.c_str()) == 0) {
                               FILE* metaFH = fopen(metaFileName, "r");
-                              if(metaFH != NULL) {
+                              if(metaFH != nullptr) {
                                  while(!feof(metaFH)) {
                                     char input[1024];
-                                    if(fgets((char*)&input, sizeof(input) - 1, metaFH) != NULL) {
+                                    if(fgets((char*)&input, sizeof(input) - 1, metaFH) != nullptr) {
                                        // printf("IN=%s",input);
                                        if(strncmp(input, "Pages:", 6) == 0) {
                                           addOrUpdateChildNode(publication, "numpages", format("%u", atol((const char*)&input[6])).c_str());
                                        }
                                        else if(strncmp(input, "Keywords:", 9) == 0) {
                                           Node* keywords = findChildNode(publication, "keywords");
-                                          if(keywords == NULL) {
+                                          if(keywords == nullptr) {
                                              // If there are no "keywords", add "url.keywords".
                                              // They can be renamed manually after a check.
                                              std::string keywords((const char*)&input[9]);
@@ -405,7 +405,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                            // ====== Update size, mime type and MD5 =========
                            addOrUpdateChildNode(publication, "url.size", sizeString.c_str());
                            addOrUpdateChildNode(publication, "url.mime", mimeString.c_str());
-                           if( (urlMD5Node == NULL) || (urlMD5Node->value != "ignore")) {
+                           if( (urlMD5Node == nullptr) || (urlMD5Node->value != "ignore")) {
                               addOrUpdateChildNode(publication, "url.md5",  md5String.c_str());
                            }
 
@@ -421,9 +421,9 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                                    sizeString.c_str(), mimeString.c_str(), md5String.c_str());
 
                            // ====== Move downloaded file ===================
-                           if(downloadDirectory != NULL) {
+                           if(downloadDirectory != nullptr) {
                               fclose(downloadFH);
-                              downloadFH = NULL;
+                              downloadFH = nullptr;
                               const std::string newFileName =
                                  PublicationSet::makeDownloadFileName(downloadDirectory, publication->keyword, mimeString);
                               if(rename(downloadFileName, newFileName.c_str()) < 0) {
@@ -441,15 +441,15 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                      }
                   }
                   fclose(headerFH);
-                  headerFH = NULL;
+                  headerFH = nullptr;
                }
                else {
                   fputs("ERROR: Failed to create temporary header file!\n", stderr);
                   errors++;
                }
-               if(downloadFH != NULL) {
+               if(downloadFH != nullptr) {
                   fclose(downloadFH);
-                  downloadFH = NULL;
+                  downloadFH = nullptr;
                   unlink(downloadFileName);
                }
                unlink(mimeFileName);
@@ -473,7 +473,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
    }
 
    curl_easy_cleanup(curl);
-   curl = NULL;
+   curl = nullptr;
 
    return(errors);
 }
@@ -674,7 +674,7 @@ static int handleInput(FILE*           fh,
             if(recursionLevel <= 9) {
                const char* includeFileName = (const char*)&input[8];
                FILE* includeFH = fopen(includeFileName, "r");
-               if(includeFH != NULL) {
+               if(includeFH != nullptr) {
                   result += handleInput(includeFH, publicationSet,
                                         downloadDirectory, checkURLs, checkNewURLsOnly, ignoreUpdatesForHTML,
                                         exportToBibTeX, exportToSeparateBibTeXs,
@@ -763,12 +763,12 @@ int main(int argc, char** argv)
    bool        skipNotesWithISBNandISSN = false;
    bool        addNotesWithISBNandISSN  = false;
    bool        addUrlCommand            = false;
-   const char* exportToBibTeX           = NULL;
-   const char* exportToSeparateBibTeXs  = NULL;
-   const char* exportToXML              = NULL;
-   const char* exportToSeparateXMLs     = NULL;
-   const char* exportToCustom           = NULL;
-   const char* downloadDirectory        = NULL;
+   const char* exportToBibTeX           = nullptr;
+   const char* exportToSeparateBibTeXs  = nullptr;
+   const char* exportToXML              = nullptr;
+   const char* exportToSeparateXMLs     = nullptr;
+   const char* exportToCustom           = nullptr;
+   const char* downloadDirectory        = nullptr;
    Mappings    mappings;
 
    monthNames.push_back("January");
@@ -892,7 +892,7 @@ int main(int argc, char** argv)
    if(optind < argc) {
       while(optind < argc) {
          yyin = fopen(argv[optind], "r");
-         if(yyin == NULL) {
+         if(yyin == nullptr) {
             fprintf(stderr, "ERROR: Unable to open BibTeX input file %s!\n", argv[optind]);
             exit(1);
          }
@@ -974,7 +974,7 @@ int main(int argc, char** argv)
    }
    if(bibTeXFile) {
       freeNode(bibTeXFile);
-      bibTeXFile = NULL;
+      bibTeXFile = nullptr;
    }
 
    return result;

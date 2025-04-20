@@ -182,7 +182,7 @@ const char* getXMLLanguageFromLaTeX(const char* language)
          return(languageTable[i].xml);
       }
    }
-   return(NULL);
+   return(nullptr);
 }
 
 

@@ -338,7 +338,7 @@ void unifyISSN(Node* publication, Node* issn)
 void unifyDate(Node* publication, Node* year, Node* month, Node* day)
 {
    int yearNumber = 1;
-   if(year != NULL) {
+   if(year != nullptr) {
       yearNumber = atol(year->value.c_str());
       if((yearNumber < 1700) || (yearNumber > 2030)) {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"year\" section (year=%d?)!\n" ,
@@ -354,7 +354,7 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
 
    int monthNumber = 0;
    int maxDays     = 0;
-   if(month != NULL) {
+   if(month != nullptr) {
       if(month->value == "jan") {
          monthNumber = 1;   maxDays = 31;
       }
@@ -407,9 +407,9 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
       month->value  = format("%02d", monthNumber);
    }
 
-   if(day != NULL) {
+   if(day != nullptr) {
       day->number = atol(day->value.c_str());
-      if(month == NULL) {
+      if(month == nullptr) {
          fprintf(stderr, "WARNING: Entry %s has no \"month\" section, but \"day\"!\n" ,
                  publication->keyword.c_str());
       }

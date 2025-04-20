@@ -41,7 +41,7 @@ int main(int argc, char** argv)
    }
 
    const MappingEntry* e = m.findMapping("author-urls");
-   assert(e != NULL);
+   assert(e != nullptr);
    printf("=> %s\n", m.map(e, "Dreibholz, Thomas").c_str());
    printf("=> %s\n", m.map(e, "Test, Thomas").c_str());
 

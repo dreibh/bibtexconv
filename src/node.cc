@@ -41,14 +41,14 @@
 static Node* createNode(const char* label)
 {
    Node* node = new Node;
-   if(node == NULL) {
+   if(node == nullptr) {
       yyerror("out of memory");
    }
    node->keyword  = label;
    node->number   = 0;
-   node->prev     = NULL;
-   node->next     = NULL;
-   node->child    = NULL;
+   node->prev     = nullptr;
+   node->next     = nullptr;
+   node->child    = nullptr;
    node->priority = 0;
    return(node);
 }
@@ -61,10 +61,10 @@ void freeNode(Node* node)
    Node* child;
    Node* nextChild;
 
-   while(node != NULL) {
+   while(node != nullptr) {
       next = node->next;
       child = node->child;
-      while(child != NULL) {
+      while(child != nullptr) {
          nextChild = child->next;
          delete child;
          child = nextChild;
@@ -79,7 +79,7 @@ void freeNode(Node* node)
 size_t countNodes(const Node* node)
 {
    size_t count = 0;
-   while(node != NULL) {
+   while(node != nullptr) {
       count++;
       node = node->next;
    }
@@ -96,12 +96,12 @@ void dumpNode(Node* node)
    do {
       printf("[%s] %s:\n", node->value.c_str(), node->keyword.c_str());
       child = node->child;
-      while(child != NULL) {
+      while(child != nullptr) {
          printf("\t%s = %s\n", child->keyword.c_str(), child->value.c_str());
          child = child->next;
       }
       node = node->next;
-   } while(node != NULL);
+   } while(node != nullptr);
    puts("--------------");
 }
 
@@ -111,13 +111,13 @@ Node* findNode(Node* node, const char* keyword)
 {
    const std::string keywordToFind(keyword);
 
-   while(node != NULL) {
+   while(node != nullptr) {
       if(node->keyword == keywordToFind) {
          return(node);
       }
       node = node->next;
    }
-   return(NULL);
+   return(nullptr);
 }
 
 
@@ -128,13 +128,13 @@ Node* findChildNode(Node* node, const char* childKeyword)
    const std::string keywordToFind(childKeyword);
 
    child = node->child;
-   while(child != NULL) {
+   while(child != nullptr) {
       if(child->keyword == keywordToFind) {
          return(child);
       }
       child = child->next;
    }
-   return(NULL);
+   return(nullptr);
 }
 
 
@@ -146,7 +146,7 @@ size_t countChildNodes(const Node* node, const char* childKeyword)
    size_t            count = 0;
 
    child = node->child;
-   while(child != NULL) {
+   while(child != nullptr) {
       if(child->keyword == keywordToFind) {
          count++;
       }
@@ -161,13 +161,13 @@ Node* makePublicationCollection(Node* node1, Node* node2)
 {
    // ====== If there is already an existing node, clear and use it =========
    Node* n = node2;
-   while(n != NULL) {
+   while(n != nullptr) {
       if(n->keyword == node1->keyword) {
          // fprintf(stderr, "NOTE: Duplicate: %s\n", n->keyword.c_str());
 
          const Node* oldTitle = findChildNode(node1, "title");
          Node*       newTitle = findChildNode(n, "title");
-         if( (oldTitle != NULL) && (newTitle != NULL) && (oldTitle->value != newTitle->value) ) {
+         if( (oldTitle != nullptr) && (newTitle != nullptr) && (oldTitle->value != newTitle->value) ) {
             fprintf(stderr, "NOTE: Keeping old title:\nOld = \"%s\"\nNew = \"%s\"\n",
                     oldTitle->value.c_str(),
                     newTitle->value.c_str());
@@ -177,7 +177,7 @@ Node* makePublicationCollection(Node* node1, Node* node2)
          // node1 is old. Remove its contents, but reuse it for newer data.
          freeNode(node1->child);
          node1->child = n->child;
-         n->child     = NULL;
+         n->child     = nullptr;
 
          // Get rid of old node n.
          if(n->prev) {
@@ -228,7 +228,7 @@ static void sortChildren(Node* node)
       const size_t children = countNodes(child);
       Node*        sortedChildrenSet[children];
       size_t       i = 0;
-      while(child != NULL) {
+      while(child != nullptr) {
          sortedChildrenSet[i++] = child;
          child = child->next;
       }
@@ -240,13 +240,13 @@ static void sortChildren(Node* node)
             sortedChildrenSet[i]->next = sortedChildrenSet[i + 1];
          }
          else {
-            sortedChildrenSet[i]->next = NULL;
+            sortedChildrenSet[i]->next = nullptr;
          }
          if(i > 0) {
             sortedChildrenSet[i]->prev = sortedChildrenSet[i - 1];
          }
          else {
-            sortedChildrenSet[i]->prev = NULL;
+            sortedChildrenSet[i]->prev = nullptr;
          }
       }
       node->child = sortedChildrenSet[0];
@@ -258,9 +258,9 @@ static void sortChildren(Node* node)
 Node* addOrUpdateChildNode(Node* node, const char* childKeyword, const char* value)
 {
    Node* child = findChildNode(node, childKeyword);
-   if(child == NULL) {
+   if(child == nullptr) {
       child = makePublicationInfoItem(childKeyword, value);
-      assert(child != NULL);
+      assert(child != nullptr);
       child->next = node->child;
       node->child = child;
       sortChildren(node);
@@ -348,7 +348,7 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       }
 
       Node* author = findChildNode(publication, "author");
-      if(author != NULL) {
+      if(author != nullptr) {
          unifyAuthor(publication, author);
       }
       else {
@@ -356,44 +356,44 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       }
 
       Node* booktitle = findChildNode(publication, "booktitle");
-      if(booktitle != NULL) {
+      if(booktitle != nullptr) {
          unifyBookTitle(publication, booktitle);
       }
       Node* howPublished = findChildNode(publication, "howPublished");
-      if(howPublished != NULL) {
+      if(howPublished != nullptr) {
          unifyBookTitle(publication, howPublished);
       }
       Node* journal = findChildNode(publication, "journal");
-      if(journal != NULL) {
+      if(journal != nullptr) {
          unifyBookTitle(publication, journal);   // Same as for booktitle!
       }
       Node* pages = findChildNode(publication, "pages");
-      if(pages != NULL) {
+      if(pages != nullptr) {
          unifyPages(publication, pages);
       }
       Node* numpages = findChildNode(publication, "numpages");
-      if(numpages != NULL) {
+      if(numpages != nullptr) {
          unifyNumPages(publication, numpages);
       }
 
       Node* isbn = findChildNode(publication, "isbn");
-      if(isbn != NULL) {
+      if(isbn != nullptr) {
          unifyISBN(publication, isbn);
       }
       Node* issn = findChildNode(publication, "issn");
-      if(issn != NULL) {
+      if(issn != nullptr) {
          unifyISSN(publication, issn);
       }
 
       Node* year  = findChildNode(publication, "year");
       Node* month = findChildNode(publication, "month");
       Node* day   = findChildNode(publication, "day");
-      if( (year != NULL) || (month != NULL) || (day != NULL) ) {
+      if( (year != nullptr) || (month != nullptr) || (day != nullptr) ) {
          unifyDate(publication, year, month, day);
       }
 
       Node* url = findChildNode(publication, "url");
-      if(url != NULL) {
+      if(url != nullptr) {
          unifyURL(publication, url);
       }
    }
@@ -405,8 +405,8 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
 // ###### Make publication info #############################################
 Node* makePublicationInfo(Node* node1, Node* node2)
 {
-   if(node1 != NULL) {
-      if(node2 != NULL) {
+   if(node1 != nullptr) {
+      if(node2 != nullptr) {
          node2->prev = node1;
          node1->next = node2;
       }
