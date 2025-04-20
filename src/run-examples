@@ -25,7 +25,7 @@ bibtexconv ExampleReferences.bib -export-to-bibtex=UpdatedReferences.bib -check-
 
 bibtexconv ExampleReferences.bib <web-example1.export >MyPublications1.html
 
-bibtexconv ExampleReferences.bib -mapping=author-urls:authors.list:Name:URL <web-example2.export >MyPublications2.html
+bibtexconv ExampleReferences.bib -mapping=author-url:authors.list:Name:URL <web-example2.export >MyPublications2.html
 
 bibtexconv ExampleReferences.bib <text-example.export >MyPublications.txt
 

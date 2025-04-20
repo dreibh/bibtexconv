@@ -787,13 +787,13 @@ int main(int argc, char** argv)
    monthNames.push_back("December");
 
    const static struct option long_options[] = {
-      { "mapping",                       required_argument, 0, 'm' },
       { "export-to-bibtex",              required_argument, 0, 'B' },
       { "export-to-separate-bibtexs",    required_argument, 0, 'b' },
       { "export-to-xml",                 required_argument, 0, 'X' },
       { "export-to-separate-xmls",       required_argument, 0, 'x' },
       { "export-to-custom",              required_argument, 0, 'C' },
       { "store-downloads",               required_argument, 0, 'D' },
+      { "mapping",                       required_argument, 0, 'm' },
 
       { "nbsp",                          required_argument, 0, 's' },
       { "linebreak",                     required_argument, 0, 'l' },
@@ -805,7 +805,6 @@ int main(int argc, char** argv)
       { "skip-notes-with-isbn-and-issn", no_argument,       0, 'i' },
       { "add-notes-with-isbn-and-issn",  no_argument,       0, 'I' },
 
-      { "",                              no_argument,       0, '-' },
       { "help",                          no_argument,       0, 'h' },
       { "version",                       no_argument,       0, 'v' },
       {  nullptr,                        0,                 0, 0   }
@@ -813,10 +812,7 @@ int main(int argc, char** argv)
 
    int option;
    int longIndex;
-   while( (option = getopt_long(argc, argv, "m:B:b:X:x:C:D:M:s:l:nUuwaiI-hv", long_options, &longIndex)) != -1 ) {
-      // NOTE: optind already points to the next option here!
-      //       For options with two or more parameters, this
-      //       will be the *second* parameter!
+   while( (option = getopt_long(argc, argv, "B:b:X:x:C:D:m:s:l:nUuwaiIhv", long_options, &longIndex)) != -1 ) {
       switch(option) {
          case 'B':
             exportToBibTeX = optarg;
@@ -836,12 +832,14 @@ int main(int argc, char** argv)
          case 'D':
             downloadDirectory = optarg;
           break;
-         case 'M': {
+         case 'm': {
             std::vector<std::string> mappingArguments;
             splitString(mappingArguments, std::string(optarg));
             if(mappingArguments.size() == 4) {
-               mappings.addMapping(mappingArguments[0], mappingArguments[1],
-                                   mappingArguments[2], mappingArguments[3]);
+               if(!mappings.addMapping(mappingArguments[0], mappingArguments[1],
+                                      mappingArguments[2], mappingArguments[3])) {
+                  exit(1);
+               }
             }
             else {
                fprintf(stderr, "ERROR: Bad mapping specification %s!\n", optarg);
@@ -883,8 +881,6 @@ int main(int argc, char** argv)
          case 'h':
             usage(argv[0], 0);
           break;
-         case '-':
-          break;
          default:
           break;
       }
@@ -892,7 +888,7 @@ int main(int argc, char** argv)
 
    int result = 0;
    if(optind < argc) {
-      while(optind < argc) {
+      do {
          yyin = fopen(argv[optind], "r");
          if(yyin == nullptr) {
             fprintf(stderr, "ERROR: Unable to open BibTeX input file %s!\n", argv[optind]);
@@ -904,13 +900,12 @@ int main(int argc, char** argv)
             break;
          }
          optind++;
-      }
+      } while(optind < argc);
    }
    else {
       fputs("ERROR: No BibTeX input file provided!\n", stderr);
       exit(1);
    }
-
 
    if(result == 0) {
       PublicationSet publicationSet(countNodes(bibTeXFile));

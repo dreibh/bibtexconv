@@ -188,7 +188,6 @@ bool Mappings::addMapping(const std::string& mappingName,
             if(columns == columnsToProcess) {
                const char* key   = columnArray[keyColumnIndex];
                const char* value = columnArray[valueColumnIndex];
-               printf("OK <%s> <%s>\n", key,value);
                mappingEntry->Mappings.insert(
                   std::pair<std::string, std::string>(
                      std::string(key), std::string(value)));
@@ -223,14 +222,16 @@ const MappingEntry* Mappings::findMapping(const std::string& mappingName) const
 
 
 // ###### Apply mapping #####################################################
-const std::string& Mappings::map(const MappingEntry* mappingEntry,
-                                 const std::string& input) const
+bool Mappings::map(const MappingEntry* mappingEntry,
+                   const std::string&  key,
+                   std::string&        value) const
 {
    assert(mappingEntry != nullptr);
    std::map<const std::string, const std::string>::const_iterator found =
-      mappingEntry->Mappings.find(input);
+      mappingEntry->Mappings.find(key);
    if(found != mappingEntry->Mappings.end()) {
-      return found->second;
+      value = found->second;
+      return true;
    }
-   return input;
+   return false;
 }

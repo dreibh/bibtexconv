@@ -77,9 +77,22 @@ template+ <div>
 template+ <p class=\"description\">
 
 # ***** Authors
-template+ %{begin-author-loop}[%{is-first-author?}|%{is-last-author?} and |; ]
-template+ [./get-author-url authors.list '%{author-family-name}[, %{author-give-name}]' '%{author-family-name}[, %{author-give-name}]'%{exec}]
-template+ %{end-author-loop}:
+# Begin of author loop:
+template+ %{begin-author-loop}
+# Separator, for first/last/middle author:
+template+ [%{is-first-author?}|%{is-last-author?} and |; ]
+# Add the current author form the loop.
+template+ [
+# First, try create link to author (via mapping "author-url") :
+template+ <a href="(%{author-family-name}[, %{author-give-name}]%{map:author-url})">
+template+ %{author-family-name}[, %{author-give-name}]
+template+ </a>
+# If there is no mapping, use plain text instead:
+template+ |%{author-family-name}[, %{author-give-name}]
+template+ ]
+# End of author loop:
+template+ %{end-author-loop}
+template+ :
 
 # ***** Title
 template+ <span[ xml:lang="%{xml-language}" lang="%{xml-language}"]>

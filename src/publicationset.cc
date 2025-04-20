@@ -1060,9 +1060,22 @@ std::string PublicationSet::applyTemplate(Node*                           public
                skip = true;
             }
          }
-         else if(action == "map") {   // Map from mappings
-            fputs("Y1\n", stderr);
-
+         else if(action.substr(0, 4) == "map:") {   // Map from mappings
+            // fputs("Y1\n", stderr);
+            const std::string mappingName(action.substr(4));
+            const MappingEntry* mappingEntry = mappings.findMapping(mappingName);
+            if(mappingEntry == nullptr) {
+               fprintf(stderr, "ERROR: Mapping \"%s\" does not exist! Forgot parameter \"--mapping %s:mapping_file:key_column:value_column\"?\n", mappingName.c_str(), mappingName.c_str());
+               exit(1);
+            }
+            StackEntry        entry = stack.back();
+            const std::string key  = result.substr(entry.pos);
+            std::string       value;
+            skip = !mappings.map(mappingEntry, key, value);
+            if(!skip) {
+               result.erase(entry.pos);   // Remove the written key string.
+               result += value;
+            }
          }
          else if(action == "exec") {   // Execute command and pipe in the result
             if(i + 1 < printingTemplateSize) {
@@ -1123,20 +1136,24 @@ std::string PublicationSet::applyTemplate(Node*                           public
          }
          i++;
       }
-      else if(printingTemplate[i] == '[') {
+      else if( (printingTemplate[i] == '[') ||
+               (printingTemplate[i] == '(') ) {
          if(stack.empty()) {
             skip = false;   // Up to now, everything will be accepted
          }
          struct StackEntry entry = { result.size(), skip };
          stack.push_back(entry);
       }
-      else if(printingTemplate[i] == ']') {
+      else if( (printingTemplate[i] == ']') ||
+               (printingTemplate[i] == ')') ) {
          if(!stack.empty()) {
             StackEntry entry = stack.back();
             stack.pop_back();
             if(skip == true) {
                result.erase(entry.pos);
-               skip = entry.skip;
+               if(printingTemplate[i] == ']') {
+                  skip = entry.skip;
+               }
             }
          }
          else {

@@ -50,8 +50,9 @@ class Mappings
                    const std::string& keyColumn,
                    const std::string& valueColumn);
    const MappingEntry* findMapping(const std::string& mappingName) const;
-   const std::string& map(const MappingEntry* mappingEntry,
-                          const std::string&  input) const;
+   bool map(const MappingEntry* mappingEntry,
+            const std::string&  key,
+            std::string&        value) const;
 
    private:
    std::map<const std::string, MappingEntry*> MappingSet;

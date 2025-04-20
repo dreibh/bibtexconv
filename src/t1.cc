@@ -24,8 +24,14 @@ int main(int argc, char** argv)
 
    const MappingEntry* e = m.findMapping("author-urls");
    assert(e != nullptr);
-   printf("=> %s\n", m.map(e, "Dreibholz, Thomas").c_str());
-   printf("=> %s\n", m.map(e, "Test, Thomas").c_str());
+   std::string value;
+
+   value = "DEFAULT";
+   m.map(e, "Dreibholz, Thomas", value);
+   printf("=> %s\n", value.c_str());
+   value = "DEFAULT";
+   m.map(e, "Test, Thomas", value);
+   printf("=> %s\n", value.c_str());
 
    return 0;
 }
