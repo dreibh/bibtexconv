@@ -1,0 +1,148 @@
+# Example for export to XHTML 1.1
+
+# Select entries:
+citeAll
+
+# Usually, there should be a more fine-granular selection.
+# For convenience, it is useful to make them in included files.
+#include dreibholz-others.export
+#include dreibholz-papers.export
+#include dreibholz-rfcs.export
+#include dreibholz-thesises.export
+#include dreibholz-id-workinggroup.export
+#include dreibholz-id-individual.export
+#include dreibholz-journals.export
+#include dreibholz-posters-and-demos.export
+#include dreibholz-talks.export
+
+sort year/D month/D day/D title/A
+
+
+# ###########################################################################
+# #### Export to XHTML 1.1                                               ####
+# ###########################################################################
+
+linebreak <br />
+
+echo <?xml version="1.0" encoding="utf-8" ?>\n
+echo <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">\n
+echo <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">\n
+echo <head>\n
+echo <title>Publications</title>\n
+echo <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />\n
+echo <meta name="Author" content="BibTeXConv" />\n
+echo <meta name="Description" content="List of Publications" />\n
+echo <meta name="Keywords" content="Publications" />\n
+echo <meta name="Classification" content="Publications" />\n
+echo <meta name="Viewport" content="width=device-width; initial-scale=1" />\n
+echo <link rel="stylesheet" href="https://www.nntb.no/~dreibh/stylesheet.css" type="text/css" />\n
+
+echo <script type="text/javascript" src="publication-list-treeview.js"></script>\n
+
+echo <style>\n
+echo li.treeview-collapsed {\n
+echo    list-style-image: url(Images/ListItem-Collapsed.svg);\n
+echo }\n
+
+echo li.treeview-expanded {\n
+echo    list-style-image: url(Images/ListItem-Expanded.svg);\n
+echo }\n
+echo </style>\n
+
+echo </head>\n
+
+echo <body>\n\n
+
+
+echo <!-- ###### Publications ############################################# -->\n
+echo <h2 id="Publications">Publications</h2>\n\n
+
+
+# ====== Set header and trailer of each publication entry ===================
+# ----- Encode strings in XML style, e.g. <, >, &, etc.--------------
+xmlStyle
+# ----- Non-breakable space character -------------------------------
+nbsp &nbsp;
+
+
+# ====== This is the printing template ======================================
+templatenew
+
+# ***** Begin of Subsection: YEAR
+template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
+
+# ****** Begin of Entry
+template+ <li class="treeview-collapsed">
+template+ <div>
+template+ <p class=\"description\">
+
+# ***** Authors
+template+ %{begin-author-loop}[%{is-first-author?}|%{is-last-author?} and |; ]
+template+ [./get-author-url authors.list '%{author-family-name}[, %{author-give-name}]' '%{author-family-name}[, %{author-give-name}]'%{exec}]
+template+ %{end-author-loop}:
+
+# ***** Title
+template+ <span[ xml:lang="%{xml-language}" lang="%{xml-language}"]>
+template+  [``<a[ type="%{url-mime}"] href="%{url}">%{title}</a>´´|``%{title}´´]
+template+ </span>
+
+# ****** Download
+template+ [%{url}%{is-not?} (|%{language}%{is-not?} (]
+template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB[, %{numpages}~pages]]
+
+# ****** Language
+template+ [%{url-size-KiB}%{is-not?}[%{language}%{is-not?}, ]]
+template+ [%{language}%{is?english}in English
+template+ |%{language}%{is?german}auf Deutsch
+template+ |%{language}%{is?ngerman}auf Deutsch
+template+ |%{language}%{is?norsk}på norsk
+template+ |%{language}%{is?french}au français
+template+ |in %{language}]
+template+ [%{url}%{is-not?})|%{language}%{is-not?})]
+
+# ***** Bibliographic data of publication
+template+ [, %{how-published}]
+template+ [, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
+template+ [, %{custom-3}|, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
+template+ [, %{publisher}][, %{school}][, %{institution}]
+template+ [, URN~<a href="https://www.nbn-resolving.de/%{urn}">%{urn}</a>]
+template+ [, DOI~<a href="https://dx.doi.org/%{doi}">%{doi}</a>]
+template+ [, %{isbn}][, %{issn}][, %{address}]
+template+ [, %{note}]
+template+ [, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
+template+ .
+
+# ****** Awards
+template+ [ <strong>%{custom-1}.</strong>]
+template+ </p>
+template+ </div>
+
+# ***** Details
+template+ [[%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
+template+ <div class="publication-details-hiddenbox">
+template+ [<p class="publication-details"><strong>Keywords: </strong>
+template+ <span[ xml:lang="%{xml-language}"]>%{keywords}</span></p>
+template+ ]
+template+ [<p class="publication-details"><strong>Abstract: </strong>
+template+ <span[ xml:lang="%{xml-language}"]>%{abstract}</span></p>
+template+ ]
+template+ [<p class="publication-details" style="text-align: left;"><strong>URL:&nbsp;</strong>
+template+ <a[ type="%{url-mime}"] href="%{url}">%{url}</a></p>
+template+ ]
+template+ [<p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>]
+template+ </div>\n]
+
+# ****** End of Entry
+template+ </li>\n\n
+
+# ***** End of Subsection: YEAR
+template+ [%{end-subdivision-year}</ul>\n\n]
+
+
+# ====== Finally, print all selected publications ===========================
+export
+
+
+# ====== Generate tail ======================================================
+echo </body>\n
+echo </html>\n

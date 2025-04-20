@@ -90,7 +90,8 @@ INSTALL(FILES authors-fix.list
               ODT-Template.odt
               publication-list-treeview.js
               text-example.export
-              web-example.export
+              web-example1.export
+              web-example2.export
               yaml-example.export
         DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples)
 INSTALL(PROGRAMS get-author-url
