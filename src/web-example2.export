@@ -71,12 +71,12 @@ templatenew
 # ***** Begin of Subsection: YEAR
 template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 
-# ****** Begin of Entry
+# ****** Begin of Entry *****************************************************
 template+ <li class="treeview-collapsed">
 template+ <div>
 template+ <p class=\"description\">
 
-# ***** Authors
+# ***** Authors *************************************************************
 # Begin of author loop:
 template+ %{begin-author-loop}
 # Separator, for first/last/middle author:
@@ -95,13 +95,14 @@ template+ ]
 template+ %{end-author-loop}
 template+ :
 
-# ***** Title
+# ***** Title ***************************************************************
 template+ <span[ xml:lang="%{xml-language}" lang="%{xml-language}"]>
+# If there is a URL, make a hyperlink, else only print the title:
 template+  [``<a[ type="%{url-mime}"] href="%{url}">%{title}</a>´´|``%{title}´´]
 template+ </span>
 
-# ****** Download
-template+ [%{url}%{is-not?} (|%{language}%{is-not?} (]
+# ****** Download ***********************************************************
+template+ [%{url}%{is-not?} \(|%{language}%{is-not?} \(]
 template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB[, %{numpages}~pages]]
 
 # ****** Language
@@ -112,9 +113,9 @@ template+ |%{language}%{is?ngerman}auf Deutsch
 template+ |%{language}%{is?norsk}på norsk
 template+ |%{language}%{is?french}au français
 template+ |in %{language}]
-template+ [%{url}%{is-not?})|%{language}%{is-not?})]
+template+ [%{url}%{is-not?}\)|%{language}%{is-not?}\)]
 
-# ***** Bibliographic data of publication
+# ***** Bibliographic data of publication ***********************************
 template+ [, %{how-published}]
 template+ [, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
 template+ [, %{custom-3}|, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
@@ -126,12 +127,12 @@ template+ [, %{note}]
 template+ [, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
 template+ .
 
-# ****** Awards
+# ****** Awards *************************************************************
 template+ [ <strong>%{custom-1}.</strong>]
 template+ </p>
 template+ </div>
 
-# ***** Details
+# ***** Details *************************************************************
 template+ [[%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
 template+ <div class="publication-details-hiddenbox">
 template+ [<p class="publication-details"><strong>Keywords: </strong>
@@ -146,10 +147,10 @@ template+ ]
 template+ [<p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>]
 template+ </div>\n]
 
-# ****** End of Entry
+# ****** End of Entry *******************************************************
 template+ </li>\n\n
 
-# ***** End of Subsection: YEAR
+# ***** End of Subsection: YEAR *********************************************
 template+ [%{end-subdivision-year}</ul>\n\n]
 
 
