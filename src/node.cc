@@ -188,7 +188,7 @@ Node* makePublicationCollection(Node* node1, Node* node2)
          }
          delete n;
          if(n == node2) {
-            node2 = NULL;
+            node2 = nullptr;
          }
          break;
       }
