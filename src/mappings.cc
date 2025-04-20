@@ -135,7 +135,6 @@ bool Mappings::addMapping(const std::string& mappingName,
    size_t  bufferSize = sizeof(buffer);
    char*   line       = buffer;
    ssize_t lineLength = getline((char**)&line, &bufferSize, mappingFile);
-   printf("L=%d\n",(int)lineLength);
    if(lineLength >= 0) {
       // ====== Get columns names on first line =============================
       const unsigned int maxColumns = 16;
@@ -148,7 +147,6 @@ bool Mappings::addMapping(const std::string& mappingName,
       int keyColumnIndex   = -1;
       int valueColumnIndex = -1;
       for(unsigned int i = 0;i<columnsInFile;i++) {
-         printf("C<%u>=%s.\n", i, columnArray[i]);
          if( (keyColumnIndex == -1) && (strcmp(columnArray[i], keyColumn.c_str()) == 0) ) {
             keyColumnIndex = i;
          }
