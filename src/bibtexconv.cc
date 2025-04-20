@@ -51,7 +51,7 @@ extern Node* bibTeXFile;
 
 
 // ###### Get current timer #################################################
-unsigned long long getMicroTime()
+static unsigned long long getMicroTime()
 {
   struct timeval tv;
   gettimeofday(&tv,NULL);
@@ -179,10 +179,10 @@ static bool handleDynamicURL(CURL*             curl,
 
 
 // ###### Check URLs ########################################################
-unsigned int checkAllURLs(PublicationSet* publicationSet,
-                          const char*     downloadDirectory,
-                          const bool      checkNewURLsOnly,
-                          const bool      ignoreUpdatesForHTML)
+static unsigned int checkAllURLs(PublicationSet* publicationSet,
+                                 const char*     downloadDirectory,
+                                 const bool      checkNewURLsOnly,
+                                 const bool      ignoreUpdatesForHTML)
 {
    if(downloadDirectory != NULL) {
       if( (mkdir(downloadDirectory, S_IRWXU|S_IXGRP|S_IRGRP|S_IXOTH|S_IROTH) < 0) &&
@@ -752,16 +752,17 @@ int main(int argc, char** argv)
    }
    for(int i = 2; i < argc; i++) {
       if( strncmp(argv[i], "-mapping=", 9) == 0 ) {
-         // const char* colon = index((const char*)&argv[i][9], ':');
-         // if(colon != NULL) {
-         //    std::string name((const char*)&argv[i][9], colon - (const char*)&argv[i][9]);
-         //    std::string mappingFile(colon + 1);
-         //    mappings.addMapping(name, mappingFile);
-         // }
-         // else {
+         std::vector<std::string> mappingArguments;
+         splitString(mappingArguments,
+                     std::string((const char*)&argv[i][9]));
+         if(mappingArguments.size() == 4) {
+            mappings.addMapping(mappingArguments[0], mappingArguments[1],
+                                mappingArguments[2], mappingArguments[3]);
+         }
+         else {
             fprintf(stderr, "ERROR: Bad mapping specification %s!\n", argv[i]);
             exit(1);
-         // }
+         }
       }
       else if( strncmp(argv[i], "-export-to-bibtex=", 18) == 0 ) {
          exportToBibTeX = (const char*)&argv[i][18];
