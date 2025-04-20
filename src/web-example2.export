@@ -88,7 +88,8 @@ template+ <a href="(%{author-family-name}[, %{author-give-name}]%{map:author-url
 template+ %{author-family-name}[, %{author-give-name}]
 template+ </a>
 # If there is no mapping, use plain text instead:
-template+ |%{author-family-name}[, %{author-give-name}]
+template+ |
+template+ %{author-family-name}[, %{author-give-name}]
 template+ ]
 # End of author loop:
 template+ %{end-author-loop}
