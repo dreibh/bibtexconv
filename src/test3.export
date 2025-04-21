@@ -31,11 +31,12 @@
 # Select entries:
 # The first argument is the original BibTeX reference,
 # The second argument is a new anchor for printing.
-cite LCN2005   TD01
-cite LCA2003   TD02
+cite LCN2005     TD01
+cite LCA2003     TD02
 cite IJHIT2008
-cite Dre2006   TD04
-cite Dre2012   TD05
+cite Dre2006     TD04
+cite Dre2012     TD05
+cite CommMag2011 TD06
 
 sort year/A month/D day/D
 
