@@ -841,7 +841,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                result += string2utf8(day, nbsp, lineBreak, xmlStyle);
             } else { skip = true; }
          }
-         else if(action == "publisher") {   // Publisher
+         else if( (action == "$") || (action == "publisher") ) {   // Publisher
             child = findChildNode(publication, "publisher");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
