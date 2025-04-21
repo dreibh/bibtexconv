@@ -56,7 +56,7 @@ s/%m/%{month-number}/g
 s/%n/%{is-not-first-author?}/g
 s/%N/%{number}/g
 s/%P/%{pages}/g
-s/%$/%{publisher}/g
+s/%\$/%{publisher}/g
 s/%q/%{urn}/g
 s/%r/%{series}/g
 s/%sB/%{url-size-bytes}/g

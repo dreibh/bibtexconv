@@ -1,61 +1,196 @@
-# Example for export to XHTML 1.1
+# ==========================================================================
+#                ____  _ _   _____   __  ______
+#                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
+#                |  _ \| | '_ \| |/ _ \  / |   / _ \| '_ \ \ / /
+#                | |_) | | |_) | |  __//  \ |__| (_) | | | \ V /
+#                |____/|_|_.__/|_|\___/_/\_\____\___/|_| |_|\_/
+#
+#                          ---  BibTeX Converter  ---
+#                   https://www.nntb.no/~dreibh/bibtexconv/
+# ==========================================================================
+#
+# BibTeXConv XHTML 1.1 Export Example
+# Copyright (C) 2010-2025 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: thomas.dreibholz@gmail.com
 
 
 # ###########################################################################
 # #### Export to XHTML 1.1                                               ####
 # ###########################################################################
 
+# ====== Set header and trailer of each publication entry ===================
+# ----- Encode strings in XML style, e.g. <, >, &, etc.----------------------
+xmlStyle
+# ----- Non-breakable space character and line-break ------------------------
+nbsp &nbsp;
+linebreak <br />
+
+# ------ Write the HTML header ----------------------------------------------
 echo <?xml version="1.0" encoding="utf-8" ?>\n
 echo <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">\n
 echo <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">\n
 echo <head>\n
 echo <title>Publications</title>\n
+echo <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />\n
+echo <meta name="Author" content="BibTeXConv" />\n
+echo <meta name="Description" content="List of Publications" />\n
+echo <meta name="Keywords" content="Publications" />\n
+echo <meta name="Classification" content="Publications" />\n
+echo <meta name="Viewport" content="width=device-width; initial-scale=1" />\n
+echo <link rel="stylesheet" href="https://www.nntb.no/~dreibh/stylesheet.css" type="text/css" />\n
+
+echo <script type="text/javascript" src="publication-list-treeview.js"></script>\n
+
+echo <style>\n
+echo li.treeview-collapsed {\n
+echo    list-style-image: url(Images/ListItem-Collapsed.svg);\n
+echo }\n
+
+echo li.treeview-expanded {\n
+echo    list-style-image: url(Images/ListItem-Expanded.svg);\n
+echo }\n
+echo </style>\n
+
 echo </head>\n
 
 echo <body>\n\n
 
+
 echo <!-- ###### Publications ############################################# -->\n
-#echo <h2 id="Publications">Publications</h2>\n\n
-
-
-# ====== Set header and trailer of each publication entry ===================
-# ----- Encode strings in XML style, e.g. <, >, &, etc.--------------
-xmlStyle
-# ----- Non-breakable space character -------------------------------
-nbsp &nbsp;
+echo <h2 id="Publications">Publications</h2>\n\n
 
 
 # ====== This is the printing template ======================================
 templatenew
 
-# ***** Begin of Subsection: YEAR
+# ***** Begin of Subsection: YEAR *******************************************
 # template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 
-# ****** Begin of Entry
-template+ <li><p class=\"description\">
+# ****** Begin of Entry *****************************************************
+template+ <li class="treeview-collapsed">
 
-# ***** Authors
-template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[,~%{author-give-name}]%{end-author-loop}:
-# ***** Title
-template+  [``<a type="%{url-mime}" href="%{url}">%{title}</a>´´|``%{title}´´][ ([<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB)]
-# ***** Bibliographic data of publication
+# ****** Begin of main block ************************************************
+template+ <div>
+template+ <p class=\"description\">
+
+# ***** Authors *************************************************************
+# Begin of author loop:
+template+ %{begin-author-loop}
+# Separator, for first/last/middle author:
+template+ [%{is-first-author?}|%{is-last-author?} and |; ]
+# Add the current author form the loop:
+# Execute the script "./get-author-url", which reads authors.list and provides
+# in the author with hyperlink, if a URL is defined. Otherwise, it just fills
+# in the author name.
+template+ [./get-author-url authors.list '%{author-family-name}[, %{author-give-name}]' '%{author-family-name}[, %{author-give-name}]'%{exec}]
+# End of author loop:
+template+ %{end-author-loop}
+template+ :
+
+# ***** Title ***************************************************************
+template+ <span[ xml:lang="%{xml-language}" lang="%{xml-language}"]>
+# If there is a URL, make a hyperlink, else only print the title:
+template+  [``<a[ type="%{url-mime}"] href="%{url}">%{title}</a>´´|``%{title}´´]
+template+ </span>
+
+# ****** Document details ***************************************************
+# The document details appear in braces ( ... ), if they are available.
+# Add opening parenthesis "(", if "url" or "language" are set:
+template+ [%{url}%{is-not?} \(|%{language}%{is-not?} \(]
+
+# ------ Download -----------------------------------------------------------
+template+ [
+template+ [<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]
+template+ %{url-size-kib}~KiB
+template+ [, %{numpages}~pages]
+template+ ]
+# ------ Language -----------------------------------------------------------
+template+ [%{url-size-KiB}%{is-not?}[%{language}%{is-not?}, ]]
+template+ [
+template+ %{language}%{is?english}in English|
+template+ %{language}%{is?german}auf Deutsch|
+template+ %{language}%{is?ngerman}auf Deutsch|
+template+ %{language}%{is?norsk}på norsk|
+template+ %{language}%{is?french}au français|
+template+ in %{language}
+template+ ]
+
+# Add closing parenthesis ")", if "url" or "language" are set:
+template+ [%{url}%{is-not?}\)|%{language}%{is-not?}\)]
+
+# ***** Bibliographic data of publication ***********************************
 template+ [, %{how-published}]
-template+ [, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
-template+ [, %{custom-3}|, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
-template+ [, %{publisher}][, %{school}][, %{institution}]
+template+ [, in <em>%{journal}</em>]
+template+ [, in <em>%{booktitle}</em>]
+template+ [
+template+ , %{custom-3}|
+template+ , %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|
+template+ [, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]
+template+ ]
+template+ [, %{publisher}]
+template+ [, %{school}]
+template+ [, %{institution}]
 template+ [, URN~<a href="https://www.nbn-resolving.de/%{urn}">%{urn}</a>]
 template+ [, DOI~<a href="https://dx.doi.org/%{doi}">%{doi}</a>]
-template+ [, %{isbn}][, %{issn}][, %{address}]
+template+ [, %{isbn}]
+template+ [, %{issn}]
+template+ [, %{address}]
 template+ [, %{note}]
-template+ [, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
+template+ [, [%{month-name}~%{day}, |%{month-name}~]%{year}]
 template+ .
-# ****** Awards
+
+# ****** Awards *************************************************************
 template+ [ <strong>%{custom-1}.</strong>]
 
-# ****** End of Entry
-template+ </p></li>\n\n
+# ****** End of main block **************************************************
+template+ </p>
+template+ </div>
 
-# ***** End of Subsection: YEAR
+# ***** Details block *******************************************************
+# A details block is to be added, if "keywords", "abstract", "url" or
+# "url-md5" exist:
+template+ [
+template+ [%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
+template+ <div class="publication-details-hiddenbox">
+template+ [
+template+ <p class="publication-details"><strong>Keywords: </strong>
+template+ <span[ xml:lang="%{xml-language}"]>%{keywords}</span>
+template+ </p>
+template+ ]
+template+ [
+template+ <p class="publication-details"><strong>Abstract: </strong>
+template+ <span[ xml:lang="%{xml-language}"]>%{abstract}</span>
+template+ </p>
+template+ ]
+template+ [
+template+ <p class="publication-details" style="text-align: left;"><strong>URL:&nbsp;</strong>
+template+ <a[ type="%{url-mime}"] href="%{url}">%{url}</a>
+template+ </p>
+template+ ]
+template+ [
+template+ <p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>
+template+ ]
+template+ </div>\n
+template+ ]
+
+# ****** End of Entry *******************************************************
+template+ </li>\n\n
+
+# ***** End of Subsection: YEAR *********************************************
 # template+ [%{end-subdivision-year}</ul>\n\n]
 
 
@@ -77,7 +212,7 @@ export
 echo </ul>
 
 
-echo <h2>Internet Drafts (IDs) related to RSerPool</h2>
+echo <h2>Internet Drafts&nbsp;(IDs) related to RSerPool</h2>
 echo <ul>
 
 clear
@@ -103,6 +238,6 @@ export
 echo </ul>
 
 
-# ====== Generate tail ======================================================
+# ====== Write the HTML footer ==============================================
 echo </body>\n
 echo </html>\n

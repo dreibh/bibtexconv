@@ -81,16 +81,16 @@ template+ [URL: %{url}.\n]
 template+ \n
 
 
-# Before any citation is printed, print a list title:
+# ====== Before any citation is printed, print a list title =================
 echo ===== Begin of My Publications List =====\n
 
-# Set header and trailer of each publication entry:
-#header *~
-#trailer \n
+# ====== Finally, export all selected publications ==========================
 
-# Export the selected entries:
+# Set header and trailer of each publication entry:
+# header *~
+# trailer \n
+
 export Ref%02n
 
-
-# Print after all publications:
+# ====== Print after all publications =======================================
 echo ===== End of My Publications List =====\n

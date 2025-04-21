@@ -1,0 +1,44 @@
+[TD02] LCA2003
+AUTHOR: FIRST: initials=T. given=Thomas family=Dreibholz
+AUTHOR: LAST: initials=M. given=Michael family=Tüxen
+
+"High Availability using Reliable Server Pooling", Proceedings of the Linux Conference Australia (LCA), Perth, Western Australia/Australia, 1, 24, 2003.
+URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/RSerPool-Paper.pdf.
+
+[TD01] LCN2005
+AUTHOR: FIRST: initials=T. given=Thomas family=Dreibholz
+AUTHOR: LAST: initials=E. P. given=Erwin Paul family=Rathgeb
+
+"On the Performance of Reliable Server Pooling Systems", Proceedings of the IEEE Conference on Local Computer Networks (LCN) 30th Anniversary, pp. 200–208, ISBN 0-7695-2421-4, Sydney, New South Wales/Australia, 11, 16, 2005.
+URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/LCN2005.pdf.
+
+[TD04] Dre2006
+AUTHOR: FIRST: initials=T. given=Thomas family=Dreibholz
+
+"Reliable Server Pooling – Evaluation, Optimization and Extension of a Novel IETF Architecture", 3, 7, 2007.
+URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf.
+
+[2] IJHIT2008
+AUTHOR: FIRST: initials=T. given=Thomas family=Dreibholz
+AUTHOR: LAST: initials=E. P. given=Erwin Paul family=Rathgeb
+
+"An Evaluation of the Pool Maintenance Overhead in Reliable Server Pooling Systems", SERSC International Journal on Hybrid Information Technology (IJHIT), Volume 1, Number 2, pp. 17–32, ISSN 1738-9968, 4 2008.
+URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/IJHIT2008.pdf.
+
+[TD06] CommMag2011
+AUTHOR: FIRST: initials=T. given=Thomas family=Dreibholz
+AUTHOR: NOT-FIRST: initials=I. given=Irene family=Rüngeler
+AUTHOR: NOT-FIRST: initials=R. given=Robin family=Seggelmann
+AUTHOR: NOT-FIRST: initials=M. given=Michael family=Tüxen
+AUTHOR: NOT-FIRST: initials=E. P. given=Erwin Paul family=Rathgeb
+AUTHOR: LAST: initials=R. R. given=Randall R. family=Stewart
+
+"Stream Control Transmission Protocol: Past, Current, and Future Standardization Activities", IEEE Communications Magazine, Volume 49, Number 4, pp. 82–88, ISSN 0163-6804, 4, 5, 2011.
+URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/CommMag2011.pdf.
+
+[TD05] Dre2012
+AUTHOR: FIRST: initials=T. given=Thomas family=Dreibholz
+
+"Evaluation and Optimisation of Multi-Path Transport using the Stream Control Transmission Protocol", 3, 13, 2012.
+URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf.
+

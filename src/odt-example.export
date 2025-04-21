@@ -1,18 +1,40 @@
-# Example for export to OpenDocument Text (ODT)
+# ==========================================================================
+#                ____  _ _   _____   __  ______
+#                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
+#                |  _ \| | '_ \| |/ _ \  / |   / _ \| '_ \ \ / /
+#                | |_) | | |_) | |  __//  \ |__| (_) | | | \ V /
+#                |____/|_|_.__/|_|\___/_/\_\____\___/|_| |_|\_/
+#
+#                          ---  BibTeX Converter  ---
+#                   https://www.nntb.no/~dreibh/bibtexconv/
+# ==========================================================================
+#
+# BibTeXConv OpenDocument Text (ODT) Export Example
+# Copyright (C) 2010-2025 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: thomas.dreibholz@gmail.com
 
 
-# Select publications to print.
+# Select entries:
 # The first argument is the original BibTeX reference,
 # The second argument is a new anchor for printing.
-#cite LCN2005   TD01
-#cite Tencon2005   TD01a
-#cite LCA2003   TD02
-#cite IJHIT2008 TD03
-#cite Dre2006   TD04
-#cite AB05   AB05
-
-#cite Globecom2010
-#cite Globecom2010-Demo
+# cite LCN2005   TD01
+# cite LCA2003   TD02
+# cite IJHIT2008 TD03
+# cite Dre2006   TD04
 
 citeAll
 sort year/D month/D day/D
@@ -45,16 +67,18 @@ echo <text:h text:style-name="Heading_20_1" text:outline-level="1">References</t
 echo \n
 
 # ====== Set header and trailer of each publication entry ===================
-# ----- Encode strings in XML style, e.g. <, >, &, etc.--------------
+# ----- Encode strings in XML style, e.g. <, >, &, etc.----------------------
 xmlStyle
-# ----- Non-breakable space character (2 bytes!) used by ODT --------
+# ----- Non-breakable space character (2 bytes!) used by ODT ----------------
 nbsp \xc2\xa0
 
 # ====== This is the printing template ======================================
 templatenew
-# ***** Subsection: year
+
+# ***** Subsection: YEAR ****************************************************
 template+ [%{begin-subdivision-year}<text:h text:style-name="Heading_20_2" text:outline-level="2">Year %{year}</text:h>]
-# ***** Subsubsection: month
+
+# ***** Subsubsection: MONTH ************************************************
 template+ [%{begin-subdivision-month}<text:h text:style-name="Heading_20_3" text:outline-level="3">%{month-name}</text:h>]
 
 # ***** Begin of Entry
@@ -64,17 +88,21 @@ template+ <text:span text:style-name="T1">
 template+ <text:bookmark-start text:name="%{label}"/>\[%{anchor}\] <text:bookmark-end text:name="%{label}"/>
 template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]%{end-author-loop}:
 template+ </text:span>
-# ***** Title
-template+  “[<text:a xlink:type="simple" xlink:href="%{url}">%{title}</text:a>|%{title}]”[ ([%{url-type}, ]%{url-size-kib}~KiB)]
-# ***** Bibliographic data of publication
-template+ [, %{how-published}][, %{booktitle}][, %{series}][, %{journal}][, %{institution}][, %$][, vol.~%{volume}][, %{type}~%{number}|, no.~%{number}][, pp.~%{pages}][, %{note}][, %$][, %{school}][, URN~<text:a xlink:type="simple" xlink:href="https://www.nbn-resolving.de/%{urn}">%{urn}</text:a>][, DOI~<text:a xlink:type="simple" xlink:href="https://dx.doi.org/%{doi}">%{doi}</text:a>][, %{isbn}][, %{issn}][, %{address}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}].</text:p>
-# ***** URL including hyperlink
+
+# ***** Title ***************************************************************
+template+  “[<text:a xlink:type="simple" xlink:href="%{url}">%{title}</text:a>|%{title}]”[ \([%{url-type}, ]%{url-size-kib}~KiB\)]
+
+# ***** Bibliographic data of publication ***********************************
+template+ [, %{how-published}][, %{booktitle}][, %{series}][, %{journal}][, %{institution}][, %{publisher}][, vol.~%{volume}][, %{type}~%{number}|, no.~%{number}][, pp.~%{pages}][, %{note}][, %{publisher}][, %{school}][, URN~<text:a xlink:type="simple" xlink:href="https://www.nbn-resolving.de/%{urn}">%{urn}</text:a>][, DOI~<text:a xlink:type="simple" xlink:href="https://dx.doi.org/%{doi}">%{doi}</text:a>][, %{isbn}][, %{issn}][, %{address}][, [[%{month-name}~%{day}, |%{month-name}~]%{year}].</text:p>
+
+# ***** URL including hyperlink *********************************************
 template+ [<text:p text:style-name="Standard">URL: <text:span text:style-name="T2"><text:a xlink:type="simple" xlink:href="%{url}">%{url}</text:a>.</text:span></text:p>]
-# ***** End of Entry
+
+# ****** End of Entry *******************************************************
 template+ <text:p text:style-name="P1"/>
 
 
-# ====== Finally, print all selected publications ===========================
+# ====== Finally, export all selected publications ==========================
 export
 
 

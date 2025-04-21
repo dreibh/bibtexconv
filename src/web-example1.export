@@ -221,7 +221,7 @@ template+ </li>\n\n
 template+ [%{end-subdivision-year}</ul>\n\n]
 
 
-# ====== Finally, print all selected publications ===========================
+# ====== Finally, export all selected publications ==========================
 export
 
 
