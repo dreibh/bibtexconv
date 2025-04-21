@@ -104,7 +104,7 @@ echo <h2 id="Publications">Publications</h2>\n\n
 # ====== This is the printing template ======================================
 templatenew
 
-# ***** Begin of Subsection: YEAR
+# ***** Begin of Subsection: YEAR *******************************************
 template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 
 # ****** Begin of Entry *****************************************************
