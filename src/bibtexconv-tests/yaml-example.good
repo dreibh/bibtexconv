@@ -1919,7 +1919,10 @@ Reference:
    Day: 2
  - Author: Thomas Dreibholz and Somnath Mazumdar
    Booktitle: Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)
+   Pages: 33–41
    Title: HiPerConTracer 3.0: Transport-level Packet Routing Analysis Tool
+   ISBN: ISBN 979-8-3315-2493-7
+   DOI: 10.1109/PDP66500.2025.00014
    Year: 2025
    Month: mar
    Day: 14

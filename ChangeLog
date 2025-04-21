@@ -1,3 +1,192 @@
+commit c5f63b370215462147af4a6c6fbd50757e75e441
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 20:24:22 2025 +0200
+
+    Updated example BibTeX file.
+
+commit 356668782f4ab99a78a7052e5eba232459d8ee21
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 20:04:37 2025 +0200
+
+    Typo fix.
+
+commit c7c3dd55d44dcadaf72151799e3782847ebe6bcf
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 20:04:28 2025 +0200
+
+    Error message fix.
+
+commit 3a547ba968f488984ddd942f36528ea140eb4b09
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 19:52:29 2025 +0200
+
+    Added YAML test.
+
+commit c68ab90e761748bef0cd4c86f3592ce7fdd03639
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 18:26:28 2025 +0200
+
+    Removed obsolete test.
+
+commit 5cea3892fe1ad1ea7bc7c2e15fade1ac0ba48dfa
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 18:20:47 2025 +0200
+
+    Improved test.
+
+commit 6d78d1a457b4c8382a81dbfcd8d86c7bb402d546
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 18:07:21 2025 +0200
+
+    Updated RSerPool web test.
+
+commit cd24e325700cc38fe5154376f7808c2e3cfee042
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 18:07:14 2025 +0200
+
+    Updated test.
+
+commit 575f64dcdd79b4e2d41e13e6854df564c63e5ca1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 18:05:36 2025 +0200
+
+    Added another simple test.
+
+commit 790ad392e804e5383bc10637de23c71df4be7146
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 17:45:49 2025 +0200
+
+    Further improvements of the examples.
+
+commit b7d29bbff1a1924906f572fc7fe799ffb5b795ea
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 17:17:25 2025 +0200
+
+    Improved examples.
+
+commit d9398720b170145a2f0eb39498accee25eaab5db
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 16:53:23 2025 +0200
+
+    Improved examples.
+
+commit 0ba34021ea43ef237ba129a51408dbd1b80f2729
+Merge: 502b4ca fcb8c5e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 13:29:41 2025 +0200
+
+    Merge branch 'dreibh/tests'
+
+commit fcb8c5eda76dcb28cecbc4d61aadec565e34e27e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 13:29:19 2025 +0200
+
+    Improved tests.
+
+commit 502b4caacf084985cfe941dc6894b70d0bf65208
+Merge: 3fc6f1b 4c7e6ae
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 13:25:36 2025 +0200
+
+    Merge branch 'dreibh/tests'
+
+commit 4c7e6ae12ec6be794a65378ed7ff64ec0578f4eb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 13:24:09 2025 +0200
+
+    Fixed URL.
+
+commit 3fc6f1b95a1f3304b4355b14c020b296383d10c2
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 11:33:42 2025 +0200
+
+    A small fix: "nbsp" may be empty in some cases, e.g. for URLs.
+
+commit 68ddb70a24693b83020ac9f1a5ca5cf794e27f1c
+Merge: 3518dc7 ebf3f5f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 11:25:20 2025 +0200
+
+    Merge branch 'dreibh/tests'
+
+commit ebf3f5f768dd7056b090b6823f77df869789e201
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 11:24:25 2025 +0200
+
+    Improved tests.
+
+commit 2cc5c2b0d1011e4c9e769c813c08739ac3922c7f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 11:16:14 2025 +0200
+
+    Improved test script.
+
+commit b52112ae44f95d5bc48f24815dfead5e4e733b71
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 21 11:06:44 2025 +0200
+
+    Added test script.
+
+commit 3518dc7b5cde199b6263c90bf8a8d495532f656b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 20 17:27:19 2025 +0200
+
+    Improved string2utf8() performance and some fixes.
+
+commit 884c4ae1f7138af83bc301a5b81c6eda11aaf07d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 20 13:11:58 2025 +0200
+
+    Bugfix: Added work-around for lower-case first character in name from IETF metadata XML.
+
+commit 6e715881c9e5c3b51966c3af73bc83309aaca55e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 20 13:00:38 2025 +0200
+
+    Bugfix: Fixed the previous null-pointer dereference fix. Now, it should work properly.
+
+commit db182600b76857fb701b49fa6014f454ced3007f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 20 11:50:44 2025 +0200
+
+    Bugfix: Fix for possible null-pointer dereference.
+
+commit 482cce207ce08247ef5525dce17e23c0cc5e5866
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 20 11:50:07 2025 +0200
+
+    Some ShellCheck clean-ups.
+
+commit 6c37de055fdfa4fd36c57a65bc2dc224dd36ffc9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 18 11:42:43 2025 +0200
+
+    Updated CI configuration
+
+commit 8d84f7a94f5e252ca0c598f0daf8080dd9fdc05c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 18 11:42:37 2025 +0200
+
+    Updated CI scripts
+
+commit 81c095b24d9c2bb4346c0d2dac7ab20c497d9ef0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Mar 18 10:26:21 2025 +0100
+
+    Fixed test dependencies.
+
+commit d9bc9ebbb4c32507063e297bece1b0ba0763d962
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 17 21:02:32 2025 +0100
+
+    Updated distinfo.
+
+commit e95ee8a77ee76e998971c0873d56f3f8c1667598
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Mar 17 20:48:07 2025 +0100
+
+    New release bibtexconv-1.4.4.
+
 commit 1f228022076e844f923cca2202ba1cebf52a5d04
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Mon Mar 17 18:53:52 2025 +0100
