@@ -969,8 +969,10 @@ int main(int argc, char** argv)
          }
       }
       else {
-         fprintf(stderr, "Got %u publications from BibTeX file.\n",
-                 (unsigned int)publicationSet.maxSize());
+         if(!quietMode) {
+            fprintf(stderr, "Got %u publications from BibTeX file.\n",
+                    (unsigned int)publicationSet.maxSize());
+         }
          result = handleInput(stdin, publicationSet,
                               downloadDirectory, mappings,
                               checkURLs, checkNewURLsOnly, ignoreUpdatesForHTML,
@@ -978,7 +980,9 @@ int main(int argc, char** argv)
                               exportToXML, exportToSeparateXMLs,
                               skipNotesWithISBNandISSN, addNotesWithISBNandISSN,
                               addUrlCommand, quietMode);
-         fprintf(stderr, "Done. %u errors have occurred.\n", result);
+         if((!quietMode) || (result > 0)) {
+            fprintf(stderr, "Done. %u errors have occurred.\n", result);
+         }
       }
    }
    if(bibTeXFile) {
