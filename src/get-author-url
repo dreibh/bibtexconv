@@ -54,7 +54,7 @@ for row in inputCSV:
 if authorRow == None:
    # The authorName is not in the table -> use default text
    sys.stdout.write(authorText)
-   sys.stderr.write('Not in list: ' + authorText + '\n')
+   sys.stderr.write('Not in list: ' + authorName + '\n')
    sys.exit(0)
 else:
    # Found the authorName -> print the result
