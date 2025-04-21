@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Bash options:
+set -eu
+
+while [ $# -gt 0 ] ; do
+   f="$1"
+   b="${f//.out/}"
+   n="$b.good"
+   echo "$f -> $n"
+   mv "$f" "$n"
+   shift
+done
