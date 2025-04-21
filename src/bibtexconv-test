@@ -39,8 +39,8 @@ downloadsDirectory="${HOME}/tmp/BibTeXConv"
 mkdir -p "${downloadsDirectory}"
 
 failures=0
-# Tests: bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example1
-for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example1 ; do
+# Tests: bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example1 web-example2
+for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example1 web-example2 ; do
 
    # ====== Prepare test run =======================================
    print-utf8 -x 86 -s "\x1b[34m###### Testing: ${test} " "#" "#\x1b[0m   " >&2
@@ -72,6 +72,9 @@ for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-exa
    elif [ "${test}" == "text-example" ] ; then
       outputFile="${outputFile}.txt"
       command="${RUN} ./bibtexconv ${bibTeXFile} -q <${exportFile} >${outputFile}"
+   elif [ "${test}" == "web-example2" ] ; then
+      outputFile="${outputFile}.html"
+      command="${RUN} ./bibtexconv ${bibTeXFile} -q --mapping=author-url:authors.list:Name:URL <${exportFile} >${outputFile}"
    else
       outputFile="${outputFile}.html"
       command="${RUN} ./bibtexconv ${bibTeXFile} -q <${exportFile} >${outputFile}"
