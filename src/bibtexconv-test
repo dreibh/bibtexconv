@@ -39,8 +39,8 @@ downloadsDirectory="${HOME}/tmp/BibTeXConv"
 mkdir -p "${downloadsDirectory}"
 
 failures=0
-# Tests: bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example
-for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example ; do
+# Tests: bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example web-rserpool odt-example
+for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example odt-example ; do
 
    # ====== Prepare test run =======================================
    print-utf8 -x 86 -s "\x1b[34m###### Testing: ${test} " "#" "#\x1b[0m   " >&2
@@ -71,6 +71,9 @@ for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-exa
       touch "${goodFile}"   # Empty!
    elif [ "${test}" == "text-example" ] ; then
       outputFile="${outputFile}.txt"
+      command="${RUN} ./bibtexconv ${bibTeXFile} <${exportFile} >${outputFile}"
+   elif [ "${test}" == "odt-example" ] ; then
+      outputFile="${outputFile}.xml"
       command="${RUN} ./bibtexconv ${bibTeXFile} <${exportFile} >${outputFile}"
    else
       outputFile="${outputFile}.html"
