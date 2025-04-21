@@ -76,7 +76,7 @@ for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xm
    else
       if [[ "${test}" =~ ^odt- ]] ; then
          outputFile="${outputFile}.xml"
-      elif [[ "${test}" =~ ^test ]] ; then
+      elif [[ "${test}" =~ ^te[sx]t ]] ; then
          outputFile="${outputFile}.txt"
       elif [[ "${test}" =~ ^yaml ]] ; then
          outputFile="${outputFile}.yaml"
@@ -100,11 +100,13 @@ for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xm
             echo "Command:${command}"
             echo ""
             print-utf8 -x 78 -n -s  "\x1b[33m------ Good ($(basename "${goodFile}")) " "-" "-\x1b[0m"
-            cat "${goodFile}"
-            echo ""
+            ls -l "${goodFile}"
+            # cat "${goodFile}"
+            # echo ""
             print-utf8 -x 78 -n -s  "\x1b[35m------ Output ($(basename "${outputFile}")) " "-" "-\x1b[0m"
-            cat "${outputFile}"
-            echo ""
+            ls -l "${outputFile}"
+            # cat "${outputFile}"
+            # echo ""
             print-utf8 -x 78 -n -s  "\x1b[31m------ Differences: " "-" "-\x1b[0m"
             diff --color "${goodFile}" "${outputFile}" || true
             echo ""
