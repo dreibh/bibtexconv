@@ -31,8 +31,14 @@ sort year/D month/D day/D title/A
 # #### Export to XHTML 1.1                                               ####
 # ###########################################################################
 
+# ====== Set header and trailer of each publication entry ===================
+# ----- Encode strings in XML style, e.g. <, >, &, etc.----------------------
+xmlStyle
+# ----- Non-breakable space character and line-break ------------------------
+nbsp &nbsp;
 linebreak <br />
 
+# ------ Write the HTML header ----------------------------------------------
 echo <?xml version="1.0" encoding="utf-8" ?>\n
 echo <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">\n
 echo <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">\n
@@ -65,13 +71,6 @@ echo <body>\n\n
 
 echo <!-- ###### Publications ############################################# -->\n
 echo <h2 id="Publications">Publications</h2>\n\n
-
-
-# ====== Set header and trailer of each publication entry ===================
-# ----- Encode strings in XML style, e.g. <, >, &, etc.--------------
-xmlStyle
-# ----- Non-breakable space character -------------------------------
-nbsp &nbsp;
 
 
 # ====== This is the printing template ======================================
@@ -163,24 +162,34 @@ template+ </div>
 # ***** Details block *******************************************************
 # A details block is to be added, if "keywords", "abstract", "url" or
 # "url-md5" exist:
-template+ [[%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
+template+ [
+template+ [%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
 template+ <div class="publication-details-hiddenbox">
-template+ [<p class="publication-details"><strong>Keywords: </strong>
-template+ <span[ xml:lang="%{xml-language}"]>%{keywords}</span></p>
+template+ [
+template+ <p class="publication-details"><strong>Keywords: </strong>
+template+ <span[ xml:lang="%{xml-language}"]>%{keywords}</span>
+template+ </p>
 template+ ]
-template+ [<p class="publication-details"><strong>Abstract: </strong>
-template+ <span[ xml:lang="%{xml-language}"]>%{abstract}</span></p>
+template+ [
+template+ <p class="publication-details"><strong>Abstract: </strong>
+template+ <span[ xml:lang="%{xml-language}"]>%{abstract}</span>
+template+ </p>
 template+ ]
-template+ [<p class="publication-details" style="text-align: left;"><strong>URL:&nbsp;</strong>
-template+ <a[ type="%{url-mime}"] href="%{url}">%{url}</a></p>
+template+ [
+template+ <p class="publication-details" style="text-align: left;"><strong>URL:&nbsp;</strong>
+template+ <a[ type="%{url-mime}"] href="%{url}">%{url}</a>
+template+ </p>
 template+ ]
-template+ [<p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>]
-template+ </div>\n]
+template+ [
+template+ <p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>
+template+ ]
+template+ </div>\n
+template+ ]
 
 # ****** End of Entry *******************************************************
 template+ </li>\n\n
 
-# ***** End of Subsection: YEAR
+# ***** End of Subsection: YEAR *********************************************
 template+ [%{end-subdivision-year}</ul>\n\n]
 
 
@@ -188,6 +197,6 @@ template+ [%{end-subdivision-year}</ul>\n\n]
 export
 
 
-# ====== Generate tail ======================================================
+# ====== Write the HTML footer ==============================================
 echo </body>\n
 echo </html>\n
