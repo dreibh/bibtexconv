@@ -39,8 +39,8 @@ downloadsDirectory="${HOME}/tmp/BibTeXConv"
 mkdir -p "${downloadsDirectory}"
 
 failures=0
-# Tests: bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example
-for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example ; do
+# Tests: bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example1
+for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example1 ; do
 
    # ====== Prepare test run =======================================
    print-utf8 -x 86 -s "\x1b[34m###### Testing: ${test} " "#" "#\x1b[0m   " >&2
@@ -62,10 +62,13 @@ for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-exa
       outputFile="${outputFile}.bib"
       command="${RUN} ./bibtexconv ${bibTeXFile} -q --export-to-bibtex=${outputFile} --check-urls --store-downloads=${downloadsDirectory} --non-interactive"
    elif [ "${test}" == "bibtex-example3" ] ; then
-      outputFile="${outputFile}.bib"
-      command="${RUN} ./bibtexconv ${bibTeXFile} -q --non-interactive --export-to-separate-bibtexs=${outputDirectory}/"
+      outputFile="${outputFile}.out"
+      command="${RUN} ./bibtexconv ${bibTeXFile} --non-interactive --export-to-separate-bibtexs=${outputDirectory}/ >${outputFile}"
+      touch "${goodFile}"   # Empty!
    elif [ "${test}" == "xml-example" ] ; then
-      command="${RUN} ./bibtexconv ${bibTeXFile} --export-to-separate-xmls=${outputDirectory}/reference. --non-interactive"
+      outputFile="${outputFile}.out"
+      command="${RUN} ./bibtexconv ${bibTeXFile} --export-to-separate-xmls=${outputDirectory}/reference. --non-interactive >${outputFile}"
+      touch "${goodFile}"   # Empty!
    elif [ "${test}" == "text-example" ] ; then
       outputFile="${outputFile}.txt"
       command="${RUN} ./bibtexconv ${bibTeXFile} <${exportFile} >${outputFile}"

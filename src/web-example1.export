@@ -96,7 +96,7 @@ template+  [``<a[ type="%{url-mime}"] href="%{url}">%{title}</a>´´|``%{title}�
 template+ </span>
 
 # ****** Download
-template+ [%{url}%{is-not?} (|%{language}%{is-not?} (]
+template+ [%{url}%{is-not?} \(|%{language}%{is-not?} \(]
 template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB[, %{numpages}~pages]]
 
 # ****** Language
@@ -107,7 +107,7 @@ template+ |%{language}%{is?ngerman}auf Deutsch
 template+ |%{language}%{is?norsk}på norsk
 template+ |%{language}%{is?french}au français
 template+ |in %{language}]
-template+ [%{url}%{is-not?})|%{language}%{is-not?})]
+template+ [%{url}%{is-not?}\)|%{language}%{is-not?}\)]
 
 # ***** Bibliographic data of publication
 template+ [, %{how-published}]
