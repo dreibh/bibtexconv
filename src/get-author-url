@@ -47,14 +47,14 @@ for row in inputCSV:
    if row[0] == authorName:
       if authorRow != None:
          # the authorName is multiple times in the table -> warning
-         sys.stderr.write('WARNING: Multiple occurences of authorName ' + authorName + ' in ' + authorList + '!\n')
+         sys.stderr.write('WARNING: Multiple occurrences of authorName ' + authorName + ' in ' + authorList + '!\n')
       authorRow = row
 
 
 if authorRow == None:
    # The authorName is not in the table -> use default text
    sys.stdout.write(authorText)
-   sys.stderr.write('Not in list: ' + authorText + '\n')
+   sys.stderr.write('Not in list: ' + authorName + '\n')
    sys.exit(0)
 else:
    # Found the authorName -> print the result
