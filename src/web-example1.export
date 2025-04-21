@@ -80,53 +80,89 @@ templatenew
 # ***** Begin of Subsection: YEAR
 template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
 
-# ****** Begin of Entry
+# ****** Begin of Entry *****************************************************
 template+ <li class="treeview-collapsed">
+
+# ****** Begin of main block ************************************************
 template+ <div>
 template+ <p class=\"description\">
 
-# ***** Authors
-template+ %{begin-author-loop}[%{is-first-author?}|%{is-last-author?} and |; ]
+# ***** Authors *************************************************************
+# Begin of author loop:
+template+ %{begin-author-loop}
+# Separator, for first/last/middle author:
+template+ [%{is-first-author?}|%{is-last-author?} and |; ]
+# Add the current author form the loop:
+# Execute the script "./get-author-url", which reads authors.list and provides
+# in the author with hyperlink, if a URL is defined. Otherwise, it just fills
+# in the author name.
 template+ [./get-author-url authors.list '%{author-family-name}[, %{author-give-name}]' '%{author-family-name}[, %{author-give-name}]'%{exec}]
-template+ %{end-author-loop}:
+# End of author loop:
+template+ %{end-author-loop}
+template+ :
 
-# ***** Title
+# ***** Title ***************************************************************
 template+ <span[ xml:lang="%{xml-language}" lang="%{xml-language}"]>
+# If there is a URL, make a hyperlink, else only print the title:
 template+  [``<a[ type="%{url-mime}"] href="%{url}">%{title}</a>´´|``%{title}´´]
 template+ </span>
 
-# ****** Download
+# ****** Document details ***************************************************
+# The document details appear in braces ( ... ), if they are available.
+# Add opening parenthesis "(", if "url" or "language" are set:
 template+ [%{url}%{is-not?} \(|%{language}%{is-not?} \(]
-template+ [[<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]%{url-size-kib}~KiB[, %{numpages}~pages]]
 
-# ****** Language
+# ------ Download -----------------------------------------------------------
+template+ [
+template+ [<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]
+template+ %{url-size-kib}~KiB
+template+ [, %{numpages}~pages]
+template+ ]
+# ------ Language -----------------------------------------------------------
 template+ [%{url-size-KiB}%{is-not?}[%{language}%{is-not?}, ]]
-template+ [%{language}%{is?english}in English
-template+ |%{language}%{is?german}auf Deutsch
-template+ |%{language}%{is?ngerman}auf Deutsch
-template+ |%{language}%{is?norsk}på norsk
-template+ |%{language}%{is?french}au français
-template+ |in %{language}]
+template+ [
+template+ %{language}%{is?english}in English|
+template+ %{language}%{is?german}auf Deutsch|
+template+ %{language}%{is?ngerman}auf Deutsch|
+template+ %{language}%{is?norsk}på norsk|
+template+ %{language}%{is?french}au français|
+template+ in %{language}
+template+ ]
+
+# Add closing parenthesis ")", if "url" or "language" are set:
 template+ [%{url}%{is-not?}\)|%{language}%{is-not?}\)]
 
-# ***** Bibliographic data of publication
+# ***** Bibliographic data of publication ***********************************
 template+ [, %{how-published}]
-template+ [, in <em>%{journal}</em>][, in <em>%{booktitle}</em>]
-template+ [, %{custom-3}|, %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|[, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]]
-template+ [, %{publisher}][, %{school}][, %{institution}]
+template+ [, in <em>%{journal}</em>]
+template+ [, in <em>%{booktitle}</em>]
+template+ [
+template+ , %{custom-3}|
+template+ , %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|
+template+ [, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]
+template+ ]
+template+ [, %{publisher}]
+template+ [, %{school}]
+template+ [, %{institution}]
 template+ [, URN~<a href="https://www.nbn-resolving.de/%{urn}">%{urn}</a>]
 template+ [, DOI~<a href="https://dx.doi.org/%{doi}">%{doi}</a>]
-template+ [, %{isbn}][, %{issn}][, %{address}]
+template+ [, %{isbn}]
+template+ [, %{issn}]
+template+ [, %{address}]
 template+ [, %{note}]
-template+ [, [[%{month-name}~%{day}, |%{month-name}~]%{year}]
+template+ [, [%{month-name}~%{day}, |%{month-name}~]%{year}]
 template+ .
 
-# ****** Awards
+# ****** Awards *************************************************************
 template+ [ <strong>%{custom-1}.</strong>]
+
+# ****** End of main block **************************************************
 template+ </p>
 template+ </div>
 
-# ***** Details
+# ***** Details block *******************************************************
+# A details block is to be added, if "keywords", "abstract", "url" or
+# "url-md5" exist:
 template+ [[%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
 template+ <div class="publication-details-hiddenbox">
 template+ [<p class="publication-details"><strong>Keywords: </strong>
@@ -141,7 +177,7 @@ template+ ]
 template+ [<p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>]
 template+ </div>\n]
 
-# ****** End of Entry
+# ****** End of Entry *******************************************************
 template+ </li>\n\n
 
 # ***** End of Subsection: YEAR
