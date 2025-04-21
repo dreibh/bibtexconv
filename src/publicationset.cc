@@ -1066,16 +1066,18 @@ std::string PublicationSet::applyTemplate(Node*                           public
             }
          }
          else if(action.substr(0, 4) == "map:") {   // Map from mappings
-            // fputs("Y1\n", stderr);
             const std::string mappingName(action.substr(4));
             const MappingEntry* mappingEntry = mappings.findMapping(mappingName);
             if(mappingEntry == nullptr) {
                fprintf(stderr, "ERROR: Mapping \"%s\" does not exist! Forgot parameter \"--mapping %s:mapping_file:key_column:value_column\"?\n", mappingName.c_str(), mappingName.c_str());
                exit(1);
             }
-            StackEntry        entry = stack.back();
-            const std::string key  = result.substr(entry.pos);
-            std::string       value;
+            StackEntry  entry = stack.back();
+            std::string value;
+            std::string key  = result.substr(entry.pos);
+            // fprintf(stderr, "<%s> => ", key.c_str());
+            replaceAll(key, nbsp, " ");
+            // fprintf(stderr, "<%s>\n", key.c_str());
             skip = !mappings.map(mappingEntry, key, value);
             if(!skip) {
                result.erase(entry.pos);   // Remove the written key string.
