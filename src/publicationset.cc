@@ -731,7 +731,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                result.erase(entry.pos);   // Remove the written "test" string.
             }
          }
-         else if(action == "is-first-author?") {         // IS first author
+         else if(action == "is-first-author?") {       // IS first author
             if(skip == false) {
                skip = ! (authorIndex == 0);
             }
@@ -744,6 +744,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
          else if(action == "is-last-author?") {        // IS last author
             if(skip == false) {
                skip = ! ((author != nullptr) && (authorIndex + 3 >= author->arguments.size()));
+            }
+         }
+         else if(action == "is-not-last-author?") {    // IS NOT last author
+            if(skip == false) {
+               skip = ((author != nullptr) && (authorIndex + 3 >= author->arguments.size()));
             }
          }
          else if(action == "end-author-loop") {   // Author LOOP EBD

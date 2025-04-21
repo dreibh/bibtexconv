@@ -185,21 +185,22 @@ static bool handleDynamicURL(CURL*             curl,
 static unsigned int checkAllURLs(PublicationSet* publicationSet,
                                  const char*     downloadDirectory,
                                  const bool      checkNewURLsOnly,
-                                 const bool      ignoreUpdatesForHTML)
+                                 const bool      ignoreUpdatesForHTML,
+                                 const bool      quietMode)
 {
    if(downloadDirectory != nullptr) {
       if( (mkdir(downloadDirectory, S_IRWXU|S_IXGRP|S_IRGRP|S_IXOTH|S_IROTH) < 0) &&
           (errno != EEXIST) ) {
          fprintf(stderr, "ERROR: Failed to create download directory: %s!\n",
                  strerror(errno));
-         exit(1);
+         return 1;
       }
    }
 
    CURL* curl = curl_easy_init();
    if(curl == nullptr) {
       fputs("ERROR: Failed to initialize libcurl!\n", stderr);
-      exit(1);
+      return 1;
    }
 
    unsigned int errors = 0;
@@ -223,14 +224,18 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                FILE* downloadFH = fopen(downloadFileName.c_str(), "rb");
                if(downloadFH != nullptr) {
                   fclose(downloadFH);
-                  fprintf(stderr, "Skipping URL of %s (already available as %s).\n",
-                          publication->keyword.c_str(),
-                          downloadFileName.c_str());
+                  if(!quietMode) {
+                     fprintf(stderr, "Skipping URL of %s (already available as %s).\n",
+                           publication->keyword.c_str(),
+                           downloadFileName.c_str());
+                  }
                   continue;
                }
             }
             else if(checkNewURLsOnly == true) {
-               fprintf(stderr, "Skipping URL of %s (not a new entry).\n", publication->keyword.c_str());
+               if(!quietMode) {
+                  fprintf(stderr, "Skipping URL of %s (not a new entry).\n", publication->keyword.c_str());
+               }
                continue;
             }
          }
@@ -503,6 +508,7 @@ static int handleInput(FILE*           fh,
                        const bool      skipNotesWithISBNandISSN,
                        const bool      addNotesWithISBNandISSN,
                        const bool      addUrlCommand,
+                       const bool      quietMode,
                        unsigned int    recursionLevel = 0)
 {
    int result = 0;
@@ -592,7 +598,7 @@ static int handleInput(FILE*           fh,
          }
          else if((strncmp(input, "export", 5)) == 0) {
             if(checkURLs) {
-               result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly, ignoreUpdatesForHTML);
+               result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly, ignoreUpdatesForHTML, quietMode);
             }
             const char* namingTemplate = "%u";
             if(input[6] == ' ') {
@@ -613,14 +619,14 @@ static int handleInput(FILE*           fh,
                if(PublicationSet::exportPublicationSetToBibTeX(
                   &publicationSet, exportToBibTeX, false,
                   skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
-                  exit(1);
+                  return 1;
                }
             }
             if(exportToSeparateBibTeXs) {
                if(PublicationSet::exportPublicationSetToBibTeX(
                   &publicationSet, exportToSeparateBibTeXs, true,
                   skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
-                  exit(1);
+                  return 1;
                }
             }
 
@@ -628,13 +634,13 @@ static int handleInput(FILE*           fh,
             if(exportToXML) {
                if(PublicationSet::exportPublicationSetToXML(
                   &publicationSet, exportToXML, false) == false) {
-                  exit(1);
+                  return 1;
                }
             }
             if(exportToSeparateXMLs) {
                if(PublicationSet::exportPublicationSetToXML(
                   &publicationSet, exportToSeparateXMLs, true) == false) {
-                  exit(1);
+                  return 1;
                }
             }
          }
@@ -682,18 +688,18 @@ static int handleInput(FILE*           fh,
                                         exportToBibTeX, exportToSeparateBibTeXs,
                                         exportToXML, exportToSeparateXMLs,
                                         skipNotesWithISBNandISSN, addNotesWithISBNandISSN,
-                                        addUrlCommand,
+                                        addUrlCommand, quietMode,
                                         recursionLevel + 1);
                   fclose(includeFH);
                }
                else {
                   fprintf(stderr, "ERROR: Unable to open include file '%s'!\n", includeFileName);
-                  exit(1);
+                  return 1;
                }
             }
             else {
                fprintf(stderr, "ERROR: Include file nesting level limit reached!\n");
-               exit(1);
+               return 1;
             }
          }
          else if((strncmp(input, "monthNames ", 11)) == 0) {
@@ -704,14 +710,14 @@ static int handleInput(FILE*           fh,
                monthNames[i] = token;
                if(i > 11) {
                   fputs("ERROR: There are only 12 month names possible in monthNames!\n", stderr);
-                  exit(1);
+                  return 1;
                }
                i++;
             }
          }
          else {
             fprintf(stderr, "ERROR: Bad command '%s'!\n", input);
-            exit(1);
+            return 1;
          }
       }
    }
@@ -765,6 +771,7 @@ int main(int argc, char** argv)
    bool        skipNotesWithISBNandISSN = false;
    bool        addNotesWithISBNandISSN  = false;
    bool        addUrlCommand            = false;
+   bool        quietMode                = false;
    const char* exportToBibTeX           = nullptr;
    const char* exportToSeparateBibTeXs  = nullptr;
    const char* exportToXML              = nullptr;
@@ -804,6 +811,7 @@ int main(int argc, char** argv)
       { "add-url-command",               no_argument,       0, 'a' },
       { "skip-notes-with-isbn-and-issn", no_argument,       0, 'i' },
       { "add-notes-with-isbn-and-issn",  no_argument,       0, 'I' },
+      { "quiet",                         no_argument,       0, 'q' },
 
       { "help",                          no_argument,       0, 'h' },
       { "version",                       no_argument,       0, 'v' },
@@ -812,7 +820,7 @@ int main(int argc, char** argv)
 
    int option;
    int longIndex;
-   while( (option = getopt_long(argc, argv, "B:b:X:x:C:D:m:s:l:nUuwaiIhv", long_options, &longIndex)) != -1 ) {
+   while( (option = getopt_long(argc, argv, "B:b:X:x:C:D:m:s:l:nUuwaiIqhv", long_options, &longIndex)) != -1 ) {
       switch(option) {
          case 'B':
             exportToBibTeX = optarg;
@@ -837,7 +845,7 @@ int main(int argc, char** argv)
             splitString(mappingArguments, std::string(optarg));
             if(mappingArguments.size() == 4) {
                if(!mappings.addMapping(mappingArguments[0], mappingArguments[1],
-                                      mappingArguments[2], mappingArguments[3])) {
+                                       mappingArguments[2], mappingArguments[3])) {
                   exit(1);
                }
             }
@@ -874,6 +882,9 @@ int main(int argc, char** argv)
          case 'I':
             skipNotesWithISBNandISSN = true;   // Drop old ones, if there are any
             addNotesWithISBNandISSN  = true;   // Compute new ones
+          break;
+         case 'q':
+            quietMode = true;
           break;
          case 'v':
             version();
@@ -912,7 +923,7 @@ int main(int argc, char** argv)
       if(!interactive) {
          publicationSet.addAll(bibTeXFile);
          if(checkURLs) {
-            result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly, ignoreUpdatesForHTML);
+            result += checkAllURLs(&publicationSet, downloadDirectory, checkNewURLsOnly, ignoreUpdatesForHTML, quietMode);
          }
 
          // ====== Export all to BibTeX =====================================
@@ -920,14 +931,14 @@ int main(int argc, char** argv)
             if(PublicationSet::exportPublicationSetToBibTeX(
                &publicationSet, exportToBibTeX, false,
                skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
-               exit(1);
+               result = 1;
             }
          }
          if(exportToSeparateBibTeXs) {
             if(PublicationSet::exportPublicationSetToBibTeX(
                &publicationSet, exportToSeparateBibTeXs, true,
                skipNotesWithISBNandISSN, addNotesWithISBNandISSN, addUrlCommand) == false) {
-               exit(1);
+               result = 1;
             }
          }
 
@@ -935,13 +946,13 @@ int main(int argc, char** argv)
          if(exportToXML) {
             if(PublicationSet::exportPublicationSetToXML(
                &publicationSet, exportToXML, false) == false) {
-               exit(1);
+               result = 1;
             }
          }
          if(exportToSeparateXMLs) {
             if(PublicationSet::exportPublicationSetToXML(
                &publicationSet, exportToSeparateXMLs, true) == false) {
-               exit(1);
+               result = 1;
             }
          }
 
@@ -953,7 +964,7 @@ int main(int argc, char** argv)
                   customPrintingTemplate, monthNames,
                   nbsp, lineBreak, useXMLStyle, downloadDirectory, mappings,
                   stdout) == false) {
-               exit(1);
+               result = 1;
             }
          }
       }
@@ -966,7 +977,7 @@ int main(int argc, char** argv)
                               exportToBibTeX, exportToSeparateBibTeXs,
                               exportToXML, exportToSeparateXMLs,
                               skipNotesWithISBNandISSN, addNotesWithISBNandISSN,
-                              addUrlCommand);
+                              addUrlCommand, quietMode);
          fprintf(stderr, "Done. %u errors have occurred.\n", result);
       }
    }
@@ -975,5 +986,5 @@ int main(int argc, char** argv)
       bibTeXFile = nullptr;
    }
 
-   return result;
+   return (result > 0) ? 1 : 0;
 }

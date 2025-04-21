@@ -8,14 +8,11 @@ template+ \[%{name}\]~
 # ***** Authors
 template+ %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]%{end-author-loop}:
 # ***** Title
-template+  ["%{title}"] [([%{url-type}, ]%{url-size-kib}~KiB)]
+template+  ["%{title}"] [\([%{url-type}, ]%{url-size-kib}~KiB\)]
 # ***** Bibliographic data of publication
-template+ [, %{how-published}][, in %{booktitle}][, in %{journal}][, %{series}][, vol.~%{volume}][, %{type}~%{number}|, no.~%{number}][, pp.~%{pages}][, %{note}][, %$][, %{school}][, %{institution}][, URN: %{urn}][, DOI: %{doi}.][, %{isbn}][, %{issn}][, %{address}][, [[%{month-name} %{day}, |%{month-name}~]%{year}].\n
+template+ [, %{how-published}][, in %{booktitle}][, in %{journal}][, %{series}][, vol.~%{volume}][, %{type}~%{number}|, no.~%{number}][, pp.~%{pages}][, %{note}][, %{publisher}][, %{school}][, %{institution}][, URN: %{urn}][, DOI: %{doi}.][, %{isbn}][, %{issn}][, %{address}][, [[%{month-name} %{day}, |%{month-name}~]%{year}].\n
 template+ [URL: %{url}.\n]
 template+ \n
-
-#template [%{begin-subdivision-year}===== YEAR %{year} =====\n][%{begin-subdivision-month}---- %{month-name} %{year} ----\n]*~\[%{anchor}\] %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}, %{author-give-name}%{end-author-loop}: \"%{title}\"[, %{booktitle}][, %{how-published}][, %{journal}][, %{institution}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}][, %$][, %{school}][, %{address}][, [[%{month-name} %{day}, |%{month-name}~]%{year}][, URN: %{urn}][, DOI: %{doi}][, %{isbn}][, %{issn}].\nURL: %{url}.\n\n
-
 
 # Before any citation is printed, print a list title:
 echo ===== Begin of My Publications List =====\n
