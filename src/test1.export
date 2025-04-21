@@ -1,33 +1,104 @@
-# This is the printing template:
+# ==========================================================================
+#                ____  _ _   _____   __  ______
+#                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
+#                |  _ \| | '_ \| |/ _ \  / |   / _ \| '_ \ \ / /
+#                | |_) | | |_) | |  __//  \ |__| (_) | | | \ V /
+#                |____/|_|_.__/|_|\___/_/\_\____\___/|_| |_|\_/
+#
+#                          ---  BibTeX Converter  ---
+#                   https://www.nntb.no/~dreibh/bibtexconv/
+# ==========================================================================
+#
+# BibTeXConv Plain Text Export Example
+# Copyright (C) 2010-2025 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 
-#template \[%{anchor}\] %{label}\n %{begin-author-loop}\tAUTHOR: [[%{is-first-author?}FIRST|%{is-last-author?}LAST|%{is-not-first-author?}NOT-FIRST]: initials=%{author-initials} given=%{author-give-name} full=%{author-family-name}]\n%{end-author-loop}\n
-
-template \[%{anchor}\] %{begin-author-loop}[%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]%{end-author-loop}: \"%{title}\"[, %{booktitle}][, %{journal}][, %{institution}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}][, %{publisher}][, %{school}][, %{address}][, [[%{month-name} %{day}, |%{month-name}~]%{year}][, %{isbn}][, %{issn}].\nURL: %{url}.\n
-
-
-# Before any citation is printed, print a list title:
-echo ===== My Publications =====\n
-
-# Set header and trailer of each publication entry:
-header *~
-trailer \n
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: thomas.dreibholz@gmail.com
 
 
-# Select publications to print.
+# Select entries:
 # The first argument is the original BibTeX reference,
 # The second argument is a new anchor for printing.
 cite LCN2005   TD01
 cite LCA2003   TD02
-cite IJHIT2008 TD03
+cite IJHIT2008
 cite Dre2006   TD04
-cite PeitgenFractals Test1
-
-# Finally, print all selected publications
-export
-
 
 include test1.cites
 
+sort year/A month/D day/D
 
-# Print after all publications:
-echo ===== End of List =====\n
+
+# ###########################################################################
+# #### Export to Plain Text                                              ####
+# ###########################################################################
+
+# ====== This is the printing template ======================================
+templatenew
+
+# ***** Begin of Subsection: YEAR, Subsubsection: MONTH *********************
+# template+ [%{begin-subdivision-year}===== YEAR %{year} =====\n]
+# template+ [%{begin-subdivision-month}---- %{month-name} %{year} ----\n]
+
+# ***** Label ***************************************************************
+template+ \[%{name}\]~
+
+# ***** Authors *************************************************************
+# Begin of author loop:
+template+ %{begin-author-loop}
+# Separator, for first/last/middle author:
+template+ [%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]
+# End of author loop:
+template+ %{end-author-loop}
+template+ :
+
+# ***** Title ***************************************************************
+template+  ["%{title}"] [\([%{url-type}, ]%{url-size-kib}~KiB\)]
+
+# ***** Bibliographic data of publication ***********************************
+template+ [, %{how-published}]
+template+ [, in %{booktitle}]
+template+ [, in %{journal}]
+template+ [, %{series}]
+template+ [, vol.~%{volume}]
+template+ [, %{type}~%{number}|, no.~%{number}]
+template+ [, pp.~%{pages}]
+template+ [, %{note}]
+template+ [, %{publisher}]
+template+ [, %{school}]
+template+ [, %{institution}]
+template+ [, URN: %{urn}]
+template+ [, DOI: %{doi}.]
+template+ [, %{isbn}]
+template+ [, %{issn}]
+template+ [, %{address}]
+template+ [, [%{month-name} %{day}, |%{month-name}~]%{year}].\n
+template+ [URL: %{url}.\n]
+template+ \n
+
+
+# ====== Before any citation is printed, print a list title =================
+echo ===== Begin of My Publications List =====\n
+
+# ====== Finally, export all selected publications ==========================
+
+# Set header and trailer of each publication entry:
+# header *~
+# trailer \n
+
+export Ref%02n
+
+# ====== Print after all publications =======================================
+echo ===== End of My Publications List =====\n

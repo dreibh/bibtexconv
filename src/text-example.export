@@ -92,6 +92,5 @@ echo ===== Begin of My Publications List =====\n
 
 export Ref%02n
 
-
 # ====== Print after all publications =======================================
 echo ===== End of My Publications List =====\n
