@@ -5,8 +5,7 @@ set -eu
 
 while [ $# -gt 0 ] ; do
    f="$1"
-   b="${f//.out/}"
-   n="$b.good"
+   n="$(echo "$f" | sed -e "s/\.[^\.]*$/.good/")"
    echo "$f -> $n"
    mv "$f" "$n"
    shift
