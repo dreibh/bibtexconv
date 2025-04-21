@@ -29,6 +29,8 @@ bibtexconv ExampleReferences.bib -mapping=author-url:authors.list:Name:URL <web-
 
 bibtexconv ExampleReferences.bib <text-example.export >MyPublications.txt
 
+bibtexconv ExampleReferences.bib <yaml-example.export >MyPublications.yaml
+
 bibtexconv ExampleReferences.bib -export-to-separate-xmls=reference. -non-interactive
 
 bibtexconv ExampleReferences.bib -non-interactive -export-to-separate-bibtexs=

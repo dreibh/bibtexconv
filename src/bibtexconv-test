@@ -39,8 +39,8 @@ downloadsDirectory="${HOME}/tmp/BibTeXConv"
 mkdir -p "${downloadsDirectory}"
 
 failures=0
-# Tests: test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example1 web-example2 web-rserpool odt-example
-for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example1 web-example2 web-rserpool odt-example ; do
+# Tests: test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example yaml-example text-example web-example1 web-example2 web-rserpool odt-example
+for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example yaml-example text-example web-example1 web-example2 web-rserpool odt-example ; do
 
    # ====== Prepare test run =======================================
    print-utf8 -x 86 -s "\x1b[34m###### Testing: ${test} " "#" "#\x1b[0m   " >&2
@@ -81,6 +81,8 @@ for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xm
          outputFile="${outputFile}.xml"
       elif [[ "${test}" =~ ^test ]] ; then
          outputFile="${outputFile}.txt"
+      elif [[ "${test}" =~ ^yaml ]] ; then
+         outputFile="${outputFile}.yaml"
       else
          outputFile="${outputFile}.html"
       fi
