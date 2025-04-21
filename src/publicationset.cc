@@ -578,19 +578,19 @@ std::string PublicationSet::applyTemplate(Node*                           public
    for(size_t i = 0; i < printingTemplateSize; i++) {
       if( (printingTemplate[i] == '%') && (i + 1 < printingTemplateSize) ) {
          const std::string action = getNextAction((const char*)&printingTemplate[i + 1], i);
-         if( (action == "L") || (action == "label") ) {   // Original BibTeX label
+         if(action == "label") {   // Original BibTeX label
             result += string2utf8(publication->keyword, nbsp, lineBreak, xmlStyle);
          }
          else if(action == "html-label") {   // Original BibTeX label
             result += labelToHTMLLabel(string2utf8(publication->keyword, nbsp, lineBreak, xmlStyle));
          }
-         else if( (action == "C") || (action == "anchor") ) {   // Anchor
+         else if(action == "anchor") {   // Anchor
             result += string2utf8(publication->anchor, nbsp, lineBreak, xmlStyle);
          }
-         else if( (action == "c") || (action == "class") ) {   // Class (e.g. TechReport, InProceedings, etc.)
+         else if(action == "class") {   // Class (e.g. TechReport, InProceedings, etc.)
             result += string2utf8(publication->value, nbsp, lineBreak, xmlStyle);
          }
-         else if( (action == "Z") || (action == "name") ) {   // Name based on naming template
+         else if(action == "name") {   // Name based on naming template
             size_t p;
             size_t begin      = 0;
             size_t len        = strlen(namingTemplate);
@@ -645,7 +645,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                result += string2utf8(&namingTemplate[begin], nbsp, lineBreak, xmlStyle);
             }
          }
-         else if( (action == "#") || (action == "download-file-name") ) {   // Download file name
+         else if(action == "download-file-name") {   // Download file name
             child = findChildNode(publication, "url.mime");
             result += makeDownloadFileName(downloadDirectory, publication->keyword,
                                            (child != nullptr) ? child->value : "");
@@ -659,7 +659,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             authorIndex = 0;
             authorBegin = i;
          }
-         else if( (action == "g") || (action == "author-initials") ) {   // Current author given name initials
+         else if(action == "author-initials") {   // Current author given name initials
             if(author) {
                std::string initials   = author->arguments[authorIndex + 2];
                removeBrackets(initials);
@@ -671,7 +671,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
             }
          }
-         else if( (action == "G") || (action == "author-give-name") ) {   // Current author given name
+         else if(action == "author-give-name") {   // Current author given name
             if(author) {
                std::string givenName  = author->arguments[authorIndex + 1];
                removeBrackets(givenName);
@@ -683,7 +683,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
             }
          }
-         else if( (action == "F") || (action == "author-family-name") ) {   // Current author family name
+         else if(action == "author-family-name") {   // Current author family name
             if(author) {
                std::string familyName = author->arguments[authorIndex + 0];
                removeBrackets(familyName);
@@ -731,22 +731,22 @@ std::string PublicationSet::applyTemplate(Node*                           public
                result.erase(entry.pos);   // Remove the written "test" string.
             }
          }
-         else if( (action == "f") || (action == "is-first-author?") ) {       // IS first author
+         else if(action == "is-first-author?") {         // IS first author
             if(skip == false) {
                skip = ! (authorIndex == 0);
             }
          }
-         else if( (action == "n") || (action == "is-not-first-author?") ) {   // IS not first author
+         else if(action == "is-not-first-author?") {   // IS NOT first author
             if(skip == false) {
                skip = ! ((author != nullptr) && (authorIndex > 0));
             }
          }
-         else if( (action == "l") || (action == "is-last-author?") ) {        // IS last author
+         else if(action == "is-last-author?") {        // IS last author
             if(skip == false) {
                skip = ! ((author != nullptr) && (authorIndex + 3 >= author->arguments.size()));
             }
          }
-         else if( (action == "A") || (action == "end-author-loop") ) {   // Author LOOP EBD
+         else if(action == "end-author-loop") {   // Author LOOP EBD
             if(authorBegin == std::string::npos) {
                fputs("ERROR: Unexpected author loop end %A -> %a author loop begin needed first!\n", stderr);
                exit(1);
@@ -760,43 +760,43 @@ std::string PublicationSet::applyTemplate(Node*                           public
                authorIndex = 0;
             }
          }
-         else if( (action == "T") || (action == "title") ) {   // Title
+         else if(action == "title") {   // Title
             child = findChildNode(publication, "title");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "H") || (action == "how-published") ) {   // HowPublished
+         else if(action == "how-published") {   // HowPublished
             child = findChildNode(publication, "howpublished");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "B") || (action == "booktitle") ) {   // Booktitle
+         else if(action == "booktitle") {   // Booktitle
             child = findChildNode(publication, "booktitle");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "r") || (action == "series") ) {   // Series
+         else if(action == "series") {   // Series
             child = findChildNode(publication, "series");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "J") || (action == "journal") ) {   // Journal
+         else if(action == "journal") {   // Journal
             child = findChildNode(publication, "journal");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "E") || (action == "edition") ) {   // Edition
+         else if(action == "edition") {   // Edition
             child = findChildNode(publication, "edition");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "V") || (action == "volume") ) {   // Volume
+         else if(action == "volume") {   // Volume
             child = findChildNode(publication, "volume");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "t") || (action == "type") ) {   // Type
+         else if(action == "type") {   // Type
             child = findChildNode(publication, "type");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "N") || (action == "number") ) {   // Number
+         else if(action == "number") {   // Number
             child = findChildNode(publication, "number");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "P") || (action == "pages") ) {   // Pages
+         else if(action == "pages") {   // Pages
             child = findChildNode(publication, "pages");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
@@ -804,15 +804,15 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "numpages");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "@") || (action == "address") ) {   // Address
+         else if(action == "address") {   // Address
             child = findChildNode(publication, "address");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "Y") || (action == "year") ) {   // Year
+         else if(action == "year") {   // Year
             child = findChildNode(publication, "year");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "M") || (action == "month-name") ) {   // Month as name
+         else if(action == "month-name") {   // Month as name
             child = findChildNode(publication, "month");
             if(child) {
                if( (child->number >= 1) && (child->number <= 12) ) {
@@ -820,7 +820,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                } else { skip = true; }
             } else { skip = true; }
          }
-         else if( (action == "m") || (action == "month-number") ) {   // Month as number
+         else if(action == "month-number") {   // Month as number
             child = findChildNode(publication, "month");
             if(child) {
                char month[16];
@@ -828,7 +828,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                result += string2utf8(month, nbsp, lineBreak, xmlStyle);
             } else { skip = true; }
          }
-         else if( (action == "D") || (action == "day") ) {   // Day
+         else if(action == "day") {   // Day
             child = findChildNode(publication, "day");
             if(child) {
                char day[16];
@@ -836,38 +836,38 @@ std::string PublicationSet::applyTemplate(Node*                           public
                result += string2utf8(day, nbsp, lineBreak, xmlStyle);
             } else { skip = true; }
          }
-         else if( (action == "$") || (action == "publisher") ) {   // Publisher
+         else if(action == "publisher") {   // Publisher
             child = findChildNode(publication, "publisher");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "S") || (action == "school") ) {   // School
+         else if(action == "school") {   // School
             child = findChildNode(publication, "school");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "?") || (action == "institution") ) {   // Institution
+         else if(action == "institution") {   // Institution
             child = findChildNode(publication, "institution");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "I") || (action == "isbn") ) {   // ISBN
+         else if(action == "isbn") {   // ISBN
             child = findChildNode(publication, "isbn");
             if(child) { result += string2utf8("ISBN~" + child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "i") || (action == "issn") ) {   // ISSN
+         else if(action == "issn") {   // ISSN
             child = findChildNode(publication, "issn");
             if(child) { result += string2utf8("ISSN~" + child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "x") || (action == "language") ) {   // Language
+         else if(action == "language") {   // Language
             child = findChildNode(publication, "language");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "O") || (action == "content-language") ) {   // Content Language
+         else if(action == "content-language") {   // Content Language
             child = findChildNode(publication, "content-language");
             if(child == nullptr) {   // No content language -> try same as "language" instead:
                child = findChildNode(publication, "language");
             }
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "x") || (action == "xml-language") ) {   // Language
+         else if(action == "xml-language") {   // Language
             child = findChildNode(publication, "language");
             if(child) {
                const char* language = getXMLLanguageFromLaTeX(child->value.c_str());
@@ -876,15 +876,15 @@ std::string PublicationSet::applyTemplate(Node*                           public
                } else { skip = true; }
             } else { skip = true; }
          }
-         else if( (action == "U") || (action == "url") ) {   // URL
+         else if(action == "url") {   // URL
             child = findChildNode(publication, "url");
             if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
          }
-         else if( (action == "d") || (action == "doi") ) {   // DOI
+         else if(action == "doi") {   // DOI
             child = findChildNode(publication, "doi");
             if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
          }
-         else if( (action == "q") || (action == "urn") ) {   // URN
+         else if(action == "urn") {   // URN
             child = findChildNode(publication, "urn");
             if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
          }
@@ -900,11 +900,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "url.md5");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if( (action == "z") || (action == "url-mime") ) {   // URL mime type
+         else if(action == "url-mime") {   // URL mime type
             child = findChildNode(publication, "url.mime");
             if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
          }
-         else if( (action == "y") || (action == "url-type") ) {   // URL type
+         else if(action == "url-type") {   // URL type
             child = findChildNode(publication, "url.mime");
             if(child) {
                if(child->value == "application/pdf") {
@@ -927,7 +927,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
             } else { skip = true; }
          }
-         else if( (action == "s") || (hasPrefix(action, "url-size-",  type)) ) {   // URL size
+         else if(hasPrefix(action, "url-size-",  type)) {   // URL size
             if((action.size() == 1) && (i + 2 < printingTemplateSize)) {
                switch(printingTemplate[i + 2]) {
                   case 'K':   // KiB
@@ -958,7 +958,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
             }
             else { skip = true; }
          }
-         else if( (action == "X") || (action == "note") ) {   // Note
+         else if(action == "note") {   // Note
             child = findChildNode(publication, "note");
             if(child) {
                if( (strncmp(child->value.c_str(), "ISBN", 4) == 0) ||
@@ -975,9 +975,9 @@ std::string PublicationSet::applyTemplate(Node*                           public
          else if(action == "%") {   // %
             result += '%';
          }
-         else if( (action == "b") || (hasPrefix(action, "begin-subdivision-",  type)) ||
-                  (action == "w") || (hasPrefix(action, "within-subdivision-", type)) ||
-                  (action == "e") || (hasPrefix(action, "end-subdivision-",    type)) ) {   // Begin/Within/End of subdivision
+         else if( (hasPrefix(action, "begin-subdivision-",  type)) ||
+                  (hasPrefix(action, "within-subdivision-", type)) ||
+                  (hasPrefix(action, "end-subdivision-",    type)) ) {   // Begin/Within/End of subdivision
             if(i + 2 < printingTemplateSize) {
                if ((action.size() == 1) && (i + 2 < printingTemplateSize) ) {
                   switch(printingTemplate[i + 2]) {
@@ -1026,15 +1026,15 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
             }
          }
-         else if( (action == "1") || (action == "custom-1") ||
-                  (action == "2") || (action == "custom-2") ||
-                  (action == "3") || (action == "custom-3") ||
-                  (action == "4") || (action == "custom-4") ||
-                  (action == "5") || (action == "custom-5") ||
-                  (action == "6") || (action == "custom-6") ||
-                  (action == "7") || (action == "custom-7") ||
-                  (action == "8") || (action == "custom-8") ||
-                  (action == "9") || (action == "custom-9") ) {   // Custom #1..9
+         else if( (action == "custom-1") ||
+                  (action == "custom-2") ||
+                  (action == "custom-3") ||
+                  (action == "custom-4") ||
+                  (action == "custom-5") ||
+                  (action == "custom-6") ||
+                  (action == "custom-7") ||
+                  (action == "custom-8") ||
+                  (action == "custom-9") ) {   // Custom #1..9
             const unsigned int id = action[action.size() - 1] - '1';
             if(publication->custom[id] != "") {
                result += string2utf8(publication->custom[id], nbsp, lineBreak, xmlStyle);

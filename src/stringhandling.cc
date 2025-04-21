@@ -207,7 +207,9 @@ std::string string2utf8(const std::string& string,
                  replaceTable[i].input,
                  ((xmlStyle == true) ? replaceTable[i].xmlOutput : replaceTable[i].utf8Output));
    }
-   replaceAll(result, "~",  nbsp);
+   if(nbsp.size() > 0) {
+      replaceAll(result, "~",  nbsp);
+   }
    replaceAll(result, "\n", lineBreak);
    // std::cout << "OUT= " << result << "\n";
    return(processBackslash(result));

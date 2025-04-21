@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+# ==========================================================================
+#                ____  _ _   _____   __  ______
+#                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
+#                |  _ \| | '_ \| |/ _ \  / |   / _ \| '_ \ \ / /
+#                | |_) | | |_) | |  __//  \ |__| (_) | | | \ V /
+#                |____/|_|_.__/|_|\___/_/\_\____\___/|_| |_|\_/
+#
+#                          ---  BibTeX Converter  ---
+#                   https://www.nntb.no/~dreibh/bibtexconv/
+# ==========================================================================
+#
+# BibTeX Converter
+# Copyright (C) 2010-2025 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: thomas.dreibholz@gmail.com
+
+set -eu
+
+RUN=""
+# RUN="valgrind "
+
+make bibtexconv
+bibTeXFile="ExampleReferences.bib"
+downloadsDirectory="${HOME}/tmp/BibTeXConv"
+mkdir -p "${downloadsDirectory}"
+
+failures=0
+# Tests: bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example
+for test in bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example ; do
+
+   # ====== Prepare test run =======================================
+   print-utf8 -x 86 -s "\x1b[34m###### Testing: ${test} " "#" "#\x1b[0m   " >&2
+   echo ""
+
+   # ------ Default parameters -------------------------------------
+   exportFile="${test}.export"
+   outputDirectory="bibtexconv-tests"
+   outputFile="${outputDirectory}/${test}"
+   goodFile="${outputDirectory}/${test}.good"
+   badFile="${outputDirectory}/${test}.bad"
+   rm -f "${badFile}"
+
+   # ====== Perform the test run ===================================
+   if [ "${test}" == "bibtex-example1" ] ; then
+      outputFile="${outputFile}.bib"
+      command="${RUN} ./bibtexconv ${bibTeXFile} -export-to-bibtex=${outputFile} -check-urls -only-check-new-urls -non-interactive"
+   elif [ "${test}" == "bibtex-example2" ] ; then
+      outputFile="${outputFile}.bib"
+      command="${RUN} ./bibtexconv ${bibTeXFile} -export-to-bibtex=${outputFile} -check-urls -store-downloads=${downloadsDirectory} -non-interactive"
+   elif [ "${test}" == "bibtex-example3" ] ; then
+      outputFile="${outputFile}.bib"
+      command="${RUN} ./bibtexconv ${bibTeXFile} -non-interactive -export-to-separate-bibtexs=${outputDirectory}/"
+   elif [ "${test}" == "xml-example" ] ; then
+      command="${RUN} ./bibtexconv ${bibTeXFile} -export-to-separate-xmls=${outputDirectory}/reference. -non-interactive"
+   elif [ "${test}" == "text-example" ] ; then
+      outputFile="${outputFile}.txt"
+      command="${RUN} ./bibtexconv ${bibTeXFile} <${exportFile} >${outputFile}"
+   else
+      outputFile="${outputFile}.html"
+      command="${RUN} ./bibtexconv ${bibTeXFile} <${exportFile} >${outputFile}"
+   fi
+   bash -c "${command}" || true
+
+   # ====== Check results ==========================================
+   if [ -e "${goodFile}" ] ; then
+      if ! diff -q "${goodFile}" "${outputFile}" >/dev/null ; then
+         failures=$((failures+1))
+         (
+            echo ""
+            print-utf8 -n -s "\e[1;31;5m█" "▀" "█\e[0m" ;
+            echo "TEST FAILED!" | figlet -w 64 | print-utf8 -n -C "\e[1;31;5m█\e[25m" "\e[5m█\e[0m" ;
+            print-utf8 -n -s "\e[1;31;5m█" "▄" "█\e[0m"
+            echo "Failure #${failures}:"
+            echo "Command:${command}"
+            echo ""
+            print-utf8 -x 78 -n -s  "\x1b[33m------ Good ($(basename "${goodFile}")) " "-" "-\x1b[0m"
+            cat "${goodFile}"
+            echo ""
+            print-utf8 -x 78 -n -s  "\x1b[35m------ Output ($(basename "${outputFile}")) " "-" "-\x1b[0m"
+            cat "${outputFile}"
+            echo ""
+            print-utf8 -x 78 -n -s  "\x1b[31m------ Differences: " "-" "-\x1b[0m"
+            diff --color "${goodFile}" "${outputFile}" || true
+            echo ""
+            cp "${outputFile}" "${badFile}"
+         ) >&2
+         exit 1
+      else
+         echo -e "\x1b[33mOKAY!\x1b[0m"
+      fi
+   else
+      echo -e "\x1b[35mN/A!\x1b[0m"
+      echo "*** No good file for $(basename "${outputFile}")! ***"
+   fi
+done
