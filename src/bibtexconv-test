@@ -39,8 +39,8 @@ downloadsDirectory="${HOME}/tmp/BibTeXConv"
 mkdir -p "${downloadsDirectory}"
 
 failures=0
-# Tests: bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example web-rserpool odt-example
-for test in test1 test2 bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example odt-example ; do
+# Tests: test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example web-rserpool odt-example
+for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example text-example web-example web-rserpool odt-example ; do
 
    # ====== Prepare test run =======================================
    print-utf8 -x 86 -s "\x1b[34m###### Testing: ${test} " "#" "#\x1b[0m   " >&2
@@ -67,8 +67,12 @@ for test in test1 test2 bibtex-example1 bibtex-example2 bibtex-example3 xml-exam
       touch "${goodFile}"   # Empty!
    elif [ "${test}" == "xml-example" ] ; then
       outputFile="${outputFile}.out"
-      command="${RUN} ./bibtexconv ${bibTeXFile} -export-to-separate-xmls=${outputDirectory}/reference. -non-interactive >${outputFile}"
+      command="${RUN} ./bibtexconv ${bibTeXFile} -non-interactive -export-to-separate-xmls=${outputDirectory}/reference. >${outputFile}"
       touch "${goodFile}"   # Empty!
+   elif [ "${test}" == "web-rserpool" ] ; then
+      outputFile="${outputFile}.html"
+      # FIXME! ${bibTeXFile}
+      command="${RUN} ./bibtexconv RSerPool.bib <${exportFile} >${outputFile}"
    else
       if [[ "${test}" =~ ^odt- ]] ; then
          outputFile="${outputFile}.xml"
