@@ -1,3 +1,9 @@
+bibtexconv (1.4.5-1ubuntu1) trixie; urgency=medium
+
+  * New upstream release.
+
+ -- Thomas Dreibholz <thomas.dreibholz@gmail.com>  Mon, 21 Apr 2025 20:37:38 +0200
+
 bibtexconv (1.4.4-2ubuntu1) trixie; urgency=medium
 
   * debian/tests: Fixed test dependencies.
