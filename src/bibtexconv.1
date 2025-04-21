@@ -56,6 +56,7 @@ BibTeX_file
 .Op Fl a | Fl Fl add-url-command
 .Op Fl i | Fl Fl skip-notes-with-isbn-and-issn
 .Op Fl I | Fl Fl add-notes-with-isbn-and-issn
+.Op Fl q | Fl Fl quiet
 .Op Fl h | Fl Fl help
 .Op Fl v | Fl Fl version
 .\" ###### Description ######################################################
@@ -112,6 +113,12 @@ Add \\url{} commands to url tags in BibTeX export.
 When reading the BibTeX file, ignore "note" items with ISBN and ISSN.
 .It Fl I | Fl Fl add-notes-with-isbn-and-issn
 When writing a BibTeX file, create "note" items with ISBN and ISSN.
+.It Fl q | Fl Fl quiet
+Reduces output verbosity.
+.It Fl h | Fl Fl help
+Prints command-line parameters.
+.It Fl v | Fl Fl version
+Prints program version.
 .El
 .\" ###### Commands #########################################################
 .Sh COMMANDS
