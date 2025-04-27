@@ -125,9 +125,9 @@ Prints program version.
 After startup, bibtexconv accepts the following commands from standard input
 (not as command-line arguments!):
 .Bl -tag -width ident
-.It cite key custom1 custom2 custom3 custom4 custom5
+.It cite key [custom1 ... custom9]
 Select specific entry in the input BibTeX file, given by key. Optionally, up
-to five custom strings may be attached to the selected entry.
+to nine custom strings may be attached to the selected entry.
 .It citeAll
 Select all entries in the input BibTeX file.
 .It clear
@@ -163,6 +163,12 @@ Insert the BibTeX "address" content (i.e. the address of the publication,
 usually the conference or publisher location).
 .It %{booktitle}
 Insert the BibTeX "booktitle" content (i.e. the book title of the publication).
+.It %{custom-1} | ... | %{custom-9}
+Insert the corresponding value provided as custom1 ... custom9 to the "cite" command.
+Some conversions may be applied when using "xmlStyle" (see below).
+.It %{custom-1-as-is} | ... | %{custom-9-as-is}
+Insert the corresponding value provided as custom1 ... custom9 to the "cite" command.
+No conversions are applied.
 .It %{day}
 Insert the BibTeX "day" content (i.e. the publication day of the publication).
 .It %{doi}
@@ -215,25 +221,25 @@ Insert the BibTeX "type" content (i.e. the type of the publication).
 .It %{url}
 Insert the BibTeX "url" content (i.e. the url of the publication).
 .It %{url.checked}
-Insert the BibTeX "url.checked" content. This is the date of the last URL check.
+Insert the BibTeX "url.checked" content. It contains the date of the last URL check.
 This field is a custom field used by BibTeXConv.
 .It %{url.keywords}
 Insert the BibTeX "url.keywords" content. This field contains the keywords of the download from "url" (e.g. PDF keywords in a PDF file).
 This field is a custom field used by BibTeXConv.
 .It %{url.md5}
-Insert the BibTeX "url.md5" content. This is the MD5 sum of the download from "url".
+Insert the BibTeX "url.md5" content. It contains the MD5 sum of the download from "url".
 This field is a custom field used by BibTeXConv.
 .It %{url.mime}
-Insert the BibTeX "url.mime" content. This is the MIME type of the download from "url", e.g. "application/pdf" for PDF.
+Insert the BibTeX "url.mime" content. It contains the MIME type of the download from "url", e.g. "application/pdf" for PDF.
 This field is a custom field used by BibTeXConv.
 .It %{url.pagesize}
-Insert the BibTeX "url.pagesize" content. This is the paper format of the download from "url", e.g. "595.276 x 841.89 pts (A4)" for DIN A4 or "612 x 792 pts (letter)" for US Letter.
+Insert the BibTeX "url.pagesize" content. It contains the paper format of the download from "url", e.g. "595.276 x 841.89 pts (A4)" for DIN A4 or "612 x 792 pts (letter)" for US Letter.
 This field is a custom field used by BibTeXConv.
 .It %{url.size}
-Insert the BibTeX "url.checked" content. This is the date of the last URL check.
+Insert the BibTeX "url.checked" content. It contains the date of the last URL check.
 This field is a custom field used by BibTeXConv.
 .It %{content-language}
-Insert the BibTeX "content-language" content. This is the language of the actual publication content. For instance, "content-language" could be "chinese", while title and abstract (given by "language") is "english".
+Insert the BibTeX "content-language" content. It contains the language of the actual publication content. For instance, "content-language" could be "chinese", while title and abstract (given by "language") is "english".
 This field is a custom field used by BibTeXConv.
 .It %{urn}
 Insert the BibTeX "urn" content. This field contains the Uniform Resource Name (URN) number, used by many national libraries.
@@ -249,7 +255,7 @@ The template allows the evaluation of blocks, with and without error containment
 .It [\~...\~]: Blocks with error containment
 Blocks in square brackets are evaluated. If a referenced placeholder, e.g. %{url}, does not exist, the block will be emptied. This allows to add content, e.g. the URL, if it exists in the BibTeX reference, but produce nothing if this information is unavailable.
 .It (\~...\~): Blocks without error containment
-Like [\~...\~], but if evaluation fails, the failure is propagated to the next upper level. That is, a construct like [ ... (\~...\~)] will produce no output if the inner block evaluation fails (and therefore the parentheses propagate the failure to the next upper block). In contrast, [ ... [\~...\~]] would result in an empty inner block.
+Like [\~...\~], but if the evaluation fails, the failure is propagated to the next upper level. That is, a construct like [ ... (\~...\~)] will produce no output if the inner block evaluation fails (and therefore the parentheses propagate the failure to the next upper block). In contrast, [ ... [\~...\~]] would only result in an empty inner block.
 .br
 Note: Parentheses in the template need to be escaped, i.e. \[rs]( and \[rs]). Unescaped parentheses are interpreted as block definition!
 .El
@@ -272,14 +278,14 @@ Success, if the block until the placeholder is greater or equal COMPARISON.
 Success, if the mapping NAME contains a mapping from the block until the placeholder. The block is evaluated to this mapping.
 .El
 .Pp
-Finally, for handling authors list, some special placeholders can be used:
+Finally, for handling the authors list of a publication, some special placeholders can be used:
 .Bl -tag -width ident
 .It %{begin-author-loop}
 Begin loop over all authors. Within the loop, the following placeholders apply to the current author in the loop.
 .It %{author-family-name}
-Insert the author's family name.
+Insert the current author's family name.
 .It %{author-give-name}
-Insert the author's given name.
+Insert the current author's given name.
 .It %{is-first-author?}
 Success, if the current author is the first author.
 .It %{is-not-first-author?}
