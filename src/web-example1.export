@@ -164,7 +164,6 @@ template+ [, %{how-published}]
 template+ [, in <em>%{journal}</em>]
 template+ [, in <em>%{booktitle}</em>]
 template+ [
-template+ , %{custom-3}|
 template+ , %{type}[~%{number}][, %{series}][, vol.~%{volume}][, pp.~%{pages}]|
 template+ [, %{series}][, vol.~%{volume}][, no.~%{number}][, pp.~%{pages}]
 template+ ]
