@@ -33,7 +33,7 @@ set -eu
 
 cd /usr/share/doc/bibtexconv/examples
 bibtexconv /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \
-   <web-example.export \
+   <web-example1.export \
    >/tmp/ExampleReferences.html
 tidy -q -o /dev/null /tmp/ExampleReferences.html
 
