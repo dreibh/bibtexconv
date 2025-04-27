@@ -711,21 +711,21 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   const std::string comparisonString = action.substr(7);
                   skip = ! (writtenString != comparisonString);
                }
-               else if(action.substr(0, 13) < "is-less-than?") {
+               else if(action.substr(0, 13) == "is-less-than?") {
                   const std::string comparisonString = action.substr(13);
-                  skip = ! (writtenString == comparisonString);
+                  skip = ! (writtenString < comparisonString);
                }
-               else if(action.substr(0, 22) <= "is-less-than-or-equal?") {
+               else if(action.substr(0, 22) == "is-less-than-or-equal?") {
                   const std::string comparisonString = action.substr(22);
-                  skip = ! (writtenString == comparisonString);
+                  skip = ! (writtenString <= comparisonString);
                }
-               else if(action.substr(0, 16) > "is-greater-than?") {
+               else if(action.substr(0, 16) == "is-greater-than?") {
                   const std::string comparisonString = action.substr(16);
-                  skip = ! (writtenString == comparisonString);
+                  skip = ! (writtenString > comparisonString);
                }
-               else if(action.substr(0, 25) >= "is-greater-than-or-equal?") {
+               else if(action.substr(0, 25) == "is-greater-than-or-equal?") {
                   const std::string comparisonString = action.substr(25);
-                  skip = ! (writtenString == comparisonString);
+                  skip = ! (writtenString >= comparisonString);
                }
 
                result.erase(entry.pos);   // Remove the written "test" string.
