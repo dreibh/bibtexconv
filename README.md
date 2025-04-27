@@ -16,13 +16,25 @@ Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of y
   ```
   bibtexconv ExampleReferences.bib --export-to-bibtex=UpdatedReferences.bib --check-urls --only-check-new-urls --non-interactive
   ```
-- Use the export script [web-example.export](src/web-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.html as XHTML 1.1. [ExampleReferences.bib](src/ExampleReferences.bib) references the script [get-author-url](src/get-author-url) and the list [authors.list](src/authors.list) to obtain the authors' website URLs.
+- Use the export script [web-example1.export](src/web-example1.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.html as XHTML 1.1. [ExampleReferences.bib](src/ExampleReferences.bib) references the script [get-author-url](src/get-author-url) and the list [authors.list](src/authors.list) to obtain the authors' website URLs.
   ```
-  bibtexconv ExampleReferences.bib <web-example.export >MyPublications.html
+  bibtexconv ExampleReferences.bib <web-example1.export >MyPublications.html
   ```
+Note that using a script is slow, and may introduce a security issue when running export scripts from untrusted sources! The preferred way for mappings is to use mapping files, which is demonstrated by the next example.
+
+- Use the export script [web-example2.export](src/web-example2.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.html as XHTML 1.1. Unlike the example above, it reads [authors.list](src/authors.list) as a mapping file, and uses the fields *Name* and *URL* to map authors to URLs.
+  ```
+  bibtexconv ExampleReferences.bib --mapping=author-url:authors.list:Name:URL <web-example2.export >MyPublications.html
+  ```
+ Mapping files have been introduced in BibTeXConv&nbsp;2.0.
+
 - Use export script [text-example.export](src/text-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.txt as plain text:
   ```
   bibtexconv ExampleReferences.bib <text-example.export >MyPublications.txt
+  ```
+- Use export script [yaml-example.export](src/yaml-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.yaml as YAML file according to [Debian Upstream MEtadata GAthered with YAml&nbsp;(UMEGAYA)](https://wiki.debian.org/UpstreamMetadata) format:
+  ```
+  bibtexconv ExampleReferences.bib <yaml-example.export >MyPublications.yaml
   ```
 - Convert all references in [ExampleReferences.bib](src/ExampleReferences.bib) to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference." (for example: reference.Globecom2010.xml for the reference Globecom2010):
   ```

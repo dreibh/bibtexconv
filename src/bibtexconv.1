@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd April 20, 2025
+.Dd April 27, 2025
 .Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -331,6 +331,13 @@ Uses export script /usr/share/doc/bibtexconv/examples/web-example1.export to exp
 </usr/share/doc/bibtexconv/examples/text-example.export >MyPublications.txt
 .br
 Uses export script /usr/share/doc/bibtexconv/examples/text-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.txt as plain text.
+.It bibtexconv \e
+.br
+/usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
+.br
+</usr/share/doc/bibtexconv/examples/yaml-example.export >MyPublications.yaml
+.br
+Uses export script /usr/share/doc/bibtexconv/examples/yaml-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.yaml as YAML file according to Debian Upstream MEtadata GAthered with YAml\~(UMEGAYA) format (see https://wiki.debian.org/UpstreamMetadata).
 .It bibtexconv \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
