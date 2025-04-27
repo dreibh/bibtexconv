@@ -131,13 +131,16 @@ to five custom strings may be attached to the selected entry.
 .It citeAll
 Select all entries in the input BibTeX file.
 .It clear
-Clear all selections.
+Remove all selected citations, i.e. no citation will be selected.
+.It sort key/[A|D] ...
+Sort the selected citations, according to key and ascending (A) or
+descending (D) ordering. The key corresponds to a key in the BibTeX file.
+Multiple keys may be defined, e.g. sort year/D month/D day/D title/A.
 .It echo string
 Write given string to standard output.
 .It export
 Export selected entries to standard output, according to configured printing
 template.
-.It header
 .It include file
 Include another export script, given by file name.
 .It monthNames jan feb mar apr may jun jul aug sep oct nov dec
@@ -146,13 +149,22 @@ non-English names are required for export.
 .It nbsp
 Changes textual representation of the "non-breakable space", for example
 &nbsp; in HTML or ~ in BibTeX.
-.It sort
-.It template
-.It template+
 .It templatenew
-.It trailer
+Begin a new template definition. Initially, the template will be empty.
+.It template+ template_string
+Add the provided template string to the template. template+ allows to define
+a complex template consisting of multiple template+ lines, to enhance
+readability.
+.It header header_string
+Add the provided header string before each exported publication entry.
+.It trailer trailer_string
+Add the provided trailer string after each exported publication entry.
 .It utf8Style
+Use UTF-8 style conventions, i.e. export characters without conversion.
 .It xmlStyle
+Use XML style conventions, i.e. export characters with some conversions to
+handle special characters not allowed in XML
+(e.g. "&amp;" for "&", "&lt;" for <, etc.).
 .El
 .Pp
 .\" ###### Arguments ########################################################
