@@ -154,7 +154,139 @@ Begin a new template definition. Initially, the template will be empty.
 .It template+ template_string
 Add the provided template string to the template. template+ allows to define
 a complex template consisting of multiple template+ lines, to enhance
-readability.
+readability. Within the template, the following placeholders can be used:
+.Bl -tag -width ident
+.It %{abstract}
+Insert the BibTeX "abstract" content (i.e. the abstract of the publication).
+.It %{address}
+Insert the BibTeX "address" content (i.e. the address of the publication,
+usually the conference or publisher location).
+.It %{booktitle}
+Insert the BibTeX "booktitle" content (i.e. the book title of the publication).
+.It %{day}
+Insert the BibTeX "day" content (i.e. the publication day of the publication).
+.It %{doi}
+Insert the BibTeX "doi" content (i.e. the DOI number of the publication).
+.It %{edition}
+Insert the BibTeX "edition" content (i.e. the edition of the publication).
+.It %{editor}
+Insert the BibTeX "editor" content (i.e. the editor of the publication).
+.It %{howpublished}
+Insert the BibTeX "howpublished" content (i.e. the publication type of the publication).
+.It %{institution}
+Insert the BibTeX "institution" content (i.e. the institution of the publication).
+.It %{isbn}
+Insert the BibTeX "isbn" content (i.e. the ISBN of the publication).
+.It %{issn}
+Insert the BibTeX "issn" content (i.e. the ISSN of the publication).
+.It %{issue}
+Insert the BibTeX "issue" content (i.e. the issue of the publication).
+.It %{journal}
+Insert the BibTeX "journal" content (i.e. the journal containing the publication).
+.It %{keywords}
+Insert the BibTeX "keywords" content (i.e. the keywords of the publication).
+.It %{language}
+Insert the BibTeX "language" content (i.e. the language of the publication).
+.It %{location}
+Insert the BibTeX "location" content (i.e. the location of the publication,
+usually the publisher location).
+.It %{month}
+Insert the BibTeX "month" content (i.e. the publication month of the publication).
+.It %{note}
+Insert the BibTeX "note" content (i.e. some additional information about the publication).
+.It %{number}
+Insert the BibTeX "number" content (i.e. the number of the publication).
+.It %{numpages}
+Insert the BibTeX "numpages" content (i.e. the number of pages of the publication).
+.It %{organization}
+Insert the BibTeX "organization" content (i.e. the organization of the publication).
+.It %{pages}
+Insert the BibTeX "pages" content (i.e. the pages range of the publication).
+.It %{publisher} | %{$}
+Insert the BibTeX "publisher" content (i.e. the publisher of the publication).
+.It %{school}
+Insert the BibTeX "school" content (i.e. the school of the publication).
+.It %{series}
+Insert the BibTeX "series" content (i.e. the series of the publication).
+.It %{title}
+Insert the BibTeX "title" content (i.e. the title of the publication).
+.It %{type}
+Insert the BibTeX "type" content (i.e. the type of the publication).
+.It %{url}
+Insert the BibTeX "url" content (i.e. the url of the publication).
+.It %{url.checked}
+Insert the BibTeX "url.checked" content. This is the date of the last URL check.
+This field is a custom field used by BibTeXConv.
+.It %{url.keywords}
+Insert the BibTeX "url.keywords" content. This field contains the keywords of the download from "url" (e.g. PDF keywords in a PDF file).
+This field is a custom field used by BibTeXConv.
+.It %{url.md5}
+Insert the BibTeX "url.md5" content. This is the MD5 sum of the download from "url".
+This field is a custom field used by BibTeXConv.
+.It %{url.mime}
+Insert the BibTeX "url.mime" content. This is the MIME type of the download from "url", e.g. "application/pdf" for PDF.
+This field is a custom field used by BibTeXConv.
+.It %{url.pagesize}
+Insert the BibTeX "url.pagesize" content. This is the paper format of the download from "url", e.g. "595.276 x 841.89 pts (A4)" for DIN A4 or "612 x 792 pts (letter)" for US Letter.
+This field is a custom field used by BibTeXConv.
+.It %{url.size}
+Insert the BibTeX "url.checked" content. This is the date of the last URL check.
+This field is a custom field used by BibTeXConv.
+.It %{content-language}
+Insert the BibTeX "content-language" content. This is the language of the actual publication content. For instance, "content-language" could be "chinese", while title and abstract (given by "language") is "english".
+This field is a custom field used by BibTeXConv.
+.It %{urn}
+Insert the BibTeX "urn" content. This field contains the Uniform Resource Name (URN) number, used by many national libraries.
+This field is a custom field used by BibTeXConv.
+.It %{volume}
+Insert the BibTeX "volume" content (i.e. the volume of the publication).
+.It %{year}
+Insert the BibTeX "year" content (i.e. the publication year of the publication).
+.El
+.Pp
+BibTeXConv allows the evaluation of blocks, with and without error containment:
+.Bl -tag -width ident
+.It [ ... ]: Blocks with error containment
+Blocks in square brackets are evaluated. If a referenced placeholder, e.g. %{url}, does not exist, the block will be emptied. This allows to add content, e.g. the URL, if it exists in the BibTeX reference, but produce nothing if this information is unavailable.
+.It ( ... ): Blocks without error containment
+Like [ ... ], but if evaluation fails, the failure is propagated to the next upper level. That is, a construct like [ ... ( ... )] will produce no output if the inner block evaluation fails (and therefore the parentheses propagate the failure to the next upper block). In contrast, [ ... [ ... ]] would result in an empty inner block.
+.El
+.Pp
+Furthermore, by using blocks, some conditional evaluation is possible:
+.Bl -tag -width ident
+.It %{is?COMPARISON}
+Success, if the block until the placeholder is equal to COMPARISON.
+.It %{is-not?COMPARISON}
+Success, if the block until the placeholder is not equal to COMPARISON.
+.It %{is-less-than?COMPARISON}
+Success, if the block until the placeholder is less than COMPARISON.
+.It %{is-less-than-or-equal?COMPARISON}
+Success, if the block until the placeholder is less than or equal COMPARISON.
+.It %{is-greater-than?COMPARISON}
+Success, if the block until the placeholder is greater than COMPARISON.
+.It %{is-greater-than-or-equal?COMPARISON}
+Success, if the block until the placeholder is greater or equal COMPARISON.
+.El
+.Pp
+Finally, for handling authors list, some special placeholders can be used:
+.Bl -tag -width ident
+.It %{begin-author-loop}
+Begin loop over all authors. Within the loop, the following placeholders apply to the current author in the loop.
+.It %{author-family-name}
+Insert the author's family name.
+.It %{author-give-name}
+Insert the author's given name.
+.It %{is-first-author?}
+Success, if the current author is the first author.
+.It %{is-not-first-author?}
+Success, if the current author is not the first author.
+.It %{is-last-author?}
+Success, if the current author is the last author.
+.It %{is-not-last-author?}
+Success, if the current author is not the last author.
+.It %{end-author-loop}
+End the author loop started with %{begin-author-loop}.
+.El
 .It header header_string
 Add the provided header string before each exported publication entry.
 .It trailer trailer_string
