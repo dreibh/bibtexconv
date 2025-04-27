@@ -244,12 +244,14 @@ Insert the BibTeX "volume" content (i.e. the volume of the publication).
 Insert the BibTeX "year" content (i.e. the publication year of the publication).
 .El
 .Pp
-BibTeXConv allows the evaluation of blocks, with and without error containment:
+The template allows the evaluation of blocks, with and without error containment:
 .Bl -tag -width ident
-.It [ ... ]: Blocks with error containment
+.It [\~...\~]: Blocks with error containment
 Blocks in square brackets are evaluated. If a referenced placeholder, e.g. %{url}, does not exist, the block will be emptied. This allows to add content, e.g. the URL, if it exists in the BibTeX reference, but produce nothing if this information is unavailable.
-.It ( ... ): Blocks without error containment
-Like [ ... ], but if evaluation fails, the failure is propagated to the next upper level. That is, a construct like [ ... ( ... )] will produce no output if the inner block evaluation fails (and therefore the parentheses propagate the failure to the next upper block). In contrast, [ ... [ ... ]] would result in an empty inner block.
+.It (\~...\~): Blocks without error containment
+Like [\~...\~], but if evaluation fails, the failure is propagated to the next upper level. That is, a construct like [ ... (\~...\~)] will produce no output if the inner block evaluation fails (and therefore the parentheses propagate the failure to the next upper block). In contrast, [ ... [\~...\~]] would result in an empty inner block.
+.br
+Note: Parentheses in the template need to be escaped, i.e. \[rs]( and \[rs]). Unescaped parentheses are interpreted as block definition!
 .El
 .Pp
 Furthermore, by using blocks, some conditional evaluation is possible:
