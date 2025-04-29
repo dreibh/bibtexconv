@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd April 27, 2025
+.Dd April 29, 2025
 .Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -152,7 +152,7 @@ Changes textual representation of the "non-breakable space", for example
 .It templatenew
 Begin a new template definition. Initially, the template will be empty.
 .It template+ template_string
-Add the provided template string to the template. template+ allows to define
+Add the provided template string to the template. template+ allows one to define
 a complex template consisting of multiple template+ lines, to enhance
 readability. Within the template, the following placeholders can be used:
 .Bl -tag -width ident
@@ -253,7 +253,7 @@ Insert the BibTeX "year" content (i.e. the publication year of the publication).
 The template allows the evaluation of blocks, with and without error containment:
 .Bl -tag -width ident
 .It [\~...\~]: Blocks with error containment
-Blocks in square brackets are evaluated. If a referenced placeholder, e.g. %{url}, does not exist, the block will be emptied. This allows to add content, e.g. the URL, if it exists in the BibTeX reference, but produce nothing if this information is unavailable.
+Blocks in square brackets are evaluated. If a referenced placeholder, e.g. %{url}, does not exist, the block will be emptied. This allows one to add content, e.g. the URL, if it exists in the BibTeX reference, but produce nothing if this information is unavailable.
 .It (\~...\~): Blocks without error containment
 Like [\~...\~], but if the evaluation fails, the failure is propagated to the next upper level. That is, a construct like [ ... (\~...\~)] will produce no output if the inner block evaluation fails (and therefore the parentheses propagate the failure to the next upper block). In contrast, [ ... [\~...\~]] would only result in an empty inner block.
 .br
