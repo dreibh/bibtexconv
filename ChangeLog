@@ -1,3 +1,33 @@
+commit 2b1da8778e6d48e32e7e523b76d9d62dc8b26718
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 29 21:38:43 2025 +0200
+
+    Improved manpage formatting by adding hyphenation hints.
+
+commit 7e2c159a3796dd9ce701a2e84a5bb2c8074c417f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 29 21:21:08 2025 +0200
+
+    Fixed spelling error in manpage.
+
+commit db29888e381e639c91c0f4a83839af658d6bf050
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 29 21:20:30 2025 +0200
+
+    Updated copyright string in debian/copyright.
+
+commit 38e1d886d8dd4797d049692e3775113a37ee0205
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 27 20:23:21 2025 +0200
+
+    Updated FreeBSD port.
+
+commit 30ced72310f1e43945fd35a5f8e48b293c7bda28
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 27 19:53:37 2025 +0200
+
+    New release bibtexconv-2.0.0.
+
 commit ebdca91e56843998a6b996cc75c63555f9e8c647
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Sun Apr 27 19:52:47 2025 +0200
