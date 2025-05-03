@@ -168,12 +168,9 @@ template+ [
 # Newline:
 template+ </text:p><text:p text:style-name="P1">
 
-# # template+ <text:p text:style-name="Standard">
-# template+ <text:span text:style-name="T2">
-# template+ URL:[ ]
+template+ <text:span text:style-name="T2">
 template+ 🔗<text:a xlink:type="simple" xlink:href="%{url}">%{url}</text:a>.
-# template+ </text:span>
-# # template+ </text:p>
+template+ </text:span>
 template+ ]
 
 # ****** End of Entry *******************************************************
