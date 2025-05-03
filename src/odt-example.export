@@ -122,7 +122,8 @@ template+ [%{url}%{is-not?} \(|%{language}%{is-not?} \(]
 template+ [
 template+ <text:a xlink:type="simple" xlink:href="%{url}">[%{url-type}|Online]</text:a>
 template+ [, %{url-size-kib}~KiB]
-template+ [, %{numpages}~pages]
+# Use plural or singular for number of pages: "n pages", or just "1 page":
+template+ [(%{numpages}%{is-not?1}), %{numpages}~pages|, %{numpages}~page]
 template+ ]
 # ------ Language -----------------------------------------------------------
 template+ [%{url}%{is-not?}[%{language}%{is-not?}, ]]
