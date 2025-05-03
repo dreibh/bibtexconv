@@ -1,0 +1,3 @@
+#!/bin/sh
+# Just return the author name. A simple replacement for get-author-url.
+echo -n "$3"
