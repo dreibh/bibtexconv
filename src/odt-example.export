@@ -157,20 +157,28 @@ template+ [, %{issn}]
 template+ [, %{address}]
 template+ [, %{note}]
 template+ [, [%{month-name}~%{day}, |%{month-name}~]%{year}]
-template+ .</text:p>
+template+ .
+
+# ****** Awards *************************************************************
+template+ [ <text:span text:style-name="T1">%{custom-1}.</text:span>]
 
 # ***** URL including hyperlink *********************************************
 template+ [
-template+ <text:p text:style-name="Standard">
+# Newline:
+template+ </text:p><text:p text:style-name="P1">
+
+# # template+ <text:p text:style-name="Standard">
 # template+ <text:span text:style-name="T2">
 # template+ URL:[ ]
 template+ 🔗<text:a xlink:type="simple" xlink:href="%{url}">%{url}</text:a>.
 # template+ </text:span>
-template+ </text:p>
+# # template+ </text:p>
 template+ ]
 
 # ****** End of Entry *******************************************************
-template+ <text:p text:style-name="P1"/>
+template+ </text:p>
+# New line:
+template+ <text:p text:style-name="P1" />
 
 
 # ====== Finally, export all selected publications ==========================
