@@ -44,8 +44,8 @@ TEMP_ZIP="$(mktemp -d)"
 bibtexconv "$BIBTEX_FILE" <"$EXPORT_SCRIPT" >"$TEMP_ZIP/content.xml"
 cp "$TEMPLATE_ODT" "$TEMP_ZIP/template.odt"
 ( cd "$TEMP_ZIP"
-  zip template.odt --out output.odt -x content.xml
-  zip output.odt content.xml )
+  zip -q template.odt --out output.odt -x content.xml
+  zip -q output.odt content.xml )
 mv "$TEMP_ZIP/output.odt" "$OUTPUT_ODT"
 
 rm -rf "$TEMP_ZIP" || true
