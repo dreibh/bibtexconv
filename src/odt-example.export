@@ -84,7 +84,7 @@ echo \n
 templatenew
 
 # ***** Subsection: YEAR ****************************************************
-template+ [%{begin-subdivision-year}<text:h text:style-name="Heading_20_2" text:outline-level="2">Year %{year}</text:h>]
+template+ [%{begin-subdivision-year}<text:h text:style-name="Heading_20_2" text:outline-level="2">%{year}</text:h>]
 
 # ***** Subsubsection: MONTH ************************************************
 template+ [%{begin-subdivision-month}<text:h text:style-name="Heading_20_3" text:outline-level="3">%{month-name}</text:h>]
