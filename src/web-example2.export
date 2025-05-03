@@ -137,17 +137,18 @@ template+ [%{url}%{is-not?} \(|%{language}%{is-not?} \(]
 
 # ------ Download -----------------------------------------------------------
 template+ [
-template+ [<a type="%{url-mime}" href="%{url}">%{url-type}</a>, ]
-template+ %{url-size-kib}~KiB
+template+ <a [type="%{url-mime}" ]href="%{url}">[%{url-type}|Online]</a>
+template+ [, %{url-size-kib}~KiB]
 template+ [, %{numpages}~pages]
 template+ ]
 # ------ Language -----------------------------------------------------------
-template+ [%{url-size-KiB}%{is-not?}[%{language}%{is-not?}, ]]
+template+ [%{url}%{is-not?}[%{language}%{is-not?}, ]]
 template+ [
 template+ %{language}%{is?english}in English|
 template+ %{language}%{is?german}auf Deutsch|
 template+ %{language}%{is?ngerman}auf Deutsch|
 template+ %{language}%{is?norsk}på norsk|
+template+ %{language}%{is?chinese}in Chinese|
 template+ %{language}%{is?french}au français|
 template+ in %{language}
 template+ ]
