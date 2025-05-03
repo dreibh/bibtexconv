@@ -96,12 +96,12 @@ echo <h2 id="Publications">Publications</h2>\n\n
 templatenew
 
 # ***** Begin of Subsection: YEAR *******************************************
-template+ [%{begin-subdivision-year}<h3>%{year}</h3><ul>\n\n]
+template+ [%{begin-subdivision-year}<h3 id="Publications-%{year}">%{year}</h3><ul>\n\n]
 
 # ****** Begin of Entry *****************************************************
-template+ <li class="treeview-collapsed">
+template+ <li id="Publications-%{html-label}" class="treeview-collapsed">
 
-# ****** Begin of main block ************************************************
+# ****** Begin of Main Block ************************************************
 template+ <div>
 template+ <p class=\"description\">
 
@@ -178,7 +178,7 @@ template+ .
 # ****** Awards *************************************************************
 template+ [ <strong>%{custom-1}.</strong>]
 
-# ****** End of main block **************************************************
+# ****** End of Main Block **************************************************
 template+ </p>
 template+ </div>
 
