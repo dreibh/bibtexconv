@@ -191,22 +191,22 @@ template+ [
 template+ [%{keywords}][%{abstract}][%{url}][%{url-md5}]%{is-not?}\n
 template+ <div class="publication-details-hiddenbox">
 template+ [
-template+ <p class="publication-details"><strong>Keywords: </strong>
+template+ <p class="publication-details"><strong>Keywords:</strong>[ ]
 template+ <span[ xml:lang="%{xml-language}"]>%{keywords}</span>
 template+ </p>
 template+ ]
 template+ [
-template+ <p class="publication-details"><strong>Abstract: </strong>
+template+ <p class="publication-details"><strong>Abstract:</strong>[ ]
 template+ <span[ xml:lang="%{xml-language}"]>%{abstract}</span>
 template+ </p>
 template+ ]
 template+ [
-template+ <p class="publication-details" style="text-align: left;"><strong>URL:&nbsp;</strong>
+template+ <p class="publication-details" style="text-align: left;"><strong>URL:</strong>[ ]
 template+ <a[ type="%{url-mime}"] href="%{url}">%{url}</a>
 template+ </p>
 template+ ]
 template+ [
-template+ <p class="publication-details"><strong>MD5: </strong> %{url-md5}</p>
+template+ <p class="publication-details"><strong>MD5:</strong>[ ]%{url-md5}</p>
 template+ ]
 template+ </div>\n
 template+ ]
