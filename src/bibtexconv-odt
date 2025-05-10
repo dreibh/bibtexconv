@@ -30,22 +30,26 @@
 
 set -eu
 
+# ====== Handle arguments ===================================================
 if [ $# -ne 4 ] ; then
    echo >&2 "Usage: $0 Template_ODT Output_ODT BibTeX_File Export_Script"
    exit 1
 fi
-
 TEMPLATE_ODT="$1"
 OUTPUT_ODT="$2"
 BIBTEX_FILE="$3"
 EXPORT_SCRIPT="$4"
-TEMP_ZIP="$(mktemp -d)"
 
-bibtexconv "$BIBTEX_FILE" --quiet <"$EXPORT_SCRIPT" >"$TEMP_ZIP/content.xml"
-cp "$TEMPLATE_ODT" "$TEMP_ZIP/template.odt"
-( cd "$TEMP_ZIP"
+# ====== Prepare temporary directory ========================================
+TEMP_DIRECTORY="$(mktemp -d)"
+trap 'rm -rf -- $TEMP_DIRECTORY' EXIT
+
+# ====== Generate content.xml for ODT file ==================================
+bibtexconv "$BIBTEX_FILE" --quiet <"$EXPORT_SCRIPT" >"$TEMP_DIRECTORY/content.xml"
+
+# ====== Generate new ODT from template ODT with generated content.xml ======
+cp "$TEMPLATE_ODT" "$TEMP_DIRECTORY/template.odt"
+( cd "$TEMP_DIRECTORY"
   zip -q template.odt --out output.odt -x content.xml
   zip -q output.odt content.xml )
-mv "$TEMP_ZIP/output.odt" "$OUTPUT_ODT"
-
-rm -rf "$TEMP_ZIP" || true
+mv "$TEMP_DIRECTORY/output.odt" "$OUTPUT_ODT"
