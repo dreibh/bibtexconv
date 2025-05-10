@@ -49,7 +49,8 @@ bibtexconv "$BIBTEX_FILE" --quiet <"$EXPORT_SCRIPT" >"$TEMP_DIRECTORY/content.xm
 
 # ====== Generate new ODT from template ODT with generated content.xml ======
 cp "$TEMPLATE_ODT" "$TEMP_DIRECTORY/template.odt"
-( cd "$TEMP_DIRECTORY"
-  zip -q template.odt --out output.odt -x content.xml
-  zip -q output.odt content.xml )
+(
+  cd "$TEMP_DIRECTORY"
+  zip -q template.odt --out output.odt -r content.xml content.xml
+)
 mv "$TEMP_DIRECTORY/output.odt" "$OUTPUT_ODT"
