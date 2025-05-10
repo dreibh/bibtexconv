@@ -35,9 +35,9 @@ _bibtexconv_odt()
    # Based on: https://www.benningtons.net/index.php/bash-completion/
    local cur prev words cword
    if type -t _comp_initialize >/dev/null; then
-      _comp_initialize -n = || return
+      _comp_initialize || return
    elif type -t _init_completion >/dev/null; then
-      _init_completion -n = || return
+      _init_completion || return
    else
       # Manual initialization for older bash completion versions:
       COMPREPLY=()
@@ -73,10 +73,7 @@ _bibtexconv_odt()
    local opts2="
 "
    # shellcheck disable=SC2207
-   COMPREPLY=( $( compgen -W "${opts1}"        -- "${cur}" )
-               $( compgen -W "${opts2}" -S "=" -- "${cur}" ) )
-   [[ ${COMPREPLY-} == *= ]] && compopt -o nospace
-
+   COMPREPLY=( $( compgen -W "${opts}" -- "${cur}" ) )
    return 0
 }
 

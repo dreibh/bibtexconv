@@ -119,6 +119,8 @@ _bibtexconv()
 --skip-notes-with-isbn-and-issn
 -I
 --add-notes-with-isbn-and-issn
+-q
+--quiet
 -h
 --help
 -v
