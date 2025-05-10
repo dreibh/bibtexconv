@@ -128,13 +128,13 @@ template+ ]
 # ------ Language -----------------------------------------------------------
 template+ [%{url}%{is-not?}[%{language}%{is-not?}, ]]
 template+ [
-template+ %{language}%{is?english}🇬🇧|
-template+ %{language}%{is?norsk}🇳🇴|
-template+ %{language}%{is?german}🇩🇪|
-template+ %{language}%{is?ngerman}🇩🇪|
-template+ %{language}%{is?chinese}🇨🇳|
-template+ %{language}%{is?french}🇫🇷|
-template+ in %{language}
+template+ [%{content-language}|%{language}]%{is?norsk}🇳🇴|
+template+ [%{content-language}|%{language}]%{is?german}🇩🇪|
+template+ [%{content-language}|%{language}]%{is?ngerman}🇩🇪|
+template+ [%{content-language}|%{language}]%{is?chinese}🇨🇳|
+template+ [%{content-language}|%{language}]%{is?french}🇫🇷|
+template+ [%{content-language}|%{language}]%{is?english}🇬🇧|
+template+ in [%{content-language}|%{language}]
 template+ ]
 
 # Add closing parenthesis ")", if "url" or "language" are set:
