@@ -91,6 +91,8 @@ echo <body>\n\n
 echo <!-- ###### Publications ############################################# -->\n
 echo <h2 id="Publications">Publications</h2>\n\n
 
+echo <!-- BEGIN-OF-PUBLICATIONS -->\n\n
+
 
 # ====== This is the printing template ======================================
 templatenew
@@ -220,6 +222,8 @@ template+ [%{end-subdivision-year}</ul>\n\n]
 
 # ====== Finally, print all selected publications ===========================
 export
+
+echo <!-- END-OF-PUBLICATIONS -->\n\n
 
 
 # ====== Write the HTML footer ==============================================

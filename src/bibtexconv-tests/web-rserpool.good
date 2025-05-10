@@ -25,6 +25,8 @@ li.treeview-expanded {
 <!-- ###### Publications ############################################# -->
 <h2 id="Publications">Publications</h2>
 
+<!-- BEGIN-OF-PUBLICATIONS -->
+
 <h2>RFCs related to RSerPool</h2><ul><li id="Publications-rfc-rserpool-mib" class="treeview-collapsed"><div><p class="description"><a href="https://www.nntb.no/~dreibh/">Dreibholz, Thomas</a> and <a href="https://www.linkedin.com/pub/jaiwant-mulik/2/264/9ab">Mulik, Jaiwant</a>:<span xml:lang="en" lang="en"> ``<a type="text/plain" href="https://www.ietf.org/rfc/rfc5525.txt">Reliable Server Pooling MIB Module Definition</a>´´</span> (<a type="text/plain" href="https://www.ietf.org/rfc/rfc5525.txt">TXT</a>, 84&nbsp;KiB, in English), RFC&nbsp;5525, IETF, DOI&nbsp;<a href="https://dx.doi.org/10.17487/RFC5525">10.17487/RFC5525</a>, ISSN&nbsp;2070-1721, April&nbsp;22, 2009.</p></div>
 <div class="publication-details-hiddenbox"><p class="publication-details"><strong>Abstract:</strong> <span xml:lang="en">Reliable Server Pooling&nbsp;(RSerPool) is a framework to provide reliable server pooling. The RSerPool framework consists of two protocols: ASAP&nbsp;(Aggregate Server Access Protocol) and ENRP&nbsp;(Endpoint Handlespace Redundancy Protocol). This document defines an SMIv2-compliant&nbsp;(Structure of Management Information Version 2) Management Information Base&nbsp;(MIB) module providing access to managed objects in an RSerPool implementation. This memo defines an Experimental Protocol for the Internet community.</span></p><p class="publication-details" style="text-align: left;"><strong>URL:</strong> <a type="text/plain" href="https://www.ietf.org/rfc/rfc5525.txt">https://www.ietf.org/rfc/rfc5525.txt</a></p><p class="publication-details"><strong>MD5:</strong> 0a97f3889ba2b726d4e738e9c4c77ee6</p></div>
 </li>
@@ -113,5 +115,7 @@ li.treeview-expanded {
 <div class="publication-details-hiddenbox"><p class="publication-details"><strong>Abstract:</strong> <span xml:lang="en">This document describes the applicability of the reliable server pool architecture and protocols to applications which want to have High avialebility services. This is accomplished by using redundant servers and failover between servers of the same pool in case of server failure. Processing load in a pool may de distributed/shared between the members of the pool according to a certain policy. Also some guidance is given on the choice of underlying transport protocol&nbsp;(and corresponding transport protocol mapping) for transporting application data and Rserpool specific control data.</span></p><p class="publication-details" style="text-align: left;"><strong>URL:</strong> <a type="text/plain" href="https://tools.ietf.org/id/draft-ietf-rserpool-applic-02.txt">https://tools.ietf.org/id/draft-ietf-rserpool-applic-02.txt</a></p><p class="publication-details"><strong>MD5:</strong> f88b529df260abab9f63364880c44e94</p></div>
 </li>
 
-</ul></body>
+</ul><!-- END-OF-PUBLICATIONS -->
+
+</body>
 </html>

@@ -25,6 +25,8 @@ li.treeview-expanded {
 <!-- ###### Publications ############################################# -->
 <h2 id="Publications">Publications</h2>
 
+<!-- BEGIN-OF-PUBLICATIONS -->
+
 <h3 id="Publications-2025">2025</h3><ul>
 
 <li id="Publications-PDP2025" class="treeview-collapsed"><div><p class="description"><a href="https://www.nntb.no/~dreibh/">Dreibholz, Thomas</a> and <a href="https://www.cbs.dk/en/research/departments-and-centres/department-of-digitalization/staff/smadigi">Mazumdar, Somnath</a>:<span xml:lang="en" lang="en"> ``<a type="application/pdf" href="https://web-backend.simula.no/sites/default/files/2025-02/PDP2025.pdf">HiPerConTracer&nbsp;3.0: Transport-level Packet Routing Analysis Tool</a>´´</span> (<a type="application/pdf" href="https://web-backend.simula.no/sites/default/files/2025-02/PDP2025.pdf">PDF</a>, 5349&nbsp;KiB, 9&nbsp;pages, in English), in <em>Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing&nbsp;(PDP)</em>, pp.&nbsp;33–41, DOI&nbsp;<a href="https://dx.doi.org/10.1109/PDP66500.2025.00014">10.1109/PDP66500.2025.00014</a>, ISBN&nbsp;979-8-3315-2493-7, Torino, Piemonte/Italy, March&nbsp;14, 2025.</p></div>
@@ -1066,6 +1068,8 @@ li.treeview-expanded {
 </li>
 
 </ul>
+
+<!-- END-OF-PUBLICATIONS -->
 
 </body>
 </html>

@@ -25,6 +25,8 @@ li.treeview-expanded {
 <!-- ###### Publications ############################################# -->
 <h2 id="Publications">Publications</h2>
 
+<!-- BEGIN-OF-PUBLICATIONS -->
+
 <h3 id="Publications-2023">2023</h3><ul>
 
 <li id="Publications-CRNA-Rapport2022" class="treeview-collapsed"><div><p class="description"><a href="https://www.simula.no/people/tarik/">Čičić, Tarik</a>; <a href="https://no.linkedin.com/pub/amund-kvalbein/0/36a/168">Kvalbein, Amund</a>; <a href="https://www.simula.no/people/anasal/">Al-Selwi, Anas Saeed</a>; <a href="https://www.simula.no/people/foivos/">Michelinakis, Foivos Ioannis</a> and <a href="https://www.nntb.no/~dreibh/">Dreibholz, Thomas</a>:<span xml:lang="nb-NO" lang="nb-NO"> ``<a type="application/pdf" href="https://web-backend.simula.no/sites/default/files/publications/files/crna-2022.pdf">Norske mobilnett i 2022 – Tilstandsrapport fra Centre for Resilient Networks and Applications</a>´´</span> (<a type="application/pdf" href="https://web-backend.simula.no/sites/default/files/publications/files/crna-2022.pdf">PDF</a>, 8343&nbsp;KiB, 44&nbsp;pages, på norsk), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications&nbsp;(CRNA), ISBN&nbsp;978-82-92593-38-7, Oslo/Norway, April&nbsp;27, 2023.</p></div>
@@ -88,6 +90,8 @@ li.treeview-expanded {
 </li>
 
 </ul>
+
+<!-- END-OF-PUBLICATIONS -->
 
 </body>
 </html>
