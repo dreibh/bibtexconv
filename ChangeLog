@@ -1,3 +1,129 @@
+commit a1cd229d2b80b8db565aa8f1e334e60e7684da4d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 10 23:23:25 2025 +0200
+
+    Further updates of the examples.
+
+commit 8cc20718847ce178aacc374a3acbf9336b14edb6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 10 22:41:04 2025 +0200
+
+    Improved example export scripts.
+
+commit 742152d3515c98d05d987c1adaa1a73f141380c4
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 10 12:22:57 2025 +0200
+
+    Updated web examples.
+
+commit fb247f89f47d2922305ef7941412aa248f42851b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 10 12:05:25 2025 +0200
+
+    BibTeXConv-ODT: Using zip's replace mode to put generated content.xml into ODT file.
+
+commit 09f218453ad032567f8c6df4ae5a2e1b3feccbcd
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 10 12:01:48 2025 +0200
+
+    BibTeX-ODT: Using trap to remove temporary directory used for ODT creation.
+
+commit 6fed7ac9a83d013ce335d4e4faf8d174fb45f442
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 10 11:54:41 2025 +0200
+
+    Shell completion updates.
+
+commit 28fd7fd7f2c84aad486529a388b33a4b0cfe6fd1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed May 7 22:30:38 2025 +0200
+
+    Improved examples.
+
+commit 2592a4e5e15ff2cabf58ad30f57da8f1f59e1e8b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun May 4 13:13:21 2025 +0200
+
+    Bugfix: LaTeX escapes "#" by "\#" => HTML output needs conversion.
+
+commit 3ab44aea323ad540cb8d2ae566da92e65c23ce67
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 21:37:59 2025 +0200
+
+    BibTeXConv: Using quiet mode for BibTeXConv call.
+
+commit 054ab9e30ec7fd8c830e0c99e3f8c4a8b98d0c2a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 18:58:30 2025 +0200
+
+    Added test script.
+
+commit 8f3961a9718a0cbea714529a0483a9ab7f4a6612
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 13:24:47 2025 +0200
+
+    Minor ODT export update.
+
+commit ab2e9f1fdba457cfac81e1f511f4e27ffa24a2c1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 12:48:29 2025 +0200
+
+    Minor update of the ODT example.
+
+commit ce97b6be2206ec9650bccef3098e609a0465113f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 12:37:36 2025 +0200
+
+    Small improvements for the templates.
+
+commit 5faa6b5bf5aa63c127c62b1238184a3b7ca3883d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 12:22:49 2025 +0200
+
+    Updated test.
+
+commit 28df3eaea0278ae44b346ad2c7655e272f462607
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 12:22:21 2025 +0200
+
+    Improved ODT template.
+
+commit ee0f3165b66167555aa0cc77cb6f78f8ff848eb5
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 12:07:19 2025 +0200
+
+    Some clean-ups.
+
+commit 9b9c0bff67423780b32931634bf27d5fabaa80f3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 11:45:05 2025 +0200
+
+    BibTeXConv-ODT: Using quiet mode for "zip" calls, to avoid useless output when processing ODT files.
+
+commit bcc2e6fa4910637db0e54c8a99d9811df7de4e06
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 11:43:30 2025 +0200
+
+    Improved ODT example.
+
+commit 179eafcb57e81a740ffd89c7f19944a9a6956706
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat May 3 08:33:00 2025 +0200
+
+    Improved examples.
+
+commit a27dcb701cbfd413f10289607bf731dce9428881
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 29 22:01:27 2025 +0200
+
+    FreeBSD port update.
+
+commit 6dcc113f9f097fa39e9cdd876d4f4579da2bea01
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 29 21:39:08 2025 +0200
+
+    New release bibtexconv-2.0.1.
+
 commit 2b1da8778e6d48e32e7e523b76d9d62dc8b26718
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Apr 29 21:38:43 2025 +0200
