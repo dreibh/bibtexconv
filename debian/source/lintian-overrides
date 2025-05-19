@@ -1,2 +1,0 @@
-# Some example files have very long lines, which is normal (BibTeX abstracts, etc. without line breaks).
-bibtexconv source: very-long-line-length-in-source-file
