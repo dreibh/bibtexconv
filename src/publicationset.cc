@@ -534,7 +534,6 @@ inline static std::string getNextAction(const char* inputString, size_t& counter
    if(inputString[0] == '{') {
       std::string input((const char*)&inputString[1]);
       result = extractToken(input, std::string("}"));
-      std::transform(result.begin(), result.end(), result.begin(), ::tolower);
       counter += result.size() + 1;
    }
    else {
