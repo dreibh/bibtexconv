@@ -66,11 +66,7 @@ _bibtexconv_odt()
    fi
 
    # ====== All options =====================================================
-   # Simple options without parameter(s)
-   local opts1="
-"
-   # Options with "=" and parameter(s)
-   local opts2="
+   local opts="
 "
    # shellcheck disable=SC2207
    COMPREPLY=( $( compgen -W "${opts}" -- "${cur}" ) )

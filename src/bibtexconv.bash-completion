@@ -51,40 +51,48 @@ _bibtexconv()
    fi
 
    # ====== Parameters ======================================================
-   case "${prev}" in
-      #  ====== BibTeX file =================================================
-      -B | -export-to-bibtex)
-         _filedir '@(bib)'
-         return
-         ;;
-      #  ====== XML file ====================================================
-      -X | -export-to-xml)
-         _filedir '@(xml)'
-         return
-         ;;
-      #  ====== Generic file or directory ===================================
-      -b | -export-to-separate-bibtexs | \
-      -x | -export-to-separate-xmls)
-         _filedir '@(bib)'
-         return
-         ;;
-      #  ====== Directory ===================================================
-      -D | -store-downloads)
-         _filedir -d
-         return
-         ;;
-      #  ====== Generic value ===============================================
-      -s | -nbsp      | \
-      -l | -linebreak | \
-      -m | -mapping)
-         return
-         ;;
-      *)
-         # BibTeX file names:
-         _filedir '@(bib)'
-         return
-         ;;
-   esac
+   if [ "${cword}" -le 1 ] ; then
+      # BibTeX file names:
+      _filedir '@(bib)'
+      return
+   else
+      case "${prev}" in
+         #  ====== BibTeX file ==============================================
+         -B | --export-to-bibtex)
+            _filedir '@(bib)'
+            return
+            ;;
+         #  ====== XML file =================================================
+         -X | --export-to-xml)
+            _filedir '@(xml)'
+            return
+            ;;
+         #  ====== Generic file or directory ================================
+         -b | --export-to-separate-bibtexs | \
+         -x | --export-to-separate-xmls)
+            _filedir '@(bib)'
+            return
+            ;;
+         #  ====== Directory ================================================
+         -D | --store-downloads)
+            _filedir -d
+            return
+            ;;
+         #  ====== Generic value ============================================
+         -s | --nbsp      | \
+         -l | --linebreak | \
+         -m | --mapping)
+            return
+            ;;
+         *)
+            if [ "${cword}" -lt 1 ] ; then
+               # BibTeX file names:
+               _filedir '@(bib)'
+               return
+            fi
+            ;;
+      esac
+   fi
 
    # ====== All options =====================================================
    local opts="
