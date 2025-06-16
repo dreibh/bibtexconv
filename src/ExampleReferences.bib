@@ -1,112 +1,3 @@
-@PhDThesis{ Dre2012,
-	author = "Thomas Dreibholz",
-	title = "{Evaluation and Optimisation of Multi-Path Transport using the Stream Control Transmission Protocol}",
-	type = "Habilitation Treatise",
-	numpages = "264",
-	day = "13",
-	month = mar,
-	year = "2012",
-	school = "University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems",
-	language = "english",
-	urn = "urn:nbn:de:hbz:464-20120315-103208-1",
-	keywords = "Stream Control Transmission Protocol~(SCTP), Multi-Path Transport, Dissimilar Paths, Fairness, Evaluation, Optimisation",
-	abstract = "{The Stream Control Transmission Protocol~(SCTP) as defined in RFC~4960 is an advanced Transport Layer protocol that provides support for multi-homing. That is, SCTP endpoints may simultaneously use multiple Network Layer addresses, which allows to connect the endpoints to multiple networks for redundancy purposes. However, for the transfer of user data, only one of the possible paths is currently used at a time. All other paths remain as backup and are only used for retransmissions.
-Clearly, the existence of multiple paths has led to the idea of applying load sharing among the paths. An extension to SCTP -- denoted as Concurrent Multipath Transfer~(CMT) -- realises this load sharing functionality. While this approach works well for similar paths, i.e.\ paths having similar characteristics regarding bandwidths, bit error rates and delays, the use of dissimilar paths does not work that neatly.
-In this thesis, the issues of dissimilar paths for CMT-based load sharing will be demonstrated first. The reasons for these issues will be identified and solutions proposed. These solutions will be evaluated in simulations, as well as partially also in a real-world Internet testbed setup, in order to show their effectiveness. In particular, it will be shown that a combination of multiple mechanisms is necessary to make CMT work as expected under a wide range of network and system parameters.
-Furthermore, the fairness of CMT-based transport -- in concurrency to classic non-CMT flows -- will be analysed. The usage of plain CMT leads to an overly aggressive bandwidth occupation on so-called shared bottlenecks. As a countermeasure, the idea of Resource Pooling will be utilised. For this purpose, two new and one adapted congestion control approach -- all based on the Resource Pooling principle -- will be introduced and examined in similar as well as dissimilar path setups, in order to show how to fairly deploy CMT transport in the Internet.
-The results of this work have also been contributed to the ongoing IETF~standardisation process of SCTP and its extensions.}",
-	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf",
-	url.size = "37661345",
-	url.md5 = "add34f0b780cb35b7ee1f963ea85e59c",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2015-05-06 22:13:53 CEST"
-}
-
-@Misc{ Dre2012-FutureInternet,
-	author = "Thomas Dreibholz",
-	title = "{Konzepte für das Future Internet aus der Netzperspektive}",
-	howpublished = "Habilitation Talk",
-	numpages = "49",
-	day = "13",
-	month = mar,
-	year = "2012",
-	school = "University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems",
-	language = "german",
-	urn = "urn:nbn:de:hbz:464-20120404-135350-0",
-	keywords = "Future Internet, Habilitationsvortrag",
-	abstract = "{Vielen seiner Benutzer erscheint das Internet als neuartig und hochmodern. Seine Grundlagen jedoch sind keineswegs neu, sondern basieren auf mittlerweile fast 40~Jahre alten Ideen. Dienste werden mittels eines geschichteten, hierarchischen Protokollstacks realisiert, bei welchem eine Interaktion nicht-benachbarter Schichten nicht vorgesehen ist. Dieser starre Aufbau macht bereits das Anpassen der Internet-Architektur an die Anforderungen der heutigen Anwendungen – wie etwa File Sharing, Videotelefonie und mobile Endgeräte – kompliziert. Die großen Herausforderungen des zukünftigen Internets – welches als das Future Internet bezeichnet wird – mit Anwendungsszenarien wie Cloud Computing, Internet of Things, Sensornetzwerken und vielen weiteren – erfordern jedoch noch weitaus umfangreichere Anpassungen. Zudem ist eine große Flexibilität erforderlich, um auch weiteren – heute noch nicht absehbaren – Anforderungen gerecht zu werden.
-Im Rahmen dieses Habilitationsvortrages wird zunächst kurz auf die Probleme des aktuellen Internets eingegangen sowie die Herausforderungen des Future Internets vorgestellt. Im Anschluss daran wird eine Auswahl der für den Übergang zum Future Internet möglichen evolutionären sowie revolutionären Ansätze vorgestellt. Der Schwerpunkt liegt hierbei auf den noch relativ neuen – und in der Forschung momentan sehr aktiv diskutierten – revolutionären Ansätzen, welche mit der Idee des sogenannten Clean Slate einen vollständigen Neuansatz anstreben. Hierbei werden die Ansätze der Funktionalen Komposition, des Content-Centric Networking sowie der Virtualisierung von Netzwerken vorgestellt. Zum Schluss wird dann auf die Frage eingegangen, wie eine Nutzung der vorgestellten Ansätze in der Praxis möglich ist und welche der aktuell in Diskussion befindlichen Ansätze sich in Zukunft voraussichtlich durchsetzen werden.}",
-	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf",
-	url.size = "5915045",
-	url.md5 = "bd09fd9172fccb9edd4ee88299038f47",
-	url.mime = "application/pdf",
-	url.pagesize = "720 x 540 pts",
-	url.checked = "2023-04-14 13:06:16 CEST"
-}
-
-@PhDThesis{ Dre2006,
-	author = "Thomas Dreibholz",
-	title = "{Reliable Server Pooling -- Evaluation, Optimization and Extension of a Novel IETF Architecture}",
-	numpages = "267",
-	day = "7",
-	month = mar,
-	year = "2007",
-	school = "University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems",
-	language = "english",
-	urn = "urn:nbn:de:hbz:465-20070308-164527-0",
-	keywords = "Reliable Server Pooling~(RSerPool), Evaluation, Optimization, Extension",
-	abstract = "{The Reliable Server Pooling (RSerPool) architecture currently under standardization by the IETF RSerPool Working Group is an overlay network framework to provide server replication and session failover capabilities to applications using it. These functionalities as such are not new, but their combination into one generic, application-independent framework is.
-Initial goal of this thesis is to gain insight into the complex RSerPool mechanisms by performing experimental and simulative proof-of-concept tests. The further goals are to systematically validate the RSerPool architecture and its protocols, provide improvements and optimizations where necessary and propose extensions if useful. Based on these evaluations, recommendations to implementers and users of RSerPool should be provided, giving guidelines for the tuning of system parameters and the appropriate configuration of application scenarios. In particular, it is also a goal to transfer insights, optimizations and extensions of the RSerPool protocols from simulation to reality and also to bring the achievements from research into application by supporting and contributing relevant results to the IETF's ongoing RSerPool standardization process.
-To achieve the described goals, a prototype implementation as well as a simulation model are designed and realized at first. Using a generic application model and appropriate performance metrics, the performance of RSerPool systems in failure-free and server failure scenarios is systematically evaluated in order to identify critical parameter ranges and problematic protocol behaviour. Improvements developed as result of these performance analyses are evaluated and finally contributed into the standardization process of RSerPool.}",
-	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf",
-	url.size = "9297866",
-	url.md5 = "acdd102ebd0775ca5de523ec5710d800",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2023-04-14 13:06:16 CEST"
-}
-
-@MastersThesis{ Dre2001,
-	author = "Thomas Dreibholz",
-	title = "{Management of Layered Variable Bitrate Multimedia Streams over DiffServ with Apriori Knowledge}",
-	type = "Masters Thesis",
-	numpages = "204",
-	day = "20",
-	month = feb,
-	year = "2001",
-	school = "University of Bonn, Institute for Computer Science",
-	language = "english",
-	urn = "urn:nbn:de:hbz:464-20120416-095753-8",
-	keywords = "Multimedia, Quality of Service, Layered Transmission, DiffServ, A Priori Knowledge",
-	abstract = "{The Internet is developing with a very high speed. Just a few years ago, its main applications were file transfer and e-mail access, all based on the best effort TCP/IP service over quite slow links. With the quickly growing deployment of high-speed Internet accesses, there is a growing demand for also using the Internet in application scenarios like real-time multimedia streaming, particularly for audio and video on demand services. However, such multimedia applications do not only require sufficient bandwidth. They have stricter quality of service demands, like e.g.\ an upper bound on the transfer delay to ensure interactivity for their users.
-In the context of this thesis, a system for the cost-efficient transfer of variable bitrate multimedia streams over Differentiated Services~(DiffServ) is presented and evaluated. This system supports layered transmission, i.e.\ streams may be partitioned into sub-streams denoted as layers (e.g.\ a video layer and an audio layer). Distinct layers may have different priorities as well as quality of service requirements and may therefore use different DiffServ classes for data transmission. Also, the streams may be scalable, i.e.\ the quality of the transferred media may be decreased in order to reduce the bandwidth requirements when bandwidth becomes scarce. Particularly, the system makes use of the fact that media files in e.g.\ a video on demand library can be analyzed a priorily. The information that is computed during the offline analysis is used to realize a dynamic and cost-efficient transport of layer data over different DiffServ classes. Furthermore, the system applies an adaptive buffering to smooth the flows -- in order to save bandwidth -- while also taking care of the delay constraints.}",
-	url = "https://duepublico.uni-duisburg-essen.de/servlets/DerivateServlet/Derivate-29936/Dre2001.pdf",
-	url.size = "62044170",
-	url.md5 = "479cc723184d88dbce6864ab93f9b6c0",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2015-05-06 22:14:24 CEST"
-}
-
-@TechReport{ DSV00,
-	author = "Thomas Dreibholz and Jan Selzer and Simon Vey",
-	title = "{Echtzeit-Audioübertragung mit QoS-Management in einem DiffServ-Szenario}",
-	type = "Projektseminararbeit",
-	numpages = "171",
-	day = "14",
-	month = aug,
-	year = "2000",
-	institution = "Universität Bonn, Institut für Informatik",
-	language = "german",
-	keywords = "Quality of Service~(QoS), Real-Time, Audio, DiffServ, RTP Audio",
-	url = "https://www.nntb.no/~dreibh/rn/DSV00.pdf",
-	url.size = "4425350",
-	url.md5 = "9aed1f5be5c1badcd41efe3e414614c0",
-	url.mime = "application/pdf",
-	url.pagesize = "612 x 792 pts (letter)",
-	url.checked = "2014-04-02 17:29:08 CEST"
-}
 
 @InProceedings{ LCN2002,
 	author = "Thomas Dreibholz",
@@ -2182,7 +2073,7 @@ In many cases, multimedia transport is also sensitive for delays and packet loss
 @InProceedings{ simsekBPF,
 	author = "Irfan Simsek and Martin Becke and Yves Igor Jerschow and Erwin Paul Rathgeb",
 	title = "{A Clean-Slate Security Vision for Future Networks}",
-	booktitle = "{Proceedings of the IEEE International Conference on Network of the Future~({NoF})}",
+	booktitle = "{Proceedings of the IEEE International Conference on Network of the Future~(NoF)}",
 	numpages = "5",
 	month = oct,
 	year = "2013",
@@ -3056,7 +2947,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	language = "english",
 	content-language = "chinese",
 	issn = "1002-8331",
-	doi = "0.3778/j.issn.1002-8331.1508-0186",
+	doi = "10.3778/j.issn.1002-8331.1508-0186",
 	keywords = "Multi-Path Transmission, Load Sharing, Path Management, Congestion Control, Buffer, Performance Analysis",
 	abstract = "{Achieving multipath transport and getting more network throughput by using multiple interfaces of multi-homed device is a hot topic in Internet protocol. MPTCP is a mature and key protocol for multipath transmission, also in the focus of the IETF. This article presents the behaviors of MPTCP multipath transmission in the local test-bed scenario, Internet scenario and NorNet test-bed scenario. Results show that MPTCP protocols can significantly increase throughput. Meanwhile its path management and scheduling strategy for transmission are still not perfect and need further improvement in dissimilar path scenario.}",
 	url = "https://web.archive.org/web/20160305203850/http://cea.ceaj.org/CN/article/downloadArticleFile.do?attachType=PDF&id=34214",
@@ -3793,7 +3684,7 @@ In this paper, we introduce our work-in-progress live video streaming platform f
 	year = "2019",
 	address = "Praha/Czech Republic",
 	language = "english",
-	url = "https://datatracker.ietf.org/meeting/104/materials/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01",
+	url = "https://web.archive.org/web/20220523134729/https://datatracker.ietf.org/meeting/104/materials/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01.pdf",
 	url.size = "81086",
 	url.md5 = "83992b2612501e88a1cb746e116b0e49",
 	url.mime = "application/pdf",
@@ -4403,7 +4294,7 @@ In this paper, we propose a proof-of-concept for using Reliable Server Pooling (
 	url.md5 = "34590aec90bbbe3ea255e733f437bd7f",
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2023-10-13 14:46:38 CEST",
+	url.checked = "2025-04-21 13:23:55 CEST",
 	url.keywords = "MPTCP; MPCOA; buffer size; path management; congestion control"
 }
 
@@ -4431,7 +4322,7 @@ In this paper, we propose a proof-of-concept for using Reliable Server Pooling (
 @Misc{ OSMHackfest12,
 	author = "Thomas Dreibholz and Andrés Felipe Ocampo and Mah-Rukh Fida",
 	title = "{Demonstration of P4-Based In-Band Telemetry for OSM-Orchestrated 4G/5G Testbeds}",
-	howpublished = "Presentation at the OSM#12 Ecosystem Day",
+	howpublished = "Presentation at the OSM\#12 Ecosystem Day",
 	type = "Demo presentation",
 	numpages = "12",
 	day = "1",
@@ -4558,10 +4449,30 @@ To answer these problems in this paper, we examine the performance of our propos
 	url.checked = "2024-06-30 12:15:46 CEST"
 }
 
+@TechReport{ CRNA-Rapport2024,
+	author = "Tarik Čičić and Alojz Gomola and Foivos Ioannis Michelinakis",
+	title = "{Norske mobilnett i 2024 -- Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications}",
+	numpages = "60",
+	day = "15",
+	month = apr,
+	year = "2025",
+	institution = "Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications~(CRNA)",
+	address = "Oslo/Norway",
+	language = "norsk",
+	isbn = "978-82-92593-42-4",
+	abstract = "{Denne rapporten er utarbeidet av Center for Resilient Networks and Applications (CRNA), som er en del av Simula Metropolitan Center for Digital Engineering. CRNA driver grunnleggende forskning innen robusthet og sikker- het i nettverk med mandat og finansiering fra Digitaliserings- og forvaltningsdepartementet. Senteret produserer en årlig rapport om tilstanden i norske mobilnett. Årets rapport er den ellevte i rekken.}",
+	url = "https://web-backend.simula.no/sites/default/files/2025-04/nne_report-4.pdf",
+	url.size = "15015257",
+	url.md5 = "de9df348b3653dc8269752f49a323e07",
+	url.mime = "application/pdf",
+	url.pagesize = "595.276 x 841.89 pts (A4)",
+	url.checked = "2025-06-13 12:23:16 CEST"
+}
+
 @Misc{ OSMHackfest13,
 	author = "Thomas Dreibholz and Azza Hassan Mohamed Ahmed and Mah-Rukh Fida and Andrés Felipe Ocampo and Foivos Ioannis Michelinakis",
 	title = "{Detecting Issues with In-Band Telemetry in OSM-Orchestrated Core Networks}",
-	howpublished = "Presentation at the OSM#13 Ecosystem Day",
+	howpublished = "Presentation at the OSM\#13 Ecosystem Day",
 	type = "Demo presentation",
 	numpages = "14",
 	day = "15",
@@ -4997,7 +4908,12 @@ As part of this paper, first the network packet timestamping features of Unix sy
 	publisher = "IEEE DataPort",
 	doi = "10.21227/a241-gm35",
 	keywords = "Cloud Computing, Quality of Service, Privacy, Internet, Packets, Routing",
-	abstract = "{The Transport-level pAcket RouTing ANalysis Tool for Cloud-native Applications (TARTAN) Dataset contains TARTAN/HiPerConTracer Traceroute runs between an endpoint in Oslo, Norway and the public Comprehensive TeX Archive Network (CTAN, https://www.ctan.org) and Comprehensive R Archive Network (CRAN, https://cran.r-project.org) mirror web servers, using ICMP and TCP as Transport Layer protocols. The data has been collected between August and October 2023. 3 rounds of Traceroute runs have been performed every 300 s. Both, IPv4 and IPv6 data have been collected. The purpose of the dataset is to show the changes of routes over time between a private endpoint and public web servers in different countries.}"
+	abstract = "{The Transport-level pAcket RouTing ANalysis Tool for Cloud-native Applications (TARTAN) Dataset contains TARTAN/HiPerConTracer Traceroute runs between an endpoint in Oslo, Norway and the public Comprehensive TeX Archive Network (CTAN, https://www.ctan.org) and Comprehensive R Archive Network (CRAN, https://cran.r-project.org) mirror web servers, using ICMP and TCP as Transport Layer protocols. The data has been collected between August and October 2023. 3 rounds of Traceroute runs have been performed every 300 s. Both, IPv4 and IPv6 data have been collected. The purpose of the dataset is to show the changes of routes over time between a private endpoint and public web servers in different countries.}",
+	url = "https://ieee-dataport.org/documents/tartan-traceroute-dataset",
+	url.size = "53961",
+	url.md5 = "b78afa7e33149ff119a9d79acae39ad3",
+	url.mime = "text/html",
+	url.checked = "2025-06-11 16:49:44 CEST"
 }
 
 @Data{ Reflection-Server-Tuning-Dataset2024,
@@ -5007,7 +4923,48 @@ As part of this paper, first the network packet timestamping features of Unix sy
 	month = feb,
 	year = "2024",
 	publisher = "IEEE DataPort",
-	doi = "10.21227/8wbz-7e29"
+	doi = "10.21227/8wbz-7e29",
+	keywords = "Latency, Kernel Tuning, HiPerConTracer",
+	abstract = "{The Reflection Server Tuning dataset contains HiPerConTracer latency measurements performed in a lab setup. The purpose of the dataset is to measure the latency and jitter effects of firewalls and Linux kernel tuning.}",
+	url = "https://ieee-dataport.org/documents/reflection-server-tuning-dataset",
+	url.size = "58644",
+	url.md5 = "95742bd6815d272b3b01d2a3a9337562",
+	url.mime = "text/html",
+	url.checked = "2025-06-11 16:49:44 CEST"
+}
+
+@Data{ HiPerConTracer-Atlantic-Dataset2025,
+	author = "Thomas Dreibholz",
+	title = "{Satellite Network Connectivity during a Trans-Atlantic Flight}",
+	day = "12",
+	month = jun,
+	year = "2025",
+	publisher = "IEEE DataPort",
+	doi = "10.21227/q0xf-t853",
+	keywords = "Latency, Kernel Tuning, HiPerConTracer",
+	abstract = "{This repository contains a dataset with HiPerConTracer performance data and OSM Tracker GNSS tracking of a trans-Atlantic flight between New York - John F. Kennedy (JFK) and Oslo - Gardermoen (OSL).}",
+	url = "https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight",
+	url.size = "53709",
+	url.md5 = "25b8cff0e5e7e42407af32f500c009db",
+	url.mime = "text/html",
+	url.checked = "2025-06-13 12:23:16 CEST"
+}
+
+@Data{ RoadTrip-Dataset2025,
+	author = "Jan Marius Evang and Thomas Dreibholz",
+	title = "{Measuring Mobile Network Coverage during Extended Road Trips in the Nordics}",
+	day = "26",
+	month = may,
+	year = "2025",
+	publisher = "IEEE DataPort",
+	doi = "10.21227/zdmm-ee93",
+	keywords = "4G, 5G Dataset, 5G-V2X, Cellular Measurements",
+	abstract = "{Modern smartphones, equipped with advanced mo- bile network technologies, deliver substantial computing ca- pabilities, but they are energy-constrained because of battery capacity limitations. It is now feasible to offload computationally demanding tasks to cloud and fog computing infrastructures to overcome this limitation. A reliable network connection is required for stable communication between mobile devices and cloud or fog systems. This experimental campaign examines the reliability of mobile network connectivity during prolonged road trips, spanning approximately 44,000 km across Norway, Sweden, Denmark, Estonia, and Finland. We collected long-term latency and loss data to evaluate service quality and roaming performance, including cross-border transitions. Our findings reveal significant variability in network reliability, with frequent roaming events in certain countries, and occasional long service outages lasting up to 680 s. These results highlight the challenges of maintaining uninterrupted connectivity for critical services, in dynamic environments. This study provides a foundation for further large-scale investigations into mobile network resilience beyond the Nordic countries.}",
+	url = "https://ieee-dataport.org/documents/measuring-mobile-network-coverage-during-extended-road-trips-nordics",
+	url.size = "52317",
+	url.md5 = "6200abdf9eb57db4a956af2a102a9336",
+	url.mime = "text/html",
+	url.checked = "2025-06-11 17:10:09 CEST"
 }
 
 @InProceedings{ M2EC2024,
@@ -5095,3 +5052,156 @@ Here, we present HiPerConTracer~3.0 for tracing routes between senders and recei
 	url.pagesize = "612 x 792 pts (letter)",
 	url.checked = "2025-02-11 15:21:22 CET"
 }
+
+@InProceedings{ RNDM2025,
+	author = "Jan Marius Evang and Thomas Dreibholz and Somnath Mazumdar",
+	title = "{Measuring Mobile Network Coverage during Extended Road Trips in the Nordics}",
+	booktitle = "{Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling~(RNDM)}",
+	numpages = "8",
+	day = "11",
+	month = jun,
+	year = "2025",
+	address = "Trondheim, Trøndelag/Norway",
+	language = "english",
+	keywords = "5G, Networks, Variability, Service Quality, Roaming, Reliability",
+	abstract = "{Modern smartphones, equipped with advanced mobile network technologies, deliver substantial computing capabilities, but they are energy-constrained because of battery capacity limitations. It is now feasible to offload computationally demanding tasks to cloud and fog computing infrastructures to overcome this limitation. A reliable network connection is required for stable communication between mobile devices and cloud or fog systems. This experimental campaign examines the reliability of mobile network connectivity during prolonged road trips, spanning approximately 44,000~km across Norway, Sweden, Denmark, Estonia, and Finland. We collected long-term latency and loss data to evaluate service quality and roaming performance, including cross-border transitions. Our findings reveal significant variability in network reliability, with frequent roaming events in certain countries, and occasional long service outages lasting up to 680~s. These results highlight the challenges of maintaining uninterrupted connectivity for critical services, in dynamic environments. This study provides a foundation for further large-scale investigations into mobile network resilience beyond the Nordic countries.}",
+	url = "https://web-backend.simula.no/sites/default/files/2025-06/RNDM2025.pdf",
+	url.size = "4404974",
+	url.md5 = "3a2a02481be4d119f98c91cd87515aa6",
+	url.mime = "application/pdf",
+	url.pagesize = "612 x 792 pts (letter)",
+	url.checked = "2025-06-13 14:38:18 CEST"
+}
+
+@Misc{ SKF2025-HiPerConTracer,
+	author = "Thomas Dreibholz",
+	title = "{HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks}",
+	type = "Presentation at the 2nd Simula Knowledge Festival",
+	numpages = "20",
+	day = "12",
+	month = jun,
+	year = "2025",
+	publisher = "Simula Research Laboratory",
+	address = "Oslo/Norway",
+	language = "english",
+	keywords = "HiPerConTracer, Networks, Latency, Delay, Round-Trip Time, Ping, Traceroute, Jitter, Measurements",
+	abstract = "{Today, many applications running on our devices depend on network communication. The expectation of a user, as well as of the application developers, is that the network "somehow" transports the data between devices and remote systems, i.e. in particular reliably, without much delay, and almost everywhere when using a mobile device. But are these expectations realistic? How can the performance of the underlying networks be evaluated? How does the underlying network structure actually look like? And are there short-term and long-term changes? Obviously, there are many interesting research questions!The goal of this talk is to present an introduction and live demonstration of our open source framework High-Performance Connectivity Tracer (HiPerConTracer). HiPerConTracer can be utilised to perform short-term as well as long-term analysis of networks, scaling from small intranet setups to large-scale distributed environments, in order to obtain detailed insights into the structure and performance metrics (delay, jitter) of communication networks. As part of the live demonstration, it is particularly intended to show how the framework can be set up in own environments, and how to collect information about the networks used for own applications.}",
+	url = "https://web-backend.simula.no/sites/default/files/2025-06/SKF2025.pdf",
+	url.size = "6631729",
+	url.md5 = "72fb3021c2febf8c72a9a632f930b451",
+	url.mime = "application/pdf",
+	url.pagesize = "793.701 x 446.457 pts",
+	url.checked = "2025-06-16 12:23:23 CEST"
+}
+
+
+@PhDThesis{ Dre2012,
+	author = "Thomas Dreibholz",
+	title = "{Evaluation and Optimisation of Multi-Path Transport using the Stream Control Transmission Protocol}",
+	type = "Habilitation Treatise",
+	numpages = "264",
+	day = "13",
+	month = mar,
+	year = "2012",
+	school = "University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems",
+	language = "english",
+	urn = "urn:nbn:de:hbz:464-20120315-103208-1",
+	keywords = "Stream Control Transmission Protocol~(SCTP), Multi-Path Transport, Dissimilar Paths, Fairness, Evaluation, Optimisation",
+	abstract = "{The Stream Control Transmission Protocol~(SCTP) as defined in RFC~4960 is an advanced Transport Layer protocol that provides support for multi-homing. That is, SCTP endpoints may simultaneously use multiple Network Layer addresses, which allows to connect the endpoints to multiple networks for redundancy purposes. However, for the transfer of user data, only one of the possible paths is currently used at a time. All other paths remain as backup and are only used for retransmissions.
+Clearly, the existence of multiple paths has led to the idea of applying load sharing among the paths. An extension to SCTP -- denoted as Concurrent Multipath Transfer~(CMT) -- realises this load sharing functionality. While this approach works well for similar paths, i.e.\ paths having similar characteristics regarding bandwidths, bit error rates and delays, the use of dissimilar paths does not work that neatly.
+In this thesis, the issues of dissimilar paths for CMT-based load sharing will be demonstrated first. The reasons for these issues will be identified and solutions proposed. These solutions will be evaluated in simulations, as well as partially also in a real-world Internet testbed setup, in order to show their effectiveness. In particular, it will be shown that a combination of multiple mechanisms is necessary to make CMT work as expected under a wide range of network and system parameters.
+Furthermore, the fairness of CMT-based transport -- in concurrency to classic non-CMT flows -- will be analysed. The usage of plain CMT leads to an overly aggressive bandwidth occupation on so-called shared bottlenecks. As a countermeasure, the idea of Resource Pooling will be utilised. For this purpose, two new and one adapted congestion control approach -- all based on the Resource Pooling principle -- will be introduced and examined in similar as well as dissimilar path setups, in order to show how to fairly deploy CMT transport in the Internet.
+The results of this work have also been contributed to the ongoing IETF~standardisation process of SCTP and its extensions.}",
+	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf",
+	url.size = "37661345",
+	url.md5 = "add34f0b780cb35b7ee1f963ea85e59c",
+	url.mime = "application/pdf",
+	url.pagesize = "595.276 x 841.89 pts (A4)",
+	url.checked = "2015-05-06 22:13:53 CEST"
+}
+
+@Misc{ Dre2012-FutureInternet,
+	author = "Thomas Dreibholz",
+	title = "{Konzepte für das Future Internet aus der Netzperspektive}",
+	howpublished = "Habilitation Talk",
+	numpages = "49",
+	day = "13",
+	month = mar,
+	year = "2012",
+	school = "University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems",
+	language = "german",
+	urn = "urn:nbn:de:hbz:464-20120404-135350-0",
+	keywords = "Future Internet, Habilitationsvortrag",
+	abstract = "{Vielen seiner Benutzer erscheint das Internet als neuartig und hochmodern. Seine Grundlagen jedoch sind keineswegs neu, sondern basieren auf mittlerweile fast 40~Jahre alten Ideen. Dienste werden mittels eines geschichteten, hierarchischen Protokollstacks realisiert, bei welchem eine Interaktion nicht-benachbarter Schichten nicht vorgesehen ist. Dieser starre Aufbau macht bereits das Anpassen der Internet-Architektur an die Anforderungen der heutigen Anwendungen – wie etwa File Sharing, Videotelefonie und mobile Endgeräte – kompliziert. Die großen Herausforderungen des zukünftigen Internets – welches als das Future Internet bezeichnet wird – mit Anwendungsszenarien wie Cloud Computing, Internet of Things, Sensornetzwerken und vielen weiteren – erfordern jedoch noch weitaus umfangreichere Anpassungen. Zudem ist eine große Flexibilität erforderlich, um auch weiteren – heute noch nicht absehbaren – Anforderungen gerecht zu werden.
+Im Rahmen dieses Habilitationsvortrages wird zunächst kurz auf die Probleme des aktuellen Internets eingegangen sowie die Herausforderungen des Future Internets vorgestellt. Im Anschluss daran wird eine Auswahl der für den Übergang zum Future Internet möglichen evolutionären sowie revolutionären Ansätze vorgestellt. Der Schwerpunkt liegt hierbei auf den noch relativ neuen – und in der Forschung momentan sehr aktiv diskutierten – revolutionären Ansätzen, welche mit der Idee des sogenannten Clean Slate einen vollständigen Neuansatz anstreben. Hierbei werden die Ansätze der Funktionalen Komposition, des Content-Centric Networking sowie der Virtualisierung von Netzwerken vorgestellt. Zum Schluss wird dann auf die Frage eingegangen, wie eine Nutzung der vorgestellten Ansätze in der Praxis möglich ist und welche der aktuell in Diskussion befindlichen Ansätze sich in Zukunft voraussichtlich durchsetzen werden.}",
+	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf",
+	url.size = "5915045",
+	url.md5 = "bd09fd9172fccb9edd4ee88299038f47",
+	url.mime = "application/pdf",
+	url.pagesize = "720 x 540 pts",
+	url.checked = "2023-04-14 13:06:16 CEST"
+}
+
+@PhDThesis{ Dre2006,
+	author = "Thomas Dreibholz",
+	title = "{Reliable Server Pooling -- Evaluation, Optimization and Extension of a Novel IETF Architecture}",
+	numpages = "267",
+	day = "7",
+	month = mar,
+	year = "2007",
+	school = "University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems",
+	language = "english",
+	urn = "urn:nbn:de:hbz:465-20070308-164527-0",
+	keywords = "Reliable Server Pooling~(RSerPool), Evaluation, Optimization, Extension",
+	abstract = "{The Reliable Server Pooling (RSerPool) architecture currently under standardization by the IETF RSerPool Working Group is an overlay network framework to provide server replication and session failover capabilities to applications using it. These functionalities as such are not new, but their combination into one generic, application-independent framework is.
+Initial goal of this thesis is to gain insight into the complex RSerPool mechanisms by performing experimental and simulative proof-of-concept tests. The further goals are to systematically validate the RSerPool architecture and its protocols, provide improvements and optimizations where necessary and propose extensions if useful. Based on these evaluations, recommendations to implementers and users of RSerPool should be provided, giving guidelines for the tuning of system parameters and the appropriate configuration of application scenarios. In particular, it is also a goal to transfer insights, optimizations and extensions of the RSerPool protocols from simulation to reality and also to bring the achievements from research into application by supporting and contributing relevant results to the IETF's ongoing RSerPool standardization process.
+To achieve the described goals, a prototype implementation as well as a simulation model are designed and realized at first. Using a generic application model and appropriate performance metrics, the performance of RSerPool systems in failure-free and server failure scenarios is systematically evaluated in order to identify critical parameter ranges and problematic protocol behaviour. Improvements developed as result of these performance analyses are evaluated and finally contributed into the standardization process of RSerPool.}",
+	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf",
+	url.size = "9297866",
+	url.md5 = "acdd102ebd0775ca5de523ec5710d800",
+	url.mime = "application/pdf",
+	url.pagesize = "595.276 x 841.89 pts (A4)",
+	url.checked = "2023-04-14 13:06:16 CEST"
+}
+
+@MastersThesis{ Dre2001,
+	author = "Thomas Dreibholz",
+	title = "{Management of Layered Variable Bitrate Multimedia Streams over DiffServ with Apriori Knowledge}",
+	type = "Masters Thesis",
+	numpages = "204",
+	day = "20",
+	month = feb,
+	year = "2001",
+	school = "University of Bonn, Institute for Computer Science",
+	language = "english",
+	urn = "urn:nbn:de:hbz:464-20120416-095753-8",
+	keywords = "Multimedia, Quality of Service, Layered Transmission, DiffServ, A Priori Knowledge",
+	abstract = "{The Internet is developing with a very high speed. Just a few years ago, its main applications were file transfer and e-mail access, all based on the best effort TCP/IP service over quite slow links. With the quickly growing deployment of high-speed Internet accesses, there is a growing demand for also using the Internet in application scenarios like real-time multimedia streaming, particularly for audio and video on demand services. However, such multimedia applications do not only require sufficient bandwidth. They have stricter quality of service demands, like e.g.\ an upper bound on the transfer delay to ensure interactivity for their users.
+In the context of this thesis, a system for the cost-efficient transfer of variable bitrate multimedia streams over Differentiated Services~(DiffServ) is presented and evaluated. This system supports layered transmission, i.e.\ streams may be partitioned into sub-streams denoted as layers (e.g.\ a video layer and an audio layer). Distinct layers may have different priorities as well as quality of service requirements and may therefore use different DiffServ classes for data transmission. Also, the streams may be scalable, i.e.\ the quality of the transferred media may be decreased in order to reduce the bandwidth requirements when bandwidth becomes scarce. Particularly, the system makes use of the fact that media files in e.g.\ a video on demand library can be analyzed a priorily. The information that is computed during the offline analysis is used to realize a dynamic and cost-efficient transport of layer data over different DiffServ classes. Furthermore, the system applies an adaptive buffering to smooth the flows -- in order to save bandwidth -- while also taking care of the delay constraints.}",
+	url = "https://duepublico.uni-duisburg-essen.de/servlets/DerivateServlet/Derivate-29936/Dre2001.pdf",
+	url.size = "62044170",
+	url.md5 = "479cc723184d88dbce6864ab93f9b6c0",
+	url.mime = "application/pdf",
+	url.pagesize = "595.276 x 841.89 pts (A4)",
+	url.checked = "2015-05-06 22:14:24 CEST"
+}
+
+@TechReport{ DSV00,
+	author = "Thomas Dreibholz and Jan Selzer and Simon Vey",
+	title = "{Echtzeit-Audioübertragung mit QoS-Management in einem DiffServ-Szenario}",
+	type = "Projektseminararbeit",
+	numpages = "171",
+	day = "14",
+	month = aug,
+	year = "2000",
+	institution = "Universität Bonn, Institut für Informatik",
+	language = "german",
+	keywords = "Quality of Service~(QoS), Real-Time, Audio, DiffServ, RTP Audio",
+	url = "https://www.nntb.no/~dreibh/rn/DSV00.pdf",
+	url.size = "4425350",
+	url.md5 = "9aed1f5be5c1badcd41efe3e414614c0",
+	url.mime = "application/pdf",
+	url.pagesize = "612 x 792 pts (letter)",
+	url.checked = "2014-04-02 17:29:08 CEST"
+}
+

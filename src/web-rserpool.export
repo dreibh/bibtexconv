@@ -112,12 +112,15 @@ template+ </span>
 # ****** Document details ***************************************************
 # The document details appear in braces ( ... ), if they are available.
 # Add opening parenthesis "(", if "url" or "language" are set:
-template+ [%{url}%{is-not?} \(|%{language}%{is-not?} \(]
+template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML} \(|%{language}%{is-not?} \(]
 
 # ------ Download -----------------------------------------------------------
 template+ [
-template+ <a [type="%{url-mime}" ]href="%{url}">[%{url-type}|Online]</a>
+# Only show file type and length for non-HTML types:
+template+ [%{url-type}%{is-not?HTML}
+template+ [<a type="%{url-mime}" href="%{url}">%{url-type}</a>]
 template+ [, %{url-size-kib}~KiB]
+template+ ]
 # Use plural or singular for number of pages: "n pages", or just "1 page":
 template+ [(%{numpages}%{is-not?1}), %{numpages}~pages|, %{numpages}~page]
 template+ ]
@@ -134,7 +137,7 @@ template+ in %{language}
 template+ ]
 
 # Add closing parenthesis ")", if "url" or "language" are set:
-template+ [%{url}%{is-not?}\)|%{language}%{is-not?}\)]
+template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML}\)|%{language}%{is-not?}\)]
 
 # ***** Bibliographic data of publication ***********************************
 template+ [, %{how-published}]

@@ -704,7 +704,7 @@ Reference:
    Day: 10
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/GLOBECOM2013.pdf
  - Author: Irfan Simsek and Martin Becke and Yves Igor Jerschow and Erwin Paul Rathgeb
-   Booktitle: Proceedings of the IEEE International Conference on Network of the Future ({NoF})
+   Booktitle: Proceedings of the IEEE International Conference on Network of the Future (NoF)
    Title: A Clean-Slate Security Vision for Future Networks
    Year: 2013
    Month: oct
@@ -1207,7 +1207,7 @@ Reference:
    Title: Performance Analysis of MPTCP Protocol in Multiple Scenarios
    Volume: 52
    ISSN: ISSN 1002-8331
-   DOI: 0.3778/j.issn.1002-8331.1508-0186
+   DOI: 10.3778/j.issn.1002-8331.1508-0186
    Year: 2016
    Month: mar
    Day: 1
@@ -1419,7 +1419,7 @@ Reference:
    Year: 2019
    Month: mar
    Day: 28
-   URL: https://datatracker.ietf.org/meeting/104/materials/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01
+   URL: https://web.archive.org/web/20220523134729/https://datatracker.ietf.org/meeting/104/materials/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01.pdf
  - Author: Yu Luo and Xing Zhou and Thomas Dreibholz and Hanbao Kuang
    Booktitle: Proceedings of the 1st International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 33rd International Conference on Advanced Information Networking and Applications (AINA)
    Pages: 1007–1019
@@ -1777,6 +1777,7 @@ Reference:
    Year: 2023
    Month: nov
    Day: 9
+   URL: https://ieee-dataport.org/documents/tartan-traceroute-dataset
  - Author: Fa Fu and Gaoshang Lu and Jianqiang Huang and Thomas Dreibholz
    Booktitle: Proceedings of the 13th International Conference on Computer Engineering and Networks (CENet)
    Publisher: Springer Nature
@@ -1917,6 +1918,45 @@ Reference:
    Year: 2024
    Month: feb
    Day: 2
+   URL: https://ieee-dataport.org/documents/reflection-server-tuning-dataset
+ - Author: Thomas Dreibholz
+   Publisher: IEEE DataPort
+   Title: Satellite Network Connectivity during a Trans-Atlantic Flight
+   DOI: 10.21227/q0xf-t853
+   Year: 2025
+   Month: jun
+   Day: 12
+   URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight
+ - Author: Thomas Dreibholz
+   Publisher: Simula Research Laboratory
+   Title: HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks
+   Type: Presentation at the 2nd Simula Knowledge Festival
+   Year: 2025
+   Month: jun
+   Day: 12
+   URL: https://web-backend.simula.no/sites/default/files/2025-06/SKF2025.pdf
+ - Author: Jan Marius Evang and Thomas Dreibholz and Somnath Mazumdar
+   Booktitle: Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM)
+   Title: Measuring Mobile Network Coverage during Extended Road Trips in the Nordics
+   Year: 2025
+   Month: jun
+   Day: 11
+   URL: https://web-backend.simula.no/sites/default/files/2025-06/RNDM2025.pdf
+ - Author: Jan Marius Evang and Thomas Dreibholz
+   Publisher: IEEE DataPort
+   Title: Measuring Mobile Network Coverage during Extended Road Trips in the Nordics
+   DOI: 10.21227/zdmm-ee93
+   Year: 2025
+   Month: may
+   Day: 26
+   URL: https://ieee-dataport.org/documents/measuring-mobile-network-coverage-during-extended-road-trips-nordics
+ - Author: Tarik Čičić and Alojz Gomola and Foivos Ioannis Michelinakis
+   Title: Norske mobilnett i 2024 – Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications
+   ISBN: ISBN 978-82-92593-42-4
+   Year: 2025
+   Month: apr
+   Day: 15
+   URL: https://web-backend.simula.no/sites/default/files/2025-04/nne_report-4.pdf
  - Author: Thomas Dreibholz and Somnath Mazumdar
    Booktitle: Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)
    Pages: 33–41

@@ -139,7 +139,7 @@ template+ </span>
 # ****** Document details ***************************************************
 # The document details appear in braces ( ... ), if they are available.
 # Add opening parenthesis "(", if "url" or "language" are set:
-template+ [%{url}%{is-not?} \(|%{language}%{is-not?} \(]
+template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML} \(|%{language}%{is-not?} \(]
 
 # ------ Download -----------------------------------------------------------
 template+ [
@@ -161,7 +161,7 @@ template+ in [%{content-language}|%{language}]
 template+ ]
 
 # Add closing parenthesis ")", if "url" or "language" are set:
-template+ [%{url}%{is-not?}\)|%{language}%{is-not?}\)]
+template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML}\)|%{language}%{is-not?}\)]
 
 # ***** Bibliographic data of publication ***********************************
 template+ [, %{how-published}]

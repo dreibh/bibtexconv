@@ -318,7 +318,7 @@ URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/SCTPSim20
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/GLOBECOM2013.pdf.
 
 ---- October 2013 ----
-[Ref83] Simsek, Irfan; Becke, Martin; Jerschow, Yves Igor; Rathgeb, Erwin Paul: "A Clean-Slate Security Vision for Future Networks" (PDF, 480 KiB), in Proceedings of the IEEE International Conference on Network of the Future ({NoF}), Pohang/South Korea, October 2013.
+[Ref83] Simsek, Irfan; Becke, Martin; Jerschow, Yves Igor; Rathgeb, Erwin Paul: "A Clean-Slate Security Vision for Future Networks" (PDF, 480 KiB), in Proceedings of the IEEE International Conference on Network of the Future (NoF), Pohang/South Korea, October 2013.
 URL: https://web.archive.org/web/20240427155505/https://www.tdr.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/A_Clean-Slate_Security_Vision_for_Future_Networks.pdf.
 
 [Ref84] Fu, Fa; Xing, Zhou; Xiong, Yang; Adhari, Hakim; Rathgeb, Erwin Paul: "Performance Analysis of MPTCP and CMT-SCTP Multi-Path Transport Protocols" (PDF, 529 KiB), in Computer Engineering and Applications, vol. 49, no. 21, pp. 79–82, October 30, 2013.
@@ -545,7 +545,7 @@ URL: https://web-backend.simula.no/sites/default/files/publications/files/hawham
 [Ref148] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at HAW Hamburg" (PDF, 4134 KiB), Tutorial at Hochschule für Angewandte Wissenschaften Hamburg (HAW Hamburg), Hamburg/Germany, March 22, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/hawhamburg2016-tutorial.pdf.
 
-[Ref149] Fu, Fa; Zhou, Xing; Tan, Yuyin; Dreibholz, Thomas; Adhari, Hakim; Rathgeb, Erwin Paul: "Performance Analysis of MPTCP Protocol in Multiple Scenarios" (PDF, 581 KiB), in Computer Engineering and Applications, vol. 52, pp. 89–93, CEA, DOI: 0.3778/j.issn.1002-8331.1508-0186., ISSN 1002-8331, March 1, 2016.
+[Ref149] Fu, Fa; Zhou, Xing; Tan, Yuyin; Dreibholz, Thomas; Adhari, Hakim; Rathgeb, Erwin Paul: "Performance Analysis of MPTCP Protocol in Multiple Scenarios" (PDF, 581 KiB), in Computer Engineering and Applications, vol. 52, pp. 89–93, CEA, DOI: 10.3778/j.issn.1002-8331.1508-0186., ISSN 1002-8331, March 1, 2016.
 URL: https://web.archive.org/web/20160305203850/http://cea.ceaj.org/CN/article/downloadArticleFile.do?attachType=PDF&id=34214.
 
 ---- January 2016 ----
@@ -651,7 +651,7 @@ URL: https://web-backend.simula.no/sites/default/files/publications/files/china2
 
 ---- March 2019 ----
 [Ref178] Barik, Runa; Welzl, Michael; Fairhurst, Gorry; Dreibholz, Thomas; Elmokashfi, Ahmed Mustafa; Gjessing, Stein: "Native SCTP, DCCP, UDP-Lite and Home Gateway NATs" (PDF, 80 KiB), in Proceedings of the 104th IETF Meeting, Praha/Czech Republic, March 28, 2019.
-URL: https://datatracker.ietf.org/meeting/104/materials/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01.
+URL: https://web.archive.org/web/20220523134729/https://datatracker.ietf.org/meeting/104/materials/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01.pdf.
 
 [Ref179] Luo, Yu; Zhou, Xing; Dreibholz, Thomas; Kuang, Hanbao: "A Real-Time Video Streaming System over IPv6+MPTCP Technology" (PDF, 212 KiB), in Proceedings of the 1st International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 33rd International Conference on Advanced Information Networking and Applications (AINA), pp. 1007–1019, DOI: 10.1007/978-3-030-15035-8_99., ISBN 978-3-030-15034-1, Matsue, Shimane/Japan, March 27, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/m2ec2019-videostreaming.pdf.
@@ -720,7 +720,7 @@ URL: https://web-backend.simula.no/sites/default/files/publications/files/osmhac
 
 ===== YEAR 2021 =====
 ---- December 2021 ----
-[Ref197] Dreibholz, Thomas; Ocampo, Andrés Felipe; Fida, Mah-Rukh: "Demonstration of P4-Based In-Band Telemetry for OSM-Orchestrated 4G/5G Testbeds" (PDF, 5252 KiB), Presentation at the OSM#12 Ecosystem Day, Virtual, December 1, 2021.
+[Ref197] Dreibholz, Thomas; Ocampo, Andrés Felipe; Fida, Mah-Rukh: "Demonstration of P4-Based In-Band Telemetry for OSM-Orchestrated 4G/5G Testbeds" (PDF, 5252 KiB), Presentation at the OSM\#12 Ecosystem Day, Virtual, December 1, 2021.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/osmhackfest12-presentation.pdf.
 
 ---- October 2021 ----
@@ -782,7 +782,7 @@ URL: https://web-backend.simula.no/sites/default/files/publications/files/tnsm20
 [Ref213] Arouna, Alfred; Bjørnstad, Steinar; Ryan, Stein Jørgen; Dreibholz, Thomas; Rind, Sobia; Elmokashfi, Ahmed Mustafa: "Network Path Integrity Verification using Deterministic Delay Measurements" (PDF, 447 KiB), in Proceedings of the 6th IEEE/IFIP Network Traffic Measurement and Analysis Conference (TMA), ISBN 978-3-903176-47-8, Enschede, Overijssel/Netherlands, June 29, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/tma_camera_ready_network_path_integrity_verification_using_deterministic_delay_measurements.pdf.
 
-[Ref214] Dreibholz, Thomas; Ahmed, Azza Hassan Mohamed; Fida, Mah-Rukh; Ocampo, Andrés Felipe; Michelinakis, Foivos Ioannis: "Detecting Issues with In-Band Telemetry in OSM-Orchestrated Core Networks" (PDF, 4769 KiB), Presentation at the OSM#13 Ecosystem Day, Virtual, June 15, 2022.
+[Ref214] Dreibholz, Thomas; Ahmed, Azza Hassan Mohamed; Fida, Mah-Rukh; Ocampo, Andrés Felipe; Michelinakis, Foivos Ioannis: "Detecting Issues with In-Band Telemetry in OSM-Orchestrated Core Networks" (PDF, 4769 KiB), Presentation at the OSM\#13 Ecosystem Day, Virtual, June 15, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/osmhackfest13-presentation.pdf.
 
 ---- April 2022 ----
@@ -801,7 +801,8 @@ URL: https://web-backend.simula.no/sites/default/files/publications/files/lca202
 [Ref218] Bjørnstad, Steinar; Ali, Jameel; Dreibholz, Thomas: "Detecting Physical Impacts by Monitoring State of Polarisation in a Live Fibre-To-The-Home Data-Communication Air-Cable" (PDF, 7490 KiB), in Proceedings of the 28th International Conference on Optical Fiber Sensors (OFS), DOI: 10.1364/ofs.2023.tu3.44., ISBN 978-1-957171-30-2, Hamamatsu, Shizuoka/Japan, November 21, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-11/OFS2023.pdf.
 
-[Ref219] Dreibholz, Thomas; Mazumdar, Somnath: "TARTAN Traceroute Dataset" , IEEE DataPort, DOI: 10.21227/a241-gm35., November 9, 2023.
+[Ref219] Dreibholz, Thomas; Mazumdar, Somnath: "TARTAN Traceroute Dataset" (HTML, 53 KiB), IEEE DataPort, DOI: 10.21227/a241-gm35., November 9, 2023.
+URL: https://ieee-dataport.org/documents/tartan-traceroute-dataset.
 
 [Ref220] Fu, Fa; Lu, Gaoshang; Huang, Jianqiang; Dreibholz, Thomas: "A Survey of Blockchain-Based Identity Anonymity Research" (PDF, 291 KiB), in Proceedings of the 13th International Conference on Computer Engineering and Networks (CENet), Springer Nature, DOI: 10.1007/978-981-99-9247-8_44., ISSN 1876-1100, Wuxi, Jiangsu/People's Republic of China, November 4, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-11/CENet2023-Blockchain.pdf.
@@ -855,11 +856,30 @@ URL: https://web-backend.simula.no/sites/default/files/2024-04/CBSTalk2024.pdf.
 URL: https://web-backend.simula.no/sites/default/files/2024-02/M2EC2024.pdf.
 
 ---- February 2024 ----
-[Ref235] Evang, Jan Marius; Dreibholz, Thomas: "Reflection Server Tuning Dataset" , IEEE DataPort, DOI: 10.21227/8wbz-7e29., February 2, 2024.
+[Ref235] Evang, Jan Marius; Dreibholz, Thomas: "Reflection Server Tuning Dataset" (HTML, 58 KiB), IEEE DataPort, DOI: 10.21227/8wbz-7e29., February 2, 2024.
+URL: https://ieee-dataport.org/documents/reflection-server-tuning-dataset.
 
 ===== YEAR 2025 =====
+---- June 2025 ----
+[Ref236] Dreibholz, Thomas: "Satellite Network Connectivity during a Trans-Atlantic Flight" (HTML, 53 KiB), IEEE DataPort, DOI: 10.21227/q0xf-t853., June 12, 2025.
+URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight.
+
+[Ref237] Dreibholz, Thomas: "HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks" (PDF, 6477 KiB), Simula Research Laboratory, Oslo/Norway, June 12, 2025.
+URL: https://web-backend.simula.no/sites/default/files/2025-06/SKF2025.pdf.
+
+[Ref238] Evang, Jan Marius; Dreibholz, Thomas; Mazumdar, Somnath: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (PDF, 4302 KiB), in Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM), Trondheim, Trøndelag/Norway, June 11, 2025.
+URL: https://web-backend.simula.no/sites/default/files/2025-06/RNDM2025.pdf.
+
+---- May 2025 ----
+[Ref239] Evang, Jan Marius; Dreibholz, Thomas: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (HTML, 52 KiB), IEEE DataPort, DOI: 10.21227/zdmm-ee93., May 26, 2025.
+URL: https://ieee-dataport.org/documents/measuring-mobile-network-coverage-during-extended-road-trips-nordics.
+
+---- April 2025 ----
+[Ref240] Čičić, Tarik; Gomola, Alojz; Michelinakis, Foivos Ioannis: "Norske mobilnett i 2024 – Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications" (PDF, 14664 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-42-4, Oslo/Norway, April 15, 2025.
+URL: https://web-backend.simula.no/sites/default/files/2025-04/nne_report-4.pdf.
+
 ---- March 2025 ----
-[Ref236] Dreibholz, Thomas; Mazumdar, Somnath: "HiPerConTracer 3.0: Transport-level Packet Routing Analysis Tool" (PDF, 5349 KiB), in Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP), pp. 33–41, DOI: 10.1109/PDP66500.2025.00014., ISBN 979-8-3315-2493-7, Torino, Piemonte/Italy, March 14, 2025.
+[Ref241] Dreibholz, Thomas; Mazumdar, Somnath: "HiPerConTracer 3.0: Transport-level Packet Routing Analysis Tool" (PDF, 5349 KiB), in Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP), pp. 33–41, DOI: 10.1109/PDP66500.2025.00014., ISBN 979-8-3315-2493-7, Torino, Piemonte/Italy, March 14, 2025.
 URL: https://web-backend.simula.no/sites/default/files/2025-02/PDP2025.pdf.
 
 ===== End of My Publications List =====
