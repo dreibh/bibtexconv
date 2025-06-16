@@ -540,13 +540,6 @@ Reference:
    Month: sep
    Day: 16
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/SoftCOM2011.pdf
- - Author: Michael Kleis and Abbas Siddiqui and Irfan Simsek and Martin Becke and Dirk Hoffstadt and Alexander Marold and Christian Henke and Julius Müller and Cristian Varas and Thomas Magedanz and Paul Müller and Erwin Paul Rathgeb
-   Booktitle: Proceedings of the Joint ITG and Euro-NF Workshop on Visions of Future Generation Networks (EuroView2011)
-   Title: Cross-Layer Security and Functional Composition for a Future Internet
-   Year: 2011
-   Month: aug
-   Day: 2
-   URL: https://web.archive.org/web/20231223022714/http://www.euroview2011.com/fileadmin/content/euroview2011/abstracts/abstract_kleis.pdf
  - Author: Thomas Dreibholz and Martin Becke and Hakim Adhari and Erwin Paul Rathgeb
    Booktitle: Proceedings of the 11th IEEE International Conference on Telecommunications (ConTEL)
    Pages: 397–404
@@ -563,13 +556,6 @@ Reference:
    Month: may
    Day: 12
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/LinuxTag2011.pdf
- - Author: M. Kleis and J. Müller and A. Siddiqui and Martin Becke
-   Booktitle: Proceedings of the 7th International ICST Conference on Testbeds and Research Infrastructures for the Development of Networks and Communities (TridentCom)
-   Title: Evaluating a Future Internet Cross-Layer Composition Prototype
-   Year: 2011
-   Month: apr
-   Day: 18
-   URL: https://web.archive.org/web/20200229073430/http://dspace.icsy.de:12000/dspace/bitstream/123456789/324/1/2010-09-Measurements.pdf
  - Author: Thomas Dreibholz and Irene Rüngeler and Robin Seggelmann and Michael Tüxen and Erwin Paul Rathgeb and Randall R. Stewart
    Journal: IEEE Communications Magazine
    Number: 4
@@ -608,12 +594,6 @@ Reference:
    Month: jan
    Day: 25
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/ICN2011.pdf
- - Author: Thomas Volkert and Martin Becke and Manuel Osdoba and Andreas Mitschele-Thiel
-   Booktitle: Proceedings of the 7th International Conference on Computing and Convergence Technology (ICCCT)
-   Title: Homer Conferencing – A Multimedia Test Bed for Various Experiments and Measurements
-   Year: 2012
-   Month: dec
-   URL: https://web.archive.org/web/20210525124457/http://www.homer-conferencing.com/public/Homer_Conferencing.pdf
  - Author: Thomas Dreibholz
    Title: An Introduction to NorNet Core for the Site Deployment at Universitetet i Stavanger
    Year: 2012
@@ -626,13 +606,6 @@ Reference:
    Month: nov
    Day: 2
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1580.pdf
- - Author: Thomas Volkert and Florian Liers and Martin Becke and Hakim Adhari
-   Booktitle: Proceedings of the Joint ITG and Euro-NF Workshop on Visions of Future Generation Networks (EuroView)
-   Title: Requirements-Oriented Path Selection for Multipath Transmission
-   Year: 2012
-   Month: jul
-   Day: 23
-   URL: https://web.archive.org/web/20240413144124/http://www.euroview2012.org/fileadmin/content/euroview2012/abstracts/07_01_abstract_volkert.pdf
  - Author: Martin Becke and Thomas Dreibholz and Hakim Adhari and Erwin Paul Rathgeb
    Booktitle: Proceedings of the IEEE International Conference on Communications (ICC)
    Pages: 2666–2672
@@ -696,36 +669,6 @@ Reference:
    Month: feb
    Day: 6
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/SCTPSim2012.pdf
- - Author: Martin Becke and Hakim Adhari and Erwin Paul Rathgeb and Fa Fu and Xiong Yang and Xing Zhou
-   Booktitle: Proceedings of the IEEE Global Communications Conference (GLOBECOM)
-   Title: Comparison of Multipath TCP and CMT-SCTP based on Intercontinental Measurements
-   Year: 2013
-   Month: dec
-   Day: 10
-   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/GLOBECOM2013.pdf
- - Author: Irfan Simsek and Martin Becke and Yves Igor Jerschow and Erwin Paul Rathgeb
-   Booktitle: Proceedings of the IEEE International Conference on Network of the Future (NoF)
-   Title: A Clean-Slate Security Vision for Future Networks
-   Year: 2013
-   Month: oct
-   URL: https://web.archive.org/web/20240427155505/https://www.tdr.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/A_Clean-Slate_Security_Vision_for_Future_Networks.pdf
- - Author: Fa Fu and Zhou Xing and Yang Xiong and Hakim Adhari and Erwin Paul Rathgeb
-   Journal: Computer Engineering and Applications
-   Number: 21
-   Pages: 79–82
-   Title: Performance Analysis of MPTCP and CMT-SCTP Multi-Path Transport Protocols
-   Volume: 49
-   Year: 2013
-   Month: oct
-   Day: 30
-   URL: https://web.archive.org/web/20160427132028/http://cea.ceaj.org/EN/article/downloadArticleFile.do?attachType=PDF&id=31123
- - Author: Irfan Simsek
-   Booktitle: 12. ITG-Fachtagung Zukunft der Netze – Application-Driven Networking
-   Title: Blind Packet Forwarding
-   Year: 2013
-   Month: sep
-   Day: 20
-   URL: https://web.archive.org/web/20230521195156/http://www.vde-itg-kommunikationsnetze.de/images/stories/Fachtagungen/zdn2013/vortraege/zdn2013_simsek.pdf
  - Author: Thomas Dreibholz
    Booktitle: Proceedings of the 1st International NorNet Users Workshop (NNUW-1)
    Title: The NorNet Core Testbed – An Experiment Tutorial
@@ -733,20 +676,6 @@ Reference:
    Month: sep
    Day: 19
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2130.pdf
- - Author: Hakim Adhari
-   Booktitle: Proceedings of the 1st International NorNet Users Workshop (NNUW-1)
-   Title: Practical Experiences with an Inter-Continental Testbed for Multi-Path Transport
-   Year: 2013
-   Month: sep
-   Day: 18
-   URL: https://web.archive.org/web/20141127040341/https://www.simula.no/publications/Simula.simula.2144/simula_pdf_file
- - Author: Erwin Paul Rathgeb
-   Booktitle: Proceedings of the 1st International NorNet Users Workshop (NNUW-1)
-   Title: Distributed Detection of VoIP Fraud and Misuse – Tools and First Results
-   Year: 2013
-   Month: sep
-   Day: 18
-   URL: https://web.archive.org/web/20141127040313/https://www.simula.no/publications/Simula.simula.2142/simula_pdf_file
  - Author: Thomas Dreibholz
    Booktitle: Proceedings of the 1st International NorNet Users Workshop (NNUW-1)
    Title: The NorNet Core Testbed – Introduction and Status
@@ -783,16 +712,6 @@ Reference:
    Month: jun
    Day: 26
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2000.pdf
- - Author: Martin Becke and Erwin Paul Rathgeb and Sebastian Werner and Irene Rüngeler and Michael Tüxen and Randall R. Stewart
-   Journal: IEEE Communications Magazine
-   Number: 4
-   Pages: 34–41
-   Title: Data Channel Considerations for RTCWeb
-   Volume: 51
-   ISSN: ISSN 0163-6804
-   DOI: 10.1109/MCOM.2013.6495758
-   Year: 2013
-   Month: apr
  - Author: Thomas Dreibholz
    Title: An Overview of the NorNet Testbed for Multi-Homed Systems
    Year: 2013
@@ -812,16 +731,6 @@ Reference:
    Month: apr
    Day: 8
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1968.pdf
- - Author: Thomas Volkert and Martin Becke and Manuel Osdoba and Andreas Mitschele-Thiel
-   Booktitle: Proceedings of the 3nd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
-   Pages: 1107–1112
-   Title: Multipath Video Streaming based on Hierarchical Routing Management
-   ISBN: ISBN 978-0-7695-4952-1
-   DOI: 10.1109/WAINA.2013.161
-   Year: 2013
-   Month: mar
-   Day: 27
-   URL: https://web.archive.org/web/20210210145830/http://www.homer-conferencing.com/public/MP_HRM.pdf
  - Author: Thomas Dreibholz and Ernst Gunnar Gran
    Booktitle: Proceedings of the 3nd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
    Pages: 1094–1100
@@ -914,12 +823,6 @@ Reference:
    Month: aug
    Day: 29
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2970.pdf
- - Author: Hakim Adhari
-   Booktitle: Proceedings of the 2nd International NorNet Users Workshop (NNUW-2)
-   Title: Does the End-User Really Have Benefits From Using Multipath Transport?
-   Year: 2014
-   Month: aug
-   Day: 29
  - Author: Thomas Dreibholz
    Booktitle: Proceedings of the 2nd International NorNet Users Workshop (NNUW-2)
    Title: The NorNet Core Testbed – Introduction and Status in August 2014
@@ -1025,12 +928,6 @@ Reference:
    Month: nov
    Day: 3
    URL: https://web-backend.simula.no/sites/default/files/publications/files/fufa-mptcp-web.pdf
- - Author: Amanpreet Singh and Andreas Könsgen and Hakim Adhari and Carmelita Görg and Erwin P. Rathgeb
-   Booktitle: Proceedings of the 7th EAI International Conference on Mobile Networks and Management (MONAMI 2015)
-   Title: Algorithms for Theoretical Investigation of Fairness in Multipath Transport
-   Year: 2015
-   Month: sep
-   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/naomi2015-FairnessAlgorithms.pdf
  - Author: Thomas Dreibholz
    Booktitle: Proceedings of the NORDUnet Technical Workshop (NTW)
    Title: The NorNet Experimentation Platform for Multi-Homed Systems
@@ -1062,12 +959,6 @@ Reference:
    Month: aug
    Day: 28
    URL: https://web-backend.simula.no/sites/default/files/publications/files/nnuw3-dreibholz.pdf
- - Author: Hakim Adhari and Erwin P. Rathgeb and Amanpreet Singh and Andreas Könsgen and Carmelita Görg
-   Booktitle: Proceedings of the 13th IEEE International Conference on Telecommunications (ConTEL 2015)
-   Title: Transport Layer Fairness Revisited
-   Year: 2015
-   Month: jul
-   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/contel-Fairness-Adhari.pdf
  - Author: Thomas Dreibholz
    Booktitle: Proceedings of the 93th IETF Meeting
    Title: MPTCP Experiences in the NorNet Testbed: draft-dreibholz-mptcp-nornet-experience-01
@@ -1634,13 +1525,6 @@ Reference:
    Month: may
    Day: 11
    URL: https://5g-ppp.eu/wp-content/uploads/2021/05/AI-MLforNetworks-v1-0.pdf
- - Author: Ahmed Mustafa Elmokashfi and Amund Kvalbein and Anas Saeed Al-Selwi and Mah-Rukh Fida
-   Title: Norske mobilnett i 2020 – Tilstandsrapport fra Centre for Resilient Networks and Applications
-   ISBN: ISBN 82-92593-30-6
-   Year: 2021
-   Month: may
-   Day: 6
-   URL: https://web-backend.simula.no/sites/default/files/norske_mobilnett_i_2020.pdf
  - Author: Thomas Dreibholz
    Title: NorNet at Hainan University in 2021: Getting Started with NorNet Core – A Remote Tutorial
    Year: 2021
@@ -1888,13 +1772,6 @@ Reference:
    Month: jun
    Day: 13
    URL: https://web-backend.simula.no/sites/default/files/2024-06/KOHS2024-Presentation_0.pdf
- - Author: Tarik Čičić and Alojz Gomola and Hugo Martineau and Foivos Ioannis Michelinakis and Anas Saeed Al-Selwi
-   Title: Norske mobilnett i 2023 – Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications
-   ISBN: ISBN 978-82-92593-39-4
-   Year: 2024
-   Month: apr
-   Day: 30
-   URL: https://web-backend.simula.no/sites/default/files/2024-05/crna-2023.pdf
  - Author: Thomas Dreibholz
    Title: Cloud and Fog: How and Where is My Data Flowing? Obtaining Insights into Data Privacy in Today's Applications
    Year: 2024
@@ -1950,13 +1827,6 @@ Reference:
    Month: may
    Day: 26
    URL: https://ieee-dataport.org/documents/measuring-mobile-network-coverage-during-extended-road-trips-nordics
- - Author: Tarik Čičić and Alojz Gomola and Foivos Ioannis Michelinakis
-   Title: Norske mobilnett i 2024 – Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications
-   ISBN: ISBN 978-82-92593-42-4
-   Year: 2025
-   Month: apr
-   Day: 15
-   URL: https://web-backend.simula.no/sites/default/files/2025-04/nne_report-4.pdf
  - Author: Thomas Dreibholz and Somnath Mazumdar
    Booktitle: Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)
    Pages: 33–41

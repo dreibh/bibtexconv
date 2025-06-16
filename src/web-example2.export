@@ -156,7 +156,8 @@ template+ [%{content-language}|%{language}]%{is?norsk}på norsk|
 template+ [%{content-language}|%{language}]%{is?chinese}in Chinese|
 template+ [%{content-language}|%{language}]%{is?french}au français|
 template+ [%{content-language}|%{language}]%{is?english}in English|
-template+ in [%{content-language}|%{language}]
+template+ in %{content-language}|
+template+ in %{language}
 template+ ]
 
 # Add closing parenthesis ")", if "url" or "language" are set:

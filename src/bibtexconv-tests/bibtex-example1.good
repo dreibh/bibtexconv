@@ -1325,24 +1325,6 @@ In this paper, we show the difficulties of Multi-Path transport in a real-world 
 	url.checked = "2014-04-02 17:08:23 CEST"
 }
 
-@InProceedings{ Tridentcom2011,
-	author = "M.~Kleis and J.~Müller and A.~Siddiqui and Martin Becke",
-	title = "{Evaluating a Future Internet Cross-Layer Composition Prototype}",
-	booktitle = "{Proceedings of the 7th International ICST Conference on Testbeds and Research Infrastructures for the Development of Networks and Communities~(TridentCom)}",
-	numpages = "16",
-	day = "18",
-	month = apr,
-	year = "2011",
-	address = "Shanghai/People's Republic of China",
-	language = "english",
-	url = "https://web.archive.org/web/20200229073430/http://dspace.icsy.de:12000/dspace/bitstream/123456789/324/1/2010-09-Measurements.pdf",
-	url.size = "1036121",
-	url.md5 = "4d48dfeb9d5d4898e8564adcd065cdf4",
-	url.mime = "application/pdf",
-	url.pagesize = "612 x 792 pts (letter)",
-	url.checked = "2014-04-02 17:08:23 CEST"
-}
-
 @InProceedings{ GENIWorkshop2011,
 	author = "Martin Becke and Thomas Dreibholz",
 	title = "{Multi-Path Transport}",
@@ -1425,26 +1407,6 @@ Based on the idea of Resource Pooling~(RP), two approaches are currently discuss
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
 	url.checked = "2014-04-02 17:08:24 CEST"
-}
-
-@InProceedings{ euroview2011,
-	author = "Michael Kleis and Abbas Siddiqui and Irfan Simsek and Martin Becke and Dirk Hoffstadt and Alexander Marold and Christian Henke and Julius Müller and Cristian Varas and Thomas Magedanz and Paul Müller and Erwin Paul Rathgeb",
-	title = "{Cross-Layer Security and Functional Composition for a Future Internet}",
-	booktitle = "{Proceedings of the Joint ITG and Euro-NF Workshop on Visions of Future Generation Networks~(EuroView2011)}",
-	numpages = "2",
-	day = "2",
-	month = aug,
-	year = "2011",
-	address = "Würzburg, Bayern/Germany",
-	language = "english",
-	note = "Demo Presentation at the G-Lab Status Meeting",
-	url = "https://web.archive.org/web/20231223022714/http://www.euroview2011.com/fileadmin/content/euroview2011/abstracts/abstract_kleis.pdf",
-	url.size = "399717",
-	url.md5 = "396c723405c7931bd3f656a43405ef14",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2025-03-03 19:28:54 CET",
-	url.keywords = "TODO"
 }
 
 @InProceedings{ SoftCOM2011,
@@ -1561,24 +1523,6 @@ A key issue that prevents the standardization of these approaches is the fairnes
 	url.checked = "2014-04-02 17:08:25 CEST"
 }
 
-@InProceedings{ EuroView2012-HomerDemo,
-	author = "Thomas Volkert and Florian Liers and Martin Becke and Hakim Adhari",
-	title = "{Requirements-Oriented Path Selection for Multipath Transmission}",
-	booktitle = "{Proceedings of the Joint ITG and Euro-NF Workshop on Visions of Future Generation Networks~(EuroView)}",
-	numpages = "2",
-	day = "23",
-	month = jul,
-	year = "2012",
-	address = "Würzburg, Bayern/Germany",
-	language = "english",
-	url = "https://web.archive.org/web/20240413144124/http://www.euroview2012.org/fileadmin/content/euroview2012/abstracts/07_01_abstract_volkert.pdf",
-	url.size = "469118",
-	url.md5 = "c406d3ee66aa547a60e10988dd8299b7",
-	url.mime = "application/pdf",
-	url.pagesize = "595.22 x 842 pts (A4)",
-	url.checked = "2025-03-03 19:34:41 CET"
-}
-
 @TechReport{ RspSim2012,
 	author = "Thomas Dreibholz and Martin Becke and Hakim Adhari and Erwin Paul Rathgeb",
 	title = "{RspSim -- A Simulation Model of the Reliable Server Pooling Framework}",
@@ -1679,27 +1623,6 @@ In this code contribution paper, we introduce our application model NetPerfMeter
 	url.keywords = "NorNet, NorNet Edge, NorNet Core, Testbed, Overview"
 }
 
-@InProceedings{ PAMS2013-EssenIlmenau,
-	author = "Thomas Volkert and Martin Becke and Manuel Osdoba and Andreas Mitschele-Thiel",
-	title = "{Multipath Video Streaming based on Hierarchical Routing Management}",
-	booktitle = "{Proceedings of the 3nd International Workshop on Protocols and Applications with Multi-Homing Support~(PAMS)}",
-	pages = "1107--1112",
-	numpages = "6",
-	day = "27",
-	month = mar,
-	year = "2013",
-	address = "Barcelona, Catalonia/Spain",
-	language = "english",
-	isbn = "978-0-7695-4952-1",
-	doi = "10.1109/WAINA.2013.161",
-	url = "https://web.archive.org/web/20210210145830/http://www.homer-conferencing.com/public/MP_HRM.pdf",
-	url.size = "1178938",
-	url.md5 = "c735f2c12177da55acaf1d1b40b744c5",
-	url.mime = "application/pdf",
-	url.pagesize = "595.44 x 841.68 pts",
-	url.checked = "2014-04-02 17:08:38 CEST"
-}
-
 @InProceedings{ PAMS2013-NorNet,
 	author = "Thomas Dreibholz and Ernst Gunnar Gran",
 	title = "{Design and Implementation of the NorNet Core Research Testbed for Multi-Homed Systems}",
@@ -1722,24 +1645,6 @@ The intention of the NorNet project is to build up a realistic Internet testbed 
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
 	url.checked = "2024-06-30 12:59:21 CEST"
-}
-
-@InProceedings{ ICCCT2013-Homer,
-	author = "Thomas Volkert and Martin Becke and Manuel Osdoba and Andreas Mitschele-Thiel",
-	title = "{Homer Conferencing -- A Multimedia Test Bed for Various Experiments and Measurements}",
-	booktitle = "{Proceedings of the 7th International Conference on Computing and Convergence Technology~(ICCCT)}",
-	numpages = "6",
-	month = dec,
-	year = "2012",
-	address = "Seoul/South Korea",
-	language = "english",
-	url = "https://web.archive.org/web/20210525124457/http://www.homer-conferencing.com/public/Homer_Conferencing.pdf",
-	url.size = "761641",
-	url.md5 = "ebdea12d861145e9c6e50b13a4d3b0b9",
-	url.mime = "application/pdf",
-	url.pagesize = "595.22 x 842 pts (A4)",
-	url.checked = "2014-04-02 17:08:42 CEST",
-	url.keywords = "conferencing, case study, QoS, transmission requirements, multimedia streaming, peer-to-peer, Future Internet"
 }
 
 @Misc{ Geilo2013-NorNetCore,
@@ -1838,20 +1743,6 @@ The intention of the NorNet project is to build up a realistic Internet testbed 
 	url.keywords = "NorNet, NorNet Edge, NorNet Core, Testbed, Overview"
 }
 
-@Article{ rtcwebBecke,
-	author = "Martin Becke and Erwin Paul Rathgeb and Sebastian Werner and Irene Rüngeler and Michael Tüxen and Randall~R. Stewart",
-	title = "{Data Channel Considerations for RTCWeb}",
-	journal = "{IEEE Communications Magazine}",
-	volume = "51",
-	number = "4",
-	pages = "34--41",
-	numpages = "8",
-	month = apr,
-	year = "2013",
-	issn = "0163-6804",
-	doi = "10.1109/MCOM.2013.6495758"
-}
-
 @InProceedings{ ConTEL2013,
 	author = "Martin Becke and Thomas Dreibholz and Andreas Bayer and Markus Packeiser and Erwin Paul Rathgeb",
 	title = "{Alternative Transmission Strategies for Multipath Transport of Multimedia Streams over Wireless Networks}",
@@ -1933,102 +1824,6 @@ In many cases, multimedia transport is also sensitive for delays and packet loss
 	url.keywords = "NorNet, NorNet Edge, NorNet Core, Testbed, Overview"
 }
 
-@Article{ ComEngApps2013,
-	author = "Fa Fu and Zhou Xing and Yang Xiong and Hakim Adhari and Erwin Paul Rathgeb",
-	title = "{Performance Analysis of MPTCP and CMT-SCTP Multi-Path Transport Protocols}",
-	journal = "{Computer Engineering and Applications}",
-	volume = "49",
-	number = "21",
-	pages = "79--82",
-	numpages = "4",
-	day = "30",
-	month = oct,
-	year = "2013",
-	language = "english",
-	content-language = "chinese",
-	abstract = "{Achieving multipath transport by terminal’s multi-homed characteristics is a hot topic of Internet protocol application. MPTCP and CMT-SCTP are both more mature and key protocols for multipath transmission, but there is still a lot of performance analysis needed before large-scale application. This paper presents the behaviors of MPTCP and CMT-SCTP multipath transmission and compares the difference between both protocols on the local test-bed environment. Results show that both MPTCP and CMT-SCTP protocols can significantly increase throughput. Meanwhile the scheduling strategy for transmission is still not perfect and needs further improvement.}",
-	url = "https://web.archive.org/web/20160427132028/http://cea.ceaj.org/EN/article/downloadArticleFile.do?attachType=PDF&id=31123",
-	url.size = "541090",
-	url.md5 = "970ac5fc15743380fa13597889a3b260",
-	url.mime = "application/pdf",
-	url.pagesize = "629.291 x 875.905 pts",
-	url.checked = "2016-04-27 15:27:52 CEST"
-}
-
-@InProceedings{ Globecom2013,
-	author = "Martin Becke and Hakim Adhari and Erwin Paul Rathgeb and Fa Fu and Xiong Yang and Xing Zhou",
-	title = "{Comparison of Multipath TCP and CMT-SCTP based on Intercontinental Measurements}",
-	booktitle = "{Proceedings of the IEEE Global Communications Conference~(GLOBECOM)}",
-	numpages = "7",
-	day = "10",
-	month = dec,
-	year = "2013",
-	address = "Atlanta, Georgia/U.S.A.",
-	language = "english",
-	url = "https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/GLOBECOM2013.pdf",
-	url.size = "945184",
-	url.md5 = "3ec5e6570e51f537cbbf2934b32d16d6",
-	url.mime = "application/pdf",
-	url.pagesize = "595 x 842 pts (A4)",
-	url.checked = "2014-04-02 17:09:17 CEST"
-}
-
-@InProceedings{ NNUW1-Adhari-CC,
-	author = "Hakim Adhari",
-	title = "{Practical Experiences with an Inter-Continental Testbed for Multi-Path Transport}",
-	booktitle = "{Proceedings of the 1st International NorNet Users Workshop~(NNUW-1)}",
-	numpages = "19",
-	day = "18",
-	month = sep,
-	year = "2013",
-	address = "Fornebu, Akershus/Norway",
-	language = "english",
-	url = "https://web.archive.org/web/20141127040341/https://www.simula.no/publications/Simula.simula.2144/simula_pdf_file",
-	url.size = "708430",
-	url.md5 = "fade751a291d1ffb6b0ae36443cf64f1",
-	url.mime = "application/pdf",
-	url.pagesize = "720 x 540 pts",
-	url.checked = "2025-03-03 19:34:42 CET",
-	url.keywords = "Thema"
-}
-
-@InProceedings{ zdn2013simsek,
-	author = "Irfan Simsek",
-	title = "{Blind Packet Forwarding}",
-	booktitle = "{12.\ ITG-Fachtagung Zukunft der Netze -- Application-Driven Networking}",
-	numpages = "20",
-	day = "20",
-	month = sep,
-	year = "2013",
-	address = "Osnabrück/Germany",
-	url = "https://web.archive.org/web/20230521195156/http://www.vde-itg-kommunikationsnetze.de/images/stories/Fachtagungen/zdn2013/vortraege/zdn2013_simsek.pdf",
-	url.size = "897691",
-	url.md5 = "186316e1b583587f40979f4b255d9297",
-	url.mime = "application/pdf",
-	url.pagesize = "720 x 540 pts",
-	url.checked = "2014-04-02 17:09:18 CEST",
-	url.keywords = "Thema"
-}
-
-@InProceedings{ NNUW1-Rathgeb-Security,
-	author = "Erwin Paul Rathgeb",
-	title = "{Distributed Detection of VoIP Fraud and Misuse – Tools and First Results}",
-	booktitle = "{Proceedings of the 1st International NorNet Users Workshop~(NNUW-1)}",
-	numpages = "31",
-	day = "18",
-	month = sep,
-	year = "2013",
-	address = "Fornebu, Akershus/Norway",
-	language = "english",
-	url = "https://web.archive.org/web/20141127040313/https://www.simula.no/publications/Simula.simula.2142/simula_pdf_file",
-	url.size = "2138751",
-	url.md5 = "41f5d972dd7a65bcaa0affa40e821017",
-	url.mime = "application/pdf",
-	url.pagesize = "720 x 540 pts",
-	url.checked = "2025-03-03 19:34:44 CET",
-	url.keywords = "Thema"
-}
-
 @InProceedings{ NNUW1-Dreibholz-NorNetCore-Introduction,
 	author = "Thomas Dreibholz",
 	title = "{The NorNet Core Testbed – Introduction and Status}",
@@ -2067,22 +1862,6 @@ In many cases, multimedia transport is also sensitive for delays and packet loss
 	url.pagesize = "794 x 595 pts",
 	url.checked = "2024-06-30 13:06:14 CEST",
 	url.keywords = "NorNet, NorNet Core, Testbed, Introduction, Status"
-}
-
-@InProceedings{ simsekBPF,
-	author = "Irfan Simsek and Martin Becke and Yves Igor Jerschow and Erwin Paul Rathgeb",
-	title = "{A Clean-Slate Security Vision for Future Networks}",
-	booktitle = "{Proceedings of the IEEE International Conference on Network of the Future~(NoF)}",
-	numpages = "5",
-	month = oct,
-	year = "2013",
-	address = "Pohang/South Korea",
-	url = "https://web.archive.org/web/20240427155505/https://www.tdr.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/A_Clean-Slate_Security_Vision_for_Future_Networks.pdf",
-	url.size = "490802",
-	url.md5 = "833db7bcd58b87cc687fc73d538daae6",
-	url.mime = "application/pdf",
-	url.pagesize = "612 x 792 pts (letter)",
-	url.checked = "2025-03-03 19:34:45 CET"
 }
 
 @Article{ ComNets2013-Core,
@@ -2426,17 +2205,6 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.checked = "2024-06-30 12:51:38 CEST"
 }
 
-@InProceedings{ NNUW2-adhari,
-	author = "Hakim Adhari",
-	title = "{Does the End-User Really Have Benefits From Using Multipath Transport?}",
-	booktitle = "{Proceedings of the 2nd International NorNet Users Workshop~(NNUW-2)}",
-	day = "29",
-	month = aug,
-	year = "2014",
-	address = "Fornebu, Akershus/Norway",
-	language = "english"
-}
-
 @Misc{ KTH2014,
 	author = "Thomas Dreibholz",
 	title = "{The NorNet Testbed -- An Overview for the GENI Meeting}",
@@ -2727,45 +2495,6 @@ To provide such information to the researchers, we have designed and developed a
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
 	url.checked = "2024-06-30 11:28:05 CEST"
-}
-
-@InProceedings{ fairness-revisited-UDE-UHB-P1,
-	author = "Hakim Adhari and Erwin~P. Rathgeb and Amanpreet Singh and Andreas Könsgen and Carmelita Görg",
-	title = "{Transport Layer Fairness Revisited}",
-	booktitle = "{Proceedings of the 13th IEEE International Conference on Telecommunications~(ConTEL 2015)}",
-	numpages = "8",
-	month = jul,
-	year = "2015",
-	address = "Graz/Austria",
-	language = "english",
-	keywords = "Fairness, TCP-Compatible, Multipath, transport layer",
-	abstract = "{Fairness amongst the competing flows at the transport layer has always been an important topic, however, the current definition based on the TCP-compatible view is not always suitable. With the increasing deployment of multipath transport protocols such as Multipath TCP (MPTCP) and the Concurrent Multipath Transfer extension of SCTP (CMT-SCTP), the term "fair" can have various interpretations. In this paper, inconsistencies are avoided by classifying fairness definitions according to the resource -bottleneck or network - and the participants - subflow, flow, tariff, etc. that share the resource. With example network scenarios the current (TCP-compatible) fairness view from both the single and multipath perspective is presented and their short-comings discussed. Alternative definitions are introduced and their benefits are illustrated based on a theoretical analysis. The realization aspects of the discussed fairness definitions are also presented. The evaluations of available coupled congestion control variants for multipath transport are shown to highlight the proximity of the simulated results to the theoretical target values. Due to the complexity of the realization of network-based approaches, bottleneck is chosen as the preferred resource. Tariff is a promising participant as it couples applications and incorporates economic entities for fair resource sharing at the transport layer.}",
-	url = "https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/contel-Fairness-Adhari.pdf",
-	url.size = "865421",
-	url.md5 = "35e57658d867477a35a5dddaddad8dea",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2015-07-03 03:22:18 PDT"
-}
-
-@InProceedings{ fairness-algorithms-UDE-UHB-P2,
-	author = "Amanpreet Singh and Andreas Könsgen and Hakim Adhari and Carmelita Görg and Erwin~P. Rathgeb",
-	title = "{Algorithms for Theoretical Investigation of Fairness in Multipath Transport}",
-	booktitle = "{Proceedings of the 7th EAI International Conference on Mobile Networks and Management~(MONAMI~2015)}",
-	numpages = "14",
-	month = sep,
-	year = "2015",
-	address = "Santander/Spain",
-	language = "english",
-	abstract = "{With the onset of multipath transport protocols such as MPTCP and multihomed mobile devices, fairness considerations which have been widely analyzed for legacy TCP need to be re-investigated. A practical realization of fairness amongst
-different participants is known to be difficult but even the theoretical calculation of the resource capacity and its allocation is not a trivial task. Therefore in this work, resource allocation algorithms are presented to thoroughly evaluate the impact of the
-fairness definitions. For a rigorous analysis, existing fairness definitions are identified according to the resources (bottleneck or network) and the competing participants (flow, tariff or user). Tariff as the participant, provides a realistic option to comply with the service level agreement between the operator and the user where as flow as the participant leads to TCP-compatible allocation. From the obtained results, it can be seen that if fairness is applied at the bottleneck then it is absolutely fair to the individual participants w.r.t. the bottleneck. On the other hand, fairness mechanisms considering the whole network as a single resource exploit the freedom of resource allocation (due to multipath flows) to achieve an overall similar allocation for the different participants (irrespective if the participant is composed of singlepath or multipath flows) but are still restricted by the topological constraints and might even result in a lower overall network throughput.}",
-	url = "https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/naomi2015-FairnessAlgorithms.pdf",
-	url.size = "512821",
-	url.md5 = "f3a50dc70624440279dcda4f9a28cc83",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2015-10-05 03:38:23 PDT"
 }
 
 @InProceedings{ IETF93-Hackathon,
@@ -3773,26 +3502,6 @@ A challenge of using cloud computing is to deploy services to cloud providers, i
 	url.checked = "2024-06-30 11:53:16 CEST"
 }
 
-@TechReport{ CRNA-Rapport2020,
-	author = "Ahmed Mustafa Elmokashfi and Amund Kvalbein and Anas Saeed Al-Selwi and Mah-Rukh Fida",
-	title = "{Norske mobilnett i~2020 -- Tilstandsrapport fra Centre for Resilient Networks and Applications}",
-	numpages = "46",
-	day = "6",
-	month = may,
-	year = "2021",
-	institution = "Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications~(CRNA)",
-	address = "Oslo/Norway",
-	language = "norsk",
-	isbn = "82-92593-30-6",
-	abstract = "{Denne rapporten er utarbeidet av Center forResilient Networks and Applications (CRNA),som er en del av Simula Metropolitan Centerfor Digital Engineering. CRNA driver grunn-leggende forskning innen robusthet og sikker-het i nettverk med mandat og finansiering fraKommunal- og moderniseringsdepartementet.Senteret produserer en årlig rapport om tilstan-den i norske mobilnett. Årets rapport er denåttende i rekken}",
-	url = "https://web-backend.simula.no/sites/default/files/norske_mobilnett_i_2020.pdf",
-	url.size = "9700164",
-	url.md5 = "9262932cbffb03b60eb73d4353212246",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2024-06-30 11:53:16 CEST"
-}
-
 @TechReport{ CRNA-Rapport2018,
 	author = "Ahmed Mustafa Elmokashfi and Amund Kvalbein and Thomas Dreibholz and Chad Jarvis",
 	title = "{Norske mobilnett i~2018 -- Tilstandsrapport fra Centre for Resilient Networks and Applications}",
@@ -4426,46 +4135,6 @@ To answer these problems in this paper, we examine the performance of our propos
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
 	url.checked = "2024-06-30 12:15:45 CEST"
-}
-
-@TechReport{ CRNA-Rapport2023,
-	author = "Tarik Čičić and Alojz Gomola and Hugo Martineau and Foivos Ioannis Michelinakis and Anas Saeed Al-Selwi",
-	title = "{Norske mobilnett i 2023 -- Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications}",
-	numpages = "54",
-	day = "30",
-	month = apr,
-	year = "2024",
-	institution = "Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications~(CRNA)",
-	address = "Oslo/Norway",
-	language = "norsk",
-	isbn = "978-82-92593-39-4",
-	abstract = "{Denne rapporten er utarbeidet av Center for Resilient Networks and Applications (CRNA), som er en del av Simula Metropolitan Center for Digital Engineering. CRNA driver grunnleggende forskning innen robusthet og sikker- het i nettverk med mandat og finansiering fra Digitaliserings- og forvaltningsdepartementet. Senteret produserer en årlig rapport om tilstanden i norske mobilnett. Årets rapport er den ellevte i rekken.}",
-	url = "https://web-backend.simula.no/sites/default/files/2024-05/crna-2023.pdf",
-	url.size = "15175028",
-	url.md5 = "94fd419f79f90760230dd741d1ca8aa4",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2024-06-30 12:15:46 CEST"
-}
-
-@TechReport{ CRNA-Rapport2024,
-	author = "Tarik Čičić and Alojz Gomola and Foivos Ioannis Michelinakis",
-	title = "{Norske mobilnett i 2024 -- Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications}",
-	numpages = "60",
-	day = "15",
-	month = apr,
-	year = "2025",
-	institution = "Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications~(CRNA)",
-	address = "Oslo/Norway",
-	language = "norsk",
-	isbn = "978-82-92593-42-4",
-	abstract = "{Denne rapporten er utarbeidet av Center for Resilient Networks and Applications (CRNA), som er en del av Simula Metropolitan Center for Digital Engineering. CRNA driver grunnleggende forskning innen robusthet og sikker- het i nettverk med mandat og finansiering fra Digitaliserings- og forvaltningsdepartementet. Senteret produserer en årlig rapport om tilstanden i norske mobilnett. Årets rapport er den ellevte i rekken.}",
-	url = "https://web-backend.simula.no/sites/default/files/2025-04/nne_report-4.pdf",
-	url.size = "15015257",
-	url.md5 = "de9df348b3653dc8269752f49a323e07",
-	url.mime = "application/pdf",
-	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2025-06-13 12:23:16 CEST"
 }
 
 @Misc{ OSMHackfest13,

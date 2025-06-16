@@ -143,8 +143,11 @@ template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML} \(|%{language}%{is-not?} \(
 
 # ------ Download -----------------------------------------------------------
 template+ [
-template+ <a [type="%{url-mime}" ]href="%{url}">[%{url-type}|Online]</a>
+# Only show file type and length for non-HTML types:
+template+ [%{url-type}%{is-not?HTML}
+template+ [<a type="%{url-mime}" href="%{url}">%{url-type}</a>]
 template+ [, %{url-size-kib}~KiB]
+template+ ]
 # Use plural or singular for number of pages: "n pages", or just "1 page":
 template+ [(%{numpages}%{is-not?1}), %{numpages}~pages|, %{numpages}~page]
 template+ ]
@@ -157,7 +160,8 @@ template+ [%{content-language}|%{language}]%{is?norsk}på norsk|
 template+ [%{content-language}|%{language}]%{is?chinese}in Chinese|
 template+ [%{content-language}|%{language}]%{is?french}au français|
 template+ [%{content-language}|%{language}]%{is?english}in English|
-template+ in [%{content-language}|%{language}]
+template+ in %{content-language}|
+template+ in %{language}
 template+ ]
 
 # Add closing parenthesis ")", if "url" or "language" are set:

@@ -112,8 +112,6 @@ template+ </text:span>
 template+ “[<text:a xlink:type="simple" xlink:href="%{url}">%{title}</text:a>|%{title}]”
 
 # ****** Document details ***************************************************
-# template+ [ \([%{url-type}, ]%{url-size-kib}~KiB\)]
-# ****** Document details ***************************************************
 # The document details appear in braces ( ... ), if they are available.
 # Add opening parenthesis "(", if "url" or "language" are set:
 template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML} \(|%{language}%{is-not?} \(]
@@ -137,7 +135,8 @@ template+ [%{content-language}|%{language}]%{is?ngerman}🇩🇪|
 template+ [%{content-language}|%{language}]%{is?chinese}🇨🇳|
 template+ [%{content-language}|%{language}]%{is?french}🇫🇷|
 template+ [%{content-language}|%{language}]%{is?english}🇬🇧|
-template+ in [%{content-language}|%{language}]
+template+ in %{content-language}|
+template+ in %{language}
 template+ ]
 
 # Add closing parenthesis ")", if "url" or "language" are set:

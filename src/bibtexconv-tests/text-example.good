@@ -238,648 +238,590 @@ URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/Darmstadt
 [Ref61] Dreibholz, Thomas; Becke, Martin; Adhari, Hakim; Rathgeb, Erwin Paul: "Evaluation of A New Multipath Congestion Control Scheme using the NetPerfMeter Tool-Chain" (PDF, 360 KiB), in Proceedings of the 19th IEEE International Conference on Software, Telecommunications and Computer Networks (SoftCOM), pp. 1–6, ISBN 978-953-290-027-9, Hvar, Dalmacija/Croatia, September 16, 2011.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/SoftCOM2011.pdf.
 
----- August 2011 ----
-[Ref62] Kleis, Michael; Siddiqui, Abbas; Simsek, Irfan; Becke, Martin; Hoffstadt, Dirk; Marold, Alexander; Henke, Christian; Müller, Julius; Varas, Cristian; Magedanz, Thomas; Müller, Paul; Rathgeb, Erwin Paul: "Cross-Layer Security and Functional Composition for a Future Internet" (PDF, 391 KiB), in Proceedings of the Joint ITG and Euro-NF Workshop on Visions of Future Generation Networks (EuroView2011), Demo Presentation at the G-Lab Status Meeting, Würzburg, Bayern/Germany, August 2, 2011.
-URL: https://web.archive.org/web/20231223022714/http://www.euroview2011.com/fileadmin/content/euroview2011/abstracts/abstract_kleis.pdf.
-
 ---- June 2011 ----
-[Ref63] Dreibholz, Thomas; Becke, Martin; Adhari, Hakim; Rathgeb, Erwin Paul: "On the Impact of Congestion Control for Concurrent Multipath Transfer on the Transport Layer" (PDF, 6498 KiB), in Proceedings of the 11th IEEE International Conference on Telecommunications (ConTEL), pp. 397–404, ISBN 978-953-184-152-8, Graz, Steiermark/Austria, June 16, 2011.
+[Ref62] Dreibholz, Thomas; Becke, Martin; Adhari, Hakim; Rathgeb, Erwin Paul: "On the Impact of Congestion Control for Concurrent Multipath Transfer on the Transport Layer" (PDF, 6498 KiB), in Proceedings of the 11th IEEE International Conference on Telecommunications (ConTEL), pp. 397–404, ISBN 978-953-184-152-8, Graz, Steiermark/Austria, June 16, 2011.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/ConTEL2011.pdf.
 
 ---- May 2011 ----
-[Ref64] Dreibholz, Thomas: "Server-Redundanz und Lastverteilung einfach in eigene Anwendungen integrieren – mit Reliable Server Pooling und RSPLIB" (PDF, 1309 KiB), in Proceedings of the LinuxTag, Berlin/Germany, May 12, 2011.
+[Ref63] Dreibholz, Thomas: "Server-Redundanz und Lastverteilung einfach in eigene Anwendungen integrieren – mit Reliable Server Pooling und RSPLIB" (PDF, 1309 KiB), in Proceedings of the LinuxTag, Berlin/Germany, May 12, 2011.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/LinuxTag2011.pdf.
 
 ---- April 2011 ----
-[Ref65] Kleis, M.; Müller, J.; Siddiqui, A.; Becke, Martin: "Evaluating a Future Internet Cross-Layer Composition Prototype" (PDF, 1012 KiB), in Proceedings of the 7th International ICST Conference on Testbeds and Research Infrastructures for the Development of Networks and Communities (TridentCom), Shanghai/People's Republic of China, April 18, 2011.
-URL: https://web.archive.org/web/20200229073430/http://dspace.icsy.de:12000/dspace/bitstream/123456789/324/1/2010-09-Measurements.pdf.
-
-[Ref66] Dreibholz, Thomas; Rüngeler, Irene; Seggelmann, Robin; Tüxen, Michael; Rathgeb, Erwin Paul; Stewart, Randall R.: "Stream Control Transmission Protocol: Past, Current, and Future Standardization Activities" (PDF, 287 KiB), in IEEE Communications Magazine, vol. 49, no. 4, pp. 82–88, DOI: 10.1109/MCOM.2011.5741151., ISSN 0163-6804, April 5, 2011.
+[Ref64] Dreibholz, Thomas; Rüngeler, Irene; Seggelmann, Robin; Tüxen, Michael; Rathgeb, Erwin Paul; Stewart, Randall R.: "Stream Control Transmission Protocol: Past, Current, and Future Standardization Activities" (PDF, 287 KiB), in IEEE Communications Magazine, vol. 49, no. 4, pp. 82–88, DOI: 10.1109/MCOM.2011.5741151., ISSN 0163-6804, April 5, 2011.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/CommMag2011.pdf.
 
 ---- March 2011 ----
-[Ref67] Adhari, Hakim; Dreibholz, Thomas; Becke, Martin; Rathgeb, Erwin Paul; Tüxen, Michael: "Evaluation of Concurrent Multipath Transfer over Dissimilar Paths" (PDF, 666 KiB), in Proceedings of the 1st International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 708–714, DOI: 10.1109/WAINA.2011.92., ISBN 978-0-7695-4338-3, Singapore, March 22, 2011.
+[Ref65] Adhari, Hakim; Dreibholz, Thomas; Becke, Martin; Rathgeb, Erwin Paul; Tüxen, Michael: "Evaluation of Concurrent Multipath Transfer over Dissimilar Paths" (PDF, 666 KiB), in Proceedings of the 1st International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 708–714, DOI: 10.1109/WAINA.2011.92., ISBN 978-0-7695-4338-3, Singapore, March 22, 2011.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/PAMS2011.pdf.
 
-[Ref68] Becke, Martin; Dreibholz, Thomas: "Multi-Path Transport" (PDF, 1660 KiB), in Proceedings of the 1st DFG/NSF Doctoral Consortium, Poster Presentation, San Juan/Puerto Rico, March 13, 2011.
+[Ref66] Becke, Martin; Dreibholz, Thomas: "Multi-Path Transport" (PDF, 1660 KiB), in Proceedings of the 1st DFG/NSF Doctoral Consortium, Poster Presentation, San Juan/Puerto Rico, March 13, 2011.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/GENIWorkshop2011.pdf.
 
 ---- January 2011 ----
-[Ref69] Becke, Martin; Dreibholz, Thomas; Rathgeb, Erwin Paul; Formann, Johannes: "Link Emulation on the Data Link Layer in a Linux-based Future Internet Testbed Environment" (PDF, 465 KiB), in Proceedings of the 10th International Conference on Networks (ICN), pp. 92–98, ISBN 978-1-61208-002-4, St. Maarten/Netherlands Antilles, January 25, 2011.
+[Ref67] Becke, Martin; Dreibholz, Thomas; Rathgeb, Erwin Paul; Formann, Johannes: "Link Emulation on the Data Link Layer in a Linux-based Future Internet Testbed Environment" (PDF, 465 KiB), in Proceedings of the 10th International Conference on Networks (ICN), pp. 92–98, ISBN 978-1-61208-002-4, St. Maarten/Netherlands Antilles, January 25, 2011.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/ICN2011.pdf.
 
 ===== YEAR 2012 =====
----- December 2012 ----
-[Ref70] Volkert, Thomas; Becke, Martin; Osdoba, Manuel; Mitschele-Thiel, Andreas: "Homer Conferencing – A Multimedia Test Bed for Various Experiments and Measurements" (PDF, 744 KiB), in Proceedings of the 7th International Conference on Computing and Convergence Technology (ICCCT), Seoul/South Korea, December 2012.
-URL: https://web.archive.org/web/20210525124457/http://www.homer-conferencing.com/public/Homer_Conferencing.pdf.
-
 ---- November 2012 ----
-[Ref71] Dreibholz, Thomas: "An Introduction to NorNet Core for the Site Deployment at Universitetet i Stavanger" (PDF, 21576 KiB), Invited Talk at Universitetet i Stavanger (UiS), Stavanger, Rogaland/Norway, November 27, 2012.
+[Ref68] Dreibholz, Thomas: "An Introduction to NorNet Core for the Site Deployment at Universitetet i Stavanger" (PDF, 21576 KiB), Invited Talk at Universitetet i Stavanger (UiS), Stavanger, Rogaland/Norway, November 27, 2012.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1626.pdf.
 
-[Ref72] Dreibholz, Thomas: "The NorNet Project – A Research Testbed for Multi-Homed Systems" (PDF, 37415 KiB), Invited Talk at Karlstads Universitet, Karlstad, Värmland/Sweden, November 2, 2012.
+[Ref69] Dreibholz, Thomas: "The NorNet Project – A Research Testbed for Multi-Homed Systems" (PDF, 37415 KiB), Invited Talk at Karlstads Universitet, Karlstad, Värmland/Sweden, November 2, 2012.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1580.pdf.
 
----- July 2012 ----
-[Ref73] Volkert, Thomas; Liers, Florian; Becke, Martin; Adhari, Hakim: "Requirements-Oriented Path Selection for Multipath Transmission" (PDF, 459 KiB), in Proceedings of the Joint ITG and Euro-NF Workshop on Visions of Future Generation Networks (EuroView), Würzburg, Bayern/Germany, July 23, 2012.
-URL: https://web.archive.org/web/20240413144124/http://www.euroview2012.org/fileadmin/content/euroview2012/abstracts/07_01_abstract_volkert.pdf.
-
 ---- June 2012 ----
-[Ref74] Becke, Martin; Dreibholz, Thomas; Adhari, Hakim; Rathgeb, Erwin Paul: "On the Fairness of Transport Protocols in a Multi-Path Environment" (PDF, 1970 KiB), in Proceedings of the IEEE International Conference on Communications (ICC), pp. 2666–2672, DOI: 10.1109/ICC.2012.6363695., ISBN 978-1-4577-2052-9, Ottawa, Ontario/Canada, June 12, 2012.
+[Ref70] Becke, Martin; Dreibholz, Thomas; Adhari, Hakim; Rathgeb, Erwin Paul: "On the Fairness of Transport Protocols in a Multi-Path Environment" (PDF, 1970 KiB), in Proceedings of the IEEE International Conference on Communications (ICC), pp. 2666–2672, DOI: 10.1109/ICC.2012.6363695., ISBN 978-1-4577-2052-9, Ottawa, Ontario/Canada, June 12, 2012.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/ICC2012.pdf.
 
 ---- April 2012 ----
-[Ref75] Becke, Martin; Dreibholz, Thomas; Adhari, Hakim; Rathgeb, Erwin Paul: "A Future Internet Architecture supporting Multipath Communication Networks" (PDF, 743 KiB), in Proceedings of the 13th IEEE/IFIP Network Operations and Management Symposium (NOMS), pp. 639–642, DOI: 10.1109/NOMS.2012.6211975., ISBN 978-1-4673-0268-5, Maui, Hawaii/U.S.A., April 19, 2012.
+[Ref71] Becke, Martin; Dreibholz, Thomas; Adhari, Hakim; Rathgeb, Erwin Paul: "A Future Internet Architecture supporting Multipath Communication Networks" (PDF, 743 KiB), in Proceedings of the 13th IEEE/IFIP Network Operations and Management Symposium (NOMS), pp. 639–642, DOI: 10.1109/NOMS.2012.6211975., ISBN 978-1-4673-0268-5, Maui, Hawaii/U.S.A., April 19, 2012.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/NOMS2012.pdf.
 
 ---- March 2012 ----
-[Ref76] Dreibholz, Thomas; Adhari, Hakim; Becke, Martin; Rathgeb, Erwin Paul: "Simulation and Experimental Evaluation of Multipath Congestion Control Strategies" (PDF, 403 KiB), in Proceedings of the 2nd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), DOI: 10.1109/WAINA.2012.186., ISBN 978-0-7695-4652-0, Fukuoka/Japan, March 29, 2012.
+[Ref72] Dreibholz, Thomas; Adhari, Hakim; Becke, Martin; Rathgeb, Erwin Paul: "Simulation and Experimental Evaluation of Multipath Congestion Control Strategies" (PDF, 403 KiB), in Proceedings of the 2nd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), DOI: 10.1109/WAINA.2012.186., ISBN 978-0-7695-4652-0, Fukuoka/Japan, March 29, 2012.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/PAMS2012.pdf.
 
-[Ref77] Dreibholz, Thomas: "Evaluation and Optimisation of Multi-Path Transport using the Stream Control Transmission Protocol" (PDF, 36779 KiB), University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems, URN: urn:nbn:de:hbz:464-20120315-103208-1, March 13, 2012.
+[Ref73] Dreibholz, Thomas: "Evaluation and Optimisation of Multi-Path Transport using the Stream Control Transmission Protocol" (PDF, 36779 KiB), University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems, URN: urn:nbn:de:hbz:464-20120315-103208-1, March 13, 2012.
 URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf.
 
-[Ref78] Dreibholz, Thomas: "Konzepte für das Future Internet aus der Netzperspektive" (PDF, 5777 KiB), Habilitation Talk, University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems, URN: urn:nbn:de:hbz:464-20120404-135350-0, March 13, 2012.
+[Ref74] Dreibholz, Thomas: "Konzepte für das Future Internet aus der Netzperspektive" (PDF, 5777 KiB), Habilitation Talk, University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems, URN: urn:nbn:de:hbz:464-20120404-135350-0, March 13, 2012.
 URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf.
 
 ---- February 2012 ----
-[Ref79] Dreibholz, Thomas; Adhari, Hakim; Becke, Martin; Rathgeb, Erwin Paul: "NetPerfMeter – A Versatile Tool for Multi-Protocol Network Performance Evaluations" (PDF, 334 KiB), University of Duisburg-Essen, Institute for Experimental Mathematics, February 8, 2012.
+[Ref75] Dreibholz, Thomas; Adhari, Hakim; Becke, Martin; Rathgeb, Erwin Paul: "NetPerfMeter – A Versatile Tool for Multi-Protocol Network Performance Evaluations" (PDF, 334 KiB), University of Duisburg-Essen, Institute for Experimental Mathematics, February 8, 2012.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/NetPerfMeterSim2012.pdf.
 
-[Ref80] Dreibholz, Thomas; Becke, Martin; Adhari, Hakim; Rathgeb, Erwin Paul: "RspSim – A Simulation Model of the Reliable Server Pooling Framework" (PDF, 226 KiB), University of Duisburg-Essen, Institute for Experimental Mathematics, February 6, 2012.
+[Ref76] Dreibholz, Thomas; Becke, Martin; Adhari, Hakim; Rathgeb, Erwin Paul: "RspSim – A Simulation Model of the Reliable Server Pooling Framework" (PDF, 226 KiB), University of Duisburg-Essen, Institute for Experimental Mathematics, February 6, 2012.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/RspSim2012.pdf.
 
-[Ref81] Dreibholz, Thomas; Becke, Martin; Adhari, Hakim; Rathgeb, Erwin Paul; Rüngeler, Irene; Seggelmann, Robin; Tüxen, Michael: "Improvements to the SCTP Environment in the INET Framework" (PDF, 875 KiB), University of Duisburg-Essen, Institute for Experimental Mathematics, February 6, 2012.
+[Ref77] Dreibholz, Thomas; Becke, Martin; Adhari, Hakim; Rathgeb, Erwin Paul; Rüngeler, Irene; Seggelmann, Robin; Tüxen, Michael: "Improvements to the SCTP Environment in the INET Framework" (PDF, 875 KiB), University of Duisburg-Essen, Institute for Experimental Mathematics, February 6, 2012.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/SCTPSim2012.pdf.
 
 ===== YEAR 2013 =====
----- December 2013 ----
-[Ref82] Becke, Martin; Adhari, Hakim; Rathgeb, Erwin Paul; Fu, Fa; Yang, Xiong; Zhou, Xing: "Comparison of Multipath TCP and CMT-SCTP based on Intercontinental Measurements" (PDF, 924 KiB), in Proceedings of the IEEE Global Communications Conference (GLOBECOM), Atlanta, Georgia/U.S.A., December 10, 2013.
-URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/GLOBECOM2013.pdf.
-
----- October 2013 ----
-[Ref83] Simsek, Irfan; Becke, Martin; Jerschow, Yves Igor; Rathgeb, Erwin Paul: "A Clean-Slate Security Vision for Future Networks" (PDF, 480 KiB), in Proceedings of the IEEE International Conference on Network of the Future (NoF), Pohang/South Korea, October 2013.
-URL: https://web.archive.org/web/20240427155505/https://www.tdr.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/A_Clean-Slate_Security_Vision_for_Future_Networks.pdf.
-
-[Ref84] Fu, Fa; Xing, Zhou; Xiong, Yang; Adhari, Hakim; Rathgeb, Erwin Paul: "Performance Analysis of MPTCP and CMT-SCTP Multi-Path Transport Protocols" (PDF, 529 KiB), in Computer Engineering and Applications, vol. 49, no. 21, pp. 79–82, October 30, 2013.
-URL: https://web.archive.org/web/20160427132028/http://cea.ceaj.org/EN/article/downloadArticleFile.do?attachType=PDF&id=31123.
-
 ---- September 2013 ----
-[Ref85] Simsek, Irfan: "Blind Packet Forwarding" (PDF, 877 KiB), in 12. ITG-Fachtagung Zukunft der Netze – Application-Driven Networking, Osnabrück/Germany, September 20, 2013.
-URL: https://web.archive.org/web/20230521195156/http://www.vde-itg-kommunikationsnetze.de/images/stories/Fachtagungen/zdn2013/vortraege/zdn2013_simsek.pdf.
-
-[Ref86] Dreibholz, Thomas: "The NorNet Core Testbed – An Experiment Tutorial" (PDF, 4454 KiB), in Proceedings of the 1st International NorNet Users Workshop (NNUW-1), Fornebu, Akershus/Norway, September 19, 2013.
+[Ref78] Dreibholz, Thomas: "The NorNet Core Testbed – An Experiment Tutorial" (PDF, 4454 KiB), in Proceedings of the 1st International NorNet Users Workshop (NNUW-1), Fornebu, Akershus/Norway, September 19, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2130.pdf.
 
-[Ref87] Adhari, Hakim: "Practical Experiences with an Inter-Continental Testbed for Multi-Path Transport" (PDF, 692 KiB), in Proceedings of the 1st International NorNet Users Workshop (NNUW-1), Fornebu, Akershus/Norway, September 18, 2013.
-URL: https://web.archive.org/web/20141127040341/https://www.simula.no/publications/Simula.simula.2144/simula_pdf_file.
-
-[Ref88] Rathgeb, Erwin Paul: "Distributed Detection of VoIP Fraud and Misuse – Tools and First Results" (PDF, 2089 KiB), in Proceedings of the 1st International NorNet Users Workshop (NNUW-1), Fornebu, Akershus/Norway, September 18, 2013.
-URL: https://web.archive.org/web/20141127040313/https://www.simula.no/publications/Simula.simula.2142/simula_pdf_file.
-
-[Ref89] Dreibholz, Thomas: "The NorNet Core Testbed – Introduction and Status" (PDF, 8399 KiB), in Proceedings of the 1st International NorNet Users Workshop (NNUW-1), Fornebu, Akershus/Norway, September 18, 2013.
+[Ref79] Dreibholz, Thomas: "The NorNet Core Testbed – Introduction and Status" (PDF, 8399 KiB), in Proceedings of the 1st International NorNet Users Workshop (NNUW-1), Fornebu, Akershus/Norway, September 18, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2124.pdf.
 
 ---- August 2013 ----
-[Ref90] Dreibholz, Thomas: "The NorNet Project – A Research Testbed for Multi-Path Transport" (PDF, 23650 KiB), Invited Talk at Technische Universität Berlin, Department of Telecommunication Networks, Berlin/Germany, August 1, 2013.
+[Ref80] Dreibholz, Thomas: "The NorNet Project – A Research Testbed for Multi-Path Transport" (PDF, 23650 KiB), Invited Talk at Technische Universität Berlin, Department of Telecommunication Networks, Berlin/Germany, August 1, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2056.pdf.
 
 ---- July 2013 ----
-[Ref91] Dreibholz, Thomas: "The NorNet Testbed: A Platform for Evaluating Multi-Path Transport in the Real-World Internet" (PDF, 13341 KiB), in Proceedings of the 87th IETF Meeting, Berlin/Germany, July 30, 2013.
+[Ref81] Dreibholz, Thomas: "The NorNet Testbed: A Platform for Evaluating Multi-Path Transport in the Real-World Internet" (PDF, 13341 KiB), in Proceedings of the 87th IETF Meeting, Berlin/Germany, July 30, 2013.
 URL: https://www.ietf.org/proceedings/87/slides/slides-87-mptcp-4.pdf.
 
-[Ref92] Dreibholz, Thomas; Ferlin, Simone: "The NorNet Research Testbed" (PDF, 12015 KiB), Talk, in Proceedings of the CHANGE Bootcamp Workshop, Louvain-la-Neuve/Belgium, July 17, 2013.
+[Ref82] Dreibholz, Thomas; Ferlin, Simone: "The NorNet Research Testbed" (PDF, 12015 KiB), Talk, in Proceedings of the CHANGE Bootcamp Workshop, Louvain-la-Neuve/Belgium, July 17, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2046.pdf.
 
 ---- June 2013 ----
-[Ref93] Becke, Martin; Dreibholz, Thomas; Bayer, Andreas; Packeiser, Markus; Rathgeb, Erwin Paul: "Alternative Transmission Strategies for Multipath Transport of Multimedia Streams over Wireless Networks" (PDF, 792 KiB), in Proceedings of the 12th IEEE International Conference on Telecommunications (ConTEL), pp. 147–153, ISBN 978-953-184-175-7, Zagreb, Središnja Hrvatska/Croatia, June 26, 2013.
+[Ref83] Becke, Martin; Dreibholz, Thomas; Bayer, Andreas; Packeiser, Markus; Rathgeb, Erwin Paul: "Alternative Transmission Strategies for Multipath Transport of Multimedia Streams over Wireless Networks" (PDF, 792 KiB), in Proceedings of the 12th IEEE International Conference on Telecommunications (ConTEL), pp. 147–153, ISBN 978-953-184-175-7, Zagreb, Središnja Hrvatska/Croatia, June 26, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2000.pdf.
 
 ---- April 2013 ----
-[Ref94] Becke, Martin; Rathgeb, Erwin Paul; Werner, Sebastian; Rüngeler, Irene; Tüxen, Michael; Stewart, Randall R.: "Data Channel Considerations for RTCWeb" , in IEEE Communications Magazine, vol. 51, no. 4, pp. 34–41, DOI: 10.1109/MCOM.2013.6495758., ISSN 0163-6804, April 2013.
-
-[Ref95] Dreibholz, Thomas: "An Overview of the NorNet Testbed for Multi-Homed Systems" (PDF, 21755 KiB), Invited Talk at Høgskolen i Oslo og Akershus (HiOA), Oslo/Norway, April 18, 2013.
+[Ref84] Dreibholz, Thomas: "An Overview of the NorNet Testbed for Multi-Homed Systems" (PDF, 21755 KiB), Invited Talk at Høgskolen i Oslo og Akershus (HiOA), Oslo/Norway, April 18, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1984.pdf.
 
-[Ref96] Dreibholz, Thomas: "The NorNet Project – An Introduction to NorNet for the Site Deployment at NTNU Trondheim" (PDF, 21705 KiB), Invited Talk at Norges teknisk-naturvitenskapelige universitet (NTNU), Trondheim, Sør-Trøndelag/Norway, April 12, 2013.
+[Ref85] Dreibholz, Thomas: "The NorNet Project – An Introduction to NorNet for the Site Deployment at NTNU Trondheim" (PDF, 21705 KiB), Invited Talk at Norges teknisk-naturvitenskapelige universitet (NTNU), Trondheim, Sør-Trøndelag/Norway, April 12, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1974.pdf.
 
-[Ref97] Dreibholz, Thomas: "The NorNet Project: A Research Platform for Robust and Secure Networks" (PDF, 7304 KiB), in Proceedings of the Essener Workshop zur Netzsicherheit (EWNS), Essen, Nordrhein-Westfalen/Germany, April 8, 2013.
+[Ref86] Dreibholz, Thomas: "The NorNet Project: A Research Platform for Robust and Secure Networks" (PDF, 7304 KiB), in Proceedings of the Essener Workshop zur Netzsicherheit (EWNS), Essen, Nordrhein-Westfalen/Germany, April 8, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1968.pdf.
 
 ---- March 2013 ----
-[Ref98] Volkert, Thomas; Becke, Martin; Osdoba, Manuel; Mitschele-Thiel, Andreas: "Multipath Video Streaming based on Hierarchical Routing Management" (PDF, 1152 KiB), in Proceedings of the 3nd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 1107–1112, DOI: 10.1109/WAINA.2013.161., ISBN 978-0-7695-4952-1, Barcelona, Catalonia/Spain, March 27, 2013.
-URL: https://web.archive.org/web/20210210145830/http://www.homer-conferencing.com/public/MP_HRM.pdf.
-
-[Ref99] Dreibholz, Thomas; Gran, Ernst Gunnar: "Design and Implementation of the NorNet Core Research Testbed for Multi-Homed Systems" (PDF, 20082 KiB), in Proceedings of the 3nd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 1094–1100, DOI: 10.1109/WAINA.2013.71., ISBN 978-0-7695-4952-1, Barcelona, Catalonia/Spain, March 27, 2013.
+[Ref87] Dreibholz, Thomas; Gran, Ernst Gunnar: "Design and Implementation of the NorNet Core Research Testbed for Multi-Homed Systems" (PDF, 20082 KiB), in Proceedings of the 3nd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 1094–1100, DOI: 10.1109/WAINA.2013.71., ISBN 978-0-7695-4952-1, Barcelona, Catalonia/Spain, March 27, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/threfereedinproceedingsreference.2012-12-20.7643198512.pdf.
 
-[Ref100] Dreibholz, Thomas: "An Introduction to NorNet for the Site Deployment at Høgskolen i Narvik" (PDF, 21440 KiB), Invited Talk at Høgskolen i Narvik (HiN), Narvik, Nordland/Norway, March 12, 2013.
+[Ref88] Dreibholz, Thomas: "An Introduction to NorNet for the Site Deployment at Høgskolen i Narvik" (PDF, 21440 KiB), Invited Talk at Høgskolen i Narvik (HiN), Narvik, Nordland/Norway, March 12, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1950.pdf.
 
-[Ref101] Dreibholz, Thomas: "An Overview of NorNet Core" (PDF, 19045 KiB), Invited Talk at the Geilo Siminar of the Simula Research Laboratory, Network Systems Group, Geilo, Buskerud/Norway, March 9, 2013.
+[Ref89] Dreibholz, Thomas: "An Overview of NorNet Core" (PDF, 19045 KiB), Invited Talk at the Geilo Siminar of the Simula Research Laboratory, Network Systems Group, Geilo, Buskerud/Norway, March 9, 2013.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1948.pdf.
 
 ===== YEAR 2014 =====
 ---- December 2014 ----
-[Ref102] Ferlin, Simone; Dreibholz, Thomas; Alay, Özgü: "Multi-Path Transport over Heterogeneous Wireless Networks: Does it really pay off?" (PDF, 986 KiB), in Proceedings of the IEEE Global Communications Conference (GLOBECOM), pp. 4807–4813, DOI: 10.1109/GLOCOM.2014.7037567., ISBN 978-1-4799-3512-3, Austin, Texas/U.S.A., December 11, 2014.
+[Ref90] Ferlin, Simone; Dreibholz, Thomas; Alay, Özgü: "Multi-Path Transport over Heterogeneous Wireless Networks: Does it really pay off?" (PDF, 986 KiB), in Proceedings of the IEEE Global Communications Conference (GLOBECOM), pp. 4807–4813, DOI: 10.1109/GLOCOM.2014.7037567., ISBN 978-1-4799-3512-3, Austin, Texas/U.S.A., December 11, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2884.pdf.
 
-[Ref103] Dreibholz, Thomas; Simonsen, Henrik Vest; Gran, Ernst Gunnar: "A Demonstration of the NorNet Core Research Testbed for Multi-Homed Systems" (PDF, 60 KiB), Demo Presentation at the IEEE Global Communications Conference (GLOBECOM), Austin, Texas/U.S.A., December 9, 2014.
+[Ref91] Dreibholz, Thomas; Simonsen, Henrik Vest; Gran, Ernst Gunnar: "A Demonstration of the NorNet Core Research Testbed for Multi-Homed Systems" (PDF, 60 KiB), Demo Presentation at the IEEE Global Communications Conference (GLOBECOM), Austin, Texas/U.S.A., December 9, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2868.pdf.
 
-[Ref104] Golkar, Forough; Dreibholz, Thomas; Kvalbein, Amund: "Measuring and Comparing Internet Path Stability in IPv4 and IPv6" (PDF, 436 KiB), in Proceedings of the 5th IEEE International Conference on the Network of the Future (NoF), pp. 1–5, DOI: 10.1109/NOF.2014.7119767., ISBN 978-1-4799-7531-0, Paris/France, December 4, 2014.
+[Ref92] Golkar, Forough; Dreibholz, Thomas; Kvalbein, Amund: "Measuring and Comparing Internet Path Stability in IPv4 and IPv6" (PDF, 436 KiB), in Proceedings of the 5th IEEE International Conference on the Network of the Future (NoF), pp. 1–5, DOI: 10.1109/NOF.2014.7119767., ISBN 978-1-4799-7531-0, Paris/France, December 4, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.3048.pdf.
 
 ---- October 2014 ----
-[Ref105] Dreibholz, Thomas: "The NorNet Testbed at Tsinghua University – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems" (PDF, 12148 KiB), Invited Talk at Tsinghua University, Department of Computer Science, Beijing/People's Republic of China, October 30, 2014.
+[Ref93] Dreibholz, Thomas: "The NorNet Testbed at Tsinghua University – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems" (PDF, 12148 KiB), Invited Talk at Tsinghua University, Department of Computer Science, Beijing/People's Republic of China, October 30, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2014-tsinghuauniversity-presentation.pdf.
 
-[Ref106] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at Hainan University" (PDF, 2148 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, October 27, 2014.
+[Ref94] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at Hainan University" (PDF, 2148 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, October 27, 2014.
 URL: https://web.archive.org/web/20230521130309/https://www.simula.no/file/simulasimula3078pdf/download.
 
-[Ref107] Dreibholz, Thomas: "The NorNet Testbed at Qiongzhou University – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems" (PDF, 7475 KiB), Invited Talk at Qiongzhou University, Sanya, Hainan/People's Republic of China, October 25, 2014.
+[Ref95] Dreibholz, Thomas: "The NorNet Testbed at Qiongzhou University – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems" (PDF, 7475 KiB), Invited Talk at Qiongzhou University, Sanya, Hainan/People's Republic of China, October 25, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2014-qiongzhouuniversity-presentation.pdf.
 
-[Ref108] Dreibholz, Thomas: "The NorNet Testbed at Hainan University – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems" (PDF, 11940 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, October 20, 2014.
+[Ref96] Dreibholz, Thomas: "The NorNet Testbed at Hainan University – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems" (PDF, 11940 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, October 20, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2014-hainanuniversity-presentation.pdf.
 
 ---- September 2014 ----
-[Ref109] Dreibholz, Thomas: "The NorNet Testbed – An Overview for the GENI Meeting" (PDF, 21055 KiB), Invited Talk for the GENI Meeting at the Kungliga Tekniska högskolan (KTH), Stockholm/Sweden, September 15, 2014.
+[Ref97] Dreibholz, Thomas: "The NorNet Testbed – An Overview for the GENI Meeting" (PDF, 21055 KiB), Invited Talk for the GENI Meeting at the Kungliga Tekniska högskolan (KTH), Stockholm/Sweden, September 15, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.3008.pdf.
 
 ---- August 2014 ----
-[Ref110] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed" (PDF, 6033 KiB), in Proceedings of the 2nd International NorNet Users Workshop (NNUW-2), Fornebu, Akershus/Norway, August 29, 2014.
+[Ref98] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed" (PDF, 6033 KiB), in Proceedings of the 2nd International NorNet Users Workshop (NNUW-2), Fornebu, Akershus/Norway, August 29, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2938.pdf.
 
-[Ref111] Alay, Özgü; Ferlin, Simone; Dreibholz, Thomas: "Multipath Transport over Heterogeneous Networks" (PDF, 2930 KiB), in Proceedings of the 2nd International NorNet Users Workshop (NNUW-2), Fornebu, Akershus/Norway, August 29, 2014.
+[Ref99] Alay, Özgü; Ferlin, Simone; Dreibholz, Thomas: "Multipath Transport over Heterogeneous Networks" (PDF, 2930 KiB), in Proceedings of the 2nd International NorNet Users Workshop (NNUW-2), Fornebu, Akershus/Norway, August 29, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2970.pdf.
 
-[Ref112] Adhari, Hakim: "Does the End-User Really Have Benefits From Using Multipath Transport?" , in Proceedings of the 2nd International NorNet Users Workshop (NNUW-2), Fornebu, Akershus/Norway, August 29, 2014.
-
-[Ref113] Dreibholz, Thomas: "The NorNet Core Testbed – Introduction and Status in August 2014" (PDF, 14850 KiB), in Proceedings of the 2nd International NorNet Users Workshop (NNUW-2), Fornebu, Akershus/Norway, August 28, 2014.
+[Ref100] Dreibholz, Thomas: "The NorNet Core Testbed – Introduction and Status in August 2014" (PDF, 14850 KiB), in Proceedings of the 2nd International NorNet Users Workshop (NNUW-2), Fornebu, Akershus/Norway, August 28, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2936.pdf.
 
 ---- June 2014 ----
-[Ref114] Aziz, Adnan; Hoffstadt, Dirk; Rathgeb, Erwin Paul; Dreibholz, Thomas: "A Distributed Infrastructure to Analyse SIP Attacks in the Internet" (PDF, 728 KiB), in Proceedings of the IFIP Networking Conference, pp. 1–9, DOI: 10.1109/IFIPNetworking.2014.6857088., ISBN 978-3-901882-58-6, Trondheim, Sør-Trøndelag/Norway, June 4, 2014.
+[Ref101] Aziz, Adnan; Hoffstadt, Dirk; Rathgeb, Erwin Paul; Dreibholz, Thomas: "A Distributed Infrastructure to Analyse SIP Attacks in the Internet" (PDF, 728 KiB), in Proceedings of the IFIP Networking Conference, pp. 1–9, DOI: 10.1109/IFIPNetworking.2014.6857088., ISBN 978-3-901882-58-6, Trondheim, Sør-Trøndelag/Norway, June 4, 2014.
 URL: https://web.archive.org/web/20241125122924/https://tdr.informatik.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/A_Distributed_Infrastructure_to_Analyse_SIP_Attacks_in_the_Internet.pdf.
 
 ---- May 2014 ----
-[Ref115] Ferlin, Simone; Dreibholz, Thomas; Alay, Özgü: "Tackling the Challenge of Bufferbloat in Multi-Path Transport over Heterogeneous Wireless Networks" (PDF, 820 KiB), in Proceedings of the IEEE/ACM International Symposium on Quality of Service (IWQoS), pp. 123–128, DOI: 10.1109/IWQoS.2014.6914310., ISBN 978-1-4799-4852-9, Hong Kong/People's Republic of China, May 26, 2014.
+[Ref102] Ferlin, Simone; Dreibholz, Thomas; Alay, Özgü: "Tackling the Challenge of Bufferbloat in Multi-Path Transport over Heterogeneous Wireless Networks" (PDF, 820 KiB), in Proceedings of the IEEE/ACM International Symposium on Quality of Service (IWQoS), pp. 123–128, DOI: 10.1109/IWQoS.2014.6914310., ISBN 978-1-4799-4852-9, Hong Kong/People's Republic of China, May 26, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2722.pdf.
 
-[Ref116] Ferlin, Simone; Dreibholz, Thomas; Alay, Özgü; Kvalbein, Amund: "Measuring the QoS Characteristics of Operational 3G Mobile Broadband Networks" (PDF, 1524 KiB), in Proceedings of the 4th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 753–758, DOI: 10.1109/WAINA.2014.123., ISBN 978-1-4799-2652-7, Victoria, British Columbia/Canada, May 16, 2014.
+[Ref103] Ferlin, Simone; Dreibholz, Thomas; Alay, Özgü; Kvalbein, Amund: "Measuring the QoS Characteristics of Operational 3G Mobile Broadband Networks" (PDF, 1524 KiB), in Proceedings of the 4th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 753–758, DOI: 10.1109/WAINA.2014.123., ISBN 978-1-4799-2652-7, Victoria, British Columbia/Canada, May 16, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2516.pdf.
 
-[Ref117] Adhari, Hakim; Werner, Sebastian; Dreibholz, Thomas; Rathgeb, Erwin Paul: "LEDBAT-MP – On the Application of Lower-than-Best-Effort for Concurrent Multipath Transfer" (PDF, 1229 KiB), in Proceedings of the 4th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), DOI: 10.1109/WAINA.2014.125., ISBN 978-1-4799-2652-7, Victoria, British Columbia/Canada, May 16, 2014.
+[Ref104] Adhari, Hakim; Werner, Sebastian; Dreibholz, Thomas; Rathgeb, Erwin Paul: "LEDBAT-MP – On the Application of Lower-than-Best-Effort for Concurrent Multipath Transfer" (PDF, 1229 KiB), in Proceedings of the 4th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), DOI: 10.1109/WAINA.2014.125., ISBN 978-1-4799-2652-7, Victoria, British Columbia/Canada, May 16, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2512.pdf.
 
-[Ref118] Dreibholz, Thomas: "The NorNet Testbed for Multi-Homed Systems – Overview and Status" (PDF, 8480 KiB), Invited Talk at the University of British Columbia (UBC), Vancouver, British Columbia/Canada, May 12, 2014.
+[Ref105] Dreibholz, Thomas: "The NorNet Testbed for Multi-Homed Systems – Overview and Status" (PDF, 8480 KiB), Invited Talk at the University of British Columbia (UBC), Vancouver, British Columbia/Canada, May 12, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2740.pdf.
 
-[Ref119] Dreibholz, Thomas: "The NorNet Testbed for Multi-Homed Systems – Introduction and Status" (PDF, 8480 KiB), Invited Talk at Princeton University, Department of Computer Science, Princeton, New Jersey/U.S.A., May 8, 2014.
+[Ref106] Dreibholz, Thomas: "The NorNet Testbed for Multi-Homed Systems – Introduction and Status" (PDF, 8480 KiB), Invited Talk at Princeton University, Department of Computer Science, Princeton, New Jersey/U.S.A., May 8, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2730.pdf.
 
-[Ref120] Dreibholz, Thomas: "The NorNet Testbed – Overview and Selected Results from Multi-Path Transport Research" (PDF, 6432 KiB), Invited Talk at the New York University (NYU), Polytechnic School of Engineering, Brooklyn, New York/U.S.A., May 5, 2014.
+[Ref107] Dreibholz, Thomas: "The NorNet Testbed – Overview and Selected Results from Multi-Path Transport Research" (PDF, 6432 KiB), Invited Talk at the New York University (NYU), Polytechnic School of Engineering, Brooklyn, New York/U.S.A., May 5, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2728.pdf.
 
 ---- March 2014 ----
-[Ref121] Gran, Ernst Gunnar; Dreibholz, Thomas; Kvalbein, Amund: "NorNet Core – A Multi-Homed Research Testbed" (PDF, 1458 KiB), in Computer Networks, Special Issue on Future Internet Testbeds, vol. 61, pp. 75–87, DOI: 10.1016/j.bjp.2013.12.035., ISSN 1389-1286, March 14, 2014.
+[Ref108] Gran, Ernst Gunnar; Dreibholz, Thomas; Kvalbein, Amund: "NorNet Core – A Multi-Homed Research Testbed" (PDF, 1458 KiB), in Computer Networks, Special Issue on Future Internet Testbeds, vol. 61, pp. 75–87, DOI: 10.1016/j.bjp.2013.12.035., ISSN 1389-1286, March 14, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2236.pdf.
 
-[Ref122] Dreibholz, Thomas: "On the Applicability of Reliable Server Pooling for Virtualised Network Function Resource Pooling" (PDF, 2476 KiB), in Proceedings of the 89th IETF Meeting, London/United Kingdom, March 4, 2014.
+[Ref109] Dreibholz, Thomas: "On the Applicability of Reliable Server Pooling for Virtualised Network Function Resource Pooling" (PDF, 2476 KiB), in Proceedings of the 89th IETF Meeting, London/United Kingdom, March 4, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2584.pdf.
 
-[Ref123] Dreibholz, Thomas: "The Status of MPTCP Deployment and Evaluation in the NorNet Testbed" (PDF, 1514 KiB), in Proceedings of the 89th IETF Meeting, London/United Kingdom, March 3, 2014.
+[Ref110] Dreibholz, Thomas: "The Status of MPTCP Deployment and Evaluation in the NorNet Testbed" (PDF, 1514 KiB), in Proceedings of the 89th IETF Meeting, London/United Kingdom, March 3, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2582.pdf.
 
 ---- January 2014 ----
-[Ref124] Dreibholz, Thomas: "NorNet – An Open, Large-Scale Testbed for Multi-Homed Systems" (PDF, 4655 KiB), Invited Talk at Swinburne University, Centre for Advanced Internet Architectures (CAIA), Melbourne, Victoria/Australia, January 30, 2014.
+[Ref111] Dreibholz, Thomas: "NorNet – An Open, Large-Scale Testbed for Multi-Homed Systems" (PDF, 4655 KiB), Invited Talk at Swinburne University, Centre for Advanced Internet Architectures (CAIA), Melbourne, Victoria/Australia, January 30, 2014.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/caia2014-presentation-web.pdf.
 
 ===== YEAR 2015 =====
 ---- November 2015 ----
-[Ref125] Fu, Fa; Zhou, Xing; Dreibholz, Thomas; Wang, Keying; Zhou, Feng; Gan, Quan: "Performance Comparison of Congestion Control Strategies for Multi-Path TCP in the NorNet Testbed" (PDF, 172 KiB), in Proceedings of the 4th IEEE/CIC International Conference on Communications in China (ICCC), pp. 607–612, DOI: 10.1109/ICCChina.2015.7448667., ISBN 978-1-5090-0243-6, Shenzhen, Guangdong/People's Republic of China, November 3, 2015.
+[Ref112] Fu, Fa; Zhou, Xing; Dreibholz, Thomas; Wang, Keying; Zhou, Feng; Gan, Quan: "Performance Comparison of Congestion Control Strategies for Multi-Path TCP in the NorNet Testbed" (PDF, 172 KiB), in Proceedings of the 4th IEEE/CIC International Conference on Communications in China (ICCC), pp. 607–612, DOI: 10.1109/ICCChina.2015.7448667., ISBN 978-1-5090-0243-6, Shenzhen, Guangdong/People's Republic of China, November 3, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/fufa-mptcp-web.pdf.
 
 ---- September 2015 ----
-[Ref126] Singh, Amanpreet; Könsgen, Andreas; Adhari, Hakim; Görg, Carmelita; Rathgeb, Erwin P.: "Algorithms for Theoretical Investigation of Fairness in Multipath Transport" (PDF, 501 KiB), in Proceedings of the 7th EAI International Conference on Mobile Networks and Management (MONAMI 2015), Santander/Spain, September 2015.
-URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/naomi2015-FairnessAlgorithms.pdf.
-
-[Ref127] Dreibholz, Thomas: "The NorNet Experimentation Platform for Multi-Homed Systems" (PDF, 14369 KiB), in Proceedings of the NORDUnet Technical Workshop (NTW), København/Denmark, September 17, 2015.
+[Ref113] Dreibholz, Thomas: "The NorNet Experimentation Platform for Multi-Homed Systems" (PDF, 14369 KiB), in Proceedings of the NORDUnet Technical Workshop (NTW), København/Denmark, September 17, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/ntw2015.pdf.
 
-[Ref128] Dreibholz, Thomas: "NetPerfMeter: A Network Performance Metering Tool" (HTML, 42 KiB), in Multipath TCP Blog, September 7, 2015.
+[Ref114] Dreibholz, Thomas: "NetPerfMeter: A Network Performance Metering Tool" (HTML, 42 KiB), in Multipath TCP Blog, September 7, 2015.
 URL: https://web.archive.org/web/20230518084721/http://blog.multipath-tcp.org/blog/html/2015/09/07/netperfmeter.html.
 
-[Ref129] Adhari, Hakim; Dreibholz, Thomas; Werner, Sebastian; Rathgeb, Erwin Paul: "Eclipse: A New Dynamic Delay-based Congestion Control Algorithm for Background Traffic" (PDF, 1082 KiB), in Proceedings of the 18th International Conference on Network-Based Information Systems (NBiS), pp. 115–123, DOI: 10.1109/NBiS.2015.21., ISBN 978-1-4799-9942-2, Taipei/Taiwan, September 2, 2015.
+[Ref115] Adhari, Hakim; Dreibholz, Thomas; Werner, Sebastian; Rathgeb, Erwin Paul: "Eclipse: A New Dynamic Delay-based Congestion Control Algorithm for Background Traffic" (PDF, 1082 KiB), in Proceedings of the 18th International Conference on Network-Based Information Systems (NBiS), pp. 115–123, DOI: 10.1109/NBiS.2015.21., ISBN 978-1-4799-9942-2, Taipei/Taiwan, September 2, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/paper-web.pdf.
 
 ---- August 2015 ----
-[Ref130] Dreibholz, Thomas: "The NorNet Core Testbed: A Status Update for the NNUW-3" (PDF, 12120 KiB), in Proceedings of the 3rd International NorNet Users Workshop (NNUW-3), Fornebu, Akershus/Norway, August 28, 2015.
+[Ref116] Dreibholz, Thomas: "The NorNet Core Testbed: A Status Update for the NNUW-3" (PDF, 12120 KiB), in Proceedings of the 3rd International NorNet Users Workshop (NNUW-3), Fornebu, Akershus/Norway, August 28, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/nnuw3-dreibholz.pdf.
 
 ---- July 2015 ----
-[Ref131] Adhari, Hakim; Rathgeb, Erwin P.; Singh, Amanpreet; Könsgen, Andreas; Görg, Carmelita: "Transport Layer Fairness Revisited" (PDF, 846 KiB), in Proceedings of the 13th IEEE International Conference on Telecommunications (ConTEL 2015), Graz/Austria, July 2015.
-URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/Forschung/contel-Fairness-Adhari.pdf.
-
-[Ref132] Dreibholz, Thomas: "MPTCP Experiences in the NorNet Testbed: draft-dreibholz-mptcp-nornet-experience-01" (PDF, 12798 KiB), in Proceedings of the 93th IETF Meeting, Praha/Czech Republic, July 21, 2015.
+[Ref117] Dreibholz, Thomas: "MPTCP Experiences in the NorNet Testbed: draft-dreibholz-mptcp-nornet-experience-01" (PDF, 12798 KiB), in Proceedings of the 93th IETF Meeting, Praha/Czech Republic, July 21, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/ietf93-presentation.pdf.
 
-[Ref133] Dreibholz, Thomas: "NorNet Core @ IETF Hackathon 93" (PDF, 337 KiB), in Proceedings of the IETF Hackathon at the 93rd IETF Meeting, Praha/Czech Republic, July 18, 2015.
+[Ref118] Dreibholz, Thomas: "NorNet Core @ IETF Hackathon 93" (PDF, 337 KiB), in Proceedings of the IETF Hackathon at the 93rd IETF Meeting, Praha/Czech Republic, July 18, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/ietf93-hackathon-intro.pdf.
 
 ---- April 2015 ----
-[Ref134] Livadariu, Ioana Alexandrina; Ferlin, Simone; Alay, Özgü; Dreibholz, Thomas; Dhamdhere, Amogh; Elmokashfi, Ahmed Mustafa: "Leveraging the IPv4/IPv6 Identity Duality by using Multi-Path Transport" (PDF, 327 KiB), in Proceedings of the 18th IEEE Global Internet Symposium (GI) at the 34th IEEE Conference on Computer Communications (INFOCOM), pp. 312–317, DOI: 10.1109/INFCOMW.2015.7179403., ISBN 978-1-4673-7131-5, Hong Kong/People's Republic of China, April 27, 2015.
+[Ref119] Livadariu, Ioana Alexandrina; Ferlin, Simone; Alay, Özgü; Dreibholz, Thomas; Dhamdhere, Amogh; Elmokashfi, Ahmed Mustafa: "Leveraging the IPv4/IPv6 Identity Duality by using Multi-Path Transport" (PDF, 327 KiB), in Proceedings of the 18th IEEE Global Internet Symposium (GI) at the 34th IEEE Conference on Computer Communications (INFOCOM), pp. 312–317, DOI: 10.1109/INFCOMW.2015.7179403., ISBN 978-1-4673-7131-5, Hong Kong/People's Republic of China, April 27, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/gis2015_0.pdf.
 
-[Ref135] Liu, Ji; Tan, Yuyin; Fu, Fa; Dreibholz, Thomas; Zhou, Xing; Bai, Yong; Yang, Xiong; Du, Wencai: "Study on MPTCP and CMT-SCTP Congestion Control Mechanism" (PDF, 28239 KiB), in Computer Engineering, vol. 41, pp. 117–124, DOI: 10.3969/j.issn.1000-3428.2015.04.022., ISSN 1000-3428, April 15, 2015.
+[Ref120] Liu, Ji; Tan, Yuyin; Fu, Fa; Dreibholz, Thomas; Zhou, Xing; Bai, Yong; Yang, Xiong; Du, Wencai: "Study on MPTCP and CMT-SCTP Congestion Control Mechanism" (PDF, 28239 KiB), in Computer Engineering, vol. 41, pp. 117–124, DOI: 10.3969/j.issn.1000-3428.2015.04.022., ISSN 1000-3428, April 15, 2015.
 URL: https://web.archive.org/web/20160222130810/http://www.ecice06.com/EN/article/downloadArticleFile.do?attachType=PDF&id=26295.
 
 ---- March 2015 ----
-[Ref136] Dreibholz, Thomas; Zhou, Xing; Fu, Fa: "Multi-Path TCP in Real-World Setups – An Evaluation in the NorNet Core Testbed" (PDF, 211 KiB), in 5th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 617–622, DOI: 10.1109/WAINA.2015.74., ISBN 978-1-4799-1775-4, Gwangju/South Korea, March 25, 2015.
+[Ref121] Dreibholz, Thomas; Zhou, Xing; Fu, Fa: "Multi-Path TCP in Real-World Setups – An Evaluation in the NorNet Core Testbed" (PDF, 211 KiB), in 5th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 617–622, DOI: 10.1109/WAINA.2015.74., ISBN 978-1-4799-1775-4, Gwangju/South Korea, March 25, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/pams2015-mptcp-web.pdf.
 
-[Ref137] Dreibholz, Thomas; Bjørgeengen, Jarle; Werme, Jonas: "Monitoring and Maintaining the Infrastructure of the NorNet Testbed for Multi-Homed Systems" (PDF, 538 KiB), in 5th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 611–616, DOI: 10.1109/WAINA.2015.76., ISBN 978-1-4799-1775-4, Gwangju/South Korea, March 25, 2015.
+[Ref122] Dreibholz, Thomas; Bjørgeengen, Jarle; Werme, Jonas: "Monitoring and Maintaining the Infrastructure of the NorNet Testbed for Multi-Homed Systems" (PDF, 538 KiB), in 5th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS), pp. 611–616, DOI: 10.1109/WAINA.2015.76., ISBN 978-1-4799-1775-4, Gwangju/South Korea, March 25, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/pams2015-nornet-monitoring-web.pdf.
 
 ---- January 2015 ----
-[Ref138] Dreibholz, Thomas: "The NorNet Testbed – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems" (PDF, 6771 KiB), Invited Talk at Swinburne University, Centre for Advanced Internet Architectures (CAIA), Melbourne, Victoria/Australia, January 29, 2015.
+[Ref123] Dreibholz, Thomas: "The NorNet Testbed – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems" (PDF, 6771 KiB), Invited Talk at Swinburne University, Centre for Advanced Internet Architectures (CAIA), Melbourne, Victoria/Australia, January 29, 2015.
 URL: https://web-backend.simula.no/sites/default/files/2024-06/CAIA2015.pdf.
 
-[Ref139] Dreibholz, Thomas: "NorNet at NICTA – An Open, Large-Scale Testbed for Multi-Homed Systems" (PDF, 6545 KiB), Invited Talk at National Information Communications Technology Australia (NICTA), Sydney, New South Wales/Australia, January 15, 2015.
+[Ref124] Dreibholz, Thomas: "NorNet at NICTA – An Open, Large-Scale Testbed for Multi-Homed Systems" (PDF, 6545 KiB), Invited Talk at National Information Communications Technology Australia (NICTA), Sydney, New South Wales/Australia, January 15, 2015.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/nicta2015-presentation-web.pdf.
 
 ===== YEAR 2016 =====
 ---- October 2016 ----
-[Ref140] Dreibholz, Thomas: "NorNet – Building an Inter-Continental Internet Testbed based on Open Source Software" (PDF, 9587 KiB), in Proceedings of the LinuxCon Europe, Berlin/Germany, October 5, 2016.
+[Ref125] Dreibholz, Thomas: "NorNet – Building an Inter-Continental Internet Testbed based on Open Source Software" (PDF, 9587 KiB), in Proceedings of the LinuxCon Europe, Berlin/Germany, October 5, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/linuxcon2016-presentation.pdf.
 
 ---- August 2016 ----
-[Ref141] Yedugundla, Kiran Venkata; Ferlin, Simone; Dreibholz, Thomas; Alay, Özgü; Kuhn, Nicolas; Hurtig, Per; Brunström, Anna: "Is Multi-Path Transport Suitable for Latency Sensitive Traffic?" (PDF, 4525 KiB), in Computer Networks, vol. 105, pp. 1–21, Elsevier, DOI: 10.1016/j.comnet.2016.05.008., ISSN 1389-1286, August 4, 2016.
+[Ref126] Yedugundla, Kiran Venkata; Ferlin, Simone; Dreibholz, Thomas; Alay, Özgü; Kuhn, Nicolas; Hurtig, Per; Brunström, Anna: "Is Multi-Path Transport Suitable for Latency Sensitive Traffic?" (PDF, 4525 KiB), in Computer Networks, vol. 105, pp. 1–21, Elsevier, DOI: 10.1016/j.comnet.2016.05.008., ISSN 1389-1286, August 4, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/comnets2016-multipathsurvey.pdf.
 
 ---- July 2016 ----
-[Ref142] Dreibholz, Thomas: "NorNet – The Internet Testbed for Multi-Homed Systems" (PDF, 11198 KiB), in Proceedings of the Multi-Service Networks Conference (MSN, Coseners), Abingdon, Oxfordshire/United Kingdom, July 8, 2016.
+[Ref127] Dreibholz, Thomas: "NorNet – The Internet Testbed for Multi-Homed Systems" (PDF, 11198 KiB), in Proceedings of the Multi-Service Networks Conference (MSN, Coseners), Abingdon, Oxfordshire/United Kingdom, July 8, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/msn2016-presentation.pdf.
 
 ---- June 2016 ----
-[Ref143] Dreibholz, Thomas: "NorNet at the Haikou College of Economics – An Introduction to the NorNet Testbed" (PDF, 10163 KiB), Invited Talk at the Haikou College of Economics, Guilinyang, Hainan/People's Republic of China, June 6, 2016.
+[Ref128] Dreibholz, Thomas: "NorNet at the Haikou College of Economics – An Introduction to the NorNet Testbed" (PDF, 10163 KiB), Invited Talk at the Haikou College of Economics, Guilinyang, Hainan/People's Republic of China, June 6, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2016-hkc-presentation.pdf.
 
 ---- May 2016 ----
-[Ref144] Dreibholz, Thomas: "NorNet at Hainan University – An Introduction to the NorNet Testbed" (PDF, 13840 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, May 29, 2016.
+[Ref129] Dreibholz, Thomas: "NorNet at Hainan University – An Introduction to the NorNet Testbed" (PDF, 13840 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, May 29, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2016-hainanuniversity-presentation_1.pdf.
 
-[Ref145] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at Hainan University" (PDF, 7304 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, May 29, 2016.
+[Ref130] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at Hainan University" (PDF, 7304 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, May 29, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2016-hainanuniversity-tutorial_0.pdf.
 
 ---- April 2016 ----
-[Ref146] Ferlin, Simone; Alay, Özgü; Hayes, David Andrew; Dreibholz, Thomas; Welzl, Michael: "Revisiting Congestion Control for Multipath TCP with Shared Bottleneck Detection" (PDF, 1440 KiB), in Proceedings of the 35th IEEE International Conference on Computer Communications (INFOCOM), pp. 2419–2427, ISBN 978-1-4673-9953-1, San Francisco, California/U.S.A., April 14, 2016.
+[Ref131] Ferlin, Simone; Alay, Özgü; Hayes, David Andrew; Dreibholz, Thomas; Welzl, Michael: "Revisiting Congestion Control for Multipath TCP with Shared Bottleneck Detection" (PDF, 1440 KiB), in Proceedings of the 35th IEEE International Conference on Computer Communications (INFOCOM), pp. 2419–2427, ISBN 978-1-4673-9953-1, San Francisco, California/U.S.A., April 14, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/infocom2016-web.pdf.
 
 ---- March 2016 ----
-[Ref147] Dreibholz, Thomas: "NorNet at HAW Hamburg – An Introduction to the NorNet Testbed" (PDF, 13981 KiB), Invited Talk at Hochschule für Angewandte Wissenschaften Hamburg (HAW Hamburg), Hamburg/Germany, March 22, 2016.
+[Ref132] Dreibholz, Thomas: "NorNet at HAW Hamburg – An Introduction to the NorNet Testbed" (PDF, 13981 KiB), Invited Talk at Hochschule für Angewandte Wissenschaften Hamburg (HAW Hamburg), Hamburg/Germany, March 22, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/hawhamburg2016-presentation.pdf.
 
-[Ref148] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at HAW Hamburg" (PDF, 4134 KiB), Tutorial at Hochschule für Angewandte Wissenschaften Hamburg (HAW Hamburg), Hamburg/Germany, March 22, 2016.
+[Ref133] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at HAW Hamburg" (PDF, 4134 KiB), Tutorial at Hochschule für Angewandte Wissenschaften Hamburg (HAW Hamburg), Hamburg/Germany, March 22, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/hawhamburg2016-tutorial.pdf.
 
-[Ref149] Fu, Fa; Zhou, Xing; Tan, Yuyin; Dreibholz, Thomas; Adhari, Hakim; Rathgeb, Erwin Paul: "Performance Analysis of MPTCP Protocol in Multiple Scenarios" (PDF, 581 KiB), in Computer Engineering and Applications, vol. 52, pp. 89–93, CEA, DOI: 10.3778/j.issn.1002-8331.1508-0186., ISSN 1002-8331, March 1, 2016.
+[Ref134] Fu, Fa; Zhou, Xing; Tan, Yuyin; Dreibholz, Thomas; Adhari, Hakim; Rathgeb, Erwin Paul: "Performance Analysis of MPTCP Protocol in Multiple Scenarios" (PDF, 581 KiB), in Computer Engineering and Applications, vol. 52, pp. 89–93, CEA, DOI: 10.3778/j.issn.1002-8331.1508-0186., ISSN 1002-8331, March 1, 2016.
 URL: https://web.archive.org/web/20160305203850/http://cea.ceaj.org/CN/article/downloadArticleFile.do?attachType=PDF&id=34214.
 
 ---- January 2016 ----
-[Ref150] Dreibholz, Thomas: "NorNet at NICTA – An Introduction to the NorNet Testbed" (PDF, 13403 KiB), Invited Talk at National Information Communications Technology Australia (NICTA), Sydney, New South Wales/Australia, January 22, 2016.
+[Ref135] Dreibholz, Thomas: "NorNet at NICTA – An Introduction to the NorNet Testbed" (PDF, 13403 KiB), Invited Talk at National Information Communications Technology Australia (NICTA), Sydney, New South Wales/Australia, January 22, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/nicta2016-presentation.pdf.
 
-[Ref151] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at NICTA" (PDF, 4140 KiB), Tutorial at National Information Communications Technology Australia (NICTA), Sydney, New South Wales/Australia, January 22, 2016.
+[Ref136] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at NICTA" (PDF, 4140 KiB), Tutorial at National Information Communications Technology Australia (NICTA), Sydney, New South Wales/Australia, January 22, 2016.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/nicta2016-tutorial.pdf.
 
 ===== YEAR 2017 =====
 ---- December 2017 ----
-[Ref152] Dreibholz, Thomas: "Big Data Applications on Multi-Clouds: An Introduction to the MELODIC Project" (PDF, 11377 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 29, 2017.
+[Ref137] Dreibholz, Thomas: "Big Data Applications on Multi-Clouds: An Introduction to the MELODIC Project" (PDF, 11377 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 29, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2017-melodic-introduction.pdf.
 
-[Ref153] Dreibholz, Thomas: "Combining NorNet Core with MELODIC" (PDF, 10777 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 29, 2017.
+[Ref138] Dreibholz, Thomas: "Combining NorNet Core with MELODIC" (PDF, 10777 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 29, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2017-melodic-nornetcore.pdf.
 
-[Ref154] Dreibholz, Thomas: "NEAT Tutorial at Hainan University: Getting Started with NEAT" (PDF, 3199 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 18, 2017.
+[Ref139] Dreibholz, Thomas: "NEAT Tutorial at Hainan University: Getting Started with NEAT" (PDF, 3199 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 18, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2017-neat-tutorial.pdf.
 
-[Ref155] Dreibholz, Thomas: "NorNet Core Beginner Tutorial at Hainan University" (PDF, 4987 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 15, 2017.
+[Ref140] Dreibholz, Thomas: "NorNet Core Beginner Tutorial at Hainan University" (PDF, 4987 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 15, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2017-nornet-tutorial_0.pdf.
 
-[Ref156] Dreibholz, Thomas: "An Introduction to Multi-Path Transport at Hainan University" (PDF, 14797 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 14, 2017.
+[Ref141] Dreibholz, Thomas: "An Introduction to Multi-Path Transport at Hainan University" (PDF, 14797 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, December 14, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2017-multipath-presentation_0.pdf.
 
 ---- September 2017 ----
-[Ref157] Dreibholz, Thomas: "Testing Applications with the NorNet Infrastructure" (PDF, 11995 KiB), in Proceedings of the MELODIC Plenary Meeting, Warszawa, Masovia/Poland, September 21, 2017.
+[Ref142] Dreibholz, Thomas: "Testing Applications with the NorNet Infrastructure" (PDF, 11995 KiB), in Proceedings of the MELODIC Plenary Meeting, Warszawa, Masovia/Poland, September 21, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/melodic-warsaw2017.pdf.
 
 ---- July 2017 ----
-[Ref158] Weinrank, Felix; Grinnemo, Karl-Johan; Bozakov, Zdravko; Brunström, Anna; Dreibholz, Thomas; Hurtig, Per; Khademi, Naeem; Tüxen, Michael: "A NEAT Way to Browse the Web" (PDF, 417 KiB), Demo Presentation, in Proceedings of the ACM, IRTF and ISOC Applied Networking Research Workshop (ANRW), pp. 33–34, DOI: 10.1145/3106328.3106335., ISBN 978-1-4503-5108-9, Praha/Czech Republic, July 15, 2017.
+[Ref143] Weinrank, Felix; Grinnemo, Karl-Johan; Bozakov, Zdravko; Brunström, Anna; Dreibholz, Thomas; Hurtig, Per; Khademi, Naeem; Tüxen, Michael: "A NEAT Way to Browse the Web" (PDF, 417 KiB), Demo Presentation, in Proceedings of the ACM, IRTF and ISOC Applied Networking Research Workshop (ANRW), pp. 33–34, DOI: 10.1145/3106328.3106335., ISBN 978-1-4503-5108-9, Praha/Czech Republic, July 15, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/anrw17-final13.pdf.
 
 ---- April 2017 ----
-[Ref159] Dreibholz, Thomas: "Multi-Path Transport at Hainan University – From Simulations to Real-World Internet Measurements in the NorNet Testbed" (PDF, 14797 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 18, 2017.
+[Ref144] Dreibholz, Thomas: "Multi-Path Transport at Hainan University – From Simulations to Real-World Internet Measurements in the NorNet Testbed" (PDF, 14797 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 18, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2017-multipath-presentation.pdf.
 
-[Ref160] Dreibholz, Thomas: "The Basics of Using the NorNet Core Testbed at Hainan University" (PDF, 4987 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 18, 2017.
+[Ref145] Dreibholz, Thomas: "The Basics of Using the NorNet Core Testbed at Hainan University" (PDF, 4987 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 18, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2017-nornet-tutorial.pdf.
 
-[Ref161] Dreibholz, Thomas: "A Practical Introduction to NEAT at Hainan University" (PDF, 866 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 17, 2017.
+[Ref146] Dreibholz, Thomas: "A Practical Introduction to NEAT at Hainan University" (PDF, 866 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 17, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2017-neat-introduction.pdf.
 
 ---- March 2017 ----
-[Ref162] Wang, Kun; Dreibholz, Thomas; Zhou, Xing; Fu, Fa; Tan, Yuyin; Cheng, Xi; Tan, Qining: "On the Path Management of Multi-Path TCP in Internet Scenarios based on the NorNet Testbed" (PDF, 379 KiB), in Proceedings of the IEEE International Conference on Advanced Information Networking and Applications (AINA), pp. 1–8, DOI: 10.1109/AINA.2017.29., ISBN 978-1-5090-6028-3, Taipei, Taiwan/People's Republic of China, March 27, 2017.
+[Ref147] Wang, Kun; Dreibholz, Thomas; Zhou, Xing; Fu, Fa; Tan, Yuyin; Cheng, Xi; Tan, Qining: "On the Path Management of Multi-Path TCP in Internet Scenarios based on the NorNet Testbed" (PDF, 379 KiB), in Proceedings of the IEEE International Conference on Advanced Information Networking and Applications (AINA), pp. 1–8, DOI: 10.1109/AINA.2017.29., ISBN 978-1-5090-6028-3, Taipei, Taiwan/People's Republic of China, March 27, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/kunwang-paper-web.pdf.
 
-[Ref163] Zhou, Feng; Dreibholz, Thomas; Zhou, Xing; Fu, Fa; Tan, Yuyin; Gan, Quan: "The Performance Impact of Buffer Sizes for Multi-Path TCP in Internet Setups" (PDF, 1006 KiB), in Proceedings of the IEEE International Conference on Advanced Information Networking and Applications (AINA), pp. 9–16, DOI: 10.1109/AINA.2017.26., ISBN 978-1-5090-6028-3, Taipei, Taiwan/People's Republic of China, March 27, 2017.
+[Ref148] Zhou, Feng; Dreibholz, Thomas; Zhou, Xing; Fu, Fa; Tan, Yuyin; Gan, Quan: "The Performance Impact of Buffer Sizes for Multi-Path TCP in Internet Setups" (PDF, 1006 KiB), in Proceedings of the IEEE International Conference on Advanced Information Networking and Applications (AINA), pp. 9–16, DOI: 10.1109/AINA.2017.26., ISBN 978-1-5090-6028-3, Taipei, Taiwan/People's Republic of China, March 27, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/fengzhou-mptcp-web.pdf.
 
 ---- February 2017 ----
-[Ref164] Dreibholz, Thomas: "Multi-Path Transport – From Simulations to Real-World Internet Measurements" (PDF, 14631 KiB), Keynote Talk at the Universidad de Castilla-La Mancha, Instituto de Investigación Informática de Albacete, Albacete, Castilla-La Mancha/Spain, February 16, 2017.
+[Ref149] Dreibholz, Thomas: "Multi-Path Transport – From Simulations to Real-World Internet Measurements" (PDF, 14631 KiB), Keynote Talk at the Universidad de Castilla-La Mancha, Instituto de Investigación Informática de Albacete, Albacete, Castilla-La Mancha/Spain, February 16, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/uclm2017-multipath-presentation_1.pdf.
 
-[Ref165] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at the the Universidad de Castilla-La Mancha" (PDF, 5244 KiB), Tutorial at the Universidad de Castilla-La Mancha, Instituto de Investigación Informática de Albacete, Albacete, Castilla-La Mancha/Spain, February 16, 2017.
+[Ref150] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at the the Universidad de Castilla-La Mancha" (PDF, 5244 KiB), Tutorial at the Universidad de Castilla-La Mancha, Instituto de Investigación Informática de Albacete, Albacete, Castilla-La Mancha/Spain, February 16, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/uclm2017-nornet-tutorial.pdf.
 
-[Ref166] Dreibholz, Thomas: "Multi-Path Transport with OMNeT++ and the INET Framework" (PDF, 4367 KiB), Invited Talk at the Universidad de Castilla-La Mancha, Instituto de Investigación Informática de Albacete, Albacete, Castilla-La Mancha/Spain, February 16, 2017.
+[Ref151] Dreibholz, Thomas: "Multi-Path Transport with OMNeT++ and the INET Framework" (PDF, 4367 KiB), Invited Talk at the Universidad de Castilla-La Mancha, Instituto de Investigación Informática de Albacete, Albacete, Castilla-La Mancha/Spain, February 16, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/uclm2017-inet-presentation.pdf.
 
 ---- January 2017 ----
-[Ref167] Dreibholz, Thomas: "NorNet at the University of Sydney – An Introduction to the NorNet Core Testbed" (PDF, 11848 KiB), Invited Talk at University of Sydney, School of Information Technologies, Sydney, New South Wales/Australia, January 24, 2017.
+[Ref152] Dreibholz, Thomas: "NorNet at the University of Sydney – An Introduction to the NorNet Core Testbed" (PDF, 11848 KiB), Invited Talk at University of Sydney, School of Information Technologies, Sydney, New South Wales/Australia, January 24, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/sydney2017-presentation.pdf.
 
-[Ref168] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at the University of Sydney" (PDF, 4829 KiB), Tutorial at University of Sydney, School of Information Technologies, Sydney, New South Wales/Australia, January 24, 2017.
+[Ref153] Dreibholz, Thomas: "An Experiment Tutorial for the NorNet Core Testbed at the University of Sydney" (PDF, 4829 KiB), Tutorial at University of Sydney, School of Information Technologies, Sydney, New South Wales/Australia, January 24, 2017.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/sydney-tutorial.pdf.
 
 ===== YEAR 2018 =====
 ---- December 2018 ----
-[Ref169] Lou, Yu; Zhou, Xing; Long, Yu; Kuang, Hanbao; Dreibholz, Thomas; Tan, Yuyin: "Performance Analysis of MPTCP Protocol in Multiple Scenarios" (PDF, 826 KiB), in Computer Engineering and Applications, vol. 54, pp. 79–86, CEA, DOI: 10.3778/j.issn.1002-8331.1806-0034., ISSN 1002-8331, December 15, 2018.
+[Ref154] Lou, Yu; Zhou, Xing; Long, Yu; Kuang, Hanbao; Dreibholz, Thomas; Tan, Yuyin: "Performance Analysis of MPTCP Protocol in Multiple Scenarios" (PDF, 826 KiB), in Computer Engineering and Applications, vol. 54, pp. 79–86, CEA, DOI: 10.3778/j.issn.1002-8331.1806-0034., ISSN 1002-8331, December 15, 2018.
 URL: https://web.archive.org/web/20190128151215/http://cea.ceaj.org/EN/article/downloadArticleFile.do?attachType=PDF&id=37335.
 
 ---- October 2018 ----
-[Ref170] Tan, Qining; Yang, Xuelei; Zhao, Lan; Zhou, Xing; Dreibholz, Thomas: "A Statistic Procedure to Find Formulae for Buffer Size in MPTCP" (PDF, 1747 KiB), in Proceedings of the 3rd IEEE Advanced Information Technology, Electronic and Automation Control Conference (IAEAC), pp. 900–907, DOI: 10.1109/IAEAC.2018.8577570., ISBN 978-1-5386-4509-3, Chongqing/People's Republic of China, October 13, 2018.
+[Ref155] Tan, Qining; Yang, Xuelei; Zhao, Lan; Zhou, Xing; Dreibholz, Thomas: "A Statistic Procedure to Find Formulae for Buffer Size in MPTCP" (PDF, 1747 KiB), in Proceedings of the 3rd IEEE Advanced Information Technology, Electronic and Automation Control Conference (IAEAC), pp. 900–907, DOI: 10.1109/IAEAC.2018.8577570., ISBN 978-1-5386-4509-3, Chongqing/People's Republic of China, October 13, 2018.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/iaeac2018-web.pdf.
 
 ---- September 2018 ----
-[Ref171] Barik, Runa; Welzl, Michael; Elmokashfi, Ahmed Mustafa; Dreibholz, Thomas; Gjessing, Stein: "Can WebRTC QoS Work? A DSCP Measurement Study" (PDF, 318 KiB), in Proceedings of the 30th International Teletraffic Congress (ITC), pp. 167–175, DOI: 10.1109/ITC30.2018.00034., ISBN 978-0-9883045-5-0, Wien/Austria, September 6, 2018.
+[Ref156] Barik, Runa; Welzl, Michael; Elmokashfi, Ahmed Mustafa; Dreibholz, Thomas; Gjessing, Stein: "Can WebRTC QoS Work? A DSCP Measurement Study" (PDF, 318 KiB), in Proceedings of the 30th International Teletraffic Congress (ITC), pp. 167–175, DOI: 10.1109/ITC30.2018.00034., ISBN 978-0-9883045-5-0, Wien/Austria, September 6, 2018.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/itc30.pdf.
 
 ===== YEAR 2019 =====
 ---- August 2019 ----
-[Ref172] Barik, Runa; Welzl, Michael; Elmokashfi, Ahmed Mustafa; Dreibholz, Thomas; Islam, Safiqul; Gjessing, Stein: "On the Utility of Unregulated IP DiffServ Code Point (DSCP) Usage by End Systems" (PDF, 1326 KiB), in Performance Evaluation, vol. 135, Elsevier, DOI: 10.1016/j.peva.2019.102036., ISSN 0166-5316, August 26, 2019.
+[Ref157] Barik, Runa; Welzl, Michael; Elmokashfi, Ahmed Mustafa; Dreibholz, Thomas; Islam, Safiqul; Gjessing, Stein: "On the Utility of Unregulated IP DiffServ Code Point (DSCP) Usage by End Systems" (PDF, 1326 KiB), in Performance Evaluation, vol. 135, Elsevier, DOI: 10.1016/j.peva.2019.102036., ISSN 0166-5316, August 26, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/peva2019.pdf.
 
 ---- May 2019 ----
-[Ref173] Elmokashfi, Ahmed Mustafa; Kvalbein, Amund; Dreibholz, Thomas; Jarvis, Chad: "Norske mobilnett i 2018 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 24908 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-25-7, Oslo/Norway, May 29, 2019.
+[Ref158] Elmokashfi, Ahmed Mustafa; Kvalbein, Amund; Dreibholz, Thomas; Jarvis, Chad: "Norske mobilnett i 2018 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 24908 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-25-7, Oslo/Norway, May 29, 2019.
 URL: https://web-backend.simula.no/sites/default/files/crna-2018_0.pdf.
 
 ---- April 2019 ----
-[Ref174] Dreibholz, Thomas: "MELODIC at Hainan University: Combining NorNet Core with MELODIC" (PDF, 7379 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 18, 2019.
+[Ref159] Dreibholz, Thomas: "MELODIC at Hainan University: Combining NorNet Core with MELODIC" (PDF, 7379 KiB), Invited Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 18, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/china2019-melodic-nornetcore.pdf.
 
-[Ref175] Dreibholz, Thomas: "MELODIC at Hainan University: An Introduction to the MELODIC Project" (PDF, 8108 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 17, 2019.
+[Ref160] Dreibholz, Thomas: "MELODIC at Hainan University: An Introduction to the MELODIC Project" (PDF, 8108 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 17, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/china2019-melodic-introduction.pdf.
 
-[Ref176] Dreibholz, Thomas: "NorNet at Hainan University: Getting Started with NorNet Core" (PDF, 7286 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 16, 2019.
+[Ref161] Dreibholz, Thomas: "NorNet at Hainan University: Getting Started with NorNet Core" (PDF, 7286 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 16, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/china2019-nornet-tutorial.pdf.
 
-[Ref177] Dreibholz, Thomas: "NorNet at Hainan University: From Simulations to Real-World Internet Measurements for Multi-Path Transport Research" (PDF, 17975 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 15, 2019.
+[Ref162] Dreibholz, Thomas: "NorNet at Hainan University: From Simulations to Real-World Internet Measurements for Multi-Path Transport Research" (PDF, 17975 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, April 15, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/china2019-multipath-presentation.pdf.
 
 ---- March 2019 ----
-[Ref178] Barik, Runa; Welzl, Michael; Fairhurst, Gorry; Dreibholz, Thomas; Elmokashfi, Ahmed Mustafa; Gjessing, Stein: "Native SCTP, DCCP, UDP-Lite and Home Gateway NATs" (PDF, 80 KiB), in Proceedings of the 104th IETF Meeting, Praha/Czech Republic, March 28, 2019.
+[Ref163] Barik, Runa; Welzl, Michael; Fairhurst, Gorry; Dreibholz, Thomas; Elmokashfi, Ahmed Mustafa; Gjessing, Stein: "Native SCTP, DCCP, UDP-Lite and Home Gateway NATs" (PDF, 80 KiB), in Proceedings of the 104th IETF Meeting, Praha/Czech Republic, March 28, 2019.
 URL: https://web.archive.org/web/20220523134729/https://datatracker.ietf.org/meeting/104/materials/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01.pdf.
 
-[Ref179] Luo, Yu; Zhou, Xing; Dreibholz, Thomas; Kuang, Hanbao: "A Real-Time Video Streaming System over IPv6+MPTCP Technology" (PDF, 212 KiB), in Proceedings of the 1st International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 33rd International Conference on Advanced Information Networking and Applications (AINA), pp. 1007–1019, DOI: 10.1007/978-3-030-15035-8_99., ISBN 978-3-030-15034-1, Matsue, Shimane/Japan, March 27, 2019.
+[Ref164] Luo, Yu; Zhou, Xing; Dreibholz, Thomas; Kuang, Hanbao: "A Real-Time Video Streaming System over IPv6+MPTCP Technology" (PDF, 212 KiB), in Proceedings of the 1st International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 33rd International Conference on Advanced Information Networking and Applications (AINA), pp. 1007–1019, DOI: 10.1007/978-3-030-15035-8_99., ISBN 978-3-030-15034-1, Matsue, Shimane/Japan, March 27, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/m2ec2019-videostreaming.pdf.
 
-[Ref180] Hong, Jiangshui; Dreibholz, Thomas; Schenkel, Joseph Adam; Hu, Jiaxi Alessia: "An Overview of Multi-Cloud Computing" (PDF, 109 KiB), in Proceedings of the 1st International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 33rd International Conference on Advanced Information Networking and Applications (AINA), pp. 1055–1068, DOI: 10.1007/978-3-030-15035-8_103., ISBN 978-3-030-15034-1, Matsue, Shimane/Japan, March 27, 2019.
+[Ref165] Hong, Jiangshui; Dreibholz, Thomas; Schenkel, Joseph Adam; Hu, Jiaxi Alessia: "An Overview of Multi-Cloud Computing" (PDF, 109 KiB), in Proceedings of the 1st International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 33rd International Conference on Advanced Information Networking and Applications (AINA), pp. 1055–1068, DOI: 10.1007/978-3-030-15035-8_103., ISBN 978-3-030-15034-1, Matsue, Shimane/Japan, March 27, 2019.
 URL: https://web-backend.simula.no/sites/default/files/2024-06/M2EC2019-MultiCloud.pdf.
 
 ---- February 2019 ----
-[Ref181] Dreibholz, Thomas; Mazumdar, Somnath; Zahid, Feroz; Taherkordi, Amirhosein; Gran, Ernst Gunnar: "Mobile Edge as Part of the Multi-Cloud Ecosystem: A Performance Study" (PDF, 9966 KiB), in Proceedings of the 27th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP), pp. 59–66, DOI: 10.1109/EMPDP.2019.8671599., ISBN 978-1-7281-1644-0, Pavia, Lombardia/Italy, February 13, 2019.
+[Ref166] Dreibholz, Thomas; Mazumdar, Somnath; Zahid, Feroz; Taherkordi, Amirhosein; Gran, Ernst Gunnar: "Mobile Edge as Part of the Multi-Cloud Ecosystem: A Performance Study" (PDF, 9966 KiB), in Proceedings of the 27th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP), pp. 59–66, DOI: 10.1109/EMPDP.2019.8671599., ISBN 978-1-7281-1644-0, Pavia, Lombardia/Italy, February 13, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/pdp2019-web.pdf.
 
 ---- January 2019 ----
-[Ref182] Dreibholz, Thomas: "NorNet at the University of Sydney: From Simulations to Real-World Internet Measurements for Multi-Path Transport Research" (PDF, 17078 KiB), Invited Talk at University of Sydney, Sydney, New South Wales/Australia, January 10, 2019.
+[Ref167] Dreibholz, Thomas: "NorNet at the University of Sydney: From Simulations to Real-World Internet Measurements for Multi-Path Transport Research" (PDF, 17078 KiB), Invited Talk at University of Sydney, Sydney, New South Wales/Australia, January 10, 2019.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/sydney2019-presentation.pdf.
 
 ===== YEAR 2020 =====
 ---- December 2020 ----
-[Ref183] Dreibholz, Thomas: "Custom-Made Enhanced Packet Cores as Network Services for 4G/5G Testbeds managed with Open Source MANO" (PDF, 4221 KiB), Presentation at the Mosaic5G Workshop, December 3, 2020.
+[Ref168] Dreibholz, Thomas: "Custom-Made Enhanced Packet Cores as Network Services for 4G/5G Testbeds managed with Open Source MANO" (PDF, 4221 KiB), Presentation at the Mosaic5G Workshop, December 3, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/m5g-2020-presentation.pdf.
 
-[Ref184] Dreibholz, Thomas; Ocampo, Andrés Felipe: "Managing Tailor-Made Enhanced Packet Cores for 4G/5G Testbeds in OSM with the SimulaMet OpenAirInterface VNF" (PDF, 7354 KiB), Presentation at the OSM Hackfest, December 2, 2020.
+[Ref169] Dreibholz, Thomas; Ocampo, Andrés Felipe: "Managing Tailor-Made Enhanced Packet Cores for 4G/5G Testbeds in OSM with the SimulaMet OpenAirInterface VNF" (PDF, 7354 KiB), Presentation at the OSM Hackfest, December 2, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/osmhackfest10-presentation.pdf.
 
 ---- November 2020 ----
-[Ref185] Dreibholz, Thomas; Saxena, Paresh; Skinnemoen, Harald: "Efficient Network Coding for Satellite Applications: A Live Demo of HENCSAT and NECTOR" (PDF, 2004 KiB), in Proceedings of the 45th IEEE Conference on Local Computer Networks (LCN), Sydney, New South Wales/Australia, November 18, 2020.
+[Ref170] Dreibholz, Thomas; Saxena, Paresh; Skinnemoen, Harald: "Efficient Network Coding for Satellite Applications: A Live Demo of HENCSAT and NECTOR" (PDF, 2004 KiB), in Proceedings of the 45th IEEE Conference on Local Computer Networks (LCN), Sydney, New South Wales/Australia, November 18, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/lcn2020-hencsat-demo-web.pdf.
 
-[Ref186] Ocampo, Andrés Felipe; Dreibholz, Thomas; Fida, Mah-Rukh; Elmokashfi, Ahmed Mustafa; Bryhni, Haakon: "Integrating Cloud-RAN with Packet Core as VNF Using Open Source MANO and OpenAirInterface" (PDF, 430 KiB), in Proceedings of the 45th IEEE Conference on Local Computer Networks (LCN), Sydney, New South Wales/Australia, November 18, 2020.
+[Ref171] Ocampo, Andrés Felipe; Dreibholz, Thomas; Fida, Mah-Rukh; Elmokashfi, Ahmed Mustafa; Bryhni, Haakon: "Integrating Cloud-RAN with Packet Core as VNF Using Open Source MANO and OpenAirInterface" (PDF, 430 KiB), in Proceedings of the 45th IEEE Conference on Local Computer Networks (LCN), Sydney, New South Wales/Australia, November 18, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/lcn2020-simulametepc-demo-web.pdf.
 
-[Ref187] Chen, Min; Dreibholz, Thomas; Zhou, Xing; Yang, Xuelei: "Improvement and Implementation of a Multi-Path Management Algorithm Based on MPTCP" (PDF, 526 KiB), in Proceedings of the 45th IEEE Conference on Local Computer Networks (LCN), pp. 134–143, DOI: 10.1109/LCN48667.2020.9314778., ISBN 978-1-7281-7158-6, Sydney, New South Wales/Australia, November 16, 2020.
+[Ref172] Chen, Min; Dreibholz, Thomas; Zhou, Xing; Yang, Xuelei: "Improvement and Implementation of a Multi-Path Management Algorithm Based on MPTCP" (PDF, 526 KiB), in Proceedings of the 45th IEEE Conference on Local Computer Networks (LCN), pp. 134–143, DOI: 10.1109/LCN48667.2020.9314778., ISBN 978-1-7281-7158-6, Sydney, New South Wales/Australia, November 16, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/lcn2020-pathmgt-web.pdf.
 
 ---- September 2020 ----
-[Ref188] Dreibholz, Thomas: "A 4G/5G Packet Core as VNF with Open Source MANO and OpenAirInterface" (PDF, 811 KiB), in Proceedings of the 28th IEEE International Conference on Software, Telecommunications and Computer Networks (SoftCOM), pp. 1–3, DOI: 10.23919/SoftCOM50211.2020.9238222., ISBN 978-953-290-099-6, Hvar, Dalmacija/Croatia, September 19, 2020.
+[Ref173] Dreibholz, Thomas: "A 4G/5G Packet Core as VNF with Open Source MANO and OpenAirInterface" (PDF, 811 KiB), in Proceedings of the 28th IEEE International Conference on Software, Telecommunications and Computer Networks (SoftCOM), pp. 1–3, DOI: 10.23919/SoftCOM50211.2020.9238222., ISBN 978-953-290-099-6, Hvar, Dalmacija/Croatia, September 19, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/softcom2020-simulametepc-web.pdf.
 
-[Ref189] Dreibholz, Thomas: "HiPerConTracer - A Versatile Tool for IP Connectivity Tracing in Multi-Path Setups" (PDF, 4898 KiB), in Proceedings of the 28th IEEE International Conference on Software, Telecommunications and Computer Networks (SoftCOM), pp. 1–6, DOI: 10.23919/SoftCOM50211.2020.9238278., ISBN 978-953-290-099-6, Hvar, Dalmacija/Croatia, September 17, 2020.
+[Ref174] Dreibholz, Thomas: "HiPerConTracer - A Versatile Tool for IP Connectivity Tracing in Multi-Path Setups" (PDF, 4898 KiB), in Proceedings of the 28th IEEE International Conference on Software, Telecommunications and Computer Networks (SoftCOM), pp. 1–6, DOI: 10.23919/SoftCOM50211.2020.9238278., ISBN 978-953-290-099-6, Hvar, Dalmacija/Croatia, September 17, 2020.
 URL: https://web-backend.simula.no/sites/default/files/2024-06/SoftCOM2020-HiPerConTracer.pdf.
 
 ---- July 2020 ----
-[Ref190] Livadariu, Ioana Alexandrina; Dreibholz, Thomas; Al-Selwi, Anas Saeed; Bryhni, Haakon; Lysne, Olav; Bjørnstad, Steinar; Elmokashfi, Ahmed Mustafa: "On the Accuracy of Country-Level IP Geolocation" (PDF, 421 KiB), in Proceedings of the ACM/IRTF Applied Networking Research Workshop (ARNW), pp. 67–73, DOI: 10.1145/3404868.3406664., ISBN 978-1-4503-8039-3, Madrid/Spain, July 27, 2020.
+[Ref175] Livadariu, Ioana Alexandrina; Dreibholz, Thomas; Al-Selwi, Anas Saeed; Bryhni, Haakon; Lysne, Olav; Bjørnstad, Steinar; Elmokashfi, Ahmed Mustafa: "On the Accuracy of Country-Level IP Geolocation" (PDF, 421 KiB), in Proceedings of the ACM/IRTF Applied Networking Research Workshop (ARNW), pp. 67–73, DOI: 10.1145/3404868.3406664., ISBN 978-1-4503-8039-3, Madrid/Spain, July 27, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/anrw2020.pdf.
 
-[Ref191] Saxena, Paresh; Dreibholz, Thomas; Skinnemoen, Harald; Alay, Özgü; Vazquez-Castro, Ángeles; Ferlin, Simone; Acar, Guray: "Resilient Hybrid SatCom and Terrestrial Networking for Unmanned Aerial Vehicles" (PDF, 1059 KiB), in Proceedings of the 39th IEEE International Conference on Computer Communications (INFOCOM), International Workshop on Wireless Sensor, Robot and UAV Networks (WiSARN), pp. 418–423, DOI: 10.1109/INFOCOMWKSHPS50562.2020.9162943., ISBN 978-1-7281-8696-2, Toronto, Ontario/Canada, July 6, 2020.
+[Ref176] Saxena, Paresh; Dreibholz, Thomas; Skinnemoen, Harald; Alay, Özgü; Vazquez-Castro, Ángeles; Ferlin, Simone; Acar, Guray: "Resilient Hybrid SatCom and Terrestrial Networking for Unmanned Aerial Vehicles" (PDF, 1059 KiB), in Proceedings of the 39th IEEE International Conference on Computer Communications (INFOCOM), International Workshop on Wireless Sensor, Robot and UAV Networks (WiSARN), pp. 418–423, DOI: 10.1109/INFOCOMWKSHPS50562.2020.9162943., ISBN 978-1-7281-8696-2, Toronto, Ontario/Canada, July 6, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/infocom2020.pdf.
 
 ---- June 2020 ----
-[Ref192] Elmokashfi, Ahmed Mustafa; Kvalbein, Amund; Christiansson, Mikael; Al-Selwi, Anas Saeed; Dreibholz, Thomas; Mıdoğlu, Çise: "Norske mobilnett i 2019 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 18663 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-28-8, Oslo/Norway, June 30, 2020.
+[Ref177] Elmokashfi, Ahmed Mustafa; Kvalbein, Amund; Christiansson, Mikael; Al-Selwi, Anas Saeed; Dreibholz, Thomas; Mıdoğlu, Çise: "Norske mobilnett i 2019 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 18663 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-28-8, Oslo/Norway, June 30, 2020.
 URL: https://web-backend.simula.no/sites/default/files/norske_mobilnett_i_2019_1.pdf.
 
-[Ref193] Xie, Min; Pujol-Roig, Joan Sebastià; Michelinakis, Foivos Ioannis; Dreibholz, Thomas; Guerrero, Carmen; Sánchez, Adrián Gallego; Poe, Wint Yi; Wang, Yue; Elmokashfi, Ahmed Mustafa: "AI-Driven Closed-Loop Service Assurance with Service Exposures" (PDF, 713 KiB), in Proceedings of the 29th IEEE European Conference on Networks and Communications (EuCNC), pp. 265–270, DOI: 10.1109/EuCNC48522.2020.9200943., ISBN 978-1-7281-4355-2, Dubrovnik, Dubrovnik-Neretva/Croatia, June 17, 2020.
+[Ref178] Xie, Min; Pujol-Roig, Joan Sebastià; Michelinakis, Foivos Ioannis; Dreibholz, Thomas; Guerrero, Carmen; Sánchez, Adrián Gallego; Poe, Wint Yi; Wang, Yue; Elmokashfi, Ahmed Mustafa: "AI-Driven Closed-Loop Service Assurance with Service Exposures" (PDF, 713 KiB), in Proceedings of the 29th IEEE European Conference on Networks and Communications (EuCNC), pp. 265–270, DOI: 10.1109/EuCNC48522.2020.9200943., ISBN 978-1-7281-4355-2, Dubrovnik, Dubrovnik-Neretva/Croatia, June 17, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/eucnc2020.pdf.
 
 ---- May 2020 ----
-[Ref194] Barik, Runa; Welzl, Michael; Fairhurst, Gorry; Dreibholz, Thomas; Elmokashfi, Ahmed Mustafa; Gjessing, Stein: "On the Usability of Transport Protocols other than TCP: A Home Gateway and Internet Path Traversal Study" (PDF, 1887 KiB), in Computer Networks, vol. 173, Elsevier, DOI: 10.1016/j.comnet.2020.107211., ISSN 1389-1286, May 22, 2020.
+[Ref179] Barik, Runa; Welzl, Michael; Fairhurst, Gorry; Dreibholz, Thomas; Elmokashfi, Ahmed Mustafa; Gjessing, Stein: "On the Usability of Transport Protocols other than TCP: A Home Gateway and Internet Path Traversal Study" (PDF, 1887 KiB), in Computer Networks, vol. 173, Elsevier, DOI: 10.1016/j.comnet.2020.107211., ISSN 1389-1286, May 22, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/comnets2020.pdf.
 
 ---- April 2020 ----
-[Ref195] Dreibholz, Thomas: "Flexible 4G/5G Testbed Setup for Mobile Edge Computing using OpenAirInterface and Open Source MANO" (PDF, 228 KiB), in Proceedings of the 2nd International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 34th International Conference on Advanced Information Networking and Applications (AINA), pp. 1143–1153, DOI: 10.1007/978-3-030-44038-1_105., ISBN 978-3-030-44037-4, Caserta, Campania/Italy, April 15, 2020.
+[Ref180] Dreibholz, Thomas: "Flexible 4G/5G Testbed Setup for Mobile Edge Computing using OpenAirInterface and Open Source MANO" (PDF, 228 KiB), in Proceedings of the 2nd International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 34th International Conference on Advanced Information Networking and Applications (AINA), pp. 1143–1153, DOI: 10.1007/978-3-030-44038-1_105., ISBN 978-3-030-44037-4, Caserta, Campania/Italy, April 15, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/m2ec2020.pdf.
 
 ---- March 2020 ----
-[Ref196] Dreibholz, Thomas: "Easily Setting up 4G/5G Testbeds with OpenAirInterface using OSM" (PDF, 3100 KiB), Presentation at the OSM Hackfest, Madrid/Spain, March 11, 2020.
+[Ref181] Dreibholz, Thomas: "Easily Setting up 4G/5G Testbeds with OpenAirInterface using OSM" (PDF, 3100 KiB), Presentation at the OSM Hackfest, Madrid/Spain, March 11, 2020.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/osmhackfest9-presentation.pdf.
 
 ===== YEAR 2021 =====
 ---- December 2021 ----
-[Ref197] Dreibholz, Thomas; Ocampo, Andrés Felipe; Fida, Mah-Rukh: "Demonstration of P4-Based In-Band Telemetry for OSM-Orchestrated 4G/5G Testbeds" (PDF, 5252 KiB), Presentation at the OSM\#12 Ecosystem Day, Virtual, December 1, 2021.
+[Ref182] Dreibholz, Thomas; Ocampo, Andrés Felipe; Fida, Mah-Rukh: "Demonstration of P4-Based In-Band Telemetry for OSM-Orchestrated 4G/5G Testbeds" (PDF, 5252 KiB), Presentation at the OSM\#12 Ecosystem Day, Virtual, December 1, 2021.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/osmhackfest12-presentation.pdf.
 
 ---- October 2021 ----
-[Ref198] Dreibholz, Thomas; Mazumdar, Somnath: "A Demo of Workload Offloading in Mobile Edge Computing Using the Reliable Server Pooling Framework" (PDF, 1892 KiB), in Proceedings of the 46th IEEE Conference on Local Computer Networks (LCN), Edmonton, Alberta/Canada, October 7, 2021.
+[Ref183] Dreibholz, Thomas; Mazumdar, Somnath: "A Demo of Workload Offloading in Mobile Edge Computing Using the Reliable Server Pooling Framework" (PDF, 1892 KiB), in Proceedings of the 46th IEEE Conference on Local Computer Networks (LCN), Edmonton, Alberta/Canada, October 7, 2021.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/lcn2021-rserpool-web.pdf.
 
 ---- August 2021 ----
-[Ref199] Chen, Min; Raza, Muhammad Waleed; Dreibholz, Thomas; Zhou, Xing; Tan, Yuyin: "A Multi-Parameter Comprehensive Optimized Algorithm for MPTCP Networks" (PDF, 3320 KiB), in Electronics, vol. 10, no. 16, pp. 1–19, MDPI, DOI: 10.3390/electronics10161942., ISSN 2079-9292, Basel/Switzerland, August 12, 2021.
+[Ref184] Chen, Min; Raza, Muhammad Waleed; Dreibholz, Thomas; Zhou, Xing; Tan, Yuyin: "A Multi-Parameter Comprehensive Optimized Algorithm for MPTCP Networks" (PDF, 3320 KiB), in Electronics, vol. 10, no. 16, pp. 1–19, MDPI, DOI: 10.3390/electronics10161942., ISSN 2079-9292, Basel/Switzerland, August 12, 2021.
 URL: https://mdpi-res.com/d_attachment/electronics/electronics-10-01942/article_deploy/electronics-10-01942.pdf?version=1628757855.
 
 ---- June 2021 ----
-[Ref200] Xie, Min; Dreibholz, Thomas; Michelinakis, Foivos Ioannis; Pujol-Roig, Joan; Poe, Wint Yi; Elmokashfi, Ahmed Mustafa; Majumdar, Sayantini; Malacarne, Sara: "An Exposed Closed-Loop Model for Customer-Driven Service Assurance Automation" (PDF, 1131 KiB), in Proceedings of the 30th IEEE European Conference on Networks and Communications (EuCNC), pp. 419–424, DOI: 10.1109/EuCNC/6GSummit51104.2021.9482533., ISBN 978-1-6654-1526-2, Porto/Portugal, June 9, 2021.
+[Ref185] Xie, Min; Dreibholz, Thomas; Michelinakis, Foivos Ioannis; Pujol-Roig, Joan; Poe, Wint Yi; Elmokashfi, Ahmed Mustafa; Majumdar, Sayantini; Malacarne, Sara: "An Exposed Closed-Loop Model for Customer-Driven Service Assurance Automation" (PDF, 1131 KiB), in Proceedings of the 30th IEEE European Conference on Networks and Communications (EuCNC), pp. 419–424, DOI: 10.1109/EuCNC/6GSummit51104.2021.9482533., ISBN 978-1-6654-1526-2, Porto/Portugal, June 9, 2021.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/eucnc2021.pdf.
 
 ---- May 2021 ----
-[Ref201] Dreibholz, Thomas; Mazumdar, Somnath: "Reliable Server Pooling Based Workload Offloading with Mobile Edge Computing: A Proof-of-Concept" (PDF, 1113 KiB), in Proceedings of the 3rd International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 35th International Conference on Advanced Information Networking and Applications (AINA), vol. 3, pp. 582–593, DOI: 10.1007/978-3-030-75078-7_58., ISBN 978-3-030-75078-7, Toronto, Ontario/Canada, May 14, 2021.
+[Ref186] Dreibholz, Thomas; Mazumdar, Somnath: "Reliable Server Pooling Based Workload Offloading with Mobile Edge Computing: A Proof-of-Concept" (PDF, 1113 KiB), in Proceedings of the 3rd International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 35th International Conference on Advanced Information Networking and Applications (AINA), vol. 3, pp. 582–593, DOI: 10.1007/978-3-030-75078-7_58., ISBN 978-3-030-75078-7, Toronto, Ontario/Canada, May 14, 2021.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/m2ec2021-web.pdf.
 
-[Ref202] Abdulkadir, Mohammed A.; Alay, Özgü; Alexiou, Angeliki; Anastasopoulos, Markos; Antevski, Kiril; Aumayr, Erik; Ayed, Dhouha; Baranda, Jordi; Behravesh, Rasoul; Benzaid, Chafika; Bisson, Pascal; Bosneag, Anne-Marie Cristina; Boulogeorgos, Alexandros-Apostolos A.; Calero, José Alcaraz; Carrozzo, Gino; Casetti, Claudio Ettore; Caso, Giuseppe; Celdrán, Alberto Huertas; Chergui, Hatim; Chiasserini, Carla Fabiana; Chinchilla-Romero, Lorena; Chollon, Geoffroy; Cogalan, Tezcan; Colman-Meixner, Carlos; Conti, Andrea; Cosmas, John; Costa-Requena, José; Desai, Rachana; Devoti, Francesco; Diamanti, Maria; Dreibholz, Thomas; Elmokashfi, Ahmed Mustafa; Feghhi, Saman; Garcia-Saavedra, Andres; Gavras, Anastasius; Ghoraishi, Mir; Giannopoulos, Anastasios; Goodarzi, Meysam; Gramaglia, Marco; Guimarães, Carlos; Gürkan, Gür; He, Jiguang; Hrasnica, Halid; Jimeno, Elisa; Kakkavas, Grigorios; Kaloxylos, Alexandros; Karyotis, Vasileios; Katta, Saimanoj; Katzouris, Nikos; Kennouche, Takai Eddine; Klinkenberg, Ralf; Kokkoniemi, Joonas; Kondepu, Koteswararao; Lazarakis, Fotis; Lekidis, Alexios; Li, Xi; Lopez, Diego; Magoula, Lina; Mahmood, Kashif; Majumdar, Sayantini; Malinverno, Marco; Mangues-Bafalluy, Josep; Martínez, Ricardo; Martín-Pérez, Jorge; Martrat, Josep; Meunier, Ben; Mohamed, Ramy; Morselli, Flavio; Muñoz, Juan José Ramos; Muñoz-Luengo, Pablo; Muri, Daniel Camps; Murphy, Chris; Oca, Edgardo Montes De; Papagianni, Chrysa; Papavassiliou, Symeon; Perales, Antonio Agustín Pastor; Pérez, Gregorio Martínez; Pérez, Manuel Gil; Poe, Wint Yi; Prados-Garzon, Jonathan; Renzo, Marco Di; Roig, Joan Pujol; Sánchez, Pedro Miguel; Schepper, Koen De; Shi, Lina; Skarmeta, Antonio; Spantideas, Sotirios; Srinivasan, Gokul Krishna; Stamou, Adamantia; Subramanya, Tejas; Trakadas, Panagiotis; Tzanakaki, Anna; Valcarenghi, Luca; Valero, José María Jorquera; Videv, Stefan; Wang, Qi; Wang, Yue; Xie, Min; Xu, Zhao; Yan, Shuangyi; Yaqub, Edwin; Yesilkaya, Anil; Zanzi, Lanfranco; Zemouri, Sofiane; Zeydan, Engin; Zhang, Xun; Zhou, Xueqing: "AI and ML –- Enablers for Beyond 5G Networks" (PDF, 6041 KiB), 5G PPP Technology Board, DOI: 10.5281/zenodo.429989., May 11, 2021.
+[Ref187] Abdulkadir, Mohammed A.; Alay, Özgü; Alexiou, Angeliki; Anastasopoulos, Markos; Antevski, Kiril; Aumayr, Erik; Ayed, Dhouha; Baranda, Jordi; Behravesh, Rasoul; Benzaid, Chafika; Bisson, Pascal; Bosneag, Anne-Marie Cristina; Boulogeorgos, Alexandros-Apostolos A.; Calero, José Alcaraz; Carrozzo, Gino; Casetti, Claudio Ettore; Caso, Giuseppe; Celdrán, Alberto Huertas; Chergui, Hatim; Chiasserini, Carla Fabiana; Chinchilla-Romero, Lorena; Chollon, Geoffroy; Cogalan, Tezcan; Colman-Meixner, Carlos; Conti, Andrea; Cosmas, John; Costa-Requena, José; Desai, Rachana; Devoti, Francesco; Diamanti, Maria; Dreibholz, Thomas; Elmokashfi, Ahmed Mustafa; Feghhi, Saman; Garcia-Saavedra, Andres; Gavras, Anastasius; Ghoraishi, Mir; Giannopoulos, Anastasios; Goodarzi, Meysam; Gramaglia, Marco; Guimarães, Carlos; Gürkan, Gür; He, Jiguang; Hrasnica, Halid; Jimeno, Elisa; Kakkavas, Grigorios; Kaloxylos, Alexandros; Karyotis, Vasileios; Katta, Saimanoj; Katzouris, Nikos; Kennouche, Takai Eddine; Klinkenberg, Ralf; Kokkoniemi, Joonas; Kondepu, Koteswararao; Lazarakis, Fotis; Lekidis, Alexios; Li, Xi; Lopez, Diego; Magoula, Lina; Mahmood, Kashif; Majumdar, Sayantini; Malinverno, Marco; Mangues-Bafalluy, Josep; Martínez, Ricardo; Martín-Pérez, Jorge; Martrat, Josep; Meunier, Ben; Mohamed, Ramy; Morselli, Flavio; Muñoz, Juan José Ramos; Muñoz-Luengo, Pablo; Muri, Daniel Camps; Murphy, Chris; Oca, Edgardo Montes De; Papagianni, Chrysa; Papavassiliou, Symeon; Perales, Antonio Agustín Pastor; Pérez, Gregorio Martínez; Pérez, Manuel Gil; Poe, Wint Yi; Prados-Garzon, Jonathan; Renzo, Marco Di; Roig, Joan Pujol; Sánchez, Pedro Miguel; Schepper, Koen De; Shi, Lina; Skarmeta, Antonio; Spantideas, Sotirios; Srinivasan, Gokul Krishna; Stamou, Adamantia; Subramanya, Tejas; Trakadas, Panagiotis; Tzanakaki, Anna; Valcarenghi, Luca; Valero, José María Jorquera; Videv, Stefan; Wang, Qi; Wang, Yue; Xie, Min; Xu, Zhao; Yan, Shuangyi; Yaqub, Edwin; Yesilkaya, Anil; Zanzi, Lanfranco; Zemouri, Sofiane; Zeydan, Engin; Zhang, Xun; Zhou, Xueqing: "AI and ML –- Enablers for Beyond 5G Networks" (PDF, 6041 KiB), 5G PPP Technology Board, DOI: 10.5281/zenodo.429989., May 11, 2021.
 URL: https://5g-ppp.eu/wp-content/uploads/2021/05/AI-MLforNetworks-v1-0.pdf.
 
-[Ref203] Elmokashfi, Ahmed Mustafa; Kvalbein, Amund; Al-Selwi, Anas Saeed; Fida, Mah-Rukh: "Norske mobilnett i 2020 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 9473 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 82-92593-30-6, Oslo/Norway, May 6, 2021.
-URL: https://web-backend.simula.no/sites/default/files/norske_mobilnett_i_2020.pdf.
-
 ---- January 2021 ----
-[Ref204] Dreibholz, Thomas: "NorNet at Hainan University in 2021: Getting Started with NorNet Core – A Remote Tutorial" (PDF, 4654 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, January 15, 2021.
+[Ref188] Dreibholz, Thomas: "NorNet at Hainan University in 2021: Getting Started with NorNet Core – A Remote Tutorial" (PDF, 4654 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, January 15, 2021.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2021-nornet-tutorial.pdf.
 
-[Ref205] Elmokashfi, Ahmed Mustafa; Arouna, Alfred; Livadariu, Ioana Alexandrina; Fida, Mah-Rukh; Kvalbein, Amund; Al-Selwi, Anas Saeed; Dreibholz, Thomas; Bryhni, Haakon: "A Multi-Perspective Study of Internet Performance during the COVID-19 Outbreak" (PDF, 1813 KiB), in E-Print Archive, Arxiv, January 13, 2021.
+[Ref189] Elmokashfi, Ahmed Mustafa; Arouna, Alfred; Livadariu, Ioana Alexandrina; Fida, Mah-Rukh; Kvalbein, Amund; Al-Selwi, Anas Saeed; Dreibholz, Thomas; Bryhni, Haakon: "A Multi-Perspective Study of Internet Performance during the COVID-19 Outbreak" (PDF, 1813 KiB), in E-Print Archive, Arxiv, January 13, 2021.
 URL: https://arxiv.org/pdf/2101.05030.pdf.
 
-[Ref206] Dreibholz, Thomas: "NorNet at Hainan University in 2021: From Simulations to Real-World Internet Measurements for Multi-Path Transport Research – A Remote Presentation" (PDF, 14184 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, January 8, 2021.
+[Ref190] Dreibholz, Thomas: "NorNet at Hainan University in 2021: From Simulations to Real-World Internet Measurements for Multi-Path Transport Research – A Remote Presentation" (PDF, 14184 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, January 8, 2021.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2021-multipath-presentation.pdf.
 
 ===== YEAR 2022 =====
 ---- December 2022 ----
-[Ref207] Mazumdar, Somnath; Dreibholz, Thomas: "Towards a Privacy Preserving Data Flow Control via Packet Header Marking" (PDF, 2009 KiB), in Proceedings of the 24th IEEE International Conference on High Performance Computing, Data, and Analytics (HPCC), pp. 1509–1516, DOI: 10.1109/HPCC-DSS-SmartCity-DependSys57074.2022.00232., ISBN 979-8-3503-1993-4, Chengdu, Sichuan/People's Republic of China, December 18, 2022.
+[Ref191] Mazumdar, Somnath; Dreibholz, Thomas: "Towards a Privacy Preserving Data Flow Control via Packet Header Marking" (PDF, 2009 KiB), in Proceedings of the 24th IEEE International Conference on High Performance Computing, Data, and Analytics (HPCC), pp. 1509–1516, DOI: 10.1109/HPCC-DSS-SmartCity-DependSys57074.2022.00232., ISBN 979-8-3503-1993-4, Chengdu, Sichuan/People's Republic of China, December 18, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/hpcc2022.pdf.
 
-[Ref208] Mazumdar, Somnath; Dreibholz, Thomas: "Towards a Blockchain and Fog-Based Proactive Data Distribution Framework for ICN" (PDF, 3018 KiB), in Proceedings of the International Conference on Parallel and Distributed Computing, Applications and Technologies (PDCAT), pp. 175–186, DOI: 10.1007/978-3-031-29927-8_14., ISBN 978-3-031-29927-8, Sendai, Miyagi/Japan, December 7, 2022.
+[Ref192] Mazumdar, Somnath; Dreibholz, Thomas: "Towards a Blockchain and Fog-Based Proactive Data Distribution Framework for ICN" (PDF, 3018 KiB), in Proceedings of the International Conference on Parallel and Distributed Computing, Applications and Technologies (PDCAT), pp. 175–186, DOI: 10.1007/978-3-031-29927-8_14., ISBN 978-3-031-29927-8, Sendai, Miyagi/Japan, December 7, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/pdcat2022.pdf.
 
 ---- November 2022 ----
-[Ref209] Mazumdar, Somnath; Dreibholz, Thomas: "Secure Embedded Living: Towards a Self-contained User Data Preserving Framework" (PDF, 336 KiB), in IEEE Communications Magazine, vol. 60, pp. 74–80, DOI: 10.1109/MCOM.001.2200165., ISSN 0163-6804, November 11, 2022.
+[Ref193] Mazumdar, Somnath; Dreibholz, Thomas: "Secure Embedded Living: Towards a Self-contained User Data Preserving Framework" (PDF, 336 KiB), in IEEE Communications Magazine, vol. 60, pp. 74–80, DOI: 10.1109/MCOM.001.2200165., ISSN 0163-6804, November 11, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/commmag2022.pdf.
 
-[Ref210] Dreibholz, Thomas; Mazumdar, Somnath: "Find Out: How Do Your Data Packets Travel?" (PDF, 7239 KiB), in Proceedings of the 18th IEEE International Conference on Network and Service Management (CNSM), pp. 359–363, DOI: 10.23919/CNSM55787.2022.9965091., ISBN 978-3-903176-51-5, Thessaloniki, Greece, November 1, 2022.
+[Ref194] Dreibholz, Thomas; Mazumdar, Somnath: "Find Out: How Do Your Data Packets Travel?" (PDF, 7239 KiB), in Proceedings of the 18th IEEE International Conference on Network and Service Management (CNSM), pp. 359–363, DOI: 10.23919/CNSM55787.2022.9965091., ISBN 978-3-903176-51-5, Thessaloniki, Greece, November 1, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/cnsm2022.pdf.
 
 ---- September 2022 ----
-[Ref211] Dreibholz, Thomas; Fida, Mah-Rukh; Ahmed, Azza Hassan Mohamed; Ocampo, Andrés Felipe; Michelinakis, Foivos Ioannis: "A Live Demonstration of In-Band Telemetry in OSM-Orchestrated Core Networks" (PDF, 543 KiB), in Proceedings of the 47th IEEE Conference on Local Computer Networks (LCN), pp. 245–247, DOI: 10.1109/LCN53696.2022.9843413., ISBN 978-1-6654-8001-7, Edmonton, Alberta/Canada, September 28, 2022.
+[Ref195] Dreibholz, Thomas; Fida, Mah-Rukh; Ahmed, Azza Hassan Mohamed; Ocampo, Andrés Felipe; Michelinakis, Foivos Ioannis: "A Live Demonstration of In-Band Telemetry in OSM-Orchestrated Core Networks" (PDF, 543 KiB), in Proceedings of the 47th IEEE Conference on Local Computer Networks (LCN), pp. 245–247, DOI: 10.1109/LCN53696.2022.9843413., ISBN 978-1-6654-8001-7, Edmonton, Alberta/Canada, September 28, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/lcn2022-telemetry-demo-web.pdf.
 
 ---- August 2022 ----
-[Ref212] Michelinakis, Foivos Ioannis; Pujol-Roig, Joan Sebastià; Malacarne, Sara; Xie, Min; Dreibholz, Thomas; Majumdar, Sayantini; Poe, Wint Yi; Patounas, Georgios; Guerrero, Carmen; Elmokashfi, Ahmed Mustafa; Theodorou, Vasileios: "AI Anomaly Detection for Cloudified Mobile Core Architectures" (PDF, 9658 KiB), in Transactions on Network and Service Management (TNSM), IEEE Computer Society, DOI: 10.1109/TNSM.2022.3203246., ISSN 1932-4537, Los Alamitos, California/U.S.A., August 31, 2022.
+[Ref196] Michelinakis, Foivos Ioannis; Pujol-Roig, Joan Sebastià; Malacarne, Sara; Xie, Min; Dreibholz, Thomas; Majumdar, Sayantini; Poe, Wint Yi; Patounas, Georgios; Guerrero, Carmen; Elmokashfi, Ahmed Mustafa; Theodorou, Vasileios: "AI Anomaly Detection for Cloudified Mobile Core Architectures" (PDF, 9658 KiB), in Transactions on Network and Service Management (TNSM), IEEE Computer Society, DOI: 10.1109/TNSM.2022.3203246., ISSN 1932-4537, Los Alamitos, California/U.S.A., August 31, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/tnsm2022.pdf.
 
 ---- June 2022 ----
-[Ref213] Arouna, Alfred; Bjørnstad, Steinar; Ryan, Stein Jørgen; Dreibholz, Thomas; Rind, Sobia; Elmokashfi, Ahmed Mustafa: "Network Path Integrity Verification using Deterministic Delay Measurements" (PDF, 447 KiB), in Proceedings of the 6th IEEE/IFIP Network Traffic Measurement and Analysis Conference (TMA), ISBN 978-3-903176-47-8, Enschede, Overijssel/Netherlands, June 29, 2022.
+[Ref197] Arouna, Alfred; Bjørnstad, Steinar; Ryan, Stein Jørgen; Dreibholz, Thomas; Rind, Sobia; Elmokashfi, Ahmed Mustafa: "Network Path Integrity Verification using Deterministic Delay Measurements" (PDF, 447 KiB), in Proceedings of the 6th IEEE/IFIP Network Traffic Measurement and Analysis Conference (TMA), ISBN 978-3-903176-47-8, Enschede, Overijssel/Netherlands, June 29, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/tma_camera_ready_network_path_integrity_verification_using_deterministic_delay_measurements.pdf.
 
-[Ref214] Dreibholz, Thomas; Ahmed, Azza Hassan Mohamed; Fida, Mah-Rukh; Ocampo, Andrés Felipe; Michelinakis, Foivos Ioannis: "Detecting Issues with In-Band Telemetry in OSM-Orchestrated Core Networks" (PDF, 4769 KiB), Presentation at the OSM\#13 Ecosystem Day, Virtual, June 15, 2022.
+[Ref198] Dreibholz, Thomas; Ahmed, Azza Hassan Mohamed; Fida, Mah-Rukh; Ocampo, Andrés Felipe; Michelinakis, Foivos Ioannis: "Detecting Issues with In-Band Telemetry in OSM-Orchestrated Core Networks" (PDF, 4769 KiB), Presentation at the OSM\#13 Ecosystem Day, Virtual, June 15, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/osmhackfest13-presentation.pdf.
 
 ---- April 2022 ----
-[Ref215] Dreibholz, Thomas; Mazumdar, Somnath: "Load Distribution for Mobile Edge Computing with Reliable Server Pooling" (PDF, 3664 KiB), in Proceedings of the 4th International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 36th International Conference on Advanced Information Networking and Applications (AINA), pp. 590–601, DOI: 10.1007/978-3-030-99619-2_55., ISBN 978-3-030-99619-2, Sydney, New South Wales/Australia, April 15, 2022.
+[Ref199] Dreibholz, Thomas; Mazumdar, Somnath: "Load Distribution for Mobile Edge Computing with Reliable Server Pooling" (PDF, 3664 KiB), in Proceedings of the 4th International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 36th International Conference on Advanced Information Networking and Applications (AINA), pp. 590–601, DOI: 10.1007/978-3-030-99619-2_55., ISBN 978-3-030-99619-2, Sydney, New South Wales/Australia, April 15, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/m2ec2022.pdf.
 
-[Ref216] Elmokashfi, Ahmed Mustafa; Kvalbein, Amund; Al-Selwi, Anas Saeed; Michelinakis, Foivos Ioannis; Dreibholz, Thomas: "Norske mobilnett i 2021 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 10513 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 82-92593-36-5, Oslo/Norway, April 6, 2022.
+[Ref200] Elmokashfi, Ahmed Mustafa; Kvalbein, Amund; Al-Selwi, Anas Saeed; Michelinakis, Foivos Ioannis; Dreibholz, Thomas: "Norske mobilnett i 2021 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 10513 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 82-92593-36-5, Oslo/Norway, April 6, 2022.
 URL: https://web-backend.simula.no/sites/default/files/norske_mobilnett_i_2021.pdf.
 
 ---- January 2022 ----
-[Ref217] Dreibholz, Thomas: "NorNet – A Linux- and Open-Source-Software-based International Platform for Networking Research" (PDF, 7977 KiB), in Proceedings of the Linux Conference Australia (LCA), Virtual, January 15, 2022.
+[Ref201] Dreibholz, Thomas: "NorNet – A Linux- and Open-Source-Software-based International Platform for Networking Research" (PDF, 7977 KiB), in Proceedings of the Linux Conference Australia (LCA), Virtual, January 15, 2022.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/lca2022-presentation.pdf.
 
 ===== YEAR 2023 =====
 ---- November 2023 ----
-[Ref218] Bjørnstad, Steinar; Ali, Jameel; Dreibholz, Thomas: "Detecting Physical Impacts by Monitoring State of Polarisation in a Live Fibre-To-The-Home Data-Communication Air-Cable" (PDF, 7490 KiB), in Proceedings of the 28th International Conference on Optical Fiber Sensors (OFS), DOI: 10.1364/ofs.2023.tu3.44., ISBN 978-1-957171-30-2, Hamamatsu, Shizuoka/Japan, November 21, 2023.
+[Ref202] Bjørnstad, Steinar; Ali, Jameel; Dreibholz, Thomas: "Detecting Physical Impacts by Monitoring State of Polarisation in a Live Fibre-To-The-Home Data-Communication Air-Cable" (PDF, 7490 KiB), in Proceedings of the 28th International Conference on Optical Fiber Sensors (OFS), DOI: 10.1364/ofs.2023.tu3.44., ISBN 978-1-957171-30-2, Hamamatsu, Shizuoka/Japan, November 21, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-11/OFS2023.pdf.
 
-[Ref219] Dreibholz, Thomas; Mazumdar, Somnath: "TARTAN Traceroute Dataset" (HTML, 53 KiB), IEEE DataPort, DOI: 10.21227/a241-gm35., November 9, 2023.
+[Ref203] Dreibholz, Thomas; Mazumdar, Somnath: "TARTAN Traceroute Dataset" (HTML, 53 KiB), IEEE DataPort, DOI: 10.21227/a241-gm35., November 9, 2023.
 URL: https://ieee-dataport.org/documents/tartan-traceroute-dataset.
 
-[Ref220] Fu, Fa; Lu, Gaoshang; Huang, Jianqiang; Dreibholz, Thomas: "A Survey of Blockchain-Based Identity Anonymity Research" (PDF, 291 KiB), in Proceedings of the 13th International Conference on Computer Engineering and Networks (CENet), Springer Nature, DOI: 10.1007/978-981-99-9247-8_44., ISSN 1876-1100, Wuxi, Jiangsu/People's Republic of China, November 4, 2023.
+[Ref204] Fu, Fa; Lu, Gaoshang; Huang, Jianqiang; Dreibholz, Thomas: "A Survey of Blockchain-Based Identity Anonymity Research" (PDF, 291 KiB), in Proceedings of the 13th International Conference on Computer Engineering and Networks (CENet), Springer Nature, DOI: 10.1007/978-981-99-9247-8_44., ISSN 1876-1100, Wuxi, Jiangsu/People's Republic of China, November 4, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-11/CENet2023-Blockchain.pdf.
 
-[Ref221] Zhang, Jingqi; Zhang, Xin; Liu, Zhaojun; Fu, Fa; Nie, Jianyu; Huang, Jianqiang; Dreibholz, Thomas: "A Survey of Security Vulnerabilities and Detection Methods for Smart Contracts" (PDF, 207 KiB), in Proceedings of the 13th International Conference on Computer Engineering and Networks (CENet), Springer Nature, DOI: 10.1007/978-981-99-9247-8_43., ISSN 1876-1100, Wuxi, Jiangsu/People's Republic of China, November 4, 2023.
+[Ref205] Zhang, Jingqi; Zhang, Xin; Liu, Zhaojun; Fu, Fa; Nie, Jianyu; Huang, Jianqiang; Dreibholz, Thomas: "A Survey of Security Vulnerabilities and Detection Methods for Smart Contracts" (PDF, 207 KiB), in Proceedings of the 13th International Conference on Computer Engineering and Networks (CENet), Springer Nature, DOI: 10.1007/978-981-99-9247-8_43., ISSN 1876-1100, Wuxi, Jiangsu/People's Republic of China, November 4, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-11/CENet2023-SmartContracts.pdf.
 
 ---- September 2023 ----
-[Ref222] Dreibholz, Thomas: "High-Precision Round-Trip Time Measurements in the Internet with HiPerConTracer" (PDF, 12474 KiB), in Proceedings of the 31st International Conference on Software, Telecommunications and Computer Networks (SoftCOM), DOI: 10.23919/SoftCOM58365.2023.10271612., ISBN 979-8-3503-0107-6, Split, Dalmacija/Croatia, September 22, 2023.
+[Ref206] Dreibholz, Thomas: "High-Precision Round-Trip Time Measurements in the Internet with HiPerConTracer" (PDF, 12474 KiB), in Proceedings of the 31st International Conference on Software, Telecommunications and Computer Networks (SoftCOM), DOI: 10.23919/SoftCOM58365.2023.10271612., ISBN 979-8-3503-0107-6, Split, Dalmacija/Croatia, September 22, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-10/SoftCOM2023-Timestamping.pdf.
 
-[Ref223] Dreibholz, Thomas: "A Live Demonstration of HiPerConTracer 2.0" (PDF, 1909 KiB), in Proceedings of the 31st International Conference on Software, Telecommunications and Computer Networks (SoftCOM), Split, Dalmacija/Croatia, September 22, 2023.
+[Ref207] Dreibholz, Thomas: "A Live Demonstration of HiPerConTracer 2.0" (PDF, 1909 KiB), in Proceedings of the 31st International Conference on Software, Telecommunications and Computer Networks (SoftCOM), Split, Dalmacija/Croatia, September 22, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-10/SoftCOM2023-Demo_0.pdf.
 
-[Ref224] Mazumdar, Somnath; Dreibholz, Thomas: "Towards A Data Privacy-Aware Execution Zone Creation on Cloud/Fog Platform" (PDF, 2194 KiB), in Proceedings of the 49th Euromicro Conference Series on Software Engineering and Advanced Applications (SEAA), pp. 140–149, DOI: 10.1109/SEAA60479.2023.00030., ISBN 979-8-3503-4235-2, Durrës/Albania, September 8, 2023.
+[Ref208] Mazumdar, Somnath; Dreibholz, Thomas: "Towards A Data Privacy-Aware Execution Zone Creation on Cloud/Fog Platform" (PDF, 2194 KiB), in Proceedings of the 49th Euromicro Conference Series on Software Engineering and Advanced Applications (SEAA), pp. 140–149, DOI: 10.1109/SEAA60479.2023.00030., ISBN 979-8-3503-4235-2, Durrës/Albania, September 8, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-10/SEAA2023.pdf.
 
-[Ref225] Fida, Mah-Rukh; Ahmed, Azza Hassan Mohamed; Dreibholz, Thomas; Ocampo, Andrés Felipe; Elmokashfi, Ahmed Mustafa; Michelinakis, Foivos Ioannis: "Bottleneck Identification in Cloudified Mobile Networks based on Distributed Telemetry" (PDF, 4278 KiB), in Transactions on Mobile Computing, pp. 1–18, IEEE, DOI: 10.1109/TMC.2023.3312051., ISSN 1558-0660, September 5, 2023.
+[Ref209] Fida, Mah-Rukh; Ahmed, Azza Hassan Mohamed; Dreibholz, Thomas; Ocampo, Andrés Felipe; Elmokashfi, Ahmed Mustafa; Michelinakis, Foivos Ioannis: "Bottleneck Identification in Cloudified Mobile Networks based on Distributed Telemetry" (PDF, 4278 KiB), in Transactions on Mobile Computing, pp. 1–18, IEEE, DOI: 10.1109/TMC.2023.3312051., ISSN 1558-0660, September 5, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-10/ToMC2023.pdf.
 
 ---- July 2023 ----
-[Ref226] Dreibholz, Thomas; Bjørnstad, Steinar; Ali, Jameel: "A Scalable Infrastructure for Continuous State of Polarisation Monitoring for Revealing Security and Vulnerability Impacts in Optical Networks" (PDF, 8431 KiB), in Proceedings of the 17th International Conference on Telecommunications (ConTEL), pp. 1–8, DOI: 10.1109/ConTEL58387.2023.10198969., ISBN 979-8-3503-0223-3, Graz, Steiermark/Austria, July 11, 2023.
+[Ref210] Dreibholz, Thomas; Bjørnstad, Steinar; Ali, Jameel: "A Scalable Infrastructure for Continuous State of Polarisation Monitoring for Revealing Security and Vulnerability Impacts in Optical Networks" (PDF, 8431 KiB), in Proceedings of the 17th International Conference on Telecommunications (ConTEL), pp. 1–8, DOI: 10.1109/ConTEL58387.2023.10198969., ISBN 979-8-3503-0223-3, Graz, Steiermark/Austria, July 11, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-10/ConTEL2023.pdf.
 
-[Ref227] Mazumdar, Somnath; Dreibholz, Thomas: "Proactive Resource Orchestration Framework for Cloud/Fog Platform" (PDF, 223 KiB), in Proceedings of the 28th IEEE Symposium on Computers and Communications (ISCC), pp. 259–265, DOI: 10.1109/ISCC58397.2023.10218068., ISBN 979-8-3503-0048-2, Gammarth, Tunis/Tunisia, July 10, 2023.
+[Ref211] Mazumdar, Somnath; Dreibholz, Thomas: "Proactive Resource Orchestration Framework for Cloud/Fog Platform" (PDF, 223 KiB), in Proceedings of the 28th IEEE Symposium on Computers and Communications (ISCC), pp. 259–265, DOI: 10.1109/ISCC58397.2023.10218068., ISBN 979-8-3503-0048-2, Gammarth, Tunis/Tunisia, July 10, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-10/ISCC2023.pdf.
 
-[Ref228] Bjørnstad, Steinar; Ali, Jameel; Dreibholz, Thomas; Sæthre, Erik: "A Scalable Data Collection System for Continuous State of Polarisation Monitoring" (PDF, 997 KiB), in Proceedings of the 23rd International Conference on Transparent Optical Networks (ICTON), pp. 1–4, DOI: 10.1109/ICTON59386.2023.10207183., ISBN 979-8-3503-0303-2, Bucharest/Romania, July 3, 2023.
+[Ref212] Bjørnstad, Steinar; Ali, Jameel; Dreibholz, Thomas; Sæthre, Erik: "A Scalable Data Collection System for Continuous State of Polarisation Monitoring" (PDF, 997 KiB), in Proceedings of the 23rd International Conference on Transparent Optical Networks (ICTON), pp. 1–4, DOI: 10.1109/ICTON59386.2023.10207183., ISBN 979-8-3503-0303-2, Bucharest/Romania, July 3, 2023.
 URL: https://web-backend.simula.no/sites/default/files/2023-10/ICTON2023.pdf.
 
 ---- April 2023 ----
-[Ref229] Dreibholz, Thomas; Mazumdar, Somnath: "Towards a Lightweight Task Scheduling Framework for Cloud and Edge Platform" (PDF, 4020 KiB), in Internet of Things, vol. 21, Elsevier, DOI: 10.1016/j.iot.2022.100651., ISSN 2542-6605, April 2023.
+[Ref213] Dreibholz, Thomas; Mazumdar, Somnath: "Towards a Lightweight Task Scheduling Framework for Cloud and Edge Platform" (PDF, 4020 KiB), in Internet of Things, vol. 21, Elsevier, DOI: 10.1016/j.iot.2022.100651., ISSN 2542-6605, April 2023.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/iot2023.pdf.
 
-[Ref230] Čičić, Tarik; Kvalbein, Amund; Al-Selwi, Anas Saeed; Michelinakis, Foivos Ioannis; Dreibholz, Thomas: "Norske mobilnett i 2022 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 8343 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-38-7, Oslo/Norway, April 27, 2023.
+[Ref214] Čičić, Tarik; Kvalbein, Amund; Al-Selwi, Anas Saeed; Michelinakis, Foivos Ioannis; Dreibholz, Thomas: "Norske mobilnett i 2022 – Tilstandsrapport fra Centre for Resilient Networks and Applications" (PDF, 8343 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-38-7, Oslo/Norway, April 27, 2023.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/crna-2022.pdf.
 
 ===== YEAR 2024 =====
 ---- June 2024 ----
-[Ref231] Dreibholz, Thomas; Mazumdar, Somnath: "Secure and Privacy-Preserving Smart Living" (PDF, 5238 KiB), Invited Talk at KOHS Workshop on Technology for Co-Working on Health and Active Life, Wien/Austria, June 13, 2024.
+[Ref215] Dreibholz, Thomas; Mazumdar, Somnath: "Secure and Privacy-Preserving Smart Living" (PDF, 5238 KiB), Invited Talk at KOHS Workshop on Technology for Co-Working on Health and Active Life, Wien/Austria, June 13, 2024.
 URL: https://web-backend.simula.no/sites/default/files/2024-06/KOHS2024-Presentation_0.pdf.
 
 ---- April 2024 ----
-[Ref232] Čičić, Tarik; Gomola, Alojz; Martineau, Hugo; Michelinakis, Foivos Ioannis; Al-Selwi, Anas Saeed: "Norske mobilnett i 2023 – Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications" (PDF, 14820 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-39-4, Oslo/Norway, April 30, 2024.
-URL: https://web-backend.simula.no/sites/default/files/2024-05/crna-2023.pdf.
-
-[Ref233] Dreibholz, Thomas: "Cloud and Fog: How and Where is My Data Flowing? Obtaining Insights into Data Privacy in Today's Applications" (PDF, 14384 KiB), Invited Talk at Copenhagen Business School (CBS), Fredriksberg/Denmark, April 26, 2024.
+[Ref216] Dreibholz, Thomas: "Cloud and Fog: How and Where is My Data Flowing? Obtaining Insights into Data Privacy in Today's Applications" (PDF, 14384 KiB), Invited Talk at Copenhagen Business School (CBS), Fredriksberg/Denmark, April 26, 2024.
 URL: https://web-backend.simula.no/sites/default/files/2024-04/CBSTalk2024.pdf.
 
-[Ref234] Evang, Jan Marius; Dreibholz, Thomas: "Optimizing Network Latency: Unveiling the Impact of Reflection Server Tuning" (PDF, 422 KiB), in Proceedings of the 6th International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 38th International Conference on Advanced Information Networking and Applications (AINA), pp. 374–384, DOI: 10.1007/978-3-031-57942-4_3., ISBN 978-3-031-57942-4, Kitakyushu, Fukuoka/Japan, April 18, 2024.
+[Ref217] Evang, Jan Marius; Dreibholz, Thomas: "Optimizing Network Latency: Unveiling the Impact of Reflection Server Tuning" (PDF, 422 KiB), in Proceedings of the 6th International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 38th International Conference on Advanced Information Networking and Applications (AINA), pp. 374–384, DOI: 10.1007/978-3-031-57942-4_3., ISBN 978-3-031-57942-4, Kitakyushu, Fukuoka/Japan, April 18, 2024.
 URL: https://web-backend.simula.no/sites/default/files/2024-02/M2EC2024.pdf.
 
 ---- February 2024 ----
-[Ref235] Evang, Jan Marius; Dreibholz, Thomas: "Reflection Server Tuning Dataset" (HTML, 58 KiB), IEEE DataPort, DOI: 10.21227/8wbz-7e29., February 2, 2024.
+[Ref218] Evang, Jan Marius; Dreibholz, Thomas: "Reflection Server Tuning Dataset" (HTML, 58 KiB), IEEE DataPort, DOI: 10.21227/8wbz-7e29., February 2, 2024.
 URL: https://ieee-dataport.org/documents/reflection-server-tuning-dataset.
 
 ===== YEAR 2025 =====
 ---- June 2025 ----
-[Ref236] Dreibholz, Thomas: "Satellite Network Connectivity during a Trans-Atlantic Flight" (HTML, 53 KiB), IEEE DataPort, DOI: 10.21227/q0xf-t853., June 12, 2025.
+[Ref219] Dreibholz, Thomas: "Satellite Network Connectivity during a Trans-Atlantic Flight" (HTML, 53 KiB), IEEE DataPort, DOI: 10.21227/q0xf-t853., June 12, 2025.
 URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight.
 
-[Ref237] Dreibholz, Thomas: "HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks" (PDF, 6477 KiB), Simula Research Laboratory, Oslo/Norway, June 12, 2025.
+[Ref220] Dreibholz, Thomas: "HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks" (PDF, 6477 KiB), Simula Research Laboratory, Oslo/Norway, June 12, 2025.
 URL: https://web-backend.simula.no/sites/default/files/2025-06/SKF2025.pdf.
 
-[Ref238] Evang, Jan Marius; Dreibholz, Thomas; Mazumdar, Somnath: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (PDF, 4302 KiB), in Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM), Trondheim, Trøndelag/Norway, June 11, 2025.
+[Ref221] Evang, Jan Marius; Dreibholz, Thomas; Mazumdar, Somnath: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (PDF, 4302 KiB), in Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM), Trondheim, Trøndelag/Norway, June 11, 2025.
 URL: https://web-backend.simula.no/sites/default/files/2025-06/RNDM2025.pdf.
 
 ---- May 2025 ----
-[Ref239] Evang, Jan Marius; Dreibholz, Thomas: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (HTML, 52 KiB), IEEE DataPort, DOI: 10.21227/zdmm-ee93., May 26, 2025.
+[Ref222] Evang, Jan Marius; Dreibholz, Thomas: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (HTML, 52 KiB), IEEE DataPort, DOI: 10.21227/zdmm-ee93., May 26, 2025.
 URL: https://ieee-dataport.org/documents/measuring-mobile-network-coverage-during-extended-road-trips-nordics.
 
----- April 2025 ----
-[Ref240] Čičić, Tarik; Gomola, Alojz; Michelinakis, Foivos Ioannis: "Norske mobilnett i 2024 – Tilstandsrapport fra Simula Metropolitan Center for Digital Engineering, Center for Resilient Networks and Applications" (PDF, 14664 KiB), Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), ISBN 978-82-92593-42-4, Oslo/Norway, April 15, 2025.
-URL: https://web-backend.simula.no/sites/default/files/2025-04/nne_report-4.pdf.
-
 ---- March 2025 ----
-[Ref241] Dreibholz, Thomas; Mazumdar, Somnath: "HiPerConTracer 3.0: Transport-level Packet Routing Analysis Tool" (PDF, 5349 KiB), in Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP), pp. 33–41, DOI: 10.1109/PDP66500.2025.00014., ISBN 979-8-3315-2493-7, Torino, Piemonte/Italy, March 14, 2025.
+[Ref223] Dreibholz, Thomas; Mazumdar, Somnath: "HiPerConTracer 3.0: Transport-level Packet Routing Analysis Tool" (PDF, 5349 KiB), in Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP), pp. 33–41, DOI: 10.1109/PDP66500.2025.00014., ISBN 979-8-3315-2493-7, Torino, Piemonte/Italy, March 14, 2025.
 URL: https://web-backend.simula.no/sites/default/files/2025-02/PDP2025.pdf.
 
 ===== End of My Publications List =====
