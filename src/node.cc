@@ -303,7 +303,18 @@ static bool requiresField(const Node* publication,
 // ###### Make publication ##################################################
 Node* makePublication(const char* type, const char* label, Node* publicationInfo)
 {
-   Node* publication = createNode(label);
+   Node* publication;
+   if(strcmp(type, "Comment") != 0) {
+      publication = createNode(label);
+   }
+   else {
+      static unsigned int commentLabel = 0;
+      char                commentLabelString[16];
+      snprintf((char*)&commentLabelString, sizeof(commentLabelString),
+               "%u", ++commentLabel);
+      publication = createNode(commentLabelString);
+   }
+
    publication->child = publicationInfo;
    publication->value = type;
 
@@ -439,145 +450,148 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
 
    node->keyword = keywordString;
    node->value   = value;
-   // ------ Remove brackets ------------------------------
-   // Exception: Brackets must remain for author string,
-   //            e.g. "{ETSI}"!
-   if( (node->keyword != "author") ) {
-      removeBrackets(node->value);
-      trim(node->value);
-   }
 
-   if(node->value == "") {   // Empty content -> This item is useless
-      node->keyword = "removeme";
-   }
+   if(node->keyword != "comment") {
+      // ------ Remove brackets ------------------------------
+      // Exception: Brackets must remain for author string,
+      //            e.g. "{ETSI}"!
+      if( (node->keyword != "author") ) {
+         removeBrackets(node->value);
+         trim(node->value);
+      }
 
-   // ====== Set priorities for well-known keyword fields ===================
-   if(node->keyword == "author") {
-      node->priority = 255;
-   }
-   else if(node->keyword == "title") {
-      node->priority = 254;
-   }
+      if(node->value == "") {   // Empty content -> This item is useless
+         node->keyword = "removeme";
+      }
 
-   else if(node->keyword == "howpublished") {
-      node->priority = 252;
-   }
-   else if(node->keyword == "booktitle") {
-      node->priority = 251;
-   }
-   else if(node->keyword == "series") {
-      node->priority = 250;
-   }
-   else if(node->keyword == "journal") {
-      node->priority = 249;
-   }
-   else if(node->keyword == "type") {
-      node->priority = 248;
-   }
-   else if(node->keyword == "volume") {
-      node->priority = 247;
-   }
-   else if(node->keyword == "issue") {
-      node->priority = 246;
-   }
-   else if(node->keyword == "number") {
-      node->priority = 245;
-   }
-   else if(node->keyword == "edition") {
-      node->priority = 244;
-   }
-   else if(node->keyword == "editor") {
-      node->priority = 243;
-   }
-   else if(node->keyword == "pages") {
-      node->priority = 242;
-   }
-   else if(node->keyword == "numpages") {
-      node->priority = 241;
-   }
+      // ====== Set priorities for well-known keyword fields ===================
+      if(node->keyword == "author") {
+         node->priority = 255;
+      }
+      else if(node->keyword == "title") {
+         node->priority = 254;
+      }
 
-   else if(node->keyword == "day") {
-      node->priority = 239;
-   }
-   else if(node->keyword == "month") {
-      node->priority = 238;
-   }
-   else if(node->keyword == "year") {
-      node->priority = 237;
-   }
+      else if(node->keyword == "howpublished") {
+         node->priority = 252;
+      }
+      else if(node->keyword == "booktitle") {
+         node->priority = 251;
+      }
+      else if(node->keyword == "series") {
+         node->priority = 250;
+      }
+      else if(node->keyword == "journal") {
+         node->priority = 249;
+      }
+      else if(node->keyword == "type") {
+         node->priority = 248;
+      }
+      else if(node->keyword == "volume") {
+         node->priority = 247;
+      }
+      else if(node->keyword == "issue") {
+         node->priority = 246;
+      }
+      else if(node->keyword == "number") {
+         node->priority = 245;
+      }
+      else if(node->keyword == "edition") {
+         node->priority = 244;
+      }
+      else if(node->keyword == "editor") {
+         node->priority = 243;
+      }
+      else if(node->keyword == "pages") {
+         node->priority = 242;
+      }
+      else if(node->keyword == "numpages") {
+         node->priority = 241;
+      }
 
-   else if(node->keyword == "organization") {
-      node->priority = 235;
-   }
-   else if(node->keyword == "school") {
-      node->priority = 234;
-   }
-   else if(node->keyword == "institution") {
-      node->priority = 233;
-   }
-   else if(node->keyword == "location") {
-      node->priority = 232;
-   }
-   else if(node->keyword == "publisher") {
-      node->priority = 231;
-   }
-   else if(node->keyword == "address") {
-      node->priority = 230;
-   }
+      else if(node->keyword == "day") {
+         node->priority = 239;
+      }
+      else if(node->keyword == "month") {
+         node->priority = 238;
+      }
+      else if(node->keyword == "year") {
+         node->priority = 237;
+      }
 
-   else if(node->keyword == "language") {
-      node->priority = 226;
-   }
-   else if(node->keyword == "content-language") {
-      node->priority = 225;
-   }
-   else if(node->keyword == "isbn") {
-      node->priority = 224;
-   }
-   else if(node->keyword == "issn") {
-      node->priority = 223;
-   }
-   else if(node->keyword == "urn") {
-      node->priority = 222;
-   }
-   else if(node->keyword == "doi") {
-      node->priority = 221;
-   }
-   else if(node->keyword == "note") {
-      node->priority = 220;
-   }
+      else if(node->keyword == "organization") {
+         node->priority = 235;
+      }
+      else if(node->keyword == "school") {
+         node->priority = 234;
+      }
+      else if(node->keyword == "institution") {
+         node->priority = 233;
+      }
+      else if(node->keyword == "location") {
+         node->priority = 232;
+      }
+      else if(node->keyword == "publisher") {
+         node->priority = 231;
+      }
+      else if(node->keyword == "address") {
+         node->priority = 230;
+      }
 
-   else if(node->keyword == "keywords") {
-      node->priority = 211;
-   }
-   else if(node->keyword == "abstract") {
-      node->priority = 210;
-   }
+      else if(node->keyword == "language") {
+         node->priority = 226;
+      }
+      else if(node->keyword == "content-language") {
+         node->priority = 225;
+      }
+      else if(node->keyword == "isbn") {
+         node->priority = 224;
+      }
+      else if(node->keyword == "issn") {
+         node->priority = 223;
+      }
+      else if(node->keyword == "urn") {
+         node->priority = 222;
+      }
+      else if(node->keyword == "doi") {
+         node->priority = 221;
+      }
+      else if(node->keyword == "note") {
+         node->priority = 220;
+      }
 
-   else if(node->keyword == "url") {
-      node->priority = 199;
-   }
-   else if(node->keyword == "url.size") {
-      node->priority = 198;
-   }
-   else if(node->keyword == "url.md5") {
-      node->priority = 197;
-   }
-   else if(node->keyword == "url.mime") {
-      node->priority = 196;
-   }
-   else if(node->keyword == "url.pagesize") {
-      node->priority = 195;
-   }
-   else if(node->keyword == "url.checked") {
-      node->priority = 194;
-   }
-   else if(node->keyword == "url.keywords") {
-      node->priority = 193;
-   }
+      else if(node->keyword == "keywords") {
+         node->priority = 211;
+      }
+      else if(node->keyword == "abstract") {
+         node->priority = 210;
+      }
 
-   else {
-      // printf("UNKNOWN=<%s>\n", node->keyword.c_str());
+      else if(node->keyword == "url") {
+         node->priority = 199;
+      }
+      else if(node->keyword == "url.size") {
+         node->priority = 198;
+      }
+      else if(node->keyword == "url.md5") {
+         node->priority = 197;
+      }
+      else if(node->keyword == "url.mime") {
+         node->priority = 196;
+      }
+      else if(node->keyword == "url.pagesize") {
+         node->priority = 195;
+      }
+      else if(node->keyword == "url.checked") {
+         node->priority = 194;
+      }
+      else if(node->keyword == "url.keywords") {
+         node->priority = 193;
+      }
+
+      else {
+         // printf("UNKNOWN=<%s>\n", node->keyword.c_str());
+      }
    }
 
    return(node);

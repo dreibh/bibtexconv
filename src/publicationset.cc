@@ -200,7 +200,10 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
       const Node* publication = publicationSet->get(index);
       if(publication->value == "Comment") {
          if(fh != nullptr) {
-            fprintf(fh, "%%%s\n\n", publication->keyword.c_str());
+            Node* child = publication->child;
+            if(child != nullptr) {
+               fprintf(fh, "%%%s\n", child->value.c_str());
+            }
          }
       }
       else {
