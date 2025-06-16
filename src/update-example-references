@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Using System-Tools Text-Block utility to create the examples
+# from a master BibTeX file:
+text-block \
+   -i ~/src/papers/Referenzarchiv.bib \
+   -o ExampleReferences.bib \
+   --extract \
+   -b '***** BEGIN-OF-EXPORT *****' \
+   -e '***** END-OF-EXPORT *****' \
+   --full-tag-lines --exclude-tags
