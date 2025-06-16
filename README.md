@@ -16,15 +16,15 @@ Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of y
   ```
   bibtexconv ExampleReferences.bib --export-to-bibtex=UpdatedReferences.bib --check-urls --only-check-new-urls --non-interactive
   ```
-- Use the export script [web-example1.export](src/web-example1.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.html as XHTML 1.1. [ExampleReferences.bib](src/ExampleReferences.bib) references the script [get-author-url](src/get-author-url) and the list [authors.list](src/authors.list) to obtain the authors' website URLs.
+- Use the export script [web-example1.export](src/web-example1.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications1.html as XHTML 1.1. [ExampleReferences.bib](src/ExampleReferences.bib) references the script [get-author-url](src/get-author-url) and the list [authors.list](src/authors.list) to obtain the authors' website URLs.
   ```
-  bibtexconv ExampleReferences.bib <web-example1.export >MyPublications.html
+  bibtexconv ExampleReferences.bib <web-example1.export >MyPublications1.html
   ```
 Note that using a script is slow, and may introduce a security issue when running export scripts from untrusted sources! The preferred way for mappings is to use mapping files, which is demonstrated by the next example.
 
-- Use the export script [web-example2.export](src/web-example2.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications.html as XHTML 1.1. Unlike the example above, it reads [authors.list](src/authors.list) as a mapping file, and uses the fields *Name* and *URL* to map authors to URLs.
+- Use the export script [web-example2.export](src/web-example2.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to MyPublications2.html as XHTML 1.1. Unlike the example above, it reads [authors.list](src/authors.list) as a mapping file, and uses the fields *Name* and *URL* to map authors to URLs.
   ```
-  bibtexconv ExampleReferences.bib --mapping=author-url:authors.list:Name:URL <web-example2.export >MyPublications.html
+  bibtexconv ExampleReferences.bib --mapping=author-url:authors.list:Name:URL <web-example2.export >MyPublications2.html
   ```
  Mapping files have been introduced in BibTeXConv&nbsp;2.0.
 
