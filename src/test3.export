@@ -38,6 +38,6 @@ cite Dre2006     TD04
 cite Dre2012     TD05
 cite CommMag2011 TD06
 
-sort year/A month/D day/D
+sort year/A month/D day/D title/A
 
 export

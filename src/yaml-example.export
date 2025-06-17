@@ -34,7 +34,7 @@
 # Select entries:
 citeAll
 
-sort year/A month/D day/D
+sort year/A month/D day/D title/A
 
 
 # ###########################################################################

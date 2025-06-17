@@ -37,7 +37,7 @@
 # cite Dre2006   TD04
 
 citeAll
-sort year/D month/D day/D
+sort year/D month/D day/D title/A
 
 
 # ###########################################################################

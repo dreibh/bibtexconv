@@ -38,7 +38,7 @@ cite Dre2006   TD04
 
 include test1.cites
 
-sort year/A month/D day/D
+sort year/A month/D day/D title/A
 
 
 # ###########################################################################

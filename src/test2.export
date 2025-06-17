@@ -36,7 +36,7 @@ cite LCA2003   TD02
 cite IJHIT2008
 cite Dre2006   TD04
 
-sort year/A month/D day/D
+sort year/A month/D day/D title/A
 
 
 # ###########################################################################

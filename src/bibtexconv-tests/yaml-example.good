@@ -341,16 +341,6 @@ Reference:
    Month: mar
    Day: 7
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/OMNeTWorkshop2008.pdf
- - Author: Thomas Dreibholz and Erwin Paul Rathgeb
-   Booktitle: Proceedings of the 2nd IEEE International Conference on Digital Society (ICDS)
-   Pages: 150–156
-   Title: Reliable Server Pooling – A Novel IETF Architecture for Availability-Sensitive Services
-   ISBN: ISBN 978-0-7695-3087-1
-   DOI: 10.1109/ICDS.2008.11
-   Year: 2008
-   Month: feb
-   Day: 14
-   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/ICDS2008-Failover.pdf
  - Author: Xing Zhou and Thomas Dreibholz and Erwin Paul Rathgeb
    Booktitle: Proceedings of the 2nd IEEE International Conference on Digital Society (ICDS)
    Pages: 171–177
@@ -361,6 +351,16 @@ Reference:
    Month: feb
    Day: 14
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/ICDS2008-LUD.pdf
+ - Author: Thomas Dreibholz and Erwin Paul Rathgeb
+   Booktitle: Proceedings of the 2nd IEEE International Conference on Digital Society (ICDS)
+   Pages: 150–156
+   Title: Reliable Server Pooling – A Novel IETF Architecture for Availability-Sensitive Services
+   ISBN: ISBN 978-0-7695-3087-1
+   DOI: 10.1109/ICDS.2008.11
+   Year: 2008
+   Month: feb
+   Day: 14
+   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/ICDS2008-Failover.pdf
  - Author: Thomas Dreibholz and Xing Zhou and Erwin Paul Rathgeb and Wencai Du
    Booktitle: Proceedings of the 10th IEEE International Conference on Telecommunications (ConTEL)
    Pages: 213–220
@@ -508,6 +508,14 @@ Reference:
    Month: mar
    Day: 25
    URL: https://web.archive.org/web/20241220115922/https://www.e-teaching.org/praxis/erfahrungsberichte/10-03-25_PC-Hall_Biella-Huth-Striewe-Kohnen-Dreibholz-Becke.pdf
+ - Author: Thomas Reschka and Thomas Dreibholz and Martin Becke and Jobin Pulinthanath and Erwin Paul Rathgeb
+   Booktitle: Proceedings of the 3rd ACM/ICST International Workshop on OMNeT++
+   Title: Enhancement of the TCP Module in the OMNeT++/INET Framework
+   ISBN: ISBN 978-963-9799-87-5
+   Year: 2010
+   Month: mar
+   Day: 19
+   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/OMNeT__Workshop2010-TCP.pdf
  - Author: Thomas Dreibholz and Martin Becke and Jobin Pulinthanath and Erwin Paul Rathgeb
    Booktitle: Proceedings of the 3rd ACM/ICST International Workshop on OMNeT++
    Title: Implementation and Evaluation of Concurrent Multipath Transfer for SCTP in the INET Framework
@@ -517,14 +525,6 @@ Reference:
    Month: mar
    Day: 19
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/OMNeT__Workshop2010-SCTP.pdf
- - Author: Thomas Reschka and Thomas Dreibholz and Martin Becke and Jobin Pulinthanath and Erwin Paul Rathgeb
-   Booktitle: Proceedings of the 3rd ACM/ICST International Workshop on OMNeT++
-   Title: Enhancement of the TCP Module in the OMNeT++/INET Framework
-   ISBN: ISBN 978-963-9799-87-5
-   Year: 2010
-   Month: mar
-   Day: 19
-   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/OMNeT__Workshop2010-TCP.pdf
  - Author: Thomas Dreibholz
    Title: Multipath-Transfer mit dem Stream Control Transmission Protocol
    Year: 2011
@@ -655,13 +655,6 @@ Reference:
    Month: feb
    Day: 8
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/NetPerfMeterSim2012.pdf
- - Author: Thomas Dreibholz and Martin Becke and Hakim Adhari and Erwin Paul Rathgeb
-   Title: RspSim – A Simulation Model of the Reliable Server Pooling Framework
-   Type: OMNeT++ Code Contribution
-   Year: 2012
-   Month: feb
-   Day: 6
-   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/RspSim2012.pdf
  - Author: Thomas Dreibholz and Martin Becke and Hakim Adhari and Erwin Paul Rathgeb and Irene Rüngeler and Robin Seggelmann and Michael Tüxen
    Title: Improvements to the SCTP Environment in the INET Framework
    Type: OMNeT++ Code Contribution
@@ -669,6 +662,13 @@ Reference:
    Month: feb
    Day: 6
    URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/SCTPSim2012.pdf
+ - Author: Thomas Dreibholz and Martin Becke and Hakim Adhari and Erwin Paul Rathgeb
+   Title: RspSim – A Simulation Model of the Reliable Server Pooling Framework
+   Type: OMNeT++ Code Contribution
+   Year: 2012
+   Month: feb
+   Day: 6
+   URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/RspSim2012.pdf
  - Author: Thomas Dreibholz
    Booktitle: Proceedings of the 1st International NorNet Users Workshop (NNUW-1)
    Title: The NorNet Core Testbed – An Experiment Tutorial
@@ -850,6 +850,15 @@ Reference:
    Month: may
    Day: 26
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2722.pdf
+ - Author: Hakim Adhari and Sebastian Werner and Thomas Dreibholz and Erwin Paul Rathgeb
+   Booktitle: Proceedings of the 4th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
+   Title: LEDBAT-MP – On the Application of Lower-than-Best-Effort for Concurrent Multipath Transfer
+   ISBN: ISBN 978-1-4799-2652-7
+   DOI: 10.1109/WAINA.2014.125
+   Year: 2014
+   Month: may
+   Day: 16
+   URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2512.pdf
  - Author: Simone Ferlin and Thomas Dreibholz and Özgü Alay and Amund Kvalbein
    Booktitle: Proceedings of the 4th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
    Pages: 753–758
@@ -860,15 +869,6 @@ Reference:
    Month: may
    Day: 16
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2516.pdf
- - Author: Hakim Adhari and Sebastian Werner and Thomas Dreibholz and Erwin Paul Rathgeb
-   Booktitle: Proceedings of the 4th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
-   Title: LEDBAT-MP – On the Application of Lower-than-Best-Effort for Concurrent Multipath Transfer
-   ISBN: ISBN 978-1-4799-2652-7
-   DOI: 10.1109/WAINA.2014.125
-   Year: 2014
-   Month: may
-   Day: 16
-   URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2512.pdf
  - Author: Thomas Dreibholz
    Title: The NorNet Testbed for Multi-Homed Systems – Overview and Status
    Year: 2014
@@ -994,16 +994,6 @@ Reference:
    Month: apr
    Day: 15
    URL: https://web.archive.org/web/20160222130810/http://www.ecice06.com/EN/article/downloadArticleFile.do?attachType=PDF&id=26295
- - Author: Thomas Dreibholz and Xing Zhou and Fa Fu
-   Booktitle: 5th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
-   Pages: 617–622
-   Title: Multi-Path TCP in Real-World Setups – An Evaluation in the NorNet Core Testbed
-   ISBN: ISBN 978-1-4799-1775-4
-   DOI: 10.1109/WAINA.2015.74
-   Year: 2015
-   Month: mar
-   Day: 25
-   URL: https://web-backend.simula.no/sites/default/files/publications/files/pams2015-mptcp-web.pdf
  - Author: Thomas Dreibholz and Jarle Bjørgeengen and Jonas Werme
    Booktitle: 5th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
    Pages: 611–616
@@ -1014,6 +1004,16 @@ Reference:
    Month: mar
    Day: 25
    URL: https://web-backend.simula.no/sites/default/files/publications/files/pams2015-nornet-monitoring-web.pdf
+ - Author: Thomas Dreibholz and Xing Zhou and Fa Fu
+   Booktitle: 5th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
+   Pages: 617–622
+   Title: Multi-Path TCP in Real-World Setups – An Evaluation in the NorNet Core Testbed
+   ISBN: ISBN 978-1-4799-1775-4
+   DOI: 10.1109/WAINA.2015.74
+   Year: 2015
+   Month: mar
+   Day: 25
+   URL: https://web-backend.simula.no/sites/default/files/publications/files/pams2015-mptcp-web.pdf
  - Author: Thomas Dreibholz
    Title: The NorNet Testbed – A Large-Scale Experiment Platform for Real-World Experiments with Multi-Homed Systems
    Year: 2015
@@ -1059,17 +1059,17 @@ Reference:
    Day: 6
    URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2016-hkc-presentation.pdf
  - Author: Thomas Dreibholz
-   Title: NorNet at Hainan University – An Introduction to the NorNet Testbed
-   Year: 2016
-   Month: may
-   Day: 29
-   URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2016-hainanuniversity-presentation_1.pdf
- - Author: Thomas Dreibholz
    Title: An Experiment Tutorial for the NorNet Core Testbed at Hainan University
    Year: 2016
    Month: may
    Day: 29
    URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2016-hainanuniversity-tutorial_0.pdf
+ - Author: Thomas Dreibholz
+   Title: NorNet at Hainan University – An Introduction to the NorNet Testbed
+   Year: 2016
+   Month: may
+   Day: 29
+   URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2016-hainanuniversity-presentation_1.pdf
  - Author: Simone Ferlin and Özgü Alay and David Andrew Hayes and Thomas Dreibholz and Michael Welzl
    Booktitle: Proceedings of the 35th IEEE International Conference on Computer Communications (INFOCOM)
    Pages: 2419–2427
@@ -1080,17 +1080,17 @@ Reference:
    Day: 14
    URL: https://web-backend.simula.no/sites/default/files/publications/files/infocom2016-web.pdf
  - Author: Thomas Dreibholz
-   Title: NorNet at HAW Hamburg – An Introduction to the NorNet Testbed
-   Year: 2016
-   Month: mar
-   Day: 22
-   URL: https://web-backend.simula.no/sites/default/files/publications/files/hawhamburg2016-presentation.pdf
- - Author: Thomas Dreibholz
    Title: An Experiment Tutorial for the NorNet Core Testbed at HAW Hamburg
    Year: 2016
    Month: mar
    Day: 22
    URL: https://web-backend.simula.no/sites/default/files/publications/files/hawhamburg2016-tutorial.pdf
+ - Author: Thomas Dreibholz
+   Title: NorNet at HAW Hamburg – An Introduction to the NorNet Testbed
+   Year: 2016
+   Month: mar
+   Day: 22
+   URL: https://web-backend.simula.no/sites/default/files/publications/files/hawhamburg2016-presentation.pdf
  - Author: Fa Fu and Xing Zhou and Yuyin Tan and Thomas Dreibholz and Hakim Adhari and Erwin Paul Rathgeb
    Journal: Computer Engineering and Applications
    Pages: 89–93
@@ -1104,17 +1104,17 @@ Reference:
    Day: 1
    URL: https://web.archive.org/web/20160305203850/http://cea.ceaj.org/CN/article/downloadArticleFile.do?attachType=PDF&id=34214
  - Author: Thomas Dreibholz
-   Title: NorNet at NICTA – An Introduction to the NorNet Testbed
-   Year: 2016
-   Month: jan
-   Day: 22
-   URL: https://web-backend.simula.no/sites/default/files/publications/files/nicta2016-presentation.pdf
- - Author: Thomas Dreibholz
    Title: An Experiment Tutorial for the NorNet Core Testbed at NICTA
    Year: 2016
    Month: jan
    Day: 22
    URL: https://web-backend.simula.no/sites/default/files/publications/files/nicta2016-tutorial.pdf
+ - Author: Thomas Dreibholz
+   Title: NorNet at NICTA – An Introduction to the NorNet Testbed
+   Year: 2016
+   Month: jan
+   Day: 22
+   URL: https://web-backend.simula.no/sites/default/files/publications/files/nicta2016-presentation.pdf
  - Author: Thomas Dreibholz
    Title: Big Data Applications on Multi-Clouds: An Introduction to the MELODIC Project
    Year: 2017
@@ -1201,17 +1201,17 @@ Reference:
    Day: 27
    URL: https://web-backend.simula.no/sites/default/files/publications/files/fengzhou-mptcp-web.pdf
  - Author: Thomas Dreibholz
-   Title: Multi-Path Transport – From Simulations to Real-World Internet Measurements
-   Year: 2017
-   Month: feb
-   Day: 16
-   URL: https://web-backend.simula.no/sites/default/files/publications/files/uclm2017-multipath-presentation_1.pdf
- - Author: Thomas Dreibholz
    Title: An Experiment Tutorial for the NorNet Core Testbed at the the Universidad de Castilla-La Mancha
    Year: 2017
    Month: feb
    Day: 16
    URL: https://web-backend.simula.no/sites/default/files/publications/files/uclm2017-nornet-tutorial.pdf
+ - Author: Thomas Dreibholz
+   Title: Multi-Path Transport – From Simulations to Real-World Internet Measurements
+   Year: 2017
+   Month: feb
+   Day: 16
+   URL: https://web-backend.simula.no/sites/default/files/publications/files/uclm2017-multipath-presentation_1.pdf
  - Author: Thomas Dreibholz
    Title: Multi-Path Transport with OMNeT++ and the INET Framework
    Year: 2017
@@ -1219,17 +1219,17 @@ Reference:
    Day: 16
    URL: https://web-backend.simula.no/sites/default/files/publications/files/uclm2017-inet-presentation.pdf
  - Author: Thomas Dreibholz
-   Title: NorNet at the University of Sydney – An Introduction to the NorNet Core Testbed
-   Year: 2017
-   Month: jan
-   Day: 24
-   URL: https://web-backend.simula.no/sites/default/files/publications/files/sydney2017-presentation.pdf
- - Author: Thomas Dreibholz
    Title: An Experiment Tutorial for the NorNet Core Testbed at the University of Sydney
    Year: 2017
    Month: jan
    Day: 24
    URL: https://web-backend.simula.no/sites/default/files/publications/files/sydney-tutorial.pdf
+ - Author: Thomas Dreibholz
+   Title: NorNet at the University of Sydney – An Introduction to the NorNet Core Testbed
+   Year: 2017
+   Month: jan
+   Day: 24
+   URL: https://web-backend.simula.no/sites/default/files/publications/files/sydney2017-presentation.pdf
  - Author: Yu Lou and Xing Zhou and Yu Long and Hanbao Kuang and Thomas Dreibholz and Yuyin Tan
    Journal: Computer Engineering and Applications
    Pages: 79–86
@@ -1684,6 +1684,13 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/2023-11/CENet2023-SmartContracts.pdf
  - Author: Thomas Dreibholz
    Booktitle: Proceedings of the 31st International Conference on Software, Telecommunications and Computer Networks (SoftCOM)
+   Title: A Live Demonstration of HiPerConTracer 2.0
+   Year: 2023
+   Month: sep
+   Day: 22
+   URL: https://web-backend.simula.no/sites/default/files/2023-10/SoftCOM2023-Demo_0.pdf
+ - Author: Thomas Dreibholz
+   Booktitle: Proceedings of the 31st International Conference on Software, Telecommunications and Computer Networks (SoftCOM)
    Title: High-Precision Round-Trip Time Measurements in the Internet with HiPerConTracer
    ISBN: ISBN 979-8-3503-0107-6
    DOI: 10.23919/SoftCOM58365.2023.10271612
@@ -1691,13 +1698,6 @@ Reference:
    Month: sep
    Day: 22
    URL: https://web-backend.simula.no/sites/default/files/2023-10/SoftCOM2023-Timestamping.pdf
- - Author: Thomas Dreibholz
-   Booktitle: Proceedings of the 31st International Conference on Software, Telecommunications and Computer Networks (SoftCOM)
-   Title: A Live Demonstration of HiPerConTracer 2.0
-   Year: 2023
-   Month: sep
-   Day: 22
-   URL: https://web-backend.simula.no/sites/default/files/2023-10/SoftCOM2023-Demo_0.pdf
  - Author: Somnath Mazumdar and Thomas Dreibholz
    Booktitle: Proceedings of the 49th Euromicro Conference Series on Software Engineering and Advanced Applications (SEAA)
    Pages: 140–149
@@ -1797,14 +1797,6 @@ Reference:
    Day: 2
    URL: https://ieee-dataport.org/documents/reflection-server-tuning-dataset
  - Author: Thomas Dreibholz
-   Publisher: IEEE DataPort
-   Title: Satellite Network Connectivity during a Trans-Atlantic Flight
-   DOI: 10.21227/q0xf-t853
-   Year: 2025
-   Month: jun
-   Day: 12
-   URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight
- - Author: Thomas Dreibholz
    Publisher: Simula Research Laboratory
    Title: HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks
    Type: Presentation at the 2nd Simula Knowledge Festival
@@ -1812,6 +1804,14 @@ Reference:
    Month: jun
    Day: 12
    URL: https://web-backend.simula.no/sites/default/files/2025-06/SKF2025.pdf
+ - Author: Thomas Dreibholz
+   Publisher: IEEE DataPort
+   Title: Satellite Network Connectivity during a Trans-Atlantic Flight
+   DOI: 10.21227/q0xf-t853
+   Year: 2025
+   Month: jun
+   Day: 12
+   URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight
  - Author: Jan Marius Evang and Thomas Dreibholz and Somnath Mazumdar
    Booktitle: Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM)
    Title: Measuring Mobile Network Coverage during Extended Road Trips in the Nordics
