@@ -16,9 +16,10 @@ BuildRequires: flex
 BuildRequires: openssl-devel
 BuildRequires: libcurl-devel
 Requires: file
-Requires: zip
 Requires: libcurl
 Requires: openssl-libs
+Requires: poppler-utils
+Requires: zip
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 
 %description
