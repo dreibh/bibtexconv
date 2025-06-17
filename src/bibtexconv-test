@@ -92,7 +92,7 @@ for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xm
 
    # ====== Check results ==========================================
    if [ -e "${goodFile}" ] ; then
-      if ! diff -q "${goodFile}" "${outputFile}" >/dev/null ; then
+      if ! diff -q -I "url.checked = " "${goodFile}" "${outputFile}" >/dev/null ; then
          failures=$((failures+1))
          (
             echo ""
@@ -111,7 +111,7 @@ for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xm
             # cat "${outputFile}"
             # echo ""
             print-utf8 -x 78 -n -s  "\x1b[31m------ Differences: " "-" "-\x1b[0m"
-            diff --color "${goodFile}" "${outputFile}" || true
+            diff --color -I "url.checked = " "${goodFile}" "${outputFile}" || true
             echo ""
             cp "${outputFile}" "${badFile}"
          ) >&2
