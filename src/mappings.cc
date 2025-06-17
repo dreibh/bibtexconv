@@ -198,7 +198,7 @@ bool Mappings::addMapping(const std::string& mappingName,
    }
 
    // ====== Handle read errors =============================================
-   if( (lineLength < 0) && (errno != 0) ) {
+   if( (lineLength < 0) && (!feof(mappingFile)) ) {
       fprintf(stderr, "ERROR: Unable to read from mapping file %s: %s\n",
               mappingFileName.c_str(), strerror(errno));
       fclose(mappingFile);
