@@ -287,7 +287,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                      if(totalSize > 0) {
                         // ====== Compute mime type (using "file") =======
                         std::string mimeString;
-                        std::string command = format("/usr/bin/file --mime-type -b %s >%s", downloadFileName, mimeFileName);
+                        std::string command = format("file --mime-type -b %s >%s", downloadFileName, mimeFileName);
                         if(system(command.c_str()) == 0) {
                            FILE* mimeFH = fopen(mimeFileName, "r");
                            if(mimeFH != nullptr) {
@@ -371,7 +371,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
 
                         // ====== Check PDF metadata ========================
                         if(mimeString == "application/pdf") {
-                           std::string command = format("/usr/bin/pdfinfo %s >%s", downloadFileName, metaFileName);
+                           std::string command = format("pdfinfo %s >%s", downloadFileName, metaFileName);
                            if(system(command.c_str()) == 0) {
                               FILE* metaFH = fopen(metaFileName, "r");
                               if(metaFH != nullptr) {
