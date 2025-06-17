@@ -1,5 +1,5 @@
 PORTNAME=	bibtexconv
-DISTVERSION=	2.0.2
+DISTVERSION=	2.0.3~rc1
 CATEGORIES=	converters
 MASTER_SITES=	https://www.nntb.no/~dreibh/bibtexconv/download/
 
