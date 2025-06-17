@@ -202,7 +202,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
          if(fh != nullptr) {
             Node* child = publication->child;
             if(child != nullptr) {
-               fprintf(fh, "%%%s\n", child->value.c_str());
+               fprintf(fh, "%%%s\n\n", child->value.c_str());
             }
          }
       }
