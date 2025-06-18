@@ -1,9 +1,9 @@
-bibtexconv (2.0.3~rc1-1ubuntu1) trixie; urgency=medium
+bibtexconv (2.0.3-1ubuntu1) trixie; urgency=medium
 
   * New upstream release.
   * debian/sources: Added Lintian override for long lines in test results files.
 
- -- Thomas Dreibholz <thomas.dreibholz@gmail.com>  Tue, 17 Jun 2025 09:52:43 +0200
+ -- Thomas Dreibholz <thomas.dreibholz@gmail.com>  Wed, 18 Jun 2025 10:04:04 +0200
 
 bibtexconv (2.0.2-1ubuntu1) trixie; urgency=medium
 

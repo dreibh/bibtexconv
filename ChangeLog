@@ -1,3 +1,141 @@
+commit c6bb50d60c29107d293c2a826008bde78bd38d9a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 17:04:34 2025 +0200
+
+    RPM spec dependency fix.
+
+commit 2234857ef37a1981ccd70db88583fe2ad2500526
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 16:53:31 2025 +0200
+
+    Updated example.
+
+commit 3a5daed8ff0553eb02463f64a7ac81f28ffc266d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 16:28:29 2025 +0200
+
+    Improved test script.
+
+commit 8fcb92a89c41b5bf2e5862dae440616ed02cd2f7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 15:32:15 2025 +0200
+
+    Improved test script.
+
+commit f6817da060a3374222e1694b0f7f2acc8d33564c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 15:18:27 2025 +0200
+
+    Improved test script to ignore "url.checked" update.
+
+commit 181779f47ff4a2290426e926f2ae305c3146ae76
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 15:11:43 2025 +0200
+
+    Bugfix: Platform-independent error check for mapping file reading.
+
+commit bec83179308b4469fd063af87ce01c9dc4005afa
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 15:00:37 2025 +0200
+
+    Bugfix: Include title sorting in the examples, to make the sorting order deterministic.
+
+commit 709e751d151e005ecca0343cece7c6a8161e1dd0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 14:38:58 2025 +0200
+
+    Updated example file.
+
+commit fff7b1e77fd1ad05074af55ca08f2c42bf9e7500
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 11:52:09 2025 +0200
+
+    Bugfix: Not using fixed path "/usr/bin" for pdfinfo and zip, which is wrong e.g. for FreeBSD.
+
+commit 45a62cc543336e016d6adf145ac1142b885d3c11
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 11:51:30 2025 +0200
+
+    Bugfix: FreeBSD dependency fix: poppler-utils (pdfinfo) and zip (zip) are needed.
+
+commit 34d39a833d3dd1b88031bd2b14ee0a2150a599dd
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 11:40:03 2025 +0200
+
+    Fixed broken URL in example references.
+
+commit f50dd0518e98ccf91ca55db2e8276e8233cd4f7a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 11:27:10 2025 +0200
+
+    Some clean-ups.
+
+commit 44d0d9f04f0c23700c158cbd336cb8351ac38066
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 17 09:53:30 2025 +0200
+
+    Version bump.
+
+commit ddcc4c89e1b54b50c07b606b00072ade52b3e945
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 16 16:33:49 2025 +0200
+
+    Improved examples.
+
+commit c973b6036522a4d386a144796107ddd4476912e1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 16 14:55:27 2025 +0200
+
+    Updated README.md.
+
+commit 7e2cebfd690e6c8988adcbc39302f878e07b10f0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 16 14:45:03 2025 +0200
+
+    Bugfix: Fixed skipped display of options in shell completions.
+
+commit 4b8e8c1d9ce628dc439a47eeece7ee4bea0cc5db
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 16 14:37:03 2025 +0200
+
+    Bugfix: Fixed dropping of comments.
+
+commit 5a86bcf07e3a1b6eb1826a7b84fd5e4432c7caf0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 16 13:38:56 2025 +0200
+
+    Updated examples.
+
+commit 6a30d7d913b4be24925d0cf92725f3d1de1f6c85
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 16 13:38:49 2025 +0200
+
+    Added helper script.
+
+commit f8f945f176c7f70e1e0cf4f0c524cadec89930ae
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 16 12:56:37 2025 +0200
+
+    Bugfix: Do not convert action string to lower-case.
+
+commit 01bcaf6e82c7bad393f54b453994d920f6784ad9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon May 19 17:26:36 2025 -0400
+
+    Removed obsolete Lintian override.
+
+commit d43d10b6ea3cbc691756948240e815ffdd6332ff
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 13 11:35:12 2025 +0200
+
+    Updated FreeBSD port.
+
+commit 83b6f4b60390d9e5a4451124fe656ef333a63a75
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon May 12 22:51:03 2025 +0200
+
+    New release bibtexconv-2.0.2.
+
 commit a1cd229d2b80b8db565aa8f1e334e60e7684da4d
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Sat May 10 23:23:25 2025 +0200
