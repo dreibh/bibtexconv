@@ -107,6 +107,7 @@ INSTALL(FILES authors-fix.list
               web-example2.export
               web-rserpool.export
               yaml-example.export
+              md-example.export
         DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples)
 INSTALL(PROGRAMS get-author-url
         DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples)
