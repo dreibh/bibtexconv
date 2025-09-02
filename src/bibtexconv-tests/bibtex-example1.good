@@ -3971,7 +3971,7 @@ In this paper, we propose a proof-of-concept for using Reliable Server Pooling (
 	year = "2021",
 	institution = "5G PPP Technology Board",
 	language = "english",
-	doi = "10.5281/zenodo.429989",
+	doi = "10.5281/zenodo.4299895",
 	abstract = "{This white paper on AI and ML as enablers of beyond 5G (B5G) networks is based on contributions from almost 20 5G PPP projects, coordinated through the 5G PPP Technology Board, that research, implement and validate 5G and B5G network systems. The paper introduces the main relevant mechanisms in Artificial Intelligence (AI) and Machine Learning (ML), currently investigated and exploited for enhancing 5G and B5G networks.}",
 	url = "https://5g-ppp.eu/wp-content/uploads/2021/05/AI-MLforNetworks-v1-0.pdf",
 	url.size = "6185658",

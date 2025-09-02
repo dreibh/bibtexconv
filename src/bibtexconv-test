@@ -39,8 +39,8 @@ downloadsDirectory="${HOME}/tmp/BibTeXConv"
 mkdir -p "${downloadsDirectory}"
 
 failures=0
-# Tests: test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example yaml-example text-example web-example1 web-example2 web-rserpool odt-example
-for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example yaml-example text-example web-example1 web-example2 web-rserpool odt-example ; do
+# Tests: test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example yaml-example md-example text-example web-example1 web-example2 web-rserpool odt-example
+for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xml-example yaml-example md-example text-example web-example1 web-example2 web-rserpool odt-example ; do
 
    # ====== Prepare test run =======================================
    print-utf8 -x 86 -s "\x1b[34m###### Testing: ${test} " "#" "#\x1b[0m   " >&2
@@ -69,7 +69,7 @@ for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xm
       outputFile="${outputFile}.out"
       command="${RUN} ./bibtexconv ${bibTeXFile} --non-interactive --export-to-separate-xmls=${outputDirectory}/reference. >${outputFile}"
       touch "${goodFile}"   # Empty!
-   elif [ "${test}" == "web-example2" ] ; then
+   elif [ "${test}" == "web-example2" ] || [ "${test}" == "md-example" ] ; then
       outputFile="${outputFile}.html"
       command="${RUN} ./bibtexconv ${bibTeXFile} -q --mapping=author-url:authors.list:Name:URL <${exportFile} >${outputFile}"
    elif [ "${test}" == "web-rserpool" ] ; then
