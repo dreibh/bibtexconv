@@ -57,7 +57,7 @@ templatenew
 template+ [%{begin-subdivision-year}## %{year}\n\n]
 
 # ****** Begin of Entry *****************************************************
-template+ [ * ]
+template+ [* ]
 
 # ***** Authors *************************************************************
 # Begin of author loop:
