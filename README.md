@@ -1,9 +1,7 @@
 <h1 align="center">
- BibTeXConv<br />
- <span style="font-size:75%">A BibTeX File Converter</span><br />
- <a href="https://www.nntb.no/~dreibh/bibtexconv/">
-  https://www.nntb.no/~dreibh/bibtexconv/
- </a>
+ BibTeXConv\
+ <span style="font-size:75%">A BibTeX File Converter</span>\
+ [<span style="font-size: 75%">https://www.nntb.no/~dreibh/bibtexconv</span>](https://www.nntb.no/~dreibh/bibtexconv/)
 </h1>
 
 
