@@ -8,6 +8,10 @@ Tests: 11-bibtexconv-txt
 Restrictions: allow-stderr
 Depends: bibtexconv
 
+Tests: 12-bibtexconv-md-with-mappingfile
+Restrictions: allow-stderr
+Depends: bibtexconv
+
 Tests: 20-bibtexconv-odt
 Restrictions: allow-stderr
 Depends: bibtexconv

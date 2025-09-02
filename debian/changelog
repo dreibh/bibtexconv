@@ -1,3 +1,10 @@
+bibtexconv (2.0.4~rc0-1ubuntu1) trixie; urgency=medium
+
+  * New upstream release.
+  * debian/tests: Added mapping file test.
+
+ -- Thomas Dreibholz <thomas.dreibholz@gmail.com>  Tue, 02 Sep 2025 10:27:20 +0200
+
 bibtexconv (2.0.3-1ubuntu1) trixie; urgency=medium
 
   * New upstream release.
