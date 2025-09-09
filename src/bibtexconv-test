@@ -70,7 +70,11 @@ for test in test1 test2 test3 bibtex-example1 bibtex-example2 bibtex-example3 xm
       command="${RUN} ./bibtexconv ${bibTeXFile} --non-interactive --export-to-separate-xmls=${outputDirectory}/reference. >${outputFile}"
       touch "${goodFile}"   # Empty!
    elif [ "${test}" == "web-example2" ] || [ "${test}" == "md-example" ] ; then
-      outputFile="${outputFile}.html"
+      if [[ "${test}" =~ ^md- ]] ; then
+         outputFile="${outputFile}.md"
+      else
+         outputFile="${outputFile}.html"
+      fi
       command="${RUN} ./bibtexconv ${bibTeXFile} -q --mapping=author-url:authors.list:Name:URL <${exportFile} >${outputFile}"
    elif [ "${test}" == "web-rserpool" ] ; then
       outputFile="${outputFile}.html"

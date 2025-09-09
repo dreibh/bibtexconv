@@ -3413,12 +3413,12 @@ In this paper, we introduce our work-in-progress live video streaming platform f
 	year = "2019",
 	address = "Praha/Czech Republic",
 	language = "english",
-	url = "https://web.archive.org/web/20220523134729/https://datatracker.ietf.org/meeting/104/materials/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01.pdf",
+	url = "https://www.ietf.org/proceedings/104/slides/slides-104-maprg-native-sctp-dccp-udp-lite-and-home-gateway-nats-runa-barik-01.pdf",
 	url.size = "81086",
 	url.md5 = "83992b2612501e88a1cb746e116b0e49",
 	url.mime = "application/pdf",
 	url.pagesize = "362.835 x 272.126 pts",
-	url.checked = "2024-06-30 11:53:14 CEST"
+	url.checked = "2025-09-09 10:25:10 CEST"
 }
 
 @Misc{ Haikou2019-MultiPath,
