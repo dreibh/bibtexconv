@@ -150,12 +150,11 @@ Please use the issue tracker at [https://github.com/dreibh/bibtexconv/issues](ht
 
 The Git repository of the BibTeXConv sources can be found at [https://github.com/dreibh/bibtexconv](https://github.com/dreibh/bibtexconv):
 
-```bash
-git clone https://github.com/dreibh/bibtexconv
-cd bibtexconv
-cmake .
-make
-```
+<pre><code><span class="fu">git</span> clone <a href="https://github.com/dreibh/bibtexconv">https://github.com/dreibh/bibtexconv</a>
+<span class="bu">cd</span> bibtexconv
+<span class="fu">cmake</span> .
+<span class="fu">make</span>
+</code></pre>
 
 Contributions:
 
