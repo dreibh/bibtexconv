@@ -18,13 +18,16 @@ Take a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of y
 * Check URLs of all entries in [ExampleReferences.bib](src/ExampleReferences.bib), add MD5, size and MIME type items and write the results to UpdatedReferences.bib:
 
   ```bash
-  bibtexconv ExampleReferences.bib --export-to-bibtex=UpdatedReferences.bib --check-urls --only-check-new-urls --non-interactive
+  bibtexconv ExampleReferences.bib \
+     --export-to-bibtex=UpdatedReferences.bib \
+     --check-urls --only-check-new-urls --non-interactive
   ```
 
 * Use the export script [web-example1.export](src/web-example1.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to [MyPublications1.html](https://www.nntb.no/~dreibh/bibtexconv/MyPublications1.html) as XHTML 1.1. [ExampleReferences.bib](src/ExampleReferences.bib) references the script [get-author-url](src/get-author-url) and the list [authors.list](src/authors.list) to obtain the authors' website URLs:
 
   ```bash
-  bibtexconv ExampleReferences.bib <web-example1.export >MyPublications1.html
+  bibtexconv ExampleReferences.bib \
+     <web-example1.export >MyPublications1.html
   ```
 
   Note that using a script is slow, and may introduce a security issue when running export scripts from untrusted sources! The preferred way for mappings is to use mapping files, which is demonstrated by the next example.
@@ -32,7 +35,9 @@ Take a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of y
 * Use the export script [web-example2.export](src/web-example2.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to [MyPublications2.html](https://www.nntb.no/~dreibh/bibtexconv/MyPublications2.html) as XHTML 1.1. Unlike the example above, it reads [authors.list](src/authors.list) as a mapping file, and uses the fields *Name* and *URL* to map authors to URLs:
 
   ```bash
-  bibtexconv ExampleReferences.bib --mapping=author-url:authors.list:Name:URL <web-example2.export >MyPublications2.html
+  bibtexconv ExampleReferences.bib \
+     --mapping=author-url:authors.list:Name:URL \
+     <web-example2.export >MyPublications2.html
   ```
 
   Mapping files have been introduced in BibTeXConv&nbsp;2.0.
@@ -40,7 +45,8 @@ Take a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of y
 * Use export script [text-example.export](src/text-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to [MyPublications.txt](https://www.nntb.no/~dreibh/bibtexconv/MyPublications.txt) as plain text:
 
   ```bash
-  bibtexconv ExampleReferences.bib <text-example.export >MyPublications.txt
+  bibtexconv ExampleReferences.bib \
+     <text-example.export >MyPublications.txt
   ```
 
 * Use export script [yaml-example.export](src/yaml-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to [MyPublications.yaml](https://www.nntb.no/~dreibh/bibtexconv/MyPublications.yaml) as YAML file according to [Debian Upstream MEtadata GAthered with YAml&nbsp;(UMEGAYA)](https://wiki.debian.org/UpstreamMetadata) format:
@@ -48,29 +54,36 @@ Take a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of y
 * Use export script [md-example.export](src/md-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to [MyPublications.md](https://www.nntb.no/~dreibh/bibtexconv/MyPublications.md) as Markdown file with [authors.list](src/authors.list) as a mapping file for the authors to URLs:
 
   ```bash
-  bibtexconv ExampleReferences.bib --mapping=author-url:authors.list:Name:URL <md-example.export >MyPublications.md
+  bibtexconv ExampleReferences.bib \
+     --mapping=author-url:authors.list:Name:URL \
+     <md-example.export >MyPublications.md
   ```
 
 * Convert all references in [ExampleReferences.bib](src/ExampleReferences.bib) to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference." (for example: reference.Globecom2010.xml for the reference Globecom2010):
 
   ```bash
-  bibtexconv ExampleReferences.bib --export-to-separate-xmls=reference. --non-interactive
+  bibtexconv ExampleReferences.bib \
+     --export-to-separate-xmls=reference. --non-interactive
   ```
 
 * Convert all references in [ExampleReferences.bib](src/ExampleReferences.bib) to BibTeX references. For each reference, an own file is generated, named with the prefix "" (here: no prefix; for example: Globecom2010.bib for the reference Globecom2010):
   ```bash
-  bibtexconv ExampleReferences.bib --non-interactive --export-to-separate-bibtexs=
+  bibtexconv ExampleReferences.bib \
+     --export-to-separate-bibtexs= --non-interactive
   ```
 
 * Download all references in [ExampleReferences.bib](src/ExampleReferences.bib) providing an "url" entry to directory Downloads. If the corresponding file is already existing, a download is skipped. That is, the command can be run regularly to maintain an up-to-date publications directory. Updated references (including length, type and MD5 sum of the downloaded entries) are written to UpdatedReferences.bib:
   ```bash
-  bibtexconv ExampleReferences.bib --export-to-bibtex=UpdatedReferences.bib --check-urls --store-downloads=Downloads --non-interactive
+  bibtexconv ExampleReferences.bib \
+     --export-to-bibtex=UpdatedReferences.bib \
+     --check-urls --store-downloads=Downloads --non-interactive
   ```
 
 * Use export script [odt-example.export](src/odt-example.export) to export references from [ExampleReferences.bib](src/ExampleReferences.bib) to [MyPublications.odt](https://www.nntb.no/~dreibh/bibtexconv/MyPublications.odt) as [OpenDocument](https://www.adobe.com/uk/acrobat/resources/document-files/open-doc.html) Text (ODT), according to the template ODT file [ODT-Template.odt](src/ODT-Template.odt):
 
   ```bash
-  bibtexconv-odt ODT-Template.odt MyPublications.odt ExampleReferences.bib odt-example.export
+  bibtexconv-odt ODT-Template.odt MyPublications.odt \
+     ExampleReferences.bib odt-example.export
   ```
 
   ODT is the native format of [LibreOffice](https://www.libreoffice.org/)/[OpenOffice](https://www.openoffice.org/). However, LibreOffice/OpenOffice can also be used to convert it to Microsoft Word (DOCX) format, either via GUI or on the command-line to [MyPublications.docx](https://www.nntb.no/~dreibh/bibtexconv/MyPublications.docx):
