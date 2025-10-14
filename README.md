@@ -128,7 +128,7 @@ sudo dnf install bibtexconv
 For ready-to-install FreeBSD packages of BibTeXConv, it is included in the ports collection, see [FreeBSD ports tree index of benchmarks/bibtexconv/](https://cgit.freebsd.org/ports/tree/converters/bibtexconv/)!
 
 ```bash
-pkg install bibtexconv
+sudo pkg install bibtexconv
 ```
 
 Alternatively, to compile it from the ports sources:
@@ -136,7 +136,7 @@ Alternatively, to compile it from the ports sources:
 ```bash
 cd /usr/ports/converters/bibtexconv
 make
-make install
+sudo make install
 ```
 
 
