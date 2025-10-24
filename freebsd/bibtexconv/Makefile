@@ -24,6 +24,8 @@ OPTIONS_DEFINE=	EXAMPLES
 
 # Remove trailing subdir from CMAKE_INSTALL_DOCDIR
 post-patch:
-	@${REINPLACE_CMD} -e 's|/examples||' ${WRKSRC}/src/CMakeLists.txt ${WRKSRC}/src/Images/CMakeLists.txt
+	@${REINPLACE_CMD} -e 's|/examples||' \
+		${WRKSRC}/src/CMakeLists.txt \
+		${WRKSRC}/src/Images/CMakeLists.txt
 
 .include <bsd.port.mk>
