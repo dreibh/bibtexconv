@@ -1,3 +1,9 @@
+bibtexconv (2.0.5-1ubuntu1) trixie; urgency=medium
+
+  * New upstream release.
+
+ -- Thomas Dreibholz <thomas.dreibholz@gmail.com>  Fri, 24 Oct 2025 12:57:47 +0200
+
 bibtexconv (2.0.4-1ubuntu1) trixie; urgency=medium
 
   * New upstream release.

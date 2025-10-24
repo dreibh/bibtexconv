@@ -1,3 +1,45 @@
+commit c6236f097b6c83b597fb06b8548c7f8a8a1c91d1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Oct 14 19:27:27 2025 +0200
+
+    Improved documentation.
+
+commit 4c6c2b1e75c137e5dd694629d9cf77fe3d35f952
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 13 21:43:48 2025 +0200
+
+    Minor documentation update.
+
+commit 6550a34f925da5416dc1c5ce144bf126ea6ad08b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 13 19:41:56 2025 +0200
+
+    Further documentation improvements.
+
+commit 8a0703f66e93f265fabc6d44a8a3c12d9a557208
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 13 19:41:51 2025 +0200
+
+    Minor update.
+
+commit 98b1300e64f7c87435b5aef255f935a43986101a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Oct 13 19:33:56 2025 +0200
+
+    Documentation improvements.
+
+commit 580d0ec4947e44ee31a1357139a302ce87d36858
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Sep 25 17:13:53 2025 +0200
+
+    FreeBSD packaging update.
+
+commit 70810f30127242e92dd4efef8e323764c2000db7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Sep 21 17:55:41 2025 +0200
+
+    New release bibtexconv-2.0.4.
+
 commit 2e9e530237ab79d25907e85a9711bed8b658b767
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Sep 9 15:44:58 2025 +0200
