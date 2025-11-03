@@ -150,11 +150,15 @@ Please use the issue tracker at [https://github.com/dreibh/bibtexconv/issues](ht
 
 The Git repository of the BibTeXConv sources can be found at [https://github.com/dreibh/bibtexconv](https://github.com/dreibh/bibtexconv):
 
-<pre><code><span class="fu">git</span> clone <a href="https://github.com/dreibh/bibtexconv">https://github.com/dreibh/bibtexconv</a>
-<span class="bu">cd</span> bibtexconv
-<span class="fu">cmake</span> .
-<span class="fu">make</span>
-</code></pre>
+```bash
+git clone https://github.com/dreibh/bibtexconv
+cd bibtexconv
+sudo ci/get-dependencies --install
+cmake .
+make
+```
+
+Note: The script [`ci/get-dependencies`](https://github.com/dreibh/bibtexconv/blob/master/ci/get-dependencies) automatically installs the build dependencies for Debian/Ubuntu Linux, Fedora Linux, and FreeBSD. For manual handling of the build dependencies, see the packaging configuration in [debian/control](https://github.com/dreibh/bibtexconv/blob/master/debian/control) (Debian/Ubuntu Linux), [bibtexconv.spec](https://github.com/dreibh/bibtexconv/blob/master/rpm/bibtexconv.spec) (Fedora Linux), and [Makefile](https://github.com/dreibh/bibtexconv/blob/master/freebsd/bibtexconv/Makefile) FreeBSD.
 
 Contributions:
 
