@@ -158,7 +158,7 @@ cmake .
 make
 ```
 
-Note: The script [`ci/get-dependencies`](https://github.com/dreibh/bibtexconv/blob/master/ci/get-dependencies) automatically  installs the build dependencies under Debian/Ubuntu Linux, Fedora Linux, and FreeBSD. For manual handling of the build dependencies, see the packaging configuration in [debian/control](https://github.com/dreibh/bibtexconv/blob/master/debian/control) (Debian/Ubuntu Linux), [bibtexconv.spec](https://github.com/dreibh/bibtexconv/blob/master/rpm/bibtexconv.spec) (Fedora Linux), and [Makefile](https://github.com/dreibh/bibtexconv/blob/master/freebsd/bibtexconv/Makefile) FreeBSD.
+Note: The script [`ci/get-dependencies`](https://github.com/dreibh/bibtexconv/blob/master/ci/get-dependencies) automatically  installs the build dependencies under Debian/Ubuntu Linux, Fedora Linux, and FreeBSD. For manual handling of the build dependencies, see the packaging configuration in [`debian/control`](https://github.com/dreibh/bibtexconv/blob/master/debian/control) (Debian/Ubuntu Linux), [`bibtexconv.spec`](https://github.com/dreibh/bibtexconv/blob/master/rpm/bibtexconv.spec) (Fedora Linux), and [`Makefile`](https://github.com/dreibh/bibtexconv/blob/master/freebsd/bibtexconv/Makefile) FreeBSD.
 
 Contributions:
 
