@@ -7,7 +7,7 @@ Vcs-Git: https://github.com/dreibh/bibtexconv.git
 Vcs-Browser: https://github.com/dreibh/bibtexconv
 Build-Depends: bison,
                cmake,
-               debhelper (>= 12),
+               debhelper-compat (= 13),
                flex,
                libcurl4-openssl-dev,
                libssl-dev
