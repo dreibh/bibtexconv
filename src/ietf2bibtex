@@ -29,8 +29,6 @@
 #
 # Contact: thomas.dreibholz@gmail.com
 
-
-from xml.dom.minidom import parse
 import codecs
 import csv
 import hashlib
@@ -38,6 +36,13 @@ import os
 import re
 import sys
 import urllib.request
+
+if sys.version_info < (3, 8):
+   sys.stderr.write('ERROR: ' + sys.argv[0] + ' requires Python 3.8 or later!\n')
+   sys.exit(1)
+
+from typing          import Final, TextIO
+from xml.dom.minidom import parse
 
 
 datatrackerPrefix = 'https://datatracker.ietf.org/doc/'
@@ -569,7 +574,7 @@ def getBibTeXForIETFDocument(document):
 
 
 
-# ###### Handle arguments ###################################################
+# ###### Main program #######################################################
 if len(sys.argv) < 2:
    sys.stderr.write('Usage: ietf2bibtex [--quiet|--verbose] [--authors-fix-file=FILE|--no-authors-fix-file] document ...\n')
    sys.exit(1)
