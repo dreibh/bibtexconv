@@ -1,5 +1,5 @@
 Name: bibtexconv
-Version: 2.0.5
+Version: 2.0.6~rc0
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
@@ -65,6 +65,8 @@ BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries 
 %package ietf2bibtex
 Summary: Create BibTeX entry for IETF document (RFC or Internet Draft)
 Requires: %{name} = %{version}-%{release}
+Requires: python3 >= 3.8
+Requires: python3-urllib3
 
 %description ietf2bibtex
 ietf2bibtex creates a BibTeX entry for an IETF document (i.e. RFC or Internet
