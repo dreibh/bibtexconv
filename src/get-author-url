@@ -32,9 +32,6 @@ from typing import Final, TextIO
 
 
 # ###### Main program #######################################################
-if sys.version_info < (3, 8):
-   sys.stderr.write('ERROR: ' + sys.argv[0] + ' requires Python 3.8 or later!\n')
-   sys.exit(1)
 if len(sys.argv) != 4:
    sys.stderr.write('Usage: ' + sys.argv[0] + ' author_list author_name default_text\n')
    sys.exit(1)
