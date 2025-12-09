@@ -21,37 +21,39 @@
 #
 
 import csv
+import re
 import sys
-import re;
+
+from typing import Final, TextIO
 
 
 if len(sys.argv) != 4:
    sys.stderr.write('Usage: get-author-url author_list author_name default_text\n')
    sys.exit(1)
 
-replaceBbspStrings = re.compile('&nbsp;', re.UNICODE)
+replaceBbspStrings : Final[re.Pattern[str]] = re.compile(r'&nbsp;', re.UNICODE)
 
-authorList = sys.argv[1]
-authorName = replaceBbspStrings.sub(' ', sys.argv[2])
-authorText = sys.argv[3]
+authorList : Final[str] = sys.argv[1]
+authorName : Final[str] = replaceBbspStrings.sub(' ', sys.argv[2])
+authorText : Final[str] = sys.argv[3]
 
 
 csv.register_dialect('authors', delimiter=' ', quoting=csv.QUOTE_MINIMAL,skipinitialspace=True)
 
-inputFile = open(authorList, 'r')
+inputFile : TextIO = open(authorList, 'r')
 inputCSV = csv.reader(inputFile, dialect='authors')
 
-authorRow = None
+authorRow : list[str] | None = None
 for row in inputCSV:
-   # print row
+   # print(row)
    if row[0] == authorName:
-      if authorRow != None:
+      if authorRow is not None:
          # the authorName is multiple times in the table -> warning
          sys.stderr.write('WARNING: Multiple occurrences of authorName ' + authorName + ' in ' + authorList + '!\n')
       authorRow = row
 
 
-if authorRow == None:
+if authorRow is None:
    # The authorName is not in the table -> use default text
    sys.stdout.write(authorText)
    sys.stderr.write('Not in list: ' + authorName + '\n')
