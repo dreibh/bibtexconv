@@ -1,9 +1,9 @@
-bibtexconv (2.0.6~rc0-1ubuntu1) trixie; urgency=medium
+bibtexconv (2.1.0-1ubuntu1) trixie; urgency=medium
 
   * New upstream release.
   * debian/control: Python dependency fix for ietf2bibtex.
 
- -- Thomas Dreibholz <thomas.dreibholz@gmail.com>  Tue, 09 Dec 2025 14:13:27 +0100
+ -- Thomas Dreibholz <thomas.dreibholz@gmail.com>  Tue, 09 Dec 2025 16:46:27 +0100
 
 bibtexconv (2.0.5-1ubuntu1) trixie; urgency=medium
 

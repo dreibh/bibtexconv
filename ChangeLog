@@ -1,3 +1,195 @@
+commit 7e1214447cc3a2461986e5ab50b61cc564a56529
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 15:43:26 2025 +0100
+
+    Updated CI scripts
+
+commit 964308966a2b86636d03ff88d7db0cc4e847fe6e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 15:07:52 2025 +0100
+
+    Updated CI scripts
+
+commit 92ef5a02c3a8d704613c9543c6eabeb393382ec6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 14:38:17 2025 +0100
+
+    Minimum Python version for IETF2BibTeX is 3.9, not 3.8.
+
+commit 1d01562206054c50d0d9c5b02ab83bf708a69ef7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 14:20:21 2025 +0100
+
+    Minor clean-up.
+
+commit b4c6948ead8c78e9f4dc18ebd810c0b19254dd2e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 14:17:31 2025 +0100
+
+    Packaging update.
+
+commit e3db10aad8d08e58c1aa7fbec8c727607ad6cbc6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 14:09:05 2025 +0100
+
+    Added Python type-hinting to IETF2BibTeX.
+
+commit a9579b63ae47f0c5f38dfb262b873038a414661b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 12:11:24 2025 +0100
+
+    Improved Python version handling.
+
+commit f58d3957e5a9fd2d4c11587b06a016e369eb729c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 12:01:17 2025 +0100
+
+    Added Python typing to example script.
+
+commit 6daa357f2a3d86290ba4acb2e6bf09f8f5720305
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 10:06:32 2025 +0100
+
+    Updated CI scripts
+
+commit 5f889af20dce807c0737f31702f018a96aee743f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 5 15:47:44 2025 +0100
+
+    Updated CI scripts
+
+commit 2144f0783abf62334eb7a0e446fd33eed384e71c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 5 13:35:35 2025 +0100
+
+    Updated CI configuration
+
+commit 2a8f94392c5a80447940c899066fbfce79aa1ee3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 5 13:35:34 2025 +0100
+
+    Updated CI scripts
+
+commit c842bbbfe0d9a3b46850f26abb34453ac99099bd
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 5 11:37:03 2025 +0100
+
+    Updated build helper script.
+
+commit e3f63fea7d7778dd933056d4601a5629f2f7aa80
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 5 11:36:21 2025 +0100
+
+    Updated CI scripts
+
+commit 1d9c11888b6a4988df60c8066e2cb241ba1e9fe4
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Dec 5 11:34:57 2025 +0100
+
+    Updated CI configuration
+
+commit eb864a080adcf42f5e0bc624bc18d607ba7cedf2
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 4 17:56:53 2025 +0100
+
+    Updated CI scripts
+
+commit a4549f035b2ec68356b3ce16ce198114d972250f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 4 17:22:37 2025 +0100
+
+    Updated CI configuration
+
+commit c2f1e37792d5ef515c6ac9227756d9457a81f02c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 4 15:30:03 2025 +0100
+
+    Updated CI scripts
+
+commit c93c778e880116e2cfef3c1f15640b1e32a35f07
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 4 15:01:20 2025 +0100
+
+    Updated workflows.
+
+commit 0a9dd44763ebe1fdd6dd6a2feb0f99d182066c7c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 4 12:46:10 2025 +0100
+
+    Header updates.
+
+commit 4095ec6facdd59cdb1851e7c14c72c8f019b2864
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 4 12:46:05 2025 +0100
+
+    Updated CI configuration
+
+commit 6578178fa5b290fa549bec6966f98577103af170
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Dec 4 12:46:04 2025 +0100
+
+    Updated CI scripts
+
+commit d0451b802b858618882517872fd36d677f037e4b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Dec 3 15:59:02 2025 +0100
+
+    Packaging update.
+
+commit db3cd5f87edd6ea27a6fa9d5d271a57466abed39
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Dec 3 15:46:40 2025 +0100
+
+    Updated CI scripts
+
+commit ca9199bbc1be343b00beaaa11ccb73ba3dbec053
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 28 16:37:20 2025 +0100
+
+    Updated CI scripts
+
+commit 86aed90e30044239403683ca5a8c7a8a886d702d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 28 11:26:31 2025 +0100
+
+    Updated CI scripts
+
+commit 26a7ce48bba9ea492ca880e0b0401d1d517f8dbb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Nov 28 10:44:40 2025 +0100
+
+    Workflow update.
+
+commit 6065e21a5fd687c1ccccc8337d94d564997469ae
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 3 13:03:53 2025 +0100
+
+    Yet another documentation update.
+
+commit 450caa1deac537afaf0cbafc340a0966954fb312
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 3 12:50:28 2025 +0100
+
+    Minor documentation update.
+
+commit 968753bf976844c806591c522fbc27f437854982
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Nov 3 12:40:01 2025 +0100
+
+    Improved documentation.
+
+commit 4aa864cc6fa955d3ba310724dfe30fd0d09f5b03
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Oct 24 15:28:03 2025 +0200
+
+    Updated FreeBSD port.
+
+commit 6b0595d569b4ffd39398598d6387e26c7571632d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Oct 24 12:57:50 2025 +0200
+
+    New release bibtexconv-2.0.5.
+
 commit c6236f097b6c83b597fb06b8548c7f8a8a1c91d1
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Oct 14 19:27:27 2025 +0200
