@@ -1,3 +1,27 @@
+commit 40d725c4022309fba15ef37811388237fe0772fd
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 16 15:18:13 2025 +0100
+
+    Updated documentation.
+
+commit 9cb4c985885b0f7b1ed980b5e199088674d26318
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Dec 10 09:39:48 2025 +0100
+
+    Updated FreeBSD port.
+
+commit ba88ce3e8b1a2cc7eebb4ce83ff479d00b82b389
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 17:31:02 2025 +0100
+
+    Configuration update.
+
+commit a99e000574e2541a9a5b46c73f52a6b33a72d362
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Dec 9 16:46:30 2025 +0100
+
+    New release bibtexconv-2.1.0.
+
 commit 7e1214447cc3a2461986e5ab50b61cc564a56529
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Dec 9 15:43:26 2025 +0100
