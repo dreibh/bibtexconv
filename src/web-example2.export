@@ -73,7 +73,7 @@ echo <link rel="stylesheet" href="https://www.nntb.no/~dreibh/stylesheet.css" ty
 
 echo <script type="text/javascript" src="publication-list-treeview.js"></script>\n
 
-echo <style>\n
+echo <style type="text/css">\n
 echo li.treeview-collapsed {\n
 echo    list-style-image: url(Images/ListItem-Collapsed.svg);\n
 echo }\n
