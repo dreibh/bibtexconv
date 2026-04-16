@@ -73,7 +73,7 @@ bool PublicationSet::add(Node* publication)
 {
    assert(entries + 1 <= maxEntries);
    for(size_t i = 0; i < entries; i++) {
-      if(publicationArray[entries] == publication) {
+      if(publicationArray[i] == publication) {
          return(false);
       }
    }
