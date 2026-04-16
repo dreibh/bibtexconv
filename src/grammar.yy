@@ -57,6 +57,12 @@ Node* bibTeXFile = nullptr;
 %token T_TechReport
 %token T_Unpublished
 
+// BibTeX Software extension:
+%token T_Software
+%token T_SoftwareVersion
+%token T_SoftwareModule
+%token T_CodeFragment
+
 %token <iText> T_Keyword
 %token <iText> T_String
 %token <iText> T_Comment
@@ -124,6 +130,14 @@ publication
          { $$ = makePublication("Proceedings", $4, $6); free($4); }
     | T_AT T_Unpublished T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Unpublished", $4, $6); free($4); }
+    | T_AT T_Software T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Software", $4, $6); free($4); }
+    | T_AT T_SoftwareVersion T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("SoftwareVersion", $4, $6); free($4); }
+    | T_AT T_SoftwareModule T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("SoftwareModule", $4, $6); free($4); }
+    | T_AT T_CodeFragment T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("CodeFragment", $4, $6); free($4); }
     ;
 
 publicationInfo

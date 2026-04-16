@@ -119,6 +119,11 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
 [pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return T_Proceedings;   }
 [uU][nN][pP][uU][bB][lL][iI][sS][hH][eE][dD]         { return T_Unpublished;   }
 
+[sS][oO][fF][tT][wW][aA][rR][eE][mM][oO][dD][uU][lL][eE]     { return T_SoftwareModule;  }
+[sS][oO][fF][tT][wW][aA][rR][eE][vV][eE][rR][sS][iI][oO][nN] { return T_SoftwareVersion; }
+[sS][oO][fF][tT][wW][aA][rR][eE]                             { return T_Software;        }
+[cC][oO][dD][eE][fF][rR][aA][gG][mM][eE][nN][tT]             { return T_CodeFragment;    }
+
 ({LATIN}|{EURO}|{CYRILLIC}|{GREEK}|{CJK}|[0-9\-\.\+\:\_])+ {
    yylval.iText = strdup(yytext);
    // printf("K=<%s> l=%d\n",yylval.iText, yylineno);

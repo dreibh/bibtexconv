@@ -484,6 +484,9 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       else if(node->keyword == "title") {
          node->priority = 254;
       }
+      else if(node->keyword == "subtitle") {
+         node->priority = 253;
+      }
 
       else if(node->keyword == "howpublished") {
          node->priority = 252;
@@ -530,6 +533,9 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       }
       else if(node->keyword == "year") {
          node->priority = 237;
+      }
+      else if(node->keyword == "date") {
+         node->priority = 236;
       }
 
       else if(node->keyword == "organization") {
@@ -600,6 +606,21 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       }
       else if(node->keyword == "url.keywords") {
          node->priority = 193;
+      }
+
+      else if(node->keyword == "repository") {
+         node->priority = 189;
+      }
+      else if(node->keyword == "file") {
+         node->priority = 188;
+      }
+
+      else if(node->keyword == "license") {
+         node->priority = 170;
+      }
+
+      else if(node->keyword == "addendum") {
+         node->priority = 1;
       }
 
       else {
