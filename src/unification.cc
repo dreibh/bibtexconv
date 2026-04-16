@@ -31,6 +31,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <algorithm>
+#include <cctype>
+
 #include "unification.h"
 #include "stringhandling.h"
 
@@ -355,10 +358,13 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
    int monthNumber = 0;
    int maxDays     = 0;
    if(month != nullptr) {
-      if(month->value == "jan") {
+      std::string monthName(month->value);
+      std::transform(monthName.begin(), monthName.end(), monthName.begin(),
+                     [](unsigned char c){ return std::tolower(c); });
+      if( (monthName == "jan") || (monthName == "january") ) {
          monthNumber = 1;   maxDays = 31;
       }
-      else if(month->value == "feb") {
+      else if( (monthName == "feb") || (monthName == "february") ) {
          monthNumber = 2;
          if( ((yearNumber % 4) == 0) &&
              ( ((yearNumber % 100) != 0) ||
@@ -369,39 +375,39 @@ void unifyDate(Node* publication, Node* year, Node* month, Node* day)
             maxDays = 28;
          }
       }
-      else if(month->value == "mar") {
+      else if( (monthName == "mar") || (monthName == "march") ) {
          monthNumber = 3;   maxDays = 31;
       }
-      else if(month->value == "apr") {
+      else if( (monthName == "apr") || (monthName == "april") ) {
          monthNumber = 4;   maxDays = 30;
       }
-      else if(month->value == "may") {
+      else if( (monthName == "may") || (monthName == "may") ) {
          monthNumber = 5;   maxDays = 31;
       }
-      else if(month->value == "jun") {
+      else if( (monthName == "jun") || (monthName == "june") ) {
          monthNumber = 6;   maxDays = 30;
       }
-      else if(month->value == "jul") {
+      else if( (monthName == "jul") || (monthName == "july") ) {
          monthNumber = 7;   maxDays = 30;
       }
-      else if(month->value == "aug") {
+      else if( (monthName == "aug") || (monthName == "august") ) {
          monthNumber = 8;   maxDays = 31;
       }
-      else if(month->value == "sep") {
+      else if( (monthName == "sep") || (monthName == "september") ) {
          monthNumber = 9;   maxDays = 30;
       }
-      else if(month->value == "oct") {
+      else if( (monthName == "oct") || (monthName == "october") ) {
          monthNumber = 10;   maxDays = 31;
       }
-      else if(month->value == "nov") {
+      else if( (monthName == "nov") || (monthName == "november") ) {
          monthNumber = 11;   maxDays = 30;
       }
-      else if(month->value == "dec") {
+      else if( (monthName == "dec") || (monthName == "december") ) {
          monthNumber = 12;   maxDays = 31;
       }
       else {
          fprintf(stderr, "WARNING: Entry %s has probably invalid \"month\" section (month=%s?)!\n" ,
-                 publication->keyword.c_str(), month->value.c_str());
+                 publication->keyword.c_str(), monthName.c_str());
       }
       month->number = monthNumber;
       month->value  = format("%02d", monthNumber);
