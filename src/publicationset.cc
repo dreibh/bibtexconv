@@ -799,8 +799,9 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "type");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if(action == "number") {   // Number
-            child = findChildNode(publication, "number");
+         else if( (action == "number") ||
+                  (action == "version") ) {   // Number or version
+            child = findChildNode(publication, action.c_str());
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
          else if(action == "pages") {   // Pages
@@ -881,9 +882,15 @@ std::string PublicationSet::applyTemplate(Node*                           public
                } else { skip = true; }
             } else { skip = true; }
          }
-         else if(action == "url") {   // URL
-            child = findChildNode(publication, "url");
+         else if( (action == "url") ||
+                  (action == "file") ||
+                  (action == "repository") ) {   // URL, file, or repository
+            child = findChildNode(publication, action.c_str());
             if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
+         }
+         else if(action == "urldate") {   // URL date
+            child = findChildNode(publication, "urldate");
+            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
          else if(action == "doi") {   // DOI
             child = findChildNode(publication, "doi");
