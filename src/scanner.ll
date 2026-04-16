@@ -44,7 +44,8 @@ int         level;
 %option yylineno
 %option nounput
 
-%x STRING
+%x QUOTED_STRING
+%x BRACED_STRING
 %x COMMENT
 
 LATIN    [a-zA-Z]
@@ -56,68 +57,101 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
 
 %%
 
- /* ====== Basic tokens ================================================== */
-"@"                                                  { return T_AT; }
-"{"                                                  { return T_OpeningBrace; }
-"}"                                                  { return T_ClosingBrace; }
-","                                                  { return T_Comma; }
-"="                                                  { return T_Equals; }
+ /* ====== Basic tokens ================================================================== */
+"@"                     { return T_AT;           }
+"{"                     { return T_OpeningBrace; }
+"}"                     { return T_ClosingBrace; }
+","                     { return T_Comma;        }
 
 
- /* ====== Quoted strings ================================================ */
-\"                                                   { BEGIN STRING; string = ""; level = 0; }
-<STRING>\\n                                          { string += '\n';   }
-<STRING>\\\"                                         { string += "\\\""; }
-<STRING>\n                                           { string += '\n';   }
-<STRING>\{                                           { string += '{'; level++; }
-<STRING>\}                                           { string += '}'; level--; }
-<STRING>\"                                           { if(level > 0) {
-                                                          string += "\"";
-                                                       }
-                                                       else {
-                                                          BEGIN 0;
-                                                          yylval.iText = strdup(string.c_str());
-                                                          // printf("S1=<%s> l=%d\n",yylval.iText, yylineno);
-                                                          return T_String;
-                                                       }
-                                                     }
-<STRING>.                                            { string += *yytext; };
+ /* ====== Assignment of quoted string =================================================== */
+=[ \t]*\"               {
+                           BEGIN QUOTED_STRING;
+                           string = "";
+                           level = 0;
+                        }
+<QUOTED_STRING>\\\"     { string += "\\\"";       }
+<QUOTED_STRING>\{       { string += '{'; level++; }
+<QUOTED_STRING>\}       { string += '}'; level--; }
+<QUOTED_STRING>\"       {
+                           if(level > 0) {
+                              string += "\"";
+                           }
+                           else {
+                              BEGIN 0;
+                              yylval.iText = strdup(string.c_str());
+                              // printf("SQ=<%s> l=%d\n",yylval.iText, yylineno);
+                              return T_String;
+                           }
+                        }
+<QUOTED_STRING>\n       { string += "\n";         }
+<QUOTED_STRING>.        { string += *yytext; }
 
 
- /* ====== String in parentheses { this is an example } ================== */
-"{"[^\n]+"}"                                         { yylval.iText = strndup((const char*)&yytext[1], strlen(yytext) - 2);
-                                                       // printf("S2=<%s> l=%d\n",yylval.iText, yylineno);
-                                                       return T_String; }
+ /* ====== Assignment of braced string =================================================== */
+=[ \t]*\{               {
+                           BEGIN BRACED_STRING;
+                           string = "";
+                           level = 1;
+                        }
+<BRACED_STRING>\{       { string += '{'; level++; }
+<BRACED_STRING>\}       {
+                           level--;
+                           if(level > 0) {
+                              string += '}';
+                           }
+                           else {
+                              BEGIN 0;
+                              yylval.iText = strdup(string.c_str());
+                              // printf("SB=<%s> l=%d\n",yylval.iText, yylineno);
+                              return T_String;
+                           }
+                        }
+<BRACED_STRING>\n       { string += "\n";         }
+<BRACED_STRING>.        { string += *yytext;      }
 
 
- /* ====== Comment ======================================================= */
-"%"|"\\%"                                            { BEGIN COMMENT; comment = ""; }
-<COMMENT>\n                                          { BEGIN 0;
-                                                       ++yylineno;
-                                                       yylval.iText = strdup(comment.c_str());
-                                                       // printf("C=<%s> l=%d\n",yylval.iText, yylineno);
-                                                       return T_Comment; }
-<COMMENT>.                                           { comment += *yytext; }
+ /* ====== Assignment of keyword ========================================================= */
+=[ \t]*({LATIN}|[0-9\-\.\+\:\_])+ {
+                           const char* p = strchr(yytext, '=') + 1;
+                           while(isspace(*p)) { p++; }
+                           yylval.iText = strdup(p);
+                           // printf("SK=<%s> l=%d\n",yylval.iText, yylineno);
+                           return T_String;
+                        }
 
 
- /* ====== Keywords ====================================================== */
-[aA][rR][tT][iI][cC][lL][eE]                         { return T_Article;       }
-[bB][oO][oO][kK]                                     { return T_Book;          }
-[bB][oO][oO][kK][lL][eE][tT]                         { return T_Booklet;       }
-[dD][aA][tT][aA][sS][eE][tT]                         { return T_Dataset;       }
-[dD][aA][tT][aA]                                     { return T_Data;          }
-[cC][oO][nN][fF][eE][rR][eE][nN][cC][eE]             { return T_InProceedings; }
-[iI][nN][bB][oO][oO][kK]                             { return T_InBook;        }
-[iI][nN][cC][oO][lL][lL][eE][cC][tT][iI][oO][nN]     { return T_InCollection;  }
-[iI][nN][pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS] { return T_InProceedings; }
-[mM][aA][nN][uU][aA][lL]                             { return T_Manual;        }
-[mM][aA][sS][tT][eE][rR][sS][tT][hH][eE][sS][iI][sS] { return T_MastersThesis; }
-[mM][iI][sS][cC]                                     { return T_Misc;          }
-[oO][nN][lL][iI][nN][eE]                             { return T_Online;        }
-[tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return T_TechReport;    }
-[pP][hH][dD][tT][hH][eE][sS][iI][sS]                 { return T_PhDThesis;     }
-[pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return T_Proceedings;   }
-[uU][nN][pP][uU][bB][lL][iI][sS][hH][eE][dD]         { return T_Unpublished;   }
+
+ /* ====== Comment ======================================================================= */
+"%"|"\\%"               { BEGIN COMMENT; comment = ""; }
+<COMMENT>\n             {
+                           BEGIN 0;
+                           ++yylineno;
+                           yylval.iText = strdup(comment.c_str());
+                           // printf("C=<%s> l=%d\n",yylval.iText, yylineno);
+                           return T_Comment;
+                        }
+<COMMENT>.              { comment += *yytext; }
+
+
+ /* ====== Keywords ====================================================================== */
+[aA][rR][tT][iI][cC][lL][eE]                                 { return T_Article;         }
+[bB][oO][oO][kK]                                             { return T_Book;            }
+[bB][oO][oO][kK][lL][eE][tT]                                 { return T_Booklet;         }
+[dD][aA][tT][aA][sS][eE][tT]                                 { return T_Dataset;         }
+[dD][aA][tT][aA]                                             { return T_Data;            }
+[cC][oO][nN][fF][eE][rR][eE][nN][cC][eE]                     { return T_InProceedings;   }
+[iI][nN][bB][oO][oO][kK]                                     { return T_InBook;          }
+[iI][nN][cC][oO][lL][lL][eE][cC][tT][iI][oO][nN]             { return T_InCollection;    }
+[iI][nN][pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return T_InProceedings;   }
+[mM][aA][nN][uU][aA][lL]                                     { return T_Manual;          }
+[mM][aA][sS][tT][eE][rR][sS][tT][hH][eE][sS][iI][sS]         { return T_MastersThesis;   }
+[mM][iI][sS][cC]                                             { return T_Misc;            }
+[oO][nN][lL][iI][nN][eE]                                     { return T_Online;          }
+[tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]                     { return T_TechReport;      }
+[pP][hH][dD][tT][hH][eE][sS][iI][sS]                         { return T_PhDThesis;       }
+[pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]                 { return T_Proceedings;     }
+[uU][nN][pP][uU][bB][lL][iI][sS][hH][eE][dD]                 { return T_Unpublished;     }
 
 [sS][oO][fF][tT][wW][aA][rR][eE][mM][oO][dD][uU][lL][eE]     { return T_SoftwareModule;  }
 [sS][oO][fF][tT][wW][aA][rR][eE][vV][eE][rR][sS][iI][oO][nN] { return T_SoftwareVersion; }
@@ -132,7 +166,7 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
 
 
  /* ====== Miscellaneous ==================================================== */
-[ \t\r\n]                                            { }
+[ \t\r\n]   { }
 
 %%
 

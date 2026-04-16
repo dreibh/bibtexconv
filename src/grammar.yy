@@ -147,10 +147,7 @@ publicationInfo
     ;
 
 publicationInfoItem
-    : T_Keyword T_Equals T_Keyword { $$ = makePublicationInfoItem($1, $3); free($1); free($3); }
-    | T_Keyword T_Equals T_String  { $$ = makePublicationInfoItem($1, $3); free($1); free($3); }
-    | T_Keyword T_Equals T_OpeningBrace T_Keyword T_ClosingBrace { $$ = makePublicationInfoItem($1, $4); free($1); free($4); }
-    | T_Keyword T_Equals T_OpeningBrace T_String T_ClosingBrace  { $$ = makePublicationInfoItem($1, $4); free($1); free($4); }
+    : T_Keyword T_String { $$ = makePublicationInfoItem($1, $2); free($1); free($2); }
     | %empty { $$ = NULL; }
     ;
 
