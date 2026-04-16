@@ -17,21 +17,26 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Contact: thomas.dreibholz@gmail.com
-#
+
+# Bash options:
+set -eu
+
 
 REFERENCES=~/src/papers/Referenzarchiv.bib
 DOCUMENTS="$(grep -E "^@[a-zA-Z]*{[ \t].*,.*$" "${REFERENCES}" | sed -e "s/,//g" | awk '{ print $2; }' | grep -E "^RFC|^draft")"
 UPDATES_FILE="updated.bib"
 RESULTS_FILE="results.bib"
-PARALLEL=16
+PARALLEL=2
 
 BIBTEXCONV_OPTIONS="--check-urls"
 IETF2BIBTEX_OPTIONS="--quiet"
 
-if [ "$1" == "--test" ] ; then
-   BIBTEXCONV_OPTIONS=""    # Do no check URLs
-   IETF2BIBTEX_OPTIONS=""   # Verbose mode
-   echo "!!! Test Mode !!!"
+if [ $# -gt 0 ] ; then
+   if [ "$1" == "--test" ] ; then
+      BIBTEXCONV_OPTIONS=""    # Do no check URLs
+      IETF2BIBTEX_OPTIONS=""   # Verbose mode
+      echo "!!! Test Mode !!!"
+   fi
 fi
 
 echo "Step 1: Fetching metadata ..."
@@ -40,7 +45,7 @@ echo "${DOCUMENTS}" | (
       rm -f "${name}".bib
       if [[ "${name}" =~ ^(RFC[0-9]+$)|(draft-[a-z].*$) ]] ; then
          # echo >&2 "Processing ${name} ..."
-         echo "./ietf2bibtex ${IETF2BIBTEX_OPTIONS} \"${name}\" >${name}.bib"
+         echo "./ietf2bibtex ${IETF2BIBTEX_OPTIONS} \"${name}\" >${name}.bib || true"
       else
          echo >&2 "Skipping ${name}"
       fi
