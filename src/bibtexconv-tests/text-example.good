@@ -7,7 +7,7 @@ URL: https://www.nntb.no/~dreibh/rn/DSV00.pdf.
 ===== YEAR 2001 =====
 ---- February 2001 ----
 [Ref02] Dreibholz, Thomas: "Management of Layered Variable Bitrate Multimedia Streams over DiffServ with Apriori Knowledge" (PDF, 60591 KiB), University of Bonn, Institute for Computer Science, URN: urn:nbn:de:hbz:464-20120416-095753-8, February 20, 2001.
-URL: https://duepublico.uni-duisburg-essen.de/servlets/DerivateServlet/Derivate-29936/Dre2001.pdf.
+URL: https://web.archive.org/web/20260320122156/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029936/Dre2001.pdf.
 
 ===== YEAR 2002 =====
 ---- November 2002 ----
@@ -117,7 +117,7 @@ URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publi
 
 ---- March 2007 ----
 [Ref30] Dreibholz, Thomas: "Reliable Server Pooling – Evaluation, Optimization and Extension of a Novel IETF Architecture" (PDF, 9080 KiB), University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems, URN: urn:nbn:de:hbz:465-20070308-164527-0, March 7, 2007.
-URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf.
+URL: https://web.archive.org/web/20260404173846/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf.
 
 ---- February 2007 ----
 [Ref31] Dreibholz, Thomas; Rathgeb, Erwin Paul: "On Improving the Performance of Reliable Server Pooling Systems for Distance-Sensitive Distributed Applications" (PDF, 393 KiB), in Proceedings of the 15. ITG/GI Fachtagung Kommunikation in Verteilten Systemen (KiVS), Informatik aktuell, pp. 39–50, Springer, DOI: 10.1007/978-3-540-69962-0_4., ISBN 978-3-540-69962-0, Bern/Switzerland, February 28, 2007.
@@ -282,10 +282,10 @@ URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/NOMS2012.
 URL: https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/PAMS2012.pdf.
 
 [Ref73] Dreibholz, Thomas: "Evaluation and Optimisation of Multi-Path Transport using the Stream Control Transmission Protocol" (PDF, 36779 KiB), University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems, URN: urn:nbn:de:hbz:464-20120315-103208-1, March 13, 2012.
-URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf.
+URL: https://web.archive.org/web/20260410062646/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf.
 
 [Ref74] Dreibholz, Thomas: "Konzepte für das Future Internet aus der Netzperspektive" (PDF, 5777 KiB), Habilitation Talk, University of Duisburg-Essen, Faculty of Economics, Institute for Computer Science and Business Information Systems, URN: urn:nbn:de:hbz:464-20120404-135350-0, March 13, 2012.
-URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf.
+URL: https://web.archive.org/web/20260404173846/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf.
 
 ---- February 2012 ----
 [Ref75] Dreibholz, Thomas; Adhari, Hakim; Becke, Martin; Rathgeb, Erwin Paul: "NetPerfMeter – A Versatile Tool for Multi-Protocol Network Performance Evaluations" (PDF, 334 KiB), University of Duisburg-Essen, Institute for Experimental Mathematics, February 8, 2012.
@@ -698,7 +698,7 @@ URL: https://5g-ppp.eu/wp-content/uploads/2021/05/AI-MLforNetworks-v1-0.pdf.
 [Ref188] Dreibholz, Thomas: "NorNet at Hainan University in 2021: Getting Started with NorNet Core – A Remote Tutorial" (PDF, 4654 KiB), Tutorial at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, January 15, 2021.
 URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2021-nornet-tutorial.pdf.
 
-[Ref189] Elmokashfi, Ahmed Mustafa; Arouna, Alfred; Livadariu, Ioana Alexandrina; Fida, Mah-Rukh; Kvalbein, Amund; Al-Selwi, Anas Saeed; Dreibholz, Thomas; Bryhni, Haakon: "A Multi-Perspective Study of Internet Performance during the COVID-19 Outbreak" (PDF, 1813 KiB), in E-Print Archive, Arxiv, January 13, 2021.
+[Ref189] Elmokashfi, Ahmed Mustafa; Arouna, Alfred; Livadariu, Ioana Alexandrina; Fida, Mah-Rukh; Kvalbein, Amund; Al-Selwi, Anas Saeed; Dreibholz, Thomas; Bryhni, Haakon: "A Multi-Perspective Study of Internet Performance during the COVID-19 Outbreak" (PDF, 1813 KiB), in E-Print Archive, ArXiv, DOI: 10.48550/arXiv.2101.05030., January 13, 2021.
 URL: https://arxiv.org/pdf/2101.05030.
 
 [Ref190] Dreibholz, Thomas: "NorNet at Hainan University in 2021: From Simulations to Real-World Internet Measurements for Multi-Path Transport Research – A Remote Presentation" (PDF, 14184 KiB), Keynote Talk at Hainan University, College of Information Science and Technology (CIST), Haikou, Hainan/People's Republic of China, January 8, 2021.
@@ -806,22 +806,47 @@ URL: https://web-backend.simula.no/sites/default/files/2024-02/M2EC2024.pdf.
 URL: https://ieee-dataport.org/documents/reflection-server-tuning-dataset.
 
 ===== YEAR 2025 =====
+---- December 2025 ----
+[Ref219] Ahmed, Azza Hassan Mohamed; Dreibholz, Thomas; Michelinakis, Foivos Ioannis; Čičić, Tarik: "Open 5G Testbed: A Cyber Range Platform for Security Research" (PDF, 798 KiB), in Proceedings of the 18th Workshop on Cyber Security Experimentation and Test (CSET) in conjunction with the 41st Annual Computer Security Applications Conference (ACSAC), Honolulu, Hawaii/U.S.A., December 8, 2025.
+URL: https://web-backend.simula.no/sites/default/files/2025-12/CSET2025.pdf.
+
+---- October 2025 ----
+[Ref220] Dreibholz, Thomas: "OpenPGP Introduction and Key-Signing Session" (PDF, 15612 KiB), Simula Metropolitan Centre for Digital Engineering, Oslo/Norway, October 2, 2025.
+URL: https://web-backend.simula.no/sites/default/files/2025-10/2025-09-OpenPGP-Introduction.pdf.
+
+---- July 2025 ----
+[Ref221] Samuelsen, Magnus; Dreibholz, Thomas; Mazumdar, Somnath: "FL+2: Multi-Layered Privacy Protection for Federated Learning-based Medical Diagnostic" (PDF, 397 KiB), in Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing (ISPDC), Rennes, Bretagne/France, July 8, 2025.
+URL: https://web-backend.simula.no/sites/default/files/2025-07/ISPDC2025-FL2.pdf.
+
+[Ref222] Mazumdar, Somnath; Dreibholz, Thomas: "Towards a Privacy-Aware Communication for Disaggregated Fog Platform" (PDF, 435 KiB), in Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing (ISPDC), Rennes, Bretagne/France, July 8, 2025.
+URL: https://web-backend.simula.no/sites/default/files/2025-07/ISPDC2025-DisaggregatedFog.pdf.
+
 ---- June 2025 ----
-[Ref219] Dreibholz, Thomas: "HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks" (PDF, 6477 KiB), Simula Research Laboratory, Oslo/Norway, June 12, 2025.
+[Ref223] Dreibholz, Thomas: "HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks" (PDF, 6477 KiB), Simula Research Laboratory, Oslo/Norway, June 12, 2025.
 URL: https://web-backend.simula.no/sites/default/files/2025-06/SKF2025.pdf.
 
-[Ref220] Dreibholz, Thomas: "Satellite Network Connectivity during a Trans-Atlantic Flight" (HTML, 53 KiB), IEEE DataPort, DOI: 10.21227/q0xf-t853., June 12, 2025.
-URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight.
-
-[Ref221] Evang, Jan Marius; Dreibholz, Thomas; Mazumdar, Somnath: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (PDF, 4302 KiB), in Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM), Trondheim, Trøndelag/Norway, June 11, 2025.
+[Ref224] Evang, Jan Marius; Dreibholz, Thomas; Mazumdar, Somnath: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (PDF, 4302 KiB), in Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM), DOI: 10.1109/RNDM66856.2025.11073801., Trondheim, Trøndelag/Norway, June 11, 2025.
 URL: https://web-backend.simula.no/sites/default/files/2025-06/RNDM2025.pdf.
 
 ---- May 2025 ----
-[Ref222] Evang, Jan Marius; Dreibholz, Thomas: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (HTML, 52 KiB), IEEE DataPort, DOI: 10.21227/zdmm-ee93., May 26, 2025.
+[Ref225] Evang, Jan Marius; Dreibholz, Thomas: "Measuring Mobile Network Coverage during Extended Road Trips in the Nordics" (HTML, 52 KiB), IEEE DataPort, DOI: 10.21227/zdmm-ee93., May 26, 2025.
 URL: https://ieee-dataport.org/documents/measuring-mobile-network-coverage-during-extended-road-trips-nordics.
 
 ---- March 2025 ----
-[Ref223] Dreibholz, Thomas; Mazumdar, Somnath: "HiPerConTracer 3.0: Transport-level Packet Routing Analysis Tool" (PDF, 5349 KiB), in Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP), pp. 33–41, DOI: 10.1109/PDP66500.2025.00014., ISBN 979-8-3315-2493-7, Torino, Piemonte/Italy, March 14, 2025.
+[Ref226] Dreibholz, Thomas; Mazumdar, Somnath: "HiPerConTracer 3.0: Transport-level Packet Routing Analysis Tool" (PDF, 5349 KiB), in Proceedings of the 33rd Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP), pp. 33–41, DOI: 10.1109/PDP66500.2025.00014., ISBN 979-8-3315-2493-7, Torino, Piemonte/Italy, March 14, 2025.
 URL: https://web-backend.simula.no/sites/default/files/2025-02/PDP2025.pdf.
+
+===== YEAR 2026 =====
+---- April 2026 ----
+[Ref227] Dreibholz, Thomas; Michelinakis, Foivos Ioannis; Čičić, Tarik: "A Sleepless Night over the Atlantic Ocean – Analysing the Satellite Network Connectivity during a Trans-Atlantic Flight" (PDF, 9822 KiB), in Proceedings of the 8th International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 40th International Conference on Advanced Information Networking and Applications (AINA), Wellington/New Zealand, April 8, 2026.
+URL: https://web-backend.simula.no/sites/default/files/2026-01/M2EC2026.pdf.
+
+---- February 2026 ----
+[Ref228] Dreibholz, Thomas; Mazumdar, Somnath: "Tracing Data Packet Paths over the Internet using Traceroute" (PDF, 22445 KiB), ArXiv, Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA), DOI: 10.48550/arXiv.2602.09857., February 10, 2026.
+URL: https://arxiv.org/pdf/2602.09857.
+
+---- January 2026 ----
+[Ref229] Dreibholz, Thomas: "Satellite Network Connectivity during a Trans-Atlantic Flight" (HTML, 53 KiB), IEEE DataPort, DOI: 10.21227/q0xf-t853., January 30, 2026.
+URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight.
 
 ===== End of My Publications List =====

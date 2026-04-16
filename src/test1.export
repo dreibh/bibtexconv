@@ -28,14 +28,6 @@
 # Contact: thomas.dreibholz@gmail.com
 
 
-# Select entries:
-# The first argument is the original BibTeX reference,
-# The second argument is a new anchor for printing.
-cite LCN2005   TD01
-cite LCA2003   TD02
-cite IJHIT2008
-cite Dre2006   TD04
-
 include test1.cites
 
 sort year/A month/D day/D title/A

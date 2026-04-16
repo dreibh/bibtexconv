@@ -3903,8 +3903,9 @@ This talk provides an overview of the work in the areas of multi-homing and mult
 	day = "13",
 	month = jan,
 	year = "2021",
-	publisher = "Arxiv",
+	publisher = "ArXiv",
 	language = "english",
+	doi = "10.48550/arXiv.2101.05030",
 	abstract = "{The rapid spread of the novel corona virus, SARS-CoV-2, has prompted an unprecedented response from governments across the world. A third of the world population have been placed in varying degrees of lockdown, and the Internet has become the primary medium for conducting most businesses and schooling activities. This paper aims to provide a multi-prospective account of Internet performance during the lockdown. We investigate the performance of the Internet control plane and data plane from a number of globally spread vantage points. We also look closer at two case studies. First, we look at growth in video traffic during the pandemic, using traffic logs from a global video conferencing provider. Second, we leverage a country-wide deployment of measurement probes to assess the performance of mobile networks during the outbreak. We find that the lockdown has visibly impacted almost all aspects of Internet performance. Access networks have experienced an increase in peak and off-peak end to end latency. Mobile networks exhibit significant changes in download speed, while certain types of video traffic has increased by an order of magnitude.}",
 	url = "https://arxiv.org/pdf/2101.05030",
 	url.size = "1855647",
@@ -4602,23 +4603,6 @@ As part of this paper, first the network packet timestamping features of Unix sy
 	url.checked = "2025-06-11 16:49:44 CEST"
 }
 
-@Data{ HiPerConTracer-Atlantic-Dataset2025,
-	author = "Thomas Dreibholz",
-	title = "{Satellite Network Connectivity during a Trans-Atlantic Flight}",
-	day = "12",
-	month = jun,
-	year = "2025",
-	publisher = "IEEE DataPort",
-	doi = "10.21227/q0xf-t853",
-	keywords = "Latency, Kernel Tuning, HiPerConTracer",
-	abstract = "{This repository contains a dataset with HiPerConTracer performance data and OSM Tracker GNSS tracking of a trans-Atlantic flight between New York - John F. Kennedy (JFK) and Oslo - Gardermoen (OSL).}",
-	url = "https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight",
-	url.size = "53709",
-	url.md5 = "25b8cff0e5e7e42407af32f500c009db",
-	url.mime = "text/html",
-	url.checked = "2025-06-13 12:23:16 CEST"
-}
-
 @Data{ RoadTrip-Dataset2025,
 	author = "Jan Marius Evang and Thomas Dreibholz",
 	title = "{Measuring Mobile Network Coverage during Extended Road Trips in the Nordics}",
@@ -4732,6 +4716,7 @@ Here, we present HiPerConTracer~3.0 for tracing routes between senders and recei
 	year = "2025",
 	address = "Trondheim, Trøndelag/Norway",
 	language = "english",
+	doi = "10.1109/RNDM66856.2025.11073801",
 	keywords = "5G, Networks, Variability, Service Quality, Roaming, Reliability",
 	abstract = "{Modern smartphones, equipped with advanced mobile network technologies, deliver substantial computing capabilities, but they are energy-constrained because of battery capacity limitations. It is now feasible to offload computationally demanding tasks to cloud and fog computing infrastructures to overcome this limitation. A reliable network connection is required for stable communication between mobile devices and cloud or fog systems. This experimental campaign examines the reliability of mobile network connectivity during prolonged road trips, spanning approximately 44,000~km across Norway, Sweden, Denmark, Estonia, and Finland. We collected long-term latency and loss data to evaluate service quality and roaming performance, including cross-border transitions. Our findings reveal significant variability in network reliability, with frequent roaming events in certain countries, and occasional long service outages lasting up to 680~s. These results highlight the challenges of maintaining uninterrupted connectivity for critical services, in dynamic environments. This study provides a foundation for further large-scale investigations into mobile network resilience beyond the Nordic countries.}",
 	url = "https://web-backend.simula.no/sites/default/files/2025-06/RNDM2025.pdf",
@@ -4763,6 +4748,149 @@ Here, we present HiPerConTracer~3.0 for tracing routes between senders and recei
 	url.checked = "2025-06-16 12:23:23 CEST"
 }
 
+@Misc{ SMS2025-OpenPGP,
+	author = "Thomas Dreibholz",
+	title = "{OpenPGP Introduction and Key-Signing Session}",
+	type = "SimulaMet Seminar",
+	numpages = "41",
+	day = "2",
+	month = oct,
+	year = "2025",
+	publisher = "Simula Metropolitan Centre for Digital Engineering",
+	address = "Oslo/Norway",
+	language = "english",
+	keywords = "OpenPGP, Web of Trust, Public Key, Private Key, Signature, Encryption, Authenticity, Confidentiality",
+	abstract = "{The intention of this tutorial is to provide an introduction to OpenPGP, which is an open, non-proprietary standard for encrypting and digitally signing data, most notably email and software packages, using public key cryptography. Particularly, it is intended that the audience can install and use the well-known GnuPG, to generate an own key pair (if not already existing), and get their public keys mutually signed to create a web of trust.}",
+	url = "https://web-backend.simula.no/sites/default/files/2025-10/2025-09-OpenPGP-Introduction.pdf",
+	url.size = "15986572",
+	url.md5 = "f7488dc6610647d3b21ea8504def7c53",
+	url.mime = "application/pdf",
+	url.pagesize = "793.701 x 446.457 pts",
+	url.checked = "2025-10-03 13:45:09 CEST"
+}
+
+@InProceedings{ ISPDC2025-FL+2,
+	author = "Magnus Samuelsen and Thomas Dreibholz and Somnath Mazumdar",
+	title = "{FL+2: Multi-Layered Privacy Protection for Federated Learning-based Medical Diagnostic}",
+	booktitle = "{Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing~(ISPDC)}",
+	numpages = "8",
+	day = "8",
+	month = jul,
+	year = "2025",
+	address = "Rennes, Bretagne/France",
+	language = "english",
+	keywords = "Blockchain, Cloud, Fog, Federated Learning, Privacy",
+	abstract = "{To build trust between patients and health institutions, implementing a privacy-preserving mechanism to handle personal health information is crucial. Federated learning (FL) is gaining popularity in health data analysis due to its ability to enhance trustworthiness by sharing model-related information rather than data. Blockchain, with its decentralization, immutability, and traceability features, has also been integrated with FL to address existing privacy concerns. In this paper, we introduce FL+2, which is designed to address the infrastructural security and model-focused privacy challenges associated with FL-based medical analysis. FL+2 incorporates a first layer that utilizes a strict data transmission control mechanism using a P4 software switch for infrastructural security. The second layer ensures model traceability and data access (including data delegation) control via blockchain for better model privacy. Here, we present the early results of the proposed FL+2 prototype, which was implemented in our in-house cloud/fog testbed. We discuss how a P4 switch and blockchain-based controlled data access and traceability mechanism offer specific security benefits and the associated development overhead.}",
+	url = "https://web-backend.simula.no/sites/default/files/2025-07/ISPDC2025-FL2.pdf",
+	url.size = "406154",
+	url.md5 = "dc75114c03c5fb50b6859ee88f5929bc",
+	url.mime = "application/pdf",
+	url.pagesize = "612 x 792 pts (letter)",
+	url.checked = "2025-07-28 15:55:37 CEST"
+}
+
+@InProceedings{ ISPDC2025-DisaggregatedFog,
+	author = "Somnath Mazumdar and Thomas Dreibholz",
+	title = "{Towards a Privacy-Aware Communication for Disaggregated Fog Platform}",
+	booktitle = "{Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing~(ISPDC)}",
+	numpages = "8",
+	day = "8",
+	month = jul,
+	year = "2025",
+	address = "Rennes, Bretagne/France",
+	language = "english",
+	keywords = "Disaggregated, Fog, Latency, Privacy, VPP, DPDK",
+	abstract = "{Fog computing is an intermediate layer between edge devices and cloud computing that provides execution support to minimize application delays. Fog aims at improving latency and the quality of experience. Unlike legacy monolithic systems, in which resources are tightly coupled, disaggregated architectures aim to improve resource utilization, scalability, energy efficiency, and cost savings while supporting various large-scale workloads. This paper proposes a data communication fabric for disaggregated hardware architecture-based fog platforms. In addition, it integrates an often-overlooked component, i.e., privacy as a core design principle. The proposed architecture focuses on distributed and decentralized network traffic management using a vector packet processing platform. In this paper, we have presented target disaggregated hardware and mechanisms for efficient data packet management at local and global communication levels while improving latency and privacy. We demonstrated that our VPP/DPDK-based switches outperform traditional Linux bridging, achieving higher throughput (up to 1.7 Gbit/s vs. 0.9 Gbit/s) and lower latency (under 1 ms kernel-space round trip time).}",
+	url = "https://web-backend.simula.no/sites/default/files/2025-07/ISPDC2025-DisaggregatedFog.pdf",
+	url.size = "444672",
+	url.md5 = "89cb9041db344cb69c71272c275db5df",
+	url.mime = "application/pdf",
+	url.pagesize = "612 x 792 pts (letter)",
+	url.checked = "2025-07-28 15:54:12 CEST"
+}
+
+@InProceedings{ CSET2025,
+	author = "Azza Hassan Mohamed Ahmed and Thomas Dreibholz and Foivos Ioannis Michelinakis and Tarik Čičić",
+	title = "{Open 5G Testbed: A Cyber Range Platform for Security Research}",
+	booktitle = "{Proceedings of the 18th Workshop on Cyber Security Experimentation and Test~(CSET) in conjunction with the 41st Annual Computer Security Applications Conference~(ACSAC)}",
+	numpages = "8",
+	day = "8",
+	month = dec,
+	year = "2025",
+	address = "Honolulu, Hawaii/U.S.A.",
+	language = "english",
+	keywords = "5G Testbed, Cyber Range, Security, Experimentation, Virtualization, Open-Source",
+	abstract = "{The fifth generation (5G) of wireless communication offers gigabit-per-second speeds, ultra-low latency, and massive device connectivity. However, the introduction of network function virtualization (NFV), software-defined networking (SDN), network slicing, and mobile edge computing (MEC) has also created a complex security frontier. Addressing these challenges requires continuous and realistic validation of defenses in controlled experimentation environments. In this paper, we present an open-source, low-cost, fully software-based 5G testbed designed as a cyber range platform for security research and education. Built upon the OpenAirInterface (OAI) framework and commercial off-the-shelf hardware, the testbed supports an end-to-end 5G Stand-Alone (SA) deployment with gNodeB, core network, and user equipment (UE). It enables reproducible experimentation that may demonstrate a broad range of security scenarios, including privacy and tracking-based vulnerabilities (e.g., capturing user identifiers) as well as availability attacks such as DoS attacks targeting core network functions.
+The paper outlines our reproducible implementation and shares our experiences in building and operating the platform as a cyber range.}",
+	url = "https://web-backend.simula.no/sites/default/files/2025-12/CSET2025.pdf",
+	url.size = "817146",
+	url.md5 = "0f2e763cc299988acb9c093e429cb994",
+	url.mime = "application/pdf",
+	url.pagesize = "612 x 792 pts (letter)",
+	url.checked = "2025-12-11 10:29:34 CET"
+}
+
+@Data{ HiPerConTracer-Atlantic-Dataset2025,
+	author = "Thomas Dreibholz",
+	title = "{Satellite Network Connectivity during a Trans-Atlantic Flight}",
+	day = "30",
+	month = jan,
+	year = "2026",
+	publisher = "IEEE DataPort",
+	doi = "10.21227/q0xf-t853",
+	keywords = "Latency, Kernel Tuning, HiPerConTracer",
+	abstract = "{This repository contains a dataset with HiPerConTracer performance data and OSM Tracker GNSS tracking of a trans-Atlantic flight between New York - John F. Kennedy (JFK) and Oslo - Gardermoen (OSL).}",
+	url = "https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight",
+	url.size = "53709",
+	url.md5 = "25b8cff0e5e7e42407af32f500c009db",
+	url.mime = "text/html",
+	url.checked = "2025-06-13 12:23:16 CEST"
+}
+
+@InProceedings{ M2EC2026-Atlantic,
+	author = "Thomas Dreibholz and Foivos Ioannis Michelinakis and Tarik Čičić",
+	title = "{A Sleepless Night over the Atlantic Ocean -- Analysing the Satellite Network Connectivity during a Trans-Atlantic Flight}",
+	booktitle = "{Proceedings of the 8th International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing~(M2EC) in conjunction with the 40th International Conference on Advanced Information Networking and Applications~(AINA)}",
+	numpages = "12",
+	day = "8",
+	month = apr,
+	year = "2026",
+	address = "Wellington/New Zealand",
+	language = "english",
+	keywords = "HiPerConTracer, In-Flight Internet, Jitter, Network, Ping, Round-Trip Time, Satellite Communication, Traceroute",
+	abstract = "{Today, most applications rely on ubiquitous, reliable, and fast Internet access to provide their services. While network performance in mobile broadband networks is well-researched, in-flight satellite communication is still an open topic. In-flight Internet access offers various service possibilities, from entertainment to shopping, for both passengers as well as service operators. This particularly applies to long-haul flights, where passengers have plenty of time. Clearly, stable connectivity allows to offload application functionalities from a passenger's mobile device to edge and cloud servers. But how is the performance of today's network connectivity on airplanes, i.e. what can the application developer expect?
+In this paper, we examine a detailed HiPerConTracer dataset, collected on a trans-Atlantic night flight between New York, U.S.A. and Oslo, Norway. Particularly, we show some interesting insights into the performance available, as well as the limitations of today's in-flight satellite communication. Furthermore, the dataset, as well as the software for obtaining and processing the data, is published as open data and open source software.
+}",
+	url = "https://web-backend.simula.no/sites/default/files/2026-01/M2EC2026.pdf",
+	url.size = "10057377",
+	url.md5 = "da38d334008fa96c877e50306f90eb2b",
+	url.mime = "application/pdf",
+	url.pagesize = "595.276 x 841.89 pts (A4)",
+	url.checked = "2026-01-30 09:52:17 CET"
+}
+
+@TechReport{ Arxiv-TraceNorNet2026,
+	author = "Thomas Dreibholz and Somnath Mazumdar",
+	title = "{Tracing Data Packet Paths over the Internet using Traceroute}",
+	numpages = "19",
+	day = "10",
+	month = feb,
+	year = "2026",
+	institution = "Simula Metropolitan Center for Digital Engineering, Centre for Resilient Networks and Applications (CRNA)",
+	publisher = "ArXiv",
+	language = "english",
+	doi = "10.48550/arXiv.2602.09857",
+	keywords = "Internet Protocol, Packets, Path, Round-Trip Time, Traceroute, Ping",
+	abstract = "{Network communication using the Internet Protocol (IP) is a pillar of modern Internet applications. IP allows data packets to travel the world through a complex set of interconnected computer networks managed by different operators. How IP-based data communication changes over time can be interesting from an end-system's perspective without relying on underlying network providers. This article presents an extensive, trace-driven analysis of user data traffic (covering five years of observations, six large Internet service providers (covering research, business and consumer category type), twenty autonomous systems, and fourteen countries.
+Our three primary findings are: i users data packet transmission paths are not deterministic and does not always select the geographically shortest path; ii) user packets take different routes that cover many countries and detour between two fixed points. Even after changing the types of Internet service provider type (e.g., from commercial to research), the routing can differ significantly between two locations. iii) Packet transmission delay can be influenced by changing the Internet service provider and IP protocol versions (i.e., from IPv4 to IPv6).}",
+	url = "https://arxiv.org/pdf/2602.09857",
+	url.size = "22983634",
+	url.md5 = "a3efa74edd7fa546c0000ce6be68481b",
+	url.mime = "application/pdf",
+	url.pagesize = "595.276 x 841.89 pts (A4)",
+	url.checked = "2026-02-11 11:39:26 CET"
+}
+
 @PhDThesis{ Dre2012,
 	author = "Thomas Dreibholz",
 	title = "{Evaluation and Optimisation of Multi-Path Transport using the Stream Control Transmission Protocol}",
@@ -4780,12 +4908,12 @@ Clearly, the existence of multiple paths has led to the idea of applying load sh
 In this thesis, the issues of dissimilar paths for CMT-based load sharing will be demonstrated first. The reasons for these issues will be identified and solutions proposed. These solutions will be evaluated in simulations, as well as partially also in a real-world Internet testbed setup, in order to show their effectiveness. In particular, it will be shown that a combination of multiple mechanisms is necessary to make CMT work as expected under a wide range of network and system parameters.
 Furthermore, the fairness of CMT-based transport -- in concurrency to classic non-CMT flows -- will be analysed. The usage of plain CMT leads to an overly aggressive bandwidth occupation on so-called shared bottlenecks. As a countermeasure, the idea of Resource Pooling will be utilised. For this purpose, two new and one adapted congestion control approach -- all based on the Resource Pooling principle -- will be introduced and examined in similar as well as dissimilar path setups, in order to show how to fairly deploy CMT transport in the Internet.
 The results of this work have also been contributed to the ongoing IETF~standardisation process of SCTP and its extensions.}",
-	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf",
+	url = "https://web.archive.org/web/20260410062646/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf",
 	url.size = "37661345",
 	url.md5 = "add34f0b780cb35b7ee1f963ea85e59c",
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2015-05-06 22:13:53 CEST"
+	url.checked = "2026-04-16 15:28:35 CEST"
 }
 
 @Misc{ Dre2012-FutureInternet,
@@ -4802,12 +4930,12 @@ The results of this work have also been contributed to the ongoing IETF~standard
 	keywords = "Future Internet, Habilitationsvortrag",
 	abstract = "{Vielen seiner Benutzer erscheint das Internet als neuartig und hochmodern. Seine Grundlagen jedoch sind keineswegs neu, sondern basieren auf mittlerweile fast 40~Jahre alten Ideen. Dienste werden mittels eines geschichteten, hierarchischen Protokollstacks realisiert, bei welchem eine Interaktion nicht-benachbarter Schichten nicht vorgesehen ist. Dieser starre Aufbau macht bereits das Anpassen der Internet-Architektur an die Anforderungen der heutigen Anwendungen – wie etwa File Sharing, Videotelefonie und mobile Endgeräte – kompliziert. Die großen Herausforderungen des zukünftigen Internets – welches als das Future Internet bezeichnet wird – mit Anwendungsszenarien wie Cloud Computing, Internet of Things, Sensornetzwerken und vielen weiteren – erfordern jedoch noch weitaus umfangreichere Anpassungen. Zudem ist eine große Flexibilität erforderlich, um auch weiteren – heute noch nicht absehbaren – Anforderungen gerecht zu werden.
 Im Rahmen dieses Habilitationsvortrages wird zunächst kurz auf die Probleme des aktuellen Internets eingegangen sowie die Herausforderungen des Future Internets vorgestellt. Im Anschluss daran wird eine Auswahl der für den Übergang zum Future Internet möglichen evolutionären sowie revolutionären Ansätze vorgestellt. Der Schwerpunkt liegt hierbei auf den noch relativ neuen – und in der Forschung momentan sehr aktiv diskutierten – revolutionären Ansätzen, welche mit der Idee des sogenannten Clean Slate einen vollständigen Neuansatz anstreben. Hierbei werden die Ansätze der Funktionalen Komposition, des Content-Centric Networking sowie der Virtualisierung von Netzwerken vorgestellt. Zum Schluss wird dann auf die Frage eingegangen, wie eine Nutzung der vorgestellten Ansätze in der Praxis möglich ist und welche der aktuell in Diskussion befindlichen Ansätze sich in Zukunft voraussichtlich durchsetzen werden.}",
-	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf",
+	url = "https://web.archive.org/web/20260404173846/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf",
 	url.size = "5915045",
 	url.md5 = "bd09fd9172fccb9edd4ee88299038f47",
 	url.mime = "application/pdf",
 	url.pagesize = "720 x 540 pts",
-	url.checked = "2023-04-14 13:06:16 CEST"
+	url.checked = "2026-04-16 15:28:37 CEST"
 }
 
 @PhDThesis{ Dre2006,
@@ -4824,12 +4952,12 @@ Im Rahmen dieses Habilitationsvortrages wird zunächst kurz auf die Probleme des
 	abstract = "{The Reliable Server Pooling (RSerPool) architecture currently under standardization by the IETF RSerPool Working Group is an overlay network framework to provide server replication and session failover capabilities to applications using it. These functionalities as such are not new, but their combination into one generic, application-independent framework is.
 Initial goal of this thesis is to gain insight into the complex RSerPool mechanisms by performing experimental and simulative proof-of-concept tests. The further goals are to systematically validate the RSerPool architecture and its protocols, provide improvements and optimizations where necessary and propose extensions if useful. Based on these evaluations, recommendations to implementers and users of RSerPool should be provided, giving guidelines for the tuning of system parameters and the appropriate configuration of application scenarios. In particular, it is also a goal to transfer insights, optimizations and extensions of the RSerPool protocols from simulation to reality and also to bring the achievements from research into application by supporting and contributing relevant results to the IETF's ongoing RSerPool standardization process.
 To achieve the described goals, a prototype implementation as well as a simulation model are designed and realized at first. Using a generic application model and appropriate performance metrics, the performance of RSerPool systems in failure-free and server failure scenarios is systematically evaluated in order to identify critical parameter ranges and problematic protocol behaviour. Improvements developed as result of these performance analyses are evaluated and finally contributed into the standardization process of RSerPool.}",
-	url = "https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf",
+	url = "https://web.archive.org/web/20260404173846/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf",
 	url.size = "9297866",
 	url.md5 = "acdd102ebd0775ca5de523ec5710d800",
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2023-04-14 13:06:16 CEST"
+	url.checked = "2026-04-16 15:34:36 CEST"
 }
 
 @MastersThesis{ Dre2001,
@@ -4846,12 +4974,12 @@ To achieve the described goals, a prototype implementation as well as a simulati
 	keywords = "Multimedia, Quality of Service, Layered Transmission, DiffServ, A Priori Knowledge",
 	abstract = "{The Internet is developing with a very high speed. Just a few years ago, its main applications were file transfer and e-mail access, all based on the best effort TCP/IP service over quite slow links. With the quickly growing deployment of high-speed Internet accesses, there is a growing demand for also using the Internet in application scenarios like real-time multimedia streaming, particularly for audio and video on demand services. However, such multimedia applications do not only require sufficient bandwidth. They have stricter quality of service demands, like e.g.\ an upper bound on the transfer delay to ensure interactivity for their users.
 In the context of this thesis, a system for the cost-efficient transfer of variable bitrate multimedia streams over Differentiated Services~(DiffServ) is presented and evaluated. This system supports layered transmission, i.e.\ streams may be partitioned into sub-streams denoted as layers (e.g.\ a video layer and an audio layer). Distinct layers may have different priorities as well as quality of service requirements and may therefore use different DiffServ classes for data transmission. Also, the streams may be scalable, i.e.\ the quality of the transferred media may be decreased in order to reduce the bandwidth requirements when bandwidth becomes scarce. Particularly, the system makes use of the fact that media files in e.g.\ a video on demand library can be analyzed a priorily. The information that is computed during the offline analysis is used to realize a dynamic and cost-efficient transport of layer data over different DiffServ classes. Furthermore, the system applies an adaptive buffering to smooth the flows -- in order to save bandwidth -- while also taking care of the delay constraints.}",
-	url = "https://duepublico.uni-duisburg-essen.de/servlets/DerivateServlet/Derivate-29936/Dre2001.pdf",
+	url = "https://web.archive.org/web/20260320122156/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029936/Dre2001.pdf",
 	url.size = "62044170",
 	url.md5 = "479cc723184d88dbce6864ab93f9b6c0",
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2015-05-06 22:14:24 CEST"
+	url.checked = "2026-04-16 15:34:50 CEST"
 }
 
 @TechReport{ DSV00,

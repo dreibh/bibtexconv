@@ -12,7 +12,7 @@ Reference:
    Year: 2001
    Month: feb
    Day: 20
-   URL: https://duepublico.uni-duisburg-essen.de/servlets/DerivateServlet/Derivate-29936/Dre2001.pdf
+   URL: https://web.archive.org/web/20260320122156/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029936/Dre2001.pdf
  - Author: Thomas Dreibholz
    Booktitle: Proceedings of the 27th IEEE Local Computer Networks Conference (LCN)
    Pages: 348–349
@@ -254,7 +254,7 @@ Reference:
    Year: 2007
    Month: mar
    Day: 7
-   URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf
+   URL: https://web.archive.org/web/20260404173846/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf
  - Author: Thomas Dreibholz and Erwin Paul Rathgeb
    Booktitle: Proceedings of the 15. ITG/GI Fachtagung Kommunikation in Verteilten Systemen (KiVS)
    Pages: 39–50
@@ -641,13 +641,13 @@ Reference:
    Year: 2012
    Month: mar
    Day: 13
-   URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf
+   URL: https://web.archive.org/web/20260410062646/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf
  - Author: Thomas Dreibholz
    Title: Konzepte für das Future Internet aus der Netzperspektive
    Year: 2012
    Month: mar
    Day: 13
-   URL: https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf
+   URL: https://web.archive.org/web/20260404173846/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf
  - Author: Thomas Dreibholz and Hakim Adhari and Martin Becke and Erwin Paul Rathgeb
    Title: NetPerfMeter – A Versatile Tool for Multi-Protocol Network Performance Evaluations
    Type: OMNeT++ Code Contribution
@@ -1533,8 +1533,9 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/publications/files/haikou2021-nornet-tutorial.pdf
  - Author: Ahmed Mustafa Elmokashfi and Alfred Arouna and Ioana Alexandrina Livadariu and Mah-Rukh Fida and Amund Kvalbein and Anas Saeed Al-Selwi and Thomas Dreibholz and Haakon Bryhni
    Journal: E-Print Archive
-   Publisher: Arxiv
+   Publisher: ArXiv
    Title: A Multi-Perspective Study of Internet Performance during the COVID-19 Outbreak
+   DOI: 10.48550/arXiv.2101.05030
    Year: 2021
    Month: jan
    Day: 13
@@ -1796,6 +1797,35 @@ Reference:
    Month: feb
    Day: 2
    URL: https://ieee-dataport.org/documents/reflection-server-tuning-dataset
+ - Author: Azza Hassan Mohamed Ahmed and Thomas Dreibholz and Foivos Ioannis Michelinakis and Tarik Čičić
+   Booktitle: Proceedings of the 18th Workshop on Cyber Security Experimentation and Test (CSET) in conjunction with the 41st Annual Computer Security Applications Conference (ACSAC)
+   Title: Open 5G Testbed: A Cyber Range Platform for Security Research
+   Year: 2025
+   Month: dec
+   Day: 8
+   URL: https://web-backend.simula.no/sites/default/files/2025-12/CSET2025.pdf
+ - Author: Thomas Dreibholz
+   Publisher: Simula Metropolitan Centre for Digital Engineering
+   Title: OpenPGP Introduction and Key-Signing Session
+   Type: SimulaMet Seminar
+   Year: 2025
+   Month: oct
+   Day: 2
+   URL: https://web-backend.simula.no/sites/default/files/2025-10/2025-09-OpenPGP-Introduction.pdf
+ - Author: Magnus Samuelsen and Thomas Dreibholz and Somnath Mazumdar
+   Booktitle: Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing (ISPDC)
+   Title: FL+2: Multi-Layered Privacy Protection for Federated Learning-based Medical Diagnostic
+   Year: 2025
+   Month: jul
+   Day: 8
+   URL: https://web-backend.simula.no/sites/default/files/2025-07/ISPDC2025-FL2.pdf
+ - Author: Somnath Mazumdar and Thomas Dreibholz
+   Booktitle: Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing (ISPDC)
+   Title: Towards a Privacy-Aware Communication for Disaggregated Fog Platform
+   Year: 2025
+   Month: jul
+   Day: 8
+   URL: https://web-backend.simula.no/sites/default/files/2025-07/ISPDC2025-DisaggregatedFog.pdf
  - Author: Thomas Dreibholz
    Publisher: Simula Research Laboratory
    Title: HiPerConTracer: A Versatile Tool for Obtaining Insights into Today's Communication Networks
@@ -1804,17 +1834,10 @@ Reference:
    Month: jun
    Day: 12
    URL: https://web-backend.simula.no/sites/default/files/2025-06/SKF2025.pdf
- - Author: Thomas Dreibholz
-   Publisher: IEEE DataPort
-   Title: Satellite Network Connectivity during a Trans-Atlantic Flight
-   DOI: 10.21227/q0xf-t853
-   Year: 2025
-   Month: jun
-   Day: 12
-   URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight
  - Author: Jan Marius Evang and Thomas Dreibholz and Somnath Mazumdar
    Booktitle: Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM)
    Title: Measuring Mobile Network Coverage during Extended Road Trips in the Nordics
+   DOI: 10.1109/RNDM66856.2025.11073801
    Year: 2025
    Month: jun
    Day: 11
@@ -1837,3 +1860,26 @@ Reference:
    Month: mar
    Day: 14
    URL: https://web-backend.simula.no/sites/default/files/2025-02/PDP2025.pdf
+ - Author: Thomas Dreibholz and Foivos Ioannis Michelinakis and Tarik Čičić
+   Booktitle: Proceedings of the 8th International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 40th International Conference on Advanced Information Networking and Applications (AINA)
+   Title: A Sleepless Night over the Atlantic Ocean – Analysing the Satellite Network Connectivity during a Trans-Atlantic Flight
+   Year: 2026
+   Month: apr
+   Day: 8
+   URL: https://web-backend.simula.no/sites/default/files/2026-01/M2EC2026.pdf
+ - Author: Thomas Dreibholz and Somnath Mazumdar
+   Publisher: ArXiv
+   Title: Tracing Data Packet Paths over the Internet using Traceroute
+   DOI: 10.48550/arXiv.2602.09857
+   Year: 2026
+   Month: feb
+   Day: 10
+   URL: https://arxiv.org/pdf/2602.09857
+ - Author: Thomas Dreibholz
+   Publisher: IEEE DataPort
+   Title: Satellite Network Connectivity during a Trans-Atlantic Flight
+   DOI: 10.21227/q0xf-t853
+   Year: 2026
+   Month: jan
+   Day: 30
+   URL: https://ieee-dataport.org/documents/satellite-network-connectivity-during-trans-atlantic-flight

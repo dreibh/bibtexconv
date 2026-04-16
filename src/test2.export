@@ -78,12 +78,12 @@ template+ [, %{publisher}]
 template+ [, %{school}]
 template+ [, %{institution}]
 template+ [, URN: %{urn}]
-template+ [, DOI: %{doi}.]
+template+ [, DOI: %{doi}]
 template+ [, %{isbn}]
 template+ [, %{issn}]
 template+ [, %{address}]
 template+ [, [%{month-name} %{day}, |%{month-name}~]%{year}].\n
-template+ [URL: %{url}.\n]
+template+ [URL: %{url}\n]
 template+ \n
 
 
