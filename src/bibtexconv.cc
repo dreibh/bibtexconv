@@ -58,8 +58,8 @@ static unsigned long long getMicroTime()
 {
   struct timeval tv;
   gettimeofday(&tv,nullptr);
-  return(((unsigned long long)tv.tv_sec * (unsigned long long)1000000) +
-         (unsigned long long)tv.tv_usec);
+  return ((unsigned long long)tv.tv_sec * (unsigned long long)1000000) +
+            (unsigned long long)tv.tv_usec;
 }
 
 
@@ -73,7 +73,7 @@ static bool downloadFile(CURL*         curl,
    if( (ftruncate(fileno(headerFH), 0) != 0) ||
        (ftruncate(fileno(downloadFH), 0) != 0) ) {
       perror("Unable to truncate output files");
-      return(false);
+      return false;
    }
 
    curl_easy_setopt(curl, CURLOPT_URL,            url);
@@ -130,7 +130,7 @@ static bool downloadFile(CURL*         curl,
       errors++;
    }
 
-   return(resultIsGood);
+   return resultIsGood;
 }
 
 
@@ -174,10 +174,10 @@ static bool handleDynamicURL(CURL*             curl,
    rewind(downloadFH);
    if(newURL.size() > 0) {
       // printf("NEW=<%s>\n", newURL.c_str());
-      return(downloadFile(curl, newURL.c_str(), headerFH, downloadFH, errors));
+      return downloadFile(curl, newURL.c_str(), headerFH, downloadFH, errors);
    }
 
-   return(true);
+   return true;
 }
 
 
@@ -480,7 +480,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
    curl_easy_cleanup(curl);
    curl = nullptr;
 
-   return(errors);
+   return errors;
 }
 
 
@@ -721,7 +721,7 @@ static int handleInput(FILE*           fh,
          }
       }
    }
-   return(result);
+   return result;
 }
 
 

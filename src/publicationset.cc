@@ -74,12 +74,12 @@ bool PublicationSet::add(Node* publication)
    assert(entries + 1 <= maxEntries);
    for(size_t i = 0; i < entries; i++) {
       if(publicationArray[i] == publication) {
-         return(false);
+         return false;
       }
    }
    publicationArray[entries] = publication;
    entries++;
-   return(true);
+   return true;
 }
 
 
@@ -130,10 +130,10 @@ static int publicationNodeComparisonFunction(const void* ptr1, const void* ptr2)
       }
 
       if(result != 0) {
-         return(result);
+         return result;
       }
    }
-   return(0);
+   return 0;
 }
 
 // ###### Sort publications #################################################
@@ -173,9 +173,9 @@ std::string PublicationSet::makeDownloadFileName(const char*        downloadDire
    }
 
    if( (downloadDirectory != nullptr) && (strlen(downloadDirectory) != 0) ) {
-      return((std::string)downloadDirectory + "/" + anchor + extension);
+      return (std::string)downloadDirectory + "/" + anchor + extension;
    }
-   return(anchor + extension);
+   return anchor + extension;
 }
 
 
@@ -192,7 +192,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
       fh = fopen(fileNamePrefix, "w");
       if(fh == nullptr) {
          fprintf(stderr, "ERROR: Unable to create BibTeX file %s!\n", fileNamePrefix);
-         return(false);
+         return false;
       }
    }
 
@@ -213,7 +213,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
             fh = fopen(fileName, "w");
             if(fh == nullptr) {
                fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileName);
-               return(false);
+               return false;
             }
          }
 
@@ -305,7 +305,7 @@ bool PublicationSet::exportPublicationSetToBibTeX(PublicationSet* publicationSet
    if(!separateFiles) {
       fclose(fh);
    }
-   return(true);
+   return true;
 }
 
 
@@ -319,7 +319,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
       fh = fopen(fileNamePrefix, "w");
       if(fh == nullptr) {
          fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileNamePrefix);
-         return(false);
+         return false;
       }
       fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
       fputs("<!DOCTYPE rfc PUBLIC '-//IETF//DTD RFC 2629//EN' 'http://xml.resource.org/authoring/rfc2629.dtd'>\n", fh);
@@ -340,7 +340,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
             fh = fopen(fileName, "w");
             if(fh == nullptr) {
                fprintf(stderr, "ERROR: Unable to create XML file %s!\n", fileName);
-               return(false);
+               return false;
             }
             fputs("<?xml version='1.0' encoding='UTF-8'?>\n", fh);
             fputs("<!DOCTYPE rfc PUBLIC '-//IETF//DTD RFC 2629//EN' 'http://xml.resource.org/authoring/rfc2629.dtd'>\n", fh);
@@ -516,7 +516,7 @@ bool PublicationSet::exportPublicationSetToXML(PublicationSet* publicationSet,
    if(!separateFiles) {
       fclose(fh);
    }
-   return(true);
+   return true;
 }
 
 
@@ -546,7 +546,7 @@ inline static std::string getNextAction(const char* inputString, size_t& counter
       result = std::string(str);
    }
    // fprintf(stderr,"R=<%s>\n",result.c_str());
-   return(result);
+   return result;
 }
 
 
@@ -1244,7 +1244,7 @@ std::string PublicationSet::applyTemplate(Node*                           public
          result += string2utf8(character, nbsp);
       }
    }
-   return(result);
+   return result;
 }
 
 
@@ -1291,5 +1291,5 @@ bool PublicationSet::exportPublicationSetToCustom(PublicationSet*               
       fputs(string2utf8(processBackslash(customPrintingTrailer), nbsp).c_str(), stdout);
    }
 
-   return(true);
+   return true;
 }

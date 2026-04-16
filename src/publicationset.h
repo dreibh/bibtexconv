@@ -45,14 +45,14 @@ class PublicationSet
    ~PublicationSet();
 
    inline size_t size() const {
-      return(entries);
+      return entries;
    }
    inline size_t maxSize() const {
-      return(maxEntries);
+      return maxEntries;
    }
    Node* get(const size_t index) const {
       assert(index < entries);
-      return(publicationArray[index]);
+      return publicationArray[index];
    }
 
    bool add(Node* publication);

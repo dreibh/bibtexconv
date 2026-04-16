@@ -51,11 +51,11 @@ int         level;
 
 
  /* ====== Basic tokens ================================================== */
-"@"                                                  { return(T_AT); }
-"{"                                                  { return(T_OpeningBrace); }
-"}"                                                  { return(T_ClosingBrace); }
-","                                                  { return(T_Comma); }
-"="                                                  { return(T_Equals); }
+"@"                                                  { return T_AT; }
+"{"                                                  { return T_OpeningBrace; }
+"}"                                                  { return T_ClosingBrace; }
+","                                                  { return T_Comma; }
+"="                                                  { return T_Equals; }
 
 
  /* ====== Quoted strings ================================================ */
@@ -72,7 +72,7 @@ int         level;
                                                           BEGIN 0;
                                                           yylval.iText = strdup(string.c_str());
                                                           // printf("S1=<%s> l=%d\n",yylval.iText, yylineno);
-                                                          return(T_String);
+                                                          return T_String;
                                                        }
                                                      }
 <STRING>.                                            { string += *yytext; };
@@ -81,7 +81,7 @@ int         level;
  /* ====== String in parentheses { this is an example } ================== */
 "{"[^\n]+"}"                                         { yylval.iText = strndup((const char*)&yytext[1], strlen(yytext) - 2);
                                                        // printf("S2=<%s> l=%d\n",yylval.iText, yylineno);
-                                                       return(T_String); }
+                                                       return T_String; }
 
 
  /* ====== Comment ======================================================= */
@@ -90,30 +90,30 @@ int         level;
                                                        ++yylineno;
                                                        yylval.iText = strdup(comment.c_str());
                                                        // printf("C=<%s> l=%d\n",yylval.iText, yylineno);
-                                                       return(T_Comment); }
+                                                       return T_Comment; }
 <COMMENT>.                                           { comment += *yytext; }
 
 
  /* ====== Keywords ====================================================== */
-[aA][rR][tT][iI][cC][lL][eE]                         { return(T_Article);       }
-[bB][oO][oO][kK]                                     { return(T_Book);          }
-[bB][oO][oO][kK][lL][eE][tT]                         { return(T_Booklet);       }
-[dD][aA][tT][aA]                                     { return(T_Data);          }
-[cC][oO][nN][fF][eE][rR][eE][nN][cC][eE]             { return(T_InProceedings); }
-[iI][nN][bB][oO][oO][kK]                             { return(T_InBook);        }
-[iI][nN][cC][oO][lL][lL][eE][cC][tT][iI][oO][nN]     { return(T_InCollection);  }
-[iI][nN][pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS] { return(T_InProceedings); }
-[mM][aA][nN][uU][aA][lL]                             { return(T_Manual);        }
-[mM][aA][sS][tT][eE][rR][sS][tT][hH][eE][sS][iI][sS] { return(T_MastersThesis); }
-[mM][iI][sS][cC]                                     { return(T_Misc);          }
-[tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return(T_TechReport);    }
-[pP][hH][dD][tT][hH][eE][sS][iI][sS]                 { return(T_PhDThesis);     }
-[pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return(T_Proceedings);   }
-[uU][nN][pP][uU][bB][lL][iI][sS][hH][eE][dD]         { return(T_Unpublished);   }
+[aA][rR][tT][iI][cC][lL][eE]                         { return T_Article;       }
+[bB][oO][oO][kK]                                     { return T_Book;          }
+[bB][oO][oO][kK][lL][eE][tT]                         { return T_Booklet;       }
+[dD][aA][tT][aA]                                     { return T_Data;          }
+[cC][oO][nN][fF][eE][rR][eE][nN][cC][eE]             { return T_InProceedings; }
+[iI][nN][bB][oO][oO][kK]                             { return T_InBook;        }
+[iI][nN][cC][oO][lL][lL][eE][cC][tT][iI][oO][nN]     { return T_InCollection;  }
+[iI][nN][pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS] { return T_InProceedings; }
+[mM][aA][nN][uU][aA][lL]                             { return T_Manual;        }
+[mM][aA][sS][tT][eE][rR][sS][tT][hH][eE][sS][iI][sS] { return T_MastersThesis; }
+[mM][iI][sS][cC]                                     { return T_Misc;          }
+[tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return T_TechReport;    }
+[pP][hH][dD][tT][hH][eE][sS][iI][sS]                 { return T_PhDThesis;     }
+[pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return T_Proceedings;   }
+[uU][nN][pP][uU][bB][lL][iI][sS][hH][eE][dD]         { return T_Unpublished;   }
 
 [a-zA-Z0-9\-\.\+\:\_]+                               { yylval.iText = strdup(yytext);
                                                        // printf("K=<%s> l=%d\n",yylval.iText, yylineno);
-                                                       return(T_Keyword); }
+                                                       return T_Keyword; }
 
 
  /* ====== Miscellaneous ==================================================== */
@@ -128,7 +128,7 @@ int         level;
 // ###### Line wrap #########################################################
 int yywrap()
 {
-   return(1);
+   return 1;
 }
 
 

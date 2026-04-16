@@ -31,7 +31,7 @@
 #include <stdio.h>
 #include "node.h"
 
-Node* bibTeXFile = NULL;
+Node* bibTeXFile = nullptr;
 %}
 
 %token T_AT

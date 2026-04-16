@@ -43,7 +43,7 @@ std::string string2utf8(const std::string& string,
                         const bool         xmlStyle  = false);
 
 inline std::string string2xml(const std::string& string) {
-   return(string2utf8(string, "&#160;", "\n", true));
+   return string2utf8(string, "&#160;", "\n", true);
 }
 
 std::string& removeBrackets(std::string& string);

@@ -50,7 +50,7 @@ static Node* createNode(const char* label)
    node->next     = nullptr;
    node->child    = nullptr;
    node->priority = 0;
-   return(node);
+   return node;
 }
 
 
@@ -83,7 +83,7 @@ size_t countNodes(const Node* node)
       count++;
       node = node->next;
    }
-   return(count);
+   return count;
 }
 
 
@@ -113,11 +113,11 @@ Node* findNode(Node* node, const char* keyword)
 
    while(node != nullptr) {
       if(node->keyword == keywordToFind) {
-         return(node);
+         return node;
       }
       node = node->next;
    }
-   return(nullptr);
+   return nullptr;
 }
 
 
@@ -130,11 +130,11 @@ Node* findChildNode(Node* node, const char* childKeyword)
    child = node->child;
    while(child != nullptr) {
       if(child->keyword == keywordToFind) {
-         return(child);
+         return child;
       }
       child = child->next;
    }
-   return(nullptr);
+   return nullptr;
 }
 
 
@@ -152,7 +152,7 @@ size_t countChildNodes(const Node* node, const char* childKeyword)
       }
       child = child->next;
    }
-   return(count);
+   return count;
 }
 
 
@@ -206,7 +206,7 @@ Node* makePublicationCollection(Node* node1, Node* node2)
       node2->prev = node1;
    }
    node1->next = node2;
-   return(node1);
+   return node1;
 }
 
 
@@ -216,18 +216,18 @@ int nodeComparisonFunction(const void* node1ptr, const void* node2ptr)
    const Node* node1 = *((Node**)node1ptr);
    const Node* node2 = *((Node**)node2ptr);
    if(node1->priority > node2->priority) {
-      return(-1);
+      return -1;
    }
    else if(node1->priority < node2->priority) {
-      return(1);
+      return 1;
    }
    if(node1->keyword < node2->keyword) {
-      return(-1);
+      return -1;
    }
    else if(node1->keyword > node2->keyword) {
-      return(1);
+      return 1;
    }
-   return(0);
+   return 0;
 }
 
 
@@ -279,7 +279,7 @@ Node* addOrUpdateChildNode(Node* node, const char* childKeyword, const char* val
    else {
       child->value = value;
    }
-   return(child);
+   return child;
 }
 
 
@@ -294,15 +294,15 @@ static bool requiresField(const Node* publication,
       fprintf(stderr, "WARNING: Entry %s has no \"%s\" section!\n",
               publication->keyword.c_str(),
               field);
-      return(false);
+      return false;
    }
    else if(count > maximum) {
       fprintf(stderr, "WARNING: Entry %s has %u \"%s\" sections!\n",
               publication->keyword.c_str(),
               (unsigned int)count, field);
-      return(false);
+      return false;
    }
-   return(true);
+   return true;
 }
 
 
@@ -420,7 +420,7 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       }
    }
 
-   return(publication);
+   return publication;
 }
 
 
@@ -432,10 +432,10 @@ Node* makePublicationInfo(Node* node1, Node* node2)
          node2->prev = node1;
          node1->next = node2;
       }
-      return(node1);
+      return node1;
    }
    else {
-      return(node2);
+      return node2;
    }
 }
 
@@ -600,5 +600,5 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       }
    }
 
-   return(node);
+   return node;
 }

@@ -188,10 +188,10 @@ const char* getXMLLanguageFromLaTeX(const char* language)
 {
    for(size_t i = 0; i < (sizeof(languageTable) / sizeof(LanguageTableEntry)); i++) {
       if(strcmp(languageTable[i].latex, language) == 0) {
-         return(languageTable[i].xml);
+         return languageTable[i].xml;
       }
    }
-   return(nullptr);
+   return nullptr;
 }
 
 
@@ -213,7 +213,7 @@ std::string string2utf8(const std::string& string,
    }
    replaceAll(result, "\n", lineBreak);
    // std::cout << "OUT= " << result << "\n";
-   return(processBackslash(result));
+   return processBackslash(result);
 }
 
 
@@ -228,7 +228,7 @@ std::string& removeBrackets(std::string& string)
           (string.substr(string.size() - 1) == "\"") ) {
       string = string.substr(1, string.size() - 2);
    }
-   return(string);
+   return string;
 }
 
 
@@ -265,7 +265,7 @@ std::string& trim(std::string& string)
          gotSpace = false;
       }
    }
-   return(string);
+   return string;
 }
 
 
@@ -275,16 +275,16 @@ std::string extractToken(std::string& string, const std::string& delimiters)
    if(string[0] == '\"') {
       string = string.substr(1, string.size() - 1);
       if((string.size() > 0) && (string[0] != '\"')) {
-         return(extractToken(string, "\""));
+         return extractToken(string, "\"");
       }
       else {
          string = string.substr(1, string.size() - 1);
-         return("");
+         return "";
       }
    }
    else if(string[0] == '#') {   // The rest of the line is a comment. Ignore it!
       string = "";
-      return("");
+      return "";
    }
    for(size_t i = 0; i < string.size(); i++) {
       if(string[i] == '\\') {
@@ -295,13 +295,13 @@ std::string extractToken(std::string& string, const std::string& delimiters)
          if(string[i] == delimiters[j]) {
             const std::string result = string.substr(0, i);
             string = string.substr(i + 1, string.size() - i - 1);
-            return(result);
+            return result;
          }
       }
    }
    const std::string result = string;
    string = "";
-   return(result);
+   return result;
 }
 
 
@@ -366,7 +366,7 @@ std::string processBackslash(const std::string& string)
          result += string[i];
       }
    }
-   return(result);
+   return result;
 }
 
 
@@ -390,7 +390,7 @@ std::string laTeXtoURL(const std::string& str)
       }
       isPrefixed = false;
    }
-   return(result);
+   return result;
 }
 
 
@@ -404,7 +404,7 @@ std::string urlToLaTeX(const std::string& str)
       }
       result += str[i];
    }
-   return(result);
+   return result;
 }
 
 
@@ -413,7 +413,7 @@ std::string labelToHTMLLabel(const std::string& string)
 {
    std::string result(string);
    std::replace(result.begin(), result.end(), '+', '_');
-   return(result);
+   return result;
 }
 
 
@@ -422,7 +422,7 @@ std::string labelToXMLLabel(const std::string& string)
 {
    std::string result(string);
    result.erase(std::remove(result.begin(), result.end(), '+'), result.end());
-   return(result);
+   return result;
 }
 
 
@@ -434,7 +434,7 @@ std::string format(const char* fmt, ...)
    va_start(va, fmt);
    vsnprintf(buffer, sizeof(buffer), fmt, va);
    va_end(va);
-   return(std::string(buffer));
+   return std::string(buffer);
 }
 
 
@@ -458,7 +458,7 @@ bool hasPrefix(const std::string& string, const std::string& prefix, std::string
 {
    if(string.substr(0, prefix.size()) == prefix) {
       rest = string.substr(prefix.size());
-      return(true);
+      return true;
    }
-   return(false);
+   return false;
 }
