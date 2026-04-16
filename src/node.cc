@@ -163,15 +163,19 @@ Node* makePublicationCollection(Node* node1, Node* node2)
    Node* n = node2;
    while(n != nullptr) {
       if(n->keyword == node1->keyword) {
-         // fprintf(stderr, "NOTE: Duplicate: %s\n", n->keyword.c_str());
 
          const Node* oldTitle = findChildNode(node1, "title");
          Node*       newTitle = findChildNode(n, "title");
          if( (oldTitle != nullptr) && (newTitle != nullptr) && (oldTitle->value != newTitle->value) ) {
-            fprintf(stderr, "NOTE: Keeping old title:\nOld = \"%s\"\nNew = \"%s\"\n",
+            fprintf(stderr, "NOTE: Duplicate entry %s; keeping the old title but updating the rest!\nOld = \"%s\"\nNew = \"%s\"\n",
+                    n->keyword.c_str(),
                     oldTitle->value.c_str(),
                     newTitle->value.c_str());
             newTitle->value = oldTitle->value;
+         }
+         else {
+            fprintf(stderr, "NOTE: Duplicate entry %s, only keeping the latest one!\n",
+                    n->keyword.c_str());
          }
 
          // node1 is old. Remove its contents, but reuse it for newer data.
