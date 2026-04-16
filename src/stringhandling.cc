@@ -30,7 +30,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include <algorithm>
+// #include <iostream>
 
 #include "stringhandling.h"
 
@@ -202,6 +204,7 @@ std::string string2utf8(const std::string& string,
                         const bool         xmlStyle)
 {
    std::string result(string);
+
    // std::cout << "IN= " << result << "\n";
    for(size_t i = 0; i < (sizeof(replaceTable) / sizeof(ReplaceTableEntry)); i++) {
       replaceAll(result,
@@ -213,6 +216,7 @@ std::string string2utf8(const std::string& string,
    }
    replaceAll(result, "\n", lineBreak);
    // std::cout << "OUT= " << result << "\n";
+
    return processBackslash(result);
 }
 
@@ -220,14 +224,29 @@ std::string string2utf8(const std::string& string,
 // ###### Remove brackets { ... } and quotation " ... " #####################
 std::string& removeBrackets(std::string& string)
 {
-   while( (string.substr(0, 1) == "{") &&
-          (string.substr(string.size() - 1) == "}") ) {
-      string = string.substr(1, string.size() - 2);
+   // std::cout << "IN= " << string << "\n";
+   if( (string[0] == '{') && (string.size() > 1) ) {
+      unsigned int level = 1;
+      unsigned int i;
+      for(i = 1; i < string.size(); i++) {
+         if(string[i] == '\\') {
+            i++;
+         }
+         else if(string[i] == '{') {
+            level++;
+         }
+         else if(string[i] == '}') {
+            level--;
+            if(level == 0) {
+               break;
+            }
+         }
+      }
+      if( (level == 0) && (i == string.size() - 1) ) {
+         string = string.substr(1, string.size() - 2);
+      }
    }
-   while( (string.substr(0, 1) == "\"") &&
-          (string.substr(string.size() - 1) == "\"") ) {
-      string = string.substr(1, string.size() - 2);
-   }
+   // std::cout << "OUT= " << string << "\n";
    return string;
 }
 
