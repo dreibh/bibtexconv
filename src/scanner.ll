@@ -104,6 +104,7 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
 [aA][rR][tT][iI][cC][lL][eE]                         { return T_Article;       }
 [bB][oO][oO][kK]                                     { return T_Book;          }
 [bB][oO][oO][kK][lL][eE][tT]                         { return T_Booklet;       }
+[dD][aA][tT][aA][sS][eE][tT]                         { return T_Dataset;       }
 [dD][aA][tT][aA]                                     { return T_Data;          }
 [cC][oO][nN][fF][eE][rR][eE][nN][cC][eE]             { return T_InProceedings; }
 [iI][nN][bB][oO][oO][kK]                             { return T_InBook;        }
@@ -112,6 +113,7 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
 [mM][aA][nN][uU][aA][lL]                             { return T_Manual;        }
 [mM][aA][sS][tT][eE][rR][sS][tT][hH][eE][sS][iI][sS] { return T_MastersThesis; }
 [mM][iI][sS][cC]                                     { return T_Misc;          }
+[oO][nN][lL][iI][nN][eE]                             { return T_Online;        }
 [tT][eE][cC][hH][rR][eE][pP][oO][rR][tT]             { return T_TechReport;    }
 [pP][hH][dD][tT][hH][eE][sS][iI][sS]                 { return T_PhDThesis;     }
 [pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return T_Proceedings;   }

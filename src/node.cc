@@ -372,6 +372,9 @@ Node* makePublication(const char* type, const char* label, Node* publicationInfo
       else if(publication->value == "TechReport") {
          requiresField(publication, "institution", 1, 1);
       }
+      else if(publication->value == "Online") {
+         requiresField(publication, "url", 1, 1);
+      }
 
       Node* author = findChildNode(publication, "author");
       if(author != nullptr) {

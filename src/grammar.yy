@@ -43,6 +43,7 @@ Node* bibTeXFile = nullptr;
 %token T_Article
 %token T_Book
 %token T_Booklet
+%token T_Dataset
 %token T_Data
 %token T_InBook
 %token T_InProceedings
@@ -50,14 +51,15 @@ Node* bibTeXFile = nullptr;
 %token T_Manual
 %token T_MastersThesis
 %token T_Misc
+%token T_Online
 %token T_PhDThesis
 %token T_Proceedings
 %token T_TechReport
 %token T_Unpublished
 
-%token <iText>  T_Keyword
-%token <iText>  T_String
-%token <iText>  T_Comment
+%token <iText> T_Keyword
+%token <iText> T_String
+%token <iText> T_Comment
 
 %destructor { free($$); } T_Keyword
 %destructor { free($$); } T_String
@@ -96,6 +98,8 @@ publication
          { $$ = makePublication("Book", $4, $6); free($4); }
     | T_AT T_Booklet T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Booklet", $4, $6); free($4); }
+    | T_AT T_Dataset T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Dataset", $4, $6); free($4); }
     | T_AT T_Data T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Data", $4, $6); free($4); }
     | T_AT T_InBook T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
@@ -110,6 +114,8 @@ publication
          { $$ = makePublication("MastersThesis", $4, $6); free($4); }
     | T_AT T_Misc T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("Misc", $4, $6); free($4); }
+    | T_AT T_Online T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
+         { $$ = makePublication("Online", $4, $6); free($4); }
     | T_AT T_PhDThesis T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
          { $$ = makePublication("PhDThesis", $4, $6); free($4); }
     | T_AT T_TechReport T_OpeningBrace T_Keyword T_Comma publicationInfo T_ClosingBrace
