@@ -75,7 +75,7 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
 <QUOTED_STRING>\}       { string += '}'; level--; }
 <QUOTED_STRING>\"       {
                            if(level > 0) {
-                              string += "\"";
+                              string += '"';
                            }
                            else {
                               BEGIN 0;
@@ -84,7 +84,7 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
                               return T_String;
                            }
                         }
-<QUOTED_STRING>\n       { string += "\n";         }
+<QUOTED_STRING>\n       { string += '\n';    }
 <QUOTED_STRING>.        { string += *yytext; }
 
 
@@ -107,8 +107,8 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
                               return T_String;
                            }
                         }
-<BRACED_STRING>\n       { string += "\n";         }
-<BRACED_STRING>.        { string += *yytext;      }
+<BRACED_STRING>\n       { string += '\n';    }
+<BRACED_STRING>.        { string += *yytext; }
 
 
  /* ====== Assignment of keyword ========================================================= */
