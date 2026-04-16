@@ -40,15 +40,21 @@ std::string comment;
 int         level;
 %}
 
+%option 8bit
 %option yylineno
 %option nounput
 
 %x STRING
 %x COMMENT
 
+LATIN    [a-zA-Z]
+EURO     (\xc3[\x80-\xbf]|[\xc4\xc5][\x80-\xbf])
+CYRILLIC (\xd0[\x80-\xbf]|\xd1[\x80-\xbf])
+GREEK    (\xce[\x80-\xbf]|\xcf[\x80-\xbf])
+CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
+
 
 %%
-
 
  /* ====== Basic tokens ================================================== */
 "@"                                                  { return T_AT; }
@@ -111,16 +117,15 @@ int         level;
 [pP][rR][oO][cC][eE][eE][dD][iI][nN][gG][sS]         { return T_Proceedings;   }
 [uU][nN][pP][uU][bB][lL][iI][sS][hH][eE][dD]         { return T_Unpublished;   }
 
-[a-zA-Z0-9\-\.\+\:\_]+                               { yylval.iText = strdup(yytext);
-                                                       // printf("K=<%s> l=%d\n",yylval.iText, yylineno);
-                                                       return T_Keyword; }
+({LATIN}|{EURO}|{CYRILLIC}|{GREEK}|{CJK}|[0-9\-\.\+\:\_])+ {
+   yylval.iText = strdup(yytext);
+   // printf("K=<%s> l=%d\n",yylval.iText, yylineno);
+   return T_Keyword;
+}
 
 
  /* ====== Miscellaneous ==================================================== */
-" "                                                  { }
-"\t"                                                 { }
-"\r"                                                 { }
-"\n"                                                 { }
+[ \t\r\n]                                            { }
 
 %%
 
