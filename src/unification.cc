@@ -456,17 +456,17 @@ void unifyPages(Node* publication, Node* pages)
       if((pages->value[i] < 0) && (i + 1 < length)) {
          i++;
       }
-      else if( (pages->value[i] >= '0') &&
-               (pages->value[i] <= '9') ) {
+      else if(isdigit(pages->value[i])) {
          numbers += pages->value[i];
       }
-      else if(pages->value[i] == '-') {
-         numbers += ' ';
-      }
-      else {
+      else if(isalpha(pages->value[i])) {
          fprintf(stderr, "WARNING: Entry %s has invalid characters in \"pages\" section (pages=%s)!\n" ,
                  publication->keyword.c_str(), pages->value.c_str());
          return;
+      }
+      else {
+         // Handle as dash, em-dash, en-bash, etc.:
+         numbers += ' ';
       }
    }
 
