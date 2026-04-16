@@ -767,11 +767,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
                authorIndex = 0;
             }
          }
-         else if(action == "title") {   // Title
-            child = findChildNode(publication, "title");
+         else if( (action == "title") || (action == "subtitle")) {   // Title or subtitle
+            child = findChildNode(publication, action.c_str());
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if(action == "how-published") {   // HowPublished
+         else if( (action == "how-published") || (action == "howpublished") )  {   // HowPublished
             child = findChildNode(publication, "howpublished");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
@@ -847,12 +847,10 @@ std::string PublicationSet::applyTemplate(Node*                           public
             child = findChildNode(publication, "publisher");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if(action == "school") {   // School
-            child = findChildNode(publication, "school");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "institution") {   // Institution
-            child = findChildNode(publication, "institution");
+         else if( (action == "school")      ||
+                  (action == "institution") ||
+                  (action == "organization") ) {   // School, institution or organization
+            child = findChildNode(publication, action.c_str());
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
          else if(action == "isbn") {   // ISBN

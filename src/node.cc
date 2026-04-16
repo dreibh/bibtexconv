@@ -473,12 +473,13 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
          trim(node->value);
       }
 
+      // ====== Set priorities for well-known keyword fields ================
       if(node->value == "") {   // Empty content -> This item is useless
          node->keyword = "removeme";
       }
 
-      // ====== Set priorities for well-known keyword fields ===================
-      if(node->keyword == "author") {
+      // ====== Author and title ============================================
+      else if(node->keyword == "author") {
          node->priority = 255;
       }
       else if(node->keyword == "title") {
@@ -488,6 +489,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
          node->priority = 253;
       }
 
+      // ====== Publication details =========================================
       else if(node->keyword == "howpublished") {
          node->priority = 252;
       }
@@ -525,6 +527,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
          node->priority = 241;
       }
 
+      // ====== Publication date ============================================
       else if(node->keyword == "day") {
          node->priority = 239;
       }
@@ -538,6 +541,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
          node->priority = 236;
       }
 
+      // ====== Publisher details ===========================================
       else if(node->keyword == "organization") {
          node->priority = 235;
       }
@@ -557,6 +561,7 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
          node->priority = 230;
       }
 
+      // ====== Further details =============================================
       else if(node->keyword == "language") {
          node->priority = 226;
       }
@@ -575,10 +580,20 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
       else if(node->keyword == "doi") {
          node->priority = 221;
       }
-      else if(node->keyword == "note") {
+      else if(node->keyword == "eprintclass") {
          node->priority = 220;
       }
+      else if(node->keyword == "eprinttype") {
+         node->priority = 219;
+      }
+      else if(node->keyword == "eprint") {
+         node->priority = 218;
+      }
 
+      // ====== Additional information ======================================
+      else if(node->keyword == "note") {
+         node->priority = 212;
+      }
       else if(node->keyword == "keywords") {
          node->priority = 211;
       }
@@ -586,39 +601,64 @@ Node* makePublicationInfoItem(const char* keyword, const char* value)
          node->priority = 210;
       }
 
+      // ====== Download ====================================================
       else if(node->keyword == "url") {
          node->priority = 199;
       }
-      else if(node->keyword == "url.size") {
+      else if(node->keyword == "urldate") {
          node->priority = 198;
       }
-      else if(node->keyword == "url.md5") {
+      else if(node->keyword == "url.size") {
          node->priority = 197;
       }
-      else if(node->keyword == "url.mime") {
+      else if(node->keyword == "url.md5") {
          node->priority = 196;
       }
-      else if(node->keyword == "url.pagesize") {
+      else if(node->keyword == "url.mime") {
          node->priority = 195;
       }
-      else if(node->keyword == "url.checked") {
+      else if(node->keyword == "url.pagesize") {
          node->priority = 194;
       }
-      else if(node->keyword == "url.keywords") {
+      else if(node->keyword == "url.checked") {
          node->priority = 193;
       }
-
-      else if(node->keyword == "repository") {
-         node->priority = 189;
+      else if(node->keyword == "url.keywords") {
+         node->priority = 192;
       }
       else if(node->keyword == "file") {
-         node->priority = 188;
+         node->priority = 191;
+      }
+      else if(node->keyword == "repository") {
+         node->priority = 190;
       }
 
+      // ====== Versioning ==================================================
+      else if(node->keyword == "version") {
+         node->priority = 159;
+      }
+      else if(node->keyword == "introducedin") {
+         node->priority = 158;
+      }
+      else if(node->keyword == "hal_id") {
+         node->priority = 156;
+      }
+      else if(node->keyword == "hal_version") {
+         node->priority = 155;
+      }
+      else if(node->keyword == "swhid") {
+         node->priority = 150;
+      }
+
+      // ====== License =====================================================
       else if(node->keyword == "license") {
-         node->priority = 170;
+         node->priority = 100;
       }
 
+      // ====== Other entries ===============================================
+      else if(node->keyword == "crossref") {
+         node->priority = 10;
+      }
       else if(node->keyword == "addendum") {
          node->priority = 1;
       }
