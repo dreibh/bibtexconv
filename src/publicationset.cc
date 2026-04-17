@@ -767,55 +767,6 @@ std::string PublicationSet::applyTemplate(Node*                           public
                authorIndex = 0;
             }
          }
-         else if( (action == "title") || (action == "subtitle")) {   // Title or subtitle
-            child = findChildNode(publication, action.c_str());
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if( (action == "how-published") || (action == "howpublished") )  {   // HowPublished
-            child = findChildNode(publication, "howpublished");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "booktitle") {   // Booktitle
-            child = findChildNode(publication, "booktitle");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "series") {   // Series
-            child = findChildNode(publication, "series");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "journal") {   // Journal
-            child = findChildNode(publication, "journal");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "edition") {   // Edition
-            child = findChildNode(publication, "edition");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "volume") {   // Volume
-            child = findChildNode(publication, "volume");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "type") {   // Type
-            child = findChildNode(publication, "type");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if( (action == "number") ||
-                  (action == "version") ) {   // Number or version
-            child = findChildNode(publication, action.c_str());
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "pages") {   // Pages
-            child = findChildNode(publication, "pages");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "numpages") {   // Number of pages
-            child = findChildNode(publication, "numpages");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "address") {   // Address
-            child = findChildNode(publication, "address");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
          else if(action == "year") {   // Year
             child = findChildNode(publication, "year");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
@@ -844,14 +795,8 @@ std::string PublicationSet::applyTemplate(Node*                           public
                result += string2utf8(day, nbsp, lineBreak, xmlStyle);
             } else { skip = true; }
          }
-         else if( (action == "$") || (action == "publisher") ) {   // Publisher
+         else if(action == "$") {   // Publisher
             child = findChildNode(publication, "publisher");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if( (action == "school")      ||
-                  (action == "institution") ||
-                  (action == "organization") ) {   // School, institution or organization
-            child = findChildNode(publication, action.c_str());
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
          else if(action == "isbn") {   // ISBN
@@ -861,10 +806,6 @@ std::string PublicationSet::applyTemplate(Node*                           public
          else if(action == "issn") {   // ISSN
             child = findChildNode(publication, "issn");
             if(child) { result += string2utf8("ISSN~" + child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "language") {   // Language
-            child = findChildNode(publication, "language");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
          else if(action == "content-language") {   // Content Language
             child = findChildNode(publication, "content-language");
@@ -882,41 +823,35 @@ std::string PublicationSet::applyTemplate(Node*                           public
                } else { skip = true; }
             } else { skip = true; }
          }
-         else if( (action == "url") ||
+         else if( (action == "doi")  ||
+                  (action == "url")  ||
+                  (action == "urn")  ||
                   (action == "file") ||
-                  (action == "repository") ) {   // URL, file, or repository
+                  (action == "repository") )
+
+         {   // DOI, URL, URN, file, or repository
             child = findChildNode(publication, action.c_str());
             if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
          }
-         else if(action == "urldate") {   // URL date
-            child = findChildNode(publication, "urldate");
+         else if( (action == "how-published") )  {   // HowPublished DEPRECATED, use howpublished!
+            fputs("WARNING: how-published is deprecated, use howpublished instead!\n", stderr);
+            child = findChildNode(publication, "howpublished");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if(action == "doi") {   // DOI
-            child = findChildNode(publication, "doi");
-            if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
-         }
-         else if(action == "urn") {   // URN
-            child = findChildNode(publication, "urn");
-            if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
-         }
-         else if(action == "keywords") {   // Keywords
-            child = findChildNode(publication, "keywords");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "abstract") {   // Abstract
-            child = findChildNode(publication, "abstract");
-            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
-         }
-         else if(action == "url-md5") {   // MD5
+         else if(action == "url-md5") {   // MD5; DEPRECATED, use url.md5!
+            fputs("WARNING: url-md5 is deprecated, use url.md5 instead!\n", stderr);
             child = findChildNode(publication, "url.md5");
             if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if(action == "url-mime") {   // URL mime type
+         else if(action == "url-mime") {   // URL mime type; DEPRECATED, use url.mime!
+            fputs("WARNING: url-mime is deprecated, use url.mime instead!\n", stderr);
             child = findChildNode(publication, "url.mime");
-            if(child) { result += string2utf8(child->value, "", "", xmlStyle); } else { skip = true; }
+            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
-         else if(action == "url-type") {   // URL type
+         else if( (action == "url.type") || (action == "url-type") ) {
+            if(action == "url-type") {
+               fputs("WARNING: url-type is deprecated, use url.type instead!\n", stderr);
+            }
             child = findChildNode(publication, "url.mime");
             if(child) {
                if(child->value == "application/pdf") {
@@ -939,7 +874,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
             } else { skip = true; }
          }
-         else if(hasPrefix(action, "url-size-",  type)) {   // URL size
+         else if( (hasPrefix(action, "url.size.",  type)) ||
+                  (hasPrefix(action, "url-size-",  type)) ) {   // URL size
+            if(hasPrefix(action, "url-size-",  type)) {
+               fputs("WARNING: url-size-* is deprecated, use url.size.* instead!\n", stderr);
+            }
             if((action.size() == 1) && (i + 2 < printingTemplateSize)) {
                switch(printingTemplate[i + 2]) {
                   case 'K':   // KiB
@@ -948,8 +887,16 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   case 'M':   // MiB
                      type = "mib";
                    break;
-                  default:   // Bytes
+                  case 'G':   // GiB
+                     type = "gib";
+                   break;
+                  case 'B':   // Bytes
                      type = "";
+                   break;
+                  default:
+                     fprintf(stderr, "ERROR: Unexpected unit '%c' for url.size.UNIT!\n",
+                             printingTemplate[i + 2]);
+                     exit(1);
                    break;
                }
                i++;
@@ -962,6 +909,9 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
                else if(type == "mib") {
                   divisor = 1024.0 * 1024.0;
+               }
+               else if(type == "gib") {
+                  divisor = 1024.0 * 1024.0 * 1024;
                }
                else {
                   divisor = 1.0;
@@ -1130,9 +1080,8 @@ std::string PublicationSet::applyTemplate(Node*                           public
             }
          }
          else {
-            fprintf(stderr, "ERROR: Unexpected %% placeholder '%s' in custom printing template!\n",
-                     action.c_str());
-            exit(1);
+            child = findChildNode(publication, action.c_str());
+            if(child) { result += string2utf8(child->value, nbsp, lineBreak, xmlStyle); } else { skip = true; }
          }
          i++;
       }
