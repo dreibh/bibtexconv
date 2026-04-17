@@ -1,3 +1,9 @@
+bibtexconv (2.1.2-1ubuntu1) trixie; urgency=medium
+
+  * New upstream release.
+
+ -- Thomas Dreibholz <dreibh@simula.no>  Fri, 17 Apr 2026 09:55:57 +0200
+
 bibtexconv (2.1.1-1ubuntu1) trixie; urgency=medium
 
   * New upstream release.

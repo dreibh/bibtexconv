@@ -1,3 +1,40 @@
+commit b541167c678f5d56a3f32aacb8b50e309b444fbf
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 15:44:55 2026 +0200
+
+    Bugfix: Corrected check for duplicated citation.
+
+commit 44dc7c439f75cff1ea7c4d19d6c41c4d896f9e55
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 15:02:55 2026 +0200
+
+    Bugfix: Fixed handling of duplicate entries, which led to truncated lists.
+
+commit 2cf2a339756a0f09c2b7fae3e665dbe9b66d3191
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Mar 12 11:13:14 2026 +0100
+
+    Updated URLs.
+
+commit 91a07e3c2194d97914cf31eb590b25cfb48254ef
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Feb 28 19:16:32 2026 +0100
+
+    Improved web examples: <style> -> <style type="text/css">.
+    The output now validates as XHTML 1.1.
+
+commit 2876bf480627d717cd505a64aba5b9ae5c06bce7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Feb 25 12:13:32 2026 +0100
+
+    Updated FreeBSD port.
+
+commit c449168f44e903a527312982014222541c1a6bcc
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Feb 25 11:51:27 2026 +0100
+
+    New release bibtexconv-2.1.1.
+
 commit 40d725c4022309fba15ef37811388237fe0772fd
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Dec 16 15:18:13 2025 +0100
