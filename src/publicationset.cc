@@ -883,32 +883,13 @@ std::string PublicationSet::applyTemplate(Node*                           public
             if(hasPrefix(action, "url-size-",  type)) {
                fputs("WARNING: url-size-* is deprecated, use url.size.* instead!\n", stderr);
             }
-            if((action.size() == 1) && (i + 2 < printingTemplateSize)) {
-               switch(printingTemplate[i + 2]) {
-                  case 'K':   // KiB
-                     type = "kib";
-                   break;
-                  case 'M':   // MiB
-                     type = "mib";
-                   break;
-                  case 'G':   // GiB
-                     type = "gib";
-                   break;
-                  case 'B':   // Bytes
-                     type = "";
-                   break;
-                  default:
-                     fprintf(stderr, "ERROR: Unexpected unit '%c' for url.size.UNIT!\n",
-                             printingTemplate[i + 2]);
-                     exit(1);
-                   break;
-               }
-               i++;
-            }
             child = findChildNode(publication, "url.size");
             if( (child) && (atoll(child->value.c_str()) != 0) ) {
                double divisor;
-               if(type == "kib") {
+               if(type == "b") {
+                  divisor = 1.0;
+               }
+               else if(type == "kib") {
                   divisor = 1024.0;
                }
                else if(type == "mib") {
@@ -918,7 +899,8 @@ std::string PublicationSet::applyTemplate(Node*                           public
                   divisor = 1024.0 * 1024.0 * 1024;
                }
                else {
-                  divisor = 1.0;
+                  fprintf(stderr, "ERROR: Unexpected unit '%s' for url.size.UNIT!\n", type.c_str());
+                  exit(1);
                }
                result += string2utf8(format("%1.0f", ceil(atoll(child->value.c_str()) / divisor)), nbsp, lineBreak, xmlStyle);
             }
