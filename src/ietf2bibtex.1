@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd April 29, 2025
+.Dd April 17, 2026
 .Dt ietf2bibtex 1
 .Os ietf2bibtex
 .\" ###### Name #############################################################
@@ -38,10 +38,12 @@
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
 .Nm ietf2bibtex
-.Op Fl Fl quiet
-.Op Fl Fl verbose
 .Op Fl Fl authors-fix-file=NAME
 .Op Fl Fl no-authors-fix-file
+.br
+.Op Fl Fl quiet
+.Op Fl Fl verbose
+.br
 document
 .Op document ...
 .\" ###### Description ######################################################
@@ -81,7 +83,7 @@ The following arguments may be provided:
 .Bl -tag -width indent
 .It document
 The name of the IETF document, e.g. like RFC5351 or
-draft-dreibholz-mptcp-nornet-experience.
+draft-dreibholz-ipv4-flowlabel.
 .It Fl Fl quiet
 Print less progress information.
 .It Fl Fl verbose
@@ -99,6 +101,6 @@ Use no authors fix file.
 .Bl -tag -width indent
 .It ietf2bibtex RFC5351
 .It ietf2bibtex RFC5351 RFC5352 RFC5353 RFC5354 RFC5355 RFC5356 RFC5525 >RSerPool.bib
-.It ietf2bibtex --quiet draft-dreibholz-mptcp-nornet-experience
+.It ietf2bibtex --quiet draft-dreibholz-ipv4-flowlabel
 .It ietf2bibtex --verbose --authors-fix-file=\%/usr/\%share/\%doc/\%bibtexconv/\%examples/\%authors-fix.list draft-\%dreibholz-\%rserpool-\%delay
 .El

@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd April 16, 2026
+.Dd April 17, 2026
 .Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -40,24 +40,41 @@
 .Nm bibtexconv
 BibTeX_file
 .Op ...
+.br
 .Op Fl B Ar bibtex_file_name | Fl Fl export-to-bibtex Ar bibtex_file_name
+.br
 .Op Fl b Ar bibtex_file_prefix| Fl Fl export-\%to-\%separate-\%bibtexs Ar bibtex_\%file_\%prefix
+.br
 .Op Fl X Ar xml_file_name | Fl Fl export-to-xml Ar xml_file_name
+.br
 .Op Fl x Ar xml_file_prefix | Fl Fl export-\%to-\%separate-\%xmls Ar xml_\%file_\%prefix
+.br
 .Op Fl C Ar custom_file_name | Fl Fl export-\%to-\%custom Ar custom_\%file_\%name
+.br
 .Op Fl D Ar directory | Fl Fl store-downloads Ar directory
+.br
 .Op Fl m Ar name:\%mapping_file:\%key_column:\%value_column | Fl Fl mapping Ar name:\%mapping_file:\%key_column:\%value_column
+.br
 .Op Fl s Ar string | Fl Fl nbsp Ar string
+.br
 .Op Fl l Ar string | Fl Fl linebreak Ar string
+.br
 .Op Fl n | Fl Fl non-interactive
+.br
 .Op Fl U | Fl Fl check-urls
 .Op Fl u | Fl Fl only-check-new-urls
+.br
 .Op Fl w | Fl Fl ignore-updates-for-html
+.br
 .Op Fl a | Fl Fl add-url-command
+.br
 .Op Fl i | Fl Fl skip-notes-with-isbn-and-issn
 .Op Fl I | Fl Fl add-notes-with-isbn-and-issn
+.br
 .Op Fl q | Fl Fl quiet
+.Nm bibtexconv
 .Op Fl h | Fl Fl help
+.Nm bibtexconv
 .Op Fl v | Fl Fl version
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
