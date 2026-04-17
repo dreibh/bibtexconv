@@ -191,7 +191,7 @@ EOF
 
 # ====== Fedora =============================================================
 elif [ "${ID}" == "fedora" ] ; then
-   PACKAGES="clang make python3 python3-packaging python3-urllib3"
+   PACKAGES="clang make python3 python3-distro python3-packaging python3-urllib3"
    if [ ${USE_PACKAGING} -eq 1 ] ; then
       # Need to install mock as well:
       PACKAGES="${PACKAGES} fedora-release findutils mock nosync rpmdevtools   which strace sudo"
