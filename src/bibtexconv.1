@@ -243,8 +243,8 @@ This field is a custom field used by BibTeXConv.
 .It %{url.pagesize}
 Insert the BibTeX "url.pagesize" content. It contains the paper format of the download from "url", e.g. "595.276 x 841.89 pts (A4)" for DIN A4 or "612 x 792 pts (letter)" for US Letter.
 This field is a custom field used by BibTeXConv.
-.It %{url.size}
-Insert the BibTeX "url.checked" content. It contains the date of the last URL check.
+.It %{url.size.UNIT}
+Insert the BibTeX "url.size" content. It contains the size of the download. UNIT may be "B" for bytes, "K" for KiB, "M" for MiB, or "G" for GiB. For convenience, further characters of the UNIT are ignored.
 This field is a custom field used by BibTeXConv.
 .It %{content-language}
 Insert the BibTeX "content-language" content. It contains the language of the actual publication content. For instance, "content-language" could be "chinese", while title and abstract (given by "language") is "english".
