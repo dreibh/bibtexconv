@@ -883,6 +883,8 @@ std::string PublicationSet::applyTemplate(Node*                           public
             if(hasPrefix(action, "url-size-",  type)) {
                fputs("WARNING: url-size-* is deprecated, use url.size.* instead!\n", stderr);
             }
+            std::transform(type.begin(), type.end(), type.begin(),
+                           [](unsigned char c){ return std::tolower(c); });
             child = findChildNode(publication, "url.size");
             if( (child) && (atoll(child->value.c_str()) != 0) ) {
                double divisor;
