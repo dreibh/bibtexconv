@@ -491,7 +491,7 @@ static std::string              lineBreak              = "\n";
 static std::string              customPrintingHeader   = "";
 static std::string              customPrintingTrailer  = "";
 static std::string              customPrintingTemplate =
-   "\\[%{anchor}\\] %{label}\n%{begin-author-loop}AUTHOR: [[%{is-first-author?}FIRST|%{is-last-author?}LAST|%{is-not-first-author?}NOT-FIRST]: initials=%{author-initials} given=%{author-give-name} family=%{author-family-name}]\n%{end-author-loop}\n\"%{title}\"[, %{booktitle}][, %{journal}][, %{institution}][, %{publisher}][, Volume~%{volume}][, Number~%{number}][, pp.~%{pages}][, %{isbn}][, %{issn}][, %{address}][, [[%{month-number}, %{day}, |%{month-number}~]%{year}].\\nURL: %{url}.\\n\\n";
+   "\\[%{anchor}\\] %{label}\n%{begin-author-loop}AUTHOR: [[%{is-first-author?}FIRST|%{is-last-author?}LAST|%{is-not-first-author?}NOT-FIRST]: initials=%{author-initials} given=%{author-given-name} family=%{author-family-name}]\n%{end-author-loop}\n\"%{title}\"[, %{booktitle}][, %{journal}][, %{institution}][, %{publisher}][, Volume~%{volume}][, Number~%{number}][, pp.~%{pages}][, %{isbn}][, %{issn}][, %{address}][, [[%{month-number}, %{day}, |%{month-number}~]%{year}].\\nURL: %{url}.\\n\\n";
 static std::vector<std::string> monthNames;
 
 static int handleInput(FILE*           fh,

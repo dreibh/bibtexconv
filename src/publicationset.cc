@@ -673,7 +673,11 @@ std::string PublicationSet::applyTemplate(Node*                           public
                }
             }
          }
-         else if(action == "author-give-name") {   // Current author given name
+         else if( (action == "author-given-name") ||
+                  (action == "author-give-name") ) {   // Current author given name
+            if(action == "author-give-name") {
+               fputs("WARNING: author-give-name is deprecated, use author-given-name instead!\n", stderr);
+            }
             if(author) {
                std::string givenName  = author->arguments[authorIndex + 1];
                removeBrackets(givenName);
