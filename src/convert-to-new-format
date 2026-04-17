@@ -17,8 +17,9 @@
 #
 # Contact: thomas.dreibholz@gmail.com
 
+DIRNAME="$(dirname "$0")"
 while [ "$1" != "" ] ; do
    echo "Converting $1 ..."
-   ./converter2.sed <$1 >$1.new && mv $1.new $1
+   "$DIRNAME/converter2.sed" <"$1" >"$1.new" && mv "$1.new" "$1"
    shift
 done
