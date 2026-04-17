@@ -51,16 +51,16 @@ template+ \[%{name}\]~
 # Begin of author loop:
 template+ %{begin-author-loop}
 # Separator, for first/last/middle author:
-template+ [%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]
+template+ [%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-given-name}]
 # End of author loop:
 template+ %{end-author-loop}
 template+ :
 
 # ***** Title ***************************************************************
-template+  ["%{title}"] [\([%{url-type}, ]%{url-size-kib}~KiB\)]
+template+  ["%{title}"] [\([%{url.type}, ]%{url.size.kib}~KiB\)]
 
 # ***** Bibliographic data of publication ***********************************
-template+ [, %{how-published}]
+template+ [, %{howpublished}]
 template+ [, in %{booktitle}]
 template+ [, in %{journal}]
 template+ [, %{series}]

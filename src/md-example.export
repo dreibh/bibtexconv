@@ -67,12 +67,12 @@ template+ [%{is-first-author?}|%{is-last-author?} and |; ]
 # Add the current author form the loop:
 template+ [
 # First, try create link to author (via mapping "author-url") :
-template+ \[%{author-family-name}[, %{author-give-name}\]
-template+ \((%{author-family-name}[, %{author-give-name}]%{map:author-url})\)
+template+ \[%{author-family-name}[, %{author-given-name}\]
+template+ \((%{author-family-name}[, %{author-given-name}]%{map:author-url})\)
 template+ ]
 # If there is no mapping, use plain text instead:
 template+ |
-template+ %{author-family-name}[, %{author-give-name}]
+template+ %{author-family-name}[, %{author-given-name}]
 template+ ]
 # End of author loop:
 template+ %{end-author-loop}
@@ -85,14 +85,14 @@ template+  [«\[%{title}\]\(%{url}\)»|«%{title}»]
 # ****** Document details ***************************************************
 # The document details appear in braces ( ... ), if they are available.
 # Add opening parenthesis "(", if "url" or "language" are set:
-template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML} \(|%{language}%{is-not?} \(]
+template+ [%{url}%{is-not?}%{url.type}%{is-not?HTML} \(|%{language}%{is-not?} \(]
 
 # ------ Download -----------------------------------------------------------
 template+ [
 # Only show file type and length for non-HTML types:
-template+ [%{url-type}%{is-not?HTML}
-template+ [\[%{url-type}\]\(%{url}\)]
-template+ [, %{url-size-kib}~KiB]
+template+ [%{url.type}%{is-not?HTML}
+template+ [\[%{url.type}\]\(%{url}\)]
+template+ [, %{url.size.kib}~KiB]
 template+ ]
 # Use plural or singular for number of pages: "n pages", or just "1 page":
 template+ [(%{numpages}%{is-not?1}), %{numpages}~pages|, %{numpages}~page]
@@ -111,10 +111,10 @@ template+ in %{language}
 template+ ]
 
 # Add closing parenthesis ")", if "url" or "language" are set:
-template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML}\)|%{language}%{is-not?}\)]
+template+ [%{url}%{is-not?}%{url.type}%{is-not?HTML}\)|%{language}%{is-not?}\)]
 
 # ***** Bibliographic data of publication ***********************************
-template+ [, %{how-published}]
+template+ [, %{howpublished}]
 template+ [, in *%{journal}*]
 template+ [, in *%{booktitle}*]
 template+ [

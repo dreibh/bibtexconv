@@ -101,7 +101,7 @@ template+ \[<text:bookmark-start text:name="%{label}"/>%{anchor}<text:bookmark-e
 template+ %{begin-author-loop}
 
 # Separator, for first/last/middle author:
-template+ [%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-give-name}]
+template+ [%{is-first-author?}|%{is-not-first-author?}; | and ]%{author-family-name}[, %{author-given-name}]
 
 # End of author loop:
 template+ %{end-author-loop}
@@ -114,14 +114,14 @@ template+ “[<text:a xlink:type="simple" xlink:href="%{url}">%{title}</text:a>|
 # ****** Document details ***************************************************
 # The document details appear in braces ( ... ), if they are available.
 # Add opening parenthesis "(", if "url" or "language" are set:
-template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML} \(|%{language}%{is-not?} \(]
+template+ [%{url}%{is-not?}%{url.type}%{is-not?HTML} \(|%{language}%{is-not?} \(]
 
 # ------ Download -----------------------------------------------------------
 template+ [
 # Only show file type and length for non-HTML types:
-template+ [%{url-type}%{is-not?HTML}
-template+ <text:a xlink:type="simple" xlink:href="%{url}">[%{url-type}|Online]</text:a>
-template+ [, %{url-size-kib}~KiB]
+template+ [%{url.type}%{is-not?HTML}
+template+ <text:a xlink:type="simple" xlink:href="%{url}">[%{url.type}|Online]</text:a>
+template+ [, %{url.size.kib}~KiB]
 template+ ]
 # Use plural or singular for number of pages: "n pages", or just "1 page":
 template+ [(%{numpages}%{is-not?1}), %{numpages}~pages|, %{numpages}~page]
@@ -140,10 +140,10 @@ template+ in %{language}
 template+ ]
 
 # Add closing parenthesis ")", if "url" or "language" are set:
-template+ [%{url}%{is-not?}%{url-type}%{is-not?HTML}\)|%{language}%{is-not?}\)]
+template+ [%{url}%{is-not?}%{url.type}%{is-not?HTML}\)|%{language}%{is-not?}\)]
 
 # ***** Bibliographic data of publication ***********************************
-template+ [, %{how-published}]
+template+ [, %{howpublished}]
 template+ [, in <text:span text:style-name="T3">%{journal}</text:span>]
 template+ [, in <text:span text:style-name="T3">%{booktitle}</text:span>]
 template+ [

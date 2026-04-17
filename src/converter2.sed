@@ -20,7 +20,7 @@
 s/%{author-give-name}/%{author-given-name}/g
 s/%{how-published}/%{howpublished}/g
 s/%{url-md5}/%{url.md5}/g
+s/%{url-mime}/%{url.mime}/g
 s/%{url-pagesize}/%{url.pagesize}/g
-s/%{url-size-}/%{url.size.}/g
-s/%{url-type}/%{url.type}/g
+s/%{url-size-\([a-Z]*\)}/%{url.size.\1}/g
 s/%{url-type}/%{url.type}/g

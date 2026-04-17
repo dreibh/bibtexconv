@@ -52,7 +52,7 @@ templatenew
 # ***** Authors *************************************************************
 # Begin of author loop:
 template+ %{begin-author-loop}
-template+ [%{is-first-author?} - Author: |%{is-not-first-author?} and | and ][%{author-give-name} ]%{author-family-name}
+template+ [%{is-first-author?} - Author: |%{is-not-first-author?} and | and ][%{author-given-name} ]%{author-family-name}
 # End of author loop:
 template+ %{end-author-loop}
 template+ \n
