@@ -28,6 +28,7 @@ UPDATES_FILE="updated.bib"
 RESULTS_FILE="results.bib"
 PARALLEL=2
 
+# ====== Handle arguments ===================================================
 BIBTEXCONV_OPTIONS="--check-urls"
 IETF2BIBTEX_OPTIONS="--quiet"
 
@@ -39,7 +40,9 @@ if [ $# -gt 0 ] ; then
    fi
 fi
 
-echo "Step 1: Fetching metadata ..."
+
+# ====== Fetch metadata =====================================================
+echo -e "\e[34mStep 1: Fetching metadata ...\e[0m"
 echo "${DOCUMENTS}" | (
    while read -r name ; do
       rm -f "${name}".bib
@@ -54,7 +57,8 @@ echo "${DOCUMENTS}" | (
 wait
 
 
-echo "Step 2: Fetching documents ..."
+# ====== Fetch documents ====================================================
+echo -e "\e[34mStep 2: Fetching documents ...\e[0m"
 echo "${DOCUMENTS}" | (
    while read -r name ; do
       if [ -e "${name}".bib ] ; then
@@ -70,7 +74,8 @@ echo "${DOCUMENTS}" | (
 wait
 
 
-echo "Step 3: Collecting results ..."
+# ====== Collect results ======================================================
+echo -e "\e[34mStep 3: Collecting results ...\e[0m"
 (
    cat "${REFERENCES}"
    echo "${DOCUMENTS}" | (
@@ -86,7 +91,8 @@ echo "Step 3: Collecting results ..."
 echo "Done."
 
 
-echo "Step 4: Showing differences (${REFERENCES} ${RESULTS_FILE}) ..."
+# ====== Show differences ===================================================
+echo -e "\e[34mStep 4: Showing differences (${REFERENCES} ${RESULTS_FILE}) ...\e[0m"
 ls -l "${REFERENCES}" "${RESULTS_FILE}"
 diff "${REFERENCES}" "${RESULTS_FILE}" | grep -v url.checked | grep -v -E '^[[:alnum:]]+' | grep -v "^---$"| grep -v "[ \t]*url[.a-z0-9]* ="
 diff --color ${REFERENCES} "${RESULTS_FILE}" |grep author|grep -B1 '>'
