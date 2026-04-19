@@ -1,3 +1,10 @@
+bibtexconv (2.2.0-1ubuntu1) trixie; urgency=medium
+
+  * New upstream release.
+  * debian/control: Updated standards version to 4.7.4.
+
+ -- Thomas Dreibholz <dreibh@simula.no>  Sun, 19 Apr 2026 12:31:24 +0200
+
 bibtexconv (2.1.2-1ubuntu1) trixie; urgency=medium
 
   * New upstream release.

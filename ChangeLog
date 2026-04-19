@@ -1,3 +1,224 @@
+commit 4fcbaacc5b854051f5c32634a9d0a788c5164a7a
+Merge: b75ddee 7bd9c73
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 19 12:15:00 2026 +0200
+
+    Merge branch 'dreibh/grammar'
+
+commit 7bd9c73400bb72a7742ea36061cbd873dcbe3730
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 19 12:14:25 2026 +0200
+
+    Updated example references.
+
+commit b75ddee96a8e190687185cec86b7e414caa247fe
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 17:13:47 2026 +0200
+
+    Updated CI scripts
+
+commit e4a99dd191a300c8d12660d4a5aa6596b556d312
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 16:58:26 2026 +0200
+
+    Updated CI scripts
+
+commit 080b299c7ec8437a02293b551ffaf01e8d2d2731
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 16:42:12 2026 +0200
+
+    Updated CI scripts
+
+commit dc117fa5f8df60172ab52abd97b97024aaa35879
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 14:06:13 2026 +0200
+
+    Updated CI scripts
+
+commit 2ac7d03be6870a89304356fe7cec50606d1ad1ea
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:35:48 2026 +0200
+
+    Improved helper script.
+
+commit 17c6320ae4a4ce6c4dbc4b0d25002a879f72ef29
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:30:11 2026 +0200
+
+    Another improvement for url.size.UNIT handling.
+
+commit a7c408ac498cf13365af7ea45d753b548fd08073
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:25:02 2026 +0200
+
+    Minor CMakeLists.txt fix.
+
+commit 2c8b200bdfd62827cde45ae2519d7b1d0e8d0871
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:23:33 2026 +0200
+
+    Updated manpages.
+
+commit 53490895e89b693f3d59ccc77ab05190242ccddc
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:17:08 2026 +0200
+
+    Updated examples.
+
+commit 1f1635d3a428b16154fb002f60ba1aa3d8b57ebc
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:16:32 2026 +0200
+
+    Clean-up of deprecated code for url.size.* handling.
+
+commit d091e285683a27687622af6fe9046183226f1b7b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:04:22 2026 +0200
+
+    Added export converter helper script.
+
+commit 0ef9f6ce46153d4e99ab868d849054f362e633cc
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 11:03:55 2026 +0200
+
+    Fixed keyword (typo).
+
+commit b84cf84ac8d9ff3d915d4683ad0512add64a7a55
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 10:59:02 2026 +0200
+
+    Updated manpage.
+
+commit 6520ca866a9000d36da1868f1db7234f1c5f42a9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 10:58:54 2026 +0200
+
+    Improved export.
+
+commit 3f82d97fdeaabb42c9e570d2721294a7ec84cf97
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 10:17:37 2026 +0200
+
+    Cleaned up deprecated scripts.
+
+commit 7d49576623445e981696aade946dad0e9cef6c8b
+Merge: bf2ec23 3304d79
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 10:08:11 2026 +0200
+
+    Merge branch 'master' into dreibh/grammar
+
+commit 3304d79550328369f9aef86fa454f089ef40c505
+Merge: f954e3d 778c1fd
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 10:06:05 2026 +0200
+
+    Merge tag 'bibtexconv-2.1.2'
+    
+    New release bibtexconv-2.1.2.
+
+commit 778c1fd578a1c5bb792ac05b0e4a06781b2426f3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Apr 17 09:56:10 2026 +0200
+
+    New release bibtexconv-2.1.2.
+
+commit bf2ec23396a75f64d15f240e63a6503446435cd7
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 23:55:43 2026 +0200
+
+    Improved month name handling.
+
+commit c71dc32da6ec7dd3d3c476f4a4cefbd7c792f488
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 23:42:14 2026 +0200
+
+    Improved page numbers handling.
+
+commit eed3f316acdcfcce342a2176548c7726c258b0b4
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 23:26:05 2026 +0200
+
+    Some clean-ups.
+
+commit 8847cc2d8e89a86bb5d5dc0cd233f6fdfa2a47ac
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 23:21:57 2026 +0200
+
+    Improved examples.
+
+commit bece088ecf0b2620be2e79845665c0a78be465d0
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 23:21:46 2026 +0200
+
+    Further improvements.
+
+commit d23c0627f5de7bb4be70012141f2a3d78575d8ab
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 22:10:34 2026 +0200
+
+    Improved scanner and grammar.
+
+commit f954e3d3ef7bf5d24478dcd452a4a1588bf79af1
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 18:59:28 2026 +0200
+
+    Added support for further fields.
+
+commit d4e13722abf921dc01da1c4e40b55ab67fb6bab3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 18:50:04 2026 +0200
+
+    Updated manpage.
+
+commit 9b1decfb879dcb2589bc29ead9308bc9af44ef82
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 18:49:46 2026 +0200
+
+    Further bibtex-software support.
+
+commit 2a41a4dc736c7a7856a2c4cf4b64b98da1aa307b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 18:16:20 2026 +0200
+
+    Added support for BibTeX "software" exension (@Software, etc.).
+
+commit 84fefd86b5df09e607cc0ee3f810edaf86909e3d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 17:56:40 2026 +0200
+
+    Added @Dataset and @Online support.
+
+commit ec4ee133d1a13bde97eca2512cfb2694ad10ef10
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 17:29:44 2026 +0200
+
+    Bugfix: The key of BibTeX entries may also be in Cyrillic, Greek, or CJK.
+
+commit 64412eabd6dfe5dc8d20f83f725ca20762333b10
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 16:26:50 2026 +0200
+
+    Improved log output.
+
+commit f0152934b4f08997fe44b539a81dad360b65823a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 16:07:01 2026 +0200
+
+    Minor code clean-ups.
+
+commit d090b0a67f044a41bbb960fca5585b73460bad32
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 16:06:45 2026 +0200
+
+    Improved test script.
+
+commit 738beea2d80239f62fc85d61dc71722dd0d591bb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Apr 16 15:45:38 2026 +0200
+
+    Updated example and tests.
+
 commit b541167c678f5d56a3f32aacb8b50e309b444fbf
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Thu Apr 16 15:44:55 2026 +0200
