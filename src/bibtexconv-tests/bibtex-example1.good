@@ -4908,12 +4908,12 @@ Clearly, the existence of multiple paths has led to the idea of applying load sh
 In this thesis, the issues of dissimilar paths for CMT-based load sharing will be demonstrated first. The reasons for these issues will be identified and solutions proposed. These solutions will be evaluated in simulations, as well as partially also in a real-world Internet testbed setup, in order to show their effectiveness. In particular, it will be shown that a combination of multiple mechanisms is necessary to make CMT work as expected under a wide range of network and system parameters.
 Furthermore, the fairness of CMT-based transport -- in concurrency to classic non-CMT flows -- will be analysed. The usage of plain CMT leads to an overly aggressive bandwidth occupation on so-called shared bottlenecks. As a countermeasure, the idea of Resource Pooling will be utilised. For this purpose, two new and one adapted congestion control approach -- all based on the Resource Pooling principle -- will be introduced and examined in similar as well as dissimilar path setups, in order to show how to fairly deploy CMT transport in the Internet.
 The results of this work have also been contributed to the ongoing IETF~standardisation process of SCTP and its extensions.}",
-	url = "https://web.archive.org/web/20260410062646/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029737/Dre2012_final.pdf",
+	url = "https://www.nntb.no/~dreibh/habilitation/Dre2012.pdf",
 	url.size = "37661345",
 	url.md5 = "add34f0b780cb35b7ee1f963ea85e59c",
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2026-04-16 15:28:35 CEST"
+	url.checked = "2026-04-19 12:06:19 CEST"
 }
 
 @Misc{ Dre2012-FutureInternet,
@@ -4930,12 +4930,12 @@ The results of this work have also been contributed to the ongoing IETF~standard
 	keywords = "Future Internet, Habilitationsvortrag",
 	abstract = "{Vielen seiner Benutzer erscheint das Internet als neuartig und hochmodern. Seine Grundlagen jedoch sind keineswegs neu, sondern basieren auf mittlerweile fast 40~Jahre alten Ideen. Dienste werden mittels eines geschichteten, hierarchischen Protokollstacks realisiert, bei welchem eine Interaktion nicht-benachbarter Schichten nicht vorgesehen ist. Dieser starre Aufbau macht bereits das Anpassen der Internet-Architektur an die Anforderungen der heutigen Anwendungen – wie etwa File Sharing, Videotelefonie und mobile Endgeräte – kompliziert. Die großen Herausforderungen des zukünftigen Internets – welches als das Future Internet bezeichnet wird – mit Anwendungsszenarien wie Cloud Computing, Internet of Things, Sensornetzwerken und vielen weiteren – erfordern jedoch noch weitaus umfangreichere Anpassungen. Zudem ist eine große Flexibilität erforderlich, um auch weiteren – heute noch nicht absehbaren – Anforderungen gerecht zu werden.
 Im Rahmen dieses Habilitationsvortrages wird zunächst kurz auf die Probleme des aktuellen Internets eingegangen sowie die Herausforderungen des Future Internets vorgestellt. Im Anschluss daran wird eine Auswahl der für den Übergang zum Future Internet möglichen evolutionären sowie revolutionären Ansätze vorgestellt. Der Schwerpunkt liegt hierbei auf den noch relativ neuen – und in der Forschung momentan sehr aktiv diskutierten – revolutionären Ansätzen, welche mit der Idee des sogenannten Clean Slate einen vollständigen Neuansatz anstreben. Hierbei werden die Ansätze der Funktionalen Komposition, des Content-Centric Networking sowie der Virtualisierung von Netzwerken vorgestellt. Zum Schluss wird dann auf die Frage eingegangen, wie eine Nutzung der vorgestellten Ansätze in der Praxis möglich ist und welche der aktuell in Diskussion befindlichen Ansätze sich in Zukunft voraussichtlich durchsetzen werden.}",
-	url = "https://web.archive.org/web/20260404173846/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029756/Habilitationsvortrag.pdf",
+	url = "https://www.nntb.no/~dreibh/habilitation/Habilitationsvortrag.pdf",
 	url.size = "5915045",
 	url.md5 = "bd09fd9172fccb9edd4ee88299038f47",
 	url.mime = "application/pdf",
 	url.pagesize = "720 x 540 pts",
-	url.checked = "2026-04-16 15:28:37 CEST"
+	url.checked = "2026-04-19 12:06:19 CEST"
 }
 
 @PhDThesis{ Dre2006,
@@ -4952,12 +4952,12 @@ Im Rahmen dieses Habilitationsvortrages wird zunächst kurz auf die Probleme des
 	abstract = "{The Reliable Server Pooling (RSerPool) architecture currently under standardization by the IETF RSerPool Working Group is an overlay network framework to provide server replication and session failover capabilities to applications using it. These functionalities as such are not new, but their combination into one generic, application-independent framework is.
 Initial goal of this thesis is to gain insight into the complex RSerPool mechanisms by performing experimental and simulative proof-of-concept tests. The further goals are to systematically validate the RSerPool architecture and its protocols, provide improvements and optimizations where necessary and propose extensions if useful. Based on these evaluations, recommendations to implementers and users of RSerPool should be provided, giving guidelines for the tuning of system parameters and the appropriate configuration of application scenarios. In particular, it is also a goal to transfer insights, optimizations and extensions of the RSerPool protocols from simulation to reality and also to bring the achievements from research into application by supporting and contributing relevant results to the IETF's ongoing RSerPool standardization process.
 To achieve the described goals, a prototype implementation as well as a simulation model are designed and realized at first. Using a generic application model and appropriate performance metrics, the performance of RSerPool systems in failure-free and server failure scenarios is systematically evaluated in order to identify critical parameter ranges and problematic protocol behaviour. Improvements developed as result of these performance analyses are evaluated and finally contributed into the standardization process of RSerPool.}",
-	url = "https://web.archive.org/web/20260404173846/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00016326/Dre2006_final.pdf",
+	url = "https://www.nntb.no/~dreibh/rserpool/Dre2006.pdf",
 	url.size = "9297866",
 	url.md5 = "acdd102ebd0775ca5de523ec5710d800",
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2026-04-16 15:34:36 CEST"
+	url.checked = "2026-04-19 12:07:51 CEST"
 }
 
 @MastersThesis{ Dre2001,
@@ -4974,12 +4974,12 @@ To achieve the described goals, a prototype implementation as well as a simulati
 	keywords = "Multimedia, Quality of Service, Layered Transmission, DiffServ, A Priori Knowledge",
 	abstract = "{The Internet is developing with a very high speed. Just a few years ago, its main applications were file transfer and e-mail access, all based on the best effort TCP/IP service over quite slow links. With the quickly growing deployment of high-speed Internet accesses, there is a growing demand for also using the Internet in application scenarios like real-time multimedia streaming, particularly for audio and video on demand services. However, such multimedia applications do not only require sufficient bandwidth. They have stricter quality of service demands, like e.g.\ an upper bound on the transfer delay to ensure interactivity for their users.
 In the context of this thesis, a system for the cost-efficient transfer of variable bitrate multimedia streams over Differentiated Services~(DiffServ) is presented and evaluated. This system supports layered transmission, i.e.\ streams may be partitioned into sub-streams denoted as layers (e.g.\ a video layer and an audio layer). Distinct layers may have different priorities as well as quality of service requirements and may therefore use different DiffServ classes for data transmission. Also, the streams may be scalable, i.e.\ the quality of the transferred media may be decreased in order to reduce the bandwidth requirements when bandwidth becomes scarce. Particularly, the system makes use of the fact that media files in e.g.\ a video on demand library can be analyzed a priorily. The information that is computed during the offline analysis is used to realize a dynamic and cost-efficient transport of layer data over different DiffServ classes. Furthermore, the system applies an adaptive buffering to smooth the flows -- in order to save bandwidth -- while also taking care of the delay constraints.}",
-	url = "https://web.archive.org/web/20260320122156/https://duepublico2.uni-due.de/servlets/MCRFileNodeServlet/duepublico_derivate_00029936/Dre2001.pdf",
+	url = "https://www.nntb.no/~dreibh/diplom/Dre2001.pdf",
 	url.size = "62044170",
 	url.md5 = "479cc723184d88dbce6864ab93f9b6c0",
 	url.mime = "application/pdf",
 	url.pagesize = "595.276 x 841.89 pts (A4)",
-	url.checked = "2026-04-16 15:34:50 CEST"
+	url.checked = "2026-04-19 12:08:55 CEST"
 }
 
 @TechReport{ DSV00,
