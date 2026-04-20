@@ -1,0 +1,131 @@
+#!/usr/bin/python3
+# ==========================================================================
+#                ____  _ _   _____   __  ______
+#                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
+#                |  _ \| | '_ \| |/ _ \  / |   / _ \| '_ \ \ / /
+#                | |_) | | |_) | |  __//  \ |__| (_) | | | \ V /
+#                |____/|_|_.__/|_|\___/_/\_\____\___/|_| |_|\_/
+#
+#                          ---  BibTeX Converter  ---
+#                   https://www.nntb.no/~dreibh/bibtexconv/
+# ==========================================================================
+#
+# Fix upper-case/lower-case in publication title/booktitle/journal
+# Copyright (C) 2025-2026 by Thomas Dreibholz
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contact: thomas.dreibholz@gmail.com
+
+import datetime
+import re
+import requests
+import sys
+
+from typing import Any, Final, TextIO
+
+
+LowerCaseWords : Final[list[str]] = [
+   'a',
+   'and',
+   'arXiv',
+   'at',
+   'by',
+   'ePrint',
+   'for',
+   'from',
+   'in',
+   'is',
+   'of',
+   'on',
+   'or',
+   'the',
+   'to',
+   'using',
+   'via',
+   'with',
+   'within'
+]
+
+Abbreviations : Final[list[str]] = [
+   '2D',
+   '3D',
+   'AI',
+   'IP',
+   'MPTCP',
+   'SCTP',
+   'TCP',
+   'UDP'
+]
+
+
+# ###### Fix title ##########################################################
+reTitleSplit : Final[re.Pattern[str]] = re.compile(r'[ \t:,.!?()-]')
+def fixTitle(title : str) -> str:
+
+   words         : Final[list[str]] = reTitleSplit.split(title)
+   delimiters    : Final[list[str]] = reTitleSplit.findall(title)
+   splittedTitle : list[str] = [ ]
+   for i in range(0, len(words)):
+      splittedTitle.append(words[i])
+      if i < len(delimiters):
+         splittedTitle.append(delimiters[i])
+
+   for i in range(0, len(splittedTitle)):
+      if splittedTitle[i].upper() in Abbreviations:
+         splittedTitle[i] = splittedTitle[i].upper()
+      elif len(splittedTitle[i]) > 0:
+         word = str(splittedTitle[i][0]).lower() + splittedTitle[i][1:]
+         if not word in LowerCaseWords:
+            splittedTitle[i] = str(splittedTitle[i][0]).upper() + splittedTitle[i][1:]
+
+   fixedTitle = ''.join(splittedTitle)
+   return fixedTitle
+
+
+# ###### Main program #######################################################
+
+# ====== Handle arguments ===================================================
+if len(sys.argv) < 2:
+   sys.stderr.write('Usage: ' + sys.argv[0] + ' bibtex_file\n')
+   sys.exit(1)
+fileName : Final[str] = sys.argv[1]
+
+# ====== Read file =======================================================
+reTitle : Final[re.Pattern[str]] = \
+   re.compile(r'^([ \t]*)(title|booktitle|journal)([ \t]*=[ \t]*[\"\{])(.*)([\"\}])([, \t]*)$')
+
+sys.stderr.write('\x1b[34mReading ' + fileName + ' ...\x1b[0m\n')
+try:
+
+   fh : TextIO = open(fileName, 'rt', encoding = 'utf-8')
+   line : str
+   for line in fh:
+      match : re.Match[str] | None = reTitle.match(line)
+      if match:
+         # print(line.rstrip())
+         sys.stdout.write(match.group(1) +
+                          match.group(2) +
+                          match.group(3) +
+                          fixTitle(match.group(4)) +
+                          match.group(5) + '\n')
+
+      else:
+         sys.stdout.write(line)
+
+   fh.close()
+
+except Exception as e:
+   sys.stderr.write('ERROR: Unable to read file ' + fileName + ': ' + str(e) + '\n')
+   sys.exit(1)
