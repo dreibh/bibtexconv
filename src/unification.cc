@@ -459,16 +459,8 @@ void unifyPages(Node* publication, Node* pages)
    std::string numbers = "";
    size_t      length  = pages->value.size();
    for(size_t i = 0; i < length; i++) {
-      if((pages->value[i] < 0) && (i + 1 < length)) {
-         i++;
-      }
-      else if(isdigit(pages->value[i])) {
+      if(isdigit(pages->value[i])) {
          numbers += pages->value[i];
-      }
-      else if(isalpha(pages->value[i])) {
-         fprintf(stderr, "WARNING: Entry %s has invalid characters in \"pages\" section (pages=%s)!\n" ,
-                 publication->keyword.c_str(), pages->value.c_str());
-         return;
       }
       else {
          // Handle as dash, em-dash, en-bash, etc.:
