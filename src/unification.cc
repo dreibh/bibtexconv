@@ -39,8 +39,8 @@
 
 
 // ###### Extract initials from given name(s) ###############################
-static void extractAuthorInitials(const std::string& givenNameFull,
-                                  std::string&       givenNameInitials)
+static void extractAuthorInitials(std::string& givenNameFull,
+                                  std::string& givenNameInitials)
 {
    const size_t length  = givenNameFull.size();
    bool         extract = true;
@@ -85,6 +85,13 @@ static void extractAuthorInitials(const std::string& givenNameFull,
             extract = false;
             empty   = false;
          }
+      }
+   }
+   for(size_t i = 0;i < length;i++) {
+      if( (givenNameFull[i] == '.') &&
+          (i + 1 < length)          &&
+          (givenNameFull[i + 1] == ' ') ) {
+         givenNameFull[++i] = '~';
       }
    }
 }
