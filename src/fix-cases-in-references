@@ -32,12 +32,14 @@ import datetime
 import re
 import requests
 import sys
+import unicodedata
 
 from typing import Any, Final, TextIO
 
 
 LowerCaseWords : Final[list[str]] = [
    'a',
+   'about',
    'and',
    'arXiv',
    'at',
@@ -50,10 +52,13 @@ LowerCaseWords : Final[list[str]] = [
    'of',
    'on',
    'or',
+   'over',
    'the',
    'to',
+   'under',
    'using',
    'via',
+   'vs.',
    'with',
    'within'
 ]
@@ -68,6 +73,16 @@ Abbreviations : Final[list[str]] = [
    'TCP',
    'UDP'
 ]
+
+
+# ###### Check whether charachter type is latain ############################
+def is_latin_letter(char):
+   try:
+      if not unicodedata.category(char).startswith('L'):
+         return False
+      return ("LATIN" in unicodedata.name(char))
+   except ValueError:
+      return False
 
 
 # ###### Fix title ##########################################################
@@ -87,8 +102,9 @@ def fixTitle(title : str) -> str:
          splittedTitle[i] = splittedTitle[i].upper()
       elif len(splittedTitle[i]) > 0:
          word = str(splittedTitle[i][0]).lower() + splittedTitle[i][1:]
-         if not word in LowerCaseWords:
-            splittedTitle[i] = str(splittedTitle[i][0]).upper() + splittedTitle[i][1:]
+         if is_latin_letter(word[0]):
+            if not word in LowerCaseWords:
+               splittedTitle[i] = str(splittedTitle[i][0]).upper() + splittedTitle[i][1:]
 
    fixedTitle = ''.join(splittedTitle)
    return fixedTitle
