@@ -76,7 +76,7 @@ Abbreviations : Final[list[str]] = [
 
 
 # ###### Check whether charachter type is latain ############################
-def is_latin_letter(char):
+def isLatinLetter(char : str) -> bool:
    try:
       if not unicodedata.category(char).startswith('L'):
          return False
@@ -102,7 +102,7 @@ def fixTitle(title : str) -> str:
          splittedTitle[i] = splittedTitle[i].upper()
       elif len(splittedTitle[i]) > 0:
          word = str(splittedTitle[i][0]).lower() + splittedTitle[i][1:]
-         if is_latin_letter(word[0]):
+         if isLatinLetter(word[0]):
             if not word in LowerCaseWords:
                splittedTitle[i] = str(splittedTitle[i][0]).upper() + splittedTitle[i][1:]
 
