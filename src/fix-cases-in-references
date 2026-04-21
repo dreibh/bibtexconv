@@ -58,7 +58,7 @@ LowerCaseWords : Final[list[str]] = [
    'under',
    'using',
    'via',
-   'vs.',
+   'vs',
    'with',
    'within'
 ]
