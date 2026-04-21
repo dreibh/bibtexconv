@@ -318,16 +318,18 @@ def getBibTeXForIETFDocument(document : str) -> None:
 
    # ------ Get title -------------------------------------------------------
    titleList = xmlDocument.getElementsByTagName('title')
-   title = titleList[0].childNodes[0].data
-   title = title.strip().replace(' (', '~(')
-   title = title.strip().replace(' - ', ' -- ')
-   # print(title)
+   title : str | None = None
+   if isinstance(titleList[0].childNodes[0], xml.dom.minidom.Text):
+      title = titleList[0].childNodes[0].data
+      title = title.strip().replace(' (', '~(')
+      title = title.strip().replace(' - ', ' -- ')
+      # print(title)
 
    # ------ Get type --------------------------------------------------------
    seriesInfoList = xmlDocument.getElementsByTagName('seriesInfo')
-   series = None
-   name   = None
-   doi    = None
+   series : str | None = None
+   name   : str | None = None
+   doi    : str | None = None
    for seriesInfo in seriesInfoList:
       if seriesInfo.attributes['name'].value in ['RFC', 'Internet-Draft']:
          series = seriesInfo.attributes['name'].value
@@ -358,9 +360,10 @@ def getBibTeXForIETFDocument(document : str) -> None:
 
    # ------ Get abstract ----------------------------------------------------
    abstractList = xmlDocument.getElementsByTagName('t')
-   abstract     = None
+   abstract : str | None = None
    try:
-      abstract = abstractList[0].childNodes[0].data
+      if isinstance(abstractList[0].childNodes[0], xml.dom.minidom.Text):
+         abstract = abstractList[0].childNodes[0].data
    except:
       pass
    # print('A=',abstract,'.')
@@ -390,10 +393,10 @@ def getBibTeXForIETFDocument(document : str) -> None:
       sys.stderr.write('ERROR: Failed to get document from ' + url + ': ' + str(e) + '!\n')
       sys.exit(1)
 
-   inAuthorsSection = False
-   foundDate        = False
-   line             = txtFile.readline()
-   lineNumber       = 0
+   inAuthorsSection : bool  = False
+   foundDate        : bool  = False
+   line             : bytes = txtFile.readline()
+   lineNumber       : int   = 0
    while line:
       lineNumber = lineNumber + 1
 
