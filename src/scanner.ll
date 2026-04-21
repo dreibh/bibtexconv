@@ -158,7 +158,7 @@ CJK      ([\xe3-\xe9][\x80-\xbf][\x80-\xbf])
 [sS][oO][fF][tT][wW][aA][rR][eE]                             { return T_Software;        }
 [cC][oO][dD][eE][fF][rR][aA][gG][mM][eE][nN][tT]             { return T_CodeFragment;    }
 
-({LATIN}|{EURO}|{CYRILLIC}|{GREEK}|{CJK}|[0-9\-\.\+\:\_])+ {
+({LATIN}|{EURO}|{CYRILLIC}|{GREEK}|{CJK}|[0-9\-\.\+\:\_/])+ {
    yylval.iText = strdup(yytext);
    // printf("K=<%s> l=%d\n",yylval.iText, yylineno);
    return T_Keyword;
