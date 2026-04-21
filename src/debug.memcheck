@@ -26,5 +26,6 @@
 #
 # Contact: thomas.dreibholz@gmail.com
 
-echo "valgrind $@"
+echo "valgrind $*"
+# shellcheck disable=SC2068
 G_SLICE=always-malloc valgrind  -v --tool=memcheck --leak-check=yes --show-reachable=no --leak-resolution=high --num-callers=40 --freelist-vol=4000000 $@

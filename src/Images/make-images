@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 # Bash options:
-set -e
+set -eu
 
 get-svg ()
 {
-   dia -n -t svg -e $2.tmp $1
-   rsvg-convert -a -w 12 -f svg $2.tmp -o $2
+   dia -n -t svg -e "$2.tmp" "$1"
+   rsvg-convert -a -w 12 -f svg "$2.tmp" -o "$2"
 }
 
 get-svg ListItem-Collapsed.dia ListItem-Collapsed.svg

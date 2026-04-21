@@ -5,6 +5,7 @@ set -eu
 
 while [ $# -gt 0 ] ; do
    f="$1"
+   # shellcheck disable=SC2001
    n="$(echo "$f" | sed -e "s/\.[^\.]*$/.good/")"
    echo "$f -> $n"
    mv "$f" "$n"
