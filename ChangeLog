@@ -1,3 +1,105 @@
+commit b82dfedcd050fddd2fc326766fb376477bfe05a6
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 16:20:16 2026 +0200
+
+    Updated helper scripts.
+
+commit 95fbe09bab927fac46e12930ae336c01fedbd8da
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 16:20:08 2026 +0200
+
+    Added missing type-hinting.
+
+commit 598c68317301ec98bc042209fefa3963b9c705d9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 15:43:58 2026 +0200
+
+    Added helper scripts to run ShellCheck and MyPy.
+
+commit 2578cb564ad11bb3e0eaca9249834d3c32760751
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 15:43:42 2026 +0200
+
+    Added missing type-hinting.
+
+commit 80765afc1c0648be74b665b53625d268745b69e9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 15:39:28 2026 +0200
+
+    ShellCheck clean-ups.
+
+commit 3cc362b7e06a25bac3b47ccd1da8ab795df052ca
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 15:39:14 2026 +0200
+
+    Some clean-ups.
+
+commit 0d08812d09c988480e0d9c166b57470c02d59a8a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 15:06:23 2026 +0200
+
+    Bugfix: Properly handle initials-only author given name.
+
+commit 9b3a15d1669ffd969dedf8d09ba17a12a85d3cbb
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 14:52:33 2026 +0200
+
+    Improved script.
+
+commit cd90f0720384bcec19eccdb793c93234610b6f9b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 13:30:31 2026 +0200
+
+    Bugfix: Fixed and simplified parsing of page ranges for "pages".
+
+commit ae618e117cefee7ad570f580de8b30d04b68cf5c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 13:18:32 2026 +0200
+
+    Bugfix: Allow '/' in citation key; used e.g. for some ACM exports.
+
+commit 2e1e94561e303ac163a383c51accaebf69e0fd21
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Apr 21 09:16:39 2026 +0200
+
+    Improved script.
+
+commit aa4cb4377f6b0367380865e38296f6b0c491b57e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 20 15:35:48 2026 +0200
+
+    Renamed script.
+
+commit 871b2bf404e59b942bb943e6456fbe60b489d712
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 20 15:35:27 2026 +0200
+
+    Improved and renamed script.
+
+commit 3f15fcf8ea0d36199b58e3c1168e3f13d121c7ad
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 20 15:26:37 2026 +0200
+
+    Added helper script.
+
+commit 9eac2c570525cc0325bbb56fb070a30a30352e39
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Apr 20 14:49:45 2026 +0200
+
+    Updated User-Agent.
+
+commit da2e2a276bd6d6281525ab562448e3c2c8d4618b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 19 13:29:29 2026 +0200
+
+    Updated FreeBSD port.
+
+commit f7fbe73492dcd4b4a102785f4e36ab89c80fbf77
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun Apr 19 12:31:27 2026 +0200
+
+    New release bibtexconv-2.2.0.
+
 commit 4fcbaacc5b854051f5c32634a9d0a788c5164a7a
 Merge: b75ddee 7bd9c73
 Author: Thomas Dreibholz <dreibh@simula.no>

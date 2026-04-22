@@ -1,5 +1,5 @@
 Name: bibtexconv
-Version: 2.2.0
+Version: 2.2.1
 Release: 1
 Summary: BibTeX converter
 Group: Applications/Databases
@@ -81,6 +81,8 @@ references and the actual document.
 
 
 %changelog
+* Wed Apr 22 2026 Thomas Dreibholz <dreibh@simula.no> - 2.2.1-1
+- New upstream release.
 * Sun Apr 19 2026 Thomas Dreibholz <dreibh@simula.no> - 2.2.0-1
 - New upstream release.
 * Fri Apr 17 2026 Thomas Dreibholz <dreibh@simula.no> - 2.1.2-1
