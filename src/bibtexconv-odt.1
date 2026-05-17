@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd April 17, 2026
+.Dd May 17, 2026
 .Dt bibtexconv-odt 1
 .Os bibtexconv-odt
 .\" ###### Name #############################################################
@@ -37,11 +37,7 @@
 .Nd ODT Helper Script for BibTeX Converter
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
-.Nm bibtexconv-odt
-Template_ODT
-Output_ODT
-BibTeX_File
-Export_Script
+.Nm bibtexconv-odt Ar Template_ODT Ar Output_ODT Ar BibTeX_File Ar Export_Script
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
 .Nm bibtexconv-odt
@@ -52,16 +48,21 @@ is then joined with an existing template ODT file into an output ODT file.
 .Sh OPTIONS
 The following arguments have to be provided:
 .Bl -tag -width indent
-.It Template_ODT
+.It Ar Template_ODT
 The template ODT file.
-.It Output_ODT
+.It Ar Output_ODT
 The output ODT file.
-.It BibTeX_File
+.It Ar BibTeX_File
 The input BibTeX file for BibTeXConv.
-.It Export_Script
+.It Ar Export_Script
 The input export script for BibTeXConv.
 .El
-.\" ###### Arguments ########################################################
+.\" ###### Exit status ######################################################
+.Sh EXIT STATUS
+The
+.Nm
+tool exits with 0 on success, and >0 in case of an error.
+.\" ###### Examples #########################################################
 .Sh EXAMPLE
 .Bl -tag -width indent
 .It bibtexconv-odt \e
@@ -76,3 +77,11 @@ MyPublications.odt \e
 .br
 Uses export script /usr/share/doc/bibtexconv/examples/odt-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.odt as OpenDocument Text (ODT), according to the template ODT file /usr/share/doc/bibtexconv/examples/ODT-Template.odt.
 .El
+.\" ###### Notes ############################################################
+.Sh NOTES
+This program is part of BibTeXConv. The latest version of BibTeXConv can be found on the BibTeXConv Homepage at
+.Lk https://www.nntb.no/\(tidreibh/bibtexconv/ "BibTeXConv Homepage" .
+.\" ###### Authors ##########################################################
+.Sh AUTHORS
+Thomas Dreibholz,
+.Lk https://www.nntb.no/\(tidreibh "Homepage"

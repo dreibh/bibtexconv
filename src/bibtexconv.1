@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd April 17, 2026
+.Dd May 17, 2026
 .Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -37,9 +37,7 @@
 .Nd BibTeX Converter
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
-.Nm bibtexconv
-BibTeX_file
-.Op ...
+.Nm bibtexconv Ar BibTeX_file Op ...
 .br
 .Op Fl B Ar bibtex_file_name | Fl Fl export-to-bibtex Ar bibtex_file_name
 .br
@@ -92,7 +90,7 @@ export template specification.
 .Sh OPTIONS
 The following arguments may be provided:
 .Bl -tag -width indent
-.It BibTeX_File [...]
+.It Ar BibTeX_file Op ...
 The BibTeX input file. Multiple files may be provided.
 .It Fl B Ar bibtex_file_name | Fl Fl export-to-bibtex Ar bibtex_file_name
 Write the results as BibTeX into the given file.
@@ -336,7 +334,12 @@ handle special characters not allowed in XML
 (e.g. "&amp;" for "&", "&lt;" for <, etc.).
 .El
 .Pp
-.\" ###### Arguments ########################################################
+.\" ###### Exit status ######################################################
+.Sh EXIT STATUS
+The
+.Nm
+tool exits with 0 on success, and >0 in case of an error.
+.\" ###### Examples #########################################################
 .Sh EXAMPLES
 Have a look into /usr/share/doc/bibtexconv/examples/ (or corresponding path of
 your system) for example export scripts. The export scripts contain the
@@ -388,3 +391,11 @@ Convert all references to XML references to be includable in IETF Internet Draft
 .br
 Convert all references to BibTeX references. For each reference, an own file is generated, named with the prefix "", for example Globecom2010.bib for entry Globecom2010.
 .El
+.\" ###### Notes ############################################################
+.Sh NOTES
+This program is part of BibTeXConv. The latest version of BibTeXConv can be found on the BibTeXConv Homepage at
+.Lk https://www.nntb.no/\(tidreibh/bibtexconv/ "BibTeXConv Homepage" .
+.\" ###### Authors ##########################################################
+.Sh AUTHORS
+Thomas Dreibholz,
+.Lk https://www.nntb.no/\(tidreibh "Homepage"

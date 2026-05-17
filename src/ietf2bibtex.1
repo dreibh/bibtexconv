@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd April 17, 2026
+.Dd May 17, 2026
 .Dt ietf2bibtex 1
 .Os ietf2bibtex
 .\" ###### Name #############################################################
@@ -81,9 +81,8 @@ Unusual formatting sometimes prevents this.
 .Sh OPTIONS
 The following arguments may be provided:
 .Bl -tag -width indent
-.It document
-The name of the IETF document, e.g. like RFC5351 or
-draft-dreibholz-ipv4-flowlabel.
+.It Ar document Op ...
+The name of the IETF document, e.g. like RFC5351 or draft-dreibholz-ipv4-flowlabel. Multiple names may be provided.
 .It Fl Fl quiet
 Print less progress information.
 .It Fl Fl verbose
@@ -96,7 +95,12 @@ directory first, then /usr/share/doc/bibtexconv/examples/authors-fix.list.
 Use no authors fix file.
 .El
 .Pp
-.\" ###### Arguments ########################################################
+.\" ###### Exit status ######################################################
+.Sh EXIT STATUS
+The
+.Nm
+tool exits with 0 on success, and >0 in case of an error.
+.\" ###### Examples #########################################################
 .Sh EXAMPLES
 .Bl -tag -width indent
 .It ietf2bibtex RFC5351
@@ -104,3 +108,11 @@ Use no authors fix file.
 .It ietf2bibtex --quiet draft-dreibholz-ipv4-flowlabel
 .It ietf2bibtex --verbose --authors-fix-file=\%/usr/\%share/\%doc/\%bibtexconv/\%examples/\%authors-fix.list draft-\%dreibholz-\%rserpool-\%delay
 .El
+.\" ###### Notes ############################################################
+.Sh NOTES
+This program is part of BibTeXConv. The latest version of BibTeXConv can be found on the BibTeXConv Homepage at
+.Lk https://www.nntb.no/\(tidreibh/bibtexconv/ "BibTeXConv Homepage" .
+.\" ###### Authors ##########################################################
+.Sh AUTHORS
+Thomas Dreibholz,
+.Lk https://www.nntb.no/\(tidreibh "Homepage"
