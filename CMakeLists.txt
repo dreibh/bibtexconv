@@ -90,7 +90,7 @@ ENDIF()
 FIND_PACKAGE(Threads REQUIRED)
 
 # ====== Bison and Flex ====================================================#
-FIND_PACKAGE(BISON REQUIRED)
+FIND_PACKAGE(BISON 3.0 REQUIRED)
 FIND_PACKAGE(FLEX REQUIRED)
 
 # ====== libcurl ============================================================
