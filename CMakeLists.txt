@@ -89,7 +89,7 @@ ENDIF()
 # ====== Threads ============================================================
 FIND_PACKAGE(Threads REQUIRED)
 
-# ====== Bison and Flex ====================================================#
+# ====== Bison and Flex =====================================================
 FIND_PACKAGE(BISON 3.0 REQUIRED)
 FIND_PACKAGE(FLEX REQUIRED)
 
