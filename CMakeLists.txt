@@ -90,14 +90,51 @@ ENDIF()
 FIND_PACKAGE(Threads REQUIRED)
 
 # ====== Bison and Flex =====================================================
-FIND_PACKAGE(BISON 3.0 REQUIRED)
-FIND_PACKAGE(FLEX REQUIRED)
+FIND_PACKAGE(BISON 3.0)
+IF (NOT BISON_FOUND)
+   MESSAGE(FATAL_ERROR "Cannot find Bison >= 3.0! Try:\n"
+           " * Ubuntu/Debian: sudo apt install -y bison\n"
+           " * Fedora:        sudo dnf install -y bison\n"
+           " * SuSE:          sudo zypper install -y bison\n"
+           " * Alpine:        sudo apk add bison\n"
+           " * FreeBSD:       sudo pkg install -y bison\n"
+           " * Apple:         brew install bison")
+ENDIF()
+
+FIND_PACKAGE(FLEX)
+IF (NOT FLEX_FOUND)
+   MESSAGE(FATAL_ERROR "Cannot find Flex! Try:\n"
+           " * Ubuntu/Debian: sudo apt install -y flex\n"
+           " * Fedora:        sudo dnf install -y flex\n"
+           " * SuSE:          sudo zypper install -y flex\n"
+           " * Alpine:        sudo apk add flex\n"
+           " * FreeBSD:       sudo pkg install -y flex\n"
+           " * Apple:         brew install flex")
+ENDIF()
 
 # ====== libcurl ============================================================
-FIND_PACKAGE(CURL REQUIRED)
+FIND_PACKAGE(CURL)
+IF (NOT CURL_FOUND)
+   MESSAGE(FATAL_ERROR "Cannot find cURL! Try:\n"
+           " * Ubuntu/Debian: sudo apt install -y libcurl4-openssl-dev\n"
+           " * Fedora:        sudo dnf install -y libcurl-devel\n"
+           " * SuSE:          sudo zypper install -y libcurl-devel\n"
+           " * Alpine:        sudo apk add curl-dev\n"
+           " * FreeBSD:       sudo pkg install -y curl\n"
+           " * Apple:         brew install curl")
+ENDIF()
 
-# ====== libcrypto (MD5 computation) ========================================
-FIND_PACKAGE(OpenSSL REQUIRED)
+# ====== libcrypto (for MD5 computation) ====================================
+FIND_PACKAGE(OpenSSL)
+IF (NOT OpenSSL_FOUND)
+   MESSAGE(FATAL_ERROR "Cannot find OpenSSL! Try:\n"
+           " * Ubuntu/Debian: sudo apt install -y libssl-dev\n"
+           " * Fedora:        sudo dnf install -y openssl-devel\n"
+           " * SuSE:          sudo zypper install -y libopenssl-devel\n"
+           " * Alpine:        sudo apk add openssl-dev\n"
+           " * FreeBSD:       sudo pkg install -y openssl\n"
+           " * Apple:         brew install openssl")
+ENDIF()
 
 
 #############################################################################
