@@ -321,6 +321,7 @@ def getBibTeXForIETFDocument(document : str) -> None:
    title : str | None = None
    if isinstance(titleList[0].childNodes[0], xml.dom.minidom.Text):
       title = titleList[0].childNodes[0].data
+      assert title is not None
       title = title.strip().replace(' (', '~(')
       title = title.strip().replace(' - ', ' -- ')
       # print(title)

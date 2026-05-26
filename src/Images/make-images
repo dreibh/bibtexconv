@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Bash options:
-set -eu
+set -euo pipefail
 
 get-svg ()
 {

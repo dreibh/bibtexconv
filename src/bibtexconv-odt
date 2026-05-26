@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -eu
 # ==========================================================================
 #                ____  _ _   _____   __  ______
 #                | __ )(_) |_|_   _|__\ \/ / ___|___  _ ____   __
@@ -27,8 +27,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Contact: thomas.dreibholz@gmail.com
-
-set -eu
 
 # ====== Handle arguments ===================================================
 if [ $# -ne 4 ] ; then

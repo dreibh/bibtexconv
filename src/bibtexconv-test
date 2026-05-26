@@ -28,7 +28,7 @@
 #
 # Contact: thomas.dreibholz@gmail.com
 
-set -eu
+set -euo pipefail
 
 RUN=""
 # RUN="valgrind "
