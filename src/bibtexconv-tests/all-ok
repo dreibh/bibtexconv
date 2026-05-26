@@ -1,0 +1,13 @@
+#!/bin/sh -eu
+
+./ok test1.txt
+./ok test2.txt
+./ok test3.txt
+./ok bibtex-example1.bib
+./ok bibtex-example2.bib
+./ok yaml-example.yaml
+./ok md-example.md
+./ok text-example.txt
+./ok web-example1.html
+./ok web-example2.html
+./ok odt-example.xml

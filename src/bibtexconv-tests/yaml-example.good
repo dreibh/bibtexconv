@@ -1799,7 +1799,9 @@ Reference:
    URL: https://ieee-dataport.org/documents/reflection-server-tuning-dataset
  - Author: Azza Hassan Mohamed Ahmed and Thomas Dreibholz and Foivos Ioannis Michelinakis and Tarik Čičić
    Booktitle: Proceedings of the 18th Workshop on Cyber Security Experimentation and Test (CSET) in conjunction with the 41st Annual Computer Security Applications Conference (ACSAC)
+   Pages: 579–586
    Title: Open 5G Testbed: A Cyber Range Platform for Security Research
+   DOI: 10.1109/ACSACW69556.2025.00067
    Year: 2025
    Month: dec
    Day: 8
@@ -1814,14 +1816,18 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/2025-10/2025-09-OpenPGP-Introduction.pdf
  - Author: Magnus Samuelsen and Thomas Dreibholz and Somnath Mazumdar
    Booktitle: Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing (ISPDC)
+   Pages: 1–8
    Title: FL+2: Multi-Layered Privacy Protection for Federated Learning-based Medical Diagnostic
+   DOI: 10.1109/ISPDC67428.2025.00015
    Year: 2025
    Month: jul
    Day: 8
    URL: https://web-backend.simula.no/sites/default/files/2025-07/ISPDC2025-FL2.pdf
  - Author: Somnath Mazumdar and Thomas Dreibholz
    Booktitle: Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing (ISPDC)
+   Pages: 26–33
    Title: Towards a Privacy-Aware Communication for Disaggregated Fog Platform
+   DOI: 10.1109/ISPDC67428.2025.00014
    Year: 2025
    Month: jul
    Day: 8

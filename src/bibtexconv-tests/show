@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Bash options:
-set -eu
+set -euo pipefail
 
 while [ $# -gt 0 ] ; do
    f="$1"
