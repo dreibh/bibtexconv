@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd May 17, 2026
+.Dd May 26, 2026
 .Dt bibtexconv 1
 .Os bibtexconv
 .\" ###### Name #############################################################
@@ -37,43 +37,43 @@
 .Nd BibTeX Converter
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
-.Nm bibtexconv Ar BibTeX_file Op ...
+.Nm bibtexconv Ar BibTeX\_file Op ...
 .br
-.Op Fl B Ar bibtex_file_name | Fl Fl export-to-bibtex Ar bibtex_file_name
+.Op Fl B Ar bibtex\_file\_name | Fl \-export\-to\-bibtex Ar bibtex\_file\_name
 .br
-.Op Fl b Ar bibtex_file_prefix| Fl Fl export-\%to-\%separate-\%bibtexs Ar bibtex_\%file_\%prefix
+.Op Fl b Ar bibtex\_file\_prefix| Fl \-export\-\%to\-\%separate\-\%bibtexs Ar bibtex\_\%file\_\%prefix
 .br
-.Op Fl X Ar xml_file_name | Fl Fl export-to-xml Ar xml_file_name
+.Op Fl X Ar xml\_file\_name | Fl \-export\-to\-xml Ar xml\_file\_name
 .br
-.Op Fl x Ar xml_file_prefix | Fl Fl export-\%to-\%separate-\%xmls Ar xml_\%file_\%prefix
+.Op Fl x Ar xml\_file\_prefix | Fl \-export\-\%to\-\%separate\-\%xmls Ar xml\_\%file\_\%prefix
 .br
-.Op Fl C Ar custom_file_name | Fl Fl export-\%to-\%custom Ar custom_\%file_\%name
+.Op Fl C Ar custom\_file\_name | Fl \-export\-\%to\-\%custom Ar custom\_\%file\_\%name
 .br
-.Op Fl D Ar directory | Fl Fl store-downloads Ar directory
+.Op Fl D Ar directory | Fl \-store\-downloads Ar directory
 .br
-.Op Fl m Ar name:\%mapping_file:\%key_column:\%value_column | Fl Fl mapping Ar name:\%mapping_file:\%key_column:\%value_column
+.Op Fl m Ar name:\%mapping\_file:\%key\_column:\%value\_column | Fl \-mapping Ar name:\%mapping\_file:\%key\_column:\%value\_column
 .br
-.Op Fl s Ar string | Fl Fl nbsp Ar string
+.Op Fl s Ar string | Fl \-nbsp Ar string
 .br
-.Op Fl l Ar string | Fl Fl linebreak Ar string
+.Op Fl l Ar string | Fl \-linebreak Ar string
 .br
-.Op Fl n | Fl Fl non-interactive
+.Op Fl n | Fl \-non\-interactive
 .br
-.Op Fl U | Fl Fl check-urls
-.Op Fl u | Fl Fl only-check-new-urls
+.Op Fl U | Fl \-check\-urls
+.Op Fl u | Fl \-only\-check\-new\-urls
 .br
-.Op Fl w | Fl Fl ignore-updates-for-html
+.Op Fl w | Fl \-ignore\-updates\-for\-html
 .br
-.Op Fl a | Fl Fl add-url-command
+.Op Fl a | Fl \-add\-url\-command
 .br
-.Op Fl i | Fl Fl skip-notes-with-isbn-and-issn
-.Op Fl I | Fl Fl add-notes-with-isbn-and-issn
+.Op Fl i | Fl \-skip\-notes\-with\-isbn\-and\-issn
+.Op Fl I | Fl \-add\-notes\-with\-isbn\-and\-issn
 .br
-.Op Fl q | Fl Fl quiet
+.Op Fl q | Fl \-quiet
 .Nm bibtexconv
-.Op Fl h | Fl Fl help
+.Op Fl h | Fl \-help
 .Nm bibtexconv
-.Op Fl v | Fl Fl version
+.Op Fl v | Fl \-version
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
 .Nm bibtexconv
@@ -83,62 +83,62 @@ possibility to check URLs (including MD5, size and MIME type computations) and
 to verify ISBN and ISSN numbers.
 .br
 bibtexconv provides an interactive mode (usually used in form of export
-scripts) which allows for fine-granular selection of entries, sorting and
+scripts) which allows for fine\-granular selection of entries, sorting and
 export template specification.
 .Pp
 .\" ###### Arguments ########################################################
 .Sh OPTIONS
 The following arguments may be provided:
 .Bl -tag -width indent
-.It Ar BibTeX_file Op ...
+.It Ar BibTeX\_file Op ...
 The BibTeX input file. Multiple files may be provided.
-.It Fl B Ar bibtex_file_name | Fl Fl export-to-bibtex Ar bibtex_file_name
+.It Fl B Ar bibtex\_file\_name | Fl \-export\-to\-bibtex Ar bibtex\_file\_name
 Write the results as BibTeX into the given file.
-.It Fl b Ar bibtex_file_prefix| Fl Fl export-to-separate-bibtexs Ar bibtex_file_prefix
-Write the results as BibTeX; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex-"), the entry key and ".bib".
-.It Fl X Ar xml_file_name | Fl Fl export-to-xml Ar xml_file_name
+.It Fl b Ar bibtex\_file\_prefix| Fl \-export\-to\-separate\-bibtexs Ar bibtex\_file\_prefix
+Write the results as BibTeX; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex\-"), the entry key and ".bib".
+.It Fl X Ar xml\_file\_name | Fl \-export\-to\-xml Ar xml\_file\_name
 Write the results as XML (as used by IETF Internet Draft processing tools)
 into the given file.
-.It Fl x Ar xml_file_prefix | Fl Fl export-to-separate-xmls Ar xml_file_prefix
-Write the results as XML; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex-"), the entry key and ".xml".
-.It Fl C Ar custom_file_name | Fl Fl export-to-custom Ar custom_file_name
+.It Fl x Ar xml\_file\_prefix | Fl \-export\-to\-separate\-xmls Ar xml\_file\_prefix
+Write the results as XML; for each entry, an own file will be created. The filename will be generated from given prefix (e.g. "/tmp/MyBibTex\-"), the entry key and ".xml".
+.It Fl C Ar custom\_file\_name | Fl \-export\-to\-custom Ar custom\_file\_name
 Write the results as custom output into the given file.
-.It Fl D Ar directory | Fl Fl store-downloads Ar directory
-Combined with \-\-check-urls, all checked references are downloaded and stored in the given directory. Existing files will be overwritten.
-.It Fl m Ar name:mapping_file:key_column:value_column | Fl Fl mapping Ar name:mapping_file:key_column:value_column
+.It Fl D Ar directory | Fl \-store\-downloads Ar directory
+Combined with \-\-check\-urls, all checked references are downloaded and stored in the given directory. Existing files will be overwritten.
+.It Fl m Ar name:mapping\_file:key\_column:value\_column | Fl \-mapping Ar name:mapping\_file:key\_column:value\_column
 Read key and value columns from a mapping file into a mapping with given name.
-.It Fl s Ar string | Fl Fl nbsp Ar string
-Replace non-breakable space by given string (for example, "&nbsp;" when writing HTML).
-.It Fl l Ar string | Fl Fl linebreak Ar string
+.It Fl s Ar string | Fl \-nbsp Ar string
+Replace non\-breakable space by given string (for example, "&nbsp;" when writing HTML).
+.It Fl l Ar string | Fl \-linebreak Ar string
 Replace linebreak by given string (for example, "<br />" when writing HTML).
-.It Fl n | Fl Fl non-interactive
-Turns on non-interactive mode. Useful for just performing URL checks and
+.It Fl n | Fl \-non\-interactive
+Turns on non\-interactive mode. Useful for just performing URL checks and
 ISBN/ISSN verification.
-.It Fl U | Fl Fl check-urls
+.It Fl U | Fl \-check\-urls
 Check URLs by downloading the content file and adding MD5, size and MIME type
 entries.
-.It Fl u | Fl Fl only-check-new-urls
-Combined with \-\-check-urls, checks are only performed for new entries where
+.It Fl u | Fl \-only\-check\-new\-urls
+Combined with \-\-check\-urls, checks are only performed for new entries where
 MD5, size and/or MIME type are still unknown.
-.It Fl w | Fl Fl ignore-updates-for-html
-Ignore changes in HTML files when checking URLs. This is useful for dynamically-generated web pages, where each retrieval creates a new, different HTML file.
-.It Fl a | Fl Fl add-url-command
+.It Fl w | Fl \-ignore\-updates\-for\-html
+Ignore changes in HTML files when checking URLs. This is useful for dynamically\-generated web pages, where each retrieval creates a new, different HTML file.
+.It Fl a | Fl \-add\-url\-command
 Add \\url{} commands to url tags in BibTeX export.
-.It Fl i | Fl Fl skip-notes-with-isbn-and-issn
+.It Fl i | Fl \-skip\-notes\-with\-isbn\-and\-issn
 When reading the BibTeX file, ignore "note" items with ISBN and ISSN.
-.It Fl I | Fl Fl add-notes-with-isbn-and-issn
+.It Fl I | Fl \-add\-notes\-with\-isbn\-and\-issn
 When writing a BibTeX file, create "note" items with ISBN and ISSN.
-.It Fl q | Fl Fl quiet
+.It Fl q | Fl \-quiet
 Reduces output verbosity.
-.It Fl h | Fl Fl help
-Prints command-line parameters.
-.It Fl v | Fl Fl version
+.It Fl h | Fl \-help
+Prints command\-line parameters.
+.It Fl v | Fl \-version
 Prints program version.
 .El
 .\" ###### Commands #########################################################
 .Sh COMMANDS
 After startup, bibtexconv accepts the following commands from standard input
-(not as command-line arguments!):
+(not as command\-line arguments!):
 .Bl -tag -width ident
 .It cite key [custom1 ... custom9]
 Select specific entry in the input BibTeX file, given by key. Optionally, up
@@ -160,13 +160,13 @@ template.
 Include another export script, given by file name.
 .It monthNames jan feb mar apr may jun jul aug sep oct nov dec
 Changes textual representation of month names. This is necessary when
-non-English names are required for export.
+non\-English names are required for export.
 .It nbsp
-Changes textual representation of the "non-breakable space", for example
+Changes textual representation of the "non\-breakable space", for example
 &nbsp; in HTML or ~ in BibTeX.
 .It templatenew
 Begin a new template definition. Initially, the template will be empty.
-.It template+ template_string
+.It template+ template\_string
 Add the provided template string to the template. template+ allows one to define
 a complex template consisting of multiple template+ lines, to enhance
 readability. Within the template, the following placeholders can be used:
@@ -178,10 +178,10 @@ Insert the BibTeX "address" content (i.e. the address of the publication,
 usually the conference or publisher location).
 .It %{booktitle}
 Insert the BibTeX "booktitle" content (i.e. the book title of the publication).
-.It %{custom-1} | ... | %{custom-9}
+.It %{custom\-1} | ... | %{custom\-9}
 Insert the corresponding value provided as custom1 ... custom9 to the "cite" command.
 Some conversions may be applied when using "xmlStyle" (see below).
-.It %{custom-1-as-is} | ... | %{custom-9-as-is}
+.It %{custom\-1\-as\-is} | ... | %{custom\-9\-as\-is}
 Insert the corresponding value provided as custom1 ... custom9 to the "cite" command.
 No conversions are applied.
 .It %{day}
@@ -194,7 +194,7 @@ Insert the BibTeX "edition" content (i.e. the edition of the publication).
 Insert the BibTeX "editor" content (i.e. the editor of the publication).
 .It %{file}
 Insert the BibTeX "file" content (i.e. the URL of a download file).
-.It %{how-published} | %{howpublished}
+.It %{how\-published} | %{howpublished}
 Insert the BibTeX "howpublished" content (i.e. the publication type of the publication).
 .It %{institution}
 Insert the BibTeX "institution" content (i.e. the institution of the publication).
@@ -259,10 +259,10 @@ This field is a custom field used by BibTeXConv.
 Insert the BibTeX "url.pagesize" content. It contains the paper format of the download from "url", e.g. "595.276 x 841.89 pts (A4)" for DIN A4 or "612 x 792 pts (letter)" for US Letter.
 This field is a custom field used by BibTeXConv.
 .It %{url.size.UNIT}
-Insert the BibTeX "url.size" content. It contains the size of the download. UNIT may be "b" for bytes, "kib" for KiB, "mib" for MiB, or "gib" for GiB. For convenience, UNIT is case-insensitive.
+Insert the BibTeX "url.size" content. It contains the size of the download. UNIT may be "b" for bytes, "kib" for KiB, "mib" for MiB, or "gib" for GiB. For convenience, UNIT is case\-insensitive.
 This field is a custom field used by BibTeXConv.
-.It %{content-language}
-Insert the BibTeX "content-language" content. It contains the language of the actual publication content. For instance, "content-language" could be "chinese", while title and abstract (given by "language") is "english".
+.It %{content\-language}
+Insert the BibTeX "content\-language" content. It contains the language of the actual publication content. For instance, "content\-language" could be "chinese", while title and abstract (given by "language") is "english".
 This field is a custom field used by BibTeXConv.
 .It %{urn}
 Insert the BibTeX "urn" content. This field contains the Uniform Resource Name (URN) number, used by many national libraries.
@@ -289,15 +289,15 @@ Furthermore, by using blocks, some conditional evaluation is possible:
 .Bl -tag -width ident
 .It %{is?COMPARISON}
 Success, if the block until the placeholder is equal to COMPARISON.
-.It %{is-not?COMPARISON}
+.It %{is\-not?COMPARISON}
 Success, if the block until the placeholder is not equal to COMPARISON.
-.It %{is-less-than?COMPARISON}
+.It %{is\-less\-than?COMPARISON}
 Success, if the block until the placeholder is less than COMPARISON.
-.It %{is-less-than-or-equal?COMPARISON}
+.It %{is\-less\-than\-or\-equal?COMPARISON}
 Success, if the block until the placeholder is less than or equal COMPARISON.
-.It %{is-greater-than?COMPARISON}
+.It %{is\-greater\-than?COMPARISON}
 Success, if the block until the placeholder is greater than COMPARISON.
-.It %{is-greater-than-or-equal?COMPARISON}
+.It %{is\-greater\-than\-or\-equal?COMPARISON}
 Success, if the block until the placeholder is greater or equal COMPARISON.
 .It %{map:NAME}
 Success, if the mapping NAME contains a mapping from the block until the placeholder. The block is evaluated to this mapping.
@@ -305,29 +305,29 @@ Success, if the mapping NAME contains a mapping from the block until the placeho
 .Pp
 Finally, for handling the authors list of a publication, some special placeholders can be used:
 .Bl -tag -width ident
-.It %{begin-author-loop}
+.It %{begin\-author\-loop}
 Begin loop over all authors. Within the loop, the following placeholders apply to the current author in the loop.
-.It %{author-family-name}
+.It %{author\-family\-name}
 Insert the current author's family name.
-.It %{author-given-name}
+.It %{author\-given\-name}
 Insert the current author's given name.
-.It %{is-first-author?}
+.It %{is\-first\-author?}
 Success, if the current author is the first author.
-.It %{is-not-first-author?}
+.It %{is\-not\-first\-author?}
 Success, if the current author is not the first author.
-.It %{is-last-author?}
+.It %{is\-last\-author?}
 Success, if the current author is the last author.
-.It %{is-not-last-author?}
+.It %{is\-not\-last\-author?}
 Success, if the current author is not the last author.
-.It %{end-author-loop}
-End the author loop started with %{begin-author-loop}.
+.It %{end\-author\-loop}
+End the author loop started with %{begin\-author\-loop}.
 .El
-.It header header_string
+.It header header\_string
 Add the provided header string before each exported publication entry.
-.It trailer trailer_string
+.It trailer trailer\_string
 Add the provided trailer string after each exported publication entry.
 .It utf8Style
-Use UTF-8 style conventions, i.e. export characters without conversion.
+Use UTF\-8 style conventions, i.e. export characters without conversion.
 .It xmlStyle
 Use XML style conventions, i.e. export characters with some conversions to
 handle special characters not allowed in XML
@@ -349,9 +349,9 @@ commands which are read by bibtexconv from standard input.
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-\-\-export-to-bibtex=UpdatedReferences.bib \e
+\-\-export\-to\-bibtex=UpdatedReferences.bib \e
 .br
-\-\-check-urls \-\-only-check-new-urls \-\-non-interactive
+\-\-check\-urls \-\-only\-check\-new\-urls \-\-non\-interactive
 .br
 Checks URLs of all entries in /usr/share/doc/bibtexconv/examples/ExampleReferences.bib, adds MD5, size and MIME type
 items and writes the results to UpdatedReferences.bib.
@@ -359,35 +359,35 @@ items and writes the results to UpdatedReferences.bib.
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-</usr/share/doc/bibtexconv/examples/web-example1.export >MyPublications.html
+</usr/share/doc/bibtexconv/examples/web\-example1.export >MyPublications.html
 .br
-Uses export script /usr/share/doc/bibtexconv/examples/web-example1.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.html as XHTML 1.1.
+Uses export script /usr/share/doc/bibtexconv/examples/web\-example1.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.html as XHTML 1.1.
 .It bibtexconv \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-</usr/share/doc/bibtexconv/examples/text-example.export >MyPublications.txt
+</usr/share/doc/bibtexconv/examples/text\-example.export >MyPublications.txt
 .br
-Uses export script /usr/share/doc/bibtexconv/examples/text-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.txt as plain text.
+Uses export script /usr/share/doc/bibtexconv/examples/text\-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.txt as plain text.
 .It bibtexconv \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-</usr/share/doc/bibtexconv/examples/yaml-example.export >MyPublications.yaml
+</usr/share/doc/bibtexconv/examples/yaml\-example.export >MyPublications.yaml
 .br
-Uses export script /usr/share/doc/bibtexconv/examples/yaml-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.yaml as YAML file according to Debian Upstream MEtadata GAthered with YAml\~(UMEGAYA) format (see https://wiki.debian.org/UpstreamMetadata).
+Uses export script /usr/share/doc/bibtexconv/examples/yaml\-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.yaml as YAML file according to Debian Upstream MEtadata GAthered with YAml\~(UMEGAYA) format (see https://wiki.debian.org/UpstreamMetadata).
 .It bibtexconv \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-\-\-non-interactive \-\-export-to-separate-xmls=reference.
+\-\-non\-interactive \-\-export\-to\-separate\-xmls=reference.
 .br
 Convert all references to XML references to be includable in IETF Internet Drafts. For each reference, an own file is generated, named with the prefix "reference.", for example reference.Globecom2010.xml for entry Globecom2010.
 .It bibtexconv \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-\-\-non-interactive \-\-export-to-separate-bibtexs=
+\-\-non\-interactive \-\-export\-to\-separate\-bibtexs=
 .br
 Convert all references to BibTeX references. For each reference, an own file is generated, named with the prefix "", for example Globecom2010.bib for entry Globecom2010.
 .El

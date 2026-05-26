@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd May 17, 2026
+.Dd May 26, 2026
 .Dt ietf2bibtex 1
 .Os ietf2bibtex
 .\" ###### Name #############################################################
@@ -38,11 +38,11 @@
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
 .Nm ietf2bibtex
-.Op Fl Fl authors-fix-file=NAME
-.Op Fl Fl no-authors-fix-file
+.Op Fl \-authors\-fix\-file=NAME
+.Op Fl \-no\-authors\-fix\-file
 .br
-.Op Fl Fl quiet
-.Op Fl Fl verbose
+.Op Fl \-quiet
+.Op Fl \-verbose
 .br
 document
 .Op document ...
@@ -66,8 +66,8 @@ authors fix file. It contains name translations in the form of
 Known limitations of ietf2bibtex:
 .br
 IETF metadata and documents only contain ASCII characters. To obtain the
-correct non-ASCII author names (e.g. German, Norwegian, French, etc.), it
-is necessary to use authors-fix.list.
+correct non\-ASCII author names (e.g. German, Norwegian, French, etc.), it
+is necessary to use authors\-fix.list.
 .br
 IETF metadata has often wrong or limited author information for a document.
 ietf2bibtex tries to obtain the author information from the document.
@@ -82,16 +82,16 @@ Unusual formatting sometimes prevents this.
 The following arguments may be provided:
 .Bl -tag -width indent
 .It Ar document Op ...
-The name of the IETF document, e.g. like RFC5351 or draft-dreibholz-ipv4-flowlabel. Multiple names may be provided.
-.It Fl Fl quiet
+The name of the IETF document, e.g. like RFC5351 or draft\-dreibholz\-ipv4\-flowlabel. Multiple names may be provided.
+.It Fl \-quiet
 Print less progress information.
-.It Fl Fl verbose
+.It Fl \-verbose
 Print progress information (default).
-.It Fl Fl authors-fix-file=NAME
+.It Fl \-authors\-fix\-file=NAME
 Use the given file as authors fix file.
-If not provided, the default is used: try authors-fix.list in the current
-directory first, then /usr/share/doc/bibtexconv/examples/authors-fix.list.
-.It Fl Fl no-authors-fix-file
+If not provided, the default is used: try authors\-fix.list in the current
+directory first, then /usr/share/doc/bibtexconv/examples/authors\-fix.list.
+.It Fl \-no\-authors\-fix\-file
 Use no authors fix file.
 .El
 .Pp
@@ -105,8 +105,8 @@ tool exits with 0 on success, and >0 in case of an error.
 .Bl -tag -width indent
 .It ietf2bibtex RFC5351
 .It ietf2bibtex RFC5351 RFC5352 RFC5353 RFC5354 RFC5355 RFC5356 RFC5525 >RSerPool.bib
-.It ietf2bibtex --quiet draft-dreibholz-ipv4-flowlabel
-.It ietf2bibtex --verbose --authors-fix-file=\%/usr/\%share/\%doc/\%bibtexconv/\%examples/\%authors-fix.list draft-\%dreibholz-\%rserpool-\%delay
+.It ietf2bibtex \--quiet draft\-dreibholz\-ipv4\-flowlabel
+.It ietf2bibtex \--verbose \--authors\-fix\-file=\%/usr/\%share/\%doc/\%bibtexconv/\%examples/\%authors\-fix.list draft\-\%dreibholz\-\%rserpool\-\%delay
 .El
 .\" ###### Notes ############################################################
 .Sh NOTES

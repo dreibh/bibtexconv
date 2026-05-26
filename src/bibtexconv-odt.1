@@ -28,19 +28,19 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd May 17, 2026
-.Dt bibtexconv-odt 1
-.Os bibtexconv-odt
+.Dd May 26, 2026
+.Dt bibtexconv\-odt 1
+.Os bibtexconv\-odt
 .\" ###### Name #############################################################
 .Sh NAME
-.Nm bibtexconv-odt
+.Nm bibtexconv\-odt
 .Nd ODT Helper Script for BibTeX Converter
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
-.Nm bibtexconv-odt Ar Template_ODT Ar Output_ODT Ar BibTeX_File Ar Export_Script
+.Nm bibtexconv\-odt Ar Template\_ODT Ar Output\_ODT Ar BibTeX\_File Ar Export\_Script
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
-.Nm bibtexconv-odt
+.Nm bibtexconv\-odt
 runs bibtexconv to generate an Open Document Text (ODT) content.xml file, which
 is then joined with an existing template ODT file into an output ODT file.
 .Pp
@@ -48,13 +48,13 @@ is then joined with an existing template ODT file into an output ODT file.
 .Sh OPTIONS
 The following arguments have to be provided:
 .Bl -tag -width indent
-.It Ar Template_ODT
+.It Ar Template\_ODT
 The template ODT file.
-.It Ar Output_ODT
+.It Ar Output\_ODT
 The output ODT file.
-.It Ar BibTeX_File
+.It Ar BibTeX\_File
 The input BibTeX file for BibTeXConv.
-.It Ar Export_Script
+.It Ar Export\_Script
 The input export script for BibTeXConv.
 .El
 .\" ###### Exit status ######################################################
@@ -65,17 +65,17 @@ tool exits with 0 on success, and >0 in case of an error.
 .\" ###### Examples #########################################################
 .Sh EXAMPLE
 .Bl -tag -width indent
-.It bibtexconv-odt \e
+.It bibtexconv\-odt \e
 .br
-/usr/share/doc/bibtexconv/examples/ODT-Template.odt \e
+/usr/share/doc/bibtexconv/examples/ODT\-Template.odt \e
 .br
 MyPublications.odt \e
 .br
 /usr/share/doc/bibtexconv/examples/ExampleReferences.bib \e
 .br
-/usr/share/doc/bibtexconv/examples/odt-example.export
+/usr/share/doc/bibtexconv/examples/odt\-example.export
 .br
-Uses export script /usr/share/doc/bibtexconv/examples/odt-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.odt as OpenDocument Text (ODT), according to the template ODT file /usr/share/doc/bibtexconv/examples/ODT-Template.odt.
+Uses export script /usr/share/doc/bibtexconv/examples/odt\-example.export to export references from /usr/share/doc/bibtexconv/examples/ExampleReferences.bib to MyPublications.odt as OpenDocument Text (ODT), according to the template ODT file /usr/share/doc/bibtexconv/examples/ODT\-Template.odt.
 .El
 .\" ###### Notes ############################################################
 .Sh NOTES
