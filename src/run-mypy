@@ -29,9 +29,10 @@
 # Contact: thomas.dreibholz@gmail.com
 
 # Bash options:
-set -eu
+set -euo pipefail
 
 
+# Automatically find all Python scripts in subdirectories:
 SCRIPTS="$(
 (
    find . -type f -executable -and -not -name "*~"
@@ -46,10 +47,15 @@ done
 # ###### Helper function to show failure ####################################
 exit-failed ()
 {
+   local columns
+   columns="$(print-utf8 -t 2>/dev/null || echo "80")"
+   columns="${columns/ */}"
+   columns=$((columns - 2))
+
    echo
-   "${PRINT_UTF8}" -n -s "\e[1;31;5m█" "▀" "█\e[0m" ;
-   echo "CHECK FAILED!" | "${FIGLET}" -w "${COLUMNS}" | "${PRINT_UTF8}" -n -C "\e[1;31;5m█\e[25m" "\e[5m█\e[0m" ;
-   "${PRINT_UTF8}" -n -s "\e[1;31;5m█" "▄" "█\e[0m"
+   print-utf8 -n -s "\e[1;31;5m█" "▀" "█\e[0m" ;
+   echo "CHECK FAILED!" | figlet -w "${columns}" | print-utf8 -n -C "\e[1;31;5m█\e[25m" "\e[5m█\e[0m" ;
+   print-utf8 -n -s "\e[1;31;5m█" "▄" "█\e[0m"
    exit 1
 }
 
@@ -57,10 +63,15 @@ exit-failed ()
 # ###### Helper function to show success ####################################
 exit-success ()
 {
+   local columns
+   columns="$(print-utf8 -t 2>/dev/null || echo "80")"
+   columns="${columns/ */}"
+   columns=$((columns - 2))
+
    echo
-   "${PRINT_UTF8}" -n -s "\e[1;32m█" "▀" "█\e[0m" ;
-   echo "ALL CHECKS SUCCEEDED!" | "${FIGLET}" -w "${COLUMNS}" | "${PRINT_UTF8}" -n -C "\e[1;32m█\e[25m" "█\e[0m" ;
-   "${PRINT_UTF8}" -n -s "\e[1;32m█" "▄" "█\e[0m"
+   print-utf8 -n -s "\e[1;32m█" "▀" "█\e[0m" ;
+   echo "ALL CHECKS SUCCEEDED!" | figlet -w "${columns}" | print-utf8 -n -C "\e[1;32m█\e[25m" "█\e[0m" ;
+   print-utf8 -n -s "\e[1;32m█" "▄" "█\e[0m"
    exit 0
 }
 
@@ -69,10 +80,14 @@ exit-success ()
 show-script ()
 {
    local script="$1"
+   local columns
+   columns="$(print-utf8 -t 2>/dev/null || echo "80")"
+   columns="${columns/ */}"
+   columns=$((columns - 2))
 
-   "${PRINT_UTF8}" -n -s "\e[1;36m█" "▀" "█\e[0m" ;
-   "${FIGLET}" -w "${COLUMNS}" "$(basename "${script}")" | "${PRINT_UTF8}" -n -C "\e[1;36m█\e[25m" "█\e[0m" ;
-   "${PRINT_UTF8}" -n -s "\e[1;36m█" "▄" "█\e[0m"
+   print-utf8 -n -s "\e[1;36m█" "▀" "█\e[0m" ;
+   figlet -w "${columns}" "$(basename "${script}")" | print-utf8 -n -C "\e[1;36m█\e[25m" "█\e[0m" ;
+   print-utf8 -n -s "\e[1;36m█" "▄" "█\e[0m"
 }
 
 
@@ -80,7 +95,7 @@ show-script ()
 # ###### Main program #######################################################
 
 # ====== Find locations of Python interpreter, MyPy, and tools ==============
-PYTHON="$(which python 2>/dev/null || which python3 2>/dev/null || true)"
+PYTHON="$(command -v python || command -v python3 || true)"
 if [ ! -x "${PYTHON}" ] ; then
    echo >&2 "ERROR: Unable to identify Python executable!"
    exit 1
@@ -95,8 +110,7 @@ if [ ! -x "${MYPY}" ] ; then
    exit 1
 fi
 echo "MyPy: ${MYPY}"
-PRINT_UTF8="$(which print-utf8 2>/dev/null || true)"
-if [ ! -x "${PRINT_UTF8}" ] ; then
+if ! command -v print-utf8 2>/dev/null ; then
    echo >&2 "ERROR: Print-UTF8 (from System-Tools) is not installed!"
    echo >&2 "Try this:"
    echo >&2 "* Ubuntu:  sudo apt-add-repository -sy ppa:dreibh/ppa"
@@ -106,8 +120,7 @@ if [ ! -x "${PRINT_UTF8}" ] ; then
    echo >&2 "* FreeBSD: sudo pkg install -y td-system-tools"
    exit 1
 fi
-FIGLET="$(which figlet 2>/dev/null || true)"
-if [ ! -x "${FIGLET}" ] ; then
+if ! command -v figlet 2>/dev/null ; then
    echo >&2 "ERROR: Figlet is not installed!"
    echo >&2 "* Ubuntu:  sudo apt install -y figlet"
    echo >&2 "* Fedora:  sudo dnf install -y figlet"

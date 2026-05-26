@@ -10,7 +10,7 @@
 #                https://www.nntb.no/~dreibh/system-tools/
 # ==========================================================================
 #
-# Run ShellCheck for Shell Scripts
+# Run ShellCheck
 # Copyright (C) 2024-2026 by Thomas Dreibholz
 #
 # This program is free software: you can redistribute it and/or modify
@@ -29,8 +29,7 @@
 # Contact: thomas.dreibholz@gmail.com
 
 # Bash options:
-set -eu
-
+set -euo pipefail
 
 # Automatically find all shell scripts in subdirectories:
 SCRIPTS="$(
@@ -48,10 +47,15 @@ done
 # ###### Helper function to show failure ####################################
 exit-failed ()
 {
+   local columns
+   columns="$(print-utf8 -t 2>/dev/null || echo "80")"
+   columns="${columns/ */}"
+   columns=$((columns - 2))
+
    echo
-   "${PRINT_UTF8}" -n -s "\e[1;31;5m█" "▀" "█\e[0m" ;
-   echo "CHECK FAILED!" | "${FIGLET}" -w "${COLUMNS}" | "${PRINT_UTF8}" -n -C "\e[1;31;5m█\e[25m" "\e[5m█\e[0m" ;
-   "${PRINT_UTF8}" -n -s "\e[1;31;5m█" "▄" "█\e[0m"
+   print-utf8 -n -s "\e[1;31;5m█" "▀" "█\e[0m" ;
+   echo "CHECK FAILED!" | figlet -w "${columns}" | print-utf8 -n -C "\e[1;31;5m█\e[25m" "\e[5m█\e[0m" ;
+   print-utf8 -n -s "\e[1;31;5m█" "▄" "█\e[0m"
    exit 1
 }
 
@@ -59,10 +63,15 @@ exit-failed ()
 # ###### Helper function to show success ####################################
 exit-success ()
 {
+   local columns
+   columns="$(print-utf8 -t 2>/dev/null || echo "80")"
+   columns="${columns/ */}"
+   columns=$((columns - 2))
+
    echo
-   "${PRINT_UTF8}" -n -s "\e[1;32m█" "▀" "█\e[0m" ;
-   echo "ALL CHECKS SUCCEEDED!" | "${FIGLET}" -w "${COLUMNS}" | "${PRINT_UTF8}" -n -C "\e[1;32m█\e[25m" "█\e[0m" ;
-   "${PRINT_UTF8}" -n -s "\e[1;32m█" "▄" "█\e[0m"
+   print-utf8 -n -s "\e[1;32m█" "▀" "█\e[0m" ;
+   echo "ALL CHECKS SUCCEEDED!" | figlet -w "${columns}" | print-utf8 -n -C "\e[1;32m█\e[25m" "█\e[0m" ;
+   print-utf8 -n -s "\e[1;32m█" "▄" "█\e[0m"
    exit 0
 }
 
@@ -71,10 +80,14 @@ exit-success ()
 show-script ()
 {
    local script="$1"
+   local columns
+   columns="$(print-utf8 -t 2>/dev/null || echo "80")"
+   columns="${columns/ */}"
+   columns=$((columns - 2))
 
-   "${PRINT_UTF8}" -n -s "\e[1;36m█" "▀" "█\e[0m" ;
-   "${FIGLET}" -w "${COLUMNS}" "$(basename "${script}")" | "${PRINT_UTF8}" -n -C "\e[1;36m█\e[25m" "█\e[0m" ;
-   "${PRINT_UTF8}" -n -s "\e[1;36m█" "▄" "█\e[0m"
+   print-utf8 -n -s "\e[1;36m█" "▀" "█\e[0m" ;
+   figlet -w "${columns}" "$(basename "${script}")" | print-utf8 -n -C "\e[1;36m█\e[25m" "█\e[0m" ;
+   print-utf8 -n -s "\e[1;36m█" "▄" "█\e[0m"
 }
 
 
@@ -82,8 +95,7 @@ show-script ()
 # ###### Main program #######################################################
 
 # ====== Find locations of Python interpreter, MyPy, and tools ==============
-SHELLCHECK="$(which shellcheck 2>/dev/null)"
-if [ ! -x "${SHELLCHECK}" ] ; then
+if ! command -v shellcheck 2>/dev/null ; then
    echo >&2 "ERROR: ShellCheck is not installed!"
    echo >&2 "Try this:"
    echo >&2 "* Ubuntu:  sudo apt install -y shellcheck"
@@ -91,9 +103,7 @@ if [ ! -x "${SHELLCHECK}" ] ; then
    echo >&2 "* FreeBSD: sudo pkg install -y hs-ShellCheck"
    exit 1
 fi
-echo "Python: ${SHELLCHECK}"
-PRINT_UTF8="$(which print-utf8 2>/dev/null || true)"
-if [ ! -x "${PRINT_UTF8}" ] ; then
+if ! command -v print-utf8 2>/dev/null ; then
    echo >&2 "ERROR: Print-UTF8 (from System-Tools) is not installed!"
    echo >&2 "Try this:"
    echo >&2 "* Ubuntu:  sudo apt-add-repository -sy ppa:dreibh/ppa"
@@ -103,8 +113,7 @@ if [ ! -x "${PRINT_UTF8}" ] ; then
    echo >&2 "* FreeBSD: sudo pkg install -y td-system-tools"
    exit 1
 fi
-FIGLET="$(which figlet 2>/dev/null || true)"
-if [ ! -x "${FIGLET}" ] ; then
+if ! command -v figlet 2>/dev/null ; then
    echo >&2 "ERROR: Figlet is not installed!"
    echo >&2 "* Ubuntu:  sudo apt install -y figlet"
    echo >&2 "* Fedora:  sudo dnf install -y figlet"
@@ -113,11 +122,11 @@ if [ ! -x "${FIGLET}" ] ; then
 fi
 
 
-# ====== Run MyPy ===========================================================
+# ====== Run ShellCheck =====================================================
 for script in $SCRIPTS ; do
    echo -e "\e[34mChecking ${script} ...\e[0m"
    show-script "${script}"
-   "${SHELLCHECK}" \
+   shellcheck \
       -x --color \
       "${script}" || exit-failed
 done
