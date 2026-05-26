@@ -26,7 +26,7 @@ REFERENCES=~/src/papers/Referenzarchiv.bib
 DOCUMENTS="$(grep -E "^@[a-zA-Z]*{[ \t].*,.*$" "${REFERENCES}" | sed -e "s/,//g" | awk '{ print $2; }' | grep -E "^RFC|^draft")"
 UPDATES_FILE="updated.bib"
 RESULTS_FILE="results.bib"
-PARALLEL=2
+PARALLEL=1
 
 # ====== Handle arguments ===================================================
 BIBTEXCONV_OPTIONS="--check-urls"
