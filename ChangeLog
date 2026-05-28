@@ -1,3 +1,87 @@
+commit 7bcc3688f067ba7120d1e95c740ec74057b53bcc
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed May 27 23:55:06 2026 +0200
+
+    Options handling improvement.
+
+commit 21fdb5759307d456f652770232d5a184a06092a4
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 26 23:02:29 2026 +0200
+
+    Minor update.
+
+commit 315b307c96e827b54b37f152c9f245bca5bd9777
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 26 22:52:33 2026 +0200
+
+    Minor clean-ups.
+
+commit e1185a749eaa4ecda141cdf1e6bf00d156ac7d08
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 26 22:52:19 2026 +0200
+
+    Updated examples.
+
+commit 37c707ef285615a1809d6958e02434aaba31337c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 26 22:49:55 2026 +0200
+
+    Improved helper script.
+
+commit bad6a83b5ab013265db774087f5e224ce6e5bb14
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 26 22:29:45 2026 +0200
+
+    Improved CMakeLists.txt.
+
+commit a3c3d7a2f29c5248064173cef1b326078efa499a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 26 22:29:36 2026 +0200
+
+    Updated examples.
+
+commit 06460dc7babdac41a406397877f5d10c218ec929
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue May 26 16:45:21 2026 +0200
+
+    Improved manpages.
+
+commit bcbf018a321747d44c21a536624cb331b82173cf
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon May 25 22:39:21 2026 +0200
+
+    Fixed typo in comment.
+
+commit fd6bce55b694553051deef2ebeae9f2245c62280
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon May 25 22:08:06 2026 +0200
+
+    Bison >= 3.0 is required, i.e. build on Apple needs Bison installed via Brew.
+
+commit 8a658c7d395f5bfaf1e8547296b5b4a37e7befc4
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sun May 17 20:29:53 2026 +0200
+
+    Improved manpages.
+
+commit 1b821157a07de3bf58c8d810778404174d7c542d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Apr 25 20:09:13 2026 +0200
+
+    Updated build script.
+
+commit 0c6dde21c4bece686509f3bd74768d7145b29821
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Apr 25 20:08:54 2026 +0200
+
+    Updated CI scripts
+
+commit e2b30e01192bb024389bfaac0af934365466e27f
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Apr 22 09:43:40 2026 +0200
+
+    New release bibtexconv-2.2.1.
+
 commit b82dfedcd050fddd2fc326766fb376477bfe05a6
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Tue Apr 21 16:20:16 2026 +0200
