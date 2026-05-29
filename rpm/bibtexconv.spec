@@ -23,7 +23,10 @@ Requires: zip
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 
 %description
-BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries to other formats, including customly defined text output. Furthermore, it provides the possibility to check URLs (including MD5, size and MIME type computations) and to verify ISBN and ISSN numbers.
+BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries
+to other formats, including customly defined text output. Furthermore, it
+provides the possibility to check URLs (including MD5, size and MIME type
+computations) and to verify ISBN and ISSN numbers.
 
 %prep
 %setup -q
