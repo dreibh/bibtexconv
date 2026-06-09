@@ -83,6 +83,25 @@ ENDIF()
 
 
 #############################################################################
+#### OS DEPENDENT                                                        ####
+#############################################################################
+
+IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+   MESSAGE(STATUS "${CMAKE_SYSTEM_NAME} supported")
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+   MESSAGE(STATUS "${CMAKE_SYSTEM_NAME} supported")
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "NetBSD")
+   MESSAGE(STATUS "${CMAKE_SYSTEM_NAME} supported")
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
+   MESSAGE(STATUS "${CMAKE_SYSTEM_NAME} supported")
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+   MESSAGE(STATUS "${CMAKE_SYSTEM_NAME} supported")
+ELSE()
+   MESSAGE(FATAL_ERROR "${CMAKE_SYSTEM_NAME} not supported (yet?)")
+ENDIF()
+
+
+#############################################################################
 #### REQUIREMENTS                                                        ####
 #############################################################################
 
@@ -98,6 +117,8 @@ IF (NOT BISON_FOUND)
            " * SuSE:          sudo zypper install -y bison\n"
            " * Alpine:        sudo apk add bison\n"
            " * FreeBSD:       sudo pkg install -y bison\n"
+           " * NetBSD:        sudo -y pkgin install bison\n"
+           " * OpenBSD:       sudo pkg_add bison\n"
            " * Apple:         brew install bison")
 ENDIF()
 
