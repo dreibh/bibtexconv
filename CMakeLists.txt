@@ -130,30 +130,44 @@ IF (NOT FLEX_FOUND)
            " * SuSE:          sudo zypper install -y flex\n"
            " * Alpine:        sudo apk add flex\n"
            " * FreeBSD:       sudo pkg install -y flex\n"
+           " * NetBSD:        sudo -y pkgin install bison\n"
+           " * OpenBSD:       (should be installed by default)\n"
            " * Apple:         brew install flex")
 ENDIF()
 
 # ====== libcurl ============================================================
 FIND_PACKAGE(CURL)
-IF (NOT CURL_FOUND)
+IF (CURL_FOUND)
+   MESSAGE(STATUS "cURL found:")
+   MESSAGE(STATUS " CURL_INCLUDE_DIRS: ${CURL_INCLUDE_DIRS}")
+   MESSAGE(STATUS " CURL_LIBRARIES:    ${CURL_LIBRARIES}")
+ELSE()
    MESSAGE(FATAL_ERROR "Cannot find cURL! Try:\n"
            " * Ubuntu/Debian: sudo apt install -y libcurl4-openssl-dev\n"
            " * Fedora:        sudo dnf install -y libcurl-devel\n"
            " * SuSE:          sudo zypper install -y libcurl-devel\n"
            " * Alpine:        sudo apk add curl-dev\n"
            " * FreeBSD:       sudo pkg install -y curl\n"
+           " * NetBSD:        sudo -y pkgin install curl\n"
+           " * OpenBSD:       sudo pkg_add curl\n"
            " * Apple:         brew install curl")
 ENDIF()
 
 # ====== libcrypto (for MD5 computation) ====================================
 FIND_PACKAGE(OpenSSL)
-IF (NOT OpenSSL_FOUND)
+IF (OpenSSL_FOUND)
+   MESSAGE(STATUS "OpenSSL found:")
+   MESSAGE(STATUS " OPENSSL_INCLUDE_DIR: ${OPENSSL_INCLUDE_DIR}")
+   MESSAGE(STATUS " OPENSSL_LIBRARIES:   ${OPENSSL_LIBRARIES}")
+ELSE()
    MESSAGE(FATAL_ERROR "Cannot find OpenSSL! Try:\n"
            " * Ubuntu/Debian: sudo apt install -y libssl-dev\n"
            " * Fedora:        sudo dnf install -y openssl-devel\n"
            " * SuSE:          sudo zypper install -y libopenssl-devel\n"
            " * Alpine:        sudo apk add openssl-dev\n"
            " * FreeBSD:       sudo pkg install -y openssl\n"
+           " * NetBSD:        sudo -y pkgin install openssl\n"
+           " * OpenBSD:       sudo pkg_add openssl\n"
            " * Apple:         brew install openssl")
 ENDIF()
 
