@@ -145,7 +145,7 @@ struct LanguageTableEntry
 };
 
 // based on ISO 639-1 codes
-// URL: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+// URL: https://www.loc.gov/standards/iso639-2/php/English_list.php
 static const LanguageTableEntry languageTable[] = {
    { "de",    "german"     },
    { "de",    "ngerman"    },
