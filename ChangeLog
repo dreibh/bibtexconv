@@ -1,3 +1,75 @@
+commit e71265e4e1fcf6fe8eaf62c17fe5990858fe0c2d
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jun 11 18:28:29 2026 +0200
+
+    Updated build helper script.
+
+commit 8e3815dd9c2d47efe6b356cbf713e5e38c0ed05e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jun 11 11:36:29 2026 +0200
+
+    Updated comment.
+
+commit d4f1aeed579fe6d2164b39e90757de1794178777
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jun 11 11:32:12 2026 +0200
+
+    Improved CMakeLists.txt.
+
+commit 51a0b6167186a122604ef6b3291caac0744a1d6a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 9 09:04:58 2026 +0200
+
+    Further CMakeLists.txt clean-ups.
+
+commit a62a7b20316cc321d93b62e4bbee44544b4299f3
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 9 08:37:35 2026 +0200
+
+    Updated build script.
+
+commit d6531b31c90d7407f981dfb3f623e0c985c3759b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 9 08:36:57 2026 +0200
+
+    Updated CI configuration
+
+commit 8d37a8f4586492560ce4a00e2de28f0d613e9c5e
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 9 08:36:55 2026 +0200
+
+    Updated CI scripts
+
+commit 5396580f0892ff11b09edf84268cfb34c1c62d53
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Tue Jun 9 08:36:10 2026 +0200
+
+    CMakeLists.txt clean-ups.
+
+commit 5a189430a4eed5343ddb9a8d9120763d703f8465
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri May 29 18:10:52 2026 +0200
+
+    Updated FreeBSD port.
+
+commit 0140be311fc1b7eb81b21e1211b6c60efff93238
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri May 29 17:36:56 2026 +0200
+
+    Updated FreeBSD port.
+
+commit 280c2fa11eff65cf5c292fa5d15f60d3f3eff1d9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri May 29 10:33:39 2026 +0200
+
+    Added line-breaks in RPM spec description.
+
+commit d6d0a857b8fc65655605ad6bddcbc6d68df8db06
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu May 28 16:15:22 2026 +0200
+
+    New release bibtexconv-2.2.2.
+
 commit 7bcc3688f067ba7120d1e95c740ec74057b53bcc
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Wed May 27 23:55:06 2026 +0200
