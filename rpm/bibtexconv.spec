@@ -31,7 +31,7 @@ computations) and to verify ISBN and ISSN numbers.
 %setup -q
 
 %build
-%cmake -DCMAKE_INSTALL_PREFIX=/usr .
+%cmake -DCMAKE_INSTALL_PREFIX=/usr
 %cmake_build
 
 %install
