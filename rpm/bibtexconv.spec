@@ -20,7 +20,6 @@ Requires: libcurl
 Requires: openssl-libs
 Requires: poppler-utils
 Requires: zip
-BuildRoot: %{_tmppath}/%{name}-%{version}-build
 
 %description
 BibTeXConv is a BibTeX file converter which allows one to export BibTeX entries
@@ -38,6 +37,18 @@ computations) and to verify ISBN and ISSN numbers.
 %install
 %cmake_install
 
+# Apply shebang fix for Bash and Rscript:
+for directory in %{_bindir} \
+                 %{_docdir}/bibtexconv/examples \
+                 %{_docdir}/bibtexconv/examples/Images \
+                 ; do
+   find "%{buildroot}/$directory" -type f -exec sed -i \
+      -e 's|^#!/usr/bin/env bash|#!/usr/bin/bash|' \
+      -e 's|^#!/usr/bin/env python3|#!/usr/bin/python3|' \
+      -e 's|^#!/usr/bin/env Rscript|#!/usr/bin/Rscript|' \
+      {} +
+done
+
 %files
 %{_bindir}/bibtexconv
 %{_bindir}/bibtexconv-odt
@@ -45,24 +56,27 @@ computations) and to verify ISBN and ISSN numbers.
 %{_datadir}/bash-completion/completions/bibtexconv-odt
 %{_mandir}/man1/bibtexconv.1.gz
 %{_mandir}/man1/bibtexconv-odt.1.gz
-%{_datadir}/doc/bibtexconv/examples/authors.list
-%{_datadir}/doc/bibtexconv/examples/get-author-url
-%{_datadir}/doc/bibtexconv/examples/publication-list-treeview.js
-%{_datadir}/doc/bibtexconv/examples/ExampleReferences.bib
-%{_datadir}/doc/bibtexconv/examples/ODT-Template.odt
-%{_datadir}/doc/bibtexconv/examples/RSerPool.bib
-%{_datadir}/doc/bibtexconv/examples/md-example.export
-%{_datadir}/doc/bibtexconv/examples/odt-example.export
-%{_datadir}/doc/bibtexconv/examples/text-example.export
-%{_datadir}/doc/bibtexconv/examples/web-example1.export
-%{_datadir}/doc/bibtexconv/examples/web-example2.export
-%{_datadir}/doc/bibtexconv/examples/web-rserpool.export
-%{_datadir}/doc/bibtexconv/examples/yaml-example.export
-%{_datadir}/doc/bibtexconv/examples/Images/ListItem-Collapsed.dia
-%{_datadir}/doc/bibtexconv/examples/Images/ListItem-Collapsed.svg
-%{_datadir}/doc/bibtexconv/examples/Images/ListItem-Expanded.dia
-%{_datadir}/doc/bibtexconv/examples/Images/ListItem-Expanded.svg
-%{_datadir}/doc/bibtexconv/examples/Images/make-images
+%dir %attr(0755, root, root) %{_docdir}/bibtexconv
+%dir %attr(0755, root, root) %{_docdir}/bibtexconv/examples
+%dir %attr(0755, root, root) %{_docdir}/bibtexconv/examples/Images
+%{_docdir}/bibtexconv/examples/authors.list
+%{_docdir}/bibtexconv/examples/get-author-url
+%{_docdir}/bibtexconv/examples/publication-list-treeview.js
+%{_docdir}/bibtexconv/examples/ExampleReferences.bib
+%{_docdir}/bibtexconv/examples/ODT-Template.odt
+%{_docdir}/bibtexconv/examples/RSerPool.bib
+%{_docdir}/bibtexconv/examples/md-example.export
+%{_docdir}/bibtexconv/examples/odt-example.export
+%{_docdir}/bibtexconv/examples/text-example.export
+%{_docdir}/bibtexconv/examples/web-example1.export
+%{_docdir}/bibtexconv/examples/web-example2.export
+%{_docdir}/bibtexconv/examples/web-rserpool.export
+%{_docdir}/bibtexconv/examples/yaml-example.export
+%{_docdir}/bibtexconv/examples/Images/ListItem-Collapsed.dia
+%{_docdir}/bibtexconv/examples/Images/ListItem-Collapsed.svg
+%{_docdir}/bibtexconv/examples/Images/ListItem-Expanded.dia
+%{_docdir}/bibtexconv/examples/Images/ListItem-Expanded.svg
+%{_docdir}/bibtexconv/examples/Images/make-images
 
 
 %package ietf2bibtex
@@ -79,7 +93,9 @@ references and the actual document.
 %files ietf2bibtex
 %{_bindir}/ietf2bibtex
 %{_datadir}/bash-completion/completions/ietf2bibtex
-%{_datadir}/doc/bibtexconv/examples/authors-fix.list
+%dir %attr(0755, root, root) %{_docdir}/bibtexconv
+%dir %attr(0755, root, root) %{_docdir}/bibtexconv/examples
+%{_docdir}/bibtexconv/examples/authors-fix.list
 %{_mandir}/man1/ietf2bibtex.1.gz
 
 
