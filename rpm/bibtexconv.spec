@@ -37,7 +37,7 @@ computations) and to verify ISBN and ISSN numbers.
 %install
 %cmake_install
 
-# Apply shebang fix for Bash and Rscript:
+# ====== Apply shebang fix for scripts ======================================
 for directory in %{_bindir} \
                  %{_docdir}/bibtexconv/examples \
                  %{_docdir}/bibtexconv/examples/Images \
@@ -48,6 +48,7 @@ for directory in %{_bindir} \
       -e 's|^#!/usr/bin/env Rscript|#!/usr/bin/Rscript|' \
       {} +
 done
+# ===========================================================================
 
 %files
 %{_bindir}/bibtexconv
