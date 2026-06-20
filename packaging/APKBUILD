@@ -61,5 +61,5 @@ _ietf2bibtex() {
 }
 
 sha512sums="
-4e99dd6ea686af160e8cdcd73c3360b738de0dcbd8a0e3db28e2fbe2ec976a0594a02dd52fa86f2562d3a1ccf26aa78937deef499ba13dfb29bd02ac061eb3b6  bibtexconv_2.2.3.orig.tar.xz
+4e99dd6ea686af160e8cdcd73c3360b738de0dcbd8a0e3db28e2fbe2ec976a0594a02dd52fa86f2562d3a1ccf26aa78937deef499ba13dfb29bd02ac061eb3b6  bibtexconv-2.2.3.tar.xz
 "
