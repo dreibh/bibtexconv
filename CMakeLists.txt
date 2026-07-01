@@ -121,7 +121,7 @@ IF (NOT BISON_FOUND)
            " * FreeBSD:       sudo pkg install -y bison\n"
            " * NetBSD:        sudo -y pkgin install bison\n"
            " * OpenBSD:       sudo pkg_add bison\n"
-           " * Apple:         brew install bison")
+           " * Apple:         brew install -y bison && brew link --force bison")
 ENDIF()
 
 FIND_PACKAGE(FLEX)
