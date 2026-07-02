@@ -111,13 +111,7 @@ ENDIF()
 FIND_PACKAGE(Threads REQUIRED)
 
 # ====== Bison and Flex =====================================================
-IF (APPLE)
-   IF (EXISTS "/opt/homebrew/opt/bison/bin/bison")
-      SET(BISON_EXECUTABLE "/opt/homebrew/opt/bison/bin/bison")
-   ELSEIF (EXISTS "/usr/local/opt/bison/bin/bison")
-      SET(BISON_EXECUTABLE "/usr/local/opt/bison/bin/bison")
-   ENDIF()
-ENDIF()
+LIST(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/bison" "/usr/local/opt/bison")
 FIND_PACKAGE(BISON 3.0)
 IF (NOT BISON_FOUND)
    MESSAGE(FATAL_ERROR "Cannot find Bison >= 3.0! Try:\n"
