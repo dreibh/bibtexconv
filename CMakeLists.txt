@@ -111,6 +111,13 @@ ENDIF()
 FIND_PACKAGE(Threads REQUIRED)
 
 # ====== Bison and Flex =====================================================
+IF (APPLE)
+   IF (EXISTS "/opt/homebrew/opt/bison/bin/bison")
+      SET(BISON_EXECUTABLE "/opt/homebrew/opt/bison/bin/bison")
+   ELSEIF (EXISTS "/usr/local/opt/bison/bin/bison")
+      SET(BISON_EXECUTABLE "/usr/local/opt/bison/bin/bison")
+   ENDIF()
+ENDIF()
 FIND_PACKAGE(BISON 3.0)
 IF (NOT BISON_FOUND)
    MESSAGE(FATAL_ERROR "Cannot find Bison >= 3.0! Try:\n"
@@ -121,7 +128,7 @@ IF (NOT BISON_FOUND)
            " * FreeBSD:       sudo pkg install -y bison\n"
            " * NetBSD:        sudo -y pkgin install bison\n"
            " * OpenBSD:       sudo pkg_add bison\n"
-           " * Apple:         brew install -y bison && brew link --force bison")
+           " * Apple:         brew install -y bison")
 ENDIF()
 
 FIND_PACKAGE(FLEX)
