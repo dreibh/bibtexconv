@@ -126,8 +126,9 @@ IF (NOT BISON_FOUND)
            " * SuSE:          sudo zypper install -y bison\n"
            " * Alpine:        sudo apk add bison\n"
            " * FreeBSD:       sudo pkg install -y bison\n"
-           " * NetBSD:        sudo -y pkgin install bison\n"
+           " * NetBSD:        sudo pkgin -y install bison\n"
            " * OpenBSD:       sudo pkg_add bison\n"
+           " * Solaris:       sudo pkg install bison\n"
            " * Apple:         brew install -y bison")
 ENDIF()
 
@@ -139,8 +140,9 @@ IF (NOT FLEX_FOUND)
            " * SuSE:          sudo zypper install -y flex\n"
            " * Alpine:        sudo apk add flex\n"
            " * FreeBSD:       sudo pkg install -y flex\n"
-           " * NetBSD:        sudo -y pkgin install bison\n"
+           " * NetBSD:        sudo pkgin -y install flex\n"
            " * OpenBSD:       (should be installed by default)\n"
+           " * Solaris:       sudo pkg install flex\n"
            " * Apple:         brew install flex")
 ENDIF()
 
@@ -157,8 +159,9 @@ ELSE()
            " * SuSE:          sudo zypper install -y libcurl-devel\n"
            " * Alpine:        sudo apk add curl-dev\n"
            " * FreeBSD:       sudo pkg install -y curl\n"
-           " * NetBSD:        sudo -y pkgin install curl\n"
+           " * NetBSD:        sudo pkgin -y install curl\n"
            " * OpenBSD:       sudo pkg_add curl\n"
+           " * Solaris:       sudo pkg install curl\n"
            " * Apple:         brew install curl")
 ENDIF()
 
@@ -175,8 +178,9 @@ ELSE()
            " * SuSE:          sudo zypper install -y libopenssl-devel\n"
            " * Alpine:        sudo apk add openssl-dev\n"
            " * FreeBSD:       sudo pkg install -y openssl\n"
-           " * NetBSD:        sudo -y pkgin install openssl\n"
+           " * NetBSD:        sudo pkgin -y install openssl\n"
            " * OpenBSD:       sudo pkg_add openssl\n"
+           " * Solaris:       sudo pkg install openssl\n"
            " * Apple:         brew install openssl")
 ENDIF()
 
