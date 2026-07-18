@@ -287,7 +287,12 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                      if(totalSize > 0) {
                         // ====== Compute mime type (using "file") =======
                         std::string mimeString;
+#if !defined(__sun__)
                         std::string command = format("file --mime-type -b %s >%s", downloadFileName, mimeFileName);
+#else
+                        // Solaris needs the GNU file command:
+                        std::string command = format("/usr/gnu/bin/file --mime-type -b %s >%s", downloadFileName, mimeFileName);
+#endif
                         if(system(command.c_str()) == 0) {
                            FILE* mimeFH = fopen(mimeFileName, "r");
                            if(mimeFH != nullptr) {
