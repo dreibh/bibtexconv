@@ -39,7 +39,7 @@ BIBTEX_FILE="$3"
 EXPORT_SCRIPT="$4"
 
 # ====== Prepare temporary directory ========================================
-TEMP_DIRECTORY="$(mktemp -d)"
+TEMP_DIRECTORY="$(mktemp -d -t bibtexconv-odt.XXXXXXXXXX)"
 trap 'rm -rf -- $TEMP_DIRECTORY' EXIT INT TERM HUP
 
 # ====== Generate content.xml for ODT file ==================================
