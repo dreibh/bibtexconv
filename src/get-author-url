@@ -48,7 +48,7 @@ csv.register_dialect('authors', delimiter=' ', quoting=csv.QUOTE_MINIMAL,skipini
 inputFile : TextIO = open(authorList, 'r')
 inputCSV = csv.reader(inputFile, dialect='authors')
 
-authorRow : list[str] | None = None
+authorRow = None
 for row in inputCSV:
    # print(row)
    if row[0] == authorName:
