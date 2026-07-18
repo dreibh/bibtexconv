@@ -166,6 +166,12 @@ ELSE()
 ENDIF()
 
 # ====== libcrypto (for MD5 computation) ====================================
+IF(CMAKE_SYSTEM_NAME STREQUAL "SunOS")
+   IF(EXISTS "/usr/openssl/3")
+      SET(OPENSSL_ROOT_DIR "/usr/openssl/3")
+   ENDIF()
+ENDIF()
+
 FIND_PACKAGE(OpenSSL)
 IF (OpenSSL_FOUND)
    MESSAGE(STATUS "OpenSSL found:")
