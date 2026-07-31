@@ -1,3 +1,136 @@
+commit 7668fd126a250a43c4f71f742b597db1551592e9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 20:47:54 2026 +0200
+
+    Using "-t" option for mktemp.
+
+commit f6c0d1b04a511eac721aa425a638c53542ae21b5
+Merge: 835e3ce 846aa8b
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 20:35:13 2026 +0200
+
+    Merge branch 'master' of https://github.com/dreibh/bibtexconv
+
+commit 835e3ced91200798a26f00ac18f722b2a82e38ea
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 20:34:56 2026 +0200
+
+    Solaris needs the GNU file command to obtain the MIME type of a publication.
+
+commit e7b56f5b2859da3551383ec7e21773c40cd4bf64
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 20:34:17 2026 +0200
+
+    Updated example script to work on Solaris as well.
+
+commit 846aa8be0adc16b96d2d8597113bcecf3a83ce5c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 20:33:37 2026 +0200
+
+    Improved script.
+
+commit c9538c28468fe4b822f0ccfc70dc40b9dd1faf66
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 16:42:18 2026 +0200
+
+    Solaris build support is now working.
+
+commit 5cc7ad23959b1457ef031dcfc38fe6c06b167fac
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 16:11:52 2026 +0200
+
+    Further CMakeLists.txt improvements.
+
+commit 673d1758b259ff5c07cc9e16a278841eab666424
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 15:26:46 2026 +0200
+
+    Further NetBSD improvements in CMakeLists.txt.
+
+commit 1c2bfc65082c7b88e2721d42bcd5ba1741d6247a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 15:13:02 2026 +0200
+
+    Updated build helper script.
+
+commit 3a0f13889adfe4504f14d1ed319a3fb36ddf7dd8
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jul 18 15:00:33 2026 +0200
+
+    CMakeLists.txt fix for NetBSD: need to set CMAKE_INSTALL_RPATH_USE_LINK_PATH if necessary.
+
+commit 9eae2d6bd59c28e704892cb414a7d4595b580049
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jul 2 12:36:45 2026 +0200
+
+    Simplified Bison detection in CMakeLists.txt.
+
+commit 00a66c18b40f83529d86b9c17aaaf842a976d266
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jul 2 10:46:06 2026 +0200
+
+    Improved CMakeLists.txt.
+
+commit 1e9e1c25bfcf0647f1d6475fbdb5ea470e2f6010
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Wed Jul 1 16:32:08 2026 +0200
+
+    Improved dependency hint in CMakeLists.txt.
+
+commit 2a665eee0d6db2336e46194f10903705ca03856c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 29 15:42:18 2026 +0200
+
+    Updated CI configuration
+
+commit 6e021b25341bcdba3c33ef671eb05f90dee2dd59
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 29 15:42:17 2026 +0200
+
+    Updated CI scripts
+
+commit 0471f72e7d0e9a02b194ce2437299f0498f81ef9
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Mon Jun 29 15:41:18 2026 +0200
+
+    Updated FreeBSD workflow.
+
+commit a7c0135533e20805c7584652a39e6e960286a8e5
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jun 20 21:32:14 2026 +0200
+
+    Minor APKBUILD update.
+
+commit 674a566a141de5cadecbad05a14f6e7a04dcabec
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Jun 20 21:28:39 2026 +0200
+
+    Added APKBUILD file.
+
+commit c42d2111359bb47f375b07d48e9f02dfb1d1d756
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jun 19 14:34:24 2026 +0200
+
+    Minor RPM spec clean-up.
+
+commit fb6243e143f1bbd2f4084fa2e13b13a2c4d6d011
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jun 18 17:51:51 2026 +0200
+
+    Yet another RPM spec update.
+
+commit 440a07f40b83b7ffabeaf38320ae0abce9fb2f5c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Thu Jun 18 16:07:48 2026 +0200
+
+    RPM spec improvements.
+
+commit 30175e44464e49e8a06d997b196a444ac6540b81
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jun 12 17:57:37 2026 +0200
+
+    New release bibtexconv-2.2.3.
+
 commit e71265e4e1fcf6fe8eaf62c17fe5990858fe0c2d
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Thu Jun 11 18:28:29 2026 +0200
