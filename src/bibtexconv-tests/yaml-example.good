@@ -116,7 +116,7 @@ Reference:
    Day: 16
    URL: https://web.archive.org/web/20260420112909/https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/LCN2005.pdf
  - Author: Thomas Dreibholz and Erwin Paul Rathgeb
-   Booktitle: Proceedings of the 31st IEEE EuroMirco Conference on Software Engineering and Advanced Applications
+   Booktitle: Proceedings of the 31st IEEE Euromirco Conference on Software Engineering and Advanced Applications
    Pages: 396–403
    Title: RSerPool – Providing Highly Available Services using Unreliable Servers
    ISBN: ISBN 0-7695-2431-1
@@ -145,6 +145,7 @@ Reference:
    Title: Implementing the Reliable Server Pooling Framework
    Volume: 1
    ISBN: ISBN 953-184-081-4
+   DOI: 10.1109/CONTEL.2005.185812
    Year: 2005
    Month: jun
    Day: 15
@@ -233,7 +234,7 @@ Reference:
    Day: 10
    URL: https://web.archive.org/web/20260420112909/https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/Linuxtage2007.pdf
  - Author: Thomas Dreibholz and Xing Zhou and Erwin Paul Rathgeb
-   Booktitle: Proceedings of the 33rd IEEE EuroMirco Conference on Software Engineering and Advanced Applications
+   Booktitle: Proceedings of the 33rd IEEE Euromirco Conference on Software Engineering and Advanced Applications
    Pages: 157–164
    Title: A Performance Evaluation of RSerPool Server Selection Policies in Varying Heterogeneous Capacity Scenarios
    ISBN: ISBN 0-7695-2977-1
@@ -732,7 +733,7 @@ Reference:
    Day: 8
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.1968.pdf
  - Author: Thomas Dreibholz and Ernst Gunnar Gran
-   Booktitle: Proceedings of the 3nd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
+   Booktitle: Proceedings of the 3rd International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
    Pages: 1094–1100
    Title: Design and Implementation of the NorNet Core Research Testbed for Multi-Homed Systems
    ISBN: ISBN 978-0-7695-4952-1
@@ -852,6 +853,7 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/publications/Simula.simula.2722.pdf
  - Author: Hakim Adhari and Sebastian Werner and Thomas Dreibholz and Erwin Paul Rathgeb
    Booktitle: Proceedings of the 4th International Workshop on Protocols and Applications with Multi-Homing Support (PAMS)
+   Pages: 765–771
    Title: LEDBAT-MP – On the Application of Lower-than-Best-Effort for Concurrent Multipath Transfer
    ISBN: ISBN 978-1-4799-2652-7
    DOI: 10.1109/WAINA.2014.125
@@ -985,6 +987,7 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/publications/files/gis2015_0.pdf
  - Author: Ji Liu and Yuyin Tan and Fa Fu and Thomas Dreibholz and Xing Zhou and Yong Bai and Xiong Yang and Wencai Du
    Journal: Computer Engineering
+   Number: 4
    Pages: 117–124
    Title: Study on MPTCP and CMT-SCTP Congestion Control Mechanism
    Volume: 41
@@ -1093,6 +1096,7 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/publications/files/hawhamburg2016-presentation.pdf
  - Author: Fa Fu and Xing Zhou and Yuyin Tan and Thomas Dreibholz and Hakim Adhari and Erwin Paul Rathgeb
    Journal: Computer Engineering and Applications
+   Number: 5
    Pages: 89–93
    Publisher: CEA
    Title: Performance Analysis of MPTCP Protocol in Multiple Scenarios
@@ -1232,6 +1236,7 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/publications/files/sydney2017-presentation.pdf
  - Author: Yu Lou and Xing Zhou and Yu Long and Hanbao Kuang and Thomas Dreibholz and Yuyin Tan
    Journal: Computer Engineering and Applications
+   Number: 24
    Pages: 79–86
    Publisher: CEA
    Title: Performance Analysis of MPTCP Protocol in Multiple Scenarios
@@ -1568,6 +1573,7 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/publications/files/pdcat2022.pdf
  - Author: Somnath Mazumdar and Thomas Dreibholz
    Journal: IEEE Communications Magazine
+   Number: 11
    Pages: 74–80
    Title: Secure Embedded Living: Towards a Self-contained User Data Preserving Framework
    Volume: 60
@@ -1801,6 +1807,7 @@ Reference:
    Booktitle: Proceedings of the 18th Workshop on Cyber Security Experimentation and Test (CSET) in conjunction with the 41st Annual Computer Security Applications Conference (ACSAC)
    Pages: 579–586
    Title: Open 5G Testbed: A Cyber Range Platform for Security Research
+   ISBN: ISBN 979-8-3315-4536-9
    DOI: 10.1109/ACSACW69556.2025.00067
    Year: 2025
    Month: dec
@@ -1818,6 +1825,7 @@ Reference:
    Booktitle: Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing (ISPDC)
    Pages: 1–8
    Title: FL+2: Multi-Layered Privacy Protection for Federated Learning-based Medical Diagnostic
+   ISBN: ISBN 979-8-3315-7811-4
    DOI: 10.1109/ISPDC67428.2025.00015
    Year: 2025
    Month: jul
@@ -1827,6 +1835,7 @@ Reference:
    Booktitle: Proceedings of the 24th IEEE International Symposium on Parallel and Distributed Computing (ISPDC)
    Pages: 26–33
    Title: Towards a Privacy-Aware Communication for Disaggregated Fog Platform
+   ISBN: ISBN 979-8-3315-7811-4
    DOI: 10.1109/ISPDC67428.2025.00014
    Year: 2025
    Month: jul
@@ -1842,7 +1851,9 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/2025-06/SKF2025.pdf
  - Author: Jan Marius Evang and Thomas Dreibholz and Somnath Mazumdar
    Booktitle: Proceedings of the 15th IFIP International Workshop on Resilient Networks Design and Modeling (RNDM)
+   Pages: 1–8
    Title: Measuring Mobile Network Coverage during Extended Road Trips in the Nordics
+   ISBN: ISBN 979-8-3315-8497-9
    DOI: 10.1109/RNDM66856.2025.11073801
    Year: 2025
    Month: jun
@@ -1868,7 +1879,11 @@ Reference:
    URL: https://web-backend.simula.no/sites/default/files/2025-02/PDP2025.pdf
  - Author: Thomas Dreibholz and Foivos Ioannis Michelinakis and Tarik Čičić
    Booktitle: Proceedings of the 8th International Workshop on Recent Advances for Multi-Clouds and Mobile Edge Computing (M2EC) in conjunction with the 40th International Conference on Advanced Information Networking and Applications (AINA)
+   Pages: 175–187
+   Publisher: Springer Nature
    Title: A Sleepless Night over the Atlantic Ocean – Analysing the Satellite Network Connectivity during a Trans-Atlantic Flight
+   ISBN: ISBN 978-3-032-23347-9
+   DOI: 10.1007/978-3-032-23347-9_15
    Year: 2026
    Month: apr
    Day: 8
