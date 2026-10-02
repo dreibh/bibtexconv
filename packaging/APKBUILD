@@ -1,6 +1,6 @@
 # Maintainer: Thomas Dreibholz <dreibh@simula.no>
 pkgname=bibtexconv
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="BibTeX file converter to export entries to other custom formats"
 url="https://www.nntb.no/~dreibh/bibtexconv/"
@@ -61,5 +61,5 @@ _ietf2bibtex() {
 }
 
 sha512sums="
-ac3c0c770fec500dd4e3b5e2a7fa25989cc4882dab26caffede3003646b6adcbe5427609c578a1e0854d733bced1c0627cf3648b7107867234b2fba860f37857  bibtexconv-2.2.4.tar.xz
+4a4213d8831e030ba34c7d4e17720190ab1c37480da12ceba3c8f262b2855c51b7c94da39f8e9e78e846f8fd6b59d92e12bca8758b4ddf19efb64ab39d5949c4  bibtexconv-2.2.5.tar.xz
 "
