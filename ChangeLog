@@ -1,3 +1,39 @@
+commit 3f406bfe4540cf50ea732f113a10619eb25c472c
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Oct 2 17:32:26 2026 +0200
+
+    Updated CI scripts
+
+commit cc2073840b44616035f3503dd1dd92bcfd674936
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Oct 2 15:39:32 2026 +0200
+
+    Updated examples.
+
+commit 29b7a1b9ac900b0d3d0af5b69aeb32f11d23e967
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Sat Sep 12 16:27:28 2026 +0100
+
+    Added GNU Hurd support.
+
+commit 538a41bb8c93f629801adaea6e879bb5dd4e5d5a
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jul 31 13:50:43 2026 +0200
+
+    Updated FreeBSD port.
+
+commit 60687f4819f34d4155d33ca96d77fe19eeee6589
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jul 31 13:21:43 2026 +0200
+
+    Updated APKBUILD file.
+
+commit c61f3dc845c376bd3ae904ac70262a501e84c355
+Author: Thomas Dreibholz <dreibh@simula.no>
+Date:   Fri Jul 31 12:49:33 2026 +0200
+
+    New release bibtexconv-2.2.4.
+
 commit 7668fd126a250a43c4f71f742b597db1551592e9
 Author: Thomas Dreibholz <dreibh@simula.no>
 Date:   Sat Jul 18 20:47:54 2026 +0200
