@@ -287,7 +287,7 @@ static unsigned int checkAllURLs(PublicationSet* publicationSet,
                      if(totalSize > 0) {
                         // ====== Compute mime type (using "file") =======
                         std::string mimeString;
-#if !defined(__sun__)
+#if !defined(__sun)
                         std::string command = format("file --mime-type -b %s >%s", downloadFileName, mimeFileName);
 #else
                         // Solaris needs the GNU file command:
