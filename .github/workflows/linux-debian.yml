@@ -112,7 +112,7 @@ jobs:
       - name: Packaging
         shell: bash
         run: |
-          sudo CC=gcc CXX=g++ OS=ubuntu DIST=trixie ARCH= ci/ci-setup   package
-          sudo CC=gcc CXX=g++ OS=ubuntu DIST=trixie ARCH= ci/ci-install package
-          sudo CC=gcc CXX=g++ OS=ubuntu DIST=trixie ARCH= ci/ci-build   package
+          sudo CC=gcc CXX=g++ OS=debian DIST=trixie ARCH= ci/ci-setup   package
+          sudo CC=gcc CXX=g++ OS=debian DIST=trixie ARCH= ci/ci-install package
+          sudo CC=gcc CXX=g++ OS=debian DIST=trixie ARCH= ci/ci-build   package
           sudo ci/ci-test   <- Not running on Ubuntu!
