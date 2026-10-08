@@ -48,8 +48,7 @@ jobs:
     container:
       image: ${{ matrix.image }}
     steps:
-      # NOTE: actions/checkout@v6 does not work for old Ubuntu 18.04!
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Build
         shell: bash
         run: |
@@ -83,7 +82,7 @@ jobs:
     name: ${{ matrix.label }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       # NOTE: dreibh/run-on-arch-action provides the upstream
       #       uraimo/run-on-arch-action action, with additional dockerfiles
       #       needed for the builds here!
@@ -111,7 +110,7 @@ jobs:
       image: fedora:43
       options: --privileged --cap-add=SYS_ADMIN
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Packaging
         shell: bash
         run: |
