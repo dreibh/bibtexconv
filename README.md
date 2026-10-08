@@ -156,7 +156,7 @@ sudo dnf install bibtexconv
 
 ## OpenSUSE Linux
 
-For ready-to-install [OpenSUSE Linux](https://www.opensuse.org/) packages of BibTeXConv, see [Open Build Service PPA for Thomas Dreibholz](https://build.opensuse.org/project/show/home:dreibh)!
+For ready-to-install [OpenSUSE Linux](https://www.opensuse.org/) packages of BibTeXConv, see the [Open Build Service PPA for Thomas Dreibholz](https://build.opensuse.org/project/show/home:dreibh)!
 
 Add the PPA repository:
 
@@ -176,7 +176,7 @@ sudo zypper install bibtexconv
 
 ## Alpine Linux
 
-For ready-to-install [Alpine Linux](https://alpinelinux.org/) packages of BibTeXConv, see [Open Build Service PPA for Thomas Dreibholz](https://build.opensuse.org/project/show/home:dreibh)!
+For ready-to-install [Alpine Linux](https://alpinelinux.org/) packages of BibTeXConv, see the [Open Build Service PPA for Thomas Dreibholz](https://build.opensuse.org/project/show/home:dreibh)!
 
 Add the PPA repository:
 
@@ -199,7 +199,7 @@ sudo apk add bibtexconv
 
 ## FreeBSD
 
-For ready-to-install [FreeBSD](https://www.freebsd.org/) packages of BibTeXConv, it is included in the ports collection; see [FreeBSD ports tree index of net/bibtexconv/](https://cgit.freebsd.org/ports/tree/net/bibtexconv/)!
+For ready-to-install [FreeBSD](https://www.freebsd.org/) packages of BibTeXConv, it is included in the ports collection; see [FreeBSD ports tree index of converters/bibtexconv/](https://cgit.freebsd.org/ports/tree/converters/bibtexconv/)!
 
 ```bash
 sudo pkg install bibtexconv
@@ -208,7 +208,7 @@ sudo pkg install bibtexconv
 Alternatively, to compile it from the ports sources:
 
 ```bash
-cd /usr/ports/net/bibtexconv
+cd /usr/ports/converters/bibtexconv
 make
 sudo make install
 ```
