@@ -107,9 +107,6 @@ jobs:
   Package:
     name: Debian Packaging
     runs-on: ubuntu-latest
-    container:
-      image: debian:trixie
-      options: --privileged
     steps:
       - uses: actions/checkout@v7
       - name: Packaging
