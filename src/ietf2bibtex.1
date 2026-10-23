@@ -28,7 +28,7 @@
 .\" Contact: thomas.dreibholz@gmail.com
 .\"
 .\" ###### Setup ############################################################
-.Dd May 26, 2026
+.Dd October 23, 2026
 .Dt ietf2bibtex 1
 .Os ietf2bibtex
 .\" ###### Name #############################################################
@@ -38,63 +38,61 @@
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
 .Nm ietf2bibtex
-.Op Fl \-authors\-fix\-file=NAME
+.Op Fl \-authors\-fix\-file Ar file
 .Op Fl \-no\-authors\-fix\-file
 .br
-.Op Fl \-quiet
-.Op Fl \-verbose
-.br
-document
-.Op document ...
+.Op Fl \-quiet | Fl \-verbose
+.Ar document Op Ar ...
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
 .Nm ietf2bibtex
 creates a BibTeX entry for an IETF document (i.e. RFC or Internet Draft). The
 necessary information is automatically obtained from online XML references and
-the actual document. Note, that author names are sometimes wrong, misspelled,
-incomplete or inconsistent. Therefore, ietf2bibtex may read a file denoted as
+the actual document. Note that author names are sometimes wrong, misspelled,
+incomplete or inconsistent. Therefore,
+.Nm ietf2bibtex
+may read a file denoted as
 authors fix file. It contains name translations in the form of
 "Old Name" "New Name", for example:
-.br
+.Bd -literal -offset indent
 "A. Bundy"  "Al Bundy"
-.br
 "J. Muller" "Joe Müller"
-.br
 "J. Moller" "Jarle Møller"
-.br
-.br
-Known limitations of ietf2bibtex:
-.br
+.Ed
+.Pp
+Known limitations of
+.Nm ietf2bibtex :
+.Bl -bullet
+.It
 IETF metadata and documents only contain ASCII characters. To obtain the
 correct non\-ASCII author names (e.g. German, Norwegian, French, etc.), it
 is necessary to use authors\-fix.list.
-.br
-IETF metadata has often wrong or limited author information for a document.
+.It
+IETF metadata often has wrong or limited author information for a document.
 ietf2bibtex tries to obtain the author information from the document.
 Unusual formatting sometimes prevents this.
-.br
+.It
 IETF metadata often has the wrong date for a document.
 ietf2bibtex tries to obtain the date from the document.
 Unusual formatting sometimes prevents this.
-.Pp
+.El
 .\" ###### Arguments ########################################################
-.Sh OPTIONS
+.Sh ARGUMENTS
 The following arguments may be provided:
 .Bl -tag -width indent
-.It Ar document Op ...
+.It Ar document Op Ar ...
 The name of the IETF document, e.g. like RFC5351 or draft\-dreibholz\-ipv4\-flowlabel. Multiple names may be provided.
-.It Fl \-quiet
-Print less progress information.
-.It Fl \-verbose
-Print progress information (default).
-.It Fl \-authors\-fix\-file=NAME
+.It Fl \-authors\-fix\-file Ar file
 Use the given file as authors fix file.
 If not provided, the default is used: try authors\-fix.list in the current
 directory first, then /usr/share/doc/bibtexconv/examples/authors\-fix.list.
 .It Fl \-no\-authors\-fix\-file
 Use no authors fix file.
+.It Fl \-quiet
+Print less progress information.
+.It Fl \-verbose
+Print progress information (default).
 .El
-.Pp
 .\" ###### Exit status ######################################################
 .Sh EXIT STATUS
 The
@@ -104,10 +102,18 @@ tool exits with 0 on success, and >0 in case of an error.
 .Sh EXAMPLES
 .Bl -tag -width indent
 .It ietf2bibtex RFC5351
-.It ietf2bibtex RFC5351 RFC5352 RFC5353 RFC5354 RFC5355 RFC5356 RFC5525 >RSerPool.bib
-.It ietf2bibtex \--quiet draft\-dreibholz\-ipv4\-flowlabel
-.It ietf2bibtex \--verbose \--authors\-fix\-file=\%/usr/\%share/\%doc/\%bibtexconv/\%examples/\%authors\-fix.list draft\-\%dreibholz\-\%rserpool\-\%delay
+Fetch metadata and create a BibTeX entry for RFC 5351.
+.It ietf2bibtex RFC5351 RFC5352 RFC5353 RFC5354 RFC5355 RFC5356 RFC5525 > RSerPool.bib
+Fetch metadata for multiple RFC documents and redirect the output to a BibTeX database file.
+.It ietf2bibtex \-\-quiet draft\-dreibholz\-ipv4\-flowlabel
+Process an Internet Draft quietly without progress output.
+.It ietf2bibtex \-\-verbose \-\-authors\-fix\-file=/usr/share/doc/bibtexconv/examples/authors\-fix.list draft\-dreibholz\-rserpool\-delay
+Process an Internet Draft with explicit author name fixes enabled.
 .El
+.\" ###### See also #########################################################
+.Sh SEE ALSO
+.Xr bibtexconv 1 ,
+.Xr bibtexconv\-odt 1
 .\" ###### Notes ############################################################
 .Sh NOTES
 This program is part of BibTeXConv. The latest version of BibTeXConv can be found on the BibTeXConv Homepage at

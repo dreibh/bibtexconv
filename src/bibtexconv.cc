@@ -738,6 +738,7 @@ static int handleInput(FILE*           fh,
 }
 
 
+// ------ BEGIN-OF-USAGE-BLOCK ------
 // ###### Usage #############################################################
 [[ noreturn ]] static void usage(const char* program, const int exitCode)
 {
@@ -763,6 +764,7 @@ static int handleInput(FILE*           fh,
       "\n", program);
    exit(exitCode);
 }
+// ------ END-OF-USAGE-BLOCK ------
 
 
 
