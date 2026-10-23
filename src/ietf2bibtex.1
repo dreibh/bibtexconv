@@ -38,11 +38,18 @@
 .\" ###### Synopsis #########################################################
 .Sh SYNOPSIS
 .Nm ietf2bibtex
-.Op Fl \-authors\-fix\-file Ar file
-.Op Fl \-no\-authors\-fix\-file
+.Op Fl a Ar file | Fl \-authors\-fix\-file Ar file
 .br
-.Op Fl \-quiet | Fl \-verbose
+.Op Fl n | Fl \-no\-authors\-fix\-file
+.br
+.Op Fl q | Fl \-quiet
+.Op Fl w | Fl \-verbose
+.br
 .Ar document Op Ar ...
+.Nm ietf2bibtex
+.Op Fl h | Fl \-help
+.Nm ietf2bibtex
+.Op Fl v | Fl \-version
 .\" ###### Description ######################################################
 .Sh DESCRIPTION
 .Nm ietf2bibtex
@@ -82,16 +89,20 @@ The following arguments may be provided:
 .Bl -tag -width indent
 .It Ar document Op Ar ...
 The name of the IETF document, e.g. like RFC5351 or draft\-dreibholz\-ipv4\-flowlabel. Multiple names may be provided.
-.It Fl \-authors\-fix\-file Ar file
+.It Fl a Ar file | Fl \-authors\-fix\-file Ar file
 Use the given file as authors fix file.
 If not provided, the default is used: try authors\-fix.list in the current
 directory first, then /usr/share/doc/bibtexconv/examples/authors\-fix.list.
-.It Fl \-no\-authors\-fix\-file
+.It Fl n | Fl \-no\-authors\-fix\-file
 Use no authors fix file.
-.It Fl \-quiet
+.It Fl q | Fl \-quiet
 Print less progress information.
-.It Fl \-verbose
+.It Fl w | Fl \-verbose
 Print progress information (default).
+.It Fl h | Fl \-help
+Prints command help.
+.It Fl v | Fl \-version
+Prints program version.
 .El
 .\" ###### Exit status ######################################################
 .Sh EXIT STATUS
@@ -107,7 +118,7 @@ Fetch metadata and create a BibTeX entry for RFC 5351.
 Fetch metadata for multiple RFC documents and redirect the output to a BibTeX database file.
 .It ietf2bibtex \-\-quiet draft\-dreibholz\-ipv4\-flowlabel
 Process an Internet Draft quietly without progress output.
-.It ietf2bibtex \-\-verbose \-\-authors\-fix\-file=/usr/share/doc/bibtexconv/examples/authors\-fix.list draft\-dreibholz\-rserpool\-delay
+.It ietf2bibtex \-\-verbose \-\-authors\-fix\-file /usr/share/doc/bibtexconv/examples/authors\-fix.list draft\-dreibholz\-rserpool\-delay
 Process an Internet Draft with explicit author name fixes enabled.
 .El
 .\" ###### See also #########################################################
