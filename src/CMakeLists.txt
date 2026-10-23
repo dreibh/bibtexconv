@@ -70,8 +70,11 @@ INSTALL(FILES       bibtexconv.bash-completion
         RENAME      bibtexconv)
 
 
-INSTALL(PROGRAMS    bibtexconv-odt
-        DESTINATION ${CMAKE_INSTALL_BINDIR})
+CONFIGURE_FILE(bibtexconv-odt bibtexconv-odt.versioned @ONLY)
+SET_PROPERTY(DIRECTORY APPEND PROPERTY ADDITIONAL_CLEAN_FILES bibtexconv-odt.versioned)
+INSTALL(PROGRAMS    ${CMAKE_CURRENT_BINARY_DIR}/bibtexconv-odt.versioned
+        DESTINATION ${CMAKE_INSTALL_BINDIR}
+        RENAME      bibtexconv-odt)
 INSTALL(FILES       bibtexconv-odt.1
         DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 INSTALL(FILES       bibtexconv-odt.bash-completion
@@ -79,8 +82,11 @@ INSTALL(FILES       bibtexconv-odt.bash-completion
         RENAME      bibtexconv-odt)
 
 
-INSTALL(PROGRAMS    ietf2bibtex
-        DESTINATION ${CMAKE_INSTALL_BINDIR})
+CONFIGURE_FILE(ietf2bibtex ietf2bibtex.versioned @ONLY)
+SET_PROPERTY(DIRECTORY APPEND PROPERTY ADDITIONAL_CLEAN_FILES ietf2bibtex.versioned)
+INSTALL(PROGRAMS    ${CMAKE_CURRENT_BINARY_DIR}/ietf2bibtex.versioned
+        DESTINATION ${CMAKE_INSTALL_BINDIR}
+        RENAME      ietf2bibtex)
 INSTALL(FILES       ietf2bibtex.1
         DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 INSTALL(FILES       ietf2bibtex.bash-completion
