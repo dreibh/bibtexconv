@@ -733,7 +733,7 @@ static int handleInput(FILE*           fh,
 // ###### Version ###########################################################
 [[ noreturn ]] static void version()
 {
-   printf("BibTeXConv %s\n", BIBTEXCONV_VERSION);
+   printf("BibTeXConv %s\n", PROJECT_VERSION);
    exit(0);
 }
 

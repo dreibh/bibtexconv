@@ -27,13 +27,15 @@
 #
 # Contact: thomas.dreibholz@gmail.com
 
-CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
-PROJECT(bibtexconv LANGUAGES C CXX)
-
+CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
 SET(BUILD_MAJOR "2")
 SET(BUILD_MINOR "2")
 SET(BUILD_PATCH "5")
-SET(BUILD_VERSION ${BUILD_MAJOR}.${BUILD_MINOR}.${BUILD_PATCH})
+PROJECT(bibtexconv
+        VERSION      "${BUILD_MAJOR}.${BUILD_MINOR}.${BUILD_PATCH}"
+        LANGUAGES    CXX
+        HOMEPAGE_URL "https://www.nntb.no/~dreibh/bibtexconv")
+SET(PROJECT_SOURCE_URL "https://github.com/dreibh/bibtexconv")
 
 
 #############################################################################
